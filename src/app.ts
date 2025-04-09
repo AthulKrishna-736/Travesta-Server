@@ -1,11 +1,14 @@
 import express, { Application } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import xss from 'xss-clean';
 import hpp from 'hpp';
 import rateLimit from 'express-rate-limit';
+import mongoSanitize from 'express-mongo-sanitize';
 import logger from './utils/logger';
 import { env } from './config/env';
+import { userRoutes } from './interfaces/routes/userRoutes';
+import { vendorRoutes } from './interfaces/routes/vendorRoutes';
+import { adminRoutes } from './interfaces/routes/adminRoutes';
 
 export class App {
   public app: Application
@@ -21,7 +24,7 @@ export class App {
   private setSecurityMiddlewares(): void {
     this.app.use(helmet())
     this.app.use(cors())
-    this.app.use(xss())
+    this.app.use(mongoSanitize());
     this.app.use(hpp())
 
     const limiter = rateLimit({
@@ -43,7 +46,9 @@ export class App {
   }
 
   private setRoutes(): void {
-    //routes
+    this.app.use('/api/users', new userRoutes().getRouter())
+    this.app.use('/api/hotels', new vendorRoutes().getRouter())
+    this.app.use('/api/admin', new adminRoutes().getRouter())
   }
 
   private setErrorHandling(): void {
