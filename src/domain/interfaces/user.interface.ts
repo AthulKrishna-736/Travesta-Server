@@ -1,4 +1,4 @@
-import { TRole, TSubcription } from "../../shared/types/user.types";
+import { TRole, TSubscription } from "../../shared/types/user.types";
 
 export interface IUser {
     _id?: string,
@@ -9,7 +9,7 @@ export interface IUser {
     password: string,
     role: TRole,
     phone: number,
-    subscriptionType: TSubcription,
+    subscriptionType: TSubscription,
     profileImage?: string,
     wishlist: string[],
     isKycVerified?: boolean,
