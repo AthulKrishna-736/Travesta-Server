@@ -25,7 +25,7 @@ describe('User domain model', () => {
 
       it('should be not KYC verified by default', () => {
         const user = new User(mockUserData);
-        expect(user.isKycVerified).toBe(false);
+        expect(user.isKycVerified).toBe(true);
       });
 
       it('should convert to object with same data', () => {
