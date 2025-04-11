@@ -1,15 +1,17 @@
+import { injectable, inject } from "tsyringe";
 import { IUser, IUserRepository } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { IAuthService } from "../../interfaces/authService.interface";
+import { TOKENS } from "../../../constants/token";
 
-
+@injectable()
 export class RegisterUser {
     constructor(
-        private readonly userRepository: IUserRepository,
-        private readonly authService: IAuthService
+        @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository,
+        @inject(TOKENS.AuthService) private readonly authService: IAuthService
     ) { }
 
-    async execute(userData: CreateUserDTO): Promise<{ token: string, user: IUser }> {
+    async execute(userData: CreateUserDTO): Promise<IUser> {
         const existingUser = await this.userRepository.findByEmail(userData.email)
 
         if (existingUser) {
@@ -29,10 +31,6 @@ export class RegisterUser {
 
         const newUser = await this.userRepository.createUser(newUserData);
 
-        const token = this.authService.generateToken(newUser._id!)
-        return {
-            token,
-            user: newUser
-        }
+        return newUser
     }
 }

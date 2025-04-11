@@ -9,11 +9,11 @@ export class adminRoutes extends BaseRouter {
     }
 
     protected initializeRoutes(): void {
-        this.router.post('/auth/login');
-        this.router
-        .route('/')
-        .get()
-        .patch()
-        .put()
+        // this.router.post('/auth/login');
+        // this.router
+        // .route('/')
+        // .get()
+        // .patch()
+        // .put()
     }
 }

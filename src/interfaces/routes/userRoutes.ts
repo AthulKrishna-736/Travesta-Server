@@ -1,6 +1,8 @@
 import { container } from "tsyringe";
 import { UserController } from "../controllers/userController";
 import { BaseRouter } from "./baseRouter";
+import { validateRequest } from "../../middlewares/validateRequest";
+import { createUserSchema, loginSchema } from "../dtos/user/user.dto";
 
 
 export class userRoutes extends BaseRouter {
@@ -14,17 +16,17 @@ export class userRoutes extends BaseRouter {
 
     protected initializeRoutes(): void {
         this.router
-            .post('/auth/signup', (req, res) => this.userController.register(req, res))
-            .post('/auth/login', (req, res) => this.userController.login(req, res))
-            .post('/auth/kyc')
-            .patch('/auth/forgot-password')
-            .patch('/auth/reset-password');
+            .post('/auth/signup', validateRequest(createUserSchema), (req, res) => this.userController.register(req, res))
+            .post('/auth/login', validateRequest(loginSchema), (req, res) => this.userController.login(req, res))
+        //     .post('/auth/kyc')
+        //     .patch('/auth/forgot-password')
+        //     .patch('/auth/reset-password');
 
-        this.router 
-            .route('/')
-            .get() //get profile
-            .patch() //password update
-            .put( (req, res) => this.userController.updateProfile(req, res)) //profile update
-            .delete() //profile delete
+        // this.router
+        //     .route('/')
+        //     .get() //get profile
+        //     .patch() //password update
+        //     .put((req, res) => this.userController.updateProfile(req, res)) //profile update
+        //     .delete() //profile delete
     }
 }

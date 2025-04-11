@@ -1,9 +1,12 @@
+import { inject, injectable } from "tsyringe";
 import { IUser, IUserRepository } from "../../../domain/interfaces/user.interface";
 import { UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { TOKENS } from "../../../constants/token";
 
+@injectable()
 export class UpdateUser {
     constructor(
-        private readonly userRepository: IUserRepository
+        @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository
     ) { }
 
     async execute(userId: string, userData: UpdateUserDTO): Promise<IUser> {

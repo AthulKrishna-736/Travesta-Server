@@ -29,10 +29,10 @@ export const createUserSchema = z.object({
         .string()
         .regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
     role: z.enum(["user", "vendor", "admin"]),
-    subscriptionType: z.enum(["basic", "medium", "vip"]), 
+    subscriptionType: z.enum(["basic", "medium", "vip"]),
 })
 
-export type CreateUserSchemaType  = z.infer<typeof createUserSchema>
+export type CreateUserSchemaType = z.infer<typeof createUserSchema>
 
 
 export const updateUserSchema = z.object({
@@ -43,7 +43,15 @@ export const updateUserSchema = z.object({
         .regex(/^\d{10}$/, "Phone number must be exactly 10 digits")
         .optional(),
     profileImage: z.string().url("Profile image must be a valid URL").optional(),
-    subscriptionType: z.enum(["basic", "medium", "vip"]).optional(), 
+    subscriptionType: z.enum(["basic", "medium", "vip"]).optional(),
 })
 
-export type UpdateUserSchemaType  = z.infer<typeof updateUserSchema>
+export type UpdateUserSchemaType = z.infer<typeof updateUserSchema>
+
+export const loginSchema = z.object({
+    email: z.string().email("Invalid email"),
+    password: z.string().min(1, "Password is required"),
+});
+
+export type LoginSchemaType = z.infer<typeof loginSchema>
+

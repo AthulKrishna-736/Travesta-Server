@@ -3,7 +3,6 @@ import helmet from 'helmet';
 import cors from 'cors';
 import hpp from 'hpp';
 import rateLimit from 'express-rate-limit';
-import mongoSanitize from 'express-mongo-sanitize';
 import logger from './utils/logger';
 import { env } from './config/env';
 import { userRoutes } from './interfaces/routes/userRoutes';
@@ -25,7 +24,6 @@ export class App {
   private setSecurityMiddlewares(): void {
     this.app.use(helmet())
     this.app.use(cors())
-    this.app.use(mongoSanitize());
     this.app.use(hpp())
 
     const limiter = rateLimit({
