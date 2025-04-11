@@ -2,7 +2,6 @@ import { TRole, TSubscription } from "../../shared/types/user.types";
 import { IUser } from "../interfaces/user.interface";
 
 
-
 export class User {
     private props: IUser;
 

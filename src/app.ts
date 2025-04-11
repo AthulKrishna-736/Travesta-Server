@@ -9,6 +9,7 @@ import { env } from './config/env';
 import { userRoutes } from './interfaces/routes/userRoutes';
 import { vendorRoutes } from './interfaces/routes/vendorRoutes';
 import { adminRoutes } from './interfaces/routes/adminRoutes';
+import { errorHandler } from './middlewares/errorHandler';
 
 export class App {
   public app: Application
@@ -52,7 +53,7 @@ export class App {
   }
 
   private setErrorHandling(): void {
-    //error handling setups
+    this.app.use(errorHandler)
   }
 
   public listen(port: number): void {
