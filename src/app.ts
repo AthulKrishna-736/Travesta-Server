@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import hpp from 'hpp';
+import cookieparser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import logger from './utils/logger';
 import { env } from './config/env';
@@ -22,6 +23,7 @@ export class App {
   }
 
   private setSecurityMiddlewares(): void {
+    this.app.use(cookieparser())
     this.app.use(helmet())
     this.app.use(cors())
     this.app.use(hpp())

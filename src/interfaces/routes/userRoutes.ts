@@ -3,7 +3,7 @@ import { UserController } from "../controllers/userController";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
 import { createUserSchema, loginSchema } from "../dtos/user/user.dto";
-
+import { authMiddleware } from "../../middlewares/auth";
 
 export class userRoutes extends BaseRouter {
     private userController: UserController
@@ -22,9 +22,11 @@ export class userRoutes extends BaseRouter {
         //     .patch('/auth/forgot-password')
         //     .patch('/auth/reset-password');
 
-        // this.router
-        //     .route('/')
-        //     .get() //get profile
+        this.router
+            // .route('/',authMiddleware(req: Request, res: Response, next: NextFunction))
+            .get('/', authMiddleware, (req, res)=> {
+                res.send('response sedning as authorized here properly here')
+            }) //get profile
         //     .patch() //password update
         //     .put((req, res) => this.userController.updateProfile(req, res)) //profile update
         //     .delete() //profile delete

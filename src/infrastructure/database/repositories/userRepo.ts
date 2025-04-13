@@ -1,5 +1,7 @@
 import { IUser, IUserRepository } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO, UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { userModel } from "../models/userModels";
 
 export class UserRepository implements IUserRepository {
@@ -17,16 +19,16 @@ export class UserRepository implements IUserRepository {
 
     async updateUser(id: string, updates: UpdateUserDTO): Promise<IUser> {
         const updated = await userModel.findByIdAndUpdate(id, updates, { new: true })
-        if(!updated){
-            throw new Error('User not found')
+        if (!updated) {
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
         }
         return updated.toObject() as IUser
     }
 
     async findById(id: string): Promise<IUser | null> {
         const user = await userModel.findById(id)
-        if(!user){
-            throw new Error('User not found')
+        if (!user) {
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
         }
         return user
     }
@@ -38,8 +40,8 @@ export class UserRepository implements IUserRepository {
 
     async updatePassword(id: string, password: string): Promise<boolean> {
         const user = await userModel.findById(id)
-        if(!user){
-            throw new Error('User not found')
+        if (!user) {
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
         }
         user.password = password
         await user.save()
@@ -48,8 +50,8 @@ export class UserRepository implements IUserRepository {
 
     async verifyKyc(id: string): Promise<boolean> {
         const user = await userModel.findById(id)
-        if(!user){
-            throw new Error('User not found')
+        if (!user) {
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
         }
         user.isKycVerified = true
         await user.save()

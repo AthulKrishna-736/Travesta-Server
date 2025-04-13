@@ -9,7 +9,7 @@ export const errorHandler = (
     _next: NextFunction
 ): void => {
     console.log('check the error in handler: ', err)
-    const status = err instanceof AppError ? err.statusCode: HttpStatusCode.INTERNAL_SERVER_ERROR;
+    const status = err instanceof AppError ? err.statusCode : HttpStatusCode.INTERNAL_SERVER_ERROR;
     const message = err.message || 'Something went wrong';
 
     res.status(status).json({

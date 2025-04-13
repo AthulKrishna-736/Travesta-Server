@@ -6,6 +6,8 @@ import { CreateUserDTO, UpdateUserDTO } from "../dtos/user/user.dto";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { env } from "../../config/env";
+import { jwtConfig } from "../../config/jwtConfig";
 
 @injectable()
 export class UserController {
@@ -34,8 +36,22 @@ export class UserController {
             if (!email || !password) {
                 throw new AppError('Email and password are required', HttpStatusCode.BAD_REQUEST)
             }
-            const token = await this.loginUser.execute(email, password)
-            res.status(HttpStatusCode.OK).json({ success: true, token })
+            const { accessToken, refreshToken, user } = await this.loginUser.execute(email, password)
+            res
+                .cookie('access_token', accessToken, {
+                    httpOnly: true,
+                    secure: env.NODE_ENV == 'production',
+                    sameSite: 'strict',
+                    maxAge: jwtConfig.accessToken.maxAge
+                })
+                .cookie('refresh_token', refreshToken, {
+                    httpOnly: true,
+                    secure: env.NODE_ENV == 'production',
+                    sameSite: 'strict',
+                    maxAge: jwtConfig.refreshToken.maxAge
+                })
+                .status(HttpStatusCode.OK)
+                .json({ success: true, user, accessToken, refreshToken });
         } catch (error: any) {
             throw error
         }
@@ -43,7 +59,7 @@ export class UserController {
 
     async updateProfile(req: Request, res: Response): Promise<void> {
         try {
-            const userId = req.params.id; //decoded from token
+            const userId = req.params.id;
             if (!userId) {
                 throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST)
             }

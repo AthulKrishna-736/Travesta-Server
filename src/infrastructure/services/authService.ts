@@ -1,10 +1,10 @@
 import { IAuthService } from "../../application/interfaces/authService.interface";
 import bcrypt from 'bcryptjs';
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
-import { injectable } from "tsyringe";
 import { env } from "../../config/env";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { jwtConfig } from "../../config/jwtConfig";
 
 export class AuthService implements IAuthService {
 
@@ -17,39 +17,49 @@ export class AuthService implements IAuthService {
         return bcrypt.compare(inputPass, hashPass)
     }
 
-    generateAccessToken(userId: string): string {
+    generateAccessToken(userId: string, role: string): string {
         const secret: Secret = env.JWT_ACCESS_SECRET;
         const options: SignOptions = {
-            expiresIn: '15m',
+            expiresIn: `${jwtConfig.accessToken.expiresIn}s`,
         };
 
-        return jwt.sign({ userId }, secret, options);
+        return jwt.sign({ userId, role }, secret, options);
     }
 
-    generateRefreshToken(userId: string): string {
+    generateRefreshToken(userId: string, role: string): string {
         const secret: Secret = env.JWT_REFRESH_SECRET;
         const options: SignOptions = {
-            expiresIn: '7d', 
+            expiresIn: `${jwtConfig.refreshToken.expiresIn}s`,
         };
-    
-        return jwt.sign({ userId }, secret, options);
+
+        return jwt.sign({ userId, role }, secret, options);
     }
 
-    verifyAccessToken(token: string): { userId: string; } | null {
+    verifyAccessToken(token: string): { userId: string, role: string } | null {
         try {
-            const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string }
+            const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: string }
             return decoded
         } catch (error: any) {
             throw new AppError("Invalid or expired access token", HttpStatusCode.UNAUTHORIZED);
         }
     }
 
-    verifyRefreshToken(token: string): { userId: string; } | null {
+    verifyRefreshToken(token: string): { userId: string, role: string } | null {
         try {
-            const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string }
+            const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: string }
             return decoded
         } catch (error: any) {
             throw new AppError("Invalid or expired refresh token", HttpStatusCode.UNAUTHORIZED)
         }
+    }
+
+    async refreshAccessToken(token: string): Promise<string> {
+        const decoded = this.verifyRefreshToken(token)
+
+        if (!decoded) {
+            throw new AppError('Invalid refresh token payload', HttpStatusCode.UNAUTHORIZED)
+        }
+        const newAccessToken = this.generateAccessToken(decoded.userId, decoded.role);
+        return newAccessToken;
     }
 }

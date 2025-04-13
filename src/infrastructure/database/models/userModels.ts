@@ -3,12 +3,12 @@ import { IUser } from "../../../domain/interfaces/user.interface";
 
 export type UserDocument = IUser & Document
 
-const userSchema:Schema = new Schema<UserDocument>({
-    firstName:{
+const userSchema: Schema = new Schema<UserDocument>({
+    firstName: {
         type: String,
         required: true
     },
-    lastName:{
+    lastName: {
         type: String,
         required: true
     },

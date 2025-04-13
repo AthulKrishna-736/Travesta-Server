@@ -3,6 +3,8 @@ import { IUser, IUserRepository } from "../../../domain/interfaces/user.interfac
 import { CreateUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { IAuthService } from "../../interfaces/authService.interface";
 import { TOKENS } from "../../../constants/token";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
 @injectable()
 export class RegisterUser {
@@ -15,7 +17,7 @@ export class RegisterUser {
         const existingUser = await this.userRepository.findByEmail(userData.email)
 
         if (existingUser) {
-            throw new Error('User already exists')
+            throw new AppError('User already exists', HttpStatusCode.BAD_REQUEST)
         }
 
         const hashPass = await this.authService.hashPassword(userData.password)

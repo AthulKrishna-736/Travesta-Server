@@ -5,7 +5,7 @@ import { BaseRouter } from "./baseRouter";
 export class vendorRoutes extends BaseRouter {
     //properties
 
-    constructor(){
+    constructor() {
         super();
         //controllers instance creation
     }

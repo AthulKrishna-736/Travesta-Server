@@ -1,4 +1,6 @@
 import { IUserRepository } from "../../../domain/interfaces/user.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
 
 export class VerifyKyc {
@@ -9,7 +11,7 @@ export class VerifyKyc {
     async execute(userId: string): Promise<boolean> {
         const user = await this.userRepository.findById(userId);
         if (!user) {
-            throw new Error('User not found')
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
         }
 
         const isVerified = await this.userRepository.verifyKyc(userId)

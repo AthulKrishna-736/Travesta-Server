@@ -3,7 +3,7 @@ import { BaseRouter } from "./baseRouter";
 
 export class adminRoutes extends BaseRouter {
     //properties
-    constructor(){
+    constructor() {
         super()
         //controllers injection
     }
