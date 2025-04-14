@@ -1,5 +1,9 @@
-
 export const TOKENS = {
-    UserRepository: 'UserRepository',
-    AuthService: 'AuthService'
-}
+    UserRepository: Symbol('UserRepository'),
+    AuthService: Symbol('AuthService'),
+    MailService: Symbol('MailService'),
+    RegisterUser: Symbol('RegisterUser'),
+    VerifyOtpAndRegister: Symbol('VerifyOtpAndRegister'),
+    LoginUser: Symbol('LoginUser'),
+    UpdateUser: Symbol('UpdateUser'),
+  };

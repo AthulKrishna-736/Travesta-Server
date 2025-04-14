@@ -13,14 +13,18 @@ export class RegisterUser {
         @inject(TOKENS.AuthService) private readonly authService: IAuthService
     ) { }
 
-    async execute(userData: CreateUserDTO): Promise<IUser> {
+    async execute(userData: CreateUserDTO): Promise<{ userId: string; message: string }> {
         const existingUser = await this.userRepository.findByEmail(userData.email)
 
         if (existingUser) {
             throw new AppError('User already exists', HttpStatusCode.BAD_REQUEST)
         }
 
+        const otp = this.authService.generateOtp();
+
         const hashPass = await this.authService.hashPassword(userData.password)
+
+        const tempUserId = `temp:${userData.email}`
 
         const newUserData = {
             ...userData,
@@ -31,8 +35,15 @@ export class RegisterUser {
             updateAt: new Date()
         };
 
+        await this.authService.storeOtp(tempUserId, otp, 'signup');
+
+        await this.authService.sendOtpOnEmail(userData.email, otp, 'signup');
+
         const newUser = await this.userRepository.createUser(newUserData);
 
-        return newUser
+        return {
+            userId: tempUserId,
+            message: 'OTP sent to email. Please verify to complete registration.',
+          };
     }
 }

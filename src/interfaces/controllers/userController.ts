@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import e, { Request, Response } from "express";
 import { LoginUser } from "../../application/use-cases/user/loginUser";
 import { RegisterUser } from "../../application/use-cases/user/registerUser";
 import { UpdateUser } from "../../application/use-cases/user/updateUserProfle";
@@ -8,13 +8,15 @@ import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { env } from "../../config/env";
 import { jwtConfig } from "../../config/jwtConfig";
+import { VerifyOtpAndRegister } from "../../application/use-cases/user/verifyOtpAndRegister";
 
 @injectable()
 export class UserController {
     constructor(
         @inject(RegisterUser) private registerUser: RegisterUser,
         @inject(LoginUser) private loginUser: LoginUser,
-        @inject(UpdateUser) private updateUser: UpdateUser
+        @inject(UpdateUser) private updateUser: UpdateUser,
+        @inject(VerifyOtpAndRegister) private verifyOtp: VerifyOtpAndRegister,
     ) { }
 
     async register(req: Request, res: Response): Promise<void> {
@@ -25,6 +27,19 @@ export class UserController {
             }
             const newUser = await this.registerUser.execute(userData)
             res.status(HttpStatusCode.CREATED).json({ success: true, data: newUser })
+        } catch (error: any) {
+            throw error
+        }
+    }
+
+    async verifyOtpAndRegister(req: Request, res: Response): Promise<void> {
+        try {
+            const { userId, otp, userData } = req.body
+            if (!userId || !otp || !userData) {
+                throw new AppError('UserId, OTP, and UserData are required', HttpStatusCode.BAD_REQUEST);
+            }
+            const newUser = await this.verifyOtp.execute(userId, otp, userData)
+            res.status(HttpStatusCode.CREATED).json({ success: true, data: newUser });
         } catch (error: any) {
             throw error
         }

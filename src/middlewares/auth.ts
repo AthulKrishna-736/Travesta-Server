@@ -5,6 +5,7 @@ import { HttpStatusCode } from "../utils/HttpStatusCodes";
 import { container } from "tsyringe";
 import { env } from "../config/env";
 import { jwtConfig } from "../config/jwtConfig";
+import logger from "../utils/logger";
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     const authService = container.resolve<IAuthService>('AuthService');
@@ -24,7 +25,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
                 const decoded = authService.verifyAccessToken(accessToken)
                 return next()
             } catch (accessErr: any) {
-                console.log('accessToken expired or invalid: ', accessErr.message)
+                logger.error('accessToken expired or invalid: ', accessErr.message)
             }
         }
 
@@ -40,7 +41,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
                 })
                 return next()
             } catch (refreshErr: any) {
-                console.log('refreshToken expired or invalid: ', refreshErr.message);
+                logger.error('refreshToken expired or invalid: ', refreshErr.message);
             }
         }
 
