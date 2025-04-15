@@ -16,7 +16,7 @@ export class UserController {
         @inject(RegisterUser) private registerUser: RegisterUser,
         @inject(LoginUser) private loginUser: LoginUser,
         @inject(UpdateUser) private updateUser: UpdateUser,
-        @inject(VerifyOtpAndRegister) private verifyOtp: VerifyOtpAndRegister,
+        @inject(VerifyOtpAndRegister) private verifyOtp: VerifyOtpAndRegister
     ) { }
 
     async register(req: Request, res: Response): Promise<void> {

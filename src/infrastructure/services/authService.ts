@@ -6,10 +6,11 @@ import { env } from "../../config/env";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { jwtConfig } from "../../config/jwtConfig";
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { MailService } from "./mailService";
 
+@injectable()
 export class AuthService implements IAuthService {
     private otpStore: Map<string, { otp: string; purpose: 'signup' | 'reset'; expiresAt: Date }> = new Map()
 
@@ -91,23 +92,25 @@ export class AuthService implements IAuthService {
 
     async storeOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
         const expiresAt = new Date(Date.now() + 2 * 60 * 1000);
-        this.otpStore.set(`${userId}:${purpose}`, { otp, purpose, expiresAt})
+        this.otpStore.set(`${userId}:${purpose}`, { otp, purpose, expiresAt })
+        console.log(this.otpStore);
     }
 
     async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
         const key = `${userId}:${purpose}`;
+        console.log(this.otpStore)
         const stored = this.otpStore.get(key)
 
-        if(!stored){
+        if (!stored) {
             throw new AppError('OTP not found or expired', HttpStatusCode.BAD_REQUEST);
         }
 
-        if(stored.expiresAt < new Date()){
+        if (stored.expiresAt < new Date()) {
             this.otpStore.delete(key);
             throw new AppError('OTP has expired', HttpStatusCode.BAD_REQUEST);
         }
 
-        if(stored.otp !== otp){
+        if (stored.otp !== otp) {
             throw new AppError('Invalid OTP', HttpStatusCode.BAD_REQUEST)
         }
 
@@ -115,6 +118,6 @@ export class AuthService implements IAuthService {
     }
 
     async resetPassword(userId: string, newPassword: string): Promise<void> {
-        
+
     }
 }

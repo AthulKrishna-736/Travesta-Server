@@ -230,3 +230,62 @@
 [2025-04-13 23:08:29] INFO: [34mMongoDB connected: localhost[0m
 [2025-04-13 23:16:51] INFO: [34mRunning in development mode[0m
 [2025-04-13 23:16:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:07:30] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:21:05] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:21:05] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:21:05] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:21:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:27:07] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:27:07] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:27:07] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:27:08] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:27:10] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:27:10] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:27:10] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:27:10] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:27:46] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:27:46] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:27:46] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:27:46] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:27:59] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:27:59] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:27:59] INFO: [34minjected mailservice: [0m
+[2025-04-15 09:27:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:28:27] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:28:27] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:36:35] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:36:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:36:48] ERROR: [31mcheck the error in handler:  User already exists[0m
+[2025-04-15 09:36:59] ERROR: [31mcheck the error in handler:  User already exists[0m
+[2025-04-15 09:41:51] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:41:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:42:02] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 09:42:36] ERROR: [31mcheck the error in handler:  User already exists[0m
+[2025-04-15 09:43:41] ERROR: [31mcheck the error in handler:  User already exists[0m
+[2025-04-15 09:51:29] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:51:29] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:52:20] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 09:52:38] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 09:52:42] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 09:54:23] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 09:54:35] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 09:57:09] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:57:09] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 09:59:16] INFO: [34mRunning in development mode[0m
+[2025-04-15 09:59:16] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 10:00:31] INFO: [34mRunning in development mode[0m
+[2025-04-15 10:00:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 10:06:01] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 10:06:17] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 10:07:30] INFO: [34mRunning in development mode[0m
+[2025-04-15 10:07:30] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 10:21:44] INFO: [34mRunning in development mode[0m
+[2025-04-15 10:21:44] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 10:22:11] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 10:24:01] INFO: [34mRunning in development mode[0m
+[2025-04-15 10:24:01] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 10:24:03] INFO: [34mRunning in development mode[0m
+[2025-04-15 10:24:03] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-15 10:24:56] ERROR: [31mcheck the error in handler:  OTP not found or expired[0m
+[2025-04-15 10:52:08] INFO: [34mRunning in development mode[0m
+[2025-04-15 10:52:08] INFO: [34mMongoDB connected: localhost[0m

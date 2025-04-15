@@ -1,5 +1,5 @@
 import { injectable, inject } from "tsyringe";
-import { IUser, IUserRepository } from "../../../domain/interfaces/user.interface";
+import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { IAuthService } from "../../interfaces/authService.interface";
 import { TOKENS } from "../../../constants/token";
@@ -13,7 +13,7 @@ export class RegisterUser {
         @inject(TOKENS.AuthService) private readonly authService: IAuthService
     ) { }
 
-    async execute(userData: CreateUserDTO): Promise<{ userId: string; message: string }> {
+    async execute(userData: CreateUserDTO): Promise<{ userId: string; otp: string; message: string }> {
         const existingUser = await this.userRepository.findByEmail(userData.email)
 
         if (existingUser) {
@@ -39,10 +39,9 @@ export class RegisterUser {
 
         await this.authService.sendOtpOnEmail(userData.email, otp, 'signup');
 
-        const newUser = await this.userRepository.createUser(newUserData);
-
         return {
             userId: tempUserId,
+            otp: otp,
             message: 'OTP sent to email. Please verify to complete registration.',
           };
     }

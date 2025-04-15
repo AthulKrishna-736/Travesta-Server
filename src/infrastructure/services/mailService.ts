@@ -8,10 +8,6 @@ import { injectable } from 'tsyringe';
 export class MailService {
     private transporter: nodemailer.Transporter;
     constructor() {
-        if (env.EMAIL || env.EMAIL_PASS) {
-            throw new AppError('Missing email or email pass from environment varibles', HttpStatusCode.BAD_REQUEST);
-        }
-
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {

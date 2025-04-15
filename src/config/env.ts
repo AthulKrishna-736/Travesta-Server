@@ -10,6 +10,6 @@ export const env = {
     JWT_ACCESS_EXPIRES_IN: process.env.JWT_ACCESS_EXPIRES_IN!,
     JWT_REFRESH_EXPIRES_IN: process.env.JWT_REFRESH_EXPIRES_IN!,
     REDIS_URL: process.env.REDIS_URL,
-    EMAIL: process.env.EMAIL!,
-    EMAIL_PASS: process.env.EMAIL_PASS!,
+    EMAIL: process.env.EMAIL,
+    EMAIL_PASS: process.env.EMAIL_PASS,
 }
