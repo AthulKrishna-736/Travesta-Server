@@ -5,17 +5,20 @@ import jwt, { Secret, SignOptions } from 'jsonwebtoken';
 import { env } from "../../config/env";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { jwtConfig } from "../../config/jwtConfig";
+import { jwtConfig, otpTimer } from "../../config/jwtConfig";
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { MailService } from "./mailService";
+import { RedisService } from "./redisService";
+import { App } from "../../app";
 
 @injectable()
 export class AuthService implements IAuthService {
     private otpStore: Map<string, { otp: string; purpose: 'signup' | 'reset'; expiresAt: Date }> = new Map()
 
     constructor(
-        @inject(TOKENS.MailService) private mailService: MailService
+        @inject(TOKENS.MailService) private mailService: MailService,
+        @inject(TOKENS.OtpService) private otpService: RedisService
     ) { }
 
     async hashPassword(password: string): Promise<string> {
@@ -85,36 +88,27 @@ export class AuthService implements IAuthService {
     }
 
     async sendOtpOnEmail(email: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
-        const otpExpireAt = new Date(Date.now() + 2 * 60 * 1000); // 2 min expiry
+        const otpExpireAt = new Date(Date.now() + 2 * 60 * 1000); 
 
         await this.mailService.sendOtpEmail(email, otp, otpExpireAt);
     }
 
     async storeOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
-        const expiresAt = new Date(Date.now() + 2 * 60 * 1000);
-        this.otpStore.set(`${userId}:${purpose}`, { otp, purpose, expiresAt })
-        console.log(this.otpStore);
+        await this.otpService.storeOtp(userId, otp, purpose, otpTimer.expiresAt)
     }
 
     async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
-        const key = `${userId}:${purpose}`;
-        console.log(this.otpStore)
-        const stored = this.otpStore.get(key)
+        const storedOtp = await this.otpService.getOtp(userId, purpose)
 
-        if (!stored) {
-            throw new AppError('OTP not found or expired', HttpStatusCode.BAD_REQUEST);
+        if (!storedOtp) {
+            throw new AppError('Otp not found or expired', HttpStatusCode.BAD_REQUEST)
         }
 
-        if (stored.expiresAt < new Date()) {
-            this.otpStore.delete(key);
-            throw new AppError('OTP has expired', HttpStatusCode.BAD_REQUEST);
+        if (storedOtp != otp) {
+            throw new AppError('Invalid otp', HttpStatusCode.BAD_REQUEST)
         }
 
-        if (stored.otp !== otp) {
-            throw new AppError('Invalid OTP', HttpStatusCode.BAD_REQUEST)
-        }
-
-        this.otpStore.delete(key)
+        await this.otpService.deleteOtp(userId, purpose)
     }
 
     async resetPassword(userId: string, newPassword: string): Promise<void> {

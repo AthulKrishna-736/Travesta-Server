@@ -9,7 +9,10 @@ export const env = {
     JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET!,
     JWT_ACCESS_EXPIRES_IN: process.env.JWT_ACCESS_EXPIRES_IN!,
     JWT_REFRESH_EXPIRES_IN: process.env.JWT_REFRESH_EXPIRES_IN!,
-    REDIS_URL: process.env.REDIS_URL,
     EMAIL: process.env.EMAIL,
     EMAIL_PASS: process.env.EMAIL_PASS,
+    REDIS_USERNAME: process.env.REDIS_USERNAME!,
+    REDIS_PASS: process.env.REDIS_PASS!,
+    REDIS_HOST: process.env.REDIS_HOST!,
+    REDIS_PORT: parseInt(process.env.REDIS_PORT!),
 }
