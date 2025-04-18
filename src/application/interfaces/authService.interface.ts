@@ -13,4 +13,5 @@ export interface IAuthService {
     storeOtp(userId: string, otp: string, data: CreateUserDTO & { createdAt: Date, updatedAt: Date }, purpose: 'signup' | 'reset'): Promise<void>
     verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<CreateUserDTO & { createdAt: Date, updatedAt: Date }>
     resetPassword(userId: string, newPassword: string): Promise<void>
+    resendOtp(userId: string, purpose: 'signup' | 'reset'): Promise<void>
 }

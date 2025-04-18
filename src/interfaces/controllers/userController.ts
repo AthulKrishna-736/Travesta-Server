@@ -9,6 +9,7 @@ import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { env } from "../../config/env";
 import { jwtConfig } from "../../config/jwtConfig";
 import { VerifyOtpAndRegister } from "../../application/use-cases/user/verifyOtpAndRegister";
+import { ResendOtp } from "../../application/use-cases/user/resendOtp";
 
 @injectable()
 export class UserController {
@@ -16,7 +17,8 @@ export class UserController {
         @inject(RegisterUser) private registerUser: RegisterUser,
         @inject(LoginUser) private loginUser: LoginUser,
         @inject(UpdateUser) private updateUser: UpdateUser,
-        @inject(VerifyOtpAndRegister) private verifyOtp: VerifyOtpAndRegister
+        @inject(VerifyOtpAndRegister) private verifyOtp: VerifyOtpAndRegister,
+        @inject(ResendOtp) private resendOtp: ResendOtp
     ) { }
 
     async register(req: Request, res: Response): Promise<void> {
@@ -40,6 +42,20 @@ export class UserController {
             }
             const newUser = await this.verifyOtp.execute(userId, otp)
             res.status(HttpStatusCode.CREATED).json({ success: true, data: newUser });
+        } catch (error: any) {
+            throw error
+        }
+    }
+
+    async resentOtp(req: Request, res: Response): Promise<void> {
+        try {
+            const { userId } = req.body;
+            if (!userId) {
+                throw new AppError('Userid is required', HttpStatusCode.BAD_REQUEST);
+            }
+            await this.resendOtp.execute(userId);
+
+            res.status(HttpStatusCode.OK).json({ success: true, message: 'Otp sent successfully' })
         } catch (error: any) {
             throw error
         }

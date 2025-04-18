@@ -84,7 +84,7 @@ export class AuthService implements IAuthService {
     }
 
     async sendOtpOnEmail(email: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
-        const otpExpireAt = new Date(Date.now() + 2 * 60 * 1000); 
+        const otpExpireAt = new Date(Date.now() + 2 * 60 * 1000);
 
         await this.mailService.sendOtpEmail(email, otp, otpExpireAt);
     }
@@ -93,8 +93,7 @@ export class AuthService implements IAuthService {
         await this.otpService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt)
     }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<CreateUserDTO & { createdAt: Date, updatedAt: Date }>
-    {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<CreateUserDTO & { createdAt: Date, updatedAt: Date }> {
         const storedData = await this.otpService.getOtp(userId, purpose)
 
         if (!storedData) {
@@ -107,6 +106,20 @@ export class AuthService implements IAuthService {
 
         await this.otpService.deleteOtp(userId, purpose)
         return storedData.data;
+    }
+
+    async resendOtp(userId: string, purpose: "signup" | "reset"): Promise<void> {
+        const stored = await this.otpService.getOtp(userId, purpose)
+
+        if (!stored) {
+            throw new AppError('Session expired. Please register again.', HttpStatusCode.BAD_REQUEST)
+        }
+
+        const otp = this.generateOtp()
+
+        await this.otpService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt) 
+
+        await this.sendOtpOnEmail(stored.data.email, otp, purpose);
     }
 
     async resetPassword(userId: string, newPassword: string): Promise<void> {
