@@ -34,11 +34,11 @@ export class UserController {
 
     async verifyOtpAndRegister(req: Request, res: Response): Promise<void> {
         try {
-            const { userId, otp, userData } = req.body
-            if (!userId || !otp || !userData) {
-                throw new AppError('UserId, OTP, and UserData are required', HttpStatusCode.BAD_REQUEST);
+            const { userId, otp } = req.body
+            if (!userId || !otp) {
+                throw new AppError('UserId, OTP are required', HttpStatusCode.BAD_REQUEST);
             }
-            const newUser = await this.verifyOtp.execute(userId, otp, userData)
+            const newUser = await this.verifyOtp.execute(userId, otp)
             res.status(HttpStatusCode.CREATED).json({ success: true, data: newUser });
         } catch (error: any) {
             throw error

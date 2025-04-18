@@ -1,10 +1,12 @@
 import { injectable, inject } from "tsyringe";
+import { v4 as uuidv4 } from 'uuid';
 import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { IAuthService } from "../../interfaces/authService.interface";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import logger from "../../../utils/logger";
 
 @injectable()
 export class RegisterUser {
@@ -13,7 +15,7 @@ export class RegisterUser {
         @inject(TOKENS.AuthService) private readonly authService: IAuthService
     ) { }
 
-    async execute(userData: CreateUserDTO): Promise<{ userId: string; otp: string; message: string }> {
+    async execute(userData: CreateUserDTO): Promise<{ userId: string; message: string }> {
         const existingUser = await this.userRepository.findByEmail(userData.email)
 
         if (existingUser) {
@@ -21,10 +23,10 @@ export class RegisterUser {
         }
 
         const otp = this.authService.generateOtp();
-
+        logger.info('otp created: ', otp)
         const hashPass = await this.authService.hashPassword(userData.password)
 
-        const tempUserId = `temp:${userData.email}`
+        const tempUserId = `temp:${uuidv4()}`
 
         const newUserData = {
             ...userData,
@@ -32,17 +34,16 @@ export class RegisterUser {
             role: userData.role || 'user',
             subscriptionType: userData.subscriptionType || 'basic',
             createdAt: new Date(),
-            updateAt: new Date()
+            updatedAt: new Date()
         };
 
-        await this.authService.storeOtp(tempUserId, otp, 'signup');
+        await this.authService.storeOtp(tempUserId, otp, newUserData, 'signup');
 
         await this.authService.sendOtpOnEmail(userData.email, otp, 'signup');
 
         return {
             userId: tempUserId,
-            otp: otp,
             message: 'OTP sent to email. Please verify to complete registration.',
-          };
+          }
     }
 }

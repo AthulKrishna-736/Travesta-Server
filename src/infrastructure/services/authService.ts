@@ -10,12 +10,10 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { MailService } from "./mailService";
 import { RedisService } from "./redisService";
-import { App } from "../../app";
+import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 
 @injectable()
 export class AuthService implements IAuthService {
-    private otpStore: Map<string, { otp: string; purpose: 'signup' | 'reset'; expiresAt: Date }> = new Map()
-
     constructor(
         @inject(TOKENS.MailService) private mailService: MailService,
         @inject(TOKENS.OtpService) private otpService: RedisService
@@ -80,11 +78,9 @@ export class AuthService implements IAuthService {
         if (length <= 0) {
             throw new AppError('Length of otp must be 6', HttpStatusCode.BAD_REQUEST)
         }
+        const randomNum = crypto.randomInt(100000, 999999)
 
-        const max = Math.pow(10, length) - 1;
-        const randomNum = crypto.randomInt(0, max + 1)
-
-        return randomNum.toString().padStart(length, '0')
+        return randomNum.toString()
     }
 
     async sendOtpOnEmail(email: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
@@ -93,22 +89,24 @@ export class AuthService implements IAuthService {
         await this.mailService.sendOtpEmail(email, otp, otpExpireAt);
     }
 
-    async storeOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
-        await this.otpService.storeOtp(userId, otp, purpose, otpTimer.expiresAt)
+    async storeOtp(userId: string, otp: string, data: CreateUserDTO & { createdAt: Date; updatedAt: Date; }, purpose: "signup" | "reset"): Promise<void> {
+        await this.otpService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt)
     }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
-        const storedOtp = await this.otpService.getOtp(userId, purpose)
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<CreateUserDTO & { createdAt: Date, updatedAt: Date }>
+    {
+        const storedData = await this.otpService.getOtp(userId, purpose)
 
-        if (!storedOtp) {
+        if (!storedData) {
             throw new AppError('Otp not found or expired', HttpStatusCode.BAD_REQUEST)
         }
 
-        if (storedOtp != otp) {
+        if (storedData.otp != otp) {
             throw new AppError('Invalid otp', HttpStatusCode.BAD_REQUEST)
         }
 
         await this.otpService.deleteOtp(userId, purpose)
+        return storedData.data;
     }
 
     async resetPassword(userId: string, newPassword: string): Promise<void> {

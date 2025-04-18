@@ -2,7 +2,7 @@ import { createClient } from 'redis';
 import logger from '../utils/logger';
 import { env } from './env';
 
-const client = createClient({
+export const redisClient = createClient({
     username: env.REDIS_USERNAME,
     password: env.REDIS_PASS,
     socket: {
@@ -12,13 +12,13 @@ const client = createClient({
     }
 });
 
-client.on('error', (error)=> {
-    logger.error('Redis Client Error: ',error)
+redisClient.on('error', (error) => {
+    logger.error('Redis Client Error: ', error)
 })
 
 export async function connectRedis() {
     try {
-        await client.connect();
+        await redisClient.connect();
         logger.info('Redis connected successfully')
     } catch (error: any) {
         logger.error('Redis connection failed: ', error)
