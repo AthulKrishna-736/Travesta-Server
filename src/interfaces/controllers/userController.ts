@@ -1,4 +1,4 @@
-import e, { Request, Response } from "express";
+import { Request, Response } from "express";
 import { LoginUser } from "../../application/use-cases/user/loginUser";
 import { RegisterUser } from "../../application/use-cases/user/registerUser";
 import { UpdateUser } from "../../application/use-cases/user/updateUserProfle";
@@ -10,6 +10,9 @@ import { env } from "../../config/env";
 import { jwtConfig } from "../../config/jwtConfig";
 import { VerifyOtpAndRegister } from "../../application/use-cases/user/verifyOtpAndRegister";
 import { ResendOtp } from "../../application/use-cases/user/resendOtp";
+import { ResponseHandler } from "../../middlewares/responseHandler";
+import { ForgotPass } from "../../application/use-cases/user/forgotPass";
+import { UpdatePassword } from "../../application/use-cases/user/updatePassword";
 
 @injectable()
 export class UserController {
@@ -18,7 +21,9 @@ export class UserController {
         @inject(LoginUser) private loginUser: LoginUser,
         @inject(UpdateUser) private updateUser: UpdateUser,
         @inject(VerifyOtpAndRegister) private verifyOtp: VerifyOtpAndRegister,
-        @inject(ResendOtp) private resendOtp: ResendOtp
+        @inject(ResendOtp) private resendOtp: ResendOtp,
+        @inject(ForgotPass) private forgotPass: ForgotPass,
+        @inject(UpdatePassword) private updatePass: UpdatePassword,
     ) { }
 
     async register(req: Request, res: Response): Promise<void> {
@@ -27,8 +32,9 @@ export class UserController {
             if (!userData.email || !userData.password || !userData.firstName || !userData.lastName || !userData.phone) {
                 throw new AppError('Name, email and password are required', HttpStatusCode.BAD_REQUEST);
             }
+
             const newUser = await this.registerUser.execute(userData)
-            res.status(HttpStatusCode.CREATED).json({ success: true, data: newUser })
+            ResponseHandler.success(res, 'User registration on progress', newUser, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
         }
@@ -41,7 +47,7 @@ export class UserController {
                 throw new AppError('UserId, OTP are required', HttpStatusCode.BAD_REQUEST);
             }
             const newUser = await this.verifyOtp.execute(userId, otp)
-            res.status(HttpStatusCode.CREATED).json({ success: true, data: newUser });
+            ResponseHandler.success(res, 'User created successfully', newUser, HttpStatusCode.CREATED)
         } catch (error: any) {
             throw error
         }
@@ -55,7 +61,7 @@ export class UserController {
             }
             await this.resendOtp.execute(userId);
 
-            res.status(HttpStatusCode.OK).json({ success: true, message: 'Otp sent successfully' })
+            ResponseHandler.success(res, 'Otp sent successfully', null, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
         }
@@ -81,8 +87,7 @@ export class UserController {
                     sameSite: 'strict',
                     maxAge: jwtConfig.refreshToken.maxAge
                 })
-                .status(HttpStatusCode.OK)
-                .json({ success: true, user, accessToken, refreshToken });
+            ResponseHandler.success(res, 'Login successfull', { user, accessToken, refreshToken }, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
         }
@@ -96,7 +101,35 @@ export class UserController {
             }
             const userData: UpdateUserDTO = req.body
             const updateUser = await this.updateUser.execute(userId, userData)
-            res.status(HttpStatusCode.OK).json({ success: true, updateUser })
+            ResponseHandler.success(res, 'Profile updated successfully', updateUser, HttpStatusCode.OK)
+        } catch (error: any) {
+            throw error
+        }
+    }
+
+    async forgotPassword(req: Request, res: Response): Promise<void> {
+        try {
+            const { email } = req.body
+            if (!email) {
+                throw new AppError('Email missing in body', HttpStatusCode.BAD_REQUEST)
+            }
+
+            const data = await this.forgotPass.execute(email)
+            ResponseHandler.success(res, data.message, data.userId, HttpStatusCode.OK)
+        } catch (error: any) {
+            throw error
+        }
+    }
+
+    async updatePassword(req: Request, res: Response): Promise<void> {
+        try {
+            const { userId, password, otp } = req.body
+            if (!userId || !password || !otp) {
+                throw new AppError('User ID, password, and OTP are required.', HttpStatusCode.BAD_REQUEST);
+            }
+
+            await this.updatePass.execute(userId, password, otp)
+            ResponseHandler.success(res, 'Password updated successfully', null, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
         }

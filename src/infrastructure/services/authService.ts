@@ -83,17 +83,15 @@ export class AuthService implements IAuthService {
         return randomNum.toString()
     }
 
-    async sendOtpOnEmail(email: string, otp: string, purpose: "signup" | "reset"): Promise<void> {
-        const otpExpireAt = new Date(Date.now() + 2 * 60 * 1000);
-
-        await this.mailService.sendOtpEmail(email, otp, otpExpireAt);
+    async sendOtpOnEmail(email: string, otp: string): Promise<void> {
+        await this.mailService.sendOtpEmail(email, otp, (otpTimer.expiresAt / 60).toString());
     }
 
-    async storeOtp(userId: string, otp: string, data: CreateUserDTO & { createdAt: Date; updatedAt: Date; }, purpose: "signup" | "reset"): Promise<void> {
+    async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset"): Promise<void> {
         await this.otpService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt)
     }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<CreateUserDTO & { createdAt: Date, updatedAt: Date }> {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<any> {
         const storedData = await this.otpService.getOtp(userId, purpose)
 
         if (!storedData) {
@@ -117,12 +115,8 @@ export class AuthService implements IAuthService {
 
         const otp = this.generateOtp()
 
-        await this.otpService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt) 
+        await this.otpService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt)
 
-        await this.sendOtpOnEmail(stored.data.email, otp, purpose);
-    }
-
-    async resetPassword(userId: string, newPassword: string): Promise<void> {
-
+        await this.sendOtpOnEmail(stored.data.email, otp);
     }
 }

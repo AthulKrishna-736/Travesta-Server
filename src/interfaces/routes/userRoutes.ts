@@ -19,9 +19,9 @@ export class userRoutes extends BaseRouter {
             .post('/auth/signup', validateRequest(createUserSchema), (req, res) => this.userController.register(req, res))
             .post('/auth/login', validateRequest(loginSchema), (req, res) => this.userController.login(req, res))
             .post('/auth/verifyOtp', (req, res) => this.userController.verifyOtpAndRegister(req, res))
-        //     .post('/auth/kyc')
-        //     .patch('/auth/forgot-password')
-        //     .patch('/auth/reset-password');
+            //     .post('/auth/kyc')
+            .patch('/auth/forgot-password', (req, res) => this.userController.forgotPassword(req, res))
+            .patch('/auth/reset-password', (req, res) => this.userController.updatePassword(req, res));
 
         this.router
             // .route('/',authMiddleware(req: Request, res: Response, next: NextFunction))

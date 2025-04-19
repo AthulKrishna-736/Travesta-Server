@@ -2,8 +2,6 @@ import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
-
-
 export class DeleteUser {
     constructor(
         private readonly userRepository: IUserRepository

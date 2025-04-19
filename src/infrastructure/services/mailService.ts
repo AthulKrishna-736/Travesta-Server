@@ -17,19 +17,34 @@ export class MailService {
         });
     }
 
-    async sendOtpEmail(email: string, otp: string, otpExpireAt: Date): Promise<{ message: string, otpExpireAt: Date }> {
+    async sendOtpEmail(email: string, otp: string, otpExpireAt: string): Promise<{ message: string, otpExpireAt: string }> {
         try {
             const html = `
-                    <div style="font-family: 'Inter', sans-serif; max-width: 550px; margin: 40px auto; padding: 30px; border-radius: 12px; background: linear-gradient(135deg, #ffffff 0%, #e6f0ff 100%); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); border: 1px solid #d0e4ff; position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(74, 144, 226, 0.2) 10%, transparent 10%); background-size: 20px 20px; opacity: 0.5; z-index: 0;"></div>
-                    <h2 style="color: #1e3a8a; text-align: center; font-size: 28px; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);">Your Verification Code</h2>
-                    <p style="font-size: 16px; color: #334155; text-align: center; margin-bottom: 25px; line-height: 1.5;">Enter the code below to complete your signup process securely:</p>
-                    <div style="display: flex; justify-content: center; align-items: center; margin: 0 auto; padding: 15px 20px; border-radius: 10px; background: linear-gradient(90deg, #4a90e2 0%, #2563eb 100%); color: #ffffff; font-size: 32px; font-weight: 600; letter-spacing: 6px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.2)';">
+                <div style="font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; padding: 30px; max-width: 520px; margin: 50px auto; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
+                    <h2 style="text-align: center; color: #0f172a; font-size: 26px; margin-bottom: 10px;">🔐 OTP Verification</h2>
+                    
+                    <p style="color: #334155; font-size: 16px; text-align: center; margin-bottom: 25px;">
+                        Use the code below to verify your identity. This ensures that only you can access your account.
+                    </p>
+
+                    <div style="background: #f1f5f9; border-radius: 10px; padding: 18px; text-align: center; font-size: 36px; color: #1e40af; letter-spacing: 10px; font-weight: bold; margin: 0 auto 25px; width: fit-content; border: 2px dashed #93c5fd;">
                         ${otp}
                     </div>
-                    <p style="font-size: 14px; color: #64748b; text-align: center; margin-top: 20px; opacity: 0.8;">This code expires in 10 minutes. Do not share it with anyone.</p>
+
+                    <p style="font-size: 14px; color: #64748b; text-align: center; margin-bottom: 12px;">
+                        This OTP is valid for <strong>${otpExpireAt} minutes</strong>.
+                    </p>
+
+                    <p style="font-size: 13px; color: #94a3b8; text-align: center;">
+                        If you didn’t request this, you can ignore this message. Do not share this code with anyone.
+                    </p>
+
+                    <div style="margin-top: 30px; text-align: center; font-size: 12px; color: #cbd5e1;">
+                        &mdash; Travesta Security Team
                     </div>
+                </div>
                 `;
+
             const mailOption = {
                 from: env.EMAIL,
                 to: email,

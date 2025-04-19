@@ -11,7 +11,7 @@ export class RedisService implements IOtpService {
         return `otp:${userId}:${purpose}`
     }
 
-    async storeOtp(userId: string, otp: string, data: CreateUserDTO & { createdAt: Date, updatedAt: Date }, purpose: "signup" | "reset", expiresAt: number): Promise<void> {
+    async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset", expiresAt: number): Promise<void> {
         const key = this.getKey(userId, purpose);
         const payload = {
             otp,
@@ -26,7 +26,7 @@ export class RedisService implements IOtpService {
         const key = this.getKey(userId, purpose);
         const raw = await this.redisClient.get(key)
 
-        if(!raw) return null
+        if (!raw) return null
         const parsed = JSON.parse(raw);
         return parsed
     }

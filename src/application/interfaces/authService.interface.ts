@@ -9,9 +9,8 @@ export interface IAuthService {
     verifyRefreshToken(token: string): { userId: string, role: string } | null
     refreshAccessToken(token: string): Promise<string>
     generateOtp(length?: number): string
-    sendOtpOnEmail(email: string, otp: string, purpose: 'signup' | 'reset'): Promise<void>
-    storeOtp(userId: string, otp: string, data: CreateUserDTO & { createdAt: Date, updatedAt: Date }, purpose: 'signup' | 'reset'): Promise<void>
+    sendOtpOnEmail(email: string, otp: string): Promise<void>
+    storeOtp(userId: string, otp: string, data: any, purpose: 'signup' | 'reset'): Promise<void>
     verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<CreateUserDTO & { createdAt: Date, updatedAt: Date }>
-    resetPassword(userId: string, newPassword: string): Promise<void>
     resendOtp(userId: string, purpose: 'signup' | 'reset'): Promise<void>
 }

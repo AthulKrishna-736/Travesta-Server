@@ -26,7 +26,7 @@ export class RegisterUser {
         logger.info('otp created: ', otp)
         const hashPass = await this.authService.hashPassword(userData.password)
 
-        const tempUserId = `temp:${uuidv4()}`
+        const tempUserId = `temp:signup:${uuidv4()}`
 
         const newUserData = {
             ...userData,
@@ -39,11 +39,11 @@ export class RegisterUser {
 
         await this.authService.storeOtp(tempUserId, otp, newUserData, 'signup');
 
-        await this.authService.sendOtpOnEmail(userData.email, otp, 'signup');
+        await this.authService.sendOtpOnEmail(userData.email, otp,);
 
         return {
             userId: tempUserId,
             message: 'OTP sent to email. Please verify to complete registration.',
-          }
+        }
     }
 }
