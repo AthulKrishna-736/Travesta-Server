@@ -1,7 +1,6 @@
 import { injectable } from "tsyringe";
 import { IOtpService } from "../../application/interfaces/otpService.interface";
 import { redisClient } from "../../config/redis";
-import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 
 @injectable()
 export class RedisService implements IOtpService {
@@ -34,5 +33,14 @@ export class RedisService implements IOtpService {
     async deleteOtp(userId: string, purpose: "signup" | "reset"): Promise<void> {
         const key = this.getKey(userId, purpose);
         await this.redisClient.del(key)
+    }
+
+    async increaseRequestCount(key: string, windowSeconds: number): Promise<number> {
+        const tx = this.redisClient.multi()
+        tx.incr(key)
+        tx.expire(key, windowSeconds)
+        const [count] = await tx.exec();
+
+        return count as number;
     }
 }

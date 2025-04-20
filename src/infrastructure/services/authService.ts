@@ -10,7 +10,6 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { MailService } from "./mailService";
 import { RedisService } from "./redisService";
-import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 
 @injectable()
 export class AuthService implements IAuthService {
@@ -88,6 +87,7 @@ export class AuthService implements IAuthService {
     }
 
     async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset"): Promise<void> {
+        await this.checkOtpRequestLimit(userId)
         await this.otpService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt)
     }
 
@@ -118,5 +118,13 @@ export class AuthService implements IAuthService {
         await this.otpService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt)
 
         await this.sendOtpOnEmail(stored.data.email, otp);
+    }
+
+    async checkOtpRequestLimit(userId: string): Promise<void> {
+        const currentCount = await this.otpService.increaseRequestCount(userId, otpTimer.expiresAt)
+
+        if (currentCount > 3) {
+            throw new AppError('Too many OTP requests. Please try again after some time.', HttpStatusCode.TOO_MANY_REQUESTS)
+        }
     }
 }

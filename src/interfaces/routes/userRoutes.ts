@@ -2,7 +2,7 @@ import { container } from "tsyringe";
 import { UserController } from "../controllers/userController";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { createUserSchema, loginSchema } from "../dtos/user/user.dto";
+import { loginSchema, createUserSchema, forgotPassSchema, updatePassSchema, verifyOtp } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 
 export class userRoutes extends BaseRouter {
@@ -18,10 +18,10 @@ export class userRoutes extends BaseRouter {
         this.router
             .post('/auth/signup', validateRequest(createUserSchema), (req, res) => this.userController.register(req, res))
             .post('/auth/login', validateRequest(loginSchema), (req, res) => this.userController.login(req, res))
-            .post('/auth/verifyOtp', (req, res) => this.userController.verifyOtpAndRegister(req, res))
-            //     .post('/auth/kyc')
-            .patch('/auth/forgot-password', (req, res) => this.userController.forgotPassword(req, res))
-            .patch('/auth/reset-password', (req, res) => this.userController.updatePassword(req, res));
+            .post('/auth/verifyOtp', validateRequest(verifyOtp), (req, res) => this.userController.verifyOTP(req, res))
+            // .post('/auth/kyc')
+            .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req, res) => this.userController.forgotPassword(req, res))
+            .patch('/auth/reset-password', validateRequest(updatePassSchema), (req, res) => this.userController.updatePassword(req, res));
 
         this.router
             // .route('/',authMiddleware(req: Request, res: Response, next: NextFunction))

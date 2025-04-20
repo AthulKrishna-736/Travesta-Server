@@ -8,11 +8,11 @@ import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { env } from "../../config/env";
 import { jwtConfig } from "../../config/jwtConfig";
-import { VerifyOtpAndRegister } from "../../application/use-cases/user/verifyOtpAndRegister";
 import { ResendOtp } from "../../application/use-cases/user/resendOtp";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { ForgotPass } from "../../application/use-cases/user/forgotPass";
 import { UpdatePassword } from "../../application/use-cases/user/updatePassword";
+import { VerifyOtp } from "../../application/use-cases/verifyOtp";
 
 @injectable()
 export class UserController {
@@ -20,10 +20,10 @@ export class UserController {
         @inject(RegisterUser) private registerUser: RegisterUser,
         @inject(LoginUser) private loginUser: LoginUser,
         @inject(UpdateUser) private updateUser: UpdateUser,
-        @inject(VerifyOtpAndRegister) private verifyOtp: VerifyOtpAndRegister,
         @inject(ResendOtp) private resendOtp: ResendOtp,
         @inject(ForgotPass) private forgotPass: ForgotPass,
         @inject(UpdatePassword) private updatePass: UpdatePassword,
+        @inject(VerifyOtp) private verifyOtp: VerifyOtp,
     ) { }
 
     async register(req: Request, res: Response): Promise<void> {
@@ -35,19 +35,6 @@ export class UserController {
 
             const newUser = await this.registerUser.execute(userData)
             ResponseHandler.success(res, 'User registration on progress', newUser, HttpStatusCode.OK)
-        } catch (error: any) {
-            throw error
-        }
-    }
-
-    async verifyOtpAndRegister(req: Request, res: Response): Promise<void> {
-        try {
-            const { userId, otp } = req.body
-            if (!userId || !otp) {
-                throw new AppError('UserId, OTP are required', HttpStatusCode.BAD_REQUEST);
-            }
-            const newUser = await this.verifyOtp.execute(userId, otp)
-            ResponseHandler.success(res, 'User created successfully', newUser, HttpStatusCode.CREATED)
         } catch (error: any) {
             throw error
         }
@@ -131,6 +118,21 @@ export class UserController {
             await this.updatePass.execute(userId, password, otp)
             ResponseHandler.success(res, 'Password updated successfully', null, HttpStatusCode.OK)
         } catch (error: any) {
+            throw error
+        }
+    }
+
+    async verifyOTP(req: Request, res: Response): Promise<void> {
+        try {
+            const { userId, otp, purpose } = req.body;
+
+            const data = await this.verifyOtp.execute(userId, otp, purpose)
+            if (!data.isOtpVerified) {
+                throw new AppError('Otp verification failed or session expired', HttpStatusCode.BAD_REQUEST)
+            }
+
+            ResponseHandler.success(res, 'Otp verified successfully', data.data, HttpStatusCode.OK)
+        } catch (error) {
             throw error
         }
     }

@@ -1,5 +1,3 @@
-import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto"
-
 export interface IAuthService {
     hashPassword(password: string): Promise<string>
     comparePassword(inputPass: string, hashPass: string): Promise<boolean>
@@ -11,6 +9,7 @@ export interface IAuthService {
     generateOtp(length?: number): string
     sendOtpOnEmail(email: string, otp: string): Promise<void>
     storeOtp(userId: string, otp: string, data: any, purpose: 'signup' | 'reset'): Promise<void>
-    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<CreateUserDTO & { createdAt: Date, updatedAt: Date }>
+    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<any>
     resendOtp(userId: string, purpose: 'signup' | 'reset'): Promise<void>
+    checkOtpRequestLimit(userId: string, purpose: 'signup' | 'reset'): Promise<void>
 }
