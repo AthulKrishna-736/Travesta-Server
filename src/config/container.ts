@@ -19,6 +19,6 @@ container.register(TOKENS.MailService, {
   useClass: MailService,
 });
 
-container.register(TOKENS.OtpService, {
+container.register(TOKENS.RedisService, {
   useClass: RedisService
 })

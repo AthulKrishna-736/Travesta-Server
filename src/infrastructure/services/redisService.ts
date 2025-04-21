@@ -1,9 +1,10 @@
 import { injectable } from "tsyringe";
 import { IOtpService } from "../../application/interfaces/otpService.interface";
 import { redisClient } from "../../config/redis";
+import { IJwtService } from "../../application/interfaces/jwtService.interface";
 
 @injectable()
-export class RedisService implements IOtpService {
+export class RedisService implements IOtpService, IJwtService {
     private redisClient = redisClient
 
     private getKey(userId: string, purpose: string): string {
@@ -42,5 +43,32 @@ export class RedisService implements IOtpService {
         const [count] = await tx.exec();
 
         return count as number;
+    }
+
+    async storeRefreshToken(userId: string, refreshToken: string, expiresIn: number): Promise<void> {
+        const key = `refresh:${userId}`
+        await this.redisClient.set(key, refreshToken, { EX: expiresIn });
+    }
+
+    async getStoredRefreshToken(userId: string): Promise<string | null> {
+        const key = `refresh:${userId}`
+        return await this.redisClient.get(key)
+    }
+
+    async deleteRefreshToken(userId: string): Promise<void> {
+        const key = `refresh:${userId}`
+        await this.redisClient.del(key)
+    }
+
+    async blacklistAccessToken(token: string, expiresIn: number): Promise<void> {
+        const key = `blacklist:${token}`
+        await this.redisClient.set(key, 'blacklisted', { EX: expiresIn })
+    }
+
+    async isAccessTokenBlacklisted(token: string): Promise<boolean> {
+        const key = `blacklist:${token}`
+        const result = await this.redisClient.get(key)
+
+        return result === 'blacklisted';
     }
 }

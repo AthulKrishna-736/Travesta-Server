@@ -3,7 +3,7 @@ import { LoginUser } from "../../application/use-cases/user/loginUser";
 import { RegisterUser } from "../../application/use-cases/user/registerUser";
 import { UpdateUser } from "../../application/use-cases/user/updateUserProfle";
 import { CreateUserDTO, UpdateUserDTO } from "../dtos/user/user.dto";
-import { inject, injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { env } from "../../config/env";
@@ -13,6 +13,9 @@ import { ResponseHandler } from "../../middlewares/responseHandler";
 import { ForgotPass } from "../../application/use-cases/user/forgotPass";
 import { UpdatePassword } from "../../application/use-cases/user/updatePassword";
 import { VerifyOtp } from "../../application/use-cases/verifyOtp";
+import { LogoutUser } from "../../application/use-cases/user/logoutUser";
+import { IAuthService } from "../../application/interfaces/authService.interface";
+import { TOKENS } from "../../constants/token";
 
 @injectable()
 export class UserController {
@@ -24,6 +27,7 @@ export class UserController {
         @inject(ForgotPass) private forgotPass: ForgotPass,
         @inject(UpdatePassword) private updatePass: UpdatePassword,
         @inject(VerifyOtp) private verifyOtp: VerifyOtp,
+        @inject(LogoutUser) private logoutUser: LogoutUser,
     ) { }
 
     async register(req: Request, res: Response): Promise<void> {
@@ -134,6 +138,52 @@ export class UserController {
             ResponseHandler.success(res, 'Otp verified successfully', data.data, HttpStatusCode.OK)
         } catch (error) {
             throw error
+        }
+    }
+
+    async logout(req: Request, res: Response): Promise<void> {
+        try {
+            const authHeader = req.headers.authorization;
+
+            if (!authHeader || !authHeader.startsWith('Bearer ')) {
+                throw new AppError('Authorization header missing', HttpStatusCode.UNAUTHORIZED);
+            }
+
+            const tokenString = authHeader.split(' ')[1];
+            const [accessToken, refreshToken] = tokenString.split('::');
+
+            if (!accessToken || !refreshToken) {
+                throw new AppError('Missing tokens', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const authService = container.resolve<IAuthService>(TOKENS.AuthService);
+
+            let userId: string;
+
+            try {
+                const decoded = authService.verifyAccessToken(accessToken)
+                if (!decoded || !decoded.userId) {
+                    throw new AppError('UserId missing in access token', HttpStatusCode.BAD_REQUEST)
+                }
+                userId = decoded.userId
+
+
+            } catch (error: any) {
+                const decodedRefresh = authService.verifyRefreshToken(refreshToken)
+                if (!decodedRefresh || !decodedRefresh.userId) {
+                    throw new AppError('UserId missing in refresh token', HttpStatusCode.BAD_REQUEST)
+                }
+                userId = decodedRefresh.userId
+            }
+
+            await this.logoutUser.execute(userId, accessToken)
+
+            res.clearCookie('access_token')
+            res.clearCookie('refresh_token')
+
+            ResponseHandler.success(res, 'Logged out successfully', null, HttpStatusCode.OK);
+        } catch (error: any) {
+            throw new AppError(error.message || 'Logout failed', HttpStatusCode.UNAUTHORIZED)
         }
     }
 

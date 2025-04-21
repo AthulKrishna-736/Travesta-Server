@@ -15,7 +15,7 @@ import { RedisService } from "./redisService";
 export class AuthService implements IAuthService {
     constructor(
         @inject(TOKENS.MailService) private mailService: MailService,
-        @inject(TOKENS.OtpService) private otpService: RedisService
+        @inject(TOKENS.RedisService) private redisService: RedisService
     ) { }
 
     async hashPassword(password: string): Promise<string> {
@@ -88,11 +88,11 @@ export class AuthService implements IAuthService {
 
     async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset"): Promise<void> {
         await this.checkOtpRequestLimit(userId)
-        await this.otpService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt)
+        await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt)
     }
 
     async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<any> {
-        const storedData = await this.otpService.getOtp(userId, purpose)
+        const storedData = await this.redisService.getOtp(userId, purpose)
 
         if (!storedData) {
             throw new AppError('Otp not found or expired', HttpStatusCode.BAD_REQUEST)
@@ -102,12 +102,12 @@ export class AuthService implements IAuthService {
             throw new AppError('Invalid otp', HttpStatusCode.BAD_REQUEST)
         }
 
-        await this.otpService.deleteOtp(userId, purpose)
+        await this.redisService.deleteOtp(userId, purpose)
         return storedData.data;
     }
 
     async resendOtp(userId: string, purpose: "signup" | "reset"): Promise<void> {
-        const stored = await this.otpService.getOtp(userId, purpose)
+        const stored = await this.redisService.getOtp(userId, purpose)
 
         if (!stored) {
             throw new AppError('Session expired. Please register again.', HttpStatusCode.BAD_REQUEST)
@@ -115,13 +115,13 @@ export class AuthService implements IAuthService {
 
         const otp = this.generateOtp()
 
-        await this.otpService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt)
+        await this.redisService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt)
 
         await this.sendOtpOnEmail(stored.data.email, otp);
     }
 
     async checkOtpRequestLimit(userId: string): Promise<void> {
-        const currentCount = await this.otpService.increaseRequestCount(userId, otpTimer.expiresAt)
+        const currentCount = await this.redisService.increaseRequestCount(userId, otpTimer.expiresAt)
 
         if (currentCount > 3) {
             throw new AppError('Too many OTP requests. Please try again after some time.', HttpStatusCode.TOO_MANY_REQUESTS)

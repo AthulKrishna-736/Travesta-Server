@@ -333,3 +333,6 @@
 [2025-04-17 15:57:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-04-17 15:57:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-04-17 15:57:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-20 23:30:20] INFO: [34mRunning in development mode[0m
+[2025-04-20 23:30:21] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-20 23:30:21] INFO: [34mRedis connected successfully[0m

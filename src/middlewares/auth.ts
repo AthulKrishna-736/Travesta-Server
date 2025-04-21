@@ -6,9 +6,12 @@ import { container } from "tsyringe";
 import { env } from "../config/env";
 import { jwtConfig } from "../config/jwtConfig";
 import logger from "../utils/logger";
+import { IJwtService } from "../application/interfaces/jwtService.interface";
+import { TOKENS } from "../constants/token";
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-    const authService = container.resolve<IAuthService>('AuthService');
+    const authService = container.resolve<IAuthService>(TOKENS.AuthService);
+    const redisService = container.resolve<IJwtService>(TOKENS.RedisService)
 
     const authHeader = req.headers.authorization;
 
@@ -21,6 +24,12 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
 
     try {
         if (accessToken) {
+
+            const isBlacklisted = await redisService.isAccessTokenBlacklisted(accessToken);
+            if (isBlacklisted) {
+                throw new AppError("Access token has been blacklisted", HttpStatusCode.UNAUTHORIZED);
+            }
+
             try {
                 const decoded = authService.verifyAccessToken(accessToken)
                 return next()
@@ -32,6 +41,11 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
         if (refreshToken) {
             try {
                 const decoded = authService.verifyRefreshToken(refreshToken)
+
+                if (accessToken) {
+                    await redisService.blacklistAccessToken(accessToken, jwtConfig.accessToken.maxAge / 1000);
+                }
+
                 const newAccessToken = await authService.refreshAccessToken(refreshToken);
                 res.cookie('access_token', newAccessToken, {
                     httpOnly: true,
@@ -45,7 +59,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
             }
         }
 
-        throw new AppError('Authenticaiton error', HttpStatusCode.UNAUTHORIZED)
+        throw new AppError('Authentication error', HttpStatusCode.UNAUTHORIZED)
     } catch (error: any) {
         res.clearCookie('access_token');
         res.clearCookie('refresh_token');
