@@ -11,58 +11,57 @@ import { TOKENS } from "../constants/token";
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     const authService = container.resolve<IAuthService>(TOKENS.AuthService);
-    const redisService = container.resolve<IJwtService>(TOKENS.RedisService)
+    const redisService = container.resolve<IJwtService>(TOKENS.RedisService);
 
-    const authHeader = req.headers.authorization;
+    const accessToken = req.cookies.access_token;
+    const refreshToken = req.cookies.refresh_token;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return next(new AppError("Authorization header missing", HttpStatusCode.UNAUTHORIZED));
+    if (!accessToken && !refreshToken) {
+        return next(new AppError("Authentication tokens are missing", HttpStatusCode.UNAUTHORIZED));
     }
-
-    const tokenString = authHeader.split(' ')[1];
-    const [accessToken, refreshToken] = tokenString.split('::')
 
     try {
         if (accessToken) {
-
             const isBlacklisted = await redisService.isAccessTokenBlacklisted(accessToken);
             if (isBlacklisted) {
                 throw new AppError("Access token has been blacklisted", HttpStatusCode.UNAUTHORIZED);
             }
 
             try {
-                const decoded = authService.verifyAccessToken(accessToken)
-                return next()
+                const decoded = authService.verifyAccessToken(accessToken);
+                req.user = decoded
+                return next();
             } catch (accessErr: any) {
-                logger.error('accessToken expired or invalid: ', accessErr.message)
+                logger.warn("Access token expired or invalid:", accessErr.message);
             }
         }
 
         if (refreshToken) {
             try {
-                const decoded = authService.verifyRefreshToken(refreshToken)
+                const decoded = authService.verifyRefreshToken(refreshToken);
 
                 if (accessToken) {
                     await redisService.blacklistAccessToken(accessToken, jwtConfig.accessToken.maxAge / 1000);
                 }
 
                 const newAccessToken = await authService.refreshAccessToken(refreshToken);
-                res.cookie('access_token', newAccessToken, {
+                res.cookie("access_token", newAccessToken, {
                     httpOnly: true,
-                    secure: env.NODE_ENV == 'production',
-                    sameSite: 'strict',
-                    maxAge: jwtConfig.accessToken.expiresIn
-                })
-                return next()
+                    secure: env.NODE_ENV === "production",
+                    sameSite: "strict",
+                    maxAge: jwtConfig.accessToken.maxAge
+                });
+
+                return next();
             } catch (refreshErr: any) {
-                logger.error('refreshToken expired or invalid: ', refreshErr.message);
+                logger.error("Refresh token expired or invalid:", refreshErr.message);
             }
         }
 
-        throw new AppError('Authentication error', HttpStatusCode.UNAUTHORIZED)
+        throw new AppError("Authentication failed", HttpStatusCode.UNAUTHORIZED);
     } catch (error: any) {
-        res.clearCookie('access_token');
-        res.clearCookie('refresh_token');
-        next(new AppError(error.message || 'Unauthorized access', HttpStatusCode.UNAUTHORIZED))
+        res.clearCookie("access_token");
+        res.clearCookie("refresh_token");
+        next(new AppError(error.message || "Unauthorized access", HttpStatusCode.UNAUTHORIZED));
     }
-}
+};

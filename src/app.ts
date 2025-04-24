@@ -25,7 +25,12 @@ export class App {
   private setSecurityMiddlewares(): void {
     this.app.use(cookieparser())
     this.app.use(helmet())
-    this.app.use(cors())
+    this.app.use(cors({
+      origin: env.CLIENT_URL,
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+      allowedHeaders: ['Content-Type', 'Authorization']
+    }));
     this.app.use(hpp())
 
     const limiter = rateLimit({

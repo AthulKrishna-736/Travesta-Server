@@ -25,7 +25,7 @@ export class LoginUser {
         const isValidPass = await this.authService.comparePassword(password, user.password)
 
         if (!isValidPass) {
-            throw new AppError("Invalid password", HttpStatusCode.BAD_REQUEST)
+            throw new AppError("Invalid credentials", HttpStatusCode.BAD_REQUEST)
         }
 
         const accessToken = this.authService.generateAccessToken(user._id, user.role);
