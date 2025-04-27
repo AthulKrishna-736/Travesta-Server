@@ -8,8 +8,9 @@ import { jwtConfig } from "../config/jwtConfig";
 import logger from "../utils/logger";
 import { IJwtService } from "../application/interfaces/jwtService.interface";
 import { TOKENS } from "../constants/token";
+import { CustomRequest } from "../utils/customRequest";
 
-export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+export const authMiddleware = async (req: CustomRequest, res: Response, next: NextFunction) => {
     const authService = container.resolve<IAuthService>(TOKENS.AuthService);
     const redisService = container.resolve<IJwtService>(TOKENS.RedisService);
 

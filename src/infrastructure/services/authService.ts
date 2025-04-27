@@ -10,6 +10,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { MailService } from "./mailService";
 import { RedisService } from "./redisService";
+import { TRole } from "../../shared/types/user.types";
 
 @injectable()
 export class AuthService implements IAuthService {
@@ -27,7 +28,7 @@ export class AuthService implements IAuthService {
         return bcrypt.compare(inputPass, hashPass)
     }
 
-    generateAccessToken(userId: string, role: string): string {
+    generateAccessToken(userId: string, role: TRole): string {
         const secret: Secret = env.JWT_ACCESS_SECRET;
         const options: SignOptions = {
             expiresIn: `${jwtConfig.accessToken.expiresIn}s`,
@@ -36,7 +37,7 @@ export class AuthService implements IAuthService {
         return jwt.sign({ userId, role }, secret, options);
     }
 
-    generateRefreshToken(userId: string, role: string): string {
+    generateRefreshToken(userId: string, role: TRole): string {
         const secret: Secret = env.JWT_REFRESH_SECRET;
         const options: SignOptions = {
             expiresIn: `${jwtConfig.refreshToken.expiresIn}d`,
@@ -45,18 +46,18 @@ export class AuthService implements IAuthService {
         return jwt.sign({ userId, role }, secret, options);
     }
 
-    verifyAccessToken(token: string): { userId: string, role: string } | null {
+    verifyAccessToken(token: string): { userId: string, role: TRole } | null {
         try {
-            const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: string }
+            const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: TRole }
             return decoded
         } catch (error: any) {
             throw new AppError("Invalid or expired access token", HttpStatusCode.UNAUTHORIZED);
         }
     }
 
-    verifyRefreshToken(token: string): { userId: string, role: string } | null {
+    verifyRefreshToken(token: string): { userId: string, role: TRole } | null {
         try {
-            const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: string }
+            const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: TRole }
             return decoded
         } catch (error: any) {
             throw new AppError("Invalid or expired refresh token", HttpStatusCode.UNAUTHORIZED)

@@ -16,6 +16,7 @@ import { VerifyOtp } from "../../application/use-cases/verifyOtp";
 import { LogoutUser } from "../../application/use-cases/user/logoutUser";
 import { IAuthService } from "../../application/interfaces/authService.interface";
 import { TOKENS } from "../../constants/token";
+import { CustomRequest } from "../../utils/customRequest";
 
 @injectable()
 export class UserController {
@@ -30,7 +31,7 @@ export class UserController {
         @inject(LogoutUser) private logoutUser: LogoutUser,
     ) { }
 
-    async register(req: Request, res: Response): Promise<void> {
+    async register(req: CustomRequest, res: Response): Promise<void> {
         try {
             const userData: CreateUserDTO = req.body
             if (!userData.email || !userData.password || !userData.firstName || !userData.lastName || !userData.phone) {
@@ -44,21 +45,21 @@ export class UserController {
         }
     }
 
-    async resentOtp(req: Request, res: Response): Promise<void> {
+    async resentOtp(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { userId } = req.body;
             if (!userId) {
                 throw new AppError('Userid is required', HttpStatusCode.BAD_REQUEST);
             }
-            await this.resendOtp.execute(userId);
+            const result = await this.resendOtp.execute(userId);
 
-            ResponseHandler.success(res, 'Otp sent successfully', null, HttpStatusCode.OK)
+            ResponseHandler.success(res, result.message, null, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
         }
     }
 
-    async login(req: Request, res: Response): Promise<void> {
+    async login(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { email, password } = req.body
             if (!email || !password) {
@@ -78,13 +79,13 @@ export class UserController {
                     sameSite: 'strict',
                     maxAge: jwtConfig.refreshToken.maxAge
                 })
-            ResponseHandler.success(res, 'Login successfull', { user, accessToken, refreshToken }, HttpStatusCode.OK)
+            ResponseHandler.success(res, 'Login successfull', user, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
         }
     }
 
-    async updateProfile(req: Request, res: Response): Promise<void> {
+    async updateProfile(req: CustomRequest, res: Response): Promise<void> {
         try {
             const userId = req.params.id;
             if (!userId) {
@@ -98,7 +99,7 @@ export class UserController {
         }
     }
 
-    async forgotPassword(req: Request, res: Response): Promise<void> {
+    async forgotPassword(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { email } = req.body
             if (!email) {
@@ -112,21 +113,21 @@ export class UserController {
         }
     }
 
-    async updatePassword(req: Request, res: Response): Promise<void> {
+    async updatePassword(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const { userId, password, otp } = req.body
-            if (!userId || !password || !otp) {
-                throw new AppError('User ID, password, and OTP are required.', HttpStatusCode.BAD_REQUEST);
+            const { email, password } = req.body
+            if (!email || !password) {
+                throw new AppError('User email or password are required.', HttpStatusCode.BAD_REQUEST);
             }
 
-            await this.updatePass.execute(userId, password, otp)
+            await this.updatePass.execute(email, password)
             ResponseHandler.success(res, 'Password updated successfully', null, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
         }
     }
 
-    async verifyOTP(req: Request, res: Response): Promise<void> {
+    async verifyOTP(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { userId, otp, purpose } = req.body;
 
@@ -141,7 +142,7 @@ export class UserController {
         }
     }
 
-    async logout(req: Request, res: Response): Promise<void> {
+    async logout(req: CustomRequest, res: Response): Promise<void> {
         try {
             const authHeader = req.headers.authorization;
 

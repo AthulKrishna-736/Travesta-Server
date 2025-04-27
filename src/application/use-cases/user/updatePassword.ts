@@ -12,11 +12,9 @@ export class UpdatePassword {
         @inject(TOKENS.AuthService) private authService: IAuthService
     ) { }
 
-    async execute(userId: string, password: string, otp: string): Promise<void> {
-        const { email } = await this.authService.verifyOtp(userId, otp, 'reset')
-
+    async execute(email: string, password: string): Promise<void> {
         if (!email) {
-            throw new AppError('OTP is invalid or has expired. Please try again.', HttpStatusCode.UNAUTHORIZED);
+            throw new AppError('Email is missing', HttpStatusCode.BAD_REQUEST);
         }
 
         const user = await this.userRepository.findByEmail(email);

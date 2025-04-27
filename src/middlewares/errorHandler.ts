@@ -15,7 +15,7 @@ export const errorHandler = (
 
     res.status(status).json({
         success: false,
-        error: message,
+        message,
         statusCode: status
     });
 }

@@ -914,3 +914,213 @@
 [2025-04-22 23:25:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-04-22 23:25:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-04-22 23:25:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 17:27:54] INFO: [34mRunning in development mode[0m
+[2025-04-27 17:27:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-27 17:28:00] INFO: [34mRedis connected successfully[0m
+[2025-04-27 17:28:47] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-27 17:28:52] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-27 17:28:57] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-27 17:29:02] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-27 17:29:37] INFO: [34mRunning in development mode[0m
+[2025-04-27 17:29:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-27 17:29:37] INFO: [34mRedis connected successfully[0m
+[2025-04-27 17:30:25] INFO: [34motp created: [0m
+[2025-04-27 17:33:33] INFO: [34motp created: [0m
+[2025-04-27 17:35:33] INFO: [34motp created: [0m
+[2025-04-27 17:36:18] INFO: [34motp created: [0m
+[2025-04-27 17:41:51] INFO: [34motp created: [0m
+[2025-04-27 17:42:28] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 17:42:30] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 17:42:31] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 17:42:39] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 17:43:14] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-04-27 17:43:17] ERROR: [31mcheck the error in handler:  User not found[0m
+[2025-04-27 17:43:51] ERROR: [31mcheck the error in handler:  User already exists[0m
+[2025-04-27 17:43:52] ERROR: [31mcheck the error in handler:  User already exists[0m
+[2025-04-27 17:45:00] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 17:46:47] INFO: [34mRunning in development mode[0m
+[2025-04-27 17:46:48] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-27 17:46:48] INFO: [34mRedis connected successfully[0m
+[2025-04-27 17:54:29] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:54:31] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:54:31] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:54:33] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:54:34] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:54:34] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:54:35] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:54:36] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:56:42] INFO: [34mRunning in development mode[0m
+[2025-04-27 17:56:43] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-27 17:56:43] INFO: [34mRedis connected successfully[0m
+[2025-04-27 17:57:10] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:57:10] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 17:57:12] ERROR: [31mcheck the error in handler:  Userid is required[0m
+[2025-04-27 17:57:12] ERROR: [31mcheck the error in handler:  Userid is required[0m
+[2025-04-27 17:57:14] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:01:33] ERROR: [31mcheck the error in handler:  Userid is required[0m
+[2025-04-27 18:01:36] ERROR: [31mcheck the error in handler:  Userid is required[0m
+[2025-04-27 18:01:39] ERROR: [31mcheck the error in handler:  Userid is required[0m
+[2025-04-27 18:01:42] ERROR: [31mcheck the error in handler:  Userid is required[0m
+[2025-04-27 18:02:00] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:01] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:04] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:04] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:05] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:05] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:05] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:05] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:06] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:06] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:07] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:07] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:07] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:08] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-04-27 18:02:54] ERROR: [31mcheck the error in handler:  User email or password are required.[0m
+[2025-04-27 18:29:38] INFO: [34mRunning in development mode[0m
+[2025-04-27 18:29:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-27 18:29:38] INFO: [34mRedis connected successfully[0m
+[2025-04-27 18:32:38] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-27 18:32:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:32:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:45] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-27 18:33:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:33:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:56] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-27 18:35:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 18:35:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:46] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-27 19:42:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:42:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 19:44:08] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-27 19:44:19] INFO: [34mRunning in development mode[0m
+[2025-04-27 19:44:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-27 19:44:25] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-27 19:44:45] INFO: [34mRunning in development mode[0m
+[2025-04-27 19:44:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-27 19:44:45] INFO: [34mRedis connected successfully[0m
+[2025-04-27 19:45:52] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 19:46:16] ERROR: [31mcheck the error in handler:  Cast to string failed for value "{
+  success: true,
+  message: 'Otp verified successfully',
+  data: { email: 'biciboh907@ingitel.com' },
+  meta: null,
+  statusCode: 200
+}" (type Object) at path "email" for model "User"[0m
+[2025-04-27 20:04:04] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 20:04:05] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 20:04:06] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 20:04:09] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 20:04:42] ERROR: [31mcheck the error in handler:  Cast to string failed for value "{
+  success: true,
+  message: 'Otp verified successfully',
+  data: { email: 'biciboh907@ingitel.com' },
+  meta: null,
+  statusCode: 200
+}" (type Object) at path "email" for model "User"[0m
+[2025-04-27 20:09:26] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 20:09:49] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 20:10:49] ERROR: [31mcheck the error in handler:  Cast to string failed for value "{
+  success: true,
+  message: 'Otp verified successfully',
+  data: { email: 'biciboh907@ingitel.com' },
+  meta: null,
+  statusCode: 200
+}" (type Object) at path "email" for model "User"[0m
+[2025-04-27 20:25:59] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-04-27 20:26:06] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-04-27 20:49:58] ERROR: [31mcheck the error in handler:  New password must be different from the old password.[0m
+[2025-04-27 20:54:12] ERROR: [31mcheck the error in handler:  New password must be different from the old password.[0m
+[2025-04-27 20:54:14] ERROR: [31mcheck the error in handler:  New password must be different from the old password.[0m
+[2025-04-27 20:54:16] ERROR: [31mcheck the error in handler:  New password must be different from the old password.[0m
+[2025-04-27 21:18:37] ERROR: [31mcheck the error in handler:  User not found[0m
+[2025-04-27 21:20:12] INFO: [34motp created: [0m
+[2025-04-27 21:21:50] INFO: [34mRunning in development mode[0m
+[2025-04-27 21:21:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-27 21:21:50] INFO: [34mRedis connected successfully[0m
+[2025-04-27 21:21:54] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 21:22:00] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-27 21:22:07] INFO: [34motp created: 172947[0m
+[2025-04-27 21:55:23] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-27 22:52:56] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-27 22:52:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 22:52:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 22:52:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 22:52:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 22:52:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-27 22:52:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m

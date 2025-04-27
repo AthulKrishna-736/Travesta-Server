@@ -23,7 +23,7 @@ export class RegisterUser {
         }
 
         const otp = this.authService.generateOtp();
-        logger.info('otp created: ', otp)
+        logger.info(`otp created: ${otp}`);
         const hashPass = await this.authService.hashPassword(userData.password)
 
         const tempUserId = `temp:signup:${uuidv4()}`
