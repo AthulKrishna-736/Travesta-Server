@@ -1,10 +1,11 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IAuthService } from "../../interfaces/authService.interface";
+import { IResendOtpUseCase } from "../../../domain/interfaces/usecases.interface";
 
 
 @injectable()
-export class ResendOtp {
+export class ResendOtp implements IResendOtpUseCase{
     constructor(
         @inject(TOKENS.AuthService) private authSerivce: IAuthService
     ) { }

@@ -4,9 +4,10 @@ import { UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
-export class UpdateUser {
+export class UpdateUser implements IUpdateUserUseCase{
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository
     ) { }

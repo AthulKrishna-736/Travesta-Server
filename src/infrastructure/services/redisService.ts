@@ -1,6 +1,6 @@
 import { injectable } from "tsyringe";
 import { IOtpService } from "../../application/interfaces/otpService.interface";
-import { redisClient } from "../../config/redis";
+import { redisClient } from "../config/redis";
 import { IJwtService } from "../../application/interfaces/jwtService.interface";
 
 @injectable()

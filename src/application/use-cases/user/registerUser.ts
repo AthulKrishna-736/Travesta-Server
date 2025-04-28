@@ -7,9 +7,10 @@ import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import logger from "../../../utils/logger";
+import { IRegisterUserUseCase } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
-export class RegisterUser {
+export class RegisterUser implements IRegisterUserUseCase{
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private readonly authService: IAuthService

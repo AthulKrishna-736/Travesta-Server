@@ -4,10 +4,11 @@ import { IUser, IUserRepository } from "../../../domain/interfaces/user.interfac
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { CreateUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { IVerifyAndRegisterUseCase } from "../../../domain/interfaces/usecases.interface";
 
 
 @injectable()
-export class VerifyAndRegister {
+export class VerifyAndRegister implements IVerifyAndRegisterUseCase{
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository,
     ) { }

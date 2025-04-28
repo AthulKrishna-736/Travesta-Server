@@ -1,9 +1,9 @@
 import 'reflect-metadata';
-import './config/container';
+import './infrastructure/config/container';
 import { App } from './app';
-import { env } from './config/env';
-import { connectDB } from './config/db';
-import { connectRedis } from './config/redis';
+import { env } from './infrastructure/config/env';
+import { connectDB } from './infrastructure/config/db';
+import { connectRedis } from './infrastructure/config/redis';
 
 const app = new App()
 

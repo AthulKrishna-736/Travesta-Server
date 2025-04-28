@@ -4,13 +4,14 @@ import { IAuthService } from "../interfaces/authService.interface";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { VerifyAndRegister } from "./user/verifyAndRegister";
+import { IVerifyAndRegisterUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
 
 
 @injectable()
-export class VerifyOtp {
+export class VerifyOtp implements IVerifyOtpUseCase{
     constructor(
         @inject(TOKENS.AuthService) private authService: IAuthService,
-        @inject(VerifyAndRegister) private verifyAndRegister: VerifyAndRegister
+        @inject(TOKENS.VerifyAndRegisterUseCase) private verifyAndRegister: IVerifyAndRegisterUseCase,
     ) { }
 
     async execute(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<{ isOtpVerified: boolean, data: any }> {

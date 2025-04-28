@@ -1210,3 +1210,43 @@
 [2025-04-28 12:31:25] INFO: [34mRunning in development mode[0m
 [2025-04-28 12:31:25] INFO: [34mMongoDB connected: localhost[0m
 [2025-04-28 12:31:25] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:37:51] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:37:52] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:37:52] INFO: [34mRedis connected successfully[0m
+[2025-04-28 13:39:53] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 13:39:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:39:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:40:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:40:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 13:55:34] INFO: [34mRunning in development mode[0m
+[2025-04-28 13:55:34] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 13:55:35] INFO: [34mRedis connected successfully[0m
+[2025-04-28 13:56:20] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-04-28 14:00:20] INFO: [34motp created: 415538[0m
+[2025-04-28 14:00:45] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-04-28 14:10:22] INFO: [34mRunning in development mode[0m
+[2025-04-28 14:10:22] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 14:10:23] INFO: [34mRedis connected successfully[0m
+[2025-04-28 14:10:42] INFO: [34mRunning in development mode[0m
+[2025-04-28 14:10:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 14:10:42] INFO: [34mRedis connected successfully[0m
+[2025-04-28 14:10:55] INFO: [34mRunning in development mode[0m
+[2025-04-28 14:10:55] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 14:10:55] INFO: [34mRedis connected successfully[0m
+[2025-04-28 14:11:06] INFO: [34mRunning in development mode[0m
+[2025-04-28 14:11:06] INFO: [34mMongoDB connected: localhost[0m

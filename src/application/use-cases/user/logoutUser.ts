@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { RedisService } from "../../../infrastructure/services/redisService";
-import { jwtConfig } from "../../../config/jwtConfig";
+import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 
 
 @injectable()

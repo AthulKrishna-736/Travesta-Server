@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { env } from '../../config/env';
+import { env } from '../config/env';
 import { AppError } from '../../utils/appError';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { injectable } from 'tsyringe';

@@ -2,10 +2,10 @@ import { IAuthService } from "../../application/interfaces/authService.interface
 import bcrypt from 'bcryptjs';
 import * as crypto from 'crypto';
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
-import { env } from "../../config/env";
+import { env } from "../config/env";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { jwtConfig, otpTimer } from "../../config/jwtConfig";
+import { jwtConfig, otpTimer } from "../config/jwtConfig";
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { MailService } from "./mailService";

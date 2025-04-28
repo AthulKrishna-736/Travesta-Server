@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import { env } from './env';
-import logger from '../utils/logger';
-import { AppError } from "../utils/appError";
-import { HttpStatusCode } from "../utils/HttpStatusCodes";
+import logger from '../../utils/logger';
+import { AppError } from "../../utils/appError";
+import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 
 export const connectDB = async(): Promise<void> => {
     try {

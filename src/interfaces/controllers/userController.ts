@@ -1,36 +1,29 @@
-import { Request, Response } from "express";
-import { LoginUser } from "../../application/use-cases/user/loginUser";
-import { RegisterUser } from "../../application/use-cases/user/registerUser";
-import { UpdateUser } from "../../application/use-cases/user/updateUserProfle";
+import { Response } from "express";
 import { CreateUserDTO, UpdateUserDTO } from "../dtos/user/user.dto";
 import { container, inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { env } from "../../config/env";
-import { jwtConfig } from "../../config/jwtConfig";
-import { ResendOtp } from "../../application/use-cases/user/resendOtp";
+import { env } from "../../infrastructure/config/env";
+import { jwtConfig } from "../../infrastructure/config/jwtConfig";
 import { ResponseHandler } from "../../middlewares/responseHandler";
-import { ForgotPass } from "../../application/use-cases/user/forgotPass";
-import { UpdatePassword } from "../../application/use-cases/user/updatePassword";
-import { VerifyOtp } from "../../application/use-cases/verifyOtp";
 import { LogoutUser } from "../../application/use-cases/user/logoutUser";
 import { IAuthService } from "../../application/interfaces/authService.interface";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
-import { GoogleLogin } from "../../application/use-cases/googleLogin";
+import { IForgotPasswordUseCase, IGoogleLoginUseCase, ILoginUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
 
 @injectable()
 export class UserController {
     constructor(
-        @inject(RegisterUser) private registerUser: RegisterUser,
-        @inject(LoginUser) private loginUser: LoginUser,
-        @inject(UpdateUser) private updateUser: UpdateUser,
-        @inject(ResendOtp) private resendOtp: ResendOtp,
-        @inject(ForgotPass) private forgotPass: ForgotPass,
-        @inject(UpdatePassword) private updatePass: UpdatePassword,
-        @inject(VerifyOtp) private verifyOtp: VerifyOtp,
+        @inject(TOKENS.RegisterUserUseCase) private registerUser: IRegisterUserUseCase,
+        @inject(TOKENS.LoginUserUseCase) private loginUser: ILoginUserUseCase,
+        @inject(TOKENS.UpdateUserUseCase) private updateUser: IUpdateUserUseCase,
+        @inject(TOKENS.ResendOtpUseCase) private resendOtp: IResendOtpUseCase,
+        @inject(TOKENS.ForgotPasswordUseCase) private forgotPass: IForgotPasswordUseCase,
+        @inject(TOKENS.UpdatePasswordUseCase) private updatePass: IUpdatePasswordUseCase,
+        @inject(TOKENS.VerifyOtpUseCase) private verifyOtp: IVerifyOtpUseCase,
         @inject(LogoutUser) private logoutUser: LogoutUser,
-        @inject(GoogleLogin) private googleLogin: GoogleLogin,
+        @inject(TOKENS.GoogleLoginUseCase) private googleLogin: IGoogleLoginUseCase,
     ) { }
 
     async register(req: CustomRequest, res: Response): Promise<void> {
@@ -90,7 +83,7 @@ export class UserController {
     async loginGoogle(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { credential, role } = req.body;
-            
+
             if (!credential || !role) {
                 throw new AppError('Google token and role are required', HttpStatusCode.BAD_REQUEST);
             }

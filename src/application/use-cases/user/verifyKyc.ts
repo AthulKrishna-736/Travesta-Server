@@ -1,9 +1,10 @@
+import { IVerifyKycUseCase } from "../../../domain/interfaces/usecases.interface";
 import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
 
-export class VerifyKyc {
+export class VerifyKyc implements IVerifyKycUseCase{
     constructor(
         private readonly userRepository: IUserRepository
     ) { }

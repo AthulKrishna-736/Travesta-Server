@@ -4,15 +4,16 @@ import { IAuthService } from "../interfaces/authService.interface";
 import { TOKENS } from "../../constants/token";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { jwtConfig } from "../../config/jwtConfig";
+import { jwtConfig } from "../../infrastructure/config/jwtConfig";
 import { RedisService } from "../../infrastructure/services/redisService";
-import { env } from '../../config/env'
+import { env } from '../../infrastructure/config/env'
 import { OAuth2Client } from 'google-auth-library';
 import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 import { TRole } from "../../shared/types/user.types";
+import { IGoogleLoginUseCase } from "../../domain/interfaces/usecases.interface";
 
 @injectable()
-export class GoogleLogin {
+export class GoogleLogin implements IGoogleLoginUseCase{
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private readonly authService: IAuthService,

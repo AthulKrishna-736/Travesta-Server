@@ -5,7 +5,7 @@ import hpp from 'hpp';
 import cookieparser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import logger from './utils/logger';
-import { env } from './config/env';
+import { env } from './infrastructure/config/env';
 import { userRoutes } from './interfaces/routes/userRoutes';
 import { vendorRoutes } from './interfaces/routes/vendorRoutes';
 import { adminRoutes } from './interfaces/routes/adminRoutes';

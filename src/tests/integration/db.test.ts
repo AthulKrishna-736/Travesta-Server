@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { connectDB } from "../../config/db";
+import { connectDB } from "../../infrastructure/config/db";
 
 // 0	Disconnected	No connection to MongoDB
 // 1	Connected	Connected and ready to use

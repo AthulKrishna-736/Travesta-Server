@@ -5,10 +5,11 @@ import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IAuthService } from "../../interfaces/authService.interface";
+import { IForgotPasswordUseCase } from "../../../domain/interfaces/usecases.interface";
 
 
 @injectable()
-export class ForgotPass {
+export class ForgotPass implements IForgotPasswordUseCase {
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private readonly authService: IAuthService,

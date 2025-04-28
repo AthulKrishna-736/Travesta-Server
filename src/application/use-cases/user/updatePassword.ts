@@ -4,9 +4,10 @@ import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IAuthService } from "../../interfaces/authService.interface";
 import { TOKENS } from "../../../constants/token";
+import { IUpdatePasswordUseCase } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
-export class UpdatePassword {
+export class UpdatePassword implements IUpdatePasswordUseCase{
     constructor(
         @inject(TOKENS.UserRepository) private userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private authService: IAuthService

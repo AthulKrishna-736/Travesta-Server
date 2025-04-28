@@ -5,10 +5,11 @@ import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { RedisService } from "../../../infrastructure/services/redisService";
-import { jwtConfig } from "../../../config/jwtConfig";
+import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
+import { ILoginUserUseCase } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
-export class LoginUser {
+export class LoginUser implements ILoginUserUseCase{
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private readonly authService: IAuthService,
