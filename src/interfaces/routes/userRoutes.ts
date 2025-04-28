@@ -19,6 +19,7 @@ export class userRoutes extends BaseRouter {
         this.router
             .post('/auth/signup', validateRequest(createUserSchema), (req: CustomRequest, res) => this.userController.register(req, res))
             .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this.userController.login(req, res))
+            .post('/auth/google-login', (req: CustomRequest, res) => this.userController.loginGoogle(req, res))
             .post('/auth/verifyOtp', validateRequest(verifyOtp), (req: CustomRequest, res) => this.userController.verifyOTP(req, res))
             .post('/auth/resendOtp', validateRequest(resendOtpSchema), (req: CustomRequest, res) => this.userController.resentOtp(req, res))
             // .post('/auth/kyc')

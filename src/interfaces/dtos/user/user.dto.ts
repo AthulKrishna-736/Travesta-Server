@@ -13,7 +13,8 @@ export interface CreateUserDTO {
 export interface UpdateUserDTO {
     firstName?: string
     lastName?: string
+    isGoogle?: boolean
     phone?: number
-    profileImage: string
+    profileImage?: string
     subscriptionType?: TSubscription
 }

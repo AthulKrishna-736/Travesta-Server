@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { IUser } from "../../../domain/interfaces/user.interface";
+import { boolean } from "zod";
 
 export type UserDocument = IUser & Document
 
@@ -12,8 +13,8 @@ const userSchema: Schema = new Schema<UserDocument>({
         type: String,
         required: true
     },
-    googleId: {
-        type: String
+    isGoogle: {
+        type: Boolean,
     },
     email: {
         type: String,

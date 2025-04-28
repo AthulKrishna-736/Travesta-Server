@@ -16,4 +16,6 @@ export const env = {
     REDIS_HOST: process.env.REDIS_HOST!,
     REDIS_PORT: parseInt(process.env.REDIS_PORT!),
     CLIENT_URL: process.env.CLIENT_URL,
+    GOOGLE_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_SECRET: process.env.GOOGLE_CLIENT_SECRET,
 }

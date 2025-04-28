@@ -5,7 +5,7 @@ export interface IUser {
     _id?: string,
     firstName: string,
     lastName: string,
-    googleId?: string,
+    isGoogle?: boolean,
     email: string,
     password: string,
     role: TRole,

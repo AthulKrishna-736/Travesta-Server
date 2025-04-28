@@ -1124,3 +1124,89 @@
 [2025-04-27 22:52:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-04-27 22:52:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-04-27 22:52:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 09:07:14] INFO: [34mRunning in development mode[0m
+[2025-04-28 09:07:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 09:07:14] INFO: [34mRedis connected successfully[0m
+[2025-04-28 09:40:55] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 09:54:56] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 09:55:01] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 09:55:07] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 09:55:12] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 09:55:17] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 09:55:22] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 09:55:27] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 09:55:32] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:05:16] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 10:05:21] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:05:26] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:07:10] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 10:07:15] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:07:20] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:07:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 10:07:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 10:07:46] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:07:51] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:07:56] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:07:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 10:07:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 10:07:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 10:07:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-04-28 10:08:17] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 10:08:17] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 10:08:55] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 10:09:00] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:10:35] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-04-28 10:10:40] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:10:45] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:10:50] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:10:55] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 10:11:01] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-04-28 11:27:06] INFO: [34mRunning in development mode[0m
+[2025-04-28 11:28:37] INFO: [34mRunning in development mode[0m
+[2025-04-28 11:28:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 11:28:37] INFO: [34mRedis connected successfully[0m
+[2025-04-28 11:28:51] INFO: [34mRunning in development mode[0m
+[2025-04-28 11:28:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 11:28:51] INFO: [34mRedis connected successfully[0m
+[2025-04-28 11:33:18] INFO: [34mRunning in development mode[0m
+[2025-04-28 11:33:18] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 11:33:18] INFO: [34mRedis connected successfully[0m
+[2025-04-28 11:33:31] INFO: [34mRunning in development mode[0m
+[2025-04-28 11:33:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 11:33:32] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:26:19] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:26:19] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:26:19] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:27:48] ERROR: [31mcheck the error in handler:  Google token and role are required[0m
+[2025-04-28 12:28:52] ERROR: [31mcheck the error in handler:  Google token and role are required[0m
+[2025-04-28 12:29:14] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:29:15] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:29:15] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:29:17] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:29:18] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:29:18] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:29:24] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:29:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:29:26] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:29:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:29:26] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:29:28] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:29:28] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:29:28] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:29:31] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:29:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:29:31] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:29:41] ERROR: [31mcheck the error in handler:  Google token and role are required[0m
+[2025-04-28 12:30:25] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:30:25] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:30:25] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:30:31] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:30:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:30:31] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:30:44] ERROR: [31mcheck the error in handler:  Google token and role are required[0m
+[2025-04-28 12:30:58] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:30:58] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:30:58] INFO: [34mRedis connected successfully[0m
+[2025-04-28 12:31:25] INFO: [34mRunning in development mode[0m
+[2025-04-28 12:31:25] INFO: [34mMongoDB connected: localhost[0m
+[2025-04-28 12:31:25] INFO: [34mRedis connected successfully[0m

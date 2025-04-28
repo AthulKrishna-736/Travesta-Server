@@ -17,6 +17,7 @@ import { LogoutUser } from "../../application/use-cases/user/logoutUser";
 import { IAuthService } from "../../application/interfaces/authService.interface";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
+import { GoogleLogin } from "../../application/use-cases/googleLogin";
 
 @injectable()
 export class UserController {
@@ -29,6 +30,7 @@ export class UserController {
         @inject(UpdatePassword) private updatePass: UpdatePassword,
         @inject(VerifyOtp) private verifyOtp: VerifyOtp,
         @inject(LogoutUser) private logoutUser: LogoutUser,
+        @inject(GoogleLogin) private googleLogin: GoogleLogin,
     ) { }
 
     async register(req: CustomRequest, res: Response): Promise<void> {
@@ -82,6 +84,36 @@ export class UserController {
             ResponseHandler.success(res, 'Login successfull', user, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
+        }
+    }
+
+    async loginGoogle(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const { credential, role } = req.body;
+            
+            if (!credential || !role) {
+                throw new AppError('Google token and role are required', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { accessToken, refreshToken, user } = await this.googleLogin.execute(credential, role);
+
+            res
+                .cookie('access_token', accessToken, {
+                    httpOnly: true,
+                    secure: env.NODE_ENV === 'production',
+                    sameSite: 'strict',
+                    maxAge: jwtConfig.accessToken.maxAge
+                })
+                .cookie('refresh_token', refreshToken, {
+                    httpOnly: true,
+                    secure: env.NODE_ENV === 'production',
+                    sameSite: 'strict',
+                    maxAge: jwtConfig.refreshToken.maxAge
+                });
+
+            ResponseHandler.success(res, 'Google login successful', user, HttpStatusCode.OK);
+        } catch (error: any) {
+            throw error;
         }
     }
 
