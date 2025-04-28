@@ -1,4 +1,6 @@
 import { IUser, IUserRepository } from "../../../domain/interfaces/user.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
 
 export class GetUser {
@@ -9,7 +11,7 @@ export class GetUser {
     async execute(userId: string): Promise<IUser> {
         const user = await this.userRepository.findById(userId)
         if (!user) {
-            throw new Error('No user exists with this id')
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
         }
         return user
     }

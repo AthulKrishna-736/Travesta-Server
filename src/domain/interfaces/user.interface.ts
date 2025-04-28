@@ -5,7 +5,7 @@ export interface IUser {
     _id?: string,
     firstName: string,
     lastName: string,
-    googleId?: string,
+    isGoogle?: boolean,
     email: string,
     password: string,
     role: TRole,
@@ -26,5 +26,5 @@ export interface IUserRepository {
     findById(id: string): Promise<IUser | null>
     deleteUser(id: string): Promise<boolean>
     updatePassword(id: string, password: string): Promise<boolean>
-    verifyKyc(id: string, data: number): Promise<boolean>
+    verifyKyc(id: string): Promise<boolean>
 }

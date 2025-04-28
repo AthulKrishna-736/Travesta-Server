@@ -2,17 +2,16 @@ import { TRole, TSubscription } from "../../shared/types/user.types";
 import { IUser } from "../interfaces/user.interface";
 
 
-
 export class User {
     private props: IUser;
 
     constructor(props: IUser) {
         this.props = props
-    }  
+    }
 
     get id(): string | undefined {
         return this.props._id
-    } 
+    }
 
     get email(): string {
         return this.props.email
@@ -22,7 +21,7 @@ export class User {
         return `${this.props.firstName}${this.props.lastName}`
     }
 
-    get role(): TRole{
+    get role(): TRole {
         return this.props.role;
     }
 

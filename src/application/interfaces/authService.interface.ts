@@ -1,6 +1,17 @@
+import { TRole } from "../../shared/types/user.types"
+
 export interface IAuthService {
     hashPassword(password: string): Promise<string>
     comparePassword(inputPass: string, hashPass: string): Promise<boolean>
-    generateToken(userId: string): string
-    verifyToken(token: string): { userId: string } | null
+    generateAccessToken(userId: string, role: TRole): string
+    generateRefreshToken(userId: string, role: TRole): string
+    verifyAccessToken(token: string): { userId: string, role: TRole } | null
+    verifyRefreshToken(token: string): { userId: string, role: TRole } | null
+    refreshAccessToken(token: string): Promise<string>
+    generateOtp(length?: number): string
+    sendOtpOnEmail(email: string, otp: string): Promise<void>
+    storeOtp(userId: string, otp: string, data: any, purpose: 'signup' | 'reset'): Promise<void>
+    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<any>
+    resendOtp(userId: string, purpose: 'signup' | 'reset'): Promise<void>
+    checkOtpRequestLimit(userId: string, purpose: 'signup' | 'reset'): Promise<void>
 }

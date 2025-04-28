@@ -1,26 +1,36 @@
+import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../../domain/interfaces/user.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IAuthService } from "../../interfaces/authService.interface";
+import { TOKENS } from "../../../constants/token";
+import { IUpdatePasswordUseCase } from "../../../domain/interfaces/usecases.interface";
 
-
-export class UpdatePassword {
+@injectable()
+export class UpdatePassword implements IUpdatePasswordUseCase{
     constructor(
-        private readonly userRepository: IUserRepository,
-        private readonly authService: IAuthService
+        @inject(TOKENS.UserRepository) private userRepository: IUserRepository,
+        @inject(TOKENS.AuthService) private authService: IAuthService
     ) { }
 
-    async execute(userId: string, password: string): Promise<void> {
-        const existingUser = await this.userRepository.findById(userId)
-        if (!existingUser) {
-            throw new Error('User does not exists!');
+    async execute(email: string, password: string): Promise<void> {
+        if (!email) {
+            throw new AppError('Email is missing', HttpStatusCode.BAD_REQUEST);
         }
 
-        const isMatch = await this.authService.comparePassword(existingUser.password, password)
+        const user = await this.userRepository.findByEmail(email);
+
+        if (!user || !user._id) {
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
+        }
+
+        const isMatch = await this.authService.comparePassword(password, user.password)
 
         if (isMatch) {
-            throw new Error('New password cannot be old password')
+            throw new AppError('New password must be different from the old password.', HttpStatusCode.CONFLICT);
         }
 
         const hashPass = await this.authService.hashPassword(password)
-        await this.userRepository.updatePassword(userId, hashPass)
+        await this.userRepository.updatePassword(user._id, hashPass)
     }
 }

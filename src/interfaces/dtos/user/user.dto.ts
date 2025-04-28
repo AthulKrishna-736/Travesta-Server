@@ -1,6 +1,5 @@
 import { TRole, TSubscription } from "../../../shared/types/user.types"
 
-
 export interface CreateUserDTO {
     firstName: string
     lastName: string
@@ -14,7 +13,8 @@ export interface CreateUserDTO {
 export interface UpdateUserDTO {
     firstName?: string
     lastName?: string
+    isGoogle?: boolean
     phone?: number
-    profileImage: string
+    profileImage?: string
     subscriptionType?: TSubscription
 }
