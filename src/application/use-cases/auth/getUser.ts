@@ -1,8 +1,9 @@
+import { injectable } from "tsyringe";
 import { IUser, IUserRepository } from "../../../domain/interfaces/user.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
-
+@injectable()
 export class GetUser {
     constructor(
         private readonly userRepository: IUserRepository

@@ -1,16 +1,16 @@
 import { Response } from "express";
-import { CreateUserDTO, UpdateUserDTO } from "../dtos/user/user.dto";
+import { CreateUserDTO, UpdateUserDTO } from "../../dtos/user/user.dto";
 import { container, inject, injectable } from "tsyringe";
-import { AppError } from "../../utils/appError";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { env } from "../../infrastructure/config/env";
-import { jwtConfig } from "../../infrastructure/config/jwtConfig";
-import { ResponseHandler } from "../../middlewares/responseHandler";
-import { LogoutUser } from "../../application/use-cases/user/logoutUser";
-import { IAuthService } from "../../application/interfaces/authService.interface";
-import { TOKENS } from "../../constants/token";
-import { CustomRequest } from "../../utils/customRequest";
-import { IForgotPasswordUseCase, IGoogleLoginUseCase, ILoginUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { env } from "../../../infrastructure/config/env";
+import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
+import { ResponseHandler } from "../../../middlewares/responseHandler";
+import { LogoutUser } from "../../../application/use-cases/auth/logoutUser";
+import { IAuthService } from "../../../application/interfaces/authService.interface";
+import { TOKENS } from "../../../constants/token";
+import { CustomRequest } from "../../../utils/customRequest";
+import { IForgotPasswordUseCase, IGoogleLoginUseCase, ILoginUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
 export class UserController {
@@ -169,48 +169,39 @@ export class UserController {
 
     async logout(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const authHeader = req.headers.authorization;
-
-            if (!authHeader || !authHeader.startsWith('Bearer ')) {
-                throw new AppError('Authorization header missing', HttpStatusCode.UNAUTHORIZED);
-            }
-
-            const tokenString = authHeader.split(' ')[1];
-            const [accessToken, refreshToken] = tokenString.split('::');
+            const accessToken = req.cookies['access_token'];
+            const refreshToken = req.cookies['refresh_token'];
 
             if (!accessToken || !refreshToken) {
-                throw new AppError('Missing tokens', HttpStatusCode.BAD_REQUEST);
+                throw new AppError('Access or Refresh token missing in cookies', HttpStatusCode.BAD_REQUEST);
             }
-
-            const authService = container.resolve<IAuthService>(TOKENS.AuthService);
 
             let userId: string;
 
+            const authService = container.resolve<IAuthService>(TOKENS.AuthService);
+
             try {
-                const decoded = authService.verifyAccessToken(accessToken)
+                const decoded = authService.verifyAccessToken(accessToken);
                 if (!decoded || !decoded.userId) {
-                    throw new AppError('UserId missing in access token', HttpStatusCode.BAD_REQUEST)
+                    throw new AppError('UserId missing in access token', HttpStatusCode.BAD_REQUEST);
                 }
-                userId = decoded.userId
-
-
-            } catch (error: any) {
-                const decodedRefresh = authService.verifyRefreshToken(refreshToken)
+                userId = decoded.userId;
+            } catch {
+                const decodedRefresh = authService.verifyRefreshToken(refreshToken);
                 if (!decodedRefresh || !decodedRefresh.userId) {
-                    throw new AppError('UserId missing in refresh token', HttpStatusCode.BAD_REQUEST)
+                    throw new AppError('UserId missing in refresh token', HttpStatusCode.BAD_REQUEST);
                 }
-                userId = decodedRefresh.userId
+                userId = decodedRefresh.userId;
             }
 
-            await this.logoutUser.execute(userId, accessToken)
+            await this.logoutUser.execute(userId, accessToken);
 
-            res.clearCookie('access_token')
-            res.clearCookie('refresh_token')
+            res.clearCookie('access_token', { httpOnly: true, secure: true, sameSite: 'strict' });
+            res.clearCookie('refresh_token', { httpOnly: true, secure: true, sameSite: 'strict' });
 
             ResponseHandler.success(res, 'Logged out successfully', null, HttpStatusCode.OK);
         } catch (error: any) {
-            throw new AppError(error.message || 'Logout failed', HttpStatusCode.UNAUTHORIZED)
+            throw new AppError(error.message || 'Logout failed', HttpStatusCode.UNAUTHORIZED);
         }
     }
-
 }

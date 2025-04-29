@@ -1,10 +1,11 @@
 import { container } from "tsyringe";
-import { UserController } from "../controllers/userController";
+import { UserController } from "../controllers/user/userController";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
 import { loginSchema, createUserSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
+import { authorizeRoles } from "../../middlewares/roleMIddleware";
 
 export class userRoutes extends BaseRouter {
     private userController: UserController
@@ -25,7 +26,7 @@ export class userRoutes extends BaseRouter {
             // .post('/auth/kyc')
             .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res) => this.userController.forgotPassword(req, res))
             .patch('/auth/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res) => this.userController.updatePassword(req, res))
-            .post('/auth/logout', authMiddleware, (req: CustomRequest, res) => this.userController.logout(req, res));
+            .post('/auth/logout', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), (req: CustomRequest, res) => this.userController.logout(req, res));
 
 
         this.router

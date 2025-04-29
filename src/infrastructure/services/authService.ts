@@ -31,7 +31,7 @@ export class AuthService implements IAuthService {
     generateAccessToken(userId: string, role: TRole): string {
         const secret: Secret = env.JWT_ACCESS_SECRET;
         const options: SignOptions = {
-            expiresIn: `${jwtConfig.accessToken.expiresIn}s`,
+            expiresIn: `${jwtConfig.accessToken.expiresIn}m`,
         };
 
         return jwt.sign({ userId, role }, secret, options);

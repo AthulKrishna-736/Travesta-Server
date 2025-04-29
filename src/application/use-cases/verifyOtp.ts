@@ -3,7 +3,6 @@ import { TOKENS } from "../../constants/token";
 import { IAuthService } from "../interfaces/authService.interface";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { VerifyAndRegister } from "./user/verifyAndRegister";
 import { IVerifyAndRegisterUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
 
 

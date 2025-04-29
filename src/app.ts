@@ -53,7 +53,7 @@ export class App {
 
   private setRoutes(): void {
     this.app.use('/api/users', new userRoutes().getRouter())
-    this.app.use('/api/hotels', new vendorRoutes().getRouter())
+    this.app.use('/api/vendor', new vendorRoutes().getRouter())
     this.app.use('/api/admin', new adminRoutes().getRouter())
   }
 

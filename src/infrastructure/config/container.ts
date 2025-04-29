@@ -7,14 +7,14 @@ import { AuthService } from "../services/authService";
 import { MailService } from "../services/mailService";
 import { RedisService } from "../services/redisService"
 import { IForgotPasswordUseCase, IGoogleLoginUseCase, ILoginUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyAndRegisterUseCase, IVerifyKycUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
-import { RegisterUser } from "../../application/use-cases/user/registerUser";
-import { ForgotPass } from "../../application/use-cases/user/forgotPass";
-import { LoginUser } from "../../application/use-cases/user/loginUser";
-import { ResendOtp } from "../../application/use-cases/user/resendOtp";
-import { UpdatePassword } from "../../application/use-cases/user/updatePassword";
-import { UpdateUser } from "../../application/use-cases/user/updateUserProfle";
-import { VerifyAndRegister } from "../../application/use-cases/user/verifyAndRegister";
-import { VerifyKyc } from "../../application/use-cases/user/verifyKyc";
+import { RegisterUser } from "../../application/use-cases/auth/registerUser";
+import { ForgotPass } from "../../application/use-cases/auth/forgotPass";
+import { LoginUser } from "../../application/use-cases/auth/loginUser";
+import { ResendOtp } from "../../application/use-cases/auth/resendOtp";
+import { UpdatePassword } from "../../application/use-cases/auth/updatePassword";
+import { UpdateUser } from "../../application/use-cases/auth/updateUserProfle";
+import { VerifyAndRegister } from "../../application/use-cases/auth/verifyAndRegister";
+import { VerifyKyc } from "../../application/use-cases/auth/verifyKyc";
 import { GoogleLogin } from "../../application/use-cases/googleLogin";
 import { VerifyOtp } from "../../application/use-cases/verifyOtp";
 

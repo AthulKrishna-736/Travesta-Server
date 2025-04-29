@@ -31,6 +31,7 @@ export const authMiddleware = async (req: CustomRequest, res: Response, next: Ne
             try {
                 const decoded = authService.verifyAccessToken(accessToken);
                 req.user = decoded
+                console.log('req user in auth: ', req.user)
                 return next();
             } catch (accessErr: any) {
                 logger.warn("Access token expired or invalid:", accessErr.message);
