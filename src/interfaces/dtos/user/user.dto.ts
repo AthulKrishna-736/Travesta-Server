@@ -15,6 +15,8 @@ export interface UpdateUserDTO {
     lastName?: string
     isGoogle?: boolean
     phone?: number
+    isBlocked?: boolean
     profileImage?: string
     subscriptionType?: TSubscription
+
 }

@@ -11,6 +11,11 @@ export class UserRepository implements IUserRepository {
         return user as IUser;
     }
 
+    async getAllUsers(): Promise<IUser[]> {
+        const users = await userModel.find().lean();
+        return users as IUser[];
+    }
+
     async createUser(data: CreateUserDTO): Promise<IUser> {
         const user = new userModel(data);
         const saved = await user.save();

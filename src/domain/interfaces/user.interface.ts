@@ -10,6 +10,7 @@ export interface IUser {
     password: string,
     role: TRole,
     phone: number,
+    isBlocked: boolean,
     subscriptionType: TSubscription,
     profileImage?: string,
     wishlist: string[],
@@ -27,4 +28,5 @@ export interface IUserRepository {
     deleteUser(id: string): Promise<boolean>
     updatePassword(id: string, password: string): Promise<boolean>
     verifyKyc(id: string): Promise<boolean>
+    getAllUsers(): Promise<IUser[]>
 }

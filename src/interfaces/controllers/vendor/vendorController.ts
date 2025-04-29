@@ -61,7 +61,7 @@ export class VendorController {
                 throw new AppError('Email and password are required', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { accessToken, refreshToken, user } = await this.loginUser.execute(email, password);
+            const { accessToken, refreshToken, user } = await this.loginUser.execute(email, password, 'vendor');
 
             res
                 .cookie('access_token', accessToken, {

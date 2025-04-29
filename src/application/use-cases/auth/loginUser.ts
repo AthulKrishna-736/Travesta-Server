@@ -9,18 +9,22 @@ import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { ILoginUserUseCase } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
-export class LoginUser implements ILoginUserUseCase{
+export class LoginUser implements ILoginUserUseCase {
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private readonly authService: IAuthService,
         @inject(TOKENS.RedisService) private readonly redisService: RedisService
     ) { }
 
-    async execute(email: string, password: string): Promise<{ accessToken: string, refreshToken: string, user: IUser }> {
+    async execute(email: string, password: string, expectedRole: string): Promise<{ accessToken: string, refreshToken: string, user: IUser }> {
         const user = await this.userRepository.findByEmail(email);
 
         if (!user || !user._id) {
             throw new AppError("User not found", HttpStatusCode.BAD_REQUEST)
+        }
+
+        if (user.role !== expectedRole) {
+            throw new AppError(`Unauthorized: Invalid role for this login`, HttpStatusCode.UNAUTHORIZED);
         }
 
         const isValidPass = await this.authService.comparePassword(password, user.password)

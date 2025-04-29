@@ -10,13 +10,17 @@ import { AppError } from "../../../utils/appError";
 import { env } from "process";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { ResponseHandler } from "../../../middlewares/responseHandler";
+import { BlockUnblockUser } from "../../../application/use-cases/admin/blockUser";
+import { GetAllUsers } from "../../../application/use-cases/admin/getAllUsers";
 
 @injectable()
 export class AdminController {
     constructor(
         @inject(TOKENS.LoginUserUseCase) private loginUser: ILoginUserUseCase,
         @inject(LogoutUser) private logoutUser: LogoutUser,
-        @inject(TOKENS.AuthService) private authService: IAuthService
+        @inject(TOKENS.AuthService) private authService: IAuthService,
+        @inject(BlockUnblockUser) private blockUnblockUser: BlockUnblockUser,
+        @inject(GetAllUsers) private getAllUsersUsecase: GetAllUsers,
     ) { }
 
     async login(req: CustomRequest, res: Response): Promise<void> {
@@ -26,7 +30,7 @@ export class AdminController {
                 throw new AppError('Email and password are required', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { accessToken, refreshToken, user } = await this.loginUser.execute(email, password);
+            const { accessToken, refreshToken, user } = await this.loginUser.execute(email, password, 'admin');
 
             res
                 .cookie('access_token', accessToken, {
@@ -83,4 +87,24 @@ export class AdminController {
             throw new AppError(error.message || 'Logout failed', HttpStatusCode.UNAUTHORIZED);
         }
     }
+
+    async blockOrUnblockUser(req: CustomRequest, res: Response) {
+        const { id } = req.params;
+
+        const updatedUser = await this.blockUnblockUser.execute(id);
+
+        const message = updatedUser.isBlocked ? "User blocked successfully" : "User unblocked successfully";
+
+        ResponseHandler.success(res, message, updatedUser, HttpStatusCode.OK);
+    }
+
+    async getAllUsers(req: CustomRequest, res: Response) {
+        try {
+            const users = await this.getAllUsersUsecase.execute();
+            ResponseHandler.success(res, 'All users fetched successfully', users, HttpStatusCode.OK);
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }

@@ -12,7 +12,7 @@ export interface IForgotPasswordUseCase {
 }
 
 export interface ILoginUserUseCase {
-    execute(email: string, password: string): Promise<{ accessToken: string; refreshToken: string; user: IUser }>;
+    execute(email: string, password: string, expectedRole: string): Promise<{ accessToken: string; refreshToken: string; user: IUser }>;
 }
 
 export interface IResendOtpUseCase {
