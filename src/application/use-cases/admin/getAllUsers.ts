@@ -11,6 +11,9 @@ export class GetAllUsers {
 
     async execute(): Promise<IUser[]> {
         const users = await this.userRepository.getAllUsers();
-        return users;
+        
+        const nonAdminUsers = users.filter(user => !user.role.includes('admin'));
+
+        return nonAdminUsers;
     }
 }

@@ -47,7 +47,7 @@ const userSchema: Schema = new Schema<UserDocument>({
     wishlist: [{
         type: String
     }],
-    isKycVerified: {
+    isVerified: {
         type: Boolean,
         default: false
     },

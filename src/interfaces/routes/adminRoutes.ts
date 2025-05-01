@@ -6,20 +6,25 @@ import { loginSchema } from "../../shared/types/zodValidation";
 import { CustomRequest } from "../../utils/customRequest";
 import { authMiddleware } from "../../middlewares/auth";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
+import { AuthController } from "../controllers/base/authController";
 
 export class adminRoutes extends BaseRouter {
+    private authController: AuthController;
     private adminController: AdminController;
 
     constructor() {
         super();
+        this.authController = container.resolve(AuthController);
         this.adminController = container.resolve(AdminController);
         this.initializeRoutes();
     }
 
     protected initializeRoutes(): void {
         this.router
-            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this.adminController.login(req, res))
-            .post('/auth/logout', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.logout(req, res));
+            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this.authController.login(req, res))
+            .post('/auth/logout', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.authController.logout(req, res))
 
+            .get('/users', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.getAllUsers(req, res))
+            .patch('/users/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.blockOrUnblockUser(req, res))
     }
 }

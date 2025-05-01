@@ -18,4 +18,5 @@ export const TOKENS = {
   VerifyKycUseCase: 'VerifyKycUseCase',
   GoogleLoginUseCase: 'GoogleLoginUseCase',
   VerifyOtpUseCase: 'VerifyOtpUseCase',
+  LogoutUserUseCase: 'LogoutUserUseCase',
 };

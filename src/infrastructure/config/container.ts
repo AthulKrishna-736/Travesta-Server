@@ -6,7 +6,7 @@ import { IAuthService } from "../../application/interfaces/authService.interface
 import { AuthService } from "../services/authService";
 import { MailService } from "../services/mailService";
 import { RedisService } from "../services/redisService"
-import { IForgotPasswordUseCase, IGoogleLoginUseCase, ILoginUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyAndRegisterUseCase, IVerifyKycUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
+import { IForgotPasswordUseCase, IGoogleLoginUseCase, ILoginUserUseCase, ILogoutUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyAndRegisterUseCase, IVerifyKycUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
 import { RegisterUser } from "../../application/use-cases/auth/registerUser";
 import { ForgotPass } from "../../application/use-cases/auth/forgotPass";
 import { LoginUser } from "../../application/use-cases/auth/loginUser";
@@ -17,6 +17,7 @@ import { VerifyAndRegister } from "../../application/use-cases/auth/verifyAndReg
 import { VerifyKyc } from "../../application/use-cases/auth/verifyKyc";
 import { GoogleLogin } from "../../application/use-cases/googleLogin";
 import { VerifyOtp } from "../../application/use-cases/verifyOtp";
+import { LogoutUser } from "../../application/use-cases/auth/logoutUser";
 
 container.register<IUserRepository>(TOKENS.UserRepository, {
   useClass: UserRepository,
@@ -72,4 +73,8 @@ container.register<IGoogleLoginUseCase>(TOKENS.GoogleLoginUseCase, {
 
 container.register<IVerifyOtpUseCase>(TOKENS.VerifyOtpUseCase, {
   useClass: VerifyOtp,
+})
+
+container.register<ILogoutUserUseCase>(TOKENS.LogoutUserUseCase, {
+  useClass: LogoutUser,
 })

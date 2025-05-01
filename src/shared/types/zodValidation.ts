@@ -60,5 +60,16 @@ export const updatePassSchema = z.object({
     password: z.string().min(6, 'Password must be at least 6 characters long'),
 })
 
+//google login 
+export const googleLoginSchema = z.object({
+    credential: z.string({
+        required_error: 'Credentials is required',
+        invalid_type_error: 'Credential must be string'
+    }),
+    role: z.string({
+        required_error: 'Role is required',
+        invalid_type_error: 'Role must be string'
+    })
+})
 
 

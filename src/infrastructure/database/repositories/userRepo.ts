@@ -58,7 +58,7 @@ export class UserRepository implements IUserRepository {
         if (!user) {
             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
         }
-        user.isKycVerified = true
+        user.isVerified = true
         await user.save()
         return true
     }

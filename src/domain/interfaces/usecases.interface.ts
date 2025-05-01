@@ -42,3 +42,7 @@ export interface IGoogleLoginUseCase {
 export interface IVerifyOtpUseCase {
     execute(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<{ isOtpVerified: boolean, data: any }>
 }
+
+export interface ILogoutUserUseCase {
+    execute(userId: string, accessToken: string): Promise<void>
+}

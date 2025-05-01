@@ -14,7 +14,7 @@ export interface IUser {
     subscriptionType: TSubscription,
     profileImage?: string,
     wishlist: string[],
-    isKycVerified?: boolean,
+    isVerified?: boolean,
     kycDocuments?: string[],
     createdAt: Date,
     updatedAt: Date
