@@ -5,13 +5,13 @@ import { IResendOtpUseCase } from "../../../domain/interfaces/usecases.interface
 
 
 @injectable()
-export class ResendOtp implements IResendOtpUseCase{
+export class ResendOtp implements IResendOtpUseCase {
     constructor(
         @inject(TOKENS.AuthService) private authSerivce: IAuthService
     ) { }
 
-    async execute(userId: string): Promise<{ message: string }> {
-        await this.authSerivce.resendOtp(userId, 'signup')
+    async execute(userId: string, purpose: 'signup' | 'reset'): Promise<{ message: string }> {
+        await this.authSerivce.resendOtp(userId, purpose)
         return { message: 'OTP resent to you email' }
     }
 }

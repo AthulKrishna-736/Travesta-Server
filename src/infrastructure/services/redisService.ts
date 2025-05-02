@@ -15,14 +15,15 @@ export class RedisService implements IOtpService, IJwtService {
         const key = this.getKey(userId, purpose);
         const payload = {
             otp,
-            data
+            data,
+            expiryTime: new Date().getTime(),
         }
         await this.redisClient.set(key, JSON.stringify(payload), {
             EX: expiresAt,
         })
     }
 
-    async getOtp(userId: string, purpose: "signup" | "reset"): Promise<{ otp: string, data: any } | null> {
+    async getOtp(userId: string, purpose: "signup" | "reset"): Promise<{ otp: string, data: any, expiryTime: number } | null> {
         const key = this.getKey(userId, purpose);
         const raw = await this.redisClient.get(key)
 

@@ -89,14 +89,21 @@ export class AuthService implements IAuthService {
 
     async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset"): Promise<void> {
         await this.checkOtpRequestLimit(userId)
-        await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt)
+        await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt * 2) //120s
     }
 
     async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<any> {
         const storedData = await this.redisService.getOtp(userId, purpose)
-
+        console.log('storedData: ', storedData);
         if (!storedData) {
             throw new AppError('Otp not found or expired', HttpStatusCode.BAD_REQUEST)
+        }
+
+        const currentTime = new Date().getTime();
+        const otpExpiryTime = storedData.expiryTime + (otpTimer.expiresAt * 1000);
+
+        if (currentTime > otpExpiryTime) {
+            throw new AppError('Otp has expired', HttpStatusCode.BAD_REQUEST);
         }
 
         if (storedData.otp != otp) {
@@ -111,14 +118,21 @@ export class AuthService implements IAuthService {
         const stored = await this.redisService.getOtp(userId, purpose)
 
         if (!stored) {
-            throw new AppError('Session expired. Please register again.', HttpStatusCode.BAD_REQUEST)
+            throw new AppError('Session expired. Please try again.', HttpStatusCode.BAD_REQUEST)
         }
 
-        const otp = this.generateOtp()
+        const currentTime = new Date().getTime();
+        const otpExpiryTime = stored.expiryTime + (otpTimer.expiresAt * 1000);
 
-        await this.redisService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt)
+        if (currentTime > otpExpiryTime) {
+            const otp = this.generateOtp()
 
-        await this.sendOtpOnEmail(stored.data.email, otp);
+            await this.redisService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt)
+
+            await this.sendOtpOnEmail(stored.data.email, otp);
+        } else {
+            throw new AppError('OTP is still valid. Please wait before requesting a new OTP.', HttpStatusCode.BAD_REQUEST);
+        }
     }
 
     async checkOtpRequestLimit(userId: string): Promise<void> {

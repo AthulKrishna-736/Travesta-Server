@@ -52,7 +52,11 @@ export const resendOtpSchema = z.object({
 
 //forgotpass
 export const forgotPassSchema = z.object({
-    email: z.string().email('Email is required')
+    email: z.string().email('Email is required'),
+    role: z.string({
+        required_error: 'Role is required',
+        invalid_type_error: 'Role must be string'
+    })
 })
 
 //updatepass

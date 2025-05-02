@@ -20,3 +20,15 @@ export interface UpdateUserDTO {
     subscriptionType?: TSubscription
 
 }
+
+export interface ResponseUserDTO {
+    id: string
+    name: string
+    email: string
+    isGoogle: boolean
+    phone: number
+    isBlocked: boolean
+    wishlist: string[]
+    role: TRole
+    subscriptionType: TSubscription
+}

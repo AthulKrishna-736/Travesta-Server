@@ -15,10 +15,14 @@ export class ForgotPass implements IForgotPasswordUseCase {
         @inject(TOKENS.AuthService) private readonly authService: IAuthService,
     ) { }
 
-    async execute(email: string): Promise<{ userId: string, message: string }> {
+    async execute(email: string, role: string): Promise<{ userId: string, message: string }> {
         const user = await this.userRepository.findByEmail(email)
         if (!user) {
             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
+        }
+
+        if(user.role !== role){
+            throw new AppError('Unauthorized: Invalid role for the reset password', HttpStatusCode.UNAUTHORIZED)
         }
 
         const otp = this.authService.generateOtp();

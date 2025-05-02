@@ -10,5 +10,5 @@ export const jwtConfig = {
 }
 
 export const otpTimer = {
-    expiresAt: 120
+    expiresAt: 60,
 }

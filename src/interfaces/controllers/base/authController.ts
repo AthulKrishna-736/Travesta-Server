@@ -42,11 +42,11 @@ export class AuthController {
 
     async resentOtp(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const { userId } = req.body;
-            if (!userId) {
-                throw new AppError('Userid is required', HttpStatusCode.BAD_REQUEST);
+            const { userId, purpose } = req.body;
+            if (!userId || !purpose) {
+                throw new AppError('Userid and purpose are required', HttpStatusCode.BAD_REQUEST);
             }
-            const result = await this.resendOtp.execute(userId);
+            const result = await this.resendOtp.execute(userId, purpose);
 
             ResponseHandler.success(res, result.message, null, HttpStatusCode.OK)
         } catch (error: any) {
@@ -117,12 +117,12 @@ export class AuthController {
 
     async forgotPassword(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const { email } = req.body
-            if (!email) {
-                throw new AppError('Email missing in body', HttpStatusCode.BAD_REQUEST)
+            const { email, role } = req.body
+            if (!email || !role) {
+                throw new AppError('Email and role missing in body', HttpStatusCode.BAD_REQUEST)
             }
 
-            const data = await this.forgotPass.execute(email)
+            const data = await this.forgotPass.execute(email, role)
             ResponseHandler.success(res, data.message, data.userId, HttpStatusCode.OK)
         } catch (error: any) {
             throw error

@@ -8,7 +8,7 @@ export interface IRegisterUserUseCase {
 }
 
 export interface IForgotPasswordUseCase {
-    execute(email: string): Promise<{ userId: string; message: string }>;
+    execute(email: string, role: TRole): Promise<{ userId: string; message: string }>;
 }
 
 export interface ILoginUserUseCase {
@@ -16,7 +16,7 @@ export interface ILoginUserUseCase {
 }
 
 export interface IResendOtpUseCase {
-    execute(userId: string): Promise<{ message: string }>;
+    execute(userId: string, purpose: 'signup' | 'reset'): Promise<{ message: string }>;
 }
 
 export interface IUpdatePasswordUseCase {
