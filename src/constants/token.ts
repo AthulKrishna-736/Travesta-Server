@@ -19,4 +19,6 @@ export const TOKENS = {
   GoogleLoginUseCase: 'GoogleLoginUseCase',
   VerifyOtpUseCase: 'VerifyOtpUseCase',
   LogoutUserUseCase: 'LogoutUserUseCase',
+  BlockUserUseCase: 'BlockUserUseCase',
+  GetAllUsersUseCase: 'GetAllUsersUseCase',
 };

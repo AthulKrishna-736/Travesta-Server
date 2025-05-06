@@ -1,5 +1,5 @@
-import { CreateUserDTO, UpdateUserDTO } from "../../interfaces/dtos/user/user.dto";
-import { TRole } from "../../shared/types/user.types";
+import { CreateUserDTO, ResponseUserDTO, UpdateUserDTO } from "../../interfaces/dtos/user/user.dto";
+import { TRole } from "../../shared/types/client.types";
 import { IUser } from "./user.interface";
 
 //user
@@ -45,4 +45,12 @@ export interface IVerifyOtpUseCase {
 
 export interface ILogoutUserUseCase {
     execute(userId: string, accessToken: string): Promise<void>
+}
+
+export interface IGetAllUsersUseCase {
+    execute(page: number, limit: number): Promise<{ users: ResponseUserDTO[]; total: number }>
+}
+
+export interface IBlockUnblockUser {
+    execute(userId: string): Promise<IUser>
 }

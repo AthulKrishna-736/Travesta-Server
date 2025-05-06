@@ -4,9 +4,10 @@ import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IUser } from "../../../domain/interfaces/user.interface";
+import { IBlockUnblockUser } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
-export class BlockUnblockUser {
+export class BlockUnblockUser implements IBlockUnblockUser{
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository
     ) { }

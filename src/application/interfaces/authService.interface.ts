@@ -1,4 +1,4 @@
-import { TRole } from "../../shared/types/user.types"
+import { TRole } from "../../shared/types/client.types"
 
 export interface IAuthService {
     hashPassword(password: string): Promise<string>

@@ -9,7 +9,7 @@ import { RedisService } from "../../infrastructure/services/redisService";
 import { env } from '../../infrastructure/config/env'
 import { OAuth2Client } from 'google-auth-library';
 import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
-import { TRole } from "../../shared/types/user.types";
+import { TRole } from "../../shared/types/client.types";
 import { IGoogleLoginUseCase } from "../../domain/interfaces/usecases.interface";
 
 @injectable()

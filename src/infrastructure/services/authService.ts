@@ -10,7 +10,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { MailService } from "./mailService";
 import { RedisService } from "./redisService";
-import { TRole } from "../../shared/types/user.types";
+import { TRole } from "../../shared/types/client.types";
 
 @injectable()
 export class AuthService implements IAuthService {

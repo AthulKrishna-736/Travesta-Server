@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { AppError } from "../utils/appError";
 import { HttpStatusCode } from "../utils/HttpStatusCodes";
 import { CustomRequest } from "../utils/customRequest";
-import { TRole } from "../shared/types/user.types";
+import { TRole } from "../shared/types/client.types";
 
 
 export const authorizeRoles = (...roles: TRole[]) => {

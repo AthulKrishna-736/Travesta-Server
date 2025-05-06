@@ -1,6 +1,6 @@
 import { User } from "../../domain/models/user";
 import { IUser } from "../../domain/interfaces/user.interface";
-import { TRole, TSubscription } from "../../shared/types/user.types";
+import { TRole, TSubscription } from "../../shared/types/client.types";
 
 
 describe('User domain model', () => {

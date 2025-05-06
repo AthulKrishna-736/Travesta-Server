@@ -1,4 +1,4 @@
-import { TRole, TSubscription } from "../../../shared/types/user.types"
+import { TRole, TSubscription } from "../../../shared/types/client.types"
 
 export interface CreateUserDTO {
     firstName: string
@@ -31,4 +31,6 @@ export interface ResponseUserDTO {
     wishlist: string[]
     role: TRole
     subscriptionType: TSubscription
+    createdAt: Date
+    updatedAt: Date
 }

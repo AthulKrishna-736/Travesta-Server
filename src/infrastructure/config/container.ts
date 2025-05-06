@@ -6,7 +6,7 @@ import { IAuthService } from "../../application/interfaces/authService.interface
 import { AuthService } from "../services/authService";
 import { MailService } from "../services/mailService";
 import { RedisService } from "../services/redisService"
-import { IForgotPasswordUseCase, IGoogleLoginUseCase, ILoginUserUseCase, ILogoutUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyAndRegisterUseCase, IVerifyKycUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
+import { IBlockUnblockUser, IForgotPasswordUseCase, IGetAllUsersUseCase, IGoogleLoginUseCase, ILoginUserUseCase, ILogoutUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyAndRegisterUseCase, IVerifyKycUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
 import { RegisterUser } from "../../application/use-cases/auth/registerUser";
 import { ForgotPass } from "../../application/use-cases/auth/forgotPass";
 import { LoginUser } from "../../application/use-cases/auth/loginUser";
@@ -18,6 +18,8 @@ import { VerifyKyc } from "../../application/use-cases/auth/verifyKyc";
 import { GoogleLogin } from "../../application/use-cases/googleLogin";
 import { VerifyOtp } from "../../application/use-cases/verifyOtp";
 import { LogoutUser } from "../../application/use-cases/auth/logoutUser";
+import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
+import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
 
 container.register<IUserRepository>(TOKENS.UserRepository, {
   useClass: UserRepository,
@@ -77,4 +79,12 @@ container.register<IVerifyOtpUseCase>(TOKENS.VerifyOtpUseCase, {
 
 container.register<ILogoutUserUseCase>(TOKENS.LogoutUserUseCase, {
   useClass: LogoutUser,
+})
+
+container.register<IGetAllUsersUseCase>(TOKENS.GetAllUsersUseCase, {
+  useClass: GetAllUsers,
+})
+
+container.register<IBlockUnblockUser>(TOKENS.BlockUserUseCase, {
+  useClass: BlockUnblockUser,
 })

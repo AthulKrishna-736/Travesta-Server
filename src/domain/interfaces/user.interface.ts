@@ -1,5 +1,5 @@
 import { CreateUserDTO, UpdateUserDTO } from "../../interfaces/dtos/user/user.dto";
-import { TRole, TSubscription } from "../../shared/types/user.types";
+import { TRole, TSubscription } from "../../shared/types/client.types";
 
 export interface IUser {
     _id?: string,
@@ -28,5 +28,5 @@ export interface IUserRepository {
     deleteUser(id: string): Promise<boolean>
     updatePassword(id: string, password: string): Promise<boolean>
     verifyKyc(id: string): Promise<boolean>
-    getAllUsers(): Promise<IUser[]>
+    getAllUsers(page: number, limit: number): Promise<{ users: IUser[]; total: number }>
 }
