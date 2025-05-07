@@ -19,7 +19,7 @@ export class AdminController {
 
         const updatedUser = await this.blockUnblockUser.execute(id);
 
-        const message = updatedUser.isBlocked ? "User blocked successfully" : "User unblocked successfully";
+        const message = updatedUser.isBlocked ? `${updatedUser.role} blocked successfully` : `${updatedUser.role} unblocked successfully`;
 
         ResponseHandler.success(res, message, updatedUser, HttpStatusCode.OK);
     }
@@ -28,8 +28,9 @@ export class AdminController {
         try {
             const page = Number(req.query.page) || 1;
             const limit = Number(req.query.limit) || 10;
+            const role = req.query.role as 'user' | 'vendor'
 
-            const { users, total } = await this.getAllUsersUsecase.execute(page, limit);
+            const { users, total } = await this.getAllUsersUsecase.execute(page, limit, role);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, 'All users fetched successfully', users, HttpStatusCode.OK, meta);
         } catch (error) {

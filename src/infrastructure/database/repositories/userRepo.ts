@@ -11,10 +11,10 @@ export class UserRepository implements IUserRepository {
         return user as IUser;
     }
 
-    async getAllUsers(page: number, limit: number): Promise<{ users: IUser[]; total: number }> {
+    async getAllUsers(page: number, limit: number, role: string): Promise<{ users: IUser[]; total: number }> {
         const skip = (page - 1) * limit
-        const users = await userModel.find().skip(skip).limit(limit).lean();
-        const total = await userModel.countDocuments();
+        const users = await userModel.find({ role: role }).skip(skip).limit(limit).lean();
+        const total = await userModel.countDocuments({ role: role });
         return { users: users, total }
     }
 

@@ -48,7 +48,7 @@ export interface ILogoutUserUseCase {
 }
 
 export interface IGetAllUsersUseCase {
-    execute(page: number, limit: number): Promise<{ users: ResponseUserDTO[]; total: number }>
+    execute(page: number, limit: number, role: Exclude<TRole, 'admin'>): Promise<{ users: ResponseUserDTO[]; total: number }>
 }
 
 export interface IBlockUnblockUser {
