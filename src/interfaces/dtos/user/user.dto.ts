@@ -17,6 +17,8 @@ export interface UpdateUserDTO {
     phone?: number
     isBlocked?: boolean
     profileImage?: string
+    isVerified?: boolean
+    verificationReason?: string
     subscriptionType?: TSubscription
 
 }
@@ -30,6 +32,7 @@ export interface ResponseUserDTO {
     isBlocked: boolean
     wishlist: string[]
     role: TRole
+    verificationReason?: string
     subscriptionType: TSubscription
     createdAt: Date
     updatedAt: Date

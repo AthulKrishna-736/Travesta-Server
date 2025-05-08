@@ -51,6 +51,11 @@ const userSchema: Schema = new Schema<UserDocument>({
         type: Boolean,
         default: false
     },
+    verificationReason: {
+        type: String,
+        default: '',
+        trim: true
+    },
     kycDocuments: [{
         type: String
     }]

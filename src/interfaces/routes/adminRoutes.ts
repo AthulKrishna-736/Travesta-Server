@@ -26,5 +26,8 @@ export class adminRoutes extends BaseRouter {
 
             .get('/users', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.getAllUsers(req, res))
             .patch('/users/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.blockOrUnblockUser(req, res))
+
+            .get('/vendor-requests', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.getVendorRequest(req, res))
+            .patch('/vendor/:vendorId/verify', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.updateVendorReq(req, res))
     }
 }

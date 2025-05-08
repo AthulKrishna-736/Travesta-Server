@@ -54,3 +54,11 @@ export interface IGetAllUsersUseCase {
 export interface IBlockUnblockUser {
     execute(userId: string): Promise<IUser>
 }
+
+export interface IGetAllVendorReqUseCase {
+    execute(page: number, limit: number): Promise<{ vendors: ResponseUserDTO[]; total: number }>
+}
+
+export interface IUpdateVendorReqUseCase {
+    execute(vendorId: string, isVerified: boolean, verificationReason: string): Promise<{ message: string }>
+}

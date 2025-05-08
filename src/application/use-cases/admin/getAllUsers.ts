@@ -13,7 +13,6 @@ export class GetAllUsers implements IGetAllUsersUseCase {
 
     async execute(page: number, limit: number, role: string): Promise<{ users: ResponseUserDTO[]; total: number }> {
         const { users, total } = await this.userRepository.getAllUsers(page, limit, role);
-        console.log('checktotal: ', total)
 
         const nonAdminUsers: ResponseUserDTO[] = users
             .filter(user => user.role !== 'admin')

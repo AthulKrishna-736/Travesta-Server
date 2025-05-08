@@ -6,7 +6,7 @@ import { IAuthService } from "../../application/interfaces/authService.interface
 import { AuthService } from "../services/authService";
 import { MailService } from "../services/mailService";
 import { RedisService } from "../services/redisService"
-import { IBlockUnblockUser, IForgotPasswordUseCase, IGetAllUsersUseCase, IGoogleLoginUseCase, ILoginUserUseCase, ILogoutUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyAndRegisterUseCase, IVerifyKycUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
+import { IBlockUnblockUser, IForgotPasswordUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGoogleLoginUseCase, ILoginUserUseCase, ILogoutUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase, IVerifyAndRegisterUseCase, IVerifyKycUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
 import { RegisterUser } from "../../application/use-cases/auth/registerUser";
 import { ForgotPass } from "../../application/use-cases/auth/forgotPass";
 import { LoginUser } from "../../application/use-cases/auth/loginUser";
@@ -20,6 +20,9 @@ import { VerifyOtp } from "../../application/use-cases/verifyOtp";
 import { LogoutUser } from "../../application/use-cases/auth/logoutUser";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
+import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
+import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
+import { IMailService } from "../../application/interfaces/mailService.interface";
 
 container.register<IUserRepository>(TOKENS.UserRepository, {
   useClass: UserRepository,
@@ -29,7 +32,7 @@ container.register<IAuthService>(TOKENS.AuthService, {
   useClass: AuthService,
 });
 
-container.register(TOKENS.MailService, {
+container.register<IMailService>(TOKENS.MailService, {
   useClass: MailService,
 });
 
@@ -88,3 +91,14 @@ container.register<IGetAllUsersUseCase>(TOKENS.GetAllUsersUseCase, {
 container.register<IBlockUnblockUser>(TOKENS.BlockUserUseCase, {
   useClass: BlockUnblockUser,
 })
+
+container.register<IGetAllVendorReqUseCase>(TOKENS.GetAllVendorReqUseCase, {
+  useClass: GetAllVendorReq,
+})
+
+
+container.register<IUpdateVendorReqUseCase>(TOKENS.UpdateVendorReqUseCase, {
+  useClass: UpdateVendorReq,
+})
+
+

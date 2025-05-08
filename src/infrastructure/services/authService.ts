@@ -8,14 +8,14 @@ import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { jwtConfig, otpTimer } from "../config/jwtConfig";
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
-import { MailService } from "./mailService";
 import { RedisService } from "./redisService";
 import { TRole } from "../../shared/types/client.types";
+import { IMailService } from "../../application/interfaces/mailService.interface";
 
 @injectable()
 export class AuthService implements IAuthService {
     constructor(
-        @inject(TOKENS.MailService) private mailService: MailService,
+        @inject(TOKENS.MailService) private mailService: IMailService,
         @inject(TOKENS.RedisService) private redisService: RedisService
     ) { }
 

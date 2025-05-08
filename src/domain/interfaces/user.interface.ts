@@ -15,6 +15,7 @@ export interface IUser {
     profileImage?: string,
     wishlist: string[],
     isVerified?: boolean,
+    verificationReason?: string,
     kycDocuments?: string[],
     createdAt: Date,
     updatedAt: Date

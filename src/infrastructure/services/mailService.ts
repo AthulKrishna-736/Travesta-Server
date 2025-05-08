@@ -3,9 +3,10 @@ import { env } from '../config/env';
 import { AppError } from '../../utils/appError';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { injectable } from 'tsyringe';
+import { IMailService } from '../../application/interfaces/mailService.interface';
 
 @injectable()
-export class MailService {
+export class MailService implements IMailService{
     private transporter: nodemailer.Transporter;
     constructor() {
         this.transporter = nodemailer.createTransport({
@@ -62,5 +63,48 @@ export class MailService {
             throw new AppError('Failed to send OTP email. Please try again later.', HttpStatusCode.BAD_REQUEST);
         }
     }
+
+
+    async sendVendorRejectionEmail(email: string, reason: string): Promise<{ message: string }> {
+        try {
+            const html = `
+                <div style="font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; padding: 30px; max-width: 520px; margin: 50px auto; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
+                    <h2 style="text-align: center; color: #b91c1c; font-size: 24px; margin-bottom: 10px;">❌ Vendor Verification Rejected</h2>
+                    
+                    <p style="color: #334155; font-size: 16px; text-align: center; margin-bottom: 20px;">
+                        Your request to become a verified vendor has been <strong>rejected</strong>.
+                    </p>
+    
+                    <div style="background: #fef2f2; border-radius: 10px; padding: 15px; font-size: 14px; color: #991b1b; margin-bottom: 20px;">
+                        <strong>Reason:</strong> ${reason}
+                    </div>
+    
+                    <p style="font-size: 13px; color: #64748b; text-align: center;">
+                        If you believe this was a mistake or need clarification, please contact support.
+                    </p>
+    
+                    <div style="margin-top: 30px; text-align: center; font-size: 12px; color: #cbd5e1;">
+                        &mdash; Travesta Admin Team
+                    </div>
+                </div>
+            `;
+    
+            const mailOption = {
+                from: env.EMAIL,
+                to: email,
+                subject: 'Vendor Verification Rejected – Travesta',
+                html
+            }
+    
+            await this.transporter.sendMail(mailOption);
+    
+            return {
+                message: 'Vendor rejection email sent successfully'
+            };
+        } catch (error: any) {
+            throw new AppError('Failed to send rejection email.', HttpStatusCode.BAD_REQUEST);
+        }
+    }
+    
 
 }

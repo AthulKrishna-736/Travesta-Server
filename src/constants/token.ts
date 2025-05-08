@@ -21,4 +21,6 @@ export const TOKENS = {
   LogoutUserUseCase: 'LogoutUserUseCase',
   BlockUserUseCase: 'BlockUserUseCase',
   GetAllUsersUseCase: 'GetAllUsersUseCase',
+  GetAllVendorReqUseCase: 'GetAllVendorReqUseCase',
+  UpdateVendorReqUseCase: 'UpdateVendorReqUseCase',
 };
