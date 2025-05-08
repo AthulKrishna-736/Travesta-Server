@@ -1802,3 +1802,116 @@
 [2025-05-07 21:29:30] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-05-07 23:20:00] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-05-07 23:36:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 10:38:27] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 10:40:59] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-08 10:41:02] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-08 11:10:56] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 11:51:04] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 11:54:58] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:03] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:06] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:21] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:40] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:43] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:45] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:56:21] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:13:50] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 12:13:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 12:22:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 12:22:27] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:22:43] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:23:02] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:24:06] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:25:08] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:25:40] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:26:08] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:26:29] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:27:53] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:30:10] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 12:30:30] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:31:26] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:35:03] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 12:53:35] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 12:53:40] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-08 12:53:45] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-08 12:53:50] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-08 12:53:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 12:53:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:57] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 14:18:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:19:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:19:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:19:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:19:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:19] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 15:06:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:09:43] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 15:10:18] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:10:51] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:10:53] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:10:53] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:10:54] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:12:15] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:12:51] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-08 15:13:25] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:28:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 15:34:36] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 15:35:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m

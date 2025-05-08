@@ -6,6 +6,7 @@ import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
 import { AuthController } from "../controllers/base/authController";
+import { checkUserBlock } from "../../middlewares/checkBlock";
 
 export class userRoutes extends BaseRouter {
     private authController: AuthController
@@ -26,7 +27,7 @@ export class userRoutes extends BaseRouter {
             // .post('/auth/kyc')
             .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res) => this.authController.forgotPassword(req, res))
             .patch('/auth/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res) => this.authController.updatePassword(req, res))
-            .post('/auth/logout', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), (req: CustomRequest, res) => this.authController.logout(req, res));
+            .post('/auth/logout', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this.authController.logout(req, res));
 
 
         this.router

@@ -3239,3 +3239,657 @@
   "iat": 1746641166,
   "exp": 1746642066
 }[0m
+[2025-05-08 10:13:23] INFO: [34mRunning in development mode[0m
+[2025-05-08 10:13:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 10:13:24] INFO: [34mRedis connected successfully[0m
+[2025-05-08 10:35:03] INFO: [34mRunning in development mode[0m
+[2025-05-08 10:35:03] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 10:35:04] INFO: [34mRedis connected successfully[0m
+[2025-05-08 10:38:27] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 10:38:31] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680907,
+  "exp": 1746681807
+}[0m
+[2025-05-08 10:39:11] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:39:18] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:39:21] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:40:59] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-08 10:41:02] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-08 10:41:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:41:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:41:48] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:41:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:42:04] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:42:04] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:43:55] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:43:56] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:00] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:00] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:06] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:07] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:11] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:36] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:44:37] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:45:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:45:17] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "iat": 1746681100,
+  "exp": 1746682000
+}[0m
+[2025-05-08 10:45:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "iat": 1746681344,
+  "exp": 1746682244
+}[0m
+[2025-05-08 10:45:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:45:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:45:50] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 10:45:50] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746680943,
+  "exp": 1746681843
+}[0m
+[2025-05-08 11:10:56] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 11:48:04] INFO: [34mRunning in development mode[0m
+[2025-05-08 11:48:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 11:48:05] INFO: [34mRedis connected successfully[0m
+[2025-05-08 11:51:04] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 11:51:06] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:51:16] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:51:39] INFO: [34mRunning in development mode[0m
+[2025-05-08 11:51:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 11:51:39] INFO: [34mRedis connected successfully[0m
+[2025-05-08 11:51:43] INFO: [34mRunning in development mode[0m
+[2025-05-08 11:51:43] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 11:51:44] INFO: [34mRedis connected successfully[0m
+[2025-05-08 11:54:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:21] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:21] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:22] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:23] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:23] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:25] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:25] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 11:54:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746685487,
+  "exp": 1746686387
+}[0m
+[2025-05-08 11:54:58] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746685487,
+  "exp": 1746686387
+}[0m
+[2025-05-08 11:55:03] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746685487,
+  "exp": 1746686387
+}[0m
+[2025-05-08 11:55:06] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746685487,
+  "exp": 1746686387
+}[0m
+[2025-05-08 11:55:21] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746685487,
+  "exp": 1746686387
+}[0m
+[2025-05-08 11:55:40] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746685487,
+  "exp": 1746686387
+}[0m
+[2025-05-08 11:55:43] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:55:45] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746685487,
+  "exp": 1746686387
+}[0m
+[2025-05-08 11:55:45] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:56:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746685487,
+  "exp": 1746686387
+}[0m
+[2025-05-08 11:56:21] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 11:59:56] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746685264,
+  "exp": 1746686164
+}[0m
+[2025-05-08 12:13:50] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 12:13:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 12:22:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746686632,
+  "exp": 1746687532
+}[0m
+[2025-05-08 12:22:15] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746686632,
+  "exp": 1746687532
+}[0m
+[2025-05-08 12:22:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 12:22:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746687145,
+  "exp": 1746688045
+}[0m
+[2025-05-08 12:22:27] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:22:43] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:23:02] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:24:06] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:24:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746686632,
+  "exp": 1746687532
+}[0m
+[2025-05-08 12:24:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746686632,
+  "exp": 1746687532
+}[0m
+[2025-05-08 12:24:38] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746687276,
+  "exp": 1746688176
+}[0m
+[2025-05-08 12:24:57] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746686632,
+  "exp": 1746687532
+}[0m
+[2025-05-08 12:24:58] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746686632,
+  "exp": 1746687532
+}[0m
+[2025-05-08 12:25:08] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:25:40] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:26:08] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:26:29] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:27:53] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:30:10] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 12:30:30] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:31:26] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 12:35:03] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 12:53:35] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 12:53:40] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-08 12:53:45] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-08 12:53:50] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-08 12:53:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 12:53:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:57] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 14:18:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:18:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:19:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:19:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:19:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 14:19:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:19] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 15:06:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:06:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-08 15:09:42] INFO: [34mRunning in development mode[0m
+[2025-05-08 15:09:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 15:09:43] INFO: [34mRedis connected successfully[0m
+[2025-05-08 15:09:43] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 15:09:44] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:09:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:09:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:10:18] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:10:51] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:10:53] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:10:53] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:10:54] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:11:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:11:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:11:23] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:11:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:12:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746697267,
+  "exp": 1746698167
+}[0m
+[2025-05-08 15:12:15] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:12:42] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:12:42] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:12:51] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-08 15:13:01] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:13:01] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:13:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1746697376,
+  "exp": 1746698276
+}[0m
+[2025-05-08 15:13:25] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-08 15:19:06] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746697183,
+  "exp": 1746698083
+}[0m
+[2025-05-08 15:20:41] INFO: [34mRunning in development mode[0m
+[2025-05-08 15:20:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 15:20:42] INFO: [34mRedis connected successfully[0m
+[2025-05-08 15:20:50] INFO: [34mRunning in development mode[0m
+[2025-05-08 15:20:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 15:20:51] INFO: [34mRunning in development mode[0m
+[2025-05-08 15:20:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 15:20:52] INFO: [34mRedis connected successfully[0m
+[2025-05-08 15:25:14] INFO: [34mRunning in development mode[0m
+[2025-05-08 15:25:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 15:25:14] INFO: [34mRedis connected successfully[0m
+[2025-05-08 15:28:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 15:31:29] INFO: [34mRunning in development mode[0m
+[2025-05-08 15:31:29] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 15:31:30] INFO: [34mRedis connected successfully[0m
+[2025-05-08 15:32:03] INFO: [34mRunning in development mode[0m
+[2025-05-08 15:32:03] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 15:32:03] INFO: [34mRedis connected successfully[0m
+[2025-05-08 15:32:33] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746698305,
+  "exp": 1746699205
+}[0m
+[2025-05-08 15:32:40] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746698305,
+  "exp": 1746699205
+}[0m
+[2025-05-08 15:32:42] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "iat": 1746698305,
+  "exp": 1746699205
+}[0m
+[2025-05-08 15:34:35] WARN: [33mAccess token expired or invalid:[0m
+[2025-05-08 15:34:36] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 15:34:37] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1746698676,
+  "exp": 1746698681
+}[0m
+[2025-05-08 15:35:06] WARN: [33mAccess token expired or invalid:[0m
+[2025-05-08 15:35:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-08 15:35:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1746698706,
+  "exp": 1746698711
+}[0m
+[2025-05-08 15:35:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1746698706,
+  "exp": 1746698711
+}[0m
+[2025-05-08 15:35:57] INFO: [34mRunning in development mode[0m
+[2025-05-08 15:35:57] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-08 15:35:58] INFO: [34mRedis connected successfully[0m

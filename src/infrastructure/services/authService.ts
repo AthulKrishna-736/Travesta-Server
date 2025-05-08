@@ -28,36 +28,36 @@ export class AuthService implements IAuthService {
         return bcrypt.compare(inputPass, hashPass)
     }
 
-    generateAccessToken(userId: string, role: TRole): string {
+    generateAccessToken(userId: string, role: TRole, email: string): string {
         const secret: Secret = env.JWT_ACCESS_SECRET;
         const options: SignOptions = {
-            expiresIn: `${jwtConfig.accessToken.expiresIn}m`,
+            expiresIn: `${jwtConfig.accessToken.expiresIn}d`,
         };
 
-        return jwt.sign({ userId, role }, secret, options);
+        return jwt.sign({ userId, role, email }, secret, options);
     }
 
-    generateRefreshToken(userId: string, role: TRole): string {
+    generateRefreshToken(userId: string, role: TRole, email: string): string {
         const secret: Secret = env.JWT_REFRESH_SECRET;
         const options: SignOptions = {
             expiresIn: `${jwtConfig.refreshToken.expiresIn}d`,
         };
 
-        return jwt.sign({ userId, role }, secret, options);
+        return jwt.sign({ userId, role, email }, secret, options);
     }
 
-    verifyAccessToken(token: string): { userId: string, role: TRole } | null {
+    verifyAccessToken(token: string): { userId: string, role: TRole, email: string } | null {
         try {
-            const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: TRole }
+            const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
         } catch (error: any) {
             throw new AppError("Invalid or expired access token", HttpStatusCode.UNAUTHORIZED);
         }
     }
 
-    verifyRefreshToken(token: string): { userId: string, role: TRole } | null {
+    verifyRefreshToken(token: string): { userId: string, role: TRole, email: string } | null {
         try {
-            const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: TRole }
+            const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
         } catch (error: any) {
             throw new AppError("Invalid or expired refresh token", HttpStatusCode.UNAUTHORIZED)
@@ -70,7 +70,7 @@ export class AuthService implements IAuthService {
         if (!decoded) {
             throw new AppError('Invalid refresh token payload', HttpStatusCode.UNAUTHORIZED)
         }
-        const newAccessToken = this.generateAccessToken(decoded.userId, decoded.role);
+        const newAccessToken = this.generateAccessToken(decoded.userId, decoded.role, decoded.email);
         return newAccessToken;
     }
 

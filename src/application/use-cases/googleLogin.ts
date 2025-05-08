@@ -64,8 +64,8 @@ export class GoogleLogin implements IGoogleLoginUseCase{
         await this.userRepository.updateUser(user._id, { isGoogle: true, profileImage: payload.picture })
 
 
-        const accessToken = this.authService.generateAccessToken(user._id, user.role);
-        const refreshToken = this.authService.generateRefreshToken(user._id, user.role);
+        const accessToken = this.authService.generateAccessToken(user._id, user.role, user.email);
+        const refreshToken = this.authService.generateRefreshToken(user._id, user.role, user.email);
 
         await this.redisService.storeRefreshToken(user._id, refreshToken, jwtConfig.refreshToken.maxAge / 1000)
 

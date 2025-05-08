@@ -9,6 +9,7 @@ import logger from "../utils/logger";
 import { IJwtService } from "../application/interfaces/jwtService.interface";
 import { TOKENS } from "../constants/token";
 import { CustomRequest } from "../utils/customRequest";
+import { setAccessCookie } from "../utils/setCookies";
 
 export const authMiddleware = async (req: CustomRequest, res: Response, next: NextFunction) => {
     const authService = container.resolve<IAuthService>(TOKENS.AuthService);
@@ -47,12 +48,7 @@ export const authMiddleware = async (req: CustomRequest, res: Response, next: Ne
                 }
 
                 const newAccessToken = await authService.refreshAccessToken(refreshToken);
-                res.cookie("access_token", newAccessToken, {
-                    httpOnly: true,
-                    secure: env.NODE_ENV === "production",
-                    sameSite: "strict",
-                    maxAge: jwtConfig.accessToken.maxAge
-                });
+                setAccessCookie(newAccessToken, res)
 
                 return next();
             } catch (refreshErr: any) {
