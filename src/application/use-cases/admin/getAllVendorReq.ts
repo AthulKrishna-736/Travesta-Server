@@ -15,22 +15,22 @@ export class GetAllVendorReq implements IGetAllVendorReqUseCase {
     async execute(page: number, limit: number): Promise<{ vendors: ResponseUserDTO[]; total: number; }> {
         const { users, total } = await this.userRepository.getAllUsers(page, limit, 'vendor')
 
-        const mappedVendors: ResponseUserDTO[] = users.map((vendor)=> {
-                return {
-                    id: vendor._id!?.toString(),
-                    name: `${vendor.firstName}${vendor.lastName}`,
-                    email: vendor.email,
-                    isGoogle: vendor.isGoogle ?? false,
-                    phone: vendor.phone,
-                    isBlocked: vendor.isBlocked,
-                    wishlist: vendor.wishlist,
-                    isVerified: vendor.isVerified,
-                    role: vendor.role,
-                    verificationReason: vendor.verificationReason ?? '',
-                    subscriptionType: vendor.subscriptionType,
-                    createdAt: vendor.createdAt,
-                    updatedAt: vendor.updatedAt
-                }
+        const mappedVendors: ResponseUserDTO[] = users.map((vendor) => {
+            return {
+                id: vendor._id!?.toString(),
+                name: `${vendor.firstName}${vendor.lastName}`,
+                email: vendor.email,
+                isGoogle: vendor.isGoogle ?? false,
+                phone: vendor.phone,
+                isBlocked: vendor.isBlocked,
+                wishlist: vendor.wishlist,
+                isVerified: vendor.isVerified,
+                role: vendor.role,
+                verificationReason: vendor.verificationReason || 'Pending',
+                subscriptionType: vendor.subscriptionType,
+                createdAt: vendor.createdAt,
+                updatedAt: vendor.updatedAt
+            }
         })
         console.log('map vendors: ', mappedVendors)
 

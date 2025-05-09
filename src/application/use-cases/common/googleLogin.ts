@@ -1,23 +1,24 @@
 import { inject, injectable } from "tsyringe";
+import { IGoogleLoginUseCase } from "../../domain/interfaces/usecases.interface";
+import { TOKENS } from "../../constants/token";
 import { IUser, IUserRepository } from "../../domain/interfaces/user.interface";
 import { IAuthService } from "../interfaces/authService.interface";
-import { TOKENS } from "../../constants/token";
+import { RedisService } from "../../infrastructure/services/redisService";
+import { OAuth2Client } from "google-auth-library";
+import { env } from "../../infrastructure/config/env";
+import { TRole } from "../../shared/types/client.types";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { jwtConfig } from "../../infrastructure/config/jwtConfig";
-import { RedisService } from "../../infrastructure/services/redisService";
-import { env } from '../../infrastructure/config/env'
-import { OAuth2Client } from 'google-auth-library';
 import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
-import { TRole } from "../../shared/types/client.types";
-import { IGoogleLoginUseCase } from "../../domain/interfaces/usecases.interface";
+import { jwtConfig } from "../../infrastructure/config/jwtConfig";
+
 
 @injectable()
 export class GoogleLogin implements IGoogleLoginUseCase{
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private readonly authService: IAuthService,
-        @inject(TOKENS.RedisService) private readonly redisService: RedisService
+        @inject(TOKENS.RedisService) private readonly redisService: RedisService,
     ) { }
 
     async execute(googleToken: string, role: TRole): Promise<{ accessToken: string, refreshToken: string, user: IUser }> {

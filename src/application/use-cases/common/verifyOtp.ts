@@ -1,9 +1,9 @@
 import { inject, injectable } from "tsyringe";
-import { TOKENS } from "../../constants/token";
-import { IAuthService } from "../interfaces/authService.interface";
-import { AppError } from "../../utils/appError";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { IVerifyAndRegisterUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/usecases.interface";
+import { TOKENS } from "../../../constants/token";
+import { IAuthService } from "../../interfaces/authService.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { IVerifyAndRegisterUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/usecases.interface";
 
 
 @injectable()

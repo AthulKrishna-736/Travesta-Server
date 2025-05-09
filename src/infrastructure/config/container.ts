@@ -12,17 +12,17 @@ import { ForgotPass } from "../../application/use-cases/auth/forgotPass";
 import { LoginUser } from "../../application/use-cases/auth/loginUser";
 import { ResendOtp } from "../../application/use-cases/auth/resendOtp";
 import { UpdatePassword } from "../../application/use-cases/auth/updatePassword";
-import { UpdateUser } from "../../application/use-cases/auth/updateUserProfle";
+import { UpdateUser } from "../../application/use-cases/common/updateUserProfle";
 import { VerifyAndRegister } from "../../application/use-cases/auth/verifyAndRegister";
 import { VerifyKyc } from "../../application/use-cases/auth/verifyKyc";
-import { GoogleLogin } from "../../application/use-cases/googleLogin";
-import { VerifyOtp } from "../../application/use-cases/verifyOtp";
 import { LogoutUser } from "../../application/use-cases/auth/logoutUser";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
 import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
 import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
 import { IMailService } from "../../application/interfaces/mailService.interface";
+import { GoogleLogin } from "../../application/use-cases/googleLogin";
+import { VerifyOtp } from "../../application/use-cases/common/verifyOtp";
 
 container.register<IUserRepository>(TOKENS.UserRepository, {
   useClass: UserRepository,

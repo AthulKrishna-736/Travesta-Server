@@ -17,7 +17,6 @@ export class AuthController {
     constructor(
         @inject(TOKENS.RegisterUserUseCase) private registerUser: IRegisterUserUseCase,
         @inject(TOKENS.LoginUserUseCase) private loginUser: ILoginUserUseCase,
-        @inject(TOKENS.UpdateUserUseCase) private updateUser: IUpdateUserUseCase,
         @inject(TOKENS.ResendOtpUseCase) private resendOtp: IResendOtpUseCase,
         @inject(TOKENS.ForgotPasswordUseCase) private forgotPass: IForgotPasswordUseCase,
         @inject(TOKENS.UpdatePasswordUseCase) private updatePass: IUpdatePasswordUseCase,
@@ -98,20 +97,6 @@ export class AuthController {
             ResponseHandler.success(res, 'Google login successful', user, HttpStatusCode.OK);
         } catch (error: any) {
             throw error;
-        }
-    }
-
-    async updateProfile(req: CustomRequest, res: Response): Promise<void> {
-        try {
-            const userId = req.params.id;
-            if (!userId) {
-                throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST)
-            }
-            const userData: UpdateUserDTO = req.body
-            const updateUser = await this.updateUser.execute(userId, userData)
-            ResponseHandler.success(res, 'Profile updated successfully', updateUser, HttpStatusCode.OK)
-        } catch (error: any) {
-            throw error
         }
     }
 

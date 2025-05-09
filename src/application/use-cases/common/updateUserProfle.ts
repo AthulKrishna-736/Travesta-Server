@@ -7,7 +7,7 @@ import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
-export class UpdateUser implements IUpdateUserUseCase{
+export class UpdateUser implements IUpdateUserUseCase {
     constructor(
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository
     ) { }

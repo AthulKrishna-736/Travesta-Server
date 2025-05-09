@@ -15,15 +15,22 @@ export const createUserSchema = z.object({
 
 //update user
 export const updateUserSchema = z.object({
-    firstName: z.string().optional(),
-    lastName: z.string().optional(),
-    phone: z
-        .string()
-        .regex(/^\d{10}$/, "Phone number must be exactly 10 digits")
-        .optional(),
-    profileImage: z.string().url("Profile image must be a valid URL").optional(),
-    subscriptionType: z.enum(["basic", "medium", "vip"]).optional(),
-})
+  firstName: z.string().min(1, "First name cannot be empty").optional(),
+  lastName: z.string().min(1, "Last name cannot be empty").optional(),
+  phone: z
+    .string()
+    .regex(/^\d{10}$/, "Phone number must be exactly 10 digits")
+    .optional(),
+  profileImage: z
+    .string()
+    .url("Profile image must be a valid URL")
+    .optional(),
+  subscriptionType: z.enum(["basic", "medium", "vip"]).optional(),
+  verificationReason: z.string().min(1).optional(),
+  isVerified: z.boolean().optional(),
+  isBlocked: z.boolean().optional(),
+});
+
 
 //login user
 export const loginSchema = z.object({
