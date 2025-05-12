@@ -29,5 +29,5 @@ export interface IUserRepository {
     deleteUser(id: string): Promise<boolean>
     updatePassword(id: string, password: string): Promise<boolean>
     verifyKyc(id: string): Promise<boolean>
-    getAllUsers(page: number, limit: number, role: string): Promise<{ users: IUser[]; total: number }>
+    getAllUsers(page: number, limit: number, role: string, search?: string): Promise<{ users: IUser[]; total: number }>
 }

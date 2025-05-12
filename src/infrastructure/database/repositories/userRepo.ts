@@ -11,10 +11,19 @@ export class UserRepository implements IUserRepository {
         return user as IUser;
     }
 
-    async getAllUsers(page: number, limit: number, role: string): Promise<{ users: IUser[]; total: number }> {
+    async getAllUsers(page: number, limit: number, role: string, search?: string): Promise<{ users: IUser[]; total: number }> {
         const skip = (page - 1) * limit
-        const users = await userModel.find({ role: role }).skip(skip).limit(limit).lean();
-        const total = await userModel.countDocuments({ role: role });
+        const filter: any = { role }
+
+        if (search) {
+            const searchRegex = new RegExp(search, 'i');
+            filter.$or = [
+                { firstName: searchRegex },
+                { email: searchRegex }
+            ];
+        }
+        const users = await userModel.find(filter).skip(skip).limit(limit).lean();
+        const total = await userModel.countDocuments(filter);
         return { users: users, total }
     }
 

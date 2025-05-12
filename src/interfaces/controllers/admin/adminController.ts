@@ -32,8 +32,9 @@ export class AdminController {
             const page = Number(req.query.page) || 1;
             const limit = Number(req.query.limit) || 10;
             const role = req.query.role as 'user' | 'vendor'
+            const search = req.query.search as string
 
-            const { users, total } = await this._getAllUsersUsecase.execute(page, limit, role);
+            const { users, total } = await this._getAllUsersUsecase.execute(page, limit, role, search);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, 'All users fetched successfully', users, HttpStatusCode.OK, meta);
         } catch (error) {
@@ -45,8 +46,9 @@ export class AdminController {
         try {
             const page = Number(req.query.page) || 1
             const limit = Number(req.query.limit) || 10
+            const search = req.query.search as string
 
-            const { vendors, total } = await this._getAllVendorReqUseCase.execute(page, limit)
+            const { vendors, total } = await this._getAllVendorReqUseCase.execute(page, limit, search)
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, 'Vendor requests fetched successfully', vendors, HttpStatusCode.OK, meta);
         } catch (error) {

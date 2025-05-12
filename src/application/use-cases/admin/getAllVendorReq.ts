@@ -12,8 +12,8 @@ export class GetAllVendorReq implements IGetAllVendorReqUseCase {
         private readonly userRepository: IUserRepository
     ) { }
 
-    async execute(page: number, limit: number): Promise<{ vendors: ResponseUserDTO[]; total: number; }> {
-        const { users, total } = await this.userRepository.getAllUsers(page, limit, 'vendor')
+    async execute(page: number, limit: number, search?: string): Promise<{ vendors: ResponseUserDTO[]; total: number; }> {
+        const { users, total } = await this.userRepository.getAllUsers(page, limit, 'vendor', search)
 
         const mappedVendors: ResponseUserDTO[] = users.map((vendor) => {
             return {

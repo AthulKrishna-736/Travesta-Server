@@ -11,8 +11,9 @@ export class GetAllUsers implements IGetAllUsersUseCase {
         private readonly userRepository: IUserRepository
     ) { }
 
-    async execute(page: number, limit: number, role: string): Promise<{ users: ResponseUserDTO[]; total: number }> {
-        const { users, total } = await this.userRepository.getAllUsers(page, limit, role);
+    async execute(page: number, limit: number, role: string, search: string): Promise<{ users: ResponseUserDTO[]; total: number }> {
+
+        const { users, total } = await this.userRepository.getAllUsers(page, limit, role, search);
 
         const nonAdminUsers: ResponseUserDTO[] = users
             .filter(user => user.role !== 'admin')
