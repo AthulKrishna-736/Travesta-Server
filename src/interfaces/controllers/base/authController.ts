@@ -11,18 +11,12 @@ import { TOKENS } from "../../../constants/token";
 import { CustomRequest } from "../../../utils/customRequest";
 import { IForgotPasswordUseCase, IGoogleLoginUseCase, ILoginUserUseCase, ILogoutUserUseCase, IRegisterUserUseCase, IResendOtpUseCase, IUpdatePasswordUseCase, IUpdateUserUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/usecases.interface";
 import { setAccessCookie, setRefreshCookie } from "../../../utils/setCookies";
+import { IAuthUseCases } from "../../../domain/interfaces/auth.interface";
 
 @injectable()
 export class AuthController {
     constructor(
-        @inject(TOKENS.RegisterUserUseCase) private registerUser: IRegisterUserUseCase,
-        @inject(TOKENS.LoginUserUseCase) private loginUser: ILoginUserUseCase,
-        @inject(TOKENS.ResendOtpUseCase) private resendOtp: IResendOtpUseCase,
-        @inject(TOKENS.ForgotPasswordUseCase) private forgotPass: IForgotPasswordUseCase,
-        @inject(TOKENS.UpdatePasswordUseCase) private updatePass: IUpdatePasswordUseCase,
-        @inject(TOKENS.VerifyOtpUseCase) private verifyOtp: IVerifyOtpUseCase,
-        @inject(TOKENS.LogoutUserUseCase) private logoutUser: ILogoutUserUseCase,
-        @inject(TOKENS.GoogleLoginUseCase) private googleLogin: IGoogleLoginUseCase,
+        @inject(TOKENS.AuthUseCases) private _authUseCases: IAuthUseCases
     ) { }
 
     async register(req: CustomRequest, res: Response): Promise<void> {
@@ -32,20 +26,20 @@ export class AuthController {
                 throw new AppError('Name, email and password are required', HttpStatusCode.BAD_REQUEST);
             }
 
-            const newUser = await this.registerUser.execute(userData)
+            const newUser = await this._authUseCases.register(userData)
             ResponseHandler.success(res, 'User registration on progress', newUser, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
         }
     }
 
-    async resentOtp(req: CustomRequest, res: Response): Promise<void> {
+    async resendOtp(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { userId, purpose } = req.body;
             if (!userId || !purpose) {
                 throw new AppError('Userid and purpose are required', HttpStatusCode.BAD_REQUEST);
             }
-            const result = await this.resendOtp.execute(userId, purpose);
+            const result = await this._authUseCases.resendOtp(userId, purpose);
 
             ResponseHandler.success(res, result.message, null, HttpStatusCode.OK)
         } catch (error: any) {
@@ -59,8 +53,8 @@ export class AuthController {
             if (!email || !password || !role) {
                 throw new AppError('Email password and role are required', HttpStatusCode.BAD_REQUEST)
             }
-            const { accessToken, refreshToken, user } = await this.loginUser.execute(email, password, role)
-            
+            const { accessToken, refreshToken, user } = await this._authUseCases.login(email, password, role)
+
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
@@ -78,7 +72,7 @@ export class AuthController {
                 throw new AppError('Google token and role are required', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { accessToken, refreshToken, user } = await this.googleLogin.execute(credential, role);
+            const { accessToken, refreshToken, user } = await this._authUseCases.loginGoogle(credential, role);
 
             res
                 .cookie('access_token', accessToken, {
@@ -107,7 +101,7 @@ export class AuthController {
                 throw new AppError('Email and role missing in body', HttpStatusCode.BAD_REQUEST)
             }
 
-            const data = await this.forgotPass.execute(email, role)
+            const data = await this._authUseCases.forgotPass(email, role)
             ResponseHandler.success(res, data.message, data.userId, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
@@ -121,7 +115,7 @@ export class AuthController {
                 throw new AppError('User email or password are required.', HttpStatusCode.BAD_REQUEST);
             }
 
-            await this.updatePass.execute(email, password)
+            await this._authUseCases.resetPass(email, password)
             ResponseHandler.success(res, 'Password updated successfully', null, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
@@ -132,7 +126,7 @@ export class AuthController {
         try {
             const { userId, otp, purpose } = req.body;
 
-            const data = await this.verifyOtp.execute(userId, otp, purpose)
+            const data = await this._authUseCases.verifyOtp(userId, otp, purpose)
             if (!data.isOtpVerified) {
                 throw new AppError('Otp verification failed or session expired', HttpStatusCode.BAD_REQUEST)
             }
@@ -152,30 +146,12 @@ export class AuthController {
                 throw new AppError('Access or Refresh token missing in cookies', HttpStatusCode.BAD_REQUEST);
             }
 
-            let userId: string;
-
-            const authService = container.resolve<IAuthService>(TOKENS.AuthService);
-
-            try {
-                const decoded = authService.verifyAccessToken(accessToken);
-                if (!decoded || !decoded.userId) {
-                    throw new AppError('UserId missing in access token', HttpStatusCode.BAD_REQUEST);
-                }
-                userId = decoded.userId;
-            } catch {
-                const decodedRefresh = authService.verifyRefreshToken(refreshToken);
-                if (!decodedRefresh || !decodedRefresh.userId) {
-                    throw new AppError('UserId missing in refresh token', HttpStatusCode.BAD_REQUEST);
-                }
-                userId = decodedRefresh.userId;
-            }
-
-            await this.logoutUser.execute(userId, accessToken);
+            const { message } = await this._authUseCases.logout(accessToken, refreshToken);
 
             res.clearCookie('access_token', { httpOnly: true, secure: true, sameSite: 'strict' });
             res.clearCookie('refresh_token', { httpOnly: true, secure: true, sameSite: 'strict' });
 
-            ResponseHandler.success(res, 'Logged out successfully', null, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error: any) {
             throw new AppError(error.message || 'Logout failed', HttpStatusCode.UNAUTHORIZED);
         }

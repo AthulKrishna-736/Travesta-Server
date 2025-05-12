@@ -8,19 +8,17 @@ export const TOKENS = {
   RedisService: 'RedisService',
 
   // Use Cases
-  RegisterUserUseCase: 'RegisterUserUseCase',
-  ForgotPasswordUseCase: 'ForgotPasswordUseCase',
-  LoginUserUseCase: 'LoginUserUseCase',
-  ResendOtpUseCase: 'ResendOtpUseCase',
-  UpdatePasswordUseCase: 'UpdatePasswordUseCase',
-  UpdateUserUseCase: 'UpdateUserUseCase',
-  VerifyAndRegisterUseCase: 'VerifyAndRegisterUseCase',
-  VerifyKycUseCase: 'VerifyKycUseCase',
-  GoogleLoginUseCase: 'GoogleLoginUseCase',
-  VerifyOtpUseCase: 'VerifyOtpUseCase',
-  LogoutUserUseCase: 'LogoutUserUseCase',
+  AuthUseCases: 'AuthUseCases',
+
+  //admin UseCases
   BlockUserUseCase: 'BlockUserUseCase',
   GetAllUsersUseCase: 'GetAllUsersUseCase',
   GetAllVendorReqUseCase: 'GetAllVendorReqUseCase',
   UpdateVendorReqUseCase: 'UpdateVendorReqUseCase',
+
+  //user UseCases
+  UpdateUserUseCase: 'UpdateUserUseCase',
+
+  //vendor UseCases
+
 };

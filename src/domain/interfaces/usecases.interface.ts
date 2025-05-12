@@ -47,6 +47,7 @@ export interface ILogoutUserUseCase {
     execute(userId: string, accessToken: string): Promise<void>
 }
 
+//adminuse cases
 export interface IGetAllUsersUseCase {
     execute(page: number, limit: number, role: Exclude<TRole, 'admin'>): Promise<{ users: ResponseUserDTO[]; total: number }>
 }

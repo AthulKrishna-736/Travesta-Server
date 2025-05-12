@@ -24,7 +24,7 @@ export class vendorRoutes extends BaseRouter {
             .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this.authController.login(req, res))
             .post('/auth/google-login', validateRequest(googleLoginSchema), (req: CustomRequest, res) => this.authController.loginGoogle(req, res))
             .post('/auth/verifyOtp', validateRequest(verifyOtp), (req: CustomRequest, res) => this.authController.verifyOTP(req, res))
-            .post('/auth/resendOtp', validateRequest(resendOtpSchema), (req: CustomRequest, res) => this.authController.resentOtp(req, res))
+            .post('/auth/resendOtp', validateRequest(resendOtpSchema), (req: CustomRequest, res) => this.authController.resendOtp(req, res))
             .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res) => this.authController.forgotPassword(req, res))
             .patch('/auth/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res) => this.authController.updatePassword(req, res))
             .post('/auth/logout', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this.authController.logout(req, res));

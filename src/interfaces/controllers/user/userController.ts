@@ -11,7 +11,7 @@ import { IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interfac
 @injectable()
 export class UserController {
     constructor(
-        @inject(TOKENS.UpdateUserUseCase) private updateUser: IUpdateUserUseCase,
+        @inject(TOKENS.UpdateUserUseCase) private _updateUser: IUpdateUserUseCase,
     ) { }
 
     async updateProfile(req: CustomRequest, res: Response): Promise<void> {
@@ -21,7 +21,7 @@ export class UserController {
                 throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST)
             }
             const userData: UpdateUserDTO = req.body
-            const updateUser = await this.updateUser.execute(userId, userData)
+            const updateUser = await this._updateUser.execute(userId, userData)
             ResponseHandler.success(res, 'Profile updated successfully', updateUser, HttpStatusCode.OK)
         } catch (error: any) {
             throw error
