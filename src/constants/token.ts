@@ -6,6 +6,7 @@ export const TOKENS = {
   AuthService: 'AuthService',
   MailService: 'MailService',
   RedisService: 'RedisService',
+  AwsS3Service: 'AwsS3Service',
 
   // Use Cases
   AuthUseCases: 'AuthUseCases',
@@ -18,6 +19,7 @@ export const TOKENS = {
 
   //user UseCases
   UpdateUserUseCase: 'UpdateUserUseCase',
+  GetUserUseCase: 'GetUserUseCase',
 
   //vendor UseCases
 

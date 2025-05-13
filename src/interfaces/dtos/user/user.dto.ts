@@ -32,6 +32,7 @@ export interface ResponseUserDTO {
     isGoogle: boolean
     phone: number
     isBlocked: boolean
+    profileImage?: string
     wishlist: string[]
     role: TRole
     kycDocuments?: []

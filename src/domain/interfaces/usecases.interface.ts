@@ -5,7 +5,11 @@ import { IUser } from "./user.interface";
 
 //user UserCases
 export interface IUpdateUserUseCase {
-    execute(userId: string, userData: UpdateUserDTO): Promise<{ user: ResponseUserDTO, message: string }>
+    execute(userId: string, userData: UpdateUserDTO, file?: Express.Multer.File): Promise<{ user: ResponseUserDTO, message: string }>
+}
+
+export interface IGetUserUseCase {
+    execute(userId: string): Promise<void>
 }
 
 //admin Use cases

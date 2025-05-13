@@ -8,6 +8,7 @@ import { authorizeRoles } from "../../middlewares/roleMIddleware";
 import { AuthController } from "../controllers/base/authController";
 import { checkUserBlock } from "../../middlewares/checkBlock";
 import { UserController } from "../controllers/user/userController";
+import { upload } from "../../infrastructure/config/multer";
 
 export class userRoutes extends BaseRouter {
     private _authController: AuthController
@@ -33,6 +34,6 @@ export class userRoutes extends BaseRouter {
             .post('/auth/logout', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this._authController.logout(req, res))
 
             //profile routes
-            .patch('/profile', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, validateRequest(updateUserSchema), (req: CustomRequest, res) => this._userController.updateProfile(req, res))
+            .patch('/profile', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, upload.single('image'), validateRequest(updateUserSchema), (req: CustomRequest, res) => this._userController.updateProfile(req, res))
     }
 }

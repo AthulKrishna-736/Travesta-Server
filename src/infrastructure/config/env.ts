@@ -18,4 +18,8 @@ export const env = {
     CLIENT_URL: process.env.CLIENT_URL,
     GOOGLE_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME!,
+    AWS_ACCESSKEYID: process.env.AWS_ACCESSKEYID!,
+    AWS_SECRETACCESSKEY: process.env.AWS_SECRETACCESSKEY!,
+    AWS_REGION: process.env.AWS_REGION!,
 }

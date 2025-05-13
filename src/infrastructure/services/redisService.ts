@@ -11,6 +11,22 @@ export class RedisService implements IOtpService, IJwtService {
         return `otp:${userId}:${purpose}`
     }
 
+    async get(key: string): Promise<any | null> {
+        const raw = await this.redisClient.get(key);
+        if (!raw) return null;
+        return JSON.parse(raw);
+    }
+
+    async set(key: string, value: any, ttl: number): Promise<void> {
+        await this.redisClient.set(key, JSON.stringify(value), {
+            EX: ttl,
+        });
+    }
+
+    async del(key: string): Promise<void> {
+        await this.redisClient.del(key);
+    }
+
     async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset", expiresAt: number): Promise<void> {
         const key = this.getKey(userId, purpose);
         const payload = {

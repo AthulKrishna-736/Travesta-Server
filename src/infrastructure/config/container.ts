@@ -10,11 +10,14 @@ import { IMailService } from "../../application/interfaces/mailService.interface
 import { AuthUseCases } from "../../application/use-cases/auth/authUseCases";
 import { IAuthUseCases } from "../../domain/interfaces/auth.interface";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
-import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
+import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetUserUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
 import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
 import { UpdateUser } from "../../application/use-cases/common/updateUserProfle";
+import { IAwsS3Service } from "../../application/interfaces/awsS3Service.interface";
+import { AwsS3Service } from "../services/awsS3Service";
+import { GetUserProfileUseCase } from "../../application/use-cases/user/getUser";
 
 
 //repository
@@ -33,7 +36,11 @@ container.register<IMailService>(TOKENS.MailService, {
 });
 
 container.register(TOKENS.RedisService, {
-  useClass: RedisService
+  useClass: RedisService,
+})
+
+container.register<IAwsS3Service>(TOKENS.AwsS3Service,{
+  useClass: AwsS3Service,
 })
 
 
@@ -62,6 +69,10 @@ container.register<IUpdateVendorReqUseCase>(TOKENS.UpdateVendorReqUseCase, {
 //user UseCases
 container.register<IUpdateUserUseCase>(TOKENS.UpdateUserUseCase, {
   useClass: UpdateUser,
+})
+
+container.register<IGetUserUseCase>(TOKENS.GetUserUseCase, {
+  useClass: GetUserProfileUseCase,
 })
 
 //vendor UseCases
