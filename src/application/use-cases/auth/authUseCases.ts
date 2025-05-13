@@ -83,7 +83,8 @@ export class AuthUseCases implements IAuthUseCases {
         //mapping user data before response
         const mappedUser: ResponseUserDTO = {
             id: user._id,
-            name: `${user.firstName}${user.lastName}`,
+            firstName: user.firstName,
+            lastName: user.lastName,
             email: user.email,
             phone: user.phone,
             isGoogle: user.isGoogle ?? false,

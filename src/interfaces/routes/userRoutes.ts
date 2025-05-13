@@ -10,27 +10,29 @@ import { checkUserBlock } from "../../middlewares/checkBlock";
 import { UserController } from "../controllers/user/userController";
 
 export class userRoutes extends BaseRouter {
-    private authController: AuthController
+    private _authController: AuthController
+    private _userController: UserController
 
     constructor() {
         super();
-        this.authController = container.resolve(AuthController)
+        this._authController = container.resolve(AuthController)
+        this._userController = container.resolve(UserController)
         this.initializeRoutes()
     }
 
     protected initializeRoutes(): void {
         this.router
             //auth routes
-            .post('/auth/signup', validateRequest(createUserSchema), (req: CustomRequest, res) => this.authController.register(req, res))
-            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this.authController.login(req, res))
-            .post('/auth/google-login', validateRequest(googleLoginSchema), (req: CustomRequest, res) => this.authController.loginGoogle(req, res))
-            .post('/auth/verifyOtp', validateRequest(verifyOtp), (req: CustomRequest, res) => this.authController.verifyOTP(req, res))
-            .post('/auth/resendOtp', validateRequest(resendOtpSchema), (req: CustomRequest, res) => this.authController.resendOtp(req, res))
-            .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res) => this.authController.forgotPassword(req, res))
-            .patch('/auth/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res) => this.authController.updatePassword(req, res))
-            .post('/auth/logout', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this.authController.logout(req, res))
+            .post('/auth/signup', validateRequest(createUserSchema), (req: CustomRequest, res) => this._authController.register(req, res))
+            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this._authController.login(req, res))
+            .post('/auth/google-login', validateRequest(googleLoginSchema), (req: CustomRequest, res) => this._authController.loginGoogle(req, res))
+            .post('/auth/verifyOtp', validateRequest(verifyOtp), (req: CustomRequest, res) => this._authController.verifyOTP(req, res))
+            .post('/auth/resendOtp', validateRequest(resendOtpSchema), (req: CustomRequest, res) => this._authController.resendOtp(req, res))
+            .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res) => this._authController.forgotPassword(req, res))
+            .patch('/auth/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res) => this._authController.updatePassword(req, res))
+            .post('/auth/logout', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this._authController.logout(req, res))
 
             //profile routes
-            // .patch('/:id/profile', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, validateRequest(updateUserSchema), (req: CustomRequest, res) => this.userController.updateProfile(req, res))
+            .patch('/profile', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, validateRequest(updateUserSchema), (req: CustomRequest, res) => this._userController.updateProfile(req, res))
     }
 }

@@ -18,7 +18,8 @@ export class GetAllVendorReq implements IGetAllVendorReqUseCase {
         const mappedVendors: ResponseUserDTO[] = users.map((vendor) => {
             return {
                 id: vendor._id!?.toString(),
-                name: `${vendor.firstName}${vendor.lastName}`,
+                firstName: vendor.firstName,
+                lastName: vendor.lastName,
                 email: vendor.email,
                 isGoogle: vendor.isGoogle ?? false,
                 phone: vendor.phone,

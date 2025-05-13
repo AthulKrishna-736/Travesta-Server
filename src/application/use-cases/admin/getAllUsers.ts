@@ -20,7 +20,8 @@ export class GetAllUsers implements IGetAllUsersUseCase {
             .map((user) => {
                 return {
                     id: user._id!?.toString(),
-                    name: `${user.firstName}${user.lastName}`,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
                     email: user.email,
                     isGoogle: user.isGoogle ?? false,
                     phone: user.phone,

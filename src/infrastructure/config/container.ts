@@ -10,10 +10,11 @@ import { IMailService } from "../../application/interfaces/mailService.interface
 import { AuthUseCases } from "../../application/use-cases/auth/authUseCases";
 import { IAuthUseCases } from "../../domain/interfaces/auth.interface";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
-import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
+import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
 import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
+import { UpdateUser } from "../../application/use-cases/common/updateUserProfle";
 
 
 //repository
@@ -59,6 +60,8 @@ container.register<IUpdateVendorReqUseCase>(TOKENS.UpdateVendorReqUseCase, {
 })
 
 //user UseCases
-
+container.register<IUpdateUserUseCase>(TOKENS.UpdateUserUseCase, {
+  useClass: UpdateUser,
+})
 
 //vendor UseCases

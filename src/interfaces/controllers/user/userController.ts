@@ -16,7 +16,7 @@ export class UserController {
 
     async updateProfile(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const userId = req.params.id;
+            const userId = req.user?.userId;
             if (!userId) {
                 throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST)
             }

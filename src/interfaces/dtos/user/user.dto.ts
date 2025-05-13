@@ -26,7 +26,8 @@ export interface UpdateUserDTO {
 
 export interface ResponseUserDTO {
     id: string
-    name: string
+    firstName: string
+    lastName: string
     email: string
     isGoogle: boolean
     phone: number
