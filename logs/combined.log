@@ -6784,3 +6784,649 @@
   "iat": 1747075824,
   "exp": 1748371824
 }[0m
+[2025-05-13 09:25:18] INFO: [34mRunning in development mode[0m
+[2025-05-13 09:25:18] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-13 09:25:18] INFO: [34mRedis connected successfully[0m
+[2025-05-13 09:50:55] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 09:51:00] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110055,
+  "exp": 1748406055
+}[0m
+[2025-05-13 09:59:06] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110074,
+  "exp": 1748406074
+}[0m
+[2025-05-13 09:59:10] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110074,
+  "exp": 1748406074
+}[0m
+[2025-05-13 09:59:18] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110074,
+  "exp": 1748406074
+}[0m
+[2025-05-13 10:04:22] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110074,
+  "exp": 1748406074
+}[0m
+[2025-05-13 10:06:36] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 10:06:59] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110996,
+  "exp": 1748406996
+}[0m
+[2025-05-13 10:07:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110996,
+  "exp": 1748406996
+}[0m
+[2025-05-13 10:07:10] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110996,
+  "exp": 1748406996
+}[0m
+[2025-05-13 10:07:48] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110996,
+  "exp": 1748406996
+}[0m
+[2025-05-13 10:12:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110996,
+  "exp": 1748406996
+}[0m
+[2025-05-13 10:19:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747110996,
+  "exp": 1748406996
+}[0m
+[2025-05-13 10:25:55] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 10:25:56] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747112155,
+  "exp": 1748408155
+}[0m
+[2025-05-13 10:31:11] INFO: [34mRunning in development mode[0m
+[2025-05-13 10:31:11] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-13 10:31:14] INFO: [34mRedis connected successfully[0m
+[2025-05-13 10:31:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747112155,
+  "exp": 1748408155
+}[0m
+[2025-05-13 10:31:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747112155,
+  "exp": 1748408155
+}[0m
+[2025-05-13 10:37:13] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747112155,
+  "exp": 1748408155
+}[0m
+[2025-05-13 10:43:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 10:43:27] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:43:35] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:04] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:10] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:17] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:37] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:52] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:44:56] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:45:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:45:17] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:45:28] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:45:33] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:45:42] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:45:45] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:45:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:45:53] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:10] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:28] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:34] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:39] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:41] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:46] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:54] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:46:59] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:47:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:47:38] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:47:42] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:48:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:48:22] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:48:28] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:48:33] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:48:39] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:48:52] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:49:00] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:49:12] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:49:18] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:49:21] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:49:34] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:49:37] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:49:50] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:50:01] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:50:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:56:33] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747113200,
+  "exp": 1748409200
+}[0m
+[2025-05-13 10:59:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 10:59:17] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747114156,
+  "exp": 1748410156
+}[0m
+[2025-05-13 11:00:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747114156,
+  "exp": 1748410156
+}[0m
+[2025-05-13 11:11:07] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747114156,
+  "exp": 1748410156
+}[0m
+[2025-05-13 11:15:28] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 11:15:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:19:40] INFO: [34mRunning in development mode[0m
+[2025-05-13 11:19:40] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-13 11:19:40] INFO: [34mRedis connected successfully[0m
+[2025-05-13 11:19:42] INFO: [34mRunning in development mode[0m
+[2025-05-13 11:20:46] INFO: [34mRunning in development mode[0m
+[2025-05-13 11:20:46] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-13 11:20:47] INFO: [34mRedis connected successfully[0m
+[2025-05-13 11:21:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:21:07] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:21:08] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:11] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:21:11] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:17] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:21:17] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:23] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:21:23] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:33] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:21:33] INFO: [34mVendor verification approved for yenedep560@idoidraw.com[0m
+[2025-05-13 11:21:41] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:21:41] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:21:50] INFO: [34mVendor verification rejected for yenedep560@idoidraw.com[0m
+[2025-05-13 11:22:59] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:23:04] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:23:04] INFO: [34mVendor verification approved for yenedep560@idoidraw.com[0m
+[2025-05-13 11:24:38] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:25:26] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:25:29] INFO: [34mVendor verification rejected for biciboh907@ingitel.com[0m
+[2025-05-13 11:25:37] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:25:39] INFO: [34mVendor verification rejected for yenedep560@idoidraw.com[0m
+[2025-05-13 11:25:45] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:25:45] INFO: [34mVendor verification approved for yenedep560@idoidraw.com[0m
+[2025-05-13 11:25:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:25:47] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:26:18] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:26:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:26:20] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:26:23] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747115128,
+  "exp": 1748411128
+}[0m
+[2025-05-13 11:26:23] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:30:55] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 11:30:57] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747116055,
+  "exp": 1748412055
+}[0m
+[2025-05-13 11:30:57] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:31:13] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747116055,
+  "exp": 1748412055
+}[0m
+[2025-05-13 11:31:13] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:31:15] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747116055,
+  "exp": 1748412055
+}[0m
+[2025-05-13 11:31:15] ERROR: [31mcheck the error in handler:  Vendor already verified[0m

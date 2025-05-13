@@ -2559,3 +2559,21 @@
 [2025-05-12 23:47:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-05-13 00:04:24] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-05-13 00:20:24] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 09:50:55] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 10:06:36] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 10:25:55] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 10:43:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 10:59:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 11:15:28] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 11:21:08] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:11] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:17] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:23] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:21:41] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:25:47] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:26:20] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:26:23] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:30:55] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-13 11:30:57] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:31:13] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-13 11:31:15] ERROR: [31mcheck the error in handler:  Vendor already verified[0m

@@ -21,6 +21,10 @@ export class UpdateVendorReq implements IUpdateVendorReqUseCase {
             throw new AppError('Vendor not found', HttpStatusCode.BAD_REQUEST)
         }
 
+        if (vendor.isVerified && isVerified) {
+            throw new AppError('Vendor already verified', HttpStatusCode.CONFLICT)
+        }
+
         await this.userRepo.updateUser(vendorId, { isVerified, verificationReason })
 
         if (!isVerified) {

@@ -18,6 +18,7 @@ export interface UpdateUserDTO {
     isBlocked?: boolean
     profileImage?: string
     isVerified?: boolean
+    kycDocuments?: []
     verificationReason?: string
     subscriptionType?: TSubscription
 
@@ -32,6 +33,7 @@ export interface ResponseUserDTO {
     isBlocked: boolean
     wishlist: string[]
     role: TRole
+    kycDocuments?: []
     verificationReason?: string
     subscriptionType: TSubscription
     createdAt: Date

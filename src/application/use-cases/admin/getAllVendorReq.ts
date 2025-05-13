@@ -26,10 +26,11 @@ export class GetAllVendorReq implements IGetAllVendorReqUseCase {
                 wishlist: vendor.wishlist,
                 isVerified: vendor.isVerified,
                 role: vendor.role,
+                kycDocuments: vendor.kycDocuments || [],
                 verificationReason: vendor.verificationReason || 'Pending',
                 subscriptionType: vendor.subscriptionType,
                 createdAt: vendor.createdAt,
-                updatedAt: vendor.updatedAt
+                updatedAt: vendor.updatedAt,
             }
         })
         console.log('map vendors: ', mappedVendors)
