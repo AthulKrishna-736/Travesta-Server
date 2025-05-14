@@ -8419,3 +8419,42 @@
 [2025-05-14 10:59:38] INFO: [34mRunning in development mode[0m
 [2025-05-14 10:59:38] INFO: [34mMongoDB connected: localhost[0m
 [2025-05-14 10:59:39] INFO: [34mRedis connected successfully[0m
+[2025-05-14 11:00:05] INFO: [34mRunning in development mode[0m
+[2025-05-14 11:00:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 11:00:06] INFO: [34mRedis connected successfully[0m
+[2025-05-14 11:01:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747200373,
+  "exp": 1748496373
+}[0m
+[2025-05-14 11:02:04] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-14 11:02:23] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747200736,
+  "exp": 1748496736
+}[0m
+[2025-05-14 11:02:30] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747200736,
+  "exp": 1748496736
+}[0m
+[2025-05-14 11:02:32] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747200736,
+  "exp": 1748496736
+}[0m
+[2025-05-14 11:02:37] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747200736,
+  "exp": 1748496736
+}[0m

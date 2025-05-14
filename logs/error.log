@@ -2678,3 +2678,4 @@
 [2025-05-14 10:16:22] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
 [2025-05-14 10:41:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-05-14 10:41:36] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-14 11:02:04] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
