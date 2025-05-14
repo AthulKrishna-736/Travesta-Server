@@ -84,7 +84,16 @@ export class AuthUseCases implements IAuthUseCases {
 
         const getSignedUrl = await this._awsS3Service.getFileUrlFromAws(user.profileImage!, 84600);
 
-        //mapping user data before response
+        let signedKycUrls: string[] = [];
+
+        if (user.kycDocuments && user.kycDocuments.length > 0) {
+            signedKycUrls = await Promise.all(
+                user.kycDocuments.map(key =>
+                    this._awsS3Service.getFileUrlFromAws(key, 86400)
+                )
+            );
+        }
+
         const mappedUser: ResponseUserDTO = {
             id: user._id,
             firstName: user.firstName,
@@ -96,10 +105,11 @@ export class AuthUseCases implements IAuthUseCases {
             wishlist: user.wishlist,
             role: user.role,
             profileImage: getSignedUrl,
+            kycDocuments: signedKycUrls,
             subscriptionType: user.subscriptionType,
             createdAt: user.createdAt,
             updatedAt: user.updatedAt,
-        }
+        };
 
         await this._redisService.storeRefreshToken(user._id, refreshToken, jwtConfig.refreshToken.maxAge / 1000)
 

@@ -12,7 +12,7 @@ export interface IGetUserUseCase {
     execute(userId: string): Promise<void>
 }
 
-//admin Use cases
+//admin UseCases
 export interface IGetAllUsersUseCase {
     execute(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string): Promise<{ users: ResponseUserDTO[]; total: number }>
 }
@@ -27,4 +27,9 @@ export interface IGetAllVendorReqUseCase {
 
 export interface IUpdateVendorReqUseCase {
     execute(vendorId: string, isVerified: boolean, verificationReason: string): Promise<{ message: string }>
+}
+
+//vendor UseCases
+export interface IUpdateKycUseCase {
+    execute(vendorId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: ResponseUserDTO, message: string }>
 }

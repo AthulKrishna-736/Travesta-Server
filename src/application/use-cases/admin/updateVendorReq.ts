@@ -25,11 +25,17 @@ export class UpdateVendorReq implements IUpdateVendorReqUseCase {
             throw new AppError('Vendor already verified', HttpStatusCode.CONFLICT)
         }
 
-        await this.userRepo.updateUser(vendorId, { isVerified, verificationReason })
+        const updateData: Partial<typeof vendor> = {
+            isVerified,
+            verificationReason,
+        };
 
         if (!isVerified) {
+            updateData.kycDocuments = [];
             await this.mailService.sendVendorRejectionEmail(vendor.email, verificationReason);
         }
+
+        await this.userRepo.updateUser(vendorId, updateData);
 
         logger.info(`Vendor verification ${isVerified ? 'approved' : 'rejected'} for ${vendor.email}`);
 

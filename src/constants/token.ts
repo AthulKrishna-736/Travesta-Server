@@ -22,5 +22,5 @@ export const TOKENS = {
   GetUserUseCase: 'GetUserUseCase',
 
   //vendor UseCases
-
+  UpdateKycUseCase: 'UpdateKycUseCase',
 };

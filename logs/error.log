@@ -2679,3 +2679,20 @@
 [2025-05-14 10:41:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-05-14 10:41:36] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
 [2025-05-14 11:02:04] ERROR: [31mcheck the error in handler:  vendor is blocked[0m
+[2025-05-14 11:21:38] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 11:21:49] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-14 11:21:53] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-14 11:21:58] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-14 12:35:16] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 12:35:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 12:35:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 12:35:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 12:35:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 12:35:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 12:35:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 12:35:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 12:35:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 13:40:21] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 14:22:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 14:22:07] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-14 14:22:09] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
