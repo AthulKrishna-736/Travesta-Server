@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { IUser, IUserRepository } from "../../../domain/interfaces/user.interface";
+import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { ResponseUserDTO, UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
@@ -7,6 +7,7 @@ import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interface";
 import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
 import path from 'path';
+import fs from 'fs'
 
 @injectable()
 export class UpdateUser implements IUpdateUserUseCase {
@@ -29,6 +30,14 @@ export class UpdateUser implements IUpdateUserUseCase {
             await this._awsS3Service.uploadFileToAws(s3Key, filePath);
             userData.profileImage = s3Key;
 
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.error(`Error deleting file: ${err}`);
+                } else {
+                    console.log(`Successfully deleted local file: ${filePath}`);
+                }
+            });
+
         }
 
         const updates: Omit<UpdateUserDTO, 'isVerified'> = { ...userData };
@@ -50,7 +59,7 @@ export class UpdateUser implements IUpdateUserUseCase {
             role: updatedUser.role,
             createdAt: updatedUser.createdAt,
             updatedAt: updatedUser.updatedAt,
-            profileImage: signedUrl, 
+            profileImage: signedUrl,
         };
 
         return {

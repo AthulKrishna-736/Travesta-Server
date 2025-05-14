@@ -8272,3 +8272,150 @@
 [2025-05-13 21:58:31] INFO: [34mRunning in development mode[0m
 [2025-05-13 21:58:31] INFO: [34mMongoDB connected: localhost[0m
 [2025-05-13 21:58:31] INFO: [34mRedis connected successfully[0m
+[2025-05-14 08:32:10] INFO: [34mRunning in development mode[0m
+[2025-05-14 08:32:11] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 08:32:11] INFO: [34mRedis connected successfully[0m
+[2025-05-14 08:32:37] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 08:32:40] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747191757,
+  "exp": 1748487757
+}[0m
+[2025-05-14 09:32:28] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747195245,
+  "exp": 1748491245
+}[0m
+[2025-05-14 09:32:28] ERROR: [31mcheck the error in handler:  ENOENT: no such file or directory, open 'D:\Travesta\travestaServer\uploads\2cff9d7f-4323-4042-9e5a-576d0d6b141a-1747195348644.jpg'[0m
+[2025-05-14 09:37:19] INFO: [34mRunning in development mode[0m
+[2025-05-14 09:37:19] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 09:37:20] INFO: [34mRedis connected successfully[0m
+[2025-05-14 09:38:38] INFO: [34mRunning in development mode[0m
+[2025-05-14 09:38:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 09:38:38] INFO: [34mRedis connected successfully[0m
+[2025-05-14 09:39:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747195245,
+  "exp": 1748491245
+}[0m
+[2025-05-14 09:39:02] ERROR: [31mcheck the error in handler:  ENOENT: no such file or directory, open 'D:\Travesta\travestaServer\uploads\c5e8a7ba-2813-45ed-b43f-ba7caae33630-1747195742373.jpg'[0m
+[2025-05-14 09:43:24] INFO: [34mRunning in development mode[0m
+[2025-05-14 09:43:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 09:43:24] INFO: [34mRedis connected successfully[0m
+[2025-05-14 09:43:45] INFO: [34mRunning in development mode[0m
+[2025-05-14 09:43:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 09:43:46] INFO: [34mRedis connected successfully[0m
+[2025-05-14 09:44:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747195245,
+  "exp": 1748491245
+}[0m
+[2025-05-14 09:44:03] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 09:45:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747195245,
+  "exp": 1748491245
+}[0m
+[2025-05-14 09:45:15] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 09:51:54] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 09:52:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747196514,
+  "exp": 1748492514
+}[0m
+[2025-05-14 09:52:11] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 10:07:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 10:07:51] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747197460,
+  "exp": 1748493460
+}[0m
+[2025-05-14 10:07:52] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 10:16:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747197460,
+  "exp": 1748493460
+}[0m
+[2025-05-14 10:16:22] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 10:18:36] INFO: [34mRunning in development mode[0m
+[2025-05-14 10:18:36] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 10:18:37] INFO: [34mRedis connected successfully[0m
+[2025-05-14 10:19:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747197460,
+  "exp": 1748493460
+}[0m
+[2025-05-14 10:20:42] INFO: [34mRunning in development mode[0m
+[2025-05-14 10:20:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 10:20:43] INFO: [34mRedis connected successfully[0m
+[2025-05-14 10:41:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 10:41:29] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747199485,
+  "exp": 1748495485
+}[0m
+[2025-05-14 10:41:36] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-14 10:44:57] INFO: [34mRunning in development mode[0m
+[2025-05-14 10:44:58] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 10:44:58] INFO: [34mRedis connected successfully[0m
+[2025-05-14 10:45:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747199500,
+  "exp": 1748495500
+}[0m
+[2025-05-14 10:47:15] INFO: [34mRunning in development mode[0m
+[2025-05-14 10:47:15] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 10:47:15] INFO: [34mRedis connected successfully[0m
+[2025-05-14 10:47:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747199724,
+  "exp": 1748495724
+}[0m
+[2025-05-14 10:53:20] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747199848,
+  "exp": 1748495848
+}[0m
+[2025-05-14 10:56:06] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747199848,
+  "exp": 1748495848
+}[0m
+[2025-05-14 10:56:42] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747200373,
+  "exp": 1748496373
+}[0m
+[2025-05-14 10:59:38] INFO: [34mRunning in development mode[0m
+[2025-05-14 10:59:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 10:59:39] INFO: [34mRedis connected successfully[0m

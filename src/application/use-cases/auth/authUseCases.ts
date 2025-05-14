@@ -14,6 +14,7 @@ import { IOtpService } from "../../interfaces/otpService.interface";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { OAuth2Client } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
+import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
 
 
 @injectable()
@@ -21,6 +22,7 @@ export class AuthUseCases implements IAuthUseCases {
     constructor(
         @inject(TOKENS.UserRepository) private readonly _userRepo: IUserRepository,
         @inject(TOKENS.AuthService) private readonly _authService: IAuthService,
+        @inject(TOKENS.AwsS3Service) private readonly _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private readonly _redisService: IJwtService & IOtpService,
     ) { }
 
@@ -80,6 +82,8 @@ export class AuthUseCases implements IAuthUseCases {
         const accessToken = this._authService.generateAccessToken(user._id, user.role, user.email);
         const refreshToken = this._authService.generateRefreshToken(user._id, user.role, user.email);
 
+        const getSignedUrl = await this._awsS3Service.getFileUrlFromAws(user.profileImage!, 84600);
+
         //mapping user data before response
         const mappedUser: ResponseUserDTO = {
             id: user._id,
@@ -91,6 +95,7 @@ export class AuthUseCases implements IAuthUseCases {
             isBlocked: user.isBlocked,
             wishlist: user.wishlist,
             role: user.role,
+            profileImage: getSignedUrl,
             subscriptionType: user.subscriptionType,
             createdAt: user.createdAt,
             updatedAt: user.updatedAt,

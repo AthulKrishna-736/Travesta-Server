@@ -2666,3 +2666,15 @@
 [2025-05-13 20:49:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-05-13 20:49:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-05-13 20:49:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 08:32:37] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 09:32:28] ERROR: [31mcheck the error in handler:  ENOENT: no such file or directory, open 'D:\Travesta\travestaServer\uploads\2cff9d7f-4323-4042-9e5a-576d0d6b141a-1747195348644.jpg'[0m
+[2025-05-14 09:39:02] ERROR: [31mcheck the error in handler:  ENOENT: no such file or directory, open 'D:\Travesta\travestaServer\uploads\c5e8a7ba-2813-45ed-b43f-ba7caae33630-1747195742373.jpg'[0m
+[2025-05-14 09:44:03] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 09:45:15] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 09:51:54] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 09:52:11] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 10:07:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 10:07:52] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 10:16:22] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-05-14 10:41:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 10:41:36] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
