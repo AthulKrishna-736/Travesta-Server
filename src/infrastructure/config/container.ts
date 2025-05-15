@@ -1,7 +1,6 @@
 import { container } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { UserRepository } from "../database/repositories/userRepo";
-import { IUserRepository } from "../../domain/interfaces/user.interface";
 import { IAuthService } from "../../application/interfaces/authService.interface";
 import { AuthService } from "../services/authService";
 import { MailService } from "../services/mailService";
@@ -19,6 +18,7 @@ import { IAwsS3Service } from "../../application/interfaces/awsS3Service.interfa
 import { AwsS3Service } from "../services/awsS3Service";
 import { GetUserProfileUseCase } from "../../application/use-cases/user/getUser";
 import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
+import { IUserRepository } from "../../domain/repositories/repository.interface";
 
 
 //repository

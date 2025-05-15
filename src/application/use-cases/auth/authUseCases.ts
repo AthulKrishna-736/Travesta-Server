@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IAuthUseCases } from "../../../domain/interfaces/auth.interface";
 import { TOKENS } from "../../../constants/token";
-import { IUser, IUserRepository } from "../../../domain/interfaces/user.interface";
+import { IUser } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO, ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { IAuthService } from "../../interfaces/authService.interface";
 import { v4 as uuidv4 } from 'uuid';
@@ -15,6 +15,7 @@ import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { OAuth2Client } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
 import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
+import { IUserRepository } from "../../../domain/repositories/repository.interface";
 
 
 @injectable()
@@ -27,7 +28,7 @@ export class AuthUseCases implements IAuthUseCases {
     ) { }
 
     async register(userData: CreateUserDTO): Promise<{ userId: string; message: string; }> {
-        const existingUser = await this._userRepo.findByEmail(userData.email)
+        const existingUser = await this._userRepo.findUser(userData.email)
 
         if (existingUser) {
             throw new AppError('User already exists', HttpStatusCode.BAD_REQUEST)
@@ -59,7 +60,7 @@ export class AuthUseCases implements IAuthUseCases {
     }
 
     async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: ResponseUserDTO; }> {
-        const user = await this._userRepo.findByEmail(email);
+        const user = await this._userRepo.findUser(email);
 
         if (!user || !user._id) {
             throw new AppError("User not found", HttpStatusCode.BAD_REQUEST)
@@ -121,7 +122,7 @@ export class AuthUseCases implements IAuthUseCases {
     }
 
     async confirmRegister(userData: CreateUserDTO & { createdAt: Date; updatedAt: Date; }): Promise<IUser> {
-        const existingUser = await this._userRepo.findByEmail(userData.email);
+        const existingUser = await this._userRepo.findUser(userData.email);
         if (existingUser) {
             throw new AppError('User already exists', HttpStatusCode.BAD_REQUEST);
         }
@@ -155,7 +156,7 @@ export class AuthUseCases implements IAuthUseCases {
 
         const email = payload.email;
 
-        let user = await this._userRepo.findByEmail(email);
+        let user = await this._userRepo.findUser(email);
 
         if (!user) {
             const newUser: CreateUserDTO = {
@@ -193,7 +194,7 @@ export class AuthUseCases implements IAuthUseCases {
     }
 
     async forgotPass(email: string, role: TRole): Promise<{ userId: string; message: string; }> {
-        const user = await this._userRepo.findByEmail(email)
+        const user = await this._userRepo.findUser(email)
         if (!user) {
             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
         }
@@ -220,7 +221,7 @@ export class AuthUseCases implements IAuthUseCases {
             throw new AppError('Email is missing', HttpStatusCode.BAD_REQUEST);
         }
 
-        const user = await this._userRepo.findByEmail(email);
+        const user = await this._userRepo.findUser(email);
 
         if (!user || !user._id) {
             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
@@ -233,7 +234,7 @@ export class AuthUseCases implements IAuthUseCases {
         }
 
         const hashPass = await this._authService.hashPassword(password)
-        await this._userRepo.updatePassword(user._id, hashPass)
+        await this._userRepo.updateUser(user._id, { password: hashPass })
     }
 
     async resendOtp(userId: string, purpose: "signup" | "reset"): Promise<{ message: string; }> {

@@ -1,9 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { IUser } from "../../../domain/interfaces/user.interface";
 
-export type UserDocument = IUser & Document
+export type TUserDocument = IUser & Document
 
-const userSchema: Schema = new Schema<UserDocument>({
+const userSchema: Schema = new Schema<TUserDocument>({
     firstName: {
         type: String,
         required: true
@@ -61,4 +61,4 @@ const userSchema: Schema = new Schema<UserDocument>({
     }]
 }, { timestamps: true })
 
-export const userModel = mongoose.model<UserDocument>('User', userSchema)
+export const userModel = mongoose.model<TUserDocument>('User', userSchema)

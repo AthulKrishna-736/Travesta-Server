@@ -13,6 +13,7 @@ export interface CreateUserDTO {
 export interface UpdateUserDTO {
     firstName?: string
     lastName?: string
+    password?: string
     isGoogle?: boolean
     phone?: number
     isBlocked?: boolean

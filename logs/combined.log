@@ -8610,3 +8610,396 @@
   "exp": 1748508726
 }[0m
 [2025-05-14 14:22:09] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-14 14:24:42] INFO: [34mRunning in development mode[0m
+[2025-05-14 14:24:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 14:24:43] INFO: [34mRedis connected successfully[0m
+[2025-05-14 14:27:14] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747212726,
+  "exp": 1748508726
+}[0m
+[2025-05-14 14:35:13] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747212726,
+  "exp": 1748508726
+}[0m
+[2025-05-14 15:35:57] INFO: [34mRunning in development mode[0m
+[2025-05-14 15:35:57] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 15:35:57] INFO: [34mRedis connected successfully[0m
+[2025-05-14 15:35:59] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 15:36:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747217159,
+  "exp": 1748513159
+}[0m
+[2025-05-14 15:36:14] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747217159,
+  "exp": 1748513159
+}[0m
+[2025-05-14 15:36:23] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 15:36:26] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 15:40:20] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 15:46:11] INFO: [34mRunning in development mode[0m
+[2025-05-14 15:46:11] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 15:46:11] INFO: [34mRedis connected successfully[0m
+[2025-05-14 16:10:32] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 16:10:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1747219232,
+  "exp": 1748515232
+}[0m
+[2025-05-14 16:11:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1747219256,
+  "exp": 1748515256
+}[0m
+[2025-05-14 16:58:14] INFO: [34mRunning in development mode[0m
+[2025-05-14 16:58:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 16:58:15] INFO: [34mRedis connected successfully[0m
+[2025-05-14 17:16:12] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 17:20:45] INFO: [34mRunning in development mode[0m
+[2025-05-14 17:20:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 17:20:46] INFO: [34mRedis connected successfully[0m
+[2025-05-14 17:29:15] INFO: [34mRunning in development mode[0m
+[2025-05-14 17:29:16] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-14 17:29:16] INFO: [34mRedis connected successfully[0m
+[2025-05-14 17:29:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 17:30:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1747223992,
+  "exp": 1748519992
+}[0m
+[2025-05-14 17:30:23] ERROR: [31mcheck the error in handler:  Hotel validation failed: rooms: Cast to embedded failed for value "[{"roomType":"sample","price":2314,"isAvailable":true,"bedCount":34},{"roomType":"asdfwf","price":423,"isAvailable":true,"bedCount":3}]" (type string) at path "rooms" because of "ObjectParameterError"[0m
+[2025-05-14 17:32:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1747223992,
+  "exp": 1748519992
+}[0m
+[2025-05-14 17:49:29] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747225156,
+  "exp": 1748521156
+}[0m
+[2025-05-14 17:49:29] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-14 17:49:36] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747225156,
+  "exp": 1748521156
+}[0m
+[2025-05-14 17:49:36] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-14 17:49:39] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747225156,
+  "exp": 1748521156
+}[0m
+[2025-05-14 17:49:39] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-14 17:49:41] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747225156,
+  "exp": 1748521156
+}[0m
+[2025-05-14 17:49:41] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-14 18:09:57] INFO: [34motp created: 366154[0m
+[2025-05-14 18:11:05] INFO: [34m{
+  "userId": "68248f378400176ea816af09",
+  "role": "user",
+  "email": "vojaga3100@inkight.com",
+  "iat": 1747226432,
+  "exp": 1748522432
+}[0m
+[2025-05-14 18:11:35] INFO: [34m{
+  "userId": "68248f378400176ea816af09",
+  "role": "user",
+  "email": "vojaga3100@inkight.com",
+  "iat": 1747226432,
+  "exp": 1748522432
+}[0m
+[2025-05-14 18:12:00] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:12:02] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:12:03] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:13:48] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:13:48] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:13:48] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:13:48] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:13:48] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:13:48] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-05-14 18:14:38] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:14:46] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:14:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:14:57] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:15:00] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:15:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:15:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:15:44] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:15:47] INFO: [34mVendor verification rejected for biciboh907@ingitel.com[0m
+[2025-05-14 18:15:50] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:15:50] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-14 18:15:53] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:15:53] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-05-14 18:16:58] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226676,
+  "exp": 1748522676
+}[0m
+[2025-05-14 18:18:06] INFO: [34motp created: 501219[0m
+[2025-05-14 18:19:17] INFO: [34m{
+  "userId": "682491208400176ea816af25",
+  "role": "vendor",
+  "email": "jafofe1892@inkight.com",
+  "iat": 1747226918,
+  "exp": 1748522918
+}[0m
+[2025-05-14 18:19:31] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226969,
+  "exp": 1748522969
+}[0m
+[2025-05-14 18:20:13] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747226969,
+  "exp": 1748522969
+}[0m
+[2025-05-14 18:20:55] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747227053,
+  "exp": 1748523053
+}[0m
+[2025-05-14 18:21:03] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747227053,
+  "exp": 1748523053
+}[0m
+[2025-05-14 18:21:06] INFO: [34mVendor verification rejected for jafofe1892@inkight.com[0m
+[2025-05-14 18:21:46] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747227053,
+  "exp": 1748523053
+}[0m
+[2025-05-14 18:22:12] INFO: [34m{
+  "userId": "682491208400176ea816af25",
+  "role": "vendor",
+  "email": "jafofe1892@inkight.com",
+  "iat": 1747227113,
+  "exp": 1748523113
+}[0m
+[2025-05-14 18:22:23] INFO: [34m{
+  "userId": "682491208400176ea816af25",
+  "role": "vendor",
+  "email": "jafofe1892@inkight.com",
+  "iat": 1747227113,
+  "exp": 1748523113
+}[0m
+[2025-05-14 18:22:26] ERROR: [31mcheck the error in handler:  Access token has been blacklisted[0m
+[2025-05-14 18:22:43] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747227161,
+  "exp": 1748523161
+}[0m
+[2025-05-14 18:22:58] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747227161,
+  "exp": 1748523161
+}[0m
+[2025-05-14 18:22:58] INFO: [34mVendor verification approved for jafofe1892@inkight.com[0m
+[2025-05-14 18:23:52] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747227161,
+  "exp": 1748523161
+}[0m
+[2025-05-14 18:24:54] INFO: [34m{
+  "userId": "682491208400176ea816af25",
+  "role": "vendor",
+  "email": "jafofe1892@inkight.com",
+  "iat": 1747227243,
+  "exp": 1748523243
+}[0m
+[2025-05-14 18:24:55] ERROR: [31mcheck the error in handler:  Hotel validation failed: rooms: Cast to embedded failed for value "[{"roomType":"Premium","price":2000,"isAvailable":true,"bedCount":4},{"roomType":"Average suite","price":300,"isAvailable":true,"bedCount":1}]" (type string) at path "rooms" because of "ObjectParameterError"[0m
+[2025-05-14 19:10:02] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 19:10:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:10:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:10:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:10:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:10:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:10:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:10:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:10:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:10:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 19:22:55] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 19:40:57] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 19:41:02] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-14 19:41:07] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-14 19:42:53] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 19:42:58] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-05-14 20:24:22] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 20:24:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 20:24:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:03] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 22:02:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:02:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:49] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-14 22:27:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:27:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-14 22:35:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-14 22:35:54] INFO: [34m{
+  "userId": "682491208400176ea816af25",
+  "role": "vendor",
+  "email": "jafofe1892@inkight.com",
+  "iat": 1747242352,
+  "exp": 1748538352
+}[0m
