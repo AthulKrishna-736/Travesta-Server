@@ -8,14 +8,15 @@ import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { jwtConfig, otpTimer } from "../config/jwtConfig";
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
-import { MailService } from "./mailService";
 import { RedisService } from "./redisService";
-import { TRole } from "../../shared/types/user.types";
+import { TRole } from "../../shared/types/client.types";
+import { IMailService } from "../../application/interfaces/mailService.interface";
+import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 
 @injectable()
 export class AuthService implements IAuthService {
     constructor(
-        @inject(TOKENS.MailService) private mailService: MailService,
+        @inject(TOKENS.MailService) private mailService: IMailService,
         @inject(TOKENS.RedisService) private redisService: RedisService
     ) { }
 
@@ -28,38 +29,38 @@ export class AuthService implements IAuthService {
         return bcrypt.compare(inputPass, hashPass)
     }
 
-    generateAccessToken(userId: string, role: TRole): string {
+    generateAccessToken(userId: string, role: TRole, email: string): string {
         const secret: Secret = env.JWT_ACCESS_SECRET;
         const options: SignOptions = {
-            expiresIn: `${jwtConfig.accessToken.expiresIn}s`,
+            expiresIn: `${jwtConfig.accessToken.expiresIn}d`,
         };
 
-        return jwt.sign({ userId, role }, secret, options);
+        return jwt.sign({ userId, role, email }, secret, options);
     }
 
-    generateRefreshToken(userId: string, role: TRole): string {
+    generateRefreshToken(userId: string, role: TRole, email: string): string {
         const secret: Secret = env.JWT_REFRESH_SECRET;
         const options: SignOptions = {
             expiresIn: `${jwtConfig.refreshToken.expiresIn}d`,
         };
 
-        return jwt.sign({ userId, role }, secret, options);
+        return jwt.sign({ userId, role, email }, secret, options);
     }
 
-    verifyAccessToken(token: string): { userId: string, role: TRole } | null {
+    verifyAccessToken(token: string): { userId: string, role: TRole, email: string } | null {
         try {
-            const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: TRole }
+            const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
-        } catch (error: any) {
+        } catch (error) {
             throw new AppError("Invalid or expired access token", HttpStatusCode.UNAUTHORIZED);
         }
     }
 
-    verifyRefreshToken(token: string): { userId: string, role: TRole } | null {
+    verifyRefreshToken(token: string): { userId: string, role: TRole, email: string } | null {
         try {
-            const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: TRole }
+            const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
-        } catch (error: any) {
+        } catch (error) {
             throw new AppError("Invalid or expired refresh token", HttpStatusCode.UNAUTHORIZED)
         }
     }
@@ -70,7 +71,7 @@ export class AuthService implements IAuthService {
         if (!decoded) {
             throw new AppError('Invalid refresh token payload', HttpStatusCode.UNAUTHORIZED)
         }
-        const newAccessToken = this.generateAccessToken(decoded.userId, decoded.role);
+        const newAccessToken = this.generateAccessToken(decoded.userId, decoded.role, decoded.email);
         return newAccessToken;
     }
 
@@ -87,16 +88,23 @@ export class AuthService implements IAuthService {
         await this.mailService.sendOtpEmail(email, otp, (otpTimer.expiresAt / 60).toString());
     }
 
-    async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset"): Promise<void> {
+    async storeOtp(userId: string, otp: string, data: CreateUserDTO | { email: string }, purpose: "signup" | "reset"): Promise<void> {
         await this.checkOtpRequestLimit(userId)
-        await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt)
+        await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt * 2)
     }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<any> {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<CreateUserDTO | { email: string }> {
         const storedData = await this.redisService.getOtp(userId, purpose)
-
+        console.log('storedData: ', storedData);
         if (!storedData) {
             throw new AppError('Otp not found or expired', HttpStatusCode.BAD_REQUEST)
+        }
+
+        const currentTime = new Date().getTime();
+        const otpExpiryTime = storedData.expiryTime + (otpTimer.expiresAt * 1000);
+
+        if (currentTime > otpExpiryTime) {
+            throw new AppError('Otp has expired', HttpStatusCode.BAD_REQUEST);
         }
 
         if (storedData.otp != otp) {
@@ -111,14 +119,21 @@ export class AuthService implements IAuthService {
         const stored = await this.redisService.getOtp(userId, purpose)
 
         if (!stored) {
-            throw new AppError('Session expired. Please register again.', HttpStatusCode.BAD_REQUEST)
+            throw new AppError('Session expired. Please try again.', HttpStatusCode.BAD_REQUEST)
         }
 
-        const otp = this.generateOtp()
+        const currentTime = new Date().getTime();
+        const otpExpiryTime = stored.expiryTime + (otpTimer.expiresAt * 1000);
 
-        await this.redisService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt)
+        if (currentTime > otpExpiryTime) {
+            const otp = this.generateOtp()
 
-        await this.sendOtpOnEmail(stored.data.email, otp);
+            await this.redisService.storeOtp(userId, otp, stored.data, purpose, otpTimer.expiresAt)
+
+            await this.sendOtpOnEmail(stored.data.email, otp);
+        } else {
+            throw new AppError('OTP is still valid. Please wait before requesting a new OTP.', HttpStatusCode.BAD_REQUEST);
+        }
     }
 
     async checkOtpRequestLimit(userId: string): Promise<void> {

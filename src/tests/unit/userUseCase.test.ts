@@ -1,5 +1,5 @@
 import { IAuthService } from "../../application/interfaces/authService.interface";
-import { LoginUser } from "../../application/use-cases/user/loginUser";
+import { LoginUser } from "../../application/use-cases/auth/loginUser";
 import { IUser, IUserRepository } from "../../domain/interfaces/user.interface";
 
 

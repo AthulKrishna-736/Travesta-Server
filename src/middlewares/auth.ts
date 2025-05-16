@@ -6,9 +6,10 @@ import { container } from "tsyringe";
 import { env } from "../infrastructure/config/env";
 import { jwtConfig } from "../infrastructure/config/jwtConfig";
 import logger from "../utils/logger";
-import { IJwtService } from "../application/interfaces/jwtService.interface";
+import { IJwtService } from "../application/interfaces/redisService.interface";
 import { TOKENS } from "../constants/token";
 import { CustomRequest } from "../utils/customRequest";
+import { setAccessCookie } from "../utils/setCookies";
 
 export const authMiddleware = async (req: CustomRequest, res: Response, next: NextFunction) => {
     const authService = container.resolve<IAuthService>(TOKENS.AuthService);
@@ -31,6 +32,7 @@ export const authMiddleware = async (req: CustomRequest, res: Response, next: Ne
             try {
                 const decoded = authService.verifyAccessToken(accessToken);
                 req.user = decoded
+                logger.info(JSON.stringify(req.user, null, 2))
                 return next();
             } catch (accessErr: any) {
                 logger.warn("Access token expired or invalid:", accessErr.message);
@@ -46,12 +48,7 @@ export const authMiddleware = async (req: CustomRequest, res: Response, next: Ne
                 }
 
                 const newAccessToken = await authService.refreshAccessToken(refreshToken);
-                res.cookie("access_token", newAccessToken, {
-                    httpOnly: true,
-                    secure: env.NODE_ENV === "production",
-                    sameSite: "strict",
-                    maxAge: jwtConfig.accessToken.maxAge
-                });
+                setAccessCookie(newAccessToken, res)
 
                 return next();
             } catch (refreshErr: any) {

@@ -6,16 +6,21 @@ export const TOKENS = {
   AuthService: 'AuthService',
   MailService: 'MailService',
   RedisService: 'RedisService',
+  AwsS3Service: 'AwsS3Service',
 
   // Use Cases
-  RegisterUserUseCase: 'RegisterUserUseCase',
-  ForgotPasswordUseCase: 'ForgotPasswordUseCase',
-  LoginUserUseCase: 'LoginUserUseCase',
-  ResendOtpUseCase: 'ResendOtpUseCase',
-  UpdatePasswordUseCase: 'UpdatePasswordUseCase',
+  AuthUseCases: 'AuthUseCases',
+
+  //admin UseCases
+  BlockUserUseCase: 'BlockUserUseCase',
+  GetAllUsersUseCase: 'GetAllUsersUseCase',
+  GetAllVendorReqUseCase: 'GetAllVendorReqUseCase',
+  UpdateVendorReqUseCase: 'UpdateVendorReqUseCase',
+
+  //user UseCases
   UpdateUserUseCase: 'UpdateUserUseCase',
-  VerifyAndRegisterUseCase: 'VerifyAndRegisterUseCase',
-  VerifyKycUseCase: 'VerifyKycUseCase',
-  GoogleLoginUseCase: 'GoogleLoginUseCase',
-  VerifyOtpUseCase: 'VerifyOtpUseCase',
+  GetUserUseCase: 'GetUserUseCase',
+
+  //vendor UseCases
+  UpdateKycUseCase: 'UpdateKycUseCase',
 };

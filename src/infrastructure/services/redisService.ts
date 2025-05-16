@@ -1,7 +1,8 @@
 import { injectable } from "tsyringe";
-import { IOtpService } from "../../application/interfaces/otpService.interface";
+import { IOtpService } from "../../application/interfaces/redisService.interface";
 import { redisClient } from "../config/redis";
-import { IJwtService } from "../../application/interfaces/jwtService.interface";
+import { IJwtService } from "../../application/interfaces/redisService.interface";
+import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 
 @injectable()
 export class RedisService implements IOtpService, IJwtService {
@@ -11,18 +12,35 @@ export class RedisService implements IOtpService, IJwtService {
         return `otp:${userId}:${purpose}`
     }
 
-    async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset", expiresAt: number): Promise<void> {
+    async get(key: string): Promise<any | null> {
+        const raw = await this.redisClient.get(key);
+        if (!raw) return null;
+        return JSON.parse(raw);
+    }
+
+    async set(key: string, value: CreateUserDTO | { email: string }, ttl: number): Promise<void> {
+        await this.redisClient.set(key, JSON.stringify(value), {
+            EX: ttl,
+        });
+    }
+
+    async del(key: string): Promise<void> {
+        await this.redisClient.del(key);
+    }
+
+    async storeOtp(userId: string, otp: string, data: CreateUserDTO | { email: string }, purpose: "signup" | "reset", expiresAt: number): Promise<void> {
         const key = this.getKey(userId, purpose);
         const payload = {
             otp,
-            data
+            data,
+            expiryTime: new Date().getTime(),
         }
         await this.redisClient.set(key, JSON.stringify(payload), {
             EX: expiresAt,
         })
     }
 
-    async getOtp(userId: string, purpose: "signup" | "reset"): Promise<{ otp: string, data: any } | null> {
+    async getOtp(userId: string, purpose: "signup" | "reset"): Promise<{ otp: string, data: CreateUserDTO | { email: string }, expiryTime: number } | null> {
         const key = this.getKey(userId, purpose);
         const raw = await this.redisClient.get(key)
 

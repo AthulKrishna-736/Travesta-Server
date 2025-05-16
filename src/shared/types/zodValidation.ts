@@ -15,15 +15,22 @@ export const createUserSchema = z.object({
 
 //update user
 export const updateUserSchema = z.object({
-    firstName: z.string().optional(),
-    lastName: z.string().optional(),
-    phone: z
-        .string()
-        .regex(/^\d{10}$/, "Phone number must be exactly 10 digits")
-        .optional(),
-    profileImage: z.string().url("Profile image must be a valid URL").optional(),
-    subscriptionType: z.enum(["basic", "medium", "vip"]).optional(),
-})
+  firstName: z.string().min(1, "First name cannot be empty").optional(),
+  lastName: z.string().min(1, "Last name cannot be empty").optional(),
+  phone: z
+    .string()
+    .regex(/^\d{10}$/, "Phone number must be exactly 10 digits")
+    .optional(),
+  profileImage: z
+    .string()
+    .url("Profile image must be a valid URL")
+    .optional(),
+  subscriptionType: z.enum(["basic", "medium", "vip"]).optional(),
+  verificationReason: z.string().min(1).optional(),
+  isVerified: z.boolean().optional(),
+  isBlocked: z.boolean().optional(),
+});
+
 
 //login user
 export const loginSchema = z.object({
@@ -52,7 +59,11 @@ export const resendOtpSchema = z.object({
 
 //forgotpass
 export const forgotPassSchema = z.object({
-    email: z.string().email('Email is required')
+    email: z.string().email('Email is required'),
+    role: z.string({
+        required_error: 'Role is required',
+        invalid_type_error: 'Role must be string'
+    })
 })
 
 //updatepass
@@ -60,5 +71,16 @@ export const updatePassSchema = z.object({
     password: z.string().min(6, 'Password must be at least 6 characters long'),
 })
 
+//google login 
+export const googleLoginSchema = z.object({
+    credential: z.string({
+        required_error: 'Credentials is required',
+        invalid_type_error: 'Credential must be string'
+    }),
+    role: z.string({
+        required_error: 'Role is required',
+        invalid_type_error: 'Role must be string'
+    })
+})
 
 
