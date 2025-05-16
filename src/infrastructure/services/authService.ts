@@ -11,6 +11,7 @@ import { TOKENS } from "../../constants/token";
 import { RedisService } from "./redisService";
 import { TRole } from "../../shared/types/client.types";
 import { IMailService } from "../../application/interfaces/mailService.interface";
+import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 
 @injectable()
 export class AuthService implements IAuthService {
@@ -50,7 +51,7 @@ export class AuthService implements IAuthService {
         try {
             const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
-        } catch (error: any) {
+        } catch (error) {
             throw new AppError("Invalid or expired access token", HttpStatusCode.UNAUTHORIZED);
         }
     }
@@ -59,7 +60,7 @@ export class AuthService implements IAuthService {
         try {
             const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
-        } catch (error: any) {
+        } catch (error) {
             throw new AppError("Invalid or expired refresh token", HttpStatusCode.UNAUTHORIZED)
         }
     }
@@ -87,12 +88,12 @@ export class AuthService implements IAuthService {
         await this.mailService.sendOtpEmail(email, otp, (otpTimer.expiresAt / 60).toString());
     }
 
-    async storeOtp(userId: string, otp: string, data: any, purpose: "signup" | "reset"): Promise<void> {
+    async storeOtp(userId: string, otp: string, data: CreateUserDTO | { email: string }, purpose: "signup" | "reset"): Promise<void> {
         await this.checkOtpRequestLimit(userId)
-        await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt * 2) //120s
+        await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt * 2)
     }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<any> {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<CreateUserDTO | { email: string }> {
         const storedData = await this.redisService.getOtp(userId, purpose)
         console.log('storedData: ', storedData);
         if (!storedData) {

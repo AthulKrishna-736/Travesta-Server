@@ -9,8 +9,8 @@ import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import logger from "../../../utils/logger";
 import { TRole } from "../../../shared/types/client.types";
-import { IJwtService } from "../../interfaces/jwtService.interface";
-import { IOtpService } from "../../interfaces/otpService.interface";
+import { IJwtService } from "../../interfaces/redisService.interface";
+import { IOtpService } from "../../interfaces/redisService.interface";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { OAuth2Client } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
@@ -121,7 +121,7 @@ export class AuthUseCases implements IAuthUseCases {
         }
     }
 
-    async confirmRegister(userData: CreateUserDTO & { createdAt: Date; updatedAt: Date; }): Promise<IUser> {
+    async confirmRegister(userData: CreateUserDTO): Promise<IUser> {
         const existingUser = await this._userRepo.findUser(userData.email);
         if (existingUser) {
             throw new AppError('User already exists', HttpStatusCode.BAD_REQUEST);
@@ -146,7 +146,7 @@ export class AuthUseCases implements IAuthUseCases {
             });
 
             payload = ticket.getPayload();
-        } catch (error: any) {
+        } catch (error) {
             throw new AppError('Invalid Google Token', HttpStatusCode.UNAUTHORIZED);
         }
 
@@ -204,6 +204,7 @@ export class AuthUseCases implements IAuthUseCases {
         }
 
         const otp = this._authService.generateOtp();
+        console.log('password generate forgot: ', otp)
         const tempUserId = `temp:reset:${uuidv4()}`;
 
         await this._authService.storeOtp(tempUserId, otp, { email: user.email }, 'reset');
@@ -238,18 +239,23 @@ export class AuthUseCases implements IAuthUseCases {
     }
 
     async resendOtp(userId: string, purpose: "signup" | "reset"): Promise<{ message: string; }> {
+
+        if (!userId) {
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
+        }
+
         await this._authService.resendOtp(userId, purpose)
         return { message: 'OTP resent to you email' }
     }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ isOtpVerified: boolean; data: any; }> {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ isOtpVerified: boolean, data: CreateUserDTO | { email: string } }> {
         const data = await this._authService.verifyOtp(userId, otp, purpose)
         if (!data) {
             throw new AppError('Invalid or expired Otp', HttpStatusCode.BAD_REQUEST)
         }
 
         if (purpose == 'signup') {
-            const user = await this.confirmRegister(data)
+            const user = await this.confirmRegister(data as CreateUserDTO)
             return {
                 isOtpVerified: true,
                 data: user,

@@ -6,7 +6,7 @@ import { container } from "tsyringe";
 import { env } from "../infrastructure/config/env";
 import { jwtConfig } from "../infrastructure/config/jwtConfig";
 import logger from "../utils/logger";
-import { IJwtService } from "../application/interfaces/jwtService.interface";
+import { IJwtService } from "../application/interfaces/redisService.interface";
 import { TOKENS } from "../constants/token";
 import { CustomRequest } from "../utils/customRequest";
 import { setAccessCookie } from "../utils/setCookies";

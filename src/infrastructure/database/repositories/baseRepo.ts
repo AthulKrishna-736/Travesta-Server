@@ -1,7 +1,7 @@
 import mongoose, { Document, FilterQuery, Model, UpdateQuery } from "mongoose";
 
 export class BaseRepository<T extends Document> {
-    constructor(private model: Model<T>) { }
+    constructor(protected model: Model<T>) { }
 
     async create(item: Partial<T>): Promise<T> {
         return this.model.create(item)

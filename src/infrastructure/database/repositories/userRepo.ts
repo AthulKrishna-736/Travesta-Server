@@ -1,82 +1,9 @@
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 import { IUser } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO, UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
-import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { TUserDocument, userModel } from "../models/userModels";
 import { BaseRepository } from "./baseRepo";
 import { injectable } from "tsyringe";
-
-// export class UserRepository implements IUserRepository {
-
-//     async findByEmail(email: string): Promise<IUser | null> {
-//         const user = await userModel.findOne({ email }).lean();
-//         return user as IUser;
-//     }
-
-//     async getAllUsers(page: number, limit: number, role: string, search?: string): Promise<{ users: IUser[]; total: number }> {
-//         const skip = (page - 1) * limit
-//         const filter: any = { role }
-
-//         if (search) {
-//             const searchRegex = new RegExp(search, 'i');
-//             filter.$or = [
-//                 { firstName: searchRegex },
-//                 { email: searchRegex }
-//             ];
-//         }
-//         const users = await userModel.find(filter).skip(skip).limit(limit).lean();
-//         const total = await userModel.countDocuments(filter);
-//         return { users: users, total }
-//     }
-
-//     async createUser(data: CreateUserDTO): Promise<IUser> {
-//         const user = new userModel(data);
-//         const saved = await user.save();
-//         return saved.toObject() as IUser;
-//     }
-
-//     async updateUser(id: string, updates: UpdateUserDTO): Promise<IUser> {
-//         const updated = await userModel.findByIdAndUpdate(id, updates, { new: true })
-//         if (!updated) {
-//             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
-//         }
-//         return updated.toObject() as IUser
-//     }
-
-//     async findById(id: string): Promise<IUser | null> {
-//         const user = await userModel.findById(id)
-//         if (!user) {
-//             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
-//         }
-//         return user
-//     }
-
-//     async deleteUser(id: string): Promise<boolean> {
-//         const user = await userModel.findByIdAndDelete(id)
-//         return !!user
-//     }
-
-//     async updatePassword(id: string, password: string): Promise<boolean> {
-//         const user = await userModel.findById(id)
-//         if (!user) {
-//             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
-//         }
-//         user.password = password
-//         await user.save()
-//         return true
-//     }
-
-//     async verifyKyc(id: string): Promise<boolean> {
-//         const user = await userModel.findById(id)
-//         if (!user) {
-//             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
-//         }
-//         user.isVerified = true
-//         await user.save()
-//         return true
-//     }
-// }
 
 @injectable()
 export class UserRepository extends BaseRepository<TUserDocument> implements IUserRepository {
@@ -99,8 +26,8 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
         return user
     }
 
-    async findUser(email: string) : Promise<IUser | null>{
-        const user = await this.findOne({email}).exec();
+    async findUser(email: string): Promise<IUser | null> {
+        const user = await this.findOne({ email }).exec();
         return user
     }
 
@@ -116,10 +43,10 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
                 { email: searchRegex },
             ]
         }
-        const result = this.find(filter)
 
+        const result = this.find(filter)
+        const total = await this.model.countDocuments(filter)
         const user = await result.skip(skip).limit(limit).lean<IUser[]>();
-        const total = await result.countDocuments(filter);
 
         return { users: user, total }
     }

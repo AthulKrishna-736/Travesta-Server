@@ -1,11 +1,11 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { TOKENS } from "../../../constants/token";
-import { IOtpService } from "../../interfaces/otpService.interface";
-import { IJwtService } from "../../interfaces/jwtService.interface";
+import { IOtpService } from "../../interfaces/redisService.interface";
+import { IJwtService } from "../../interfaces/redisService.interface";
+import { IUserRepository } from "../../../domain/repositories/repository.interface";
 
 @injectable()
 export class GetUserProfileUseCase {
@@ -21,7 +21,7 @@ export class GetUserProfileUseCase {
         if (cachedProfile) {
             return cachedProfile;
         } else {
-            const user = await this._userRepository.findById(userId);
+            const user = await this._userRepository.findUserById(userId);
             if (!user) {
                 throw new AppError("User not found", HttpStatusCode.BAD_REQUEST);
             }

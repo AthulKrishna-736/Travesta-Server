@@ -8,6 +8,8 @@ export interface CreateUserDTO {
     phone: number
     role: TRole
     subscriptionType: TSubscription
+    createdAt?: Date
+    updatedAtd?: Date
 }
 
 export interface UpdateUserDTO {

@@ -1,11 +1,11 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { IUpdateVendorReqUseCase } from "../../../domain/interfaces/usecases.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import logger from "../../../utils/logger";
 import { IMailService } from "../../interfaces/mailService.interface";
+import { IUserRepository } from "../../../domain/repositories/repository.interface";
 
 
 @injectable()
@@ -16,7 +16,7 @@ export class UpdateVendorReq implements IUpdateVendorReqUseCase {
     ) { }
 
     async execute(vendorId: string, isVerified: boolean, verificationReason: string): Promise<{ message: string }> {
-        const vendor = await this.userRepo.findById(vendorId)
+        const vendor = await this.userRepo.findUserById(vendorId)
         if (!vendor) {
             throw new AppError('Vendor not found', HttpStatusCode.BAD_REQUEST)
         }

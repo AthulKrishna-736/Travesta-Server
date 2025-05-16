@@ -1,6 +1,5 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
@@ -8,6 +7,7 @@ import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import path from 'path';
 import fs from 'fs';
 import { IUpdateKycUseCase } from "../../../domain/interfaces/usecases.interface";
+import { IUserRepository } from "../../../domain/repositories/repository.interface";
 
 @injectable()
 export class UpdateKycUseCase implements IUpdateKycUseCase {
@@ -17,7 +17,7 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
     ) { }
 
     async execute(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: ResponseUserDTO, message: string }> {
-        const user = await this._userRepo.findById(userId);
+        const user = await this._userRepo.findUserById(userId);
         if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
 
         const uploadAndClean = async (file: Express.Multer.File, name: string) => {
@@ -38,6 +38,10 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
         const existingDocs = user.kycDocuments || [];
         const updatedDocs = [...existingDocs, frontKey, backKey];
         const updated = await this._userRepo.updateUser(userId, { kycDocuments: updatedDocs });
+
+        if (!updated) {
+            throw new AppError('Error while updating user', HttpStatusCode.BAD_REQUEST);
+        }
 
         const signedUrls = await Promise.all(
             updated.kycDocuments!.map((key) => this._s3Service.getFileUrlFromAws(key, 86400))

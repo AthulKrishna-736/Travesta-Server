@@ -1,5 +1,4 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { ResponseUserDTO, UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
@@ -8,6 +7,7 @@ import { IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interfac
 import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
 import path from 'path';
 import fs from 'fs'
+import { IUserRepository } from "../../../domain/repositories/repository.interface";
 
 @injectable()
 export class UpdateUser implements IUpdateUserUseCase {
@@ -17,7 +17,7 @@ export class UpdateUser implements IUpdateUserUseCase {
     ) { }
 
     async execute(userId: string, userData: UpdateUserDTO, file?: Express.Multer.File): Promise<{ user: ResponseUserDTO, message: string }> {
-        const existingUser = await this._userRepository.findById(userId);
+        const existingUser = await this._userRepository.findUserById(userId);
         if (!existingUser) {
             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
         }
@@ -43,6 +43,10 @@ export class UpdateUser implements IUpdateUserUseCase {
         const updates: Omit<UpdateUserDTO, 'isVerified'> = { ...userData };
 
         const updatedUser = await this._userRepository.updateUser(userId, updates);
+
+        if (!updatedUser) {
+            throw new AppError('error while updating user', HttpStatusCode.INTERNAL_SERVER_ERROR);
+        }
 
         const signedUrl = await this._awsS3Service.getFileUrlFromAws(updatedUser.profileImage!, 86400)
 

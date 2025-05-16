@@ -1,8 +1,10 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { TOKENS } from "../../../constants/token";
 import { IGetAllUsersUseCase } from "../../../domain/interfaces/usecases.interface";
 import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { IUserRepository } from "../../../domain/repositories/repository.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
 @injectable()
 export class GetAllUsers implements IGetAllUsersUseCase {
@@ -13,7 +15,11 @@ export class GetAllUsers implements IGetAllUsersUseCase {
 
     async execute(page: number, limit: number, role: string, search: string): Promise<{ users: ResponseUserDTO[]; total: number }> {
 
-        const { users, total } = await this.userRepository.getAllUsers(page, limit, role, search);
+        const { users, total } = await this.userRepository.findAllUser(page, limit, role, search);
+
+        if(!users){
+            throw new AppError('Cant fetch user try again later', HttpStatusCode.INTERNAL_SERVER_ERROR)
+        }
 
         const nonAdminUsers: ResponseUserDTO[] = users
             .filter(user => user.role !== 'admin')

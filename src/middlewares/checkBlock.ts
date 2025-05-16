@@ -2,10 +2,9 @@ import { NextFunction, Response } from "express";
 import { CustomRequest } from "../utils/customRequest";
 import { container } from "tsyringe";
 import { TOKENS } from "../constants/token";
-import { IUserRepository } from "../domain/interfaces/user.interface";
 import { AppError } from "../utils/appError";
 import { HttpStatusCode } from "../utils/HttpStatusCodes";
-
+import { IUserRepository } from "../domain/repositories/repository.interface";
 
 
 export const checkUserBlock = async (req: CustomRequest, res: Response, next: NextFunction) => {
@@ -14,7 +13,7 @@ export const checkUserBlock = async (req: CustomRequest, res: Response, next: Ne
         const userRepo = container.resolve<IUserRepository>(TOKENS.UserRepository)
 
         if (data?.role == 'user') {
-            const user = await userRepo.findByEmail(data.email!)
+            const user = await userRepo.findUser(data.email!)
             if (!user) {
                 throw new AppError('user not found', HttpStatusCode.UNAUTHORIZED);
             }
@@ -26,7 +25,7 @@ export const checkUserBlock = async (req: CustomRequest, res: Response, next: Ne
         }
 
         if(data?.role == 'vendor'){
-            const vendor = await userRepo.findByEmail(data.email!)
+            const vendor = await userRepo.findUser(data.email!)
             if(!vendor){
                 throw new AppError('vendor not found', HttpStatusCode.UNAUTHORIZED)
             }

@@ -1,9 +1,11 @@
 import { inject, injectable } from "tsyringe";
 import { IGetAllVendorReqUseCase } from "../../../domain/interfaces/usecases.interface";
-import { IUserRepository } from "../../../domain/interfaces/user.interface";
 import { TOKENS } from "../../../constants/token";
 import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
+import { IUserRepository } from "../../../domain/repositories/repository.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
 
 @injectable()
@@ -14,7 +16,11 @@ export class GetAllVendorReq implements IGetAllVendorReqUseCase {
     ) { }
 
     async execute(page: number, limit: number, search?: string): Promise<{ vendors: ResponseUserDTO[]; total: number; }> {
-        const { users, total } = await this._userRepository.getAllUsers(page, limit, 'vendor', search)
+        const { users, total } = await this._userRepository.findAllUser(page, limit, 'vendor', search)
+
+        if (!users) {
+            throw new AppError('cant fetch vendors try again later', HttpStatusCode.INTERNAL_SERVER_ERROR);
+        }
 
         const mappedVendors: ResponseUserDTO[] = await Promise.all(users.map(async (vendor) => {
             let kycDocuments: string[] = vendor.kycDocuments || [];

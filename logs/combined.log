@@ -9003,3 +9003,352 @@
   "iat": 1747242352,
   "exp": 1748538352
 }[0m
+[2025-05-16 14:48:22] INFO: [34mRunning in development mode[0m
+[2025-05-16 14:48:22] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-16 14:48:22] INFO: [34mRedis connected successfully[0m
+[2025-05-16 14:48:36] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-16 14:48:39] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-16 14:48:50] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747387124,
+  "exp": 1748683124
+}[0m
+[2025-05-16 14:48:50] ERROR: [31mcheck the error in handler:  Query was already executed: User.countDocuments({ role: 'user' })[0m
+[2025-05-16 14:48:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747387124,
+  "exp": 1748683124
+}[0m
+[2025-05-16 14:48:51] ERROR: [31mcheck the error in handler:  Query was already executed: User.countDocuments({ role: 'user' })[0m
+[2025-05-16 14:48:53] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747387124,
+  "exp": 1748683124
+}[0m
+[2025-05-16 14:48:53] ERROR: [31mcheck the error in handler:  Query was already executed: User.countDocuments({ role: 'user' })[0m
+[2025-05-16 14:48:57] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747387124,
+  "exp": 1748683124
+}[0m
+[2025-05-16 14:48:57] ERROR: [31mcheck the error in handler:  Query was already executed: User.countDocuments({ role: 'user' })[0m
+[2025-05-16 14:49:15] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747387124,
+  "exp": 1748683124
+}[0m
+[2025-05-16 14:49:15] ERROR: [31mcheck the error in handler:  Query was already executed: User.countDocuments({ role: 'user' })[0m
+[2025-05-16 14:49:17] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747387124,
+  "exp": 1748683124
+}[0m
+[2025-05-16 14:49:17] ERROR: [31mcheck the error in handler:  Query was already executed: User.countDocuments({ role: 'user' })[0m
+[2025-05-16 14:49:19] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747387124,
+  "exp": 1748683124
+}[0m
+[2025-05-16 14:49:19] ERROR: [31mcheck the error in handler:  Query was already executed: User.countDocuments({ role: 'user' })[0m
+[2025-05-16 14:57:06] INFO: [34mRunning in development mode[0m
+[2025-05-16 14:57:06] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-16 14:57:07] INFO: [34mRedis connected successfully[0m
+[2025-05-16 19:01:23] INFO: [34mRunning in development mode[0m
+[2025-05-16 19:01:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-16 19:01:23] INFO: [34mRedis connected successfully[0m
+[2025-05-16 19:01:27] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-05-16 19:01:28] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:01:31] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:01:33] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:01:35] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:01:38] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:01:39] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:01:40] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:01:41] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:01:50] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:02:04] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:22] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:27] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:33] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:39] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:44] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:50] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:52] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:03:52] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:04:15] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:04:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:04:58] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:05:02] INFO: [34mVendor verification rejected for jafofe1892@inkight.com[0m
+[2025-05-16 19:05:21] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:05:38] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:09:48] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747402287,
+  "exp": 1748698287
+}[0m
+[2025-05-16 19:10:06] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-16 19:10:07] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-16 19:11:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1747402812,
+  "exp": 1748698812
+}[0m
+[2025-05-16 19:14:42] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747402941,
+  "exp": 1748698941
+}[0m
+[2025-05-16 20:22:01] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-16 20:22:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:22:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:54:57] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-16 20:54:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:54:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:54:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:54:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:54:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:54:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:54:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:54:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 20:55:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-05-16 21:04:24] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-05-16 21:04:26] ERROR: [31mcheck the error in handler:  Invalid otp[0m
+[2025-05-16 21:05:40] ERROR: [31mcheck the error in handler:  Unauthorized: Invalid role for the reset password[0m
+[2025-05-16 21:07:52] ERROR: [31mcheck the error in handler:  Otp has expired[0m
+[2025-05-16 21:08:14] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-05-16 21:08:15] ERROR: [31mcheck the error in handler:  Otp not found or expired[0m
+[2025-05-16 21:08:30] ERROR: [31mcheck the error in handler:  Session expired. Please try again.[0m
+[2025-05-16 21:08:34] ERROR: [31mcheck the error in handler:  Session expired. Please try again.[0m
+[2025-05-16 21:08:55] ERROR: [31mcheck the error in handler:  Session expired. Please try again.[0m
+[2025-05-16 21:11:05] INFO: [34mRunning in development mode[0m
+[2025-05-16 21:11:06] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-16 21:11:06] INFO: [34mRedis connected successfully[0m
+[2025-05-16 21:14:35] INFO: [34mRunning in development mode[0m
+[2025-05-16 21:14:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-16 21:14:36] INFO: [34mRedis connected successfully[0m
+[2025-05-16 23:32:59] INFO: [34mRunning in development mode[0m
+[2025-05-16 23:32:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-16 23:33:00] INFO: [34mRedis connected successfully[0m
+[2025-05-16 23:35:25] ERROR: [31mcheck the error in handler:  User not found[0m
+[2025-05-16 23:36:39] INFO: [34mRunning in development mode[0m
+[2025-05-16 23:36:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-16 23:36:39] INFO: [34mRedis connected successfully[0m
