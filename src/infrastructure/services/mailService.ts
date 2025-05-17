@@ -3,7 +3,7 @@ import { env } from '../config/env';
 import { AppError } from '../../utils/appError';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { injectable } from 'tsyringe';
-import { IMailService } from '../../application/interfaces/mailService.interface';
+import { IMailService } from '../../domain/services/mailService.interface';
 
 @injectable()
 export class MailService implements IMailService{

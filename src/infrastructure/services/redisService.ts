@@ -1,11 +1,10 @@
 import { injectable } from "tsyringe";
-import { IOtpService } from "../../application/interfaces/redisService.interface";
+import { IRedisService } from "../../domain/services/redisService.interface";
 import { redisClient } from "../config/redis";
-import { IJwtService } from "../../application/interfaces/redisService.interface";
 import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 
 @injectable()
-export class RedisService implements IOtpService, IJwtService {
+export class RedisService implements IRedisService {
     private redisClient = redisClient
 
     private getKey(userId: string, purpose: string): string {

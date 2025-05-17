@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
+import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";

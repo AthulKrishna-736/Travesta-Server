@@ -1,5 +1,9 @@
-import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto"
 import { TRole } from "../../shared/types/client.types"
+
+export interface IOtpData {
+    email: string
+    [key: string]: any
+}
 
 export interface IAuthService {
     hashPassword(password: string): Promise<string>
@@ -11,8 +15,8 @@ export interface IAuthService {
     refreshAccessToken(token: string): Promise<string>
     generateOtp(length?: number): string
     sendOtpOnEmail(email: string, otp: string): Promise<void>
-    storeOtp(userId: string, otp: string, data: CreateUserDTO | { email: string }, purpose: 'signup' | 'reset'): Promise<void>
-    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<CreateUserDTO | { email: string }>
+    storeOtp(userId: string, otp: string, data: IOtpData, purpose: 'signup' | 'reset'): Promise<void>
+    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<IOtpData>
     resendOtp(userId: string, purpose: 'signup' | 'reset'): Promise<void>
     checkOtpRequestLimit(userId: string, purpose: 'signup' | 'reset'): Promise<void>
 }

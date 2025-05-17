@@ -1,4 +1,4 @@
-import { IAuthService } from "../../application/interfaces/authService.interface";
+import { IAuthService, IOtpData } from "../../domain/services/authService.interface";
 import bcrypt from 'bcryptjs';
 import * as crypto from 'crypto';
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
@@ -10,7 +10,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { RedisService } from "./redisService";
 import { TRole } from "../../shared/types/client.types";
-import { IMailService } from "../../application/interfaces/mailService.interface";
+import { IMailService } from "../../domain/services/mailService.interface";
 import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
 
 @injectable()
@@ -88,12 +88,12 @@ export class AuthService implements IAuthService {
         await this.mailService.sendOtpEmail(email, otp, (otpTimer.expiresAt / 60).toString());
     }
 
-    async storeOtp(userId: string, otp: string, data: CreateUserDTO | { email: string }, purpose: "signup" | "reset"): Promise<void> {
+    async storeOtp(userId: string, otp: string, data: IOtpData, purpose: "signup" | "reset"): Promise<void> {
         await this.checkOtpRequestLimit(userId)
         await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt * 2)
     }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<CreateUserDTO | { email: string }> {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<IOtpData> {
         const storedData = await this.redisService.getOtp(userId, purpose)
         console.log('storedData: ', storedData);
         if (!storedData) {

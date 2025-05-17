@@ -4,7 +4,7 @@ import { IUpdateVendorReqUseCase } from "../../../domain/interfaces/usecases.int
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import logger from "../../../utils/logger";
-import { IMailService } from "../../interfaces/mailService.interface";
+import { IMailService } from "../../../domain/services/mailService.interface";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 
 

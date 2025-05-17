@@ -4,7 +4,7 @@ import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interface";
-import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
+import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
 import path from 'path';
 import fs from 'fs'
 import { IUserRepository } from "../../../domain/repositories/repository.interface";

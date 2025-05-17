@@ -1,3 +1,5 @@
+import { ForgotPassUseCase } from "../application/use-cases/auth/authUseCases";
+
 export const TOKENS = {
   // Repositories
   UserRepository: 'UserRepository',
@@ -9,7 +11,15 @@ export const TOKENS = {
   AwsS3Service: 'AwsS3Service',
 
   // Use Cases
-  AuthUseCases: 'AuthUseCases',
+  LoginUseCase: 'LoginUseCase',
+  RegisterUseCase: 'RegisterUseCase',
+  ConfirmRegisterUseCase: 'ConfirmRegisterUseCase',
+  GoogleLoginUseCase: 'GoogleLoginUseCase',
+  ForgotPassUseCase: 'ForgotPassUseCase',
+  ResetPassUseCase: 'ResetPassUseCase',
+  ResendOtpUseCase: 'ResendOtpUseCase',
+  VerifyOtpUseCase: 'VerifyOtpUseCase',
+  LogoutUseCase: 'LogoutUseCase',
 
   //admin UseCases
   BlockUserUseCase: 'BlockUserUseCase',

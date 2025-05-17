@@ -1,30 +1,26 @@
 import { inject, injectable } from "tsyringe";
-import { IAuthUseCases } from "../../../domain/interfaces/auth.interface";
 import { TOKENS } from "../../../constants/token";
 import { IUser } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO, ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
-import { IAuthService } from "../../interfaces/authService.interface";
+import { IAuthService } from "../../../domain/services/authService.interface";
 import { v4 as uuidv4 } from 'uuid';
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import logger from "../../../utils/logger";
 import { TRole } from "../../../shared/types/client.types";
-import { IJwtService } from "../../interfaces/redisService.interface";
-import { IOtpService } from "../../interfaces/redisService.interface";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { OAuth2Client } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
-import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
+import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
-
+import { IRedisService } from "../../../domain/services/redisService.interface";
+import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/auth.interface";
 
 @injectable()
-export class AuthUseCases implements IAuthUseCases {
+export class RegisterUseCase implements IRegisterUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private readonly _userRepo: IUserRepository,
-        @inject(TOKENS.AuthService) private readonly _authService: IAuthService,
-        @inject(TOKENS.AwsS3Service) private readonly _awsS3Service: IAwsS3Service,
-        @inject(TOKENS.RedisService) private readonly _redisService: IJwtService & IOtpService,
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.AuthService) private _authService: IAuthService
     ) { }
 
     async register(userData: CreateUserDTO): Promise<{ userId: string; message: string; }> {
@@ -58,6 +54,17 @@ export class AuthUseCases implements IAuthUseCases {
             message: 'OTP sent to email. Please verify to complete registration.',
         }
     }
+}
+
+@injectable()
+export class LoginUseCase implements ILoginUseCase {
+    constructor(
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.AuthService) private _authService: IAuthService,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
+    ) { }
+
 
     async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: ResponseUserDTO; }> {
         const user = await this._userRepo.findUser(email);
@@ -120,6 +127,13 @@ export class AuthUseCases implements IAuthUseCases {
             user: mappedUser
         }
     }
+}
+
+@injectable()
+export class ConfirmRegisterUseCase implements IConfrimRegisterUseCase {
+    constructor(
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+    ) { }
 
     async confirmRegister(userData: CreateUserDTO): Promise<IUser> {
         const existingUser = await this._userRepo.findUser(userData.email);
@@ -133,7 +147,15 @@ export class AuthUseCases implements IAuthUseCases {
         }
         return user;
     }
+}
 
+@injectable()
+export class GoogleLoginUseCase implements IGoogleLoginUseCase {
+    constructor(
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.AuthService) private _authService: IAuthService,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+    ) { }
     async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: IUser; }> {
         const client = new OAuth2Client(env.GOOGLE_ID);
 
@@ -192,6 +214,14 @@ export class AuthUseCases implements IAuthUseCases {
             user
         }
     }
+}
+
+@injectable()
+export class ForgotPassUseCase implements IForgotPassUseCase {
+    constructor(
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.AuthService) private _authService: IAuthService,
+    ) { }
 
     async forgotPass(email: string, role: TRole): Promise<{ userId: string; message: string; }> {
         const user = await this._userRepo.findUser(email)
@@ -216,6 +246,15 @@ export class AuthUseCases implements IAuthUseCases {
             message: 'Otp sent successfully'
         }
     }
+}
+
+
+@injectable()
+export class ResetPassUseCase implements IResetPassUseCase {
+    constructor(
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.AuthService) private _authService: IAuthService,
+    ) { }
 
     async resetPass(email: string, password: string): Promise<void> {
         if (!email) {
@@ -237,7 +276,13 @@ export class AuthUseCases implements IAuthUseCases {
         const hashPass = await this._authService.hashPassword(password)
         await this._userRepo.updateUser(user._id, { password: hashPass })
     }
+}
 
+@injectable()
+export class ResendOtpUseCase implements IResendOtpUseCase {
+    constructor(
+        @inject(TOKENS.AuthService) private _authService: IAuthService,
+    ) { }
     async resendOtp(userId: string, purpose: "signup" | "reset"): Promise<{ message: string; }> {
 
         if (!userId) {
@@ -247,6 +292,14 @@ export class AuthUseCases implements IAuthUseCases {
         await this._authService.resendOtp(userId, purpose)
         return { message: 'OTP resent to you email' }
     }
+}
+
+@injectable()
+export class VerifyOtpUseCase implements IVerifyOtpUseCase {
+    constructor(
+        @inject(TOKENS.AuthService) private _authService: IAuthService,
+        @inject(TOKENS.ConfirmRegisterUseCase) private _register: IConfrimRegisterUseCase,
+    ) { }
 
     async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ isOtpVerified: boolean, data: CreateUserDTO | { email: string } }> {
         const data = await this._authService.verifyOtp(userId, otp, purpose)
@@ -255,7 +308,7 @@ export class AuthUseCases implements IAuthUseCases {
         }
 
         if (purpose == 'signup') {
-            const user = await this.confirmRegister(data as CreateUserDTO)
+            const user = await this._register.confirmRegister(data as CreateUserDTO)
             return {
                 isOtpVerified: true,
                 data: user,
@@ -268,6 +321,14 @@ export class AuthUseCases implements IAuthUseCases {
             data,
         }
     }
+}
+
+@injectable()
+export class LogoutUseCase {
+    constructor(
+        @inject(TOKENS.AuthService) private _authService: IAuthService,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+    ) { }
 
     async logout(accessToken: string, refreshToken: string): Promise<{ message: string }> {
         let userId: string;

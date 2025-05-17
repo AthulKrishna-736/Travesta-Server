@@ -1,5 +1,3 @@
-
-
 export interface IAwsS3Service {
     uploadFileToAws(key: string, filePath: string): Promise<string>;
     getFileUrlFromAws(fileName: string, expireTime: number): Promise<string>;

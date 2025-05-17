@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
-import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
+import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { TOKENS } from "../../../constants/token";
-import { IOtpService } from "../../interfaces/redisService.interface";
-import { IJwtService } from "../../interfaces/redisService.interface";
+import { IOtpService } from "../../../domain/services/redisService.interface";
+import { IJwtService } from "../../../domain/services/redisService.interface";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 
 @injectable()
