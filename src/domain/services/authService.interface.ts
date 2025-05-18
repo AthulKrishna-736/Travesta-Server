@@ -1,9 +1,7 @@
 import { TRole } from "../../shared/types/client.types"
+import { ICreateUserData } from "../interfaces/user.interface"
 
-export interface IOtpData {
-    email: string
-    [key: string]: any
-}
+export type TOtpData = ICreateUserData | { email: string } | { [key: string]: any }
 
 export interface IAuthService {
     hashPassword(password: string): Promise<string>
@@ -15,8 +13,8 @@ export interface IAuthService {
     refreshAccessToken(token: string): Promise<string>
     generateOtp(length?: number): string
     sendOtpOnEmail(email: string, otp: string): Promise<void>
-    storeOtp(userId: string, otp: string, data: IOtpData, purpose: 'signup' | 'reset'): Promise<void>
-    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<IOtpData>
+    storeOtp(userId: string, otp: string, data: TOtpData, purpose: 'signup' | 'reset'): Promise<void>
+    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<TOtpData>
     resendOtp(userId: string, purpose: 'signup' | 'reset'): Promise<void>
     checkOtpRequestLimit(userId: string, purpose: 'signup' | 'reset'): Promise<void>
 }

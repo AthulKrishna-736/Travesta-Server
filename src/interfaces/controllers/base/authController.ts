@@ -7,14 +7,13 @@ import { ResponseHandler } from "../../../middlewares/responseHandler";
 import { TOKENS } from "../../../constants/token";
 import { CustomRequest } from "../../../utils/customRequest";
 import { setAccessCookie, setRefreshCookie } from "../../../utils/setCookies";
-import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/auth.interface";
+import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/auth.interface";
 
 @injectable()
 export class AuthController {
     constructor(
         @inject(TOKENS.LoginUseCase) private _loginUseCase: ILoginUseCase,
         @inject(TOKENS.RegisterUseCase) private _registerUseCase: IRegisterUseCase,
-        @inject(TOKENS.ConfirmRegisterUseCase) private _confirmRegisterUseCase: IConfrimRegisterUseCase,
         @inject(TOKENS.GoogleLoginUseCase) private _googleLoginUseCase: IGoogleLoginUseCase,
         @inject(TOKENS.ForgotPassUseCase) private _forgotPassUseCase: IForgotPassUseCase,
         @inject(TOKENS.ResetPassUseCase) private _resetPassUseCase: IResetPassUseCase,

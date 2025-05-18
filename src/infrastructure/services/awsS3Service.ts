@@ -1,6 +1,6 @@
 import { injectable } from "tsyringe";
 import { IAwsS3Service } from "../../domain/services/awsS3Service.interface";
-import { S3Client, DeleteObjectCommand, GetObjectCommand, ListObjectsV2Command, HeadObjectCommand, PutObjectCommand, DeleteObjectsCommand } from '@aws-sdk/client-s3';
+import { S3Client, DeleteObjectCommand, GetObjectCommand, HeadObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { env } from "../config/env";
 import { createReadStream } from "fs";

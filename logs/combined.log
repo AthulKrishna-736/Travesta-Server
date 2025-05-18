@@ -9352,3 +9352,83 @@
 [2025-05-16 23:36:39] INFO: [34mRunning in development mode[0m
 [2025-05-16 23:36:39] INFO: [34mMongoDB connected: localhost[0m
 [2025-05-16 23:36:39] INFO: [34mRedis connected successfully[0m
+[2025-05-18 15:36:07] INFO: [34mRunning in development mode[0m
+[2025-05-18 15:36:07] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-18 15:36:07] INFO: [34mRedis connected successfully[0m
+[2025-05-18 15:39:32] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747562962,
+  "exp": 1748858962
+}[0m
+[2025-05-18 15:39:34] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747562962,
+  "exp": 1748858962
+}[0m
+[2025-05-18 15:40:02] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-18 15:42:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1747563003,
+  "exp": 1748859003
+}[0m
+[2025-05-18 15:42:06] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 15:43:54] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1747563003,
+  "exp": 1748859003
+}[0m
+[2025-05-18 19:33:11] INFO: [34mRunning in development mode[0m
+[2025-05-18 19:33:12] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-18 19:33:12] INFO: [34mRedis connected successfully[0m
+[2025-05-18 19:34:20] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747577058,
+  "exp": 1748873058
+}[0m
+[2025-05-18 19:34:20] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 19:34:22] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747577058,
+  "exp": 1748873058
+}[0m
+[2025-05-18 19:34:22] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 19:34:22] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747577058,
+  "exp": 1748873058
+}[0m
+[2025-05-18 19:34:22] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 19:34:22] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1747577058,
+  "exp": 1748873058
+}[0m
+[2025-05-18 19:34:22] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 19:35:21] INFO: [34mRunning in development mode[0m
+[2025-05-18 19:35:21] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-18 19:35:22] INFO: [34mRedis connected successfully[0m
+[2025-05-18 19:56:42] INFO: [34mRunning in development mode[0m
+[2025-05-18 19:56:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-18 19:56:43] INFO: [34mRedis connected successfully[0m
+[2025-05-18 20:09:20] INFO: [34mRunning in development mode[0m
+[2025-05-18 20:09:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-18 20:09:21] INFO: [34mRedis connected successfully[0m
+[2025-05-18 20:10:49] INFO: [34mRunning in development mode[0m
+[2025-05-18 20:10:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-18 20:10:49] INFO: [34mRedis connected successfully[0m

@@ -1,28 +1,7 @@
 import { TRole } from "../../shared/types/client.types"
+import { TOtpData } from "../services/authService.interface"
+import { ICreateUserData, IResponseUserData, IUser } from "./user.interface"
 
-export interface ICreateUserData {
-    email: string
-    [key: string]: any
-}
-
-export interface IUpdateUserData {
-    email: string
-    [key: string]: any
-}
-
-export interface IResponseUserData {
-    email: string
-    [key: string]: any
-}
-
-export interface IUserData {
-    email: string
-    firstName: string
-    lastName: string
-    phone: number
-    password: string
-
-}
 
 export interface ILoginUseCase {
     login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string, refreshToken: string, user: IResponseUserData }>
@@ -33,11 +12,11 @@ export interface IRegisterUseCase {
 }
 
 export interface IConfrimRegisterUseCase {
-    confirmRegister(userData: ICreateUserData): Promise<IUserData>
+    confirmRegister(userData: ICreateUserData): Promise<IUser>
 }
 
 export interface IGoogleLoginUseCase {
-    loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string, refreshToken: string, user: IUserData }>
+    loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string, refreshToken: string, user: IUser }>
 }
 
 export interface IForgotPassUseCase {
@@ -53,7 +32,7 @@ export interface IResendOtpUseCase {
 }
 
 export interface IVerifyOtpUseCase {
-    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<{ isOtpVerified: boolean, data: any }>
+    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<{ isOtpVerified: boolean, data: TOtpData }>
 }
 
 export interface ILogoutUseCases {

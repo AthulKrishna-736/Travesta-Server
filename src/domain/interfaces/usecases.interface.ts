@@ -1,11 +1,10 @@
-import { ResponseUserDTO, UpdateUserDTO } from "../../interfaces/dtos/user/user.dto";
 import { TRole } from "../../shared/types/client.types";
-import { IUser } from "./user.interface";
+import { IResponseUserData, IUpdateUserData, IUser } from "./user.interface";
 
 
 //user UserCases
 export interface IUpdateUserUseCase {
-    execute(userId: string, userData: UpdateUserDTO, file?: Express.Multer.File): Promise<{ user: ResponseUserDTO, message: string }>
+    execute(userId: string, userData: IUpdateUserData, file?: Express.Multer.File): Promise<{ user: IResponseUserData, message: string }>
 }
 
 export interface IGetUserUseCase {
@@ -14,7 +13,7 @@ export interface IGetUserUseCase {
 
 //admin UseCases
 export interface IGetAllUsersUseCase {
-    execute(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string): Promise<{ users: ResponseUserDTO[]; total: number }>
+    execute(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string): Promise<{ users: IResponseUserData[]; total: number }>
 }
 
 export interface IBlockUnblockUser {
@@ -22,7 +21,7 @@ export interface IBlockUnblockUser {
 }
 
 export interface IGetAllVendorReqUseCase {
-    execute(page: number, limit: number, search?: string): Promise<{ vendors: ResponseUserDTO[]; total: number }>
+    execute(page: number, limit: number, search?: string): Promise<{ vendors: IResponseUserData[]; total: number }>
 }
 
 export interface IUpdateVendorReqUseCase {
@@ -31,5 +30,5 @@ export interface IUpdateVendorReqUseCase {
 
 //vendor UseCases
 export interface IUpdateKycUseCase {
-    execute(vendorId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: ResponseUserDTO, message: string }>
+    execute(vendorId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: IResponseUserData, message: string }>
 }

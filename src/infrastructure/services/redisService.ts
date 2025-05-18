@@ -1,23 +1,23 @@
 import { injectable } from "tsyringe";
 import { IRedisService } from "../../domain/services/redisService.interface";
 import { redisClient } from "../config/redis";
-import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
+import { TOtpData } from "../../domain/services/authService.interface";
 
 @injectable()
 export class RedisService implements IRedisService {
     private redisClient = redisClient
 
-    private getKey(userId: string, purpose: string): string {
+    getKey(userId: string, purpose: string): string {
         return `otp:${userId}:${purpose}`
     }
 
-    async get(key: string): Promise<any | null> {
+    async get<T>(key: string): Promise<T | null> {
         const raw = await this.redisClient.get(key);
         if (!raw) return null;
-        return JSON.parse(raw);
+        return JSON.parse(raw) as T;
     }
 
-    async set(key: string, value: CreateUserDTO | { email: string }, ttl: number): Promise<void> {
+    async set<T>(key: string, value: T, ttl: number): Promise<void> {
         await this.redisClient.set(key, JSON.stringify(value), {
             EX: ttl,
         });
@@ -27,30 +27,30 @@ export class RedisService implements IRedisService {
         await this.redisClient.del(key);
     }
 
-    async storeOtp(userId: string, otp: string, data: CreateUserDTO | { email: string }, purpose: "signup" | "reset", expiresAt: number): Promise<void> {
+    //otp section
+    async storeOtp(userId: string, otp: string, data: TOtpData, purpose: "signup" | "reset", expiresAt: number): Promise<void> {
         const key = this.getKey(userId, purpose);
         const payload = {
             otp,
             data,
             expiryTime: new Date().getTime(),
         }
-        await this.redisClient.set(key, JSON.stringify(payload), {
-            EX: expiresAt,
-        })
+        await this.set(key, payload, expiresAt)
     }
 
-    async getOtp(userId: string, purpose: "signup" | "reset"): Promise<{ otp: string, data: CreateUserDTO | { email: string }, expiryTime: number } | null> {
+    async getOtp(userId: string, purpose: "signup" | "reset"): Promise<{ otp: string, data: TOtpData, expiresAt: number } | null> {
         const key = this.getKey(userId, purpose);
-        const raw = await this.redisClient.get(key)
+        const raw = await this.get(key)
 
         if (!raw) return null
-        const parsed = JSON.parse(raw);
+        const jsonRaws = JSON.stringify(raw)
+        const parsed = JSON.parse(jsonRaws);
         return parsed
     }
 
     async deleteOtp(userId: string, purpose: "signup" | "reset"): Promise<void> {
         const key = this.getKey(userId, purpose);
-        await this.redisClient.del(key)
+        await this.del(key)
     }
 
     async increaseRequestCount(key: string, windowSeconds: number): Promise<number> {
@@ -62,29 +62,30 @@ export class RedisService implements IRedisService {
         return count as number;
     }
 
-    async storeRefreshToken(userId: string, refreshToken: string, expiresIn: number): Promise<void> {
+    //tokens
+    async storeRefreshToken(userId: string, refreshToken: string, expiresAt: number): Promise<void> {
         const key = `refresh:${userId}`
-        await this.redisClient.set(key, refreshToken, { EX: expiresIn });
+        await this.set(key, refreshToken, expiresAt);
     }
 
     async getStoredRefreshToken(userId: string): Promise<string | null> {
         const key = `refresh:${userId}`
-        return await this.redisClient.get(key)
+        return await this.get(key)
     }
 
     async deleteRefreshToken(userId: string): Promise<void> {
         const key = `refresh:${userId}`
-        await this.redisClient.del(key)
+        await this.del(key)
     }
 
-    async blacklistAccessToken(token: string, expiresIn: number): Promise<void> {
+    async blacklistAccessToken(token: string, expiresAt: number): Promise<void> {
         const key = `blacklist:${token}`
-        await this.redisClient.set(key, 'blacklisted', { EX: expiresIn })
+        await this.set(key, 'blacklisted', expiresAt)
     }
 
     async isAccessTokenBlacklisted(token: string): Promise<boolean> {
         const key = `blacklist:${token}`
-        const result = await this.redisClient.get(key)
+        const result = await this.get(key)
 
         return result === 'blacklisted';
     }

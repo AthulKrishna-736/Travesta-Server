@@ -59,7 +59,7 @@ export class MailService implements IMailService{
                 message: 'Otp sent successfully',
                 otpExpireAt
             }
-        } catch (error: any) {
+        } catch (error) {
             throw new AppError('Failed to send OTP email. Please try again later.', HttpStatusCode.BAD_REQUEST);
         }
     }
@@ -101,7 +101,7 @@ export class MailService implements IMailService{
             return {
                 message: 'Vendor rejection email sent successfully'
             };
-        } catch (error: any) {
+        } catch (error) {
             throw new AppError('Failed to send rejection email.', HttpStatusCode.BAD_REQUEST);
         }
     }

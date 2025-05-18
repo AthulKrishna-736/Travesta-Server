@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IUser } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO, ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
-import { IAuthService } from "../../../domain/services/authService.interface";
+import { IAuthService, TOtpData } from "../../../domain/services/authService.interface";
 import { v4 as uuidv4 } from 'uuid';
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
@@ -301,7 +301,7 @@ export class VerifyOtpUseCase implements IVerifyOtpUseCase {
         @inject(TOKENS.ConfirmRegisterUseCase) private _register: IConfrimRegisterUseCase,
     ) { }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ isOtpVerified: boolean, data: CreateUserDTO | { email: string } }> {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ isOtpVerified: boolean, data: TOtpData }> {
         const data = await this._authService.verifyOtp(userId, otp, purpose)
         if (!data) {
             throw new AppError('Invalid or expired Otp', HttpStatusCode.BAD_REQUEST)

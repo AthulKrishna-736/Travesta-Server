@@ -2875,3 +2875,9 @@
 [2025-05-16 21:08:34] ERROR: [31mcheck the error in handler:  Session expired. Please try again.[0m
 [2025-05-16 21:08:55] ERROR: [31mcheck the error in handler:  Session expired. Please try again.[0m
 [2025-05-16 23:35:25] ERROR: [31mcheck the error in handler:  User not found[0m
+[2025-05-18 15:40:02] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-05-18 15:42:06] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 19:34:20] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 19:34:22] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 19:34:22] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-05-18 19:34:22] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
