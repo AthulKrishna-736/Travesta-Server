@@ -12,7 +12,7 @@ export class BlockUnblockUser implements IBlockUnblockUser {
         @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository
     ) { }
 
-    async execute(userId: string): Promise<IUser> {
+    async blockUnblockUser(userId: string): Promise<IUser> {
         const existingUser = await this.userRepository.findUserById(userId);
 
         if (!existingUser) {

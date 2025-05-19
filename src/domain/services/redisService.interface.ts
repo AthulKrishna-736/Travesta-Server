@@ -18,4 +18,10 @@ export interface IOtpService {
     del(key: string): Promise<void>
 }
 
-export interface IRedisService extends IJwtService, IOtpService { }
+export interface IAwsRedisService {
+    storeRedisSignedUrl(userId: string, imageUrl: string, expiresAt: number): Promise<void>
+    getRedisSignedUrl(userId: string, purpose: 'profile' | 'kycDocs'): Promise<string | string[] | null>
+    storeKycDocs(userId: string, imagesUrls: string[], expiresAt: number): Promise<void>
+}
+
+export interface IRedisService extends IJwtService, IOtpService, IAwsRedisService { }

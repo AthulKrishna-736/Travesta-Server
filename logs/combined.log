@@ -9432,3 +9432,50 @@
 [2025-05-18 20:10:49] INFO: [34mRunning in development mode[0m
 [2025-05-18 20:10:49] INFO: [34mMongoDB connected: localhost[0m
 [2025-05-18 20:10:49] INFO: [34mRedis connected successfully[0m
+[2025-05-19 09:28:31] INFO: [34mRunning in development mode[0m
+[2025-05-19 09:28:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-05-19 09:28:33] INFO: [34mRedis connected successfully[0m
+[2025-05-19 09:28:38] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747627115,
+  "exp": 1748923115
+}[0m
+[2025-05-19 09:28:52] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747627115,
+  "exp": 1748923115
+}[0m
+[2025-05-19 09:29:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747627115,
+  "exp": 1748923115
+}[0m
+[2025-05-19 09:29:38] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747627115,
+  "exp": 1748923115
+}[0m
+[2025-05-19 09:29:45] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747627115,
+  "exp": 1748923115
+}[0m
+[2025-05-19 09:29:56] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1747627115,
+  "exp": 1748923115
+}[0m
+[2025-05-19 09:30:48] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-05-19 09:30:53] ERROR: [31mRedis Client Error:  Connection timeout[0m

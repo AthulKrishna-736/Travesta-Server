@@ -35,6 +35,7 @@ export class vendorRoutes extends BaseRouter {
 
 
             .patch('/profile', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.single('image'), validateRequest(updateUserSchema), (req: CustomRequest, res) => this._vendorController.updateProfile(req, res))
+            .get('/profile', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._vendorController.getVendor(req, res))
             .patch('/kyc', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.fields([{ name: 'front', maxCount: 1 }, { name: 'back', maxCount: 1 }]), (req: CustomRequest, res) => this._vendorController.updateKyc(req, res))
     }
 }

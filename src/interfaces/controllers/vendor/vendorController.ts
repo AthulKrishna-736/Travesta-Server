@@ -6,13 +6,14 @@ import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { ResponseHandler } from "../../../middlewares/responseHandler";
 import { TOKENS } from "../../../constants/token";
 import { CustomRequest } from "../../../utils/customRequest";
-import { IUpdateKycUseCase, IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interface";
+import { IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interface";
 
 @injectable()
 export class VendorController {
     constructor(
         @inject(TOKENS.UpdateUserUseCase) private _updateUser: IUpdateUserUseCase,
         @inject(TOKENS.UpdateKycUseCase) private _updateKyc: IUpdateKycUseCase,
+        @inject(TOKENS.GetVendorUseCase) private _getVendor: IGetVendorUseCase,
     ) { }
 
     async updateProfile(req: CustomRequest, res: Response): Promise<void> {
@@ -24,10 +25,10 @@ export class VendorController {
 
             const userData: UpdateUserDTO = req.body;
 
-            const updateUser = await this._updateUser.execute(userId, userData, req.file);
+            const updateUser = await this._updateUser.updateUser(userId, userData, req.file);
 
             ResponseHandler.success(res, "Profile updated successfully", updateUser, HttpStatusCode.OK);
-        } catch (error: any) {
+        } catch (error) {
             throw error;
         }
     }
@@ -48,9 +49,22 @@ export class VendorController {
             const frontFile = files.front[0];
             const backFile = files.back[0];
 
-            const vendor = await this._updateKyc.execute(userId, frontFile, backFile);
+            const vendor = await this._updateKyc.updateKyc(userId, frontFile, backFile);
 
             ResponseHandler.success(res, vendor.message, vendor.vendor, HttpStatusCode.OK);
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getVendor(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const userId = req.user?.userId;
+            if (!userId) {
+                throw new AppError('userid missing in req body', HttpStatusCode.BAD_REQUEST);
+            }
+            const vendor = await this._getVendor.getUser(userId)
+            ResponseHandler.success(res, vendor.message, vendor.user, HttpStatusCode.OK);
         } catch (error) {
             throw error
         }

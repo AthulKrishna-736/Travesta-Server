@@ -15,7 +15,7 @@ export class UpdateVendorReq implements IUpdateVendorReqUseCase {
         @inject(TOKENS.MailService) private readonly mailService: IMailService,
     ) { }
 
-    async execute(vendorId: string, isVerified: boolean, verificationReason: string): Promise<{ message: string }> {
+    async updateVendorReq(vendorId: string, isVerified: boolean, verificationReason: string): Promise<{ message: string }> {
         const vendor = await this.userRepo.findUserById(vendorId)
         if (!vendor) {
             throw new AppError('Vendor not found', HttpStatusCode.BAD_REQUEST)

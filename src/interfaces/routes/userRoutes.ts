@@ -35,5 +35,6 @@ export class userRoutes extends BaseRouter {
 
             //profile routes
             .patch('/profile', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, upload.single('image'), validateRequest(updateUserSchema), (req: CustomRequest, res) => this._userController.updateProfile(req, res))
+            .get('/profile', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this._userController.getProfile(req, res))
     }
 }

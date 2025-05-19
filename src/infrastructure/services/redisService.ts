@@ -89,4 +89,24 @@ export class RedisService implements IRedisService {
 
         return result === 'blacklisted';
     }
+
+    //aws s3 bucket
+    async storeRedisSignedUrl(userId: string, imageUrl: string, expiresAt: number): Promise<void> {
+        const key = `profile${userId}`;
+        await this.set(key, imageUrl, expiresAt)
+    }
+
+    async getRedisSignedUrl(userId: string, purpose: 'profile' | 'kycDocs'): Promise<string | string[] | null> {
+        const key = `${purpose}${userId}`;
+        const result = await this.get(key);
+        if (typeof result == 'string') {
+            return result
+        }
+        return null
+    }
+
+    async storeKycDocs(userId: string, imageUrls: string[], expiresAt: number): Promise<void> {
+        const key = `kycDocs${userId}`
+        await this.set(key, JSON.stringify(imageUrls), expiresAt);
+    }
 }

@@ -13,7 +13,7 @@ export class GetAllUsers implements IGetAllUsersUseCase {
         private readonly userRepository: IUserRepository
     ) { }
 
-    async execute(page: number, limit: number, role: string, search: string): Promise<{ users: ResponseUserDTO[]; total: number }> {
+    async getAllUsers(page: number, limit: number, role: string, search: string): Promise<{ users: ResponseUserDTO[]; total: number }> {
 
         const { users, total } = await this.userRepository.findAllUser(page, limit, role, search);
 

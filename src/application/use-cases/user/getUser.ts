@@ -6,38 +6,49 @@ import { TOKENS } from "../../../constants/token";
 import { IRedisService } from "../../../domain/services/redisService.interface";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 import { IGetUserUseCase } from "../../../domain/interfaces/usecases.interface";
+import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 
 @injectable()
 export class GetUserProfileUseCase implements IGetUserUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
-        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
+        @inject(TOKENS.UserRepository) protected _userRepo: IUserRepository,
+        @inject(TOKENS.RedisService) protected _redisService: IRedisService,
+        @inject(TOKENS.AwsS3Service) protected _awsS3Service: IAwsS3Service,
     ) { }
 
-    async execute(userId: string): Promise<void> {
-        const cachedProfile = await this._redisService.get(`profile_${userId}`);
+    async getUser(userId: string): Promise<{ user: ResponseUserDTO, message: string }> {
+        const user = await this._userRepo.findUserById(userId);
 
-        if (cachedProfile) {
-             cachedProfile;
-        } else {
-            const user = await this._userRepository.findUserById(userId);
-            if (!user) {
-                throw new AppError("User not found", HttpStatusCode.BAD_REQUEST);
-            }
+        if (!user) {
+            throw new AppError('user not found', HttpStatusCode.NOT_FOUND)
+        }
 
-            const profileImage = user.profileImage || "https://example.com/default-profile-image.png";
+        let profileImage;
+        profileImage = await this._redisService.getRedisSignedUrl(user._id as string, 'profile');
 
-            const signedUrl = await this._awsS3Service.getFileUrlFromAws(profileImage, 86400);
+        if (!profileImage) {
+            profileImage = await this._awsS3Service.getFileUrlFromAws(user.profileImage as string, awsS3Timer.expiresAt);
+        }
 
-            const profileData = {
-                ...user,
-                profileImage: signedUrl,
-            };
+        const mapUser: ResponseUserDTO = {
+            id: user._id as string,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            phone: user.phone,
+            isGoogle: user.isGoogle,
+            isBlocked: user.isBlocked,
+            wishlist: user.wishlist,
+            subscriptionType: user.subscriptionType,
+            role: user.role,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt,
+        };
 
-            await this._redisService.set(`profile_${userId}`, profileData, 86400);
-
-             profileData;
+        return {
+            user: mapUser,
+            message: 'profile fetched successfully'
         }
     }
 }

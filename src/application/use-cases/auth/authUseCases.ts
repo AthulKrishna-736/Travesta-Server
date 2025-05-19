@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IUser } from "../../../domain/interfaces/user.interface";
+import { ICreateUserData, IUser } from "../../../domain/interfaces/user.interface";
 import { CreateUserDTO, ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { IAuthService, TOtpData } from "../../../domain/services/authService.interface";
 import { v4 as uuidv4 } from 'uuid';
@@ -8,7 +8,7 @@ import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import logger from "../../../utils/logger";
 import { TRole } from "../../../shared/types/client.types";
-import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
+import { awsS3Timer, jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { OAuth2Client } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
 import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
@@ -23,7 +23,7 @@ export class RegisterUseCase implements IRegisterUseCase {
         @inject(TOKENS.AuthService) private _authService: IAuthService
     ) { }
 
-    async register(userData: CreateUserDTO): Promise<{ userId: string; message: string; }> {
+    async register(userData: ICreateUserData): Promise<{ userId: string; message: string; }> {
         const existingUser = await this._userRepo.findUser(userData.email)
 
         if (existingUser) {
@@ -90,14 +90,22 @@ export class LoginUseCase implements ILoginUseCase {
         const accessToken = this._authService.generateAccessToken(user._id, user.role, user.email);
         const refreshToken = this._authService.generateRefreshToken(user._id, user.role, user.email);
 
-        const getSignedUrl = await this._awsS3Service.getFileUrlFromAws(user.profileImage!, 84600);
+        let imageUrl;
+        let kycDocuments;
 
-        let signedKycUrls: string[] = [];
+        imageUrl = await this._redisService.getRedisSignedUrl(user._id, 'profile');
 
-        if (user.kycDocuments && user.kycDocuments.length > 0) {
-            signedKycUrls = await Promise.all(
+        if (!imageUrl && user.profileImage) {
+            imageUrl = await this._awsS3Service.getFileUrlFromAws(user.profileImage!, awsS3Timer.expiresAt);
+            await this._redisService.storeRedisSignedUrl(user._id, imageUrl, awsS3Timer.expiresAt);
+        }
+
+        kycDocuments = await this._redisService.getRedisSignedUrl(user._id, 'kycDocs');
+
+        if (!kycDocuments && user.kycDocuments && user.kycDocuments.length > 0) {
+            kycDocuments = await Promise.all(
                 user.kycDocuments.map(key =>
-                    this._awsS3Service.getFileUrlFromAws(key, 86400)
+                    this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
                 )
             );
         }
@@ -112,8 +120,8 @@ export class LoginUseCase implements ILoginUseCase {
             isBlocked: user.isBlocked,
             wishlist: user.wishlist,
             role: user.role,
-            profileImage: getSignedUrl,
-            kycDocuments: signedKycUrls,
+            profileImage: imageUrl as string,
+            kycDocuments: kycDocuments as string[],
             subscriptionType: user.subscriptionType,
             createdAt: user.createdAt,
             updatedAt: user.updatedAt,

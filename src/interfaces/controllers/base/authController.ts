@@ -26,10 +26,6 @@ export class AuthController {
     async register(req: CustomRequest, res: Response): Promise<void> {
         try {
             const userData: CreateUserDTO = req.body
-            if (!userData.email || !userData.password || !userData.firstName || !userData.lastName || !userData.phone) {
-                throw new AppError('Name, email and password are required', HttpStatusCode.BAD_REQUEST);
-            }
-
             const newUser = await this._registerUseCase.register(userData)
             ResponseHandler.success(res, 'User registration on progress', newUser, HttpStatusCode.OK)
         } catch (error) {

@@ -20,7 +20,7 @@ export class AdminController {
     async blockOrUnblockUser(req: CustomRequest, res: Response) {
         const { id } = req.params;
 
-        const updatedUser = await this._blockUnblockUser.execute(id);
+        const updatedUser = await this._blockUnblockUser.blockUnblockUser(id);
 
         const message = updatedUser.isBlocked ? `${updatedUser.role} blocked successfully` : `${updatedUser.role} unblocked successfully`;
 
@@ -34,7 +34,7 @@ export class AdminController {
             const role = req.query.role as 'user' | 'vendor'
             const search = req.query.search as string
 
-            const { users, total } = await this._getAllUsersUsecase.execute(page, limit, role, search);
+            const { users, total } = await this._getAllUsersUsecase.getAllUsers(page, limit, role, search);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, 'All users fetched successfully', users, HttpStatusCode.OK, meta);
         } catch (error) {
@@ -48,7 +48,7 @@ export class AdminController {
             const limit = Number(req.query.limit) || 10
             const search = req.query.search as string
 
-            const { vendors, total } = await this._getAllVendorReqUseCase.execute(page, limit, search)
+            const { vendors, total } = await this._getAllVendorReqUseCase.getAllVendorReq(page, limit, search)
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, 'Vendor requests fetched successfully', vendors, HttpStatusCode.OK, meta);
         } catch (error) {
@@ -65,7 +65,7 @@ export class AdminController {
                 throw new AppError('Invalid request data', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { message } = await this._updateVendorReqUseCase.execute(vendorId, isVerified, reason)
+            const { message } = await this._updateVendorReqUseCase.updateVendorReq(vendorId, isVerified, reason)
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             throw error

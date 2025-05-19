@@ -24,10 +24,10 @@ export class UserController {
 
             const userData: UpdateUserDTO = req.body;
 
-            const updateUser = await this._updateUser.execute(userId, userData, req.file);
+            const updateUser = await this._updateUser.updateUser(userId, userData, req.file);
 
             ResponseHandler.success(res, "Profile updated successfully", updateUser, HttpStatusCode.OK);
-        } catch (error: any) {
+        } catch (error) {
             throw error;
         }
     }
@@ -38,7 +38,7 @@ export class UserController {
             if (!userId) {
                 throw new AppError("User id is missing", HttpStatusCode.BAD_REQUEST);
             }
-            const profileData = await this._getUser.execute(userId);
+            const profileData = await this._getUser.getUser(userId);
 
             ResponseHandler.success(res, "Profile fetched successfully", profileData, HttpStatusCode.OK);
         } catch (error) {

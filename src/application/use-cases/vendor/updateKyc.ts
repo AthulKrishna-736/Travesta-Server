@@ -8,15 +8,18 @@ import path from 'path';
 import fs from 'fs';
 import { IUpdateKycUseCase } from "../../../domain/interfaces/usecases.interface";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
+import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
+import { IRedisService } from "../../../domain/services/redisService.interface";
 
 @injectable()
 export class UpdateKycUseCase implements IUpdateKycUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private readonly _userRepo: IUserRepository,
-        @inject(TOKENS.AwsS3Service) private readonly _s3Service: IAwsS3Service
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.AwsS3Service) private _s3Service: IAwsS3Service,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
-    async execute(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: ResponseUserDTO, message: string }> {
+    async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: ResponseUserDTO, message: string }> {
         const user = await this._userRepo.findUserById(userId);
         if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
 
@@ -42,10 +45,13 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
         if (!updated) {
             throw new AppError('Error while updating user', HttpStatusCode.BAD_REQUEST);
         }
-
-        const signedUrls = await Promise.all(
-            updated.kycDocuments!.map((key) => this._s3Service.getFileUrlFromAws(key, 86400))
-        );
+        let signedUrls
+        if (updated.kycDocuments) {
+            signedUrls = await Promise.all(
+                updated.kycDocuments.map((key) => this._s3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
+            );
+            await this._redisService.storeKycDocs(user._id as string, signedUrls, awsS3Timer.expiresAt)
+        }
 
 
         const mappedUser: ResponseUserDTO = {

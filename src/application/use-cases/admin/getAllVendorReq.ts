@@ -15,7 +15,7 @@ export class GetAllVendorReq implements IGetAllVendorReqUseCase {
         @inject(TOKENS.AwsS3Service) private readonly _awsS3Service: IAwsS3Service,
     ) { }
 
-    async execute(page: number, limit: number, search?: string): Promise<{ vendors: ResponseUserDTO[]; total: number; }> {
+    async getAllVendorReq(page: number, limit: number, search?: string): Promise<{ vendors: ResponseUserDTO[]; total: number; }> {
         const { users, total } = await this._userRepository.findAllUser(page, limit, 'vendor', search)
 
         if (!users) {
