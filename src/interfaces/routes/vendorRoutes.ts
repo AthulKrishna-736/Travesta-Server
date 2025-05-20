@@ -1,7 +1,7 @@
 import { container } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema } from "../../shared/types/zodValidation";
+import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
@@ -34,8 +34,13 @@ export class vendorRoutes extends BaseRouter {
             .post('/auth/logout', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._authController.logout(req, res))
 
 
+            //profile
             .patch('/profile', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.single('image'), validateRequest(updateUserSchema), (req: CustomRequest, res) => this._vendorController.updateProfile(req, res))
             .get('/profile', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._vendorController.getVendor(req, res))
             .patch('/kyc', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.fields([{ name: 'front', maxCount: 1 }, { name: 'back', maxCount: 1 }]), (req: CustomRequest, res) => this._vendorController.updateKyc(req, res))
+
+            //hotel
+            .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.single('imageFile'), validateRequest(createHotelSchema), (req: CustomRequest, res)=> this.)
+
     }
 }

@@ -1,7 +1,8 @@
+import { Types } from "mongoose"
 
 export interface IHotel {
     _id?: string
-    vendorId: string
+    vendorId: string | Types.ObjectId
     name: string
     description: string
     images: string[]
@@ -20,7 +21,7 @@ export interface IHotel {
 
 export interface IRoom {
     _id?: string
-    hotelId: string
+    hotelId: string | Types.ObjectId
     name: string
     capacity: number
     bedType: string
