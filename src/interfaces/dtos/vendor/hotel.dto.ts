@@ -2,19 +2,19 @@ import { Types } from "mongoose";
 
 //hotel
 export interface CreateHotelDTO {
-    vendorId: string | Types.ObjectId;  
+    vendorId: string | Types.ObjectId;
     name: string;
     description: string;
     images: string[];
-    rating?: number;      
-    services?: string[];  
+    rating?: number;
+    services?: string[];
     amenities?: string[];
     tags?: string[];
     state: string;
     city: string;
     address: string;
     geoLocation: [number, number];
-    isBlocked?: boolean;    
+    isBlocked?: boolean;
 }
 
 export interface UpdateHotelDTO {
@@ -55,4 +55,24 @@ export interface UpdateRoomDTO {
     images?: string[];
     basePrice?: number;
     isAvailable?: boolean;
+}
+
+
+export interface ResponseHotelDTO {
+    id: string;
+    vendorId: string;
+    name: string;
+    description: string;
+    images: string[]; 
+    rating: number;
+    services: string[];
+    amenities: string[];
+    tags: string[];
+    state: string;
+    city: string;
+    address: string;
+    geoLocation: [number, number];
+    isBlocked: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }

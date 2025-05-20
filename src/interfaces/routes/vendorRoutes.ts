@@ -9,16 +9,19 @@ import { AuthController } from "../controllers/base/authController";
 import { checkUserBlock } from "../../middlewares/checkBlock";
 import { upload } from "../../infrastructure/config/multer";
 import { VendorController } from "../controllers/vendor/vendorController";
+import { HotelController } from "../controllers/vendor/hotelController";
 
 
 export class vendorRoutes extends BaseRouter {
     private _authController: AuthController
     private _vendorController: VendorController
+    private _hotelController: HotelController
 
     constructor() {
         super();
         this._authController = container.resolve(AuthController)
         this._vendorController = container.resolve(VendorController)
+        this._hotelController = container.resolve(HotelController)
         this.initializeRoutes()
     }
 
@@ -40,7 +43,7 @@ export class vendorRoutes extends BaseRouter {
             .patch('/kyc', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.fields([{ name: 'front', maxCount: 1 }, { name: 'back', maxCount: 1 }]), (req: CustomRequest, res) => this._vendorController.updateKyc(req, res))
 
             //hotel
-            .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.single('imageFile'), validateRequest(createHotelSchema), (req: CustomRequest, res)=> this.)
+            .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.single('imageFile'), validateRequest(createHotelSchema), (req: CustomRequest, res) => this._hotelController.createHotel(req, res))
 
     }
 }

@@ -1,5 +1,7 @@
 import { ResponseUserDTO } from "../../interfaces/dtos/user/user.dto";
+import { CreateHotelDTO, ResponseHotelDTO, UpdateHotelDTO } from "../../interfaces/dtos/vendor/hotel.dto";
 import { TRole } from "../../shared/types/client.types";
+import { IHotel } from "./hotel.interface";
 import { IResponseUserData, IUpdateUserData, IUser } from "./user.interface";
 
 
@@ -36,4 +38,16 @@ export interface IUpdateKycUseCase {
 
 export interface IGetVendorUseCase {
     getUser(userId: string): Promise<{ user: ResponseUserDTO, message: string }>
+}
+
+export interface ICreateHotelUseCase {
+    execute(hotelData: CreateHotelDTO, files?: Express.Multer.File[]): Promise<{ hotel: IHotel; message: string }>;
+}
+
+export interface IUpdateHotelUseCase {
+    execute(hotelId: string, updateData: UpdateHotelDTO, files?: Express.Multer.File[]): Promise<{ hotel: IHotel; message: string }>;
+}
+
+export interface IGetHotelByIdUseCase {
+    execute(hotelId: string): Promise<{ hotel: ResponseHotelDTO, message: string }>
 }

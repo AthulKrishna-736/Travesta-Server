@@ -9,7 +9,7 @@ import { IMailService } from "../../domain/services/mailService.interface";
 import { ConfirmRegisterUseCase, ForgotPassUseCase, GoogleLoginUseCase, LoginUseCase, LogoutUseCase, RegisterUseCase, ResendOtpUseCase, ResetPassUseCase, VerifyOtpUseCase } from "../../application/use-cases/auth/authUseCases";
 import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/auth.interface";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
-import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
+import { IBlockUnblockUser, ICreateHotelUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateHotelUseCase, IUpdateKycUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
 import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
@@ -18,14 +18,20 @@ import { IAwsS3Service } from "../../domain/services/awsS3Service.interface";
 import { AwsS3Service } from "../services/awsS3Service";
 import { GetUserProfileUseCase } from "../../application/use-cases/user/getUser";
 import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
-import { IUserRepository } from "../../domain/repositories/repository.interface";
+import { IHotelRepository, IUserRepository } from "../../domain/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
+import { HotelRepository } from "../database/repositories/hotelRepo";
+import { CreateHotelUseCase, UpdateHotelUseCase } from "../../application/use-cases/vendor/hotelUseCases";
 
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
   useClass: UserRepository,
 });
+
+container.register<IHotelRepository>(TOKENS.HotelRepository, {
+  useClass: HotelRepository,
+})
 
 //services
 container.register<IAuthService>(TOKENS.AuthService, {
@@ -116,4 +122,12 @@ container.register<IUpdateKycUseCase>(TOKENS.UpdateKycUseCase, {
 
 container.register<IGetVendorUseCase>(TOKENS.GetVendorUseCase, {
   useClass: GetVendorProfileUseCase,
+})
+
+container.register<ICreateHotelUseCase>(TOKENS.CreateHotelUseCase, {
+  useClass: CreateHotelUseCase,
+})
+
+container.register<IUpdateHotelUseCase>(TOKENS.UpdateHotelUseCase, {
+  useClass: UpdateHotelUseCase,
 })

@@ -1,8 +1,8 @@
-import { ForgotPassUseCase } from "../application/use-cases/auth/authUseCases";
 
 export const TOKENS = {
   // Repositories
   UserRepository: 'UserRepository',
+  HotelRepository: 'HotelRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -34,4 +34,6 @@ export const TOKENS = {
   //vendor UseCases
   UpdateKycUseCase: 'UpdateKycUseCase',
   GetVendorUseCase: 'GetVendorUseCase',
+  CreateHotelUseCase: 'CreteHotelUseCase',
+  UpdateHotelUseCase: 'UpdateHotelUseCase',
 };

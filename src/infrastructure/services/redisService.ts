@@ -109,4 +109,19 @@ export class RedisService implements IRedisService {
         const key = `kycDocs${userId}`
         await this.set(key, JSON.stringify(imageUrls), expiresAt);
     }
+
+    async storeHotelImageUrls(hotelId: string, imageUrls: string[], expiresAt: number): Promise<void> {
+        const key = `hotelImages:${hotelId}`;
+        await this.set(key, JSON.stringify(imageUrls), expiresAt);
+    }
+
+    async getHotelImageUrls(hotelId: string): Promise<string[] | null> {
+        const key = `hotelImages:${hotelId}`;
+        const data = await this.get(key);
+
+        if (data && typeof data === 'string') {
+            return JSON.parse(data) as string[];
+        }
+        return null;
+    }
 }
