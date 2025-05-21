@@ -51,3 +51,7 @@ export interface IUpdateHotelUseCase {
 export interface IGetHotelByIdUseCase {
     execute(hotelId: string): Promise<{ hotel: ResponseHotelDTO, message: string }>
 }
+
+export interface IGetAllHotelsUseCase {
+    execute(page: number, limit: number, search?: string): Promise<{ hotels: ResponseHotelDTO[], total: number, message: string }>
+}

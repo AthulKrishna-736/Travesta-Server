@@ -6,8 +6,11 @@ import { HttpStatusCode } from "../utils/HttpStatusCodes";
 export const validateRequest = (schema: ZodSchema<any>) => {
     return (req: Request, res: Response, next: NextFunction) => {
         try {
-            console.log('checking the body: ',req.body)
-            schema.parse(req.body);
+            console.log('checking the body: ', req.body)
+            schema.parse({
+                body: req.body,
+                files: req.files,
+            });
             next();
         } catch (error: any) {
             if (error instanceof ZodError) {

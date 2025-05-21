@@ -43,7 +43,9 @@ export class vendorRoutes extends BaseRouter {
             .patch('/kyc', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.fields([{ name: 'front', maxCount: 1 }, { name: 'back', maxCount: 1 }]), (req: CustomRequest, res) => this._vendorController.updateKyc(req, res))
 
             //hotel
-            .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.single('imageFile'), validateRequest(createHotelSchema), (req: CustomRequest, res) => this._hotelController.createHotel(req, res))
+            .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req: CustomRequest, res) => this._hotelController.createHotel(req, res))
+            .get('/hotels/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._hotelController.getHotelById(req, res))
+            .get('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._hotelController.getAllHotels(req, res))
 
     }
 }

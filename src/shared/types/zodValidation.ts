@@ -87,7 +87,7 @@ export const googleLoginSchema = z.object({
 //createhotel
 const nameRegex = /^[A-Za-z\s]+$/;
 const tagAmenityServiceRegex = /^[a-zA-Z0-9,\s]+$/;
-const SUPPORTED_IMAGE_FORMATS = ['image/jpeg', 'image/png', 'image/webp'];
+const SUPPORTED_IMAGE_FORMATS = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
 
 export const createHotelSchema = z.object({
     body: z.object({
@@ -126,12 +126,14 @@ export const createHotelSchema = z.object({
     }),
 
     file: z
-        .custom<File>((file) => {
-            return (
-                file instanceof File &&
-                SUPPORTED_IMAGE_FORMATS.includes(file.type)
-            );
-        }, {
-            message: 'Only JPG, PNG, or WEBP files are allowed',
-        }),
+        .any()
+        .refine((files) => Array.isArray(files) && files.length > 0, {
+            message: 'At least one image is required',
+        })
+        .refine((files: Express.Multer.File[]) =>
+            files.every(file => SUPPORTED_IMAGE_FORMATS.includes(file.mimetype)),
+            {
+                message: 'Only JPG, PNG, or WEBP files are allowed',
+            }
+        ),
 });

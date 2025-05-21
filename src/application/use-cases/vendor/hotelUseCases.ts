@@ -3,7 +3,7 @@ import { IHotelRepository } from "../../../domain/repositories/repository.interf
 import { CreateHotelDTO, ResponseHotelDTO, UpdateHotelDTO } from "../../../interfaces/dtos/vendor/hotel.dto";
 import { IHotel } from "../../../domain/interfaces/hotel.interface";
 import { AppError } from "../../../utils/appError";
-import { ICreateHotelUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from "../../../domain/interfaces/usecases.interface";
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from "../../../domain/interfaces/usecases.interface";
 import { TOKENS } from "../../../constants/token";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
@@ -206,6 +206,66 @@ export class GetHotelByIdUseCase implements IGetHotelByIdUseCase {
         };
 
         return { hotel: mapHotel, message: "Hotel fetched successfully" };
+    }
+}
+
+
+@injectable()
+export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
+    constructor(
+        @inject(TOKENS.HotelRepository) private _hotelRepo: IHotelRepository,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
+    ) { }
+
+    async execute(page: number = 1, limit: number = 10, search?: string): Promise<{ hotels: ResponseHotelDTO[]; total: number; message: string; }> {
+        const { hotels, total } = await this._hotelRepo.findAllHotels(page, limit, search);
+
+        if (!hotels || hotels.length === 0) {
+            return { hotels: [], total: 0, message: "No hotels found" };
+        }
+
+        const mappedHotels = await Promise.all(
+            hotels.map(async (hotel) => {
+                let signedImageUrls = await this._redisService.getHotelImageUrls(hotel._id as string);
+
+                if (!signedImageUrls) {
+                    signedImageUrls = await Promise.all(
+                        hotel.images.map((key: string) =>
+                            this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
+                        )
+                    );
+                    await this._redisService.storeHotelImageUrls(hotel._id as string, signedImageUrls, awsS3Timer.expiresAt);
+                }
+
+                const mapped: ResponseHotelDTO = {
+                    id: hotel._id as string,
+                    vendorId: hotel.vendorId.toString(),
+                    name: hotel.name,
+                    description: hotel.description,
+                    rating: hotel.rating,
+                    services: hotel.services,
+                    amenities: hotel.amenities,
+                    tags: hotel.tags,
+                    state: hotel.state,
+                    city: hotel.city,
+                    address: hotel.address,
+                    geoLocation: hotel.geoLocation,
+                    isBlocked: hotel.isBlocked,
+                    images: signedImageUrls,
+                    createdAt: hotel.createdAt,
+                    updatedAt: hotel.updatedAt,
+                };
+
+                return mapped;
+            })
+        );
+
+        return {
+            hotels: mappedHotels,
+            total,
+            message: "Hotels fetched successfully",
+        };
     }
 }
 

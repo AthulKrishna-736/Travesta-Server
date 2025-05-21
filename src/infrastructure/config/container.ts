@@ -9,7 +9,7 @@ import { IMailService } from "../../domain/services/mailService.interface";
 import { ConfirmRegisterUseCase, ForgotPassUseCase, GoogleLoginUseCase, LoginUseCase, LogoutUseCase, RegisterUseCase, ResendOtpUseCase, ResetPassUseCase, VerifyOtpUseCase } from "../../application/use-cases/auth/authUseCases";
 import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/auth.interface";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
-import { IBlockUnblockUser, ICreateHotelUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateHotelUseCase, IUpdateKycUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
+import { IBlockUnblockUser, ICreateHotelUseCase, IGetAllHotelsUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetHotelByIdUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateHotelUseCase, IUpdateKycUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
 import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
@@ -21,7 +21,7 @@ import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
 import { IHotelRepository, IUserRepository } from "../../domain/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
-import { CreateHotelUseCase, UpdateHotelUseCase } from "../../application/use-cases/vendor/hotelUseCases";
+import { CreateHotelUseCase, GetAllHotelsUseCase, GetHotelByIdUseCase, UpdateHotelUseCase } from "../../application/use-cases/vendor/hotelUseCases";
 
 
 //repository
@@ -130,4 +130,12 @@ container.register<ICreateHotelUseCase>(TOKENS.CreateHotelUseCase, {
 
 container.register<IUpdateHotelUseCase>(TOKENS.UpdateHotelUseCase, {
   useClass: UpdateHotelUseCase,
+})
+
+container.register<IGetHotelByIdUseCase>(TOKENS.GetHotelByIdUseCase, {
+  useClass: GetHotelByIdUseCase,
+})
+
+container.register<IGetAllHotelsUseCase>(TOKENS.GetAllHotelsUseCase, {
+  useClass: GetAllHotelsUseCase,
 })
