@@ -46,6 +46,9 @@ export class vendorRoutes extends BaseRouter {
             .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req: CustomRequest, res) => this._hotelController.createHotel(req, res))
             .get('/hotels/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._hotelController.getHotelById(req, res))
             .get('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._hotelController.getAllHotels(req, res))
+            .patch('/hotels/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req: CustomRequest, res) => this._hotelController.updateHotel(req, res))
+
+            
 
     }
 }

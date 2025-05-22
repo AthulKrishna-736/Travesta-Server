@@ -1,6 +1,6 @@
 import { CreateUserDTO, UpdateUserDTO } from "../../interfaces/dtos/user/user.dto";
-import { CreateHotelDTO, UpdateHotelDTO } from "../../interfaces/dtos/vendor/hotel.dto";
-import { IHotel } from "../interfaces/hotel.interface";
+import { CreateHotelDTO, CreateRoomDTO, UpdateHotelDTO, UpdateRoomDTO } from "../../interfaces/dtos/vendor/hotel.dto";
+import { IHotel, IRoom } from "../interfaces/hotel.interface";
 import { IUser } from "../interfaces/user.interface";
 
 export interface IUserRepository {
@@ -18,4 +18,14 @@ export interface IHotelRepository {
     updateHotel(id: string, data: UpdateHotelDTO): Promise<IHotel | null>;
     findHotelsByVendor(vendorId: string): Promise<IHotel[] | null>;
     findAllHotels(page: number, limit: number, search?: string): Promise<{ hotels: IHotel[] | null; total: number }>;
+}
+
+
+export interface IRoomRepository {
+  createRoom(data: CreateRoomDTO): Promise<IRoom | null>;
+  findRoomById(id: string): Promise<IRoom | null>;
+  updateRoom(id: string, data: UpdateRoomDTO): Promise<IRoom | null>;
+  deleteRoom(id: string): Promise<boolean>;
+  findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
+  findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
 }

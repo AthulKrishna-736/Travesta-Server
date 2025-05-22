@@ -31,21 +31,6 @@ export class GetUserProfileUseCase implements IGetUserUseCase {
             profileImage = await this._awsS3Service.getFileUrlFromAws(user.profileImage as string, awsS3Timer.expiresAt);
         }
 
-        const mapUser: ResponseUserDTO = {
-            id: user._id as string,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            phone: user.phone,
-            isGoogle: user.isGoogle,
-            isBlocked: user.isBlocked,
-            wishlist: user.wishlist,
-            subscriptionType: user.subscriptionType,
-            role: user.role,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt,
-        };
-
         return {
             user: mapUser,
             message: 'profile fetched successfully'

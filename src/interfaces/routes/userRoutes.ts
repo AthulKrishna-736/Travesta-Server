@@ -9,15 +9,18 @@ import { AuthController } from "../controllers/base/authController";
 import { checkUserBlock } from "../../middlewares/checkBlock";
 import { UserController } from "../controllers/user/userController";
 import { upload } from "../../infrastructure/config/multer";
+import { HotelController } from "../controllers/vendor/hotelController";
 
 export class userRoutes extends BaseRouter {
     private _authController: AuthController
     private _userController: UserController
+    private _hotelController: HotelController
 
     constructor() {
         super();
         this._authController = container.resolve(AuthController)
         this._userController = container.resolve(UserController)
+        this._hotelController = container.resolve(HotelController)
         this.initializeRoutes()
     }
 
@@ -36,5 +39,9 @@ export class userRoutes extends BaseRouter {
             //profile routes
             .patch('/profile', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, upload.single('image'), validateRequest(updateUserSchema), (req: CustomRequest, res) => this._userController.updateProfile(req, res))
             .get('/profile', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this._userController.getProfile(req, res))
+
+
+            .get('/hotels', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this._hotelController.getAllHotels(req, res))
+            .get('/hotels/:id', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req, res) => this._hotelController.getHotelById(req, res));
     }
 }

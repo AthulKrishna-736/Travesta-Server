@@ -22,6 +22,7 @@ import { IHotelRepository, IUserRepository } from "../../domain/repositories/rep
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
 import { CreateHotelUseCase, GetAllHotelsUseCase, GetHotelByIdUseCase, UpdateHotelUseCase } from "../../application/use-cases/vendor/hotelUseCases";
+import { CreateRoomUseCase, UpdateRoomUseCase } from "../../application/use-cases/vendor/roomUseCase";
 
 
 //repository
@@ -138,4 +139,12 @@ container.register<IGetHotelByIdUseCase>(TOKENS.GetHotelByIdUseCase, {
 
 container.register<IGetAllHotelsUseCase>(TOKENS.GetAllHotelsUseCase, {
   useClass: GetAllHotelsUseCase,
+})
+
+container.register(TOKENS.CreateRoomUseCase, {
+  useClass: CreateRoomUseCase,
+})
+
+container.register(TOKENS.UpdateRoomUseCase, {
+  useClass: UpdateRoomUseCase,
 })

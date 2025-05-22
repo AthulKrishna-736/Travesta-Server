@@ -3,6 +3,7 @@ export const TOKENS = {
   // Repositories
   UserRepository: 'UserRepository',
   HotelRepository: 'HotelRepository',
+  RoomRepository: 'RoomRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -38,4 +39,6 @@ export const TOKENS = {
   UpdateHotelUseCase: 'UpdateHotelUseCase',
   GetHotelByIdUseCase: 'GetHotelByIdUseCase',
   GetAllHotelsUseCase: 'GetAllHotelsUseCase',
+  CreateRoomUseCase: 'CreateRoomUseCase',
+  UpdateRoomUseCase: 'UpdateRoomUseCase',
 };

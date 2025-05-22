@@ -42,23 +42,6 @@ export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IG
             )
         }
 
-        const mapVendor: ResponseUserDTO = {
-            id: vendor._id as string,
-            firstName: vendor.firstName,
-            lastName: vendor.lastName,
-            email: vendor.email,
-            phone: vendor.phone,
-            isGoogle: vendor.isGoogle,
-            isBlocked: vendor.isBlocked,
-            profileImage: profileImage as string,
-            kycDocuments: kycDocuments as string[],
-            wishlist: vendor.wishlist,
-            subscriptionType: vendor.subscriptionType,
-            role: vendor.role,
-            createdAt: vendor.createdAt,
-            updatedAt: vendor.updatedAt,
-        };
-
         return {
             user: mapVendor,
             message: 'profile fetched successfully'
