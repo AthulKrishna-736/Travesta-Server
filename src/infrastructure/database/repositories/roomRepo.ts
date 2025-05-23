@@ -3,7 +3,7 @@ import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
 import { IRoom } from "../../../domain/interfaces/hotel.interface";
 import { IRoomRepository } from "../../../domain/repositories/repository.interface";
-import { CreateRoomDTO, UpdateRoomDTO } from "../../../interfaces/dtos/vendor/hotel.dto";
+import { CreateRoomDTO, UpdateRoomDTO } from "../../../interfaces/dtos/hotel.dto";
 
 @injectable()
 export class RoomRepository extends BaseRepository<TRoomDocument> implements IRoomRepository {

@@ -1,13 +1,13 @@
 import { Response } from "express";
-import { CreateUserDTO } from "../../dtos/user/user.dto";
+import { CreateUserDTO } from "../dtos/user/user.dto";
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { ResponseHandler } from "../../../middlewares/responseHandler";
-import { TOKENS } from "../../../constants/token";
-import { CustomRequest } from "../../../utils/customRequest";
-import { setAccessCookie, setRefreshCookie } from "../../../utils/setCookies";
-import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/auth.interface";
+import { AppError } from "../../utils/appError";
+import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { ResponseHandler } from "../../middlewares/responseHandler";
+import { TOKENS } from "../../constants/token";
+import { CustomRequest } from "../../utils/customRequest";
+import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
+import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/auth.interface";
 
 @injectable()
 export class AuthController {

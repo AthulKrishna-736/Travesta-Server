@@ -1,12 +1,12 @@
 import { Response } from "express";
 import { inject, injectable } from "tsyringe";
-import { CustomRequest } from "../../../utils/customRequest";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { ResponseHandler } from "../../../middlewares/responseHandler";
-import { TOKENS } from "../../../constants/token";
-import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdateVendorReqUseCase } from "../../../domain/interfaces/usecases.interface";
-import { Pagination } from "../../../shared/types/common.types";
-import { AppError } from "../../../utils/appError";
+import { CustomRequest } from "../../utils/customRequest";
+import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { ResponseHandler } from "../../middlewares/responseHandler";
+import { TOKENS } from "../../constants/token";
+import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/usecases.interface";
+import { Pagination } from "../../shared/types/common.types";
+import { AppError } from "../../utils/appError";
 
 @injectable()
 export class AdminController {

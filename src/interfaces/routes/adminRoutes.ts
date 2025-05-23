@@ -1,12 +1,12 @@
 import { container } from "tsyringe";
-import { AdminController } from "../controllers/admin/adminController";
+import { AdminController } from "../controllers/adminController";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
 import { loginSchema } from "../../shared/types/zodValidation";
 import { CustomRequest } from "../../utils/customRequest";
 import { authMiddleware } from "../../middlewares/auth";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
-import { AuthController } from "../controllers/base/authController";
+import { AuthController } from "../controllers/authController";
 
 export class adminRoutes extends BaseRouter {
     private authController: AuthController;

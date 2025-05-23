@@ -1,5 +1,5 @@
 import { ResponseUserDTO } from "../../interfaces/dtos/user/user.dto";
-import { CreateHotelDTO, CreateRoomDTO, ResponseHotelDTO, UpdateHotelDTO, UpdateRoomDTO } from "../../interfaces/dtos/vendor/hotel.dto";
+import { CreateHotelDTO, CreateRoomDTO, ResponseHotelDTO, UpdateHotelDTO, UpdateRoomDTO } from "../../interfaces/dtos/hotel.dto";
 import { TRole } from "../../shared/types/client.types";
 import { IHotel } from "./hotel.interface";
 import { IResponseUserData, IUpdateUserData, IUser } from "./user.interface";

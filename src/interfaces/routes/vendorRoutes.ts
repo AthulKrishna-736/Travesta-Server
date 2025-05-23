@@ -5,11 +5,11 @@ import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSc
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
-import { AuthController } from "../controllers/base/authController";
+import { AuthController } from "../controllers/authController";
 import { checkUserBlock } from "../../middlewares/checkBlock";
 import { upload } from "../../infrastructure/config/multer";
-import { VendorController } from "../controllers/vendor/vendorController";
-import { HotelController } from "../controllers/vendor/hotelController";
+import { VendorController } from "../controllers/vendorController";
+import { HotelController } from "../controllers/hotelController";
 
 
 export class vendorRoutes extends BaseRouter {

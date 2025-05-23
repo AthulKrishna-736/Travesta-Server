@@ -2,7 +2,7 @@ import { injectable, inject } from "tsyringe";
 import path from "path";
 import fs from "fs";
 import { IRoomRepository } from "../../../domain/repositories/repository.interface";
-import { CreateRoomDTO, UpdateRoomDTO } from "../../../interfaces/dtos/vendor/hotel.dto";
+import { CreateRoomDTO, UpdateRoomDTO } from "../../../interfaces/dtos/hotel.dto";
 import { IRoom } from "../../../domain/interfaces/hotel.interface";
 import { TOKENS } from "../../../constants/token";
 import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";

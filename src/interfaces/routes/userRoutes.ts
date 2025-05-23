@@ -5,11 +5,11 @@ import { loginSchema, createUserSchema, forgotPassSchema, updatePassSchema, veri
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
-import { AuthController } from "../controllers/base/authController";
+import { AuthController } from "../controllers/authController";
 import { checkUserBlock } from "../../middlewares/checkBlock";
-import { UserController } from "../controllers/user/userController";
+import { UserController } from "../controllers/userController";
 import { upload } from "../../infrastructure/config/multer";
-import { HotelController } from "../controllers/vendor/hotelController";
+import { HotelController } from "../controllers/hotelController";
 
 export class userRoutes extends BaseRouter {
     private _authController: AuthController

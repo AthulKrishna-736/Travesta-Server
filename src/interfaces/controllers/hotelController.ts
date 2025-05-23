@@ -1,13 +1,13 @@
 import { injectable, inject } from 'tsyringe';
 import { Response } from 'express';
-import { TOKENS } from '../../../constants/token';
-import { CustomRequest } from '../../../utils/customRequest';
-import { HttpStatusCode } from '../../../utils/HttpStatusCodes';
-import { AppError } from '../../../utils/appError';
-import { ResponseHandler } from '../../../middlewares/responseHandler';
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../../domain/interfaces/usecases.interface';
-import { CreateHotelDTO, UpdateHotelDTO } from '../../dtos/vendor/hotel.dto';
-import { Pagination } from '../../../shared/types/common.types';
+import { TOKENS } from '../../constants/token';
+import { CustomRequest } from '../../utils/customRequest';
+import { HttpStatusCode } from '../../utils/HttpStatusCodes';
+import { AppError } from '../../utils/appError';
+import { ResponseHandler } from '../../middlewares/responseHandler';
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/usecases.interface';
+import { CreateHotelDTO, UpdateHotelDTO } from '../dtos/hotel.dto';
+import { Pagination } from '../../shared/types/common.types';
 
 @injectable()
 export class HotelController {
