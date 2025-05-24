@@ -16,6 +16,7 @@ export class RoomController {
     constructor(
         @inject(TOKENS.CreateRoomUseCase) private _createRoomUseCase: ICreateRoomUseCase,
         @inject(TOKENS.UpdateRoomUseCase) private _updateRoomUseCase: IUpdateRoomUseCase,
+        @inject(TOKENS.)
     ) { }
 
     // Create Room
@@ -48,7 +49,7 @@ export class RoomController {
                 images,
             };
 
-            // const result = await this._createRoomUseCase.execute(roomData, files);
+            const result = await this._createRoomUseCase.execute(roomData, files);
             ResponseHandler.success(res, "Room created successfully", result, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
@@ -118,8 +119,8 @@ export class RoomController {
                 throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
             }
 
-            // const rooms = await this._getRoomsByHotelUseCase.execute(hotelId);
-            // ResponseHandler.success(res, "Rooms fetched successfully", rooms, HttpStatusCode.OK);
+            const rooms = await this._getRoomsByHotelUseCase.execute(hotelId);
+            ResponseHandler.success(res, "Rooms fetched successfully", rooms, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -134,8 +135,8 @@ export class RoomController {
                 throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
             }
 
-            // const rooms = await this._getAvailableRoomsByHotelUseCase.execute(hotelId);
-            // ResponseHandler.success(res, "Available rooms fetched successfully", rooms, HttpStatusCode.OK);
+            const rooms = await this._getAvailableRoomsByHotelUseCase.execute(hotelId);
+            ResponseHandler.success(res, "Available rooms fetched successfully", rooms, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }

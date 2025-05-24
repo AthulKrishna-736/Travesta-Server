@@ -1,7 +1,7 @@
-import { ResponseUserDTO } from "../../interfaces/dtos/user/user.dto";
 import { CreateHotelDTO, CreateRoomDTO, ResponseHotelDTO, UpdateHotelDTO, UpdateRoomDTO } from "../../interfaces/dtos/hotel.dto";
+import { ResponseUserDTO } from "../../interfaces/dtos/user.dto";
 import { TRole } from "../../shared/types/client.types";
-import { IHotel } from "./hotel.interface";
+import { IHotel, IRoom } from "./hotel.interface";
 import { IResponseUserData, IUpdateUserData, IUser } from "./user.interface";
 
 
@@ -63,4 +63,16 @@ export interface ICreateRoomUseCase {
 
 export interface IUpdateRoomUseCase {
     execute(roomId: string, updateData: UpdateRoomDTO, files: Express.Multer.File[]): Promise<{ room: any; message: string }>;
+}
+
+export interface IGetRoomByIdUseCase {
+    execute(roomId: string): Promise<IRoom>;
+}
+
+export interface IGetRoomsByHotelUseCase {
+    execute(hotelId: string): Promise<IRoom[]>;
+}
+
+export interface IGetAvailableRoomsByHotelUseCase {
+    execute(hotelId: string): Promise<IRoom[]>;
 }

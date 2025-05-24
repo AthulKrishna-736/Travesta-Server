@@ -41,4 +41,7 @@ export const TOKENS = {
   GetAllHotelsUseCase: 'GetAllHotelsUseCase',
   CreateRoomUseCase: 'CreateRoomUseCase',
   UpdateRoomUseCase: 'UpdateRoomUseCase',
+  GetRoomByIdUseCase: 'GetRoomByIdUseCase',
+  GetRoomsByHotelUseCase: 'GetRoomsByHotelUseCase',
+  GetAvailableRoomsByHotelUseCase: 'GetAvailableRoomsByHotelUseCase',
 };

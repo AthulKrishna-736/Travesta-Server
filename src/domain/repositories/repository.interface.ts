@@ -1,5 +1,5 @@
-import { CreateUserDTO, UpdateUserDTO } from "../../interfaces/dtos/user/user.dto";
 import { CreateHotelDTO, CreateRoomDTO, UpdateHotelDTO, UpdateRoomDTO } from "../../interfaces/dtos/hotel.dto";
+import { CreateUserDTO, UpdateUserDTO } from "../../interfaces/dtos/user.dto";
 import { IHotel, IRoom } from "../interfaces/hotel.interface";
 import { IUser } from "../interfaces/user.interface";
 
