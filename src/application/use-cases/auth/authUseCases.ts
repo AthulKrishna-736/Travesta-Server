@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { ICreateUserData, IUser } from "../../../domain/interfaces/user.interface";
-import { CreateUserDTO, ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { CreateUserDTO, ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import { IAuthService, TOtpData } from "../../../domain/services/authService.interface";
 import { v4 as uuidv4 } from 'uuid';
 import { AppError } from "../../../utils/appError";

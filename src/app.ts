@@ -6,9 +6,9 @@ import cookieparser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import logger from './utils/logger';
 import { env } from './infrastructure/config/env';
-import { userRoutes } from './interfaces/routes/userRoutes';
-import { vendorRoutes } from './interfaces/routes/vendorRoutes';
-import { adminRoutes } from './interfaces/routes/adminRoutes';
+import { userRoutes } from './interfaceAdapters/routes/userRoutes';
+import { vendorRoutes } from './interfaceAdapters/routes/vendorRoutes';
+import { adminRoutes } from './interfaceAdapters/routes/adminRoutes';
 import { errorHandler } from './middlewares/errorHandler';
 
 export class App {

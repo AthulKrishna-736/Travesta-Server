@@ -3,7 +3,7 @@ import { BaseRepository } from "./baseRepo";
 import { hotelModel, THotelDocument } from "../models/hotelModel";
 import { IHotel } from "../../../domain/interfaces/hotel.interface";
 import { IHotelRepository } from "../../../domain/repositories/repository.interface";
-import { CreateHotelDTO, UpdateHotelDTO } from "../../../interfaces/dtos/hotel.dto";
+import { CreateHotelDTO, UpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto";
 
 @injectable()
 export class HotelRepository extends BaseRepository<THotelDocument> implements IHotelRepository {

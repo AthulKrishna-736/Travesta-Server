@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IGetAllUsersUseCase } from "../../../domain/interfaces/usecases.interface";
-import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";

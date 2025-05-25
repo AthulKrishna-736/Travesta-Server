@@ -1,6 +1,6 @@
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 import { IUser } from "../../../domain/interfaces/user.interface";
-import { CreateUserDTO, UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { CreateUserDTO, UpdateUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import { TUserDocument, userModel } from "../models/userModels";
 import { BaseRepository } from "./baseRepo";
 import { injectable } from "tsyringe";

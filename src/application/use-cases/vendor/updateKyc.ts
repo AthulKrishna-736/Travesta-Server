@@ -3,7 +3,7 @@ import { TOKENS } from "../../../constants/token";
 import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import path from 'path';
 import fs from 'fs';
 import { IUpdateKycUseCase } from "../../../domain/interfaces/usecases.interface";

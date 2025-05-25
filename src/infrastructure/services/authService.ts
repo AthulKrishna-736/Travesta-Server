@@ -11,7 +11,7 @@ import { TOKENS } from "../../constants/token";
 import { RedisService } from "./redisService";
 import { TRole } from "../../shared/types/client.types";
 import { IMailService } from "../../domain/services/mailService.interface";
-import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
+import { CreateUserDTO } from "../../interfaceAdapters/dtos/user/user.dto";
 
 @injectable()
 export class AuthService implements IAuthService {

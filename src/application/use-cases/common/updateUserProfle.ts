@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";

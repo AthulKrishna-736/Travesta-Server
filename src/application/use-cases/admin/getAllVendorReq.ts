@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IGetAllVendorReqUseCase } from "../../../domain/interfaces/usecases.interface";
 import { TOKENS } from "../../../constants/token";
-import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 import { AppError } from "../../../utils/appError";

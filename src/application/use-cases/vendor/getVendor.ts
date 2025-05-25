@@ -3,7 +3,7 @@ import { GetUserProfileUseCase } from "../user/getUser";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 import { IRedisService } from "../../../domain/services/redisService.interface";
 import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
-import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";

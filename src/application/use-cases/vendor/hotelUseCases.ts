@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { IHotelRepository } from "../../../domain/repositories/repository.interface";
-import { CreateHotelDTO, ResponseHotelDTO, UpdateHotelDTO } from "../../../interfaces/dtos/hotel.dto";
+import { CreateHotelDTO, ResponseHotelDTO, UpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto";
 import { IHotel } from "../../../domain/interfaces/hotel.interface";
 import { AppError } from "../../../utils/appError";
 import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from "../../../domain/interfaces/usecases.interface";

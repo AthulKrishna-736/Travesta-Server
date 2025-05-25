@@ -6,7 +6,7 @@ import { TOKENS } from "../../../constants/token";
 import { IRedisService } from "../../../domain/services/redisService.interface";
 import { IUserRepository } from "../../../domain/repositories/repository.interface";
 import { IGetUserUseCase } from "../../../domain/interfaces/usecases.interface";
-import { ResponseUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 
 @injectable()
