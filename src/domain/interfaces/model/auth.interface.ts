@@ -1,4 +1,4 @@
-import { TRole } from "../../shared/types/client.types"
+import { TRole } from "../../../shared/types/client.types"
 import { TOtpData } from "../services/authService.interface"
 import { ICreateUserData, IResponseUserData, IUser } from "./user.interface"
 

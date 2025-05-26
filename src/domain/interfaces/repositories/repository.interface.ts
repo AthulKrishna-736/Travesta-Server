@@ -1,7 +1,5 @@
-import { CreateHotelDTO, CreateRoomDTO, UpdateHotelDTO, UpdateRoomDTO } from "../../interfaceAdapters/dtos/hotel.dto";
-import { CreateUserDTO, UpdateUserDTO } from "../../interfaceAdapters/dtos/user.dto";
-import { IHotel, IRoom } from "../interfaces/hotel.interface";
-import { IUser } from "../interfaces/user.interface";
+import { IHotel, IRoom } from "../model/hotel.interface";
+import { IUser } from "../model/user.interface";
 
 export interface IUserRepository {
     findUserById(id: string): Promise<IUser | null>;

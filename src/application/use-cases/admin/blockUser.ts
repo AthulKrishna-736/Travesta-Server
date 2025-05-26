@@ -1,31 +1,29 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { IUser } from "../../../domain/interfaces/user.interface";
-import { IBlockUnblockUser } from "../../../domain/interfaces/usecases.interface";
-import { IUserRepository } from "../../../domain/repositories/repository.interface";
+import { IUser } from "../../../domain/interfaces/model/user.interface";
+import { IBlockUnblockUser } from "../../../domain/interfaces/model/usecases.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { UserLookupBase } from "../base/userLookup.base";
 
 @injectable()
-export class BlockUnblockUser implements IBlockUnblockUser {
+export class BlockUnblockUser extends UserLookupBase implements IBlockUnblockUser {
     constructor(
-        @inject(TOKENS.UserRepository) private readonly userRepository: IUserRepository
-    ) { }
+        @inject(TOKENS.UserRepository) userRepo: IUserRepository
+    ) {
+        super(userRepo)
+    }
 
-    async blockUnblockUser(userId: string): Promise<IUser> {
-        const existingUser = await this.userRepository.findUserById(userId);
+    async blockUnblockUser(userId: string): Promise<IUser | null> {
 
-        if (!existingUser) {
-            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
+        const userEntity = await this.getUserEntityOrThrow(userId);
+
+        if (userEntity.isBlocked) {
+            userEntity.unblock();
+        } else {
+            userEntity.block();
         }
 
-        const newBlockState = !existingUser.isBlocked;
-
-        const updatedUser = await this.userRepository.updateUser(userId, { isBlocked: newBlockState });
-
-        if (!updatedUser) {
-            throw new AppError('Error while block/unblock user', HttpStatusCode.INTERNAL_SERVER_ERROR);
-        }
+        const updatedUser = await this._userRepo.updateUser(userId, userEntity.getPersistableData());
 
         return updatedUser;
     }

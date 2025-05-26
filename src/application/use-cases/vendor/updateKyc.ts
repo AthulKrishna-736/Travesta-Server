@@ -1,15 +1,15 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
+import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import path from 'path';
 import fs from 'fs';
-import { IUpdateKycUseCase } from "../../../domain/interfaces/usecases.interface";
-import { IUserRepository } from "../../../domain/repositories/repository.interface";
+import { IUpdateKycUseCase } from "../../../domain/interfaces/model/usecases.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
-import { IRedisService } from "../../../domain/services/redisService.interface";
+import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
+import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
 
 @injectable()
 export class UpdateKycUseCase implements IUpdateKycUseCase {
@@ -19,7 +19,7 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
-    async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: ResponseUserDTO, message: string }> {
+    async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: IVendor, message: string }> {
         const user = await this._userRepo.findUserById(userId);
         if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
 

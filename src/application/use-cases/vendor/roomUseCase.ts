@@ -1,11 +1,10 @@
 import { injectable, inject } from "tsyringe";
 import path from "path";
 import fs from "fs";
-import { IRoomRepository } from "../../../domain/repositories/repository.interface";
-import { CreateRoomDTO, UpdateRoomDTO } from "../../../interfaceAdapters/dtos/hotel.dto";
-import { IRoom } from "../../../domain/interfaces/hotel.interface";
+import { IRoomRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IRoom } from "../../../domain/interfaces/model/hotel.interface";
 import { TOKENS } from "../../../constants/token";
-import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
+import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
@@ -16,7 +15,7 @@ export class CreateRoomUseCase {
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
-    async execute(roomData: CreateRoomDTO, files?: Express.Multer.File[]): Promise<{ room: IRoom; message: string }> {
+    async execute(roomData: Partial<IRoom>, files?: Express.Multer.File[]): Promise<{ room: IRoom; message: string }> {
 
         const uploadedImageKeys: string[] = [];
 
@@ -65,7 +64,7 @@ export class UpdateRoomUseCase {
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
-    async execute(roomId: string, updateData: UpdateRoomDTO, files?: Express.Multer.File[]): Promise<{ room: IRoom; message: string }> {
+    async execute(roomId: string, updateData: Partial<IRoom>, files?: Express.Multer.File[]): Promise<{ room: IRoom; message: string }> {
         const room = await this._roomRepo.findRoomById(roomId);
 
         if (!room) {

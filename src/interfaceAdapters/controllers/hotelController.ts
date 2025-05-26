@@ -5,7 +5,7 @@ import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/usecases.interface';
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/usecases.interface';
 import { CreateHotelDTO, UpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
 

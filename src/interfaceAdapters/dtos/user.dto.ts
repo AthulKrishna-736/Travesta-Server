@@ -1,4 +1,4 @@
-import { TRole, TSubscription } from "../../../shared/types/client.types"
+import { TRole, TSubscription } from "../../shared/types/client.types"
 
 export interface CreateUserDTO {
     firstName: string

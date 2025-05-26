@@ -1,4 +1,4 @@
-import { IAuthService, TOtpData } from "../../domain/services/authService.interface";
+import { IAuthService, TOtpData } from "../../domain/interfaces/services/authService.interface";
 import bcrypt from 'bcryptjs';
 import * as crypto from 'crypto';
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
@@ -10,8 +10,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { RedisService } from "./redisService";
 import { TRole } from "../../shared/types/client.types";
-import { IMailService } from "../../domain/services/mailService.interface";
-import { CreateUserDTO } from "../../interfaceAdapters/dtos/user/user.dto";
+import { IMailService } from "../../domain/interfaces/services/mailService.interface";
 
 @injectable()
 export class AuthService implements IAuthService {

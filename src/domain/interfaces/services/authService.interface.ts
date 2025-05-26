@@ -1,5 +1,5 @@
-import { TRole } from "../../shared/types/client.types"
-import { ICreateUserData } from "../interfaces/user.interface"
+import { TRole } from "../../../shared/types/client.types"
+import { ICreateUserData } from "../model/user.interface"
 
 export type TOtpData = ICreateUserData | { email: string } | { [key: string]: any }
 

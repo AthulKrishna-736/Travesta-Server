@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 import { TOKENS } from "../constants/token";
 import { AppError } from "../utils/appError";
 import { HttpStatusCode } from "../utils/HttpStatusCodes";
-import { IUserRepository } from "../domain/repositories/repository.interface";
+import { IUserRepository } from "../domain/interfaces/repositories/repository.interface";
 
 
 export const checkUserBlock = async (req: CustomRequest, res: Response, next: NextFunction) => {

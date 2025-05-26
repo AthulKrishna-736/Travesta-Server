@@ -1,16 +1,16 @@
 import { inject, injectable } from "tsyringe";
-import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interface";
-import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
+import { IUpdateUserUseCase } from "../../../domain/interfaces/model/usecases.interface";
+import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import path from 'path';
-import fs from 'fs'
-import { IUserRepository } from "../../../domain/repositories/repository.interface";
-import { IUpdateUserData } from "../../../domain/interfaces/user.interface";
+import fs from 'fs';
+import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUser } from "../../../domain/interfaces/model/user.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
-import { IRedisService } from "../../../domain/services/redisService.interface";
+import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
+import { UserEntity } from "../../../domain/entities/user/user.entity";
 
 @injectable()
 export class UpdateUser implements IUpdateUserUseCase {
@@ -20,11 +20,14 @@ export class UpdateUser implements IUpdateUserUseCase {
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
-    async updateUser(userId: string, userData: IUpdateUserData, file?: Express.Multer.File): Promise<{ user: ResponseUserDTO, message: string }> {
-        const existingUser = await this._userRepository.findUserById(userId);
-        if (!existingUser) {
+    async updateUser(userId: string, userData: Partial<IUser>, file?: Express.Multer.File): Promise<{ user: IUser, message: string }> {
+        const existingUserData = await this._userRepository.findUserById(userId);
+
+        if (!existingUserData) {
             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
         }
+
+        const userEntity = new UserEntity(existingUserData);
 
         if (file) {
             const filePath = file.path;
@@ -32,7 +35,8 @@ export class UpdateUser implements IUpdateUserUseCase {
             const s3Key = `users/profile_${userId}${fileExtension}`;
 
             await this._awsS3Service.uploadFileToAws(s3Key, filePath);
-            userData.profileImage = s3Key;
+
+            userEntity.updateProfile({ profileImage: s3Key });
 
             fs.unlink(filePath, (err) => {
                 if (err) {
@@ -41,43 +45,26 @@ export class UpdateUser implements IUpdateUserUseCase {
                     console.log(`Successfully deleted local file: ${filePath}`);
                 }
             });
-
         }
 
-        const updates: Omit<IUpdateUserData, 'isVerified'> = { ...userData };
+        userEntity.updateProfile(userData);
 
-        const updatedUser = await this._userRepository.updateUser(userId, updates);
+        const persistableData = userEntity.getPersistableData();
 
-        if (!updatedUser) {
-            throw new AppError('error while updating user', HttpStatusCode.INTERNAL_SERVER_ERROR);
+        const updatedUserData = await this._userRepository.updateUser(userId, persistableData);
+
+        if (!updatedUserData) {
+            throw new AppError('Error while updating user', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
-        let signedUrl;
-        if (updatedUser.profileImage) {
-            signedUrl = await this._awsS3Service.getFileUrlFromAws(updatedUser.profileImage as string, awsS3Timer.expiresAt)
-            await this._redisService.storeRedisSignedUrl(updatedUser._id as string, signedUrl, awsS3Timer.expiresAt);
+        if (updatedUserData.profileImage) {
+            const signedUrl = await this._awsS3Service.getFileUrlFromAws(updatedUserData.profileImage as string, awsS3Timer.expiresAt);
+            await this._redisService.storeRedisSignedUrl(updatedUserData._id as string, signedUrl, awsS3Timer.expiresAt);
         }
-
-        const mappedUser: ResponseUserDTO = {
-            id: updatedUser._id!,
-            firstName: updatedUser.firstName,
-            lastName: updatedUser.lastName,
-            email: updatedUser.email,
-            phone: updatedUser.phone,
-            isGoogle: updatedUser.isGoogle!,
-            isBlocked: updatedUser.isBlocked,
-            wishlist: updatedUser.wishlist,
-            subscriptionType: updatedUser.subscriptionType,
-            role: updatedUser.role,
-            createdAt: updatedUser.createdAt,
-            updatedAt: updatedUser.updatedAt,
-            profileImage: signedUrl,
-        };
 
         return {
-            user: mappedUser,
+            user: updatedUserData,
             message: 'User updated successfully',
         };
     }
-
 }

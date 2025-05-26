@@ -1,12 +1,11 @@
 import { Response } from "express";
-import { UpdateUserDTO } from "../dtos/user/user.dto";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
-import { IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase } from "../../domain/interfaces/usecases.interface";
+import { IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase } from "../../domain/interfaces/model/usecases.interface";
 
 @injectable()
 export class VendorController {

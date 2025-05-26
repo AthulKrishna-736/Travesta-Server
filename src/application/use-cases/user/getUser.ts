@@ -1,13 +1,13 @@
 import { inject, injectable } from "tsyringe";
-import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
+import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { TOKENS } from "../../../constants/token";
-import { IRedisService } from "../../../domain/services/redisService.interface";
-import { IUserRepository } from "../../../domain/repositories/repository.interface";
-import { IGetUserUseCase } from "../../../domain/interfaces/usecases.interface";
-import { ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
+import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IGetUserUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
+import { IUserEntity, UserEntity } from "../../../domain/entities/user/user.entity";
 
 @injectable()
 export class GetUserProfileUseCase implements IGetUserUseCase {
@@ -17,23 +17,26 @@ export class GetUserProfileUseCase implements IGetUserUseCase {
         @inject(TOKENS.AwsS3Service) protected _awsS3Service: IAwsS3Service,
     ) { }
 
-    async getUser(userId: string): Promise<{ user: ResponseUserDTO, message: string }> {
-        const user = await this._userRepo.findUserById(userId);
+    async getUser(userId: string): Promise<{ user: IUserEntity; message: string }> {
+        const userData = await this._userRepo.findUserById(userId);
 
-        if (!user) {
-            throw new AppError('user not found', HttpStatusCode.NOT_FOUND)
+        if (!userData) {
+            throw new AppError('User not found', HttpStatusCode.NOT_FOUND);
         }
 
-        let profileImage;
-        profileImage = await this._redisService.getRedisSignedUrl(user._id as string, 'profile');
+        const userEntity = new UserEntity(userData);
 
-        if (!profileImage) {
-            profileImage = await this._awsS3Service.getFileUrlFromAws(user.profileImage as string, awsS3Timer.expiresAt);
+        let profileImageSignedUrl = await this._redisService.getRedisSignedUrl(userEntity.id as string, 'profile');
+        if (!profileImageSignedUrl && userEntity.profileImage) {
+            profileImageSignedUrl = await this._awsS3Service.getFileUrlFromAws(userEntity.profileImage, awsS3Timer.expiresAt);
+            await this._redisService.storeRedisSignedUrl(userEntity.id as string, profileImageSignedUrl, awsS3Timer.expiresAt);
         }
+
+        userEntity.updateProfile({ profileImage: profileImageSignedUrl ?? undefined });
 
         return {
-            user: mapUser,
-            message: 'profile fetched successfully'
-        }
+            user: userEntity,
+            message: 'Profile fetched successfully',
+        };
     }
 }

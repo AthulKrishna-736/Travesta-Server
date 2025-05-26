@@ -1,9 +1,8 @@
 import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
-import { IRoom } from "../../../domain/interfaces/hotel.interface";
-import { IRoomRepository } from "../../../domain/repositories/repository.interface";
-import { CreateRoomDTO, UpdateRoomDTO } from "../../../interfaceAdapters/dtos/hotel.dto";
+import { IRoom } from "../../../domain/interfaces/model/hotel.interface";
+import { IRoomRepository } from "../../../domain/interfaces/repositories/repository.interface";
 
 @injectable()
 export class RoomRepository extends BaseRepository<TRoomDocument> implements IRoomRepository {

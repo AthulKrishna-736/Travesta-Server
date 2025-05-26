@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
-import { IRedisService } from "../../domain/services/redisService.interface";
+import { IRedisService } from "../../domain/interfaces/services/redisService.interface";
 import { redisClient } from "../config/redis";
-import { TOtpData } from "../../domain/services/authService.interface";
+import { TOtpData } from "../../domain/interfaces/services/authService.interface";
 
 @injectable()
 export class RedisService implements IRedisService {

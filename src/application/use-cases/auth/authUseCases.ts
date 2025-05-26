@@ -1,8 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { ICreateUserData, IUser } from "../../../domain/interfaces/user.interface";
-import { CreateUserDTO, ResponseUserDTO } from "../../../interfaceAdapters/dtos/user/user.dto";
-import { IAuthService, TOtpData } from "../../../domain/services/authService.interface";
+import { IUser } from "../../../domain/interfaces/model/user.interface";
+import { IAuthService, TOtpData } from "../../../domain/interfaces/services/authService.interface";
 import { v4 as uuidv4 } from 'uuid';
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
@@ -11,10 +10,10 @@ import { TRole } from "../../../shared/types/client.types";
 import { awsS3Timer, jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { OAuth2Client } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
-import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
-import { IUserRepository } from "../../../domain/repositories/repository.interface";
-import { IRedisService } from "../../../domain/services/redisService.interface";
-import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/auth.interface";
+import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
+import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/model/auth.interface";
 
 @injectable()
 export class RegisterUseCase implements IRegisterUseCase {
@@ -23,8 +22,8 @@ export class RegisterUseCase implements IRegisterUseCase {
         @inject(TOKENS.AuthService) private _authService: IAuthService
     ) { }
 
-    async register(userData: ICreateUserData): Promise<{ userId: string; message: string; }> {
-        const existingUser = await this._userRepo.findUser(userData.email)
+    async register(userData: Partial<IUser>): Promise<{ userId: string; message: string; }> {
+        const existingUser = await this._userRepo.findUser(userData.email as string)
 
         if (existingUser) {
             throw new AppError('User already exists', HttpStatusCode.BAD_REQUEST)
@@ -32,7 +31,7 @@ export class RegisterUseCase implements IRegisterUseCase {
 
         const otp = this._authService.generateOtp();
         logger.info(`otp created: ${otp}`);
-        const hashPass = await this._authService.hashPassword(userData.password)
+        const hashPass = await this._authService.hashPassword(userData.password as string)
 
         const tempUserId = `temp:signup:${uuidv4()}`
 
@@ -47,7 +46,7 @@ export class RegisterUseCase implements IRegisterUseCase {
 
         await this._authService.storeOtp(tempUserId, otp, newUserData, 'signup');
 
-        await this._authService.sendOtpOnEmail(userData.email, otp,);
+        await this._authService.sendOtpOnEmail(userData.email as string, otp,);
 
         return {
             userId: tempUserId,
@@ -66,7 +65,7 @@ export class LoginUseCase implements ILoginUseCase {
     ) { }
 
 
-    async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: ResponseUserDTO; }> {
+    async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: IUser; }> {
         const user = await this._userRepo.findUser(email);
 
         if (!user || !user._id) {

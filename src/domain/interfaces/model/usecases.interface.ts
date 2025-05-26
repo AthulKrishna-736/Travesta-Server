@@ -1,17 +1,15 @@
-import { CreateHotelDTO, CreateRoomDTO, ResponseHotelDTO, UpdateHotelDTO, UpdateRoomDTO } from "../../interfaceAdapters/dtos/hotel.dto";
-import { ResponseUserDTO } from "../../interfaceAdapters/dtos/user.dto";
-import { TRole } from "../../shared/types/client.types";
+import { TRole } from "../../../shared/types/client.types";
 import { IHotel, IRoom } from "./hotel.interface";
-import { IResponseUserData, IUpdateUserData, IUser } from "./user.interface";
+import { IUser } from "./user.interface";
 
 
 //user UserCases
 export interface IUpdateUserUseCase {
-    updateUser(userId: string, userData: IUpdateUserData, file?: Express.Multer.File): Promise<{ user: IResponseUserData, message: string }>
+    updateUser(userId: string, userData: IUpdateUserData, file?: Express.Multer.File): Promise<{ user: IUser, message: string }>
 }
 
 export interface IGetUserUseCase {
-    getUser(userId: string): Promise<{ user: ResponseUserDTO, message: string }>
+    getUser(userId: string): Promise<{ user: IResponseUserData, message: string }>
 }
 
 //admin UseCases
@@ -20,7 +18,7 @@ export interface IGetAllUsersUseCase {
 }
 
 export interface IBlockUnblockUser {
-    blockUnblockUser(userId: string): Promise<IUser>
+    blockUnblockUser(userId: string): Promise<IUser | null>
 }
 
 export interface IGetAllVendorReqUseCase {

@@ -8,7 +8,7 @@ import { ResponseHandler } from "../../middlewares/responseHandler";
 import {
     ICreateRoomUseCase,
     IUpdateRoomUseCase,
-} from "../../domain/interfaces/usecases.interface";
+} from "../../domain/interfaces/model/usecases.interface";
 import { CreateRoomDTO, UpdateRoomDTO } from "../dtos/hotel.dto";
 
 @injectable()

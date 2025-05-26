@@ -1,46 +1,49 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IUpdateVendorReqUseCase } from "../../../domain/interfaces/usecases.interface";
+import { IUpdateVendorReqUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import logger from "../../../utils/logger";
-import { IMailService } from "../../../domain/services/mailService.interface";
-import { IUserRepository } from "../../../domain/repositories/repository.interface";
-
+import { IMailService } from "../../../domain/interfaces/services/mailService.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { UserLookupBase } from "../base/userLookup.base";
 
 @injectable()
-export class UpdateVendorReq implements IUpdateVendorReqUseCase {
+export class UpdateVendorReq extends UserLookupBase implements IUpdateVendorReqUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private readonly userRepo: IUserRepository,
-        @inject(TOKENS.MailService) private readonly mailService: IMailService,
-    ) { }
+        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.MailService) private _mailService: IMailService,
+    ) {
+        super(userRepo);
+    }
 
     async updateVendorReq(vendorId: string, isVerified: boolean, verificationReason: string): Promise<{ message: string }> {
-        const vendor = await this.userRepo.findUserById(vendorId)
-        if (!vendor) {
-            throw new AppError('Vendor not found', HttpStatusCode.BAD_REQUEST)
+        const vendorEntity = await this.getUserEntityOrThrow(vendorId);
+
+        if (vendorEntity.isVerified && isVerified) {
+            throw new AppError('Vendor already verified', HttpStatusCode.CONFLICT);
         }
 
-        if (vendor.isVerified && isVerified) {
-            throw new AppError('Vendor already verified', HttpStatusCode.CONFLICT)
+        if (isVerified) {
+            vendorEntity.verify();
+        } else {
+            vendorEntity.unVerify();
+            vendorEntity.updateProfile({ kycDocuments: [] });
+
+            await this._mailService.sendVendorRejectionEmail(vendorEntity.email, verificationReason);
         }
 
-        const updateData: Partial<typeof vendor> = {
-            isVerified,
-            verificationReason,
+        const updatedData = {
+            ...vendorEntity.getPersistableData(),
+            verificationReason
         };
 
-        if (!isVerified) {
-            updateData.kycDocuments = [];
-            await this.mailService.sendVendorRejectionEmail(vendor.email, verificationReason);
-        }
+        await this._userRepo.updateUser(vendorId, updatedData);
 
-        await this.userRepo.updateUser(vendorId, updateData);
-
-        logger.info(`Vendor verification ${isVerified ? 'approved' : 'rejected'} for ${vendor.email}`);
+        logger.info(`Vendor ${isVerified ? 'approved' : 'rejected'} for ${vendorEntity.email}`);
 
         return {
             message: `Vendor ${isVerified ? 'approved' : 'rejected'} successfully`
-        }
+        };
     }
 }

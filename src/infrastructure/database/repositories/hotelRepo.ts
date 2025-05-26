@@ -1,9 +1,8 @@
 import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { hotelModel, THotelDocument } from "../models/hotelModel";
-import { IHotel } from "../../../domain/interfaces/hotel.interface";
-import { IHotelRepository } from "../../../domain/repositories/repository.interface";
-import { CreateHotelDTO, UpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto";
+import { IHotel } from "../../../domain/interfaces/model/hotel.interface";
+import { IHotelRepository } from "../../../domain/interfaces/repositories/repository.interface";
 
 @injectable()
 export class HotelRepository extends BaseRepository<THotelDocument> implements IHotelRepository {

@@ -1,15 +1,14 @@
 import { inject, injectable } from "tsyringe";
-import { IHotelRepository } from "../../../domain/repositories/repository.interface";
-import { CreateHotelDTO, ResponseHotelDTO, UpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto";
-import { IHotel } from "../../../domain/interfaces/hotel.interface";
+import { IHotelRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IHotel } from "../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../utils/appError";
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from "../../../domain/interfaces/usecases.interface";
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { TOKENS } from "../../../constants/token";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { IAwsS3Service } from "../../../domain/services/awsS3Service.interface";
+import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import fs from 'fs';
 import path from 'path';
-import { IRedisService } from "../../../domain/services/redisService.interface";
+import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 
 
