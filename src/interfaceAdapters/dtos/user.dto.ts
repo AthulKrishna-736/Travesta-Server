@@ -6,10 +6,8 @@ export interface CreateUserDTO {
     email: string
     password: string
     phone: number
-    role: TRole
-    subscriptionType: TSubscription
-    createdAt?: Date
-    updatedAtd?: Date
+    role?: TRole
+    subscriptionType?: TSubscription
 }
 
 export interface UpdateUserDTO {
@@ -28,7 +26,7 @@ export interface UpdateUserDTO {
 }
 
 export interface ResponseUserDTO {
-    id: string
+    id?: string
     firstName: string
     lastName: string
     email: string

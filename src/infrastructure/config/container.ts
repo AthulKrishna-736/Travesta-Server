@@ -21,8 +21,8 @@ import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
 import { IHotelRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
-import { CreateHotelUseCase, GetAllHotelsUseCase, GetHotelByIdUseCase, UpdateHotelUseCase } from "../../application/use-cases/vendor/hotelUseCases";
-import { CreateRoomUseCase, UpdateRoomUseCase } from "../../application/use-cases/vendor/roomUseCase";
+import { CreateHotelUseCase, GetAllHotelsUseCase, GetHotelByIdUseCase, UpdateHotelUseCase } from "../../application/use-cases/vendor/hotel/hotelUseCases";
+import { CreateRoomUseCase, UpdateRoomUseCase } from "../../application/use-cases/vendor/room/roomUseCase";
 
 
 //repository

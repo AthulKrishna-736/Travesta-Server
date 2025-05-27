@@ -10,6 +10,7 @@ import { IUserRepository } from "../../../domain/interfaces/repositories/reposit
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
+import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 
 @injectable()
 export class UpdateKycUseCase implements IUpdateKycUseCase {
@@ -19,7 +20,7 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
-    async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: IVendor, message: string }> {
+    async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: TResponseUserData, message: string }> {
         const user = await this._userRepo.findUserById(userId);
         if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
 
@@ -54,21 +55,11 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
         }
 
 
-        const mappedUser: ResponseUserDTO = {
-            id: user._id!,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            phone: user.phone,
-            isGoogle: user.isGoogle!,
-            isBlocked: user.isBlocked,
-            wishlist: user.wishlist,
-            subscriptionType: user.subscriptionType,
-            role: user.role,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt,
+        const mappedUser: TResponseUserData = {
+            ...user,
             kycDocuments: signedUrls,
         };
+
 
         return {
             vendor: mappedUser,

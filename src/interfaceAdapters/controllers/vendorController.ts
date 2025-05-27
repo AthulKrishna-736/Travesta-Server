@@ -6,6 +6,8 @@ import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase } from "../../domain/interfaces/model/usecases.interface";
+import { UpdateUserDTO } from "../dtos/user.dto";
+import { mapUserToResponseDTO } from "../../utils/responseMapper";
 
 @injectable()
 export class VendorController {
@@ -24,9 +26,11 @@ export class VendorController {
 
             const userData: UpdateUserDTO = req.body;
 
-            const updateUser = await this._updateUser.updateUser(userId, userData, req.file);
+            const { user, message } = await this._updateUser.updateUser(userId, userData, req.file);
 
-            ResponseHandler.success(res, "Profile updated successfully", updateUser, HttpStatusCode.OK);
+            const mappedUser = mapUserToResponseDTO(user)
+
+            ResponseHandler.success(res, message, mappedUser, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -48,9 +52,11 @@ export class VendorController {
             const frontFile = files.front[0];
             const backFile = files.back[0];
 
-            const vendor = await this._updateKyc.updateKyc(userId, frontFile, backFile);
+            const { message, vendor } = await this._updateKyc.updateKyc(userId, frontFile, backFile);
 
-            ResponseHandler.success(res, vendor.message, vendor.vendor, HttpStatusCode.OK);
+            const mappedVendor = mapUserToResponseDTO(vendor)
+
+            ResponseHandler.success(res, message, mappedVendor, HttpStatusCode.OK);
         } catch (error) {
             throw error
         }
@@ -62,8 +68,11 @@ export class VendorController {
             if (!userId) {
                 throw new AppError('userid missing in req body', HttpStatusCode.BAD_REQUEST);
             }
-            const vendor = await this._getVendor.getUser(userId)
-            ResponseHandler.success(res, vendor.message, vendor.user, HttpStatusCode.OK);
+            const { message, user } = await this._getVendor.getUser(userId)
+
+            const mappedVendor = mapUserToResponseDTO(user);
+
+            ResponseHandler.success(res, message, mappedVendor, HttpStatusCode.OK);
         } catch (error) {
             throw error
         }

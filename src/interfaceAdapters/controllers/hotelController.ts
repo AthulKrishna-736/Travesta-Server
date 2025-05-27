@@ -8,6 +8,8 @@ import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/usecases.interface';
 import { CreateHotelDTO, UpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
+import logger from '../../utils/logger';
+import { mapHotelToResponseDTO } from '../../utils/responseMapper';
 
 @injectable()
 export class HotelController {
@@ -20,39 +22,18 @@ export class HotelController {
 
     async createHotel(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const {
-                name,
-                description,
-                address,
-                city,
-                state,
-                tags,
-                amenities,
-                services,
-                geoLocation,
-            } = req.body;
 
             const files = req.files as Express.Multer.File[];
             const userId = req.user?.userId;
 
-            console.log('re bodyL: ', files, req.body)
+            logger.info('re body create hotel: ', files, req.body);
 
-            const hotelData: CreateHotelDTO = {
-                vendorId: userId!,
-                name,
-                description,
-                address,
-                city,
-                state,
-                tags,
-                amenities,
-                services,
-                geoLocation: Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation),
-                images: [],
-            };
+            const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0, isBlocked = false, } = req.body;
+            const hotelData: CreateHotelDTO = { vendorId: userId!, name, description, address, city, state, geoLocation: Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation), tags, amenities, services, rating, isBlocked, images: [] };
+            const { hotel, message } = await this._createHotelUseCase.execute(hotelData, files);
 
-            const result = await this._createHotelUseCase.execute(hotelData, files);
-            ResponseHandler.success(res, "Hotel created successfully", result.hotel, HttpStatusCode.CREATED);
+            const mappedHotel = mapHotelToResponseDTO(hotel)
+            ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
         }
@@ -62,34 +43,13 @@ export class HotelController {
     async updateHotel(req: CustomRequest, res: Response): Promise<void> {
         try {
             const hotelId = req.params.id;
-            const {
-                name,
-                description,
-                address,
-                city,
-                state,
-                tags,
-                amenities,
-                services,
-                rating,
-                geoLocation,
-                isBlocked
-            } = req.body;
-
             const files = req.files as Express.Multer.File[];
 
             const updateData: UpdateHotelDTO = {
-                name,
-                description,
-                address,
-                city,
-                state,
-                rating: rating ? Number(rating) : undefined,
-                isBlocked: isBlocked === "true" || isBlocked === true,
-                geoLocation: geoLocation ? JSON.parse(geoLocation) : undefined,
-                tags,
-                amenities,
-                services,
+                ...req.body,
+                rating: req.body.rating !== undefined ? Number(req.body.rating) : undefined,
+                geoLocation: req.body.geoLocation ? JSON.parse(req.body.geoLocation) : undefined,
+                isBlocked: req.body.isBlocked === 'true' || req.body.isBlocked === true ? true : undefined,
             };
 
             const result = await this._updateHotelUseCase.execute(hotelId, updateData, files);
@@ -99,6 +59,7 @@ export class HotelController {
         }
     }
 
+
     async getHotelById(req: CustomRequest, res: Response): Promise<void> {
         try {
             const hotelId = req.params.id;
@@ -107,9 +68,11 @@ export class HotelController {
                 throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
             }
 
-            const result = await this._getHotelByIdUseCae.execute(hotelId);
+            const { message, hotel } = await this._getHotelByIdUseCae.execute(hotelId);
 
-            ResponseHandler.success(res, result.message, result.hotel, HttpStatusCode.OK);
+            const mappedHotel = mapHotelToResponseDTO(hotel)
+
+            ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -122,16 +85,16 @@ export class HotelController {
             const limit = parseInt(req.query.limit as string) || 10;
             const search = req.query.search as string | undefined;
 
-            const result = await this._getAllHotelsUseCase.execute(page, limit, search);
+            const { hotels, total, message } = await this._getAllHotelsUseCase.execute(page, limit, search);
 
             const meta: Pagination = {
                 currentPage: page,
                 pageSize: limit,
-                totalData: result.total,
-                totalPages: Math.ceil(result.total / limit)
+                totalData: total,
+                totalPages: Math.ceil(total / limit)
             };
 
-            ResponseHandler.success(res, result.message, result.hotels, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

@@ -20,3 +20,9 @@ export interface IUser {
     updatedAt: Date
 }
 
+
+export type TUserRegistrationInput = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' | 'phone'> & { role?: TRole; subscriptionType?: TSubscription; };
+
+export type TUpdateUserData = Partial<Omit<IUser, '_id' | 'email' | 'wishlist' | 'createdAt' | 'updatedAt' | 'isGoogle' | 'role' | 'subscriptionType'>>;
+
+export type TResponseUserData = Omit<IUser, 'password'>;

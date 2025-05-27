@@ -7,27 +7,24 @@ import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.
 import path from 'path';
 import fs from 'fs';
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { IUser } from "../../../domain/interfaces/model/user.interface";
+import { IUser, TResponseUserData, TUpdateUserData } from "../../../domain/interfaces/model/user.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
-import { UserEntity } from "../../../domain/entities/user/user.entity";
+import { UserLookupBase } from "../base/userLookup.base";
 
 @injectable()
-export class UpdateUser implements IUpdateUserUseCase {
+export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
+        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
-    ) { }
+    ) {
+        super(userRepo)
+    }
 
-    async updateUser(userId: string, userData: Partial<IUser>, file?: Express.Multer.File): Promise<{ user: IUser, message: string }> {
-        const existingUserData = await this._userRepository.findUserById(userId);
+    async updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserData, message: string }> {
 
-        if (!existingUserData) {
-            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
-        }
-
-        const userEntity = new UserEntity(existingUserData);
+        const userEntity = await this.getUserEntityOrThrow(userId);
 
         if (file) {
             const filePath = file.path;
@@ -51,7 +48,7 @@ export class UpdateUser implements IUpdateUserUseCase {
 
         const persistableData = userEntity.getPersistableData();
 
-        const updatedUserData = await this._userRepository.updateUser(userId, persistableData);
+        const updatedUserData = await this._userRepo.updateUser(userId, persistableData);
 
         if (!updatedUserData) {
             throw new AppError('Error while updating user', HttpStatusCode.INTERNAL_SERVER_ERROR);

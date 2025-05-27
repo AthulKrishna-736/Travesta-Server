@@ -6,7 +6,7 @@ export interface IHotel {
     name: string
     description: string
     images: string[]
-    rating: number
+    rating?: number
     services: string[]
     amenities: string[]
     tags: string[]
@@ -33,4 +33,16 @@ export interface IRoom {
     updatedAt: Date
 }
 
+
+export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'rating'>;
+
+export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt'>>;
+
+export type TResponseHotelData = Omit<IHotel, ''>;
+
+export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'images' | 'createdAt' | 'updatedAt'>;
+
+export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'createdAt' | 'updatedAt'>>;
+
+export type TResponseRoomData = Omit<IRoom, ''>;
 

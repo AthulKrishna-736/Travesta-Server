@@ -96,7 +96,7 @@ export class RedisService implements IRedisService {
         await this.set(key, imageUrl, expiresAt)
     }
 
-    async getRedisSignedUrl(userId: string, purpose: 'profile' | 'kycDocs'): Promise<string | string[] | null> {
+    async getRedisSignedUrl(userId: string, purpose: 'profile' | 'kycDocs' | 'rooms'): Promise<string | string[] | null> {
         const key = `${purpose}${userId}`;
         const result = await this.get(key);
         if (typeof result == 'string') {

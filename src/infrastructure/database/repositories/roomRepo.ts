@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
-import { IRoom } from "../../../domain/interfaces/model/hotel.interface";
+import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfaces/model/hotel.interface";
 import { IRoomRepository } from "../../../domain/interfaces/repositories/repository.interface";
 
 @injectable()
@@ -10,7 +10,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         super(roomModel);
     }
 
-    async createRoom(data: CreateRoomDTO): Promise<IRoom | null> {
+    async createRoom(data: TCreateRoomData): Promise<IRoom | null> {
         const room = await this.create(data);
         return room.toObject();
     }
@@ -20,7 +20,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         return room?.toObject() || null;
     }
 
-    async updateRoom(id: string, data: UpdateRoomDTO): Promise<IRoom | null> {
+    async updateRoom(id: string, data: TUpdateRoomData): Promise<IRoom | null> {
         const room = await this.update(id, data);
         return room?.toObject() || null;
     }

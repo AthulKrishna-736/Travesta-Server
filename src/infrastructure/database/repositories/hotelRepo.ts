@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { hotelModel, THotelDocument } from "../models/hotelModel";
-import { IHotel } from "../../../domain/interfaces/model/hotel.interface";
+import { IHotel, TCreateHotelData, TUpdateHotelData } from "../../../domain/interfaces/model/hotel.interface";
 import { IHotelRepository } from "../../../domain/interfaces/repositories/repository.interface";
 
 @injectable()
@@ -10,7 +10,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         super(hotelModel);
     }
 
-    async createHotel(data: CreateHotelDTO): Promise<IHotel | null> {
+    async createHotel(data: TCreateHotelData): Promise<IHotel | null> {
         const hotel = await this.create(data);
         return hotel.toObject();
     }
@@ -20,7 +20,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         return hotel?.toObject() || null;
     }
 
-    async updateHotel(id: string, data: UpdateHotelDTO): Promise<IHotel | null> {
+    async updateHotel(id: string, data: TUpdateHotelData): Promise<IHotel | null> {
         const hotel = await this.update(id, data);
         return hotel?.toObject() || null;
     }

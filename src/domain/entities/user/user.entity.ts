@@ -8,6 +8,7 @@ export interface IUserEntity {
     readonly firstName: string;
     readonly lastName: string;
     readonly email: string;
+    readonly password: string;
     readonly phone: number;
     readonly role: string;
     readonly isBlocked: boolean;
@@ -27,6 +28,7 @@ export interface IUserEntity {
     isAdmin(): boolean;
     verify(): void;
     unVerify(): void;
+    googleUser(): void
 
     // Return raw object (for persistence)
     toObject(): IUser;
@@ -56,6 +58,10 @@ export class UserEntity implements IUserEntity {
 
     get email() {
         return this._user.email;
+    }
+
+    get password() {
+        return this._user.password;
     }
 
     get phone() {
@@ -140,15 +146,24 @@ export class UserEntity implements IUserEntity {
 
     //user business logic
 
-    updateProfile(data: Partial<Pick<IUser, 'firstName' | 'lastName' | 'phone' | 'profileImage' | 'kycDocuments'>>): void {
+    updateProfile(data: Partial<Pick<IUser, 'firstName' | 'lastName' | 'phone' | 'password' | 'profileImage' | 'kycDocuments'>>): void {
         if (data.firstName) this._user.firstName = data.firstName
         if (data.lastName) this._user.lastName = data.lastName
+        if (data.password) this._user.password = data.password
         if (data.phone) this._user.phone = data.phone
         if (data.profileImage) this._user.profileImage = data.profileImage
         if (data.kycDocuments && data.kycDocuments.length > 0) {
             this._user.kycDocuments = [...data.kycDocuments]
         }
         this._user.updatedAt = new Date();
+    }
+
+    googleUser(): void {
+        if (this._user.isGoogle) {
+            throw new AppError('Already google user', HttpStatusCode.CONFLICT);
+        }
+
+        this._user.isGoogle = true;
     }
 
     isAdmin(): boolean {

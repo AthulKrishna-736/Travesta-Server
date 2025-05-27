@@ -1,7 +1,7 @@
 import { TRole } from "../../../shared/types/client.types"
-import { ICreateUserData } from "../model/user.interface"
+import { TUserRegistrationInput } from "../model/user.interface"
 
-export type TOtpData = ICreateUserData | { email: string } | { [key: string]: any }
+export type TOtpData = TUserRegistrationInput | { email: string } | { [key: string]: any }
 
 export interface IAuthService {
     hashPassword(password: string): Promise<string>

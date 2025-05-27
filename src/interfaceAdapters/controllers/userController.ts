@@ -6,6 +6,8 @@ import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { IGetUserUseCase, IUpdateUserUseCase } from "../../domain/interfaces/model/usecases.interface";
+import { UpdateUserDTO } from "../dtos/user.dto";
+import { mapUserToResponseDTO } from "../../utils/responseMapper";
 
 @injectable()
 export class UserController {
@@ -23,9 +25,11 @@ export class UserController {
 
             const userData: UpdateUserDTO = req.body;
 
-            const updateUser = await this._updateUser.updateUser(userId, userData, req.file);
+            const { user, message } = await this._updateUser.updateUser(userId, userData, req.file);
 
-            ResponseHandler.success(res, "Profile updated successfully", updateUser, HttpStatusCode.OK);
+            const mappedUser = mapUserToResponseDTO(user)
+
+            ResponseHandler.success(res, message, mappedUser, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -37,9 +41,11 @@ export class UserController {
             if (!userId) {
                 throw new AppError("User id is missing", HttpStatusCode.BAD_REQUEST);
             }
-            const profileData = await this._getUser.getUser(userId);
+            const { user, message } = await this._getUser.getUser(userId);
 
-            ResponseHandler.success(res, "Profile fetched successfully", profileData, HttpStatusCode.OK);
+            const mappedUser = mapUserToResponseDTO(user)
+
+            ResponseHandler.success(res, message, mappedUser, HttpStatusCode.OK);
         } catch (error) {
             throw error
         }

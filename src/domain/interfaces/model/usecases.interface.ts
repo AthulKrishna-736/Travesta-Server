@@ -1,28 +1,28 @@
 import { TRole } from "../../../shared/types/client.types";
-import { IHotel, IRoom } from "./hotel.interface";
-import { IUser } from "./user.interface";
+import { TCreateHotelData, TCreateRoomData, TResponseHotelData, TResponseRoomData, TUpdateHotelData, TUpdateRoomData } from "./hotel.interface";
+import { TResponseUserData, TUpdateUserData } from "./user.interface";
 
 
 //user UserCases
 export interface IUpdateUserUseCase {
-    updateUser(userId: string, userData: IUpdateUserData, file?: Express.Multer.File): Promise<{ user: IUser, message: string }>
+    updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserData, message: string }>
 }
 
 export interface IGetUserUseCase {
-    getUser(userId: string): Promise<{ user: IResponseUserData, message: string }>
+    getUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
 }
 
 //admin UseCases
 export interface IGetAllUsersUseCase {
-    getAllUsers(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string): Promise<{ users: IResponseUserData[]; total: number }>
+    getAllUsers(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string): Promise<{ users: TResponseUserData[]; total: number }>
 }
 
 export interface IBlockUnblockUser {
-    blockUnblockUser(userId: string): Promise<IUser | null>
+    blockUnblockUser(userId: string): Promise<TResponseUserData | null>
 }
 
 export interface IGetAllVendorReqUseCase {
-    getAllVendorReq(page: number, limit: number, search?: string): Promise<{ vendors: IResponseUserData[]; total: number }>
+    getAllVendorReq(page: number, limit: number, search?: string): Promise<{ vendors: TResponseUserData[]; total: number }>
 }
 
 export interface IUpdateVendorReqUseCase {
@@ -31,46 +31,46 @@ export interface IUpdateVendorReqUseCase {
 
 //vendor UseCases
 export interface IUpdateKycUseCase {
-    updateKyc(vendorId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: IResponseUserData, message: string }>
+    updateKyc(vendorId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: TResponseUserData, message: string }>
 }
 
 export interface IGetVendorUseCase {
-    getUser(userId: string): Promise<{ user: ResponseUserDTO, message: string }>
+    getUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
 }
 
 export interface ICreateHotelUseCase {
-    execute(hotelData: CreateHotelDTO, files?: Express.Multer.File[]): Promise<{ hotel: IHotel; message: string }>;
+    execute(hotelData: TCreateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
 }
 
 export interface IUpdateHotelUseCase {
-    execute(hotelId: string, updateData: UpdateHotelDTO, files?: Express.Multer.File[]): Promise<{ hotel: IHotel; message: string }>;
+    execute(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
 }
 
 export interface IGetHotelByIdUseCase {
-    execute(hotelId: string): Promise<{ hotel: ResponseHotelDTO, message: string }>
+    execute(hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
 }
 
 export interface IGetAllHotelsUseCase {
-    execute(page: number, limit: number, search?: string): Promise<{ hotels: ResponseHotelDTO[], total: number, message: string }>
+    execute(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
 }
 
 
 export interface ICreateRoomUseCase {
-    execute(roomData: CreateRoomDTO, files: Express.Multer.File[]): Promise<{ room: any; message: string }>;
+    createRoom(roomData: TCreateRoomData, files: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }>;
 }
 
 export interface IUpdateRoomUseCase {
-    execute(roomId: string, updateData: UpdateRoomDTO, files: Express.Multer.File[]): Promise<{ room: any; message: string }>;
+    updateRoom(roomId: string, updateData: TUpdateRoomData, files: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }>;
 }
 
 export interface IGetRoomByIdUseCase {
-    execute(roomId: string): Promise<IRoom>;
+    getRoomById(roomId: string): Promise<TResponseRoomData>;
 }
 
 export interface IGetRoomsByHotelUseCase {
-    execute(hotelId: string): Promise<IRoom[]>;
+    getRoomByHotel(hotelId: string): Promise<TResponseRoomData[]>;
 }
 
 export interface IGetAvailableRoomsByHotelUseCase {
-    execute(hotelId: string): Promise<IRoom[]>;
+    getAvlRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]>;
 }

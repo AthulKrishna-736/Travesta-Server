@@ -7,6 +7,7 @@ import { UsersListBase } from "../base/usersList.base";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
+import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 
 @injectable()
 export class GetAllVendorReq extends UsersListBase implements IGetAllVendorReqUseCase {
@@ -18,7 +19,7 @@ export class GetAllVendorReq extends UsersListBase implements IGetAllVendorReqUs
         super(userRepo);
     }
 
-    async getAllVendorReq(page: number, limit: number, search?: string): Promise<{ vendors: IVendor[]; total: number }> {
+    async getAllVendorReq(page: number, limit: number, search?: string): Promise<{ vendors: TResponseUserData[]; total: number }> {
         const { userEntities, total } = await this.getAllUserEntityOrThrow(page, limit, 'vendor', search);
 
         const vendors = await Promise.all(

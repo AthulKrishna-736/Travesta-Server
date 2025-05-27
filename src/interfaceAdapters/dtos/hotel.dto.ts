@@ -7,9 +7,9 @@ export interface CreateHotelDTO {
     description: string;
     images: string[];
     rating?: number;
-    services?: string[];
-    amenities?: string[];
-    tags?: string[];
+    services: string[];
+    amenities: string[];
+    tags: string[];
     state: string;
     city: string;
     address: string;

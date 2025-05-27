@@ -16,4 +16,14 @@ export abstract class UserLookupBase {
 
         return new UserEntity(userData);
     }
+
+    protected async getUserEntityByEmail(email: string): Promise<IUserEntity> {
+        const userData = await this._userRepo.findUser(email)
+
+        if (!userData) {
+            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
+        }
+
+        return new UserEntity(userData);
+    }
 }

@@ -22,6 +22,8 @@ export class AdminController {
 
         const updatedUser = await this._blockUnblockUser.blockUnblockUser(id);
 
+        if (!updatedUser) throw new AppError("User not found or could not be updated", HttpStatusCode.NOT_FOUND);
+
         const message = updatedUser.isBlocked ? `${updatedUser.role} blocked successfully` : `${updatedUser.role} unblocked successfully`;
 
         ResponseHandler.success(res, message, updatedUser, HttpStatusCode.OK);
