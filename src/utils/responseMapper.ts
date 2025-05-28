@@ -4,9 +4,9 @@ import { IHotel } from "../domain/interfaces/model/hotel.interface";
 import { ResponseHotelDTO } from "../interfaceAdapters/dtos/hotel.dto";
 
 
-export function mapUserToResponseDTO(user: Omit<IUser, 'password'>): ResponseUserDTO {
+export function mapUserToResponseDTO(user: Omit<IUser, 'password'> & { id?: string }): ResponseUserDTO {
     return {
-        id: user._id!,
+        id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,

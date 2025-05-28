@@ -6,7 +6,7 @@ import { TOKENS } from "../../../../constants/token";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
-import { TCreateRoomData, IRoom } from "../../../../domain/interfaces/model/hotel.interface";
+import { TCreateRoomData, TResponseRoomData } from "../../../../domain/interfaces/model/hotel.interface";
 import { ICreateRoomUseCase } from "../../../../domain/interfaces/model/usecases.interface";
 
 @injectable()
@@ -45,7 +45,7 @@ export class CreateRoomUseCase implements ICreateRoomUseCase {
         return uploadedImageKeys;
     }
 
-    async createRoom(roomData: TCreateRoomData, files?: Express.Multer.File[]): Promise<{ room: IRoom; message: string }> {
+    async createRoom(roomData: TCreateRoomData, files?: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }> {
         const { hotelId } = roomData;
 
         if (!hotelId) {

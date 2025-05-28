@@ -7,7 +7,7 @@ import { IGetUserUseCase } from "../../../domain/interfaces/model/usecases.inter
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IUserEntity } from "../../../domain/entities/user/user.entity";
 import { UserLookupBase } from "../base/userLookup.base";
-import { IUser } from "../../../domain/interfaces/model/user.interface";
+import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 
 @injectable()
 export class GetUserProfileUseCase extends UserLookupBase implements IGetUserUseCase {
@@ -33,7 +33,7 @@ export class GetUserProfileUseCase extends UserLookupBase implements IGetUserUse
         return userEntity;
     }
 
-    async getUser(userId: string): Promise<{ user: IUser; message: string }> {
+    async getUser(userId: string): Promise<{ user: TResponseUserData; message: string }> {
 
         const userEntity = await this._getBaseUserEntityWithProfile(userId);
         const user = userEntity.toObject()

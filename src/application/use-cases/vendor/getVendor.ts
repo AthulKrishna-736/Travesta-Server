@@ -6,7 +6,7 @@ import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IGetVendorUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { TOKENS } from "../../../constants/token";
-import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
+import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 
 @injectable()
 export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IGetVendorUseCase {
@@ -18,7 +18,7 @@ export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IG
         super(userRepo, redisService, awsS3Service);
     }
 
-    async getVendor(userId: string): Promise<{ user: IVendor; message: string }> {
+    async getVendor(userId: string): Promise<{ user: TResponseUserData; message: string }> {
 
         const vendorEntity = await this._getBaseUserEntityWithProfile(userId);
 

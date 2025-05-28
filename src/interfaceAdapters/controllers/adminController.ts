@@ -7,6 +7,7 @@ import { TOKENS } from "../../constants/token";
 import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
 import { Pagination } from "../../shared/types/common.types";
 import { AppError } from "../../utils/appError";
+import { mapUserToResponseDTO } from "../../utils/responseMapper";
 
 @injectable()
 export class AdminController {
@@ -19,6 +20,10 @@ export class AdminController {
 
     async blockOrUnblockUser(req: CustomRequest, res: Response) {
         const { id } = req.params;
+
+        if (!id) {
+            throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
+        }
 
         const updatedUser = await this._blockUnblockUser.blockUnblockUser(id);
 
@@ -38,7 +43,9 @@ export class AdminController {
 
             const { users, total } = await this._getAllUsersUsecase.getAllUsers(page, limit, role, search);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-            ResponseHandler.success(res, 'All users fetched successfully', users, HttpStatusCode.OK, meta);
+            let mappedUser = users.map(user => mapUserToResponseDTO(user))
+
+            ResponseHandler.success(res, 'All users fetched successfully', mappedUser, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

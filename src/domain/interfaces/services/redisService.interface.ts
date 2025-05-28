@@ -20,7 +20,7 @@ export interface IOtpService {
 
 export interface IAwsRedisService {
     storeRedisSignedUrl(userId: string, imageUrl: string, expiresAt: number): Promise<void>
-    getRedisSignedUrl(userId: string, purpose: 'profile' | 'kycDocs' | 'rooms'): Promise<string | string[] | null>
+    getRedisSignedUrl(userId: string, purpose: 'profile' | 'kycDocs'): Promise<string | string[] | null>
     storeKycDocs(userId: string, imagesUrls: string[], expiresAt: number): Promise<void>
     storeHotelImageUrls(hotelId: string, imageUrls: string[], expiresAt: number): Promise<void>;
     getHotelImageUrls(hotelId: string): Promise<string[] | null>;

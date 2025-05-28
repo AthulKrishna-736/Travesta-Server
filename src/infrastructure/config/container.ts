@@ -6,7 +6,6 @@ import { AuthService } from "../services/authService";
 import { MailService } from "../services/mailService";
 import { RedisService } from "../services/redisService"
 import { IMailService } from "../../domain/interfaces/services/mailService.interface";
-import { ConfirmRegisterUseCase, ForgotPassUseCase, GoogleLoginUseCase, LoginUseCase, LogoutUseCase, RegisterUseCase, ResendOtpUseCase, ResetPassUseCase, VerifyOtpUseCase } from "../../application/use-cases/auth/authUseCases";
 import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
 import { IBlockUnblockUser, ICreateHotelUseCase, IGetAllHotelsUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetHotelByIdUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateHotelUseCase, IUpdateKycUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
@@ -21,9 +20,21 @@ import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
 import { IHotelRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
-import { CreateHotelUseCase, GetAllHotelsUseCase, GetHotelByIdUseCase, UpdateHotelUseCase } from "../../application/use-cases/vendor/hotel/hotelUseCases";
-import { CreateRoomUseCase, UpdateRoomUseCase } from "../../application/use-cases/vendor/room/roomUseCase";
-
+import { CreateHotelUseCase } from "../../application/use-cases/vendor/hotel/createHotelUseCase";
+import { UpdateHotelUseCase } from "../../application/use-cases/vendor/hotel/updateHotelUseCase";
+import { GetHotelByIdUseCase } from "../../application/use-cases/vendor/hotel/getHotelUseCase";
+import { GetAllHotelsUseCase } from "../../application/use-cases/vendor/hotel/getAllHotelsUseCase";
+import { CreateRoomUseCase } from "../../application/use-cases/vendor/room/createRoomUseCase";
+import { UpdateRoomUseCase } from "../../application/use-cases/vendor/room/updateRoomUseCase";
+import { LoginUseCase } from "../../application/use-cases/auth/loginUseCase";
+import { RegisterUseCase } from "../../application/use-cases/auth/registerUseCase";
+import { ConfirmRegisterUseCase } from "../../application/use-cases/auth/confirmRegisterUseCase";
+import { GoogleLoginUseCase } from "../../application/use-cases/auth/googleLoginUseCase";
+import { ForgotPassUseCase } from "../../application/use-cases/auth/forgotPassUseCase";
+import { ResetPassUseCase } from "../../application/use-cases/auth/resetPassUseCase";
+import { ResendOtpUseCase } from "../../application/use-cases/auth/resendOtpUseCase";
+import { VerifyOtpUseCase } from "../../application/use-cases/auth/verifyOtpUseCase";
+import { LogoutUseCase } from "../../application/use-cases/auth/logoutUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {

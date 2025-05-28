@@ -31,7 +31,7 @@ export interface IUserEntity {
     googleUser(): void
 
     // Return raw object (for persistence)
-    toObject(): IUser;
+    toObject(): Omit<IUser, 'password'>;
     getPersistableData(): Partial<Omit<IUser, "_id" | "createdAt">>
 }
 
@@ -170,9 +170,29 @@ export class UserEntity implements IUserEntity {
         return this._user.role == 'admin';
     }
 
-    toObject(): IUser {
-        return { ...this._user }
+    toObject(): Omit<IUser, 'password'> {
+        return {
+            _id: this._user._id,
+            firstName: this._user.firstName,
+            lastName: this._user.lastName,
+            email: this._user.email,
+            isGoogle: this._user.isGoogle,
+            phone: this._user.phone,
+            isBlocked: this._user.isBlocked,
+            role: this._user.role,
+            subscriptionType: this._user.subscriptionType,
+            profileImage: this._user.profileImage,
+            wishlist: this._user.wishlist ?? [],
+            isVerified: this._user.isVerified,
+            verificationReason: this._user.verificationReason,
+            kycDocuments: this._user.kycDocuments ?? [],
+            createdAt: this._user.createdAt,
+            updatedAt: this._user.updatedAt,
+        };
     }
+
+
+
 
     getPersistableData(): Partial<Omit<IUser, "_id" | "createdAt">> {
         return {

@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { TOKENS } from "../../../constants/token";
-import { IUser } from "../../../domain/interfaces/model/user.interface";
+import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { ILoginUseCase } from "../../../domain/interfaces/model/auth.interface";
@@ -24,7 +24,7 @@ export class LoginUseCase extends UserLookupBase implements ILoginUseCase {
         super(userRepo)
     }
 
-    async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: IUser }> {
+    async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserData }> {
         const userEntity = await this.getUserEntityByEmail(email);
 
         if (userEntity.role !== expectedRole) {

@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { TOKENS } from "../../../constants/token";
-import { IUser, TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
+import { TResponseUserData, TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IGoogleLoginUseCase } from "../../../domain/interfaces/model/auth.interface";
@@ -23,7 +23,7 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
     ) {
         super(userRepo)
     }
-    async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: IUser; }> {
+    async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserData; }> {
         const client = new OAuth2Client(env.GOOGLE_ID);
 
         let payload;
@@ -46,6 +46,10 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
         const email = payload.email;
 
         let user = await this._userRepo.findUser(email);
+
+        if (user?.role !== role) {
+            throw new AppError("Sorry, the user does not have the required role to proceed.", HttpStatusCode.FORBIDDEN)
+        }
 
         if (!user) {
             const newUser: TUserRegistrationInput = {

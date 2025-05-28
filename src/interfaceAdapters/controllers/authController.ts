@@ -9,6 +9,7 @@ import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
 import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { CreateUserDTO, ResponseUserDTO } from "../dtos/user.dto";
 import { mapUserToResponseDTO } from "../../utils/responseMapper";
+import logger from "../../utils/logger";
 
 @injectable()
 export class AuthController {
@@ -54,12 +55,14 @@ export class AuthController {
             if (!email || !password || !role) {
                 throw new AppError('Email password and role are required', HttpStatusCode.BAD_REQUEST)
             }
-            const { accessToken, refreshToken, user } = await this._loginUseCase.login(email, password, role)
+            const { accessToken, refreshToken, user } = await this._loginUseCase.login(email, password, role);
+            console.log('user: ', user)
 
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
             const mappedUser = mapUserToResponseDTO(user);
+            logger.info(JSON.stringify(mappedUser, null, 2))
 
             ResponseHandler.success(res, 'Login successfull', mappedUser, HttpStatusCode.OK)
         } catch (error) {

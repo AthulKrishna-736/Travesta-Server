@@ -26,7 +26,7 @@ export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomU
         }
 
         let uploadedImageKeys: string[] = room.images ?? [];
-
+        
         if (files?.length) {
             for (const key of uploadedImageKeys) {
                 try {
