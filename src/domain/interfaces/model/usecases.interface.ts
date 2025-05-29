@@ -1,5 +1,5 @@
 import { TRole } from "../../../shared/types/client.types";
-import { TCreateHotelData, TCreateRoomData, TResponseHotelData, TResponseRoomData, TUpdateHotelData, TUpdateRoomData } from "./hotel.interface";
+import { TCreateBookingData, TCreateHotelData, TCreateRoomData, TResponseBookingData, TResponseHotelData, TResponseRoomData, TUpdateHotelData, TUpdateRoomData } from "./hotel.interface";
 import { TResponseUserData, TUpdateUserData } from "./user.interface";
 
 
@@ -38,6 +38,7 @@ export interface IGetVendorUseCase {
     getUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
 }
 
+//hotels
 export interface ICreateHotelUseCase {
     execute(hotelData: TCreateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
 }
@@ -54,7 +55,7 @@ export interface IGetAllHotelsUseCase {
     execute(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
 }
 
-
+//rooms
 export interface ICreateRoomUseCase {
     createRoom(roomData: TCreateRoomData, files: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }>;
 }
@@ -73,4 +74,29 @@ export interface IGetRoomsByHotelUseCase {
 
 export interface IGetAvailableRoomsByHotelUseCase {
     getAvlRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]>;
+}
+
+export interface IGetAllRoomsUseCase {
+    execute(): Promise<{ rooms: TResponseRoomData[]; message: string }>;
+}
+
+//booking
+export interface ICreateBookingUseCase {
+    execute(data: TCreateBookingData): Promise<{ booking: TResponseBookingData; message: string }>;
+}
+
+export interface ICancelBookingUseCase {
+    execute(bookingId: string, userId: string): Promise<{ message: string }>;
+}
+
+export interface IGetBookingsByUserUseCase {
+    execute(userId: string): Promise<TResponseBookingData[]>;
+}
+
+export interface IGetBookingsByHotelUseCase {
+    execute(hotelId: string): Promise<TResponseBookingData[]>;
+}
+
+export interface ICheckRoomAvailabilityUseCase {
+    execute(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
 }

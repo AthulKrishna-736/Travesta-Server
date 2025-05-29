@@ -33,6 +33,20 @@ export interface IRoom {
     updatedAt: Date
 }
 
+export interface IBooking {
+    _id?: string;
+    userId: string | Types.ObjectId;
+    hotelId: string | Types.ObjectId;
+    roomId: string | Types.ObjectId;
+    checkIn: Date;
+    checkOut: Date;
+    guests: number;
+    totalPrice: number;
+    status: 'confirmed' | 'cancelled' | 'pending';
+    createdAt: Date;
+    updatedAt: Date;
+}
+
 
 export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'rating'>;
 
@@ -46,3 +60,8 @@ export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'createdAt' | 'updated
 
 export type TResponseRoomData = Omit<IRoom, ''>;
 
+export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt' | 'status'>;
+
+export type TUpdateBookingData = Partial<Omit<IBooking, '_id' | 'userId' | 'hotelId' | 'roomId' | 'createdAt' | 'updatedAt'>>;
+
+export type TResponseBookingData = IBooking;

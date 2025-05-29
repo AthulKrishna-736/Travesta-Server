@@ -145,7 +145,6 @@ export class UserEntity implements IUserEntity {
     }
 
     //user business logic
-
     updateProfile(data: Partial<Pick<IUser, 'firstName' | 'lastName' | 'phone' | 'password' | 'profileImage' | 'kycDocuments'>>): void {
         if (data.firstName) this._user.firstName = data.firstName
         if (data.lastName) this._user.lastName = data.lastName
@@ -190,9 +189,6 @@ export class UserEntity implements IUserEntity {
             updatedAt: this._user.updatedAt,
         };
     }
-
-
-
 
     getPersistableData(): Partial<Omit<IUser, "_id" | "createdAt">> {
         return {

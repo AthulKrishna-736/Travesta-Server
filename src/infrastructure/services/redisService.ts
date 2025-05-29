@@ -124,4 +124,21 @@ export class RedisService implements IRedisService {
         }
         return null;
     }
+
+    async storeRoomImageUrls(roomId: string, imageUrls: string[], expiresAt: number): Promise<void> {
+        const key = `roomImages:${roomId}`;
+        await this.set(key, JSON.stringify(imageUrls), expiresAt);
+    }
+
+    async getRoomImageUrls(roomId: string): Promise<string[] | null> {
+        const key = `roomImages:${roomId}`;
+        const data = await this.get(key);
+
+        if (data && typeof data === 'string') {
+            return JSON.parse(data) as string[];
+        }
+
+        return null;
+    }
+
 }

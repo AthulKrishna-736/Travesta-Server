@@ -16,7 +16,7 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
     ) { }
 
-    async execute(page: number = 1, limit: number = 10, search?: string): Promise<{ hotels: TResponseHotelData[]; total: number; message: string; }> {
+    async execute(page: number = 1, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[]; total: number; message: string; }> {
         const { hotels, total } = await this._hotelRepo.findAllHotels(page, limit, search);
 
         if (!hotels || hotels.length === 0) {

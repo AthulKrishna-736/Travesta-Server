@@ -85,7 +85,7 @@ export class HotelController {
             const limit = parseInt(req.query.limit as string) || 10;
             const search = req.query.search as string | undefined;
 
-            const { hotels, total, message } = await this._getAllHotelsUseCase.execute(page, limit, search);
+            const { hotels, total, message } = await this._getAllHotelsUseCase.execute(page, 3, search);
 
             const meta: Pagination = {
                 currentPage: page,

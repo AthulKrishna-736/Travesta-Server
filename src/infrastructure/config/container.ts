@@ -8,7 +8,7 @@ import { RedisService } from "../services/redisService"
 import { IMailService } from "../../domain/interfaces/services/mailService.interface";
 import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
-import { IBlockUnblockUser, ICreateHotelUseCase, IGetAllHotelsUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetHotelByIdUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateHotelUseCase, IUpdateKycUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
+import { IBlockUnblockUser, ICancelBookingUseCase, ICreateBookingUseCase, ICreateHotelUseCase, ICreateRoomUseCase, IGetAllHotelsUseCase, IGetAllRoomsUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetAvailableRoomsByHotelUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetHotelByIdUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateHotelUseCase, IUpdateKycUseCase, IUpdateRoomUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
 import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
@@ -17,7 +17,7 @@ import { IAwsS3Service } from "../../domain/interfaces/services/awsS3Service.int
 import { AwsS3Service } from "../services/awsS3Service";
 import { GetUserProfileUseCase } from "../../application/use-cases/user/getUser";
 import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
-import { IHotelRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
+import { IHotelRepository, IRoomRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
 import { CreateHotelUseCase } from "../../application/use-cases/vendor/hotel/createHotelUseCase";
@@ -35,6 +35,16 @@ import { ResetPassUseCase } from "../../application/use-cases/auth/resetPassUseC
 import { ResendOtpUseCase } from "../../application/use-cases/auth/resendOtpUseCase";
 import { VerifyOtpUseCase } from "../../application/use-cases/auth/verifyOtpUseCase";
 import { LogoutUseCase } from "../../application/use-cases/auth/logoutUseCase";
+import { RoomRepository } from "../database/repositories/roomRepo";
+import { GetRoomByIdUseCase } from "../../application/use-cases/vendor/room/getRoomByIdUseCase";
+import { GetRoomsByHotelUseCase } from "../../application/use-cases/vendor/room/getRoomByHotelUseCase";
+import { GetAvailableRoomsByHotelUseCase } from "../../application/use-cases/vendor/room/getAvlRoomsUseCase";
+import { GetAllRoomsUseCase } from "../../application/use-cases/vendor/room/getAllRoomsUseCase";
+import { BookingRepository } from "../database/repositories/bookingRepo";
+import { CreateBookingUseCase } from "../../application/use-cases/vendor/booking/createBookingUseCase";
+import { GetBookingsByHotelUseCase } from "../../application/use-cases/vendor/booking/getBookingHotelUseCase";
+import { GetBookingsByUserUseCase } from "../../application/use-cases/vendor/booking/getBookingUserUseCase";
+import { CancelBookingUseCase } from "../../application/use-cases/vendor/booking/cancelBookingUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -43,6 +53,14 @@ container.register<IUserRepository>(TOKENS.UserRepository, {
 
 container.register<IHotelRepository>(TOKENS.HotelRepository, {
   useClass: HotelRepository,
+})
+
+container.register<IRoomRepository>(TOKENS.RoomRepository, {
+  useClass: RoomRepository,
+})
+
+container.register(TOKENS.BookingRepository, {
+  useClass: BookingRepository
 })
 
 //services
@@ -152,10 +170,43 @@ container.register<IGetAllHotelsUseCase>(TOKENS.GetAllHotelsUseCase, {
   useClass: GetAllHotelsUseCase,
 })
 
-container.register(TOKENS.CreateRoomUseCase, {
+container.register<ICreateRoomUseCase>(TOKENS.CreateRoomUseCase, {
   useClass: CreateRoomUseCase,
 })
 
-container.register(TOKENS.UpdateRoomUseCase, {
+container.register<IUpdateRoomUseCase>(TOKENS.UpdateRoomUseCase, {
   useClass: UpdateRoomUseCase,
+})
+
+container.register<IGetRoomByIdUseCase>(TOKENS.GetRoomByIdUseCase, {
+  useClass: GetRoomByIdUseCase,
+})
+
+container.register<IGetRoomsByHotelUseCase>(TOKENS.GetRoomsByHotelUseCase, {
+  useClass: GetRoomsByHotelUseCase,
+})
+
+container.register<IGetAvailableRoomsByHotelUseCase>(TOKENS.GetAvailableRoomsByHotelUseCase, {
+  useClass: GetAvailableRoomsByHotelUseCase,
+})
+
+container.register<IGetAllRoomsUseCase>(TOKENS.GetAllRoomsUseCase, {
+  useClass: GetAllRoomsUseCase,
+})
+
+
+container.register<ICreateBookingUseCase>(TOKENS.CreateBookingUseCase, {
+  useClass: CreateBookingUseCase,
+})
+
+container.register<IGetBookingsByHotelUseCase>(TOKENS.GetBookingsByHotelUseCase, {
+  useClass: GetBookingsByHotelUseCase,
+})
+
+container.register<IGetBookingsByUserUseCase>(TOKENS.GetBookingsByUserUseCase, {
+  useClass: GetBookingsByUserUseCase,
+})
+
+container.register<ICancelBookingUseCase>(TOKENS.CancelRoomUseCase, {
+  useClass: CancelBookingUseCase,
 })

@@ -1,4 +1,4 @@
-import { IHotel, IRoom, TCreateHotelData, TCreateRoomData, TUpdateHotelData, TUpdateRoomData } from "../model/hotel.interface";
+import { IBooking, IHotel, IRoom, TCreateHotelData, TCreateRoomData, TUpdateHotelData, TUpdateRoomData } from "../model/hotel.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
 
 export interface IUserRepository {
@@ -26,4 +26,14 @@ export interface IRoomRepository {
   deleteRoom(id: string): Promise<boolean>;
   findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
   findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
+  findAll(): Promise<IRoom[]>;
+}
+
+export interface IBookingRepository {
+  createBooking(data: Partial<IBooking>): Promise<IBooking | null>;
+  findBookingsByUser(userId: string): Promise<IBooking[]>;
+  findBookingsByHotel(hotelId: string): Promise<IBooking[]>;
+  isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
+  findByid(id: string): Promise<IBooking | null>;
+  save(booking: IBooking): Promise<void>;
 }

@@ -24,6 +24,8 @@ export interface IAwsRedisService {
     storeKycDocs(userId: string, imagesUrls: string[], expiresAt: number): Promise<void>
     storeHotelImageUrls(hotelId: string, imageUrls: string[], expiresAt: number): Promise<void>;
     getHotelImageUrls(hotelId: string): Promise<string[] | null>;
+    getRoomImageUrls(roomId: string): Promise<string[] | null>;
+    storeRoomImageUrls(roomId: string, urls: string[], ttl: number): Promise<void>;
 }
 
 export interface IRedisService extends IJwtService, IOtpService, IAwsRedisService { }
