@@ -1,6 +1,5 @@
-import { IUserRepository } from "../../../domain/repositories/repository.interface";
-import { IUser } from "../../../domain/interfaces/user.interface";
-import { CreateUserDTO, UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
+import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUser, TUpdateUserData, TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
 import { TUserDocument, userModel } from "../models/userModels";
 import { BaseRepository } from "./baseRepo";
 import { injectable } from "tsyringe";
@@ -16,12 +15,12 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
         return user
     }
 
-    async createUser(data: CreateUserDTO): Promise<IUser | null> {
+    async createUser(data: TUserRegistrationInput): Promise<IUser | null> {
         const user = await this.create(data)
         return user
     }
 
-    async updateUser(id: string, data: UpdateUserDTO): Promise<IUser | null> {
+    async updateUser(id: string, data: TUpdateUserData): Promise<IUser | null> {
         const user = await this.update(id, data)
         return user
     }

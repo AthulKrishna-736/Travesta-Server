@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IUser } from "../../../domain/interfaces/user.interface";
+import { IUser } from "../../../domain/interfaces/model/user.interface";
 
 export type TUserDocument = IUser & Document
 

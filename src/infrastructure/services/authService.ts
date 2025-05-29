@@ -1,4 +1,4 @@
-import { IAuthService } from "../../application/interfaces/authService.interface";
+import { IAuthService, TOtpData } from "../../domain/interfaces/services/authService.interface";
 import bcrypt from 'bcryptjs';
 import * as crypto from 'crypto';
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
@@ -10,8 +10,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
 import { RedisService } from "./redisService";
 import { TRole } from "../../shared/types/client.types";
-import { IMailService } from "../../application/interfaces/mailService.interface";
-import { CreateUserDTO } from "../../interfaces/dtos/user/user.dto";
+import { IMailService } from "../../domain/interfaces/services/mailService.interface";
 
 @injectable()
 export class AuthService implements IAuthService {
@@ -88,12 +87,12 @@ export class AuthService implements IAuthService {
         await this.mailService.sendOtpEmail(email, otp, (otpTimer.expiresAt / 60).toString());
     }
 
-    async storeOtp(userId: string, otp: string, data: CreateUserDTO | { email: string }, purpose: "signup" | "reset"): Promise<void> {
+    async storeOtp(userId: string, otp: string, data: TOtpData, purpose: "signup" | "reset"): Promise<void> {
         await this.checkOtpRequestLimit(userId)
         await this.redisService.storeOtp(userId, otp, data, purpose, otpTimer.expiresAt * 2)
     }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<CreateUserDTO | { email: string }> {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<TOtpData> {
         const storedData = await this.redisService.getOtp(userId, purpose)
         console.log('storedData: ', storedData);
         if (!storedData) {
@@ -101,7 +100,7 @@ export class AuthService implements IAuthService {
         }
 
         const currentTime = new Date().getTime();
-        const otpExpiryTime = storedData.expiryTime + (otpTimer.expiresAt * 1000);
+        const otpExpiryTime = storedData.expiresAt + (otpTimer.expiresAt * 1000);
 
         if (currentTime > otpExpiryTime) {
             throw new AppError('Otp has expired', HttpStatusCode.BAD_REQUEST);
@@ -123,7 +122,7 @@ export class AuthService implements IAuthService {
         }
 
         const currentTime = new Date().getTime();
-        const otpExpiryTime = stored.expiryTime + (otpTimer.expiresAt * 1000);
+        const otpExpiryTime = stored.expiresAt + (otpTimer.expiresAt * 1000);
 
         if (currentTime > otpExpiryTime) {
             const otp = this.generateOtp()

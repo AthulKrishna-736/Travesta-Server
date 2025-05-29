@@ -1,5 +1,5 @@
 import { User } from "../../domain/models/user";
-import { IUser } from "../../domain/interfaces/user.interface";
+import { IUser } from "../../domain/interfaces/model/user.interface";
 import { TRole, TSubscription } from "../../shared/types/client.types";
 
 

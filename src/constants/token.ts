@@ -1,6 +1,10 @@
+
 export const TOKENS = {
   // Repositories
   UserRepository: 'UserRepository',
+  HotelRepository: 'HotelRepository',
+  RoomRepository: 'RoomRepository',
+  BookingRepository: 'BookingRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -9,7 +13,15 @@ export const TOKENS = {
   AwsS3Service: 'AwsS3Service',
 
   // Use Cases
-  AuthUseCases: 'AuthUseCases',
+  LoginUseCase: 'LoginUseCase',
+  RegisterUseCase: 'RegisterUseCase',
+  ConfirmRegisterUseCase: 'ConfirmRegisterUseCase',
+  GoogleLoginUseCase: 'GoogleLoginUseCase',
+  ForgotPassUseCase: 'ForgotPassUseCase',
+  ResetPassUseCase: 'ResetPassUseCase',
+  ResendOtpUseCase: 'ResendOtpUseCase',
+  VerifyOtpUseCase: 'VerifyOtpUseCase',
+  LogoutUseCase: 'LogoutUseCase',
 
   //admin UseCases
   BlockUserUseCase: 'BlockUserUseCase',
@@ -23,4 +35,23 @@ export const TOKENS = {
 
   //vendor UseCases
   UpdateKycUseCase: 'UpdateKycUseCase',
+  GetVendorUseCase: 'GetVendorUseCase',
+  CreateHotelUseCase: 'CreteHotelUseCase',
+  UpdateHotelUseCase: 'UpdateHotelUseCase',
+  GetHotelByIdUseCase: 'GetHotelByIdUseCase',
+  GetAllHotelsUseCase: 'GetAllHotelsUseCase',
+  CreateRoomUseCase: 'CreateRoomUseCase',
+  UpdateRoomUseCase: 'UpdateRoomUseCase',
+  GetRoomByIdUseCase: 'GetRoomByIdUseCase',
+  GetRoomsByHotelUseCase: 'GetRoomsByHotelUseCase',
+  GetAvailableRoomsByHotelUseCase: 'GetAvailableRoomsByHotelUseCase',
+  GetAllRoomsUseCase: 'GetAllRoomsUseCase',
+
+  //booking
+  CreateBookingUseCase: 'CreateBookingUseCase',
+  GetBookingsByHotelUseCase: 'GetBookingByHotelUseCase',
+  GetBookingsByUserUseCase: 'GetBookingsByUserUseCase',
+  CheckRoomAvlUseCase: 'CheckRoomAvlUseCase',
+  CancelRoomUseCase: 'CancelRoomUseCase',
+
 };

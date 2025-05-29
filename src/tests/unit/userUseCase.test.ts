@@ -1,6 +1,6 @@
-import { IAuthService } from "../../application/interfaces/authService.interface";
+import { IAuthService } from "../../domain/interfaces/services/authService.interface";
 import { LoginUser } from "../../application/use-cases/auth/loginUser";
-import { IUser, IUserRepository } from "../../domain/interfaces/user.interface";
+import { IUser, IUserRepository } from "../../domain/interfaces/model/user.interface";
 
 
 describe("LoginUser Use Case", () => {

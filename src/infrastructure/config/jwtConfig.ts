@@ -12,3 +12,7 @@ export const jwtConfig = {
 export const otpTimer = {
     expiresAt: 60,
 }
+
+export const awsS3Timer = {
+    expiresAt: 84600, //one day milliseconds
+}

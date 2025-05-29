@@ -1,26 +1,30 @@
 import { inject, injectable } from "tsyringe";
-import { ResponseUserDTO, UpdateUserDTO } from "../../../interfaces/dtos/user/user.dto";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { IUpdateUserUseCase } from "../../../domain/interfaces/usecases.interface";
-import { IAwsS3Service } from "../../interfaces/awsS3Service.interface";
+import { IUpdateUserUseCase } from "../../../domain/interfaces/model/usecases.interface";
+import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import path from 'path';
-import fs from 'fs'
-import { IUserRepository } from "../../../domain/repositories/repository.interface";
+import fs from 'fs';
+import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUser, TResponseUserData, TUpdateUserData } from "../../../domain/interfaces/model/user.interface";
+import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
+import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
+import { UserLookupBase } from "../base/userLookup.base";
 
 @injectable()
-export class UpdateUser implements IUpdateUserUseCase {
+export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private readonly _userRepository: IUserRepository,
-        @inject(TOKENS.AwsS3Service) private readonly _awsS3Service: IAwsS3Service,
-    ) { }
+        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+    ) {
+        super(userRepo)
+    }
 
-    async execute(userId: string, userData: UpdateUserDTO, file?: Express.Multer.File): Promise<{ user: ResponseUserDTO, message: string }> {
-        const existingUser = await this._userRepository.findUserById(userId);
-        if (!existingUser) {
-            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
-        }
+    async updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserData, message: string }> {
+
+        const userEntity = await this.getUserEntityOrThrow(userId);
 
         if (file) {
             const filePath = file.path;
@@ -28,7 +32,8 @@ export class UpdateUser implements IUpdateUserUseCase {
             const s3Key = `users/profile_${userId}${fileExtension}`;
 
             await this._awsS3Service.uploadFileToAws(s3Key, filePath);
-            userData.profileImage = s3Key;
+
+            userEntity.updateProfile({ profileImage: s3Key });
 
             fs.unlink(filePath, (err) => {
                 if (err) {
@@ -37,39 +42,26 @@ export class UpdateUser implements IUpdateUserUseCase {
                     console.log(`Successfully deleted local file: ${filePath}`);
                 }
             });
-
         }
 
-        const updates: Omit<UpdateUserDTO, 'isVerified'> = { ...userData };
+        userEntity.updateProfile(userData);
 
-        const updatedUser = await this._userRepository.updateUser(userId, updates);
+        const persistableData = userEntity.getPersistableData();
 
-        if (!updatedUser) {
-            throw new AppError('error while updating user', HttpStatusCode.INTERNAL_SERVER_ERROR);
+        const updatedUserData = await this._userRepo.updateUser(userId, persistableData);
+
+        if (!updatedUserData) {
+            throw new AppError('Error while updating user', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
-        const signedUrl = await this._awsS3Service.getFileUrlFromAws(updatedUser.profileImage!, 86400)
-
-        const mappedUser: ResponseUserDTO = {
-            id: updatedUser._id!,
-            firstName: updatedUser.firstName,
-            lastName: updatedUser.lastName,
-            email: updatedUser.email,
-            phone: updatedUser.phone,
-            isGoogle: updatedUser.isGoogle!,
-            isBlocked: updatedUser.isBlocked,
-            wishlist: updatedUser.wishlist,
-            subscriptionType: updatedUser.subscriptionType,
-            role: updatedUser.role,
-            createdAt: updatedUser.createdAt,
-            updatedAt: updatedUser.updatedAt,
-            profileImage: signedUrl,
-        };
+        if (updatedUserData.profileImage) {
+            const signedUrl = await this._awsS3Service.getFileUrlFromAws(updatedUserData.profileImage as string, awsS3Timer.expiresAt);
+            await this._redisService.storeRedisSignedUrl(updatedUserData._id as string, signedUrl, awsS3Timer.expiresAt);
+        }
 
         return {
-            user: mappedUser,
+            user: updatedUserData,
             message: 'User updated successfully',
         };
     }
-
 }

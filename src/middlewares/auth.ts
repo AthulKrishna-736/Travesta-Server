@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { IAuthService } from "../application/interfaces/authService.interface";
+import { IAuthService } from "../domain/interfaces/services/authService.interface";
 import { AppError } from "../utils/appError";
 import { HttpStatusCode } from "../utils/HttpStatusCodes";
 import { container } from "tsyringe";
 import { env } from "../infrastructure/config/env";
 import { jwtConfig } from "../infrastructure/config/jwtConfig";
 import logger from "../utils/logger";
-import { IJwtService } from "../application/interfaces/redisService.interface";
+import { IJwtService } from "../domain/interfaces/services/redisService.interface";
 import { TOKENS } from "../constants/token";
 import { CustomRequest } from "../utils/customRequest";
 import { setAccessCookie } from "../utils/setCookies";
