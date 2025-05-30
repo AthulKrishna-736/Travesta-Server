@@ -4,7 +4,7 @@ import { IGetAllUsersUseCase } from "../../../domain/interfaces/model/usecases.i
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { IUser, TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { UsersListBase } from "../base/usersList.base";
-import { IUserEntity } from "../../../domain/entities/user/user.entity";
+import { IUserEntity } from "../../../domain/entities/user.entity";
 
 @injectable()
 export class GetAllUsers extends UsersListBase implements IGetAllUsersUseCase {

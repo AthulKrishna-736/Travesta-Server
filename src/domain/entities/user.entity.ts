@@ -1,6 +1,6 @@
-import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { IUser } from "../../interfaces/model/user.interface";
+import { AppError } from "../../utils/appError";
+import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { IUser } from "../interfaces/model/user.interface";
 
 export interface IUserEntity {
     // Getters

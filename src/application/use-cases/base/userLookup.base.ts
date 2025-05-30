@@ -1,4 +1,4 @@
-import { IUserEntity, UserEntity } from "../../../domain/entities/user/user.entity";
+import { IUserEntity, UserEntity } from "../../../domain/entities/user.entity";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
