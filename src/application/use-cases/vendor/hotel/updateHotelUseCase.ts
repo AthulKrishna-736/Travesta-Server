@@ -8,26 +8,26 @@ import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import fs from 'fs';
 import path from 'path';
 import { IUpdateHotelUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { HotelLookupBase } from "../../base/hotelLookup.base";
+import { CreateHotelUseCase } from "./createHotelUseCase";
 
 
 @injectable()
-export class UpdateHotelUseCase implements IUpdateHotelUseCase {
+export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelUseCase {
     constructor(
-        @inject(TOKENS.HotelRepository) private _hotelRepo: IHotelRepository,
+        @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
-    ) { }
+    ) {
+        super(hotelRepo);
+    }
 
-    async execute(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {
-        const hotel = await this._hotelRepo.findHotelById(hotelId);
-
-        if (!hotel) {
-            throw new AppError("Hotel not found", HttpStatusCode.NOT_FOUND);
-        }
+    async updateHotel(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {
+        const hotel = await this.getHotelEntityById(hotelId)
 
         if (updateData.name && updateData.name !== hotel.name) {
-            const vendorHotels = await this._hotelRepo.findHotelsByVendor(hotel.vendorId.toString());
+            const vendorHotels = await this.getHotelEntityByVendorId(hotel.vendorId as string)
 
-            if (vendorHotels && vendorHotels.some(h => h.name === updateData.name && h._id!.toString() !== hotelId)) {
+            if (vendorHotels && vendorHotels.some(h => h.name === updateData.name && h.id !== hotelId)) {
                 throw new AppError("Hotel name already exists for this vendor", HttpStatusCode.BAD_REQUEST);
             }
         }

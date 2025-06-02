@@ -40,19 +40,19 @@ export interface IGetVendorUseCase {
 
 //hotels
 export interface ICreateHotelUseCase {
-    execute(hotelData: TCreateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
+    createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
 }
 
 export interface IUpdateHotelUseCase {
-    execute(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
+    updateHotel(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
 }
 
 export interface IGetHotelByIdUseCase {
-    execute(hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
+    getHotel(hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
 }
 
 export interface IGetAllHotelsUseCase {
-    execute(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
+    getAllHotel(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
 }
 
 //rooms
@@ -77,7 +77,7 @@ export interface IGetAvailableRoomsByHotelUseCase {
 }
 
 export interface IGetAllRoomsUseCase {
-    execute(): Promise<{ rooms: TResponseRoomData[]; message: string }>;
+    getAllRoom(): Promise<{ rooms: TResponseRoomData[]; message: string }>;
 }
 
 //booking

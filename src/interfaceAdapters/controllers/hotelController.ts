@@ -30,7 +30,7 @@ export class HotelController {
 
             const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0, isBlocked = false, } = req.body;
             const hotelData: CreateHotelDTO = { vendorId: userId!, name, description, address, city, state, geoLocation: Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation), tags, amenities, services, rating, isBlocked, images: [] };
-            const { hotel, message } = await this._createHotelUseCase.execute(hotelData, files);
+            const { hotel, message } = await this._createHotelUseCase.createHotel(hotelData, files);
 
             const mappedHotel = mapHotelToResponseDTO(hotel)
             ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.CREATED);
@@ -52,7 +52,7 @@ export class HotelController {
                 isBlocked: req.body.isBlocked === 'true' || req.body.isBlocked === true ? true : undefined,
             };
 
-            const result = await this._updateHotelUseCase.execute(hotelId, updateData, files);
+            const result = await this._updateHotelUseCase.updateHotel(hotelId, updateData, files);
             ResponseHandler.success(res, result.message, result.hotel, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -68,7 +68,7 @@ export class HotelController {
                 throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
             }
 
-            const { message, hotel } = await this._getHotelByIdUseCae.execute(hotelId);
+            const { message, hotel } = await this._getHotelByIdUseCae.getHotel(hotelId);
 
             const mappedHotel = mapHotelToResponseDTO(hotel)
 
@@ -85,7 +85,7 @@ export class HotelController {
             const limit = parseInt(req.query.limit as string) || 10;
             const search = req.query.search as string | undefined;
 
-            const { hotels, total, message } = await this._getAllHotelsUseCase.execute(page, 3, search);
+            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, 3, search);
 
             const meta: Pagination = {
                 currentPage: page,

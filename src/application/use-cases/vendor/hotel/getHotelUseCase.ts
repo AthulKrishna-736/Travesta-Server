@@ -18,7 +18,7 @@ export class GetHotelByIdUseCase implements IGetHotelByIdUseCase {
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
-    async execute(hotelId: string): Promise<{ hotel: TResponseHotelData; message: string }> {
+    async getHotel(hotelId: string): Promise<{ hotel: TResponseHotelData; message: string }> {
         const hotel = await this._hotelRepo.findHotelById(hotelId);
         if (!hotel) throw new AppError("Hotel not found", HttpStatusCode.NOT_FOUND);
 
