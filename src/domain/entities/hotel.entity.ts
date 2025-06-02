@@ -27,7 +27,8 @@ export interface IHotelEntity {
     block(): void
     unblock(): void
     update(data: TUpdateHotelData): void
-
+    getPersistableData(): Partial<Omit<IHotel, '_id' | 'createdAt' | 'vendorId'>>
+    toObject(): IHotel
 
 }
 
@@ -107,7 +108,7 @@ export class HotelEntity implements IHotelEntity {
         if (this._props.isBlocked) {
             throw new AppError('Hotel is already blocked', HttpStatusCode.CONFLICT)
         }
-        this._props.isBlocked = false;
+        this._props.isBlocked = true;
         this._props.updatedAt = new Date();
     }
 
@@ -115,24 +116,83 @@ export class HotelEntity implements IHotelEntity {
         if (!this._props.isBlocked) {
             throw new AppError('Hotel is already unblocked', HttpStatusCode.CONFLICT)
         }
+        this._props.isBlocked = false
+        this._props.updatedAt = new Date();
     }
 
+
     update(data: TUpdateHotelData): void {
-        if (data.name) this._props.name = data.name
-        if (data.description) this._props.description = data.description
-        if (data.images) this._props.images = data.images
-        if (data.rating) this._props.rating = data.rating
-        if (data.services) this._props.services = data.services
-        if (data.amenities) this._props.amenities = data.amenities
-        if (data.tags) this._props.tags = data.tags
-        if (data.state) this._props.state = data.state
-        if (data.city) this._props.city = data.city
-        if (data.address) this._props.address = data.address
-        if (data.geoLocation) this._props.geoLocation = data.geoLocation
+        if (data.name && typeof data.name === 'string' && data.name.trim().length > 0) {
+            this._props.name = data.name.trim()
+        }
+
+        if (data.description && typeof data.description === 'string' && data.description.trim().length > 0) {
+            this._props.description = data.description.trim()
+        }
+
+        if (Array.isArray(data.images) && data.images.every(img => typeof img === 'string') && data.images.length > 0) {
+            this._props.images = data.images
+        }
+
+        if (typeof data.rating === 'number' && data.rating >= 0 && data.rating <= 5) {
+            this._props.rating = data.rating
+        }
+
+        if (Array.isArray(data.services) && data.services.every(s => typeof s === 'string')) {
+            this._props.services = data.services
+        }
+
+        if (Array.isArray(data.amenities) && data.amenities.every(a => typeof a === 'string')) {
+            this._props.amenities = data.amenities
+        }
+
+        if (Array.isArray(data.tags) && data.tags.every(t => typeof t === 'string')) {
+            this._props.tags = data.tags
+        }
+
+        if (data.state && typeof data.state === 'string' && data.state.trim().length > 0) {
+            this._props.state = data.state.trim()
+        }
+
+        if (data.city && typeof data.city === 'string' && data.city.trim().length > 0) {
+            this._props.city = data.city.trim()
+        }
+
+        if (data.address && typeof data.address === 'string' && data.address.trim().length > 0) {
+            this._props.address = data.address.trim()
+        }
+
+        if (
+            Array.isArray(data.geoLocation) &&
+            data.geoLocation.length === 2 &&
+            typeof data.geoLocation[0] === 'number' &&
+            typeof data.geoLocation[1] === 'number'
+        ) {
+            this._props.geoLocation = data.geoLocation
+        }
+
         this._props.updatedAt = new Date()
     }
 
-    
+    getPersistableData(): Partial<Omit<IHotel, "_id" | "createdAt" | "vendorId" | 'isBlocked'>> {
+        return {
+            name: this._props.name,
+            description: this._props.description,
+            images: this._props.images,
+            rating: this._props.rating,
+            services: this._props.services,
+            amenities: this._props.amenities,
+            tags: this._props.tags,
+            state: this._props.state,
+            city: this._props.city,
+            address: this._props.address,
+            geoLocation: this._props.geoLocation,
+            updatedAt: this._props.updatedAt,
+        }
+    }
 
+    toObject(): IHotel {
+        return { ...this._props }
+    }
 
 }

@@ -1,0 +1,35 @@
+import { HotelEntity, IHotelEntity } from "../../../domain/entities/hotel.entity";
+import { IHotelRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+
+
+export abstract class HotelLookupBase {
+    constructor(protected readonly _hotelRepo: IHotelRepository) { }
+
+    protected async getHotelEntityByVendorId(vendorId: string): Promise<IHotelEntity[]> {
+        const hotel = await this._hotelRepo.findHotelsByVendor(vendorId)
+
+        if (!hotel) {
+            throw new AppError('No Hotels exits on this vendor id', HttpStatusCode.NOT_FOUND);
+        }
+
+        if (hotel.length <= 0) {
+            throw new AppError('No Hotels exits on this vendor id', HttpStatusCode.NOT_FOUND);
+        }
+
+        const hotels = hotel.map(h => new HotelEntity(h))
+
+        return hotels
+    }
+
+    protected async getHotelEntityById(hotelId: string): Promise<IHotelEntity> {
+        const hotel = await this._hotelRepo.findHotelById(hotelId);
+
+        if (!hotel) {
+            throw new AppError('hotel does not exist with this id', HttpStatusCode.NOT_FOUND);
+        }
+
+        return new HotelEntity(hotel)
+    }
+}
