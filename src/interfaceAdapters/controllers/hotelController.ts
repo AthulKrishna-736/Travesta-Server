@@ -26,7 +26,8 @@ export class HotelController {
             const files = req.files as Express.Multer.File[];
             const userId = req.user?.userId;
 
-            logger.info('re body create hotel: ', files, req.body);
+            logger.info(`req body create hotel:  ${files} ${req.body}`);
+            console.log('req body: ', req.body)
 
             const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0, isBlocked = false, } = req.body;
             const hotelData: CreateHotelDTO = { vendorId: userId!, name, description, address, city, state, geoLocation: Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation), tags, amenities, services, rating, isBlocked, images: [] };
@@ -45,14 +46,14 @@ export class HotelController {
             const hotelId = req.params.id;
             const files = req.files as Express.Multer.File[];
 
-            const updateData: UpdateHotelDTO = {
-                ...req.body,
-                rating: req.body.rating !== undefined ? Number(req.body.rating) : undefined,
-                geoLocation: req.body.geoLocation ? JSON.parse(req.body.geoLocation) : undefined,
-                isBlocked: req.body.isBlocked === 'true' || req.body.isBlocked === true ? true : undefined,
-            };
+            // logger.info(`req body update hotel:  ${files} ${req.body}`);
+            console.log('req body update: ', req.body)
 
-            const result = await this._updateHotelUseCase.updateHotel(hotelId, updateData, files);
+            // const updateData: UpdateHotelDTO = {
+            //     ...req.body,
+            // };
+
+            const result = await this._updateHotelUseCase.updateHotel(hotelId, req.body, files);
             ResponseHandler.success(res, result.message, result.hotel, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -85,7 +86,7 @@ export class HotelController {
             const limit = parseInt(req.query.limit as string) || 10;
             const search = req.query.search as string | undefined;
 
-            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, 3, search);
+            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, search);
 
             const meta: Pagination = {
                 currentPage: page,

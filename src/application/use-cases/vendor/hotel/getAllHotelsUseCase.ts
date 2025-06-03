@@ -6,39 +6,38 @@ import { IRedisService } from "../../../../domain/interfaces/services/redisServi
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { IGetAllHotelsUseCase } from "../../../../domain/interfaces/model/usecases.interface";
 import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
+import { HotelLookupBase } from "../../base/hotelLookup.base";
 
 
 @injectable()
-export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
+export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotelsUseCase {
     constructor(
-        @inject(TOKENS.HotelRepository) private _hotelRepo: IHotelRepository,
+        @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
-    ) { }
+    ) {
+        super(hotelRepo);
+    }
 
     async getAllHotel(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[]; total: number; message: string; }> {
-        const { hotels, total } = await this._hotelRepo.findAllHotels(page, limit, search);
-
-        if (!hotels || hotels.length === 0) {
-            return { hotels: [], total: 0, message: "No hotels found" };
-        }
+        const { hotels, total } = await this.getAllHotels(page, limit, search);
 
         const mappedHotels = await Promise.all(
             hotels.map(async (hotel) => {
-                let signedImageUrls = await this._redisService.getHotelImageUrls(hotel._id as string);
-
+                let signedImageUrls = await this._redisService.getHotelImageUrls(hotel.id as string);
                 if (!signedImageUrls) {
+                    const imageKeys = Array.isArray(hotel.images) ? hotel.images : [];
                     signedImageUrls = await Promise.all(
-                        hotel.images.map((key: string) =>
-                            this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
-                        )
+                        imageKeys.map((key: string) => {
+                            return this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
+                        })
                     );
-                    await this._redisService.storeHotelImageUrls(hotel._id as string, signedImageUrls, awsS3Timer.expiresAt);
+
+                    await this._redisService.storeHotelImageUrls(hotel.id as string, signedImageUrls, awsS3Timer.expiresAt);
                 }
-                return {
-                    ...hotel,
-                    images: signedImageUrls,
-                };
+                hotel.updateHotel({ images: signedImageUrls });
+
+                return hotel.toObject()
             })
         );
 

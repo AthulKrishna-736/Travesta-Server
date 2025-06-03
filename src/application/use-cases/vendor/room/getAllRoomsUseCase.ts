@@ -15,7 +15,7 @@ export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
-    async execute(): Promise<{ rooms: TResponseRoomData[]; message: string }> {
+    async getAllRoom(): Promise<{ rooms: TResponseRoomData[]; message: string }> {
         const allRooms = await this._roomRepo.findAll();
 
         if (!allRooms || allRooms.length === 0) {

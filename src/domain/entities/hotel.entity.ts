@@ -26,7 +26,7 @@ export interface IHotelEntity {
     //business logic
     block(): void
     unblock(): void
-    update(data: TUpdateHotelData): void
+    updateHotel(data: TUpdateHotelData): void
     getPersistableData(): Partial<Omit<IHotel, '_id' | 'createdAt' | 'vendorId'>>
     toObject(): IHotel
 
@@ -120,8 +120,7 @@ export class HotelEntity implements IHotelEntity {
         this._props.updatedAt = new Date();
     }
 
-
-    update(data: TUpdateHotelData): void {
+    updateHotel(data: TUpdateHotelData): void {
         if (data.name && typeof data.name === 'string' && data.name.trim().length > 0) {
             this._props.name = data.name.trim()
         }
@@ -162,12 +161,7 @@ export class HotelEntity implements IHotelEntity {
             this._props.address = data.address.trim()
         }
 
-        if (
-            Array.isArray(data.geoLocation) &&
-            data.geoLocation.length === 2 &&
-            typeof data.geoLocation[0] === 'number' &&
-            typeof data.geoLocation[1] === 'number'
-        ) {
+        if (Array.isArray(data.geoLocation) && data.geoLocation.length === 2 && typeof data.geoLocation[0] === 'number' && typeof data.geoLocation[1] === 'number') {
             this._props.geoLocation = data.geoLocation
         }
 

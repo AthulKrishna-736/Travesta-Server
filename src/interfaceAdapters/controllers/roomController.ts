@@ -136,7 +136,7 @@ export class RoomController {
 
     async getAllRooms(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const { rooms, message } = await this._getAllRoomsUseCase.execute();
+            const { rooms, message } = await this._getAllRoomsUseCase.getAllRoom();
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK);
         } catch (error) {
             throw error;

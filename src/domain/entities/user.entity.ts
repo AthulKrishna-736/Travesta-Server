@@ -146,10 +146,18 @@ export class UserEntity implements IUserEntity {
 
     //user business logic
     updateProfile(data: Partial<Pick<IUser, 'firstName' | 'lastName' | 'phone' | 'password' | 'profileImage' | 'kycDocuments'>>): void {
-        if (data.firstName) this._user.firstName = data.firstName
-        if (data.lastName) this._user.lastName = data.lastName
-        if (data.password) this._user.password = data.password
-        if (data.phone) this._user.phone = data.phone
+        if (data.firstName && data.firstName.trim().length > 0 && typeof data.firstName == 'string') {
+            this._user.firstName = data.firstName
+        }
+        if (data.lastName && data.lastName.trim().length > 0 && typeof data.lastName == 'string') {
+            this._user.lastName = data.lastName
+        }
+        if (data.password && data.password.trim().length > 0 && typeof data.lastName == 'string') {
+            this._user.password = data.password
+        }
+        if (data.phone  && data.phone) {
+            this._user.phone = data.phone
+        }
         if (data.profileImage) this._user.profileImage = data.profileImage
         if (data.kycDocuments && data.kycDocuments.length > 0) {
             this._user.kycDocuments = [...data.kycDocuments]

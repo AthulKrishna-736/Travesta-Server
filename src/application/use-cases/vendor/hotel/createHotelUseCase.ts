@@ -6,10 +6,8 @@ import { TOKENS } from "../../../../constants/token";
 import { TCreateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
-import fs from 'fs';
-import path from 'path';
 import { HotelLookupBase } from "../../base/hotelLookup.base";
-import { HotelImageUploader } from "../../base/imageUploader";
+import { AwsImageUploader } from "../../base/imageUploader";
 
 
 @injectable()
@@ -20,7 +18,7 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
         @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
     ) {
         super(hotelRepo);
-        this._imageUploader = new HotelImageUploader(awsS3Service);
+        this._imageUploader = new AwsImageUploader(awsS3Service);
     }
 
     async createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {
@@ -31,24 +29,18 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
             throw new AppError("Hotel with the same name already exists for this vendor.", HttpStatusCode.BAD_REQUEST);
         }
 
-        const uploadedImageKeys = await this._imageUploader.uploadHotelImages(hotelData.vendorId as string, files!);
+        let uploadedImageKeys;
 
-        const parseCSV = (value: any): string[] => {
-            if (typeof value === "string") {
-                return value
-                    .split(",")
-                    .map(item => item.trim())
-                    .filter(item => item.length > 0);
-            }
-            return Array.isArray(value) ? value : [];
-        };
+        if (files) {
+            uploadedImageKeys = await this._imageUploader.uploadHotelImages(hotelData.vendorId as string, files);
+        }
 
         const newHotel = await this._hotelRepo.createHotel({
             ...hotelData,
-            services: parseCSV(hotelData.services),
-            amenities: parseCSV(hotelData.amenities),
-            tags: parseCSV(hotelData.tags),
-            images: uploadedImageKeys,
+            services: hotelData.services,
+            amenities: hotelData.amenities,
+            tags: hotelData.tags,
+            images: uploadedImageKeys as string[],
         });
 
         if (!newHotel) {

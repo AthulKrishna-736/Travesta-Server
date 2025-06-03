@@ -4,22 +4,25 @@ import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { IUpdateUserUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
-import path from 'path';
-import fs from 'fs';
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { IUser, TResponseUserData, TUpdateUserData } from "../../../domain/interfaces/model/user.interface";
+import { TResponseUserData, TUpdateUserData } from "../../../domain/interfaces/model/user.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { UserLookupBase } from "../base/userLookup.base";
+import { AwsImageUploader } from "../base/imageUploader";
 
 @injectable()
 export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
+    private _imageUpload;
+    private _awsS3Service;
     constructor(
         @inject(TOKENS.UserRepository) userRepo: IUserRepository,
-        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
+        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
         super(userRepo)
+        this._imageUpload = new AwsImageUploader(awsS3Service);
+        this._awsS3Service = awsS3Service
     }
 
     async updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserData, message: string }> {
@@ -27,21 +30,9 @@ export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
         const userEntity = await this.getUserEntityOrThrow(userId);
 
         if (file) {
-            const filePath = file.path;
-            const fileExtension = path.extname(filePath);
-            const s3Key = `users/profile_${userId}${fileExtension}`;
-
-            await this._awsS3Service.uploadFileToAws(s3Key, filePath);
-
-            userEntity.updateProfile({ profileImage: s3Key });
-
-            fs.unlink(filePath, (err) => {
-                if (err) {
-                    console.error(`Error deleting file: ${err}`);
-                } else {
-                    console.log(`Successfully deleted local file: ${filePath}`);
-                }
-            });
+            await this._imageUpload.deleteProfileImage(userData.profileImage as string)
+            const uploadedProfile = await this._imageUpload.uploadProfileImage(userId, file)
+            userEntity.updateProfile({ profileImage: uploadedProfile })
         }
 
         userEntity.updateProfile(userData);

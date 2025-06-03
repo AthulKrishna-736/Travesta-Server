@@ -3,14 +3,13 @@ import { IGetAllVendorReqUseCase } from "../../../domain/interfaces/model/usecas
 import { TOKENS } from "../../../constants/token";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { UsersListBase } from "../base/usersList.base";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
-import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
+import { UserLookupBase } from "../base/userLookup.base";
 
 @injectable()
-export class GetAllVendorReq extends UsersListBase implements IGetAllVendorReqUseCase {
+export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqUseCase {
     constructor(
         @inject(TOKENS.UserRepository) userRepo: IUserRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
@@ -20,21 +19,22 @@ export class GetAllVendorReq extends UsersListBase implements IGetAllVendorReqUs
     }
 
     async getAllVendorReq(page: number, limit: number, search?: string): Promise<{ vendors: TResponseUserData[]; total: number }> {
-        const { userEntities, total } = await this.getAllUserEntityOrThrow(page, limit, 'vendor', search);
+        const { userEntities, total } = await this.getAllUserEntity(page, limit, 'vendor', search);
 
         const vendors = await Promise.all(
             userEntities.map(async (vendorEntity) => {
-                const vendorObject = vendorEntity.toObject();
-                const kycDocs = vendorObject.kycDocuments || [];
+               
+                const kycDocs = vendorEntity.kycDocuments || [];
 
                 const signedUrls = kycDocs.length > 0
-                    ? await this.getSignedUrlsWithRedisCache(vendorObject._id!, kycDocs)
+                    ? await this.getSignedUrlsWithRedisCache(vendorEntity.id as string, kycDocs)
                     : [];
 
-                return {
-                    ...vendorObject,
-                    kycDocuments: signedUrls,
-                };
+                if (signedUrls) {
+                    vendorEntity.updateProfile({ kycDocuments: signedUrls })
+                }
+
+                return vendorEntity.toObject();
             })
         );
 

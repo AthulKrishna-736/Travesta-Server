@@ -39,12 +39,12 @@ import { RoomRepository } from "../database/repositories/roomRepo";
 import { GetRoomByIdUseCase } from "../../application/use-cases/vendor/room/getRoomByIdUseCase";
 import { GetRoomsByHotelUseCase } from "../../application/use-cases/vendor/room/getRoomByHotelUseCase";
 import { GetAvailableRoomsByHotelUseCase } from "../../application/use-cases/vendor/room/getAvlRoomsUseCase";
-import { GetAllRoomsUseCase } from "../../application/use-cases/vendor/room/getAllRoomsUseCase";
 import { BookingRepository } from "../database/repositories/bookingRepo";
 import { CreateBookingUseCase } from "../../application/use-cases/vendor/booking/createBookingUseCase";
 import { GetBookingsByHotelUseCase } from "../../application/use-cases/vendor/booking/getBookingHotelUseCase";
 import { GetBookingsByUserUseCase } from "../../application/use-cases/vendor/booking/getBookingUserUseCase";
 import { CancelBookingUseCase } from "../../application/use-cases/vendor/booking/cancelBookingUseCase";
+import { GetAllRoomsUseCase } from "../../application/use-cases/vendor/room/getAllRoomsUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
