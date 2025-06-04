@@ -54,7 +54,7 @@ export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'create
 
 export type TResponseHotelData = Omit<IHotel, ''>;
 
-export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'images' | 'createdAt' | 'updatedAt'>;
+export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'createdAt' | 'updatedAt'>;
 
 export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'createdAt' | 'updatedAt'>>;
 

@@ -9,7 +9,6 @@ import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 
 
-
 @injectable()
 export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomUseCase {
     constructor(
@@ -19,29 +18,32 @@ export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomU
         super(roomRepo, awsS3Service);
     }
 
-    async updateRoom(roomId: string, updateData: TUpdateRoomData, files?: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }> {
+    async updateRoom(roomId: string, updateData: TUpdateRoomData, files?: Express.Multer.File[]) {
         const room = await this._roomRepo.findRoomById(roomId);
         if (!room) {
             throw new AppError("Room not found", HttpStatusCode.NOT_FOUND);
         }
 
-        let uploadedImageKeys: string[] = room.images ?? [];
-        
-        if (files?.length) {
-            for (const key of uploadedImageKeys) {
-                try {
-                    await this._awsS3Service.deleteFileFromAws(key);
-                } catch (err) {
-                    console.error(`Failed to delete old image ${key} from S3`, err);
-                }
-            }
+        let currentImages: string[] = room.images ?? [];
 
-            uploadedImageKeys = await this.uploadRoomImages(files, room.hotelId as string);
+        const imagesToKeep: string[] = updateData.images ?? currentImages;
+
+        const imagesToDelete = currentImages.filter(img => !imagesToKeep.includes(img));
+
+        if (imagesToDelete.length > 0) {
+            await this._imageUploader.deleteImagesFromAws(imagesToDelete, currentImages);
+        }
+
+        let finalImages = [...imagesToKeep];
+
+        if (files && files.length > 0) {
+            const uploadedImages = await this.uploadRoomImages(room.hotelId as string, files);
+            finalImages = finalImages.concat(uploadedImages);
         }
 
         const updatedRoom = await this._roomRepo.updateRoom(roomId, {
             ...updateData,
-            images: uploadedImageKeys,
+            images: finalImages,
         });
 
         if (!updatedRoom) {

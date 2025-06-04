@@ -25,18 +25,14 @@ export class GetAvailableRoomsByHotelUseCase extends GetRoomsByHotelUseCase impl
         }
 
         const availableRooms = await this._roomRepo.findAvailableRoomsByHotel(hotelId);
-        if (!availableRooms || availableRooms.length === 0) {
-            return [];
-        }
+        if (!availableRooms || availableRooms.length === 0) return [];
 
-        await Promise.all(
-            availableRooms.map(async (room) => {
-                if (room.images?.length) {
-                    const roomId = room._id?.toString() || '';
-                    room.images = await this._getSignedUrls(roomId, room.images);
-                }
-            })
-        );
+        for (const room of availableRooms) {
+            if (room.images?.length) {
+                const roomId = room._id?.toString() || '';
+                room.images = await this._getSignedUrls(roomId, room.images);
+            }
+        }
 
         return availableRooms;
     }

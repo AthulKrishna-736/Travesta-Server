@@ -26,7 +26,7 @@ export interface IRoomRepository {
   deleteRoom(id: string): Promise<boolean>;
   findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
   findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
-  findAll(): Promise<IRoom[]>;
+  findAllRooms(page: number, limit: number, search?: string): Promise<{rooms:IRoom[], total: number}>;
 }
 
 export interface IBookingRepository {

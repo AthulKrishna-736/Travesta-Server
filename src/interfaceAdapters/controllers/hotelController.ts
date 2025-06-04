@@ -8,7 +8,6 @@ import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/usecases.interface';
 import { CreateHotelDTO, UpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
-import logger from '../../utils/logger';
 import { mapHotelToResponseDTO } from '../../utils/responseMapper';
 
 @injectable()
@@ -26,8 +25,7 @@ export class HotelController {
             const files = req.files as Express.Multer.File[];
             const userId = req.user?.userId;
 
-            logger.info(`req body create hotel:  ${files} ${req.body}`);
-            console.log('req body: ', req.body)
+            console.log('req body createhotel: ', req.body)
 
             const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0, isBlocked = false, } = req.body;
             const hotelData: CreateHotelDTO = { vendorId: userId!, name, description, address, city, state, geoLocation: Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation), tags, amenities, services, rating, isBlocked, images: [] };
@@ -46,14 +44,14 @@ export class HotelController {
             const hotelId = req.params.id;
             const files = req.files as Express.Multer.File[];
 
-            // logger.info(`req body update hotel:  ${files} ${req.body}`);
-            console.log('req body update: ', req.body)
+            console.log('req body update: ', req.body, files)
 
-            // const updateData: UpdateHotelDTO = {
-            //     ...req.body,
-            // };
+            const updateData: UpdateHotelDTO = {
+                ...req.body,
+                images: req.body.images ? JSON.parse(req.body.images) : []
+            };
 
-            const result = await this._updateHotelUseCase.updateHotel(hotelId, req.body, files);
+            const result = await this._updateHotelUseCase.updateHotel(hotelId, updateData, files);
             ResponseHandler.success(res, result.message, result.hotel, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -88,12 +86,7 @@ export class HotelController {
 
             const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, search);
 
-            const meta: Pagination = {
-                currentPage: page,
-                pageSize: limit,
-                totalData: total,
-                totalPages: Math.ceil(total / limit)
-            };
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
 
             ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
         } catch (error) {

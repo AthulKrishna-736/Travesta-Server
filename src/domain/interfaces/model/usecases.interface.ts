@@ -77,7 +77,7 @@ export interface IGetAvailableRoomsByHotelUseCase {
 }
 
 export interface IGetAllRoomsUseCase {
-    getAllRoom(): Promise<{ rooms: TResponseRoomData[]; message: string }>;
+    getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomData[]; message: string; total: number }>;
 }
 
 //booking

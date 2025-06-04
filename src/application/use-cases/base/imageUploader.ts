@@ -13,6 +13,7 @@ export class AwsImageUploader {
 
             try {
                 await this._awsS3Service.uploadFileToAws(s3Key, i.path)
+                console.log('hotel images uploaded');
                 return s3Key;
             } catch (error) {
                 console.error(`Failed to upload file ${i.originalname}:`, error);

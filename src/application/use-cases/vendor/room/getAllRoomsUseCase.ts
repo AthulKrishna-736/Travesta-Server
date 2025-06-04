@@ -15,16 +15,17 @@ export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
-    async getAllRoom(): Promise<{ rooms: TResponseRoomData[]; message: string }> {
-        const allRooms = await this._roomRepo.findAll();
+    async getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomData[]; message: string; total: number }> {
+
+        const { rooms: allRooms, total } = await this._roomRepo.findAllRooms(page, limit, search);
 
         if (!allRooms || allRooms.length === 0) {
-            return { rooms: [], message: 'No rooms found' };
+            return { rooms: [], message: 'No rooms found', total };
         }
 
         const mappedRooms = await Promise.all(
             allRooms.map(async (room) => {
-                let signedImageUrls = await this._redisService.getRoomImageUrls(room._id as string);
+                let signedImageUrls = await this._redisService.getRoomImageUrls(room._id!.toString());
 
                 if (!signedImageUrls) {
                     signedImageUrls = await Promise.all(
@@ -32,19 +33,18 @@ export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
                             this._awsS3Service.getFileUrlFromAws(imgKey, awsS3Timer.expiresAt)
                         )
                     );
-                    await this._redisService.storeRoomImageUrls(room._id as string, signedImageUrls, awsS3Timer.expiresAt);
+                    await this._redisService.storeRoomImageUrls(room._id!.toString(), signedImageUrls, awsS3Timer.expiresAt);
                 }
 
-                return {
-                    ...room,
-                    images: signedImageUrls,
-                };
+                return { ...room, images: signedImageUrls };
             })
         );
 
         return {
             rooms: mappedRooms,
             message: 'Rooms fetched successfully',
+            total
         };
     }
+
 }

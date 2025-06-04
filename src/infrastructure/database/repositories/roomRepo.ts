@@ -40,7 +40,23 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         return rooms;
     }
 
-    async findAll(): Promise<IRoom[]> {
-        return await this.model.find().lean<IRoom[]>();
+    async findAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: IRoom[]; total: number }> {
+        const skip = (page - 1) * limit;
+        const filter: any = {};
+
+        if (search) {
+            const regex = new RegExp(search, 'i');
+            filter.$or = [
+                { name: regex },
+                { bedType: regex },
+                { amenities: regex }
+            ];
+        }
+
+        const total = await this.model.countDocuments(filter);
+        const rooms = await this.model.find(filter).skip(skip).limit(limit).lean<IRoom[]>();
+
+        return { rooms, total };
     }
+
 }

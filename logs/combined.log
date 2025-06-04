@@ -17293,3 +17293,768 @@
   "iat": 1748975017,
   "exp": 1750271017
 }[0m
+[2025-06-04 10:35:23] INFO: [34mRunning in development mode[0m
+[2025-06-04 10:35:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 10:35:24] INFO: [34mRedis connected successfully[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:59:47] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749014958,
+  "exp": 1750310958
+}[0m
+[2025-06-04 11:02:24] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749015014,
+  "exp": 1750311014
+}[0m
+[2025-06-04 11:02:58] INFO: [34m{
+  "firstName": "slight",
+  "lastName": "change",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250603%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250603T134144Z&X-Amz-Expires=84600&X-Amz-Signature=81778072cf92c1887daf27e13f7d689d1c18274377a3b5b5e93aa0f9262e1e3d&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-06-04T05:32:58.076Z"
+}[0m
+[2025-06-04 11:03:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:03:38] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:03:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:03:38] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:03:48] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:03:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:03:49] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:04:04] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:04:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:04:04] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:04:09] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:04:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:04:18] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:04:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:04:56] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:04:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:04:57] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:05:03] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:05:03] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:05:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:05:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:05:12] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:05:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749015177,
+  "exp": 1750311177
+}[0m
+[2025-06-04 11:05:30] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-04 11:05:46] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-06-04 11:05:49] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250603%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250603T145244Z&X-Amz-Expires=84600&X-Amz-Signature=727786110c783fb1846a30258a7a53ac7b4e3c2d9de3c01e7c6eb1c6478d5c28&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-04T05:35:49.007Z"
+}[0m
+[2025-06-04 11:05:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:05:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:07:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:07:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:09:05] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:09:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:09:06] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:12:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:13:13] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:13:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:13:48] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:16:07] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:16:07] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:16:07] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:16:30] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:16:30] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:16:32] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:16:34] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:16:34] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:16:34] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:16:44] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:16:44] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:17:04] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-04 11:17:09] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-04 11:17:14] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-04 11:17:23] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:17:40] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:17:40] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:17:40] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:17:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:17:49] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:17:54] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:17:54] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:18:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:20:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:20:29] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:20:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749015348,
+  "exp": 1750311348
+}[0m
+[2025-06-04 11:20:37] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:22:27] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 11:22:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:22:30] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:22:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:23:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:24:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:24:21] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:30:24] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:30:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:30:24] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:30:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:30:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:30:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:30:30] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:31:39] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:31:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:31:39] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:32:20] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:32:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:32:21] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:32:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:32:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:32:44] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:32:44] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:33:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:33:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:34:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:34:38] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:37:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:37:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749016347,
+  "exp": 1750312347
+}[0m
+[2025-06-04 11:42:54] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:42:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:42:54] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:43:12] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:43:13] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:43:13] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:43:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 11:43:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 11:43:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749017593,
+  "exp": 1750313593
+}[0m
+[2025-06-04 11:43:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749017593,
+  "exp": 1750313593
+}[0m
+[2025-06-04 11:45:21] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:45:21] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:45:21] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:48:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749017593,
+  "exp": 1750313593
+}[0m
+[2025-06-04 11:48:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749017593,
+  "exp": 1750313593
+}[0m
+[2025-06-04 11:48:59] INFO: [34mRunning in development mode[0m
+[2025-06-04 11:48:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 11:49:00] INFO: [34mRedis connected successfully[0m
+[2025-06-04 11:50:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749017593,
+  "exp": 1750313593
+}[0m
+[2025-06-04 11:50:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749017593,
+  "exp": 1750313593
+}[0m
+[2025-06-04 11:52:45] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749017593,
+  "exp": 1750313593
+}[0m
+[2025-06-04 11:52:45] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749017593,
+  "exp": 1750313593
+}[0m
+[2025-06-04 12:06:04] INFO: [34mRunning in development mode[0m
+[2025-06-04 12:06:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 12:06:05] INFO: [34mRedis connected successfully[0m
+[2025-06-04 12:08:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 12:08:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 12:20:15] INFO: [34mRunning in development mode[0m
+[2025-06-04 12:20:15] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 12:20:15] INFO: [34mRedis connected successfully[0m
+[2025-06-04 22:38:19] INFO: [34mRunning in development mode[0m
+[2025-06-04 22:38:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 22:38:20] INFO: [34mRedis connected successfully[0m
+[2025-06-04 22:38:22] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 22:38:22] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 22:38:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:38:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:40:32] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:40:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:43:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:43:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:44:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:44:54] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:44:54] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:53:07] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:53:07] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749056902,
+  "exp": 1750352902
+}[0m
+[2025-06-04 22:53:53] INFO: [34mRunning in development mode[0m
+[2025-06-04 22:53:53] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 22:53:54] INFO: [34mRedis connected successfully[0m
+[2025-06-04 22:54:03] INFO: [34mRunning in development mode[0m
+[2025-06-04 22:54:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 22:54:04] INFO: [34mRedis connected successfully[0m
+[2025-06-04 22:56:45] INFO: [34mRunning in development mode[0m
+[2025-06-04 22:56:46] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 22:56:46] INFO: [34mRedis connected successfully[0m
+[2025-06-04 22:59:42] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 22:59:42] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 22:59:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749058182,
+  "exp": 1750354182
+}[0m
+[2025-06-04 22:59:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749058182,
+  "exp": 1750354182
+}[0m
+[2025-06-04 23:00:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749058182,
+  "exp": 1750354182
+}[0m
+[2025-06-04 23:04:51] INFO: [34mRunning in development mode[0m
+[2025-06-04 23:04:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 23:04:52] INFO: [34mRedis connected successfully[0m
+[2025-06-04 23:08:19] INFO: [34mRunning in development mode[0m
+[2025-06-04 23:08:19] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 23:08:19] INFO: [34mRedis connected successfully[0m
+[2025-06-04 23:15:24] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:15:24] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:15:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749059124,
+  "exp": 1750355124
+}[0m
+[2025-06-04 23:15:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749059124,
+  "exp": 1750355124
+}[0m
+[2025-06-04 23:15:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749059124,
+  "exp": 1750355124
+}[0m
+[2025-06-04 23:15:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749059124,
+  "exp": 1750355124
+}[0m
+[2025-06-04 23:15:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749059124,
+  "exp": 1750355124
+}[0m
+[2025-06-04 23:16:53] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-04 23:17:02] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749059124,
+  "exp": 1750355124
+}[0m
+[2025-06-04 23:30:36] INFO: [34mRunning in development mode[0m
+[2025-06-04 23:30:36] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 23:30:37] INFO: [34mRedis connected successfully[0m
+[2025-06-04 23:34:30] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:34:31] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:34:32] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:34:32] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:34:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:34:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:36:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:36:36] ERROR: [31mcheck the error in handler:  No images provided to createroom[0m
+[2025-06-04 23:36:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:36:42] ERROR: [31mcheck the error in handler:  No images provided to createroom[0m
+[2025-06-04 23:36:59] INFO: [34mRunning in development mode[0m
+[2025-06-04 23:37:00] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 23:37:00] INFO: [34mRedis connected successfully[0m
+[2025-06-04 23:37:00] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:37:00] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-04 23:37:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:37:03] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-04 23:38:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:42:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:42:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:44:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:44:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:47:40] INFO: [34mRunning in development mode[0m
+[2025-06-04 23:47:40] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 23:47:40] INFO: [34mRedis connected successfully[0m
+[2025-06-04 23:47:43] INFO: [34mRunning in development mode[0m
+[2025-06-04 23:47:43] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 23:47:43] INFO: [34mRedis connected successfully[0m
+[2025-06-04 23:47:58] INFO: [34mRunning in development mode[0m
+[2025-06-04 23:47:58] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 23:47:58] INFO: [34mRedis connected successfully[0m

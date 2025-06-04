@@ -5348,3 +5348,55 @@
 [2025-06-03 23:16:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-06-03 23:53:37] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-06-03 23:53:37] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 10:58:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-04 11:05:30] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-04 11:05:46] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-06-04 11:13:48] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:16:44] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:17:04] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-04 11:17:09] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-04 11:17:14] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-04 11:17:49] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:17:54] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:20:29] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:20:37] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:22:27] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 11:22:30] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:24:21] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:30:30] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-04 11:43:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 11:43:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 12:08:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 12:08:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 22:38:22] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 22:38:22] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 22:59:42] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 22:59:42] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:15:24] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:15:24] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:16:53] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-04 23:34:30] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:34:31] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:36:36] ERROR: [31mcheck the error in handler:  No images provided to createroom[0m
+[2025-06-04 23:36:42] ERROR: [31mcheck the error in handler:  No images provided to createroom[0m
+[2025-06-04 23:37:00] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-04 23:37:03] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
