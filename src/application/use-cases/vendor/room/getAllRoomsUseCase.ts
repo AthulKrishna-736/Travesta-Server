@@ -25,7 +25,7 @@ export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
 
         const mappedRooms = await Promise.all(
             allRooms.map(async (room) => {
-                let signedImageUrls = await this._redisService.getRoomImageUrls(room._id!.toString());
+                let signedImageUrls = await this._redisService.getRoomImageUrls(room._id as string);
 
                 if (!signedImageUrls) {
                     signedImageUrls = await Promise.all(
@@ -33,7 +33,7 @@ export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
                             this._awsS3Service.getFileUrlFromAws(imgKey, awsS3Timer.expiresAt)
                         )
                     );
-                    await this._redisService.storeRoomImageUrls(room._id!.toString(), signedImageUrls, awsS3Timer.expiresAt);
+                    await this._redisService.storeRoomImageUrls(room._id as string, signedImageUrls, awsS3Timer.expiresAt);
                 }
 
                 return { ...room, images: signedImageUrls };

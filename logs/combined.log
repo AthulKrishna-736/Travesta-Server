@@ -18058,3 +18058,745 @@
 [2025-06-04 23:47:58] INFO: [34mRunning in development mode[0m
 [2025-06-04 23:47:58] INFO: [34mMongoDB connected: localhost[0m
 [2025-06-04 23:47:58] INFO: [34mRedis connected successfully[0m
+[2025-06-04 23:48:09] INFO: [34mRunning in development mode[0m
+[2025-06-04 23:48:09] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-04 23:48:09] INFO: [34mRedis connected successfully[0m
+[2025-06-04 23:49:05] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749060271,
+  "exp": 1750356271
+}[0m
+[2025-06-04 23:49:33] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-04 23:49:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749061173,
+  "exp": 1750357173
+}[0m
+[2025-06-05 21:06:02] INFO: [34mRunning in development mode[0m
+[2025-06-05 21:06:02] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-05 21:06:07] INFO: [34mRedis connected successfully[0m
+[2025-06-05 21:06:43] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:07:01] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:09:28] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:14:07] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:14:12] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:14:17] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:14:22] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:15:26] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:15:31] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:15:36] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:15:41] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:15:46] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:15:51] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:15:56] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:02] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:07] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:12] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:20] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:25] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:31] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:38] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:43] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:49] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:16:54] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:00] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:12] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 21:17:20] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:25] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:31] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:36] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:42] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:47] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:17:53] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:18:28] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:18:33] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:19:16] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:19:21] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:19:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:19:45] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:19:50] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:19:56] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:22:26] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:22:31] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:22:36] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:22:42] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:22:47] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:24:38] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:24:43] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:25:02] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:25:10] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:40:37] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-05 21:41:08] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250605%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250605T161107Z&X-Amz-Expires=84600&X-Amz-Signature=90857f462e2d1b86759ba8c1428d71475892f8e58659c6dc2c1552d1d9091ca9&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-05T16:11:08.085Z"
+}[0m
+[2025-06-05 21:41:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749139867,
+  "exp": 1750435867
+}[0m
+[2025-06-05 21:41:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749139867,
+  "exp": 1750435867
+}[0m
+[2025-06-05 21:43:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749139867,
+  "exp": 1750435867
+}[0m
+[2025-06-05 21:44:11] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:44:17] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 21:45:16] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 21:45:21] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:41:08] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 22:41:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:41:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:42:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:43:39] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 22:43:44] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:43:49] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:43:54] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:43:59] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:44:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:44:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:02] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 22:45:07] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:45:12] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:45:17] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:45:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:36] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:45:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:49] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:45:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:45:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:02] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:46:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:14] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:46:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:26] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:46:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:46:34] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:46:40] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:46:45] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:46:51] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:46:58] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:47:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:47:31] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-05 22:47:31] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-05 22:47:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749143851,
+  "exp": 1750439851
+}[0m
+[2025-06-05 22:47:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749143851,
+  "exp": 1750439851
+}[0m
+[2025-06-05 22:47:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749143851,
+  "exp": 1750439851
+}[0m
+[2025-06-05 22:47:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749143851,
+  "exp": 1750439851
+}[0m
+[2025-06-05 22:50:28] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 22:50:28] ERROR: [31mcheck the error in handler:  read ECONNRESET[0m
+[2025-06-05 22:50:28] ERROR: [31mcheck the error in handler:  read ECONNRESET[0m
+[2025-06-05 22:50:28] ERROR: [31mcheck the error in handler:  read ECONNRESET[0m
+[2025-06-05 22:50:28] ERROR: [31mcheck the error in handler:  read ECONNRESET[0m
+[2025-06-05 22:50:33] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 22:50:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:50:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 22:51:13] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749143851,
+  "exp": 1750439851
+}[0m
+[2025-06-05 22:51:13] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749143851,
+  "exp": 1750439851
+}[0m
+[2025-06-05 22:52:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749143851,
+  "exp": 1750439851
+}[0m
+[2025-06-05 22:53:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749143851,
+  "exp": 1750439851
+}[0m
+[2025-06-05 23:02:46] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 23:02:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:02:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:50] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 23:03:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-05 23:03:59] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:04:05] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:04:53] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 23:04:58] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:05:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:05:08] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:05:18] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:06:24] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 23:06:29] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:06:48] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-05 23:06:48] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-05 23:06:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:06:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:07:17] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:07:57] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:08:53] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-05 23:08:58] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:09:04] ERROR: [31mRedis Client Error:  Connection timeout[0m

@@ -7,6 +7,27 @@ import { AppError } from "../../../utils/appError";
 export class AwsImageUploader {
     constructor(protected _awsS3Service: IAwsS3Service) { }
 
+    async uploadRoomImages(vendorId: string, images: Express.Multer.File[]): Promise<string[]> {
+        return await Promise.all(images.map(async (i, index) => {
+            const s3Key = `room/${vendorId}_${Date.now()}_${index}${path.extname(i.originalname)}`;
+
+            try {
+                await this._awsS3Service.uploadFileToAws(s3Key, i.path)
+                console.log('room images uploaded');
+                return s3Key;
+            } catch (error) {
+                console.error(`Failed to upload file ${i.originalname}:`, error);
+                throw new AppError("Error uploading room images", HttpStatusCode.INTERNAL_SERVER_ERROR);
+            } finally {
+                fs.unlink(i.path, (err) => {
+                    if (err) {
+                        console.error('Erorr deleting the image: ', i.path)
+                    }
+                });
+            }
+        }))
+    }
+
     async uploadHotelImages(vendorId: string, images: Express.Multer.File[]): Promise<string[]> {
         return await Promise.all(images.map(async (i, index) => {
             const s3Key = `hotels/${vendorId}_${Date.now()}_${index}${path.extname(i.originalname)}`;

@@ -20,7 +20,7 @@ export class CreateRoomUseCase implements ICreateRoomUseCase {
     }
 
     protected async uploadRoomImages(hotelId: string, files: Express.Multer.File[]): Promise<string[]> {
-        return this._imageUploader.uploadHotelImages(hotelId, files);
+        return this._imageUploader.uploadRoomImages(hotelId, files);
     }
 
     async createRoom(roomData: TCreateRoomData, files: Express.Multer.File[]): Promise<{ room: TResponseRoomData, message: string }> {
