@@ -55,23 +55,15 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
             keptImages = images.map((i) => decodeURIComponent(new URL(i).pathname).slice(1));
 
         }
-        console.log('not worked here')
-
 
         const finalImages = [...keptImages as string[], ...uploadedImageKeys]
-
-        console.log('final images', finalImages)
 
         hotel.updateHotel({
             ...updateData,
             images: finalImages
         })
 
-        console.log('check hotel persisted data: ', hotel.getPersistableData())
-
         const updatedHotel = await this._hotelRepo.updateHotel(hotelId, hotel.getPersistableData());
-
-        console.log('check updated: ', updatedHotel);
 
         if (!updatedHotel) {
             throw new AppError("Failed to update hotel", HttpStatusCode.INTERNAL_SERVER_ERROR);

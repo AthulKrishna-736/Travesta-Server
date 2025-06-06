@@ -24,15 +24,22 @@ export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomU
             throw new AppError("Room not found", HttpStatusCode.NOT_FOUND);
         }
 
+        console.log('updatedRoom: ', updateData);
+        console.log('imagefiles: ', files);
+
         let currentImages: string[] = room.images ?? [];
 
-        const imagesToKeep: string[] = updateData.images ?? currentImages;
+        const imagesToKeep: string[] = updateData.images as string[];
 
-        const imagesToDelete = currentImages.filter(img => !imagesToKeep.includes(img));
+        if (updateData.images) {
+            const imagesToDelete = currentImages.filter(img => !(updateData.images as string[]).includes(img));
+            const deleted = await this._imageUploader.deleteImagesFromAws(imagesToDelete, currentImages);
 
-        if (imagesToDelete.length > 0) {
-            await this._imageUploader.deleteImagesFromAws(imagesToDelete, currentImages);
+            if (deleted) {
+                await this._redisService.del(`roomImages:${roomId}`);
+            }
         }
+
 
         let finalImages = [...imagesToKeep];
 
@@ -40,6 +47,7 @@ export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomU
             const uploadedImages = await this.uploadRoomImages(room.hotelId as string, files);
             finalImages = finalImages.concat(uploadedImages);
         }
+        console.log('final Images: ', finalImages);
 
         const updatedRoom = await this._roomRepo.updateRoom(roomId, {
             ...updateData,

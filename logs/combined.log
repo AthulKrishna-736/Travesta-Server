@@ -18800,3 +18800,940 @@
 [2025-06-05 23:08:53] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
 [2025-06-05 23:08:58] ERROR: [31mRedis Client Error:  Connection timeout[0m
 [2025-06-05 23:09:04] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-05 23:16:17] INFO: [34mRunning in development mode[0m
+[2025-06-05 23:16:17] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-05 23:16:18] INFO: [34mRedis connected successfully[0m
+[2025-06-05 23:16:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:16:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:17:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:17:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:18:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:19:07] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:19:07] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:19:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:19:41] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-05 23:19:41] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749145008,
+  "exp": 1750441008
+}[0m
+[2025-06-06 16:55:19] INFO: [34mRunning in development mode[0m
+[2025-06-06 16:55:19] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 16:55:21] INFO: [34mRedis connected successfully[0m
+[2025-06-06 16:57:15] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250605%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250605T161107Z&X-Amz-Expires=84600&X-Amz-Signature=90857f462e2d1b86759ba8c1428d71475892f8e58659c6dc2c1552d1d9091ca9&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-06T11:27:15.514Z"
+}[0m
+[2025-06-06 16:57:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749209235,
+  "exp": 1750505235
+}[0m
+[2025-06-06 16:57:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749209235,
+  "exp": 1750505235
+}[0m
+[2025-06-06 17:02:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749209235,
+  "exp": 1750505235
+}[0m
+[2025-06-06 17:02:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749209235,
+  "exp": 1750505235
+}[0m
+[2025-06-06 17:02:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749209235,
+  "exp": 1750505235
+}[0m
+[2025-06-06 17:02:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749209235,
+  "exp": 1750505235
+}[0m
+[2025-06-06 17:08:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749209235,
+  "exp": 1750505235
+}[0m
+[2025-06-06 17:08:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749209235,
+  "exp": 1750505235
+}[0m
+[2025-06-06 17:16:22] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 17:16:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:16:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 17:43:45] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 17:43:45] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 17:43:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749212025,
+  "exp": 1750508025
+}[0m
+[2025-06-06 17:43:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749212025,
+  "exp": 1750508025
+}[0m
+[2025-06-06 19:00:23] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 19:00:23] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 19:00:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749216623,
+  "exp": 1750512623
+}[0m
+[2025-06-06 19:00:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749216623,
+  "exp": 1750512623
+}[0m
+[2025-06-06 19:07:22] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 19:07:22] ERROR: [31mcheck the error in handler:  read ECONNRESET[0m
+[2025-06-06 19:07:22] ERROR: [31mcheck the error in handler:  read ECONNRESET[0m
+[2025-06-06 19:07:23] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:07:23] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:07:25] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:07:25] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:07:29] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:07:29] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:08:13] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:08:13] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:08:15] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:08:15] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:08:35] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 19:08:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:08:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:08:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:08:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:08:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:08:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:08:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:08:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:08:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 19:10:40] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:10:40] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:10:44] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:10:44] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:43] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:43] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:44] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:44] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:46] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:46] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:50] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:50] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:54] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:54] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:55] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:55] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:59] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:19:59] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:20:01] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:20:03] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:20:03] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-06-06 19:20:16] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250605%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250605T161107Z&X-Amz-Expires=84600&X-Amz-Signature=90857f462e2d1b86759ba8c1428d71475892f8e58659c6dc2c1552d1d9091ca9&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-06T13:50:16.404Z"
+}[0m
+[2025-06-06 19:20:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749217816,
+  "exp": 1750513816
+}[0m
+[2025-06-06 19:20:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749217816,
+  "exp": 1750513816
+}[0m
+[2025-06-06 19:21:20] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:21:21] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:21:21] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:21:30] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:21:30] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:21:31] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:21:33] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:21:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:21:34] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:21:38] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:21:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:21:38] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:21:41] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:21:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:21:41] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:21:49] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:21:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:21:49] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:21:55] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:21:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:21:56] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:22:01] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:22:01] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:22:01] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:22:06] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:22:06] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:22:06] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:22:14] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:22:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:22:14] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:38:10] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 19:38:10] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 19:38:11] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749218890,
+  "exp": 1750514890
+}[0m
+[2025-06-06 19:38:11] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749218890,
+  "exp": 1750514890
+}[0m
+[2025-06-06 19:45:23] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:45:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:45:25] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:45:25] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:45:25] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:45:28] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:45:28] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:45:28] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:45:32] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:45:32] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:45:32] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:45:38] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:45:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:45:38] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:45:45] INFO: [34mRunning in development mode[0m
+[2025-06-06 19:45:46] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 19:45:46] INFO: [34mRedis connected successfully[0m
+[2025-06-06 19:49:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749218890,
+  "exp": 1750514890
+}[0m
+[2025-06-06 19:49:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749218890,
+  "exp": 1750514890
+}[0m
+[2025-06-06 19:52:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749218890,
+  "exp": 1750514890
+}[0m
+[2025-06-06 19:52:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749218890,
+  "exp": 1750514890
+}[0m
+[2025-06-06 19:56:05] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 19:56:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749219965,
+  "exp": 1750515965
+}[0m
+[2025-06-06 19:57:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749219965,
+  "exp": 1750515965
+}[0m
+[2025-06-06 19:57:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749219965,
+  "exp": 1750515965
+}[0m
+[2025-06-06 20:01:33] INFO: [34mRunning in development mode[0m
+[2025-06-06 20:01:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 20:01:33] INFO: [34mRedis connected successfully[0m
+[2025-06-06 20:01:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749219965,
+  "exp": 1750515965
+}[0m
+[2025-06-06 20:01:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749219965,
+  "exp": 1750515965
+}[0m
+[2025-06-06 20:03:26] INFO: [34mRunning in development mode[0m
+[2025-06-06 20:03:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 20:03:26] INFO: [34mRedis connected successfully[0m
+[2025-06-06 20:03:48] INFO: [34mRunning in development mode[0m
+[2025-06-06 20:03:48] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 20:03:49] INFO: [34mRedis connected successfully[0m
+[2025-06-06 20:04:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749219965,
+  "exp": 1750515965
+}[0m
+[2025-06-06 20:04:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749219965,
+  "exp": 1750515965
+}[0m
+[2025-06-06 20:07:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749219965,
+  "exp": 1750515965
+}[0m
+[2025-06-06 20:08:01] INFO: [34mRunning in development mode[0m
+[2025-06-06 20:08:01] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 20:10:05] INFO: [34mRunning in development mode[0m
+[2025-06-06 20:10:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 20:10:05] INFO: [34mRedis connected successfully[0m
+[2025-06-06 20:59:09] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 20:59:10] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 21:04:09] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 21:04:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:04:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:06:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749223750,
+  "exp": 1750519750
+}[0m
+[2025-06-06 21:06:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749223750,
+  "exp": 1750519750
+}[0m
+[2025-06-06 21:08:22] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 21:08:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:08:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:10:38] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 21:10:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:10:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:10:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:10:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:10:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:10:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:10:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:12:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749223750,
+  "exp": 1750519750
+}[0m
+[2025-06-06 21:12:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749223750,
+  "exp": 1750519750
+}[0m
+[2025-06-06 21:16:18] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 21:16:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:16:21] ERROR: [31mcheck the error in handler:  File too large[0m
+[2025-06-06 21:16:23] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:16:24] ERROR: [31mcheck the error in handler:  File too large[0m
+[2025-06-06 21:16:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:20:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:20:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:20:51] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:20:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:20:52] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:24:09] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:24:10] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:24:10] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:25:59] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:25:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:25:59] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:26:56] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:26:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:26:56] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:27:06] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:27:06] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:27:06] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:27:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:27:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:27:13] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:27:13] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:28:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:28:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:29:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:29:10] ERROR: [31mcheck the error in handler:  Invalid URL[0m
+[2025-06-06 21:29:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749224778,
+  "exp": 1750520778
+}[0m
+[2025-06-06 21:29:12] ERROR: [31mcheck the error in handler:  Invalid URL[0m
+[2025-06-06 21:31:22] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:31:22] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:31:24] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:31:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:31:24] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:31:26] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:31:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:31:26] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:31:45] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:31:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:31:45] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:31:49] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:31:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:31:49] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:31:53] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 21:31:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749225713,
+  "exp": 1750521713
+}[0m
+[2025-06-06 21:31:55] ERROR: [31mcheck the error in handler:  Invalid URL[0m
+[2025-06-06 21:41:18] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749225713,
+  "exp": 1750521713
+}[0m
+[2025-06-06 21:41:18] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749225713,
+  "exp": 1750521713
+}[0m
+[2025-06-06 21:41:34] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 21:41:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:41:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:41:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:41:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:41:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:41:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:41:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:41:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 21:45:29] INFO: [34mRunning in development mode[0m
+[2025-06-06 21:45:30] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-06 21:45:30] INFO: [34mRedis connected successfully[0m
+[2025-06-06 21:47:28] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 21:47:28] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 21:47:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:47:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:47:32] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:48:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:49:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:49:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:50:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:50:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:50:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:50:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:51:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:51:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:51:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:51:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:52:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 21:52:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749226648,
+  "exp": 1750522648
+}[0m
+[2025-06-06 22:43:58] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 22:44:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 22:44:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 22:44:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 22:44:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:09] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 23:38:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:38:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:03] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 23:46:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:46:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-06 23:48:48] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 23:48:53] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-06 23:48:56] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 23:48:56] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-06 23:49:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749233936,
+  "exp": 1750529936
+}[0m
+[2025-06-06 23:49:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749233936,
+  "exp": 1750529936
+}[0m
+[2025-06-06 23:55:25] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-06 23:55:30] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-06 23:55:37] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-06 23:55:42] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-06 23:55:47] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-06 23:55:52] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-06 23:55:57] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-06 23:56:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749233936,
+  "exp": 1750529936
+}[0m
+[2025-06-06 23:56:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749233936,
+  "exp": 1750529936
+}[0m

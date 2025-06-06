@@ -36,6 +36,9 @@ export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
                     await this._redisService.storeRoomImageUrls(room._id as string, signedImageUrls, awsS3Timer.expiresAt);
                 }
 
+                console.log('room name: ', room.name);
+                signedImageUrls.forEach(i => console.log('images room: ', i.slice(0,5)));
+
                 return { ...room, images: signedImageUrls };
             })
         );

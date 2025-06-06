@@ -56,7 +56,6 @@ export class AuthController {
                 throw new AppError('Email password and role are required', HttpStatusCode.BAD_REQUEST)
             }
             const { accessToken, refreshToken, user } = await this._loginUseCase.login(email, password, role);
-            console.log('user: ', user)
 
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);

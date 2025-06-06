@@ -54,7 +54,9 @@ export class AwsImageUploader {
             throw new AppError('No images provided', HttpStatusCode.BAD_REQUEST);
         }
         const oldImages = images.map((i) => {
+            console.log('url: ', i);
             const url = new URL(i)
+            console.log('url decode: ', url.pathname);
             return decodeURIComponent(url.pathname).slice(1);
         })
 

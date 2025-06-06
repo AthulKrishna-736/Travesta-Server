@@ -25,8 +25,6 @@ export class HotelController {
             const files = req.files as Express.Multer.File[];
             const userId = req.user?.userId;
 
-            console.log('req body createhotel: ', req.body)
-
             const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0, isBlocked = false, } = req.body;
             const hotelData: CreateHotelDTO = { vendorId: userId!, name, description, address, city, state, geoLocation: Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation), tags, amenities, services, rating, isBlocked, images: [] };
             const { hotel, message } = await this._createHotelUseCase.createHotel(hotelData, files);
@@ -43,8 +41,6 @@ export class HotelController {
         try {
             const hotelId = req.params.id;
             const files = req.files as Express.Multer.File[];
-
-            console.log('req body update: ', req.body, files)
 
             const updateData: UpdateHotelDTO = {
                 ...req.body,
