@@ -7,6 +7,7 @@ import { TResponseRoomData, TUpdateRoomData } from "../../../../domain/interface
 import { CreateRoomUseCase } from "./createRoomUseCase";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 
 
 @injectable()
@@ -14,11 +15,12 @@ export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomU
     constructor(
         @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
         @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
         super(roomRepo, awsS3Service);
     }
 
-    async updateRoom(roomId: string, updateData: TUpdateRoomData, files?: Express.Multer.File[]) {
+    async updateRoom(roomId: string, updateData: TUpdateRoomData, files?: Express.Multer.File[]): Promise<{ room: TResponseRoomData, message: string }> {
         const room = await this._roomRepo.findRoomById(roomId);
         if (!room) {
             throw new AppError("Room not found", HttpStatusCode.NOT_FOUND);
@@ -27,26 +29,29 @@ export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomU
         console.log('updatedRoom: ', updateData);
         console.log('imagefiles: ', files);
 
-        let currentImages: string[] = room.images ?? [];
-
-        const imagesToKeep: string[] = updateData.images as string[];
-
         if (updateData.images) {
-            const imagesToDelete = currentImages.filter(img => !(updateData.images as string[]).includes(img));
-            const deleted = await this._imageUploader.deleteImagesFromAws(imagesToDelete, currentImages);
-
+            const deleted = await this._imageUploader.deleteImagesFromAws(updateData.images, room.images);
             if (deleted) {
                 await this._redisService.del(`roomImages:${roomId}`);
             }
         }
 
-
-        let finalImages = [...imagesToKeep];
+        let uploadedImageKeys: string[] = [];
 
         if (files && files.length > 0) {
-            const uploadedImages = await this.uploadRoomImages(room.hotelId as string, files);
-            finalImages = finalImages.concat(uploadedImages);
+            uploadedImageKeys = await this.uploadRoomImages(room.hotelId as string, files);
         }
+
+        let keptImages: string[] = [];
+        if (updateData.images) {
+            const images = Array.isArray(updateData.images) ? updateData.images : [updateData.images];
+            keptImages = images.map((i) => decodeURIComponent(new URL(i).pathname).slice(1));
+            console.log('decoded urls: ', keptImages);
+        }
+
+
+        const finalImages = [...keptImages, ...uploadedImageKeys]
+        console.log('kep images: ', keptImages)
         console.log('final Images: ', finalImages);
 
         const updatedRoom = await this._roomRepo.updateRoom(roomId, {

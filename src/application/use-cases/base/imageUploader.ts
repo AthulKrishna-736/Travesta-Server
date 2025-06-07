@@ -23,6 +23,7 @@ export class AwsImageUploader {
                     if (err) {
                         console.error('Erorr deleting the image: ', i.path)
                     }
+                    console.log('file unliked room successfully....')
                 });
             }
         }))
@@ -44,6 +45,7 @@ export class AwsImageUploader {
                     if (err) {
                         console.error('Erorr deleting the image: ', i.path)
                     }
+                    console.log('file unliked hotel successfully...')
                 });
             }
         }));

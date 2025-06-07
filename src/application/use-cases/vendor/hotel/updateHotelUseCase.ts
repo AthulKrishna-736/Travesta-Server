@@ -56,7 +56,7 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
 
         }
 
-        const finalImages = [...keptImages as string[], ...uploadedImageKeys]
+        const finalImages = [...keptImages, ...uploadedImageKeys]
 
         hotel.updateHotel({
             ...updateData,

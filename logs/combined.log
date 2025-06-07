@@ -19737,3 +19737,1076 @@
   "iat": 1749233936,
   "exp": 1750529936
 }[0m
+[2025-06-07 00:00:44] INFO: [34mRunning in development mode[0m
+[2025-06-07 00:00:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 00:00:46] INFO: [34mRedis connected successfully[0m
+[2025-06-07 00:05:32] INFO: [34mRunning in development mode[0m
+[2025-06-07 00:05:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 00:05:35] INFO: [34mRedis connected successfully[0m
+[2025-06-07 16:49:21] INFO: [34mRunning in development mode[0m
+[2025-06-07 16:49:22] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 16:49:22] INFO: [34mRedis connected successfully[0m
+[2025-06-07 16:54:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 16:54:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 16:54:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:03] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:05] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:05] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:09] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:28] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:49] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:53] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:56] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:54:58] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:55:00] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:55:00] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:55:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:55:27] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:55:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:55:29] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:55:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:55:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:57:52] INFO: [34mRunning in development mode[0m
+[2025-06-07 16:57:52] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 16:57:53] INFO: [34mRedis connected successfully[0m
+[2025-06-07 16:59:17] INFO: [34mRunning in development mode[0m
+[2025-06-07 16:59:18] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 16:59:26] INFO: [34mRunning in development mode[0m
+[2025-06-07 16:59:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 16:59:27] INFO: [34mRedis connected successfully[0m
+[2025-06-07 16:59:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:34] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:36] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:39] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:39] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:44] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:44] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:51] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 16:59:52] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:09] INFO: [34mRunning in development mode[0m
+[2025-06-07 17:00:09] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 17:00:09] INFO: [34mRedis connected successfully[0m
+[2025-06-07 17:00:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:13] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:17] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:17] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:22] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:23] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:23] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:25] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:29] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:48] INFO: [34mRunning in development mode[0m
+[2025-06-07 17:00:48] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 17:00:49] INFO: [34mRedis connected successfully[0m
+[2025-06-07 17:00:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:50] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:51] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:53] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:57] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:00:57] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:01:02] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:01:02] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:01:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:01:10] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:01:57] INFO: [34mRunning in development mode[0m
+[2025-06-07 17:01:57] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 17:01:57] INFO: [34mRedis connected successfully[0m
+[2025-06-07 17:01:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:01:59] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:02:02] INFO: [34mRunning in development mode[0m
+[2025-06-07 17:02:02] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 17:02:03] INFO: [34mRedis connected successfully[0m
+[2025-06-07 17:02:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:02:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:02:03] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:02:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:02:43] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:02:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:02:46] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:02:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:02:50] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:03:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:03:26] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:03:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:03:28] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:03:50] INFO: [34mRunning in development mode[0m
+[2025-06-07 17:03:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 17:03:50] INFO: [34mRedis connected successfully[0m
+[2025-06-07 17:03:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:03:56] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:04:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:04:25] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:04:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:04:27] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:06:20] INFO: [34mRunning in development mode[0m
+[2025-06-07 17:06:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 17:06:20] INFO: [34mRedis connected successfully[0m
+[2025-06-07 17:06:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:06:34] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:06:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:06:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:38] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:06:38] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:06:40] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:44] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:06:44] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:06:57] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749295441,
+  "exp": 1750591441
+}[0m
+[2025-06-07 17:06:58] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:35:24] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-07 17:35:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:52] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-07 17:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 19:13:44] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:13:44] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:18:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:18:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:18:25] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:18:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:18:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:18:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:18:31] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:18:32] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:18:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:18:40] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:20:27] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:20:27] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:20:27] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:21:32] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:21:32] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:21:33] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:21:48] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:21:48] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:21:48] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:22:13] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:22:13] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:22:13] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:23:16] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:23:16] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:23:17] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:25:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:25:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:25:49] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:25:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:25:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:25:52] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:25:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:25:53] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:25:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:25:55] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:11] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:26:11] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:20] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:26:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:26:20] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:26:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:26:20] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:26:26] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:26:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:26:28] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:26:33] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749303824,
+  "exp": 1750599824
+}[0m
+[2025-06-07 19:26:50] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:28:46] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:28:46] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:28:47] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:28:50] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:28:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:28:50] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:28:53] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:28:53] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:28:53] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:28:56] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:28:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:28:56] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:28:59] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:29:02] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:29:02] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:29:02] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:29:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:29:03] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:29:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:29:10] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:29:14] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:29:14] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:30:31] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:30:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:30:31] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:30:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:30:34] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:30:35] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:30:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:45] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:30:45] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:30:49] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:30:56] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:32:03] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:32:03] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:32:03] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:32:11] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:32:11] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:32:11] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:32:25] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:32:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:32:26] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:34:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:34:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:34:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:34:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:36:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:36:17] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-07 19:40:55] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:40:55] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:40:55] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:42:41] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:42:41] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749304739,
+  "exp": 1750600739
+}[0m
+[2025-06-07 19:45:12] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:45:12] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:45:12] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:45:17] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:45:17] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:45:17] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:46:47] INFO: [34mRunning in development mode[0m
+[2025-06-07 19:46:47] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 19:46:47] INFO: [34mRedis connected successfully[0m
+[2025-06-07 19:50:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:50:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:50:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:50:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:50:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:50:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:50:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:51:11] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:51:11] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:53:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:53:20] ERROR: [31mcheck the error in handler:  File too large[0m
+[2025-06-07 19:57:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 19:57:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 20:03:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 20:03:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749306025,
+  "exp": 1750602025
+}[0m
+[2025-06-07 20:11:29] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:11:29] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:11:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:11:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:16:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:16:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:19:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:19:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:19:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:20:59] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:21:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:21:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749307289,
+  "exp": 1750603289
+}[0m
+[2025-06-07 20:36:53] INFO: [34mRunning in development mode[0m
+[2025-06-07 20:36:53] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 20:36:53] INFO: [34mRedis connected successfully[0m
+[2025-06-07 20:37:35] INFO: [34mRunning in development mode[0m
+[2025-06-07 20:37:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 20:37:35] INFO: [34mRedis connected successfully[0m
+[2025-06-07 20:38:07] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:38:07] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:38:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749308887,
+  "exp": 1750604887
+}[0m
+[2025-06-07 20:38:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749308887,
+  "exp": 1750604887
+}[0m
+[2025-06-07 20:39:20] INFO: [34mRunning in development mode[0m
+[2025-06-07 20:39:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 20:39:20] INFO: [34mRedis connected successfully[0m
+[2025-06-07 20:48:18] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749308887,
+  "exp": 1750604887
+}[0m
+[2025-06-07 20:48:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749308887,
+  "exp": 1750604887
+}[0m
+[2025-06-07 20:48:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749308887,
+  "exp": 1750604887
+}[0m
+[2025-06-07 20:48:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749308887,
+  "exp": 1750604887
+}[0m
+[2025-06-07 20:48:59] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749308887,
+  "exp": 1750604887
+}[0m
+[2025-06-07 20:49:00] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749308887,
+  "exp": 1750604887
+}[0m
+[2025-06-07 20:53:23] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:53:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749309803,
+  "exp": 1750605803
+}[0m
+[2025-06-07 20:54:14] INFO: [34mRunning in development mode[0m
+[2025-06-07 20:54:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 20:54:14] INFO: [34mRedis connected successfully[0m
+[2025-06-07 20:54:28] INFO: [34mRunning in development mode[0m
+[2025-06-07 20:54:28] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 20:54:28] INFO: [34mRedis connected successfully[0m

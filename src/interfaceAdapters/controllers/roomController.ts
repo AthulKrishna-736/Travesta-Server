@@ -71,7 +71,7 @@ export class RoomController {
                     : undefined,
                 basePrice: basePrice !== undefined ? Number(basePrice) : undefined,
                 isAvailable: isAvailable !== undefined ? Boolean(isAvailable) : undefined,
-                images: req.body.images ? req.body.images : [],
+                images: req.body.images ? JSON.parse(req.body.images) : [],
             };
 
             const { room, message } = await this._updateRoomUseCase.updateRoom(roomId, updateData, files);

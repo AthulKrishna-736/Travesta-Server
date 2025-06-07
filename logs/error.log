@@ -6267,3 +6267,104 @@
 [2025-06-06 23:55:47] ERROR: [31mRedis Client Error:  Connection timeout[0m
 [2025-06-06 23:55:52] ERROR: [31mRedis Client Error:  Connection timeout[0m
 [2025-06-06 23:55:57] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-07 16:54:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 16:54:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 16:54:03] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:05] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:09] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:28] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:49] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:53] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:56] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:54:58] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:55:00] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:55:27] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:55:29] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:55:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:34] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:36] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:39] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:44] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:51] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 16:59:52] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:13] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:17] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:22] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:23] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:25] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:29] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:50] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:51] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:53] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:00:57] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:01:02] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:01:10] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:01:59] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:02:03] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:02:43] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:02:46] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:02:50] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:03:26] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:03:28] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:03:56] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:04:25] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:04:27] ERROR: [31mcheck the error in handler:  undefined is not iterable (cannot read property Symbol(Symbol.iterator))[0m
+[2025-06-07 17:06:34] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:38] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:40] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:44] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:57] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:06:58] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 17:35:24] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-07 17:35:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:52] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-07 17:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 17:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 19:13:44] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:13:44] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:18:25] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:18:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:18:32] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:18:40] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:25:49] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:25:52] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:25:53] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:25:55] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:11] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:20] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:26] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:28] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:33] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:26:50] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:28:59] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:29:02] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:29:03] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:29:10] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:29:14] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-06-07 19:30:34] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:35] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:45] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:49] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:30:56] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-07 19:36:17] ERROR: [31mcheck the error in handler:  images.map is not a function[0m
+[2025-06-07 19:50:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:50:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 19:53:20] ERROR: [31mcheck the error in handler:  File too large[0m
+[2025-06-07 20:11:29] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:11:29] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:38:07] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:38:07] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 20:53:23] ERROR: [31mcheck the error in handler:  Not authenticated[0m
