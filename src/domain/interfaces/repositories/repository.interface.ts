@@ -1,3 +1,4 @@
+import { IAmenities } from "../model/admin.interface";
 import { IBooking, IHotel, IRoom, TCreateHotelData, TCreateRoomData, TUpdateHotelData, TUpdateRoomData } from "../model/hotel.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
 
@@ -36,4 +37,12 @@ export interface IBookingRepository {
   isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
   findByid(id: string): Promise<IBooking | null>;
   save(booking: IBooking): Promise<void>;
+}
+
+//amenities repo
+export interface IAmenitiesRepository {
+  createAmenities(data: Partial<IAmenities>): Promise<IAmenities | null>
+  findAmenityById(id: string): Promise<IAmenities | null>
+  updateAmenities(id: string, data: Partial<IAmenities>): Promise<IAmenities | null>
+  findAllAmenities(): Promise<IAmenities[] | null>
 }
