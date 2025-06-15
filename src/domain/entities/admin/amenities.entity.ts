@@ -1,9 +1,9 @@
 import { AppError } from "../../../utils/appError"
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes"
-import { IAmenities } from "../../interfaces/model/admin.interface"
+import { IAmenities, TResponseAmenityData, TUpdateAmenityData } from "../../interfaces/model/amenities.interface"
 
 
-interface IAmenitiesManage {
+export interface IAmenitiesEntity {
     readonly id: string
     readonly name: string
     readonly type: 'hotel' | 'room'
@@ -15,12 +15,12 @@ interface IAmenitiesManage {
     //business logic
     block(): void;
     unblock(): void;
-    update(data: Omit<IAmenities, 'id' | 'createdAt' | 'updatedAt' | 'isActive'>): void;
-    toObject(): IAmenities;
+    update(data: TUpdateAmenityData): void;
+    toObject(): TResponseAmenityData;
     getPersistableData(): Omit<IAmenities, '_id' | 'isActive' | 'createdAt'>
 }
 
-export class AmenitiesManage implements IAmenitiesManage {
+export class AmenitiesEntity implements IAmenitiesEntity {
     private _props: IAmenities;
     constructor(amenities: IAmenities) {
         this._props = amenities
@@ -72,7 +72,7 @@ export class AmenitiesManage implements IAmenitiesManage {
         this._props.updatedAt = new Date();
     }
 
-    update(data: Omit<IAmenities, "_id" | "createdAt" | "updatedAt" | "isActive">): void {
+    update(data: TUpdateAmenityData): void {
         if (data.name && data.name.trim().length > 0 && typeof data.name == 'string') {
             this._props.name = data.name.trim();
         }
@@ -85,7 +85,7 @@ export class AmenitiesManage implements IAmenitiesManage {
         this._props.updatedAt = new Date();
     }
 
-    toObject(): IAmenities {
+    toObject(): TResponseAmenityData {
         return { ...this._props }
     }
 

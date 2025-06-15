@@ -1,8 +1,8 @@
 import { injectable } from "tsyringe";
-import { IAmenities } from "../../../domain/interfaces/model/admin.interface";
 import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { amenitiesModel, TAmenitiesDocument } from "../models/amenitiesModel";
 import { BaseRepository } from "./baseRepo";
+import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../../../domain/interfaces/model/amenities.interface";
 
 @injectable()
 export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> implements IAmenitiesRepository {
@@ -10,12 +10,12 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         super(amenitiesModel);
     }
 
-    async createAmenities(data: Partial<IAmenities>): Promise<IAmenities | null> {
+    async createAmenity(data: TCreateAmenityData): Promise<IAmenities | null> {
         const amenity = await this.create(data);
         return amenity.toObject();
     }
 
-    async updateAmenities(id: string, data: Partial<IAmenities>): Promise<IAmenities | null> {
+    async updateAmenity(id: string, data: TUpdateAmenityData): Promise<IAmenities | null> {
         const amenity = await this.update(id, data);
         return amenity?.toObject() || null;
     }

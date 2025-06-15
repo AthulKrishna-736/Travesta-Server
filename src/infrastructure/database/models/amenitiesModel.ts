@@ -1,6 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IAmenities } from "../../../domain/interfaces/model/admin.interface";
-import { TBookingDocument } from "./bookingModel";
+import { IAmenities } from "../../../domain/interfaces/model/amenities.interface";
 
 export type TAmenitiesDocument = IAmenities & Document;
 
@@ -24,4 +23,4 @@ const amenitiesSchema: Schema = new Schema<TAmenitiesDocument>(
     { timestamps: true }
 );
 
-export const amenitiesModel = mongoose.model<TBookingDocument>('Amenities', amenitiesSchema);
+export const amenitiesModel = mongoose.model<TAmenitiesDocument>('Amenities', amenitiesSchema);

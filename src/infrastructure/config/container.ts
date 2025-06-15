@@ -17,7 +17,7 @@ import { IAwsS3Service } from "../../domain/interfaces/services/awsS3Service.int
 import { AwsS3Service } from "../services/awsS3Service";
 import { GetUserProfileUseCase } from "../../application/use-cases/user/getUser";
 import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
-import { IHotelRepository, IRoomRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository, IHotelRepository, IRoomRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
 import { CreateHotelUseCase } from "../../application/use-cases/vendor/hotel/createHotelUseCase";
@@ -45,6 +45,7 @@ import { CreateBookingUseCase } from "../../application/use-cases/vendor/booking
 import { GetBookingsByHotelUseCase } from "../../application/use-cases/vendor/booking/getBookingHotelUseCase";
 import { GetBookingsByUserUseCase } from "../../application/use-cases/vendor/booking/getBookingUserUseCase";
 import { CancelBookingUseCase } from "../../application/use-cases/vendor/booking/cancelBookingUseCase";
+import { AmenitiesRepository } from "../database/repositories/amenitiesRepo";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -61,6 +62,10 @@ container.register<IRoomRepository>(TOKENS.RoomRepository, {
 
 container.register(TOKENS.BookingRepository, {
   useClass: BookingRepository
+})
+
+container.register<IAmenitiesRepository>(TOKENS.AmenitiesRepository, {
+  useClass: AmenitiesRepository,
 })
 
 //services
