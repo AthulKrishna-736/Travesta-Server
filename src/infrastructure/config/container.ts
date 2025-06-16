@@ -46,6 +46,12 @@ import { GetBookingsByHotelUseCase } from "../../application/use-cases/vendor/bo
 import { GetBookingsByUserUseCase } from "../../application/use-cases/vendor/booking/getBookingUserUseCase";
 import { CancelBookingUseCase } from "../../application/use-cases/vendor/booking/cancelBookingUseCase";
 import { AmenitiesRepository } from "../database/repositories/amenitiesRepo";
+import { CreateAmenityUseCase } from "../../application/use-cases/admin/amenities/createAmenity.UseCase";
+import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
+import { UpdateAmenityUseCase } from "../../application/use-cases/admin/amenities/updateAmenity.UseCase";
+import { BlockUnblockAmenity } from "../../application/use-cases/admin/amenities/blockUnblockAmenity.UseCase";
+import { GetAmenityByIdUseCase } from "../../application/use-cases/admin/amenities/getAmenityById.UseCase";
+import { GetAllAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getAllAmenities.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -215,3 +221,29 @@ container.register<IGetBookingsByUserUseCase>(TOKENS.GetBookingsByUserUseCase, {
 container.register<ICancelBookingUseCase>(TOKENS.CancelRoomUseCase, {
   useClass: CancelBookingUseCase,
 })
+
+
+//amenities use case
+container.register<ICreateAmenityUseCase>(TOKENS.CreateAmenityUseCase, {
+  useClass: CreateAmenityUseCase,
+})
+
+container.register<IUpdateAmenityUseCase>(TOKENS.UpdateAmenityUseCase, {
+  useClass: UpdateAmenityUseCase,
+})
+
+container.register<IBlockUnblockAmenityUseCase>(TOKENS.BlockUnblockAmenityUseCase, {
+  useClass: BlockUnblockAmenity,
+})
+
+container.register<IGetAmenityByIdUseCase>(TOKENS.GetAmenityByIdUseCase, {
+  useClass: GetAmenityByIdUseCase,
+})
+
+container.register<IGetAllAmenitiesUseCase>(TOKENS.GetAllAmenitiesUseCase, {
+  useClass: GetAllAmenitiesUseCase,
+})
+
+
+
+

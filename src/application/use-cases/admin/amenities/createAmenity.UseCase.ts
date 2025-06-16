@@ -7,7 +7,7 @@ import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 
 
 @injectable()
-export class CreateAmenity implements ICreateAmenityUseCase {
+export class CreateAmenityUseCase implements ICreateAmenityUseCase {
     constructor(
         @inject(TOKENS.AmenitiesRepository) private _amenitiesRepo: IAmenitiesRepository,
     ) { }

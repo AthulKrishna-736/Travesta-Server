@@ -55,4 +55,10 @@ export const TOKENS = {
   CheckRoomAvlUseCase: 'CheckRoomAvlUseCase',
   CancelRoomUseCase: 'CancelRoomUseCase',
 
+  //amenities UseCase
+  CreateAmenityUseCase: 'CreateAmenityUseCase',
+  UpdateAmenityUseCase: 'UpdateAmenityUseCase',
+  GetAmenityByIdUseCase: 'GetAmenityByIdUseCase',
+  GetAllAmenitiesUseCase: 'GetAllAmenitiesUseCase',
+  BlockUnblockAmenityUseCase: 'BlockUnblockAmenityUseCase',
 };

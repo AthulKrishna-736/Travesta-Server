@@ -21,17 +21,17 @@ export interface ICreateAmenityUseCase {
 }
 
 export interface IUpdateAmenityUseCase {
-    updateAmenity(data: TUpdateAmenityData): Promise<TResponseAmenityData>
+    updateAmenity(amenityId: string, data: TUpdateAmenityData): Promise<{ amenity: TResponseAmenityData, message: string }>
 }
 
 export interface IGetAmenityByIdUseCase {
-    getAmenityById(amenityId: string): Promise<TResponseAmenityData>
+    getAmenityById(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }>
 }
 
 export interface IGetAllAmenitiesUseCase {
-    getAllAmenitiesUseCase(): Promise<TResponseAmenityData[]>
+    getAllAmenitiesUseCase(): Promise<{ amenities: TResponseAmenityData[], message: string}>
 }
 
 export interface IBlockUnblockAmenityUseCase {
-    blockUnblockAmenityUseCase(amenityId: string): Promise<TResponseAmenityData>
+    blockUnblockAmenityUseCase(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }>
 }
