@@ -5,8 +5,9 @@ import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAvailableRoomsByHotelUseCase, IGetAllRoomsUseCase, } from '../../domain/interfaces/model/usecases.interface';
+import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, } from '../../domain/interfaces/model/usecases.interface';
 import { CreateRoomDTO, UpdateRoomDTO } from '../dtos/hotel.dto';
+import { Pagination } from '../../shared/types/common.types';
 
 
 @injectable()
@@ -16,8 +17,8 @@ export class RoomController {
         @inject(TOKENS.UpdateRoomUseCase) private _updateRoomUseCase: IUpdateRoomUseCase,
         @inject(TOKENS.GetRoomByIdUseCase) private _getRoomByIdUseCase: IGetRoomByIdUseCase,
         @inject(TOKENS.GetRoomsByHotelUseCase) private _getRoomsByHotelUseCase: IGetRoomsByHotelUseCase,
-        @inject(TOKENS.GetAvailableRoomsByHotelUseCase) private _getAvailableRoomsByHotelUseCase: IGetAvailableRoomsByHotelUseCase,
         @inject(TOKENS.GetAllRoomsUseCase) private _getAllRoomsUseCase: IGetAllRoomsUseCase,
+        @inject(TOKENS.GetAvailableRoomsUseCase) private _getAvlRoomsUseCase: IGetAvailableRoomsUseCase,
     ) { }
 
     async createRoom(req: CustomRequest, res: Response): Promise<void> {
@@ -116,8 +117,8 @@ export class RoomController {
                 throw new AppError('Hotel ID is required', HttpStatusCode.BAD_REQUEST);
             }
 
-            const rooms = await this._getAvailableRoomsByHotelUseCase.getAvlRoomsByHotel(hotelId);
-            ResponseHandler.success(res, 'Available rooms fetched successfully', rooms, HttpStatusCode.OK);
+            // const rooms = await this._getAvailableRoomsByHotelUseCase.getAvlRoomsByHotel(hotelId);
+            // ResponseHandler.success(res, 'Available rooms fetched successfully', rooms, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -129,8 +130,25 @@ export class RoomController {
             const limit = Number(req.query.limit) || 10
             const search = req.query.search as string
 
-            const { rooms, message } = await this._getAllRoomsUseCase.getAllRooms(page, limit, search);
-            ResponseHandler.success(res, message, rooms, HttpStatusCode.OK);
+            const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(page, limit, search);
+
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
+            ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getAllAvlRooms(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const page = Number(req.query.page) || 1
+            const limit = Number(req.query.limit) || 10
+            const search = req.query.search as string
+
+            const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(page, limit, search);
+
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
+            ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

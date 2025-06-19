@@ -6,7 +6,7 @@ import { ResponseHotelDTO } from "../interfaceAdapters/dtos/hotel.dto";
 
 export function mapUserToResponseDTO(user: Omit<IUser, 'password'> & { id?: string }): ResponseUserDTO {
     return {
-        id: user.id,
+        id: user._id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,

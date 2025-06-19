@@ -7,6 +7,7 @@ import { IRedisService } from "../../../domain/interfaces/services/redisService.
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { UserLookupBase } from "../base/userLookup.base";
+import { IUserEntity } from "../../../domain/entities/user.entity";
 
 @injectable()
 export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqUseCase {
@@ -22,8 +23,8 @@ export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqU
         const { userEntities, total } = await this.getAllUserEntity(page, limit, 'vendor', search);
 
         const vendors = await Promise.all(
-            userEntities.map(async (vendorEntity) => {
-               
+            userEntities.map(async (vendorEntity: IUserEntity) => {
+
                 const kycDocs = vendorEntity.kycDocuments || [];
 
                 const signedUrls = kycDocs.length > 0

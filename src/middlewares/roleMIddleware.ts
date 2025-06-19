@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import { AppError } from "../utils/appError";
 import { HttpStatusCode } from "../utils/HttpStatusCodes";
 import { CustomRequest } from "../utils/customRequest";
@@ -10,8 +10,11 @@ export const authorizeRoles = (...roles: TRole[]) => {
         if (!req.user) {
             return next(new AppError("Not authenticated", HttpStatusCode.UNAUTHORIZED));
         }
+        const userRole = req.user.role.toString();
 
-        if (!roles.includes(req.user.role)) {
+        console.log('check roles:', userRole, 'Allowed:', roles);
+        if (!roles.includes(userRole as TRole)) {
+            console.log('Role mismatch. User role:', userRole, 'Allowed roles:', roles);
             return next(new AppError("You are not authorized to access this resource", HttpStatusCode.FORBIDDEN));
         }
 

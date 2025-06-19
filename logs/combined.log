@@ -22882,3 +22882,2910 @@
 [2025-06-07 20:54:28] INFO: [34mRunning in development mode[0m
 [2025-06-07 20:54:28] INFO: [34mMongoDB connected: localhost[0m
 [2025-06-07 20:54:28] INFO: [34mRedis connected successfully[0m
+[2025-06-07 20:54:32] INFO: [34mRunning in development mode[0m
+[2025-06-07 20:54:32] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 20:54:32] INFO: [34mRedis connected successfully[0m
+[2025-06-07 20:54:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749309803,
+  "exp": 1750605803
+}[0m
+[2025-06-07 21:18:22] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 21:18:23] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 21:18:25] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 21:18:26] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 21:19:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749311306,
+  "exp": 1750607306
+}[0m
+[2025-06-07 21:19:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749311306,
+  "exp": 1750607306
+}[0m
+[2025-06-07 21:21:31] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749311306,
+  "exp": 1750607306
+}[0m
+[2025-06-07 21:21:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749311306,
+  "exp": 1750607306
+}[0m
+[2025-06-07 21:21:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749311306,
+  "exp": 1750607306
+}[0m
+[2025-06-07 21:31:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749311306,
+  "exp": 1750607306
+}[0m
+[2025-06-07 21:31:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749311306,
+  "exp": 1750607306
+}[0m
+[2025-06-07 21:37:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 21:37:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 21:37:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749312423,
+  "exp": 1750608423
+}[0m
+[2025-06-07 21:37:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749312423,
+  "exp": 1750608423
+}[0m
+[2025-06-07 21:41:51] INFO: [34mRunning in development mode[0m
+[2025-06-07 21:41:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 21:41:51] INFO: [34mRedis connected successfully[0m
+[2025-06-07 21:43:02] INFO: [34mRunning in development mode[0m
+[2025-06-07 21:43:02] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-07 21:43:02] INFO: [34mRedis connected successfully[0m
+[2025-06-07 21:43:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749312423,
+  "exp": 1750608423
+}[0m
+[2025-06-07 21:43:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749312423,
+  "exp": 1750608423
+}[0m
+[2025-06-07 21:45:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749312423,
+  "exp": 1750608423
+}[0m
+[2025-06-07 21:45:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749312423,
+  "exp": 1750608423
+}[0m
+[2025-06-07 21:50:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749312423,
+  "exp": 1750608423
+}[0m
+[2025-06-07 21:50:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749312423,
+  "exp": 1750608423
+}[0m
+[2025-06-07 21:55:15] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 21:55:41] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749313515,
+  "exp": 1750609515
+}[0m
+[2025-06-07 21:55:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749313515,
+  "exp": 1750609515
+}[0m
+[2025-06-07 21:55:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749313515,
+  "exp": 1750609515
+}[0m
+[2025-06-07 21:55:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749313515,
+  "exp": 1750609515
+}[0m
+[2025-06-07 21:55:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749313515,
+  "exp": 1750609515
+}[0m
+[2025-06-07 21:56:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749313515,
+  "exp": 1750609515
+}[0m
+[2025-06-07 22:12:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-07 22:12:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:12:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-07 22:29:03] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-07 22:39:59] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-07 22:52:17] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-07 23:58:19] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 23:58:19] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-07 23:58:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749320899,
+  "exp": 1750616899
+}[0m
+[2025-06-07 23:58:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749320899,
+  "exp": 1750616899
+}[0m
+[2025-06-08 00:01:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749320899,
+  "exp": 1750616899
+}[0m
+[2025-06-08 00:03:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749320899,
+  "exp": 1750616899
+}[0m
+[2025-06-08 00:07:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749320899,
+  "exp": 1750616899
+}[0m
+[2025-06-08 00:09:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749320899,
+  "exp": 1750616899
+}[0m
+[2025-06-08 00:14:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-08 00:27:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749321892,
+  "exp": 1750617892
+}[0m
+[2025-06-08 21:05:40] INFO: [34mRunning in development mode[0m
+[2025-06-08 21:05:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-08 21:05:41] INFO: [34mRedis connected successfully[0m
+[2025-06-08 21:06:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-08 21:06:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749396961,
+  "exp": 1750692961
+}[0m
+[2025-06-08 21:06:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749396961,
+  "exp": 1750692961
+}[0m
+[2025-06-08 21:35:47] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-08 22:38:12] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-08 22:38:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 22:38:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-08 23:18:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-08 23:18:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749404886,
+  "exp": 1750700886
+}[0m
+[2025-06-08 23:23:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749404886,
+  "exp": 1750700886
+}[0m
+[2025-06-08 23:29:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749404886,
+  "exp": 1750700886
+}[0m
+[2025-06-08 23:30:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749404886,
+  "exp": 1750700886
+}[0m
+[2025-06-08 23:33:48] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-08 23:33:54] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749405828,
+  "exp": 1750701828
+}[0m
+[2025-06-08 23:39:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749405828,
+  "exp": 1750701828
+}[0m
+[2025-06-08 23:45:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749405828,
+  "exp": 1750701828
+}[0m
+[2025-06-08 23:50:55] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-08 23:53:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749406855,
+  "exp": 1750702855
+}[0m
+[2025-06-09 00:00:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749406855,
+  "exp": 1750702855
+}[0m
+[2025-06-09 00:06:04] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-09 00:06:05] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749407764,
+  "exp": 1750703764
+}[0m
+[2025-06-09 00:11:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749407764,
+  "exp": 1750703764
+}[0m
+[2025-06-09 00:12:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749407764,
+  "exp": 1750703764
+}[0m
+[2025-06-09 00:12:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749407764,
+  "exp": 1750703764
+}[0m
+[2025-06-09 00:12:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749407764,
+  "exp": 1750703764
+}[0m
+[2025-06-09 00:12:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749407764,
+  "exp": 1750703764
+}[0m
+[2025-06-09 00:12:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749407764,
+  "exp": 1750703764
+}[0m
+[2025-06-10 16:19:10] INFO: [34mRunning in development mode[0m
+[2025-06-10 16:19:10] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 16:19:10] INFO: [34mRedis connected successfully[0m
+[2025-06-10 16:19:34] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-10 16:19:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749552574,
+  "exp": 1750848574
+}[0m
+[2025-06-10 16:19:39] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749552574,
+  "exp": 1750848574
+}[0m
+[2025-06-10 16:21:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749552574,
+  "exp": 1750848574
+}[0m
+[2025-06-10 16:21:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749552574,
+  "exp": 1750848574
+}[0m
+[2025-06-10 16:26:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749552574,
+  "exp": 1750848574
+}[0m
+[2025-06-10 16:26:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749552574,
+  "exp": 1750848574
+}[0m
+[2025-06-10 16:26:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749552574,
+  "exp": 1750848574
+}[0m
+[2025-06-10 16:27:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749552574,
+  "exp": 1750848574
+}[0m
+[2025-06-10 17:43:38] INFO: [34mRunning in development mode[0m
+[2025-06-10 17:43:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 17:43:39] INFO: [34mRedis connected successfully[0m
+[2025-06-10 17:44:32] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-06-10 17:44:36] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250610%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250610T121436Z&X-Amz-Expires=84600&X-Amz-Signature=445e66ad04a49c7b82c53e431c415c35422bce19177c5dabeea43f45fe3bd46b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-10T12:14:36.107Z"
+}[0m
+[2025-06-10 17:44:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749557674,
+  "exp": 1750853674
+}[0m
+[2025-06-10 17:49:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749557674,
+  "exp": 1750853674
+}[0m
+[2025-06-10 17:49:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749557674,
+  "exp": 1750853674
+}[0m
+[2025-06-10 17:49:43] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "krishna",
+  "email": "adminAthul@gmail.com",
+  "phone": 1234567890,
+  "isBlocked": false,
+  "role": "admin",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T15:52:07.765Z",
+  "updatedAt": "2025-06-10T12:19:43.738Z"
+}[0m
+[2025-06-10 17:49:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 17:50:10] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 17:50:10] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-06-10 17:55:31] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 17:55:42] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 17:55:54] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 17:57:53] INFO: [34mRunning in development mode[0m
+[2025-06-10 17:57:53] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 17:57:53] INFO: [34mRedis connected successfully[0m
+[2025-06-10 17:58:26] INFO: [34mRunning in development mode[0m
+[2025-06-10 17:58:27] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 17:58:27] INFO: [34mRedis connected successfully[0m
+[2025-06-10 17:58:57] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 17:59:45] INFO: [34mRunning in development mode[0m
+[2025-06-10 17:59:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 17:59:45] INFO: [34mRedis connected successfully[0m
+[2025-06-10 18:00:22] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 18:00:26] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 18:00:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 18:00:34] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 18:00:34] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-06-10 18:01:18] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749557983,
+  "exp": 1750853983
+}[0m
+[2025-06-10 18:01:31] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250610%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250610T121436Z&X-Amz-Expires=84600&X-Amz-Signature=445e66ad04a49c7b82c53e431c415c35422bce19177c5dabeea43f45fe3bd46b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [
+    "users/kyc_front_680e1f4632a706b6e9f0b8b3.png",
+    "users/kyc_back_680e1f4632a706b6e9f0b8b3.png"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-10T12:31:31.289Z"
+}[0m
+[2025-06-10 18:01:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749558691,
+  "exp": 1750854691
+}[0m
+[2025-06-10 18:01:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749558691,
+  "exp": 1750854691
+}[0m
+[2025-06-10 18:01:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749558691,
+  "exp": 1750854691
+}[0m
+[2025-06-10 18:01:59] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250610%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250610T121436Z&X-Amz-Expires=84600&X-Amz-Signature=445e66ad04a49c7b82c53e431c415c35422bce19177c5dabeea43f45fe3bd46b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [
+    "users/kyc_front_680e1f4632a706b6e9f0b8b3.png",
+    "users/kyc_back_680e1f4632a706b6e9f0b8b3.png"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-10T12:31:59.487Z"
+}[0m
+[2025-06-10 18:03:44] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749558719,
+  "exp": 1750854719
+}[0m
+[2025-06-10 18:03:45] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749558719,
+  "exp": 1750854719
+}[0m
+[2025-06-10 18:12:35] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-10 18:14:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749558719,
+  "exp": 1750854719
+}[0m
+[2025-06-10 18:14:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749558719,
+  "exp": 1750854719
+}[0m
+[2025-06-10 18:20:35] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-10 18:20:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749559835,
+  "exp": 1750855835
+}[0m
+[2025-06-10 18:23:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749559835,
+  "exp": 1750855835
+}[0m
+[2025-06-10 18:28:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749559835,
+  "exp": 1750855835
+}[0m
+[2025-06-10 18:32:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749559835,
+  "exp": 1750855835
+}[0m
+[2025-06-10 18:33:13] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1749559835,
+  "exp": 1750855835
+}[0m
+[2025-06-10 18:33:51] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749560608,
+  "exp": 1750856608
+}[0m
+[2025-06-10 18:34:14] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749560640,
+  "exp": 1750856640
+}[0m
+[2025-06-10 18:34:23] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749560640,
+  "exp": 1750856640
+}[0m
+[2025-06-10 18:34:23] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749560640,
+  "exp": 1750856640
+}[0m
+[2025-06-10 18:39:12] INFO: [34mRunning in development mode[0m
+[2025-06-10 18:39:13] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 18:39:13] INFO: [34mRedis connected successfully[0m
+[2025-06-10 19:41:24] INFO: [34mRunning in development mode[0m
+[2025-06-10 19:41:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 19:41:25] INFO: [34mRedis connected successfully[0m
+[2025-06-10 19:41:57] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-10 19:42:00] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:42:01] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:42:02] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:42:02] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:42:04] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:42:04] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:42:08] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:42:08] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:42:44] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:42:44] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:42:45] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:42:45] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:42:47] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:42:47] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:43:06] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:43:06] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:44:08] INFO: [34m{
+  "userId": "680f29607502062199368d34",
+  "role": "user",
+  "email": "athulkrishna736@gmail.com",
+  "iat": 1749564717,
+  "exp": 1750860717
+}[0m
+[2025-06-10 19:44:18] INFO: [34m{
+  "firstName": "slight",
+  "lastName": "change",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250610%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250610T141418Z&X-Amz-Expires=84600&X-Amz-Signature=171478e2923d8a2276820602bcdde8616d917cde3b3c515863cea609cfd20008&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-06-10T14:14:18.836Z"
+}[0m
+[2025-06-10 19:44:23] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:44:23] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:44:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:44:24] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:44:26] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:44:26] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:44:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:44:30] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:44:50] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:44:50] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:44:51] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:44:51] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:44:53] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:44:53] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:45:24] INFO: [34mRunning in development mode[0m
+[2025-06-10 19:45:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 19:45:25] INFO: [34mRedis connected successfully[0m
+[2025-06-10 19:45:28] INFO: [34mRunning in development mode[0m
+[2025-06-10 19:45:28] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 19:45:28] INFO: [34mRedis connected successfully[0m
+[2025-06-10 19:45:31] INFO: [34mRunning in development mode[0m
+[2025-06-10 19:45:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 19:45:32] INFO: [34mRedis connected successfully[0m
+[2025-06-10 19:45:46] INFO: [34mRunning in development mode[0m
+[2025-06-10 19:45:46] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 19:45:46] INFO: [34mRedis connected successfully[0m
+[2025-06-10 19:52:03] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:52:03] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:52:49] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:52:49] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:52:50] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:52:50] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:53:20] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:53:20] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:53:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:53:24] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:56:56] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:56:56] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:56:58] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:56:58] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:57:13] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:57:13] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:57:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:57:19] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:57:20] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:57:20] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:57:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:57:21] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:57:31] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:57:31] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:57:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:57:52] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:57:55] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749564858,
+  "exp": 1750860858
+}[0m
+[2025-06-10 19:58:05] INFO: [34m{
+  "firstName": "slight",
+  "lastName": "change",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250610%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250610T141418Z&X-Amz-Expires=84600&X-Amz-Signature=171478e2923d8a2276820602bcdde8616d917cde3b3c515863cea609cfd20008&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-06-10T14:28:05.774Z"
+}[0m
+[2025-06-10 19:58:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749565685,
+  "exp": 1750861685
+}[0m
+[2025-06-10 19:58:14] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:58:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749565685,
+  "exp": 1750861685
+}[0m
+[2025-06-10 19:58:15] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:58:17] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749565685,
+  "exp": 1750861685
+}[0m
+[2025-06-10 19:58:17] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 19:58:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749565685,
+  "exp": 1750861685
+}[0m
+[2025-06-10 19:58:21] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 20:48:16] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-10 20:48:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:48:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 20:58:47] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-10 20:58:49] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 20:58:49] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 20:58:50] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 20:58:50] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 20:58:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 20:58:52] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 20:58:56] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 20:58:56] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:06:29] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:06:29] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:06:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:06:30] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:06:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:06:32] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:06:36] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:06:36] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:07:01] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:07:01] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:07:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:07:02] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:07:07] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:07:07] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:08:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:08:14] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:08:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:08:19] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:08:35] INFO: [34mRunning in development mode[0m
+[2025-06-10 21:08:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 21:08:36] INFO: [34mRedis connected successfully[0m
+[2025-06-10 21:08:50] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:08:50] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:08:54] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:08:54] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:08:55] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:08:55] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:08:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:08:57] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:09:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:09:02] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:09:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:09:30] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:09:31] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:09:31] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:10:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:10:19] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:10:27] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:10:27] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:12:11] INFO: [34mRunning in development mode[0m
+[2025-06-10 21:12:12] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 21:12:12] INFO: [34mRedis connected successfully[0m
+[2025-06-10 21:12:39] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:12:39] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:12:41] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:12:41] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:12:44] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:12:44] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:12:46] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:12:46] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:12:48] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:12:48] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:12:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:12:52] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:12:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:12:57] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:12:58] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:12:58] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:13:00] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:13:00] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:13:04] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:13:04] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:13:12] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:13:12] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:13:13] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:13:13] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:13:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:13:15] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:13:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749569327,
+  "exp": 1750865327
+}[0m
+[2025-06-10 21:13:19] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:13:54] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-10 21:13:55] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749570234,
+  "exp": 1750866234
+}[0m
+[2025-06-10 21:13:55] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 21:55:30] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-10 21:55:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 21:55:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:36] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-10 22:17:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:17:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-10 22:18:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-10 22:18:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749574086,
+  "exp": 1750870086
+}[0m
+[2025-06-10 22:18:08] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 22:18:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749574086,
+  "exp": 1750870086
+}[0m
+[2025-06-10 22:18:32] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 22:18:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749574086,
+  "exp": 1750870086
+}[0m
+[2025-06-10 22:18:34] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 22:19:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749574086,
+  "exp": 1750870086
+}[0m
+[2025-06-10 22:19:47] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 22:23:45] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749574086,
+  "exp": 1750870086
+}[0m
+[2025-06-10 22:23:45] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:16:00] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-10 23:16:03] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:16:03] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:16:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:16:05] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:16:07] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:16:07] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:16:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:16:11] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:16:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:16:52] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:16:53] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:16:53] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:16:55] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:16:55] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:17:10] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:17:10] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:17:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:17:14] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:17:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:17:16] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:17:40] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:17:40] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:22:10] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:22:10] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:22:10] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:22:32] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:22:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:22:33] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:23:03] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:23:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:23:04] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:23:09] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:23:17] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:23:17] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:23:56] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:23:57] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:23:57] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:24:20] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:24:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:24:20] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:24:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:24:25] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:24:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:24:30] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:24:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:24:32] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:24:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:24:47] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:24:51] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:24:51] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:25:23] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:25:23] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:25:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:25:24] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:25:26] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:25:26] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:25:27] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749577560,
+  "exp": 1750873560
+}[0m
+[2025-06-10 23:25:44] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "krishna",
+  "email": "adminAthul@gmail.com",
+  "phone": 1234567890,
+  "isBlocked": false,
+  "role": "admin",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T15:52:07.765Z",
+  "updatedAt": "2025-06-10T17:55:44.708Z"
+}[0m
+[2025-06-10 23:25:49] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749578144,
+  "exp": 1750874144
+}[0m
+[2025-06-10 23:25:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749578144,
+  "exp": 1750874144
+}[0m
+[2025-06-10 23:25:55] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749578144,
+  "exp": 1750874144
+}[0m
+[2025-06-10 23:27:58] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:27:58] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:27:58] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:28:15] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:28:16] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:28:16] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:28:32] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:28:32] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:28:32] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:28:45] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:28:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:28:45] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:28:49] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:28:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:28:49] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:29:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1749578144,
+  "exp": 1750874144
+}[0m
+[2025-06-10 23:29:25] INFO: [34m{
+  "firstName": "slight",
+  "lastName": "change",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250610%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250610T141418Z&X-Amz-Expires=84600&X-Amz-Signature=171478e2923d8a2276820602bcdde8616d917cde3b3c515863cea609cfd20008&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-06-10T17:59:25.262Z"
+}[0m
+[2025-06-10 23:29:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:29:32] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:29:33] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:29:33] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:29:35] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:29:35] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:29:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:29:47] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:29:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:29:52] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:29:59] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:29:59] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:30:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:30:02] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:34:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:34:15] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:34:36] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:34:36] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:34:41] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:34:41] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-10 23:35:05] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:35:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:35:06] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:35:10] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:36:49] INFO: [34mRunning in development mode[0m
+[2025-06-10 23:36:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-10 23:36:50] INFO: [34mRedis connected successfully[0m
+[2025-06-10 23:37:29] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:37:33] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:38:44] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:38:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:38:59] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:39:40] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:39:48] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:39:59] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:40:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:42:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749578365,
+  "exp": 1750874365
+}[0m
+[2025-06-10 23:48:18] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-10 23:48:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:48:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:50:09] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:50:36] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:51:04] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:54:38] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:54:42] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:54:48] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:54:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:55:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:55:43] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:55:53] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:56:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:56:51] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:57:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:57:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:59:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-10 23:59:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749579498,
+  "exp": 1750875498
+}[0m
+[2025-06-11 00:05:08] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-11 00:05:09] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749580508,
+  "exp": 1750876508
+}[0m
+[2025-06-11 00:05:29] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749580508,
+  "exp": 1750876508
+}[0m
+[2025-06-11 00:05:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749580508,
+  "exp": 1750876508
+}[0m
+[2025-06-11 00:05:35] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749580508,
+  "exp": 1750876508
+}[0m
+[2025-06-11 00:06:00] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749580508,
+  "exp": 1750876508
+}[0m
+[2025-06-11 00:06:06] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749580508,
+  "exp": 1750876508
+}[0m
+[2025-06-11 00:06:20] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749580508,
+  "exp": 1750876508
+}[0m
+[2025-06-11 19:28:30] INFO: [34mRunning in development mode[0m
+[2025-06-11 19:28:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-11 19:28:31] INFO: [34mRedis connected successfully[0m
+[2025-06-11 19:41:02] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-11 19:41:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749651062,
+  "exp": 1750947062
+}[0m
+[2025-06-11 19:42:06] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749651062,
+  "exp": 1750947062
+}[0m
+[2025-06-11 19:42:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749651062,
+  "exp": 1750947062
+}[0m
+[2025-06-11 19:54:09] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749651062,
+  "exp": 1750947062
+}[0m
+[2025-06-11 19:54:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749651062,
+  "exp": 1750947062
+}[0m
+[2025-06-11 20:00:30] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-11 20:00:31] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:01:18] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:03:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:03:59] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:04:00] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:04:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:05:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:05:37] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:05:38] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:05:51] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:05:53] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:06:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:06:10] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:06:41] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:06:48] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:06:49] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:06:50] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:07:09] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:07:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:07:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:08:37] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:08:38] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:09:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:10:28] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:13:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:13:35] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:13:41] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:14:31] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749652230,
+  "exp": 1750948230
+}[0m
+[2025-06-11 20:56:54] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-11 20:56:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:56:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:57:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:57:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:57:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:57:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 20:57:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:30] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-11 21:20:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:20:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-11 21:31:18] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-11 21:31:20] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749657678,
+  "exp": 1750953678
+}[0m
+[2025-06-11 21:43:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749657678,
+  "exp": 1750953678
+}[0m
+[2025-06-11 21:44:03] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749657678,
+  "exp": 1750953678
+}[0m
+[2025-06-11 21:49:09] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-11 21:49:10] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749658749,
+  "exp": 1750954749
+}[0m
+[2025-06-11 21:49:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749658749,
+  "exp": 1750954749
+}[0m
+[2025-06-11 21:49:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749658749,
+  "exp": 1750954749
+}[0m
+[2025-06-11 21:49:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749658749,
+  "exp": 1750954749
+}[0m
+[2025-06-11 21:54:41] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-11 21:56:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749658749,
+  "exp": 1750954749
+}[0m
+[2025-06-11 22:56:57] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-12 23:09:26] INFO: [34mRunning in development mode[0m
+[2025-06-12 23:09:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-12 23:09:27] INFO: [34mRedis connected successfully[0m
+[2025-06-12 23:11:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-12 23:11:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749750063,
+  "exp": 1751046063
+}[0m
+[2025-06-12 23:55:45] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-12 23:55:46] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1749752745,
+  "exp": 1751048745
+}[0m
+[2025-06-13 14:13:39] INFO: [34mRunning in development mode[0m
+[2025-06-13 14:13:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-13 14:13:39] INFO: [34mRedis connected successfully[0m
+[2025-06-13 14:42:21] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-13 14:42:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 14:42:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:05] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-13 17:36:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 17:36:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-13 18:38:47] INFO: [34mRunning in development mode[0m
+[2025-06-13 18:38:47] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-13 18:38:49] INFO: [34mRunning in development mode[0m
+[2025-06-13 18:38:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-13 18:38:49] INFO: [34mRedis connected successfully[0m
+[2025-06-13 18:42:06] INFO: [34mRunning in development mode[0m
+[2025-06-13 18:42:06] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-13 18:42:06] INFO: [34mRedis connected successfully[0m
+[2025-06-13 18:42:14] INFO: [34mRunning in development mode[0m
+[2025-06-13 18:42:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-13 18:42:14] INFO: [34mRedis connected successfully[0m
+[2025-06-19 11:50:20] INFO: [34mRunning in development mode[0m
+[2025-06-19 11:50:21] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-19 11:50:21] INFO: [34mRedis connected successfully[0m
+[2025-06-19 11:50:38] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-19 11:50:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750314038,
+  "exp": 1751610038
+}[0m
+[2025-06-19 11:50:53] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-06-19 11:50:55] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250619%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250619T043737Z&X-Amz-Expires=84600&X-Amz-Signature=e05a1134636eded31971480cf9f47ef8e9987829a49034332302ec4faa562f5f&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [
+    "users/kyc_front_680e1f4632a706b6e9f0b8b3.png",
+    "users/kyc_back_680e1f4632a706b6e9f0b8b3.png"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-19T06:20:55.279Z"
+}[0m
+[2025-06-19 11:50:57] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750314055,
+  "exp": 1751610055
+}[0m
+[2025-06-19 11:51:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750314055,
+  "exp": 1751610055
+}[0m
+[2025-06-19 12:01:07] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750314055,
+  "exp": 1751610055
+}[0m
+[2025-06-19 12:01:32] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750314055,
+  "exp": 1751610055
+}[0m
+[2025-06-19 12:02:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750314055,
+  "exp": 1751610055
+}[0m
+[2025-06-19 12:10:45] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-19 12:18:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750315245,
+  "exp": 1751611245
+}[0m
+[2025-06-19 12:18:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750315245,
+  "exp": 1751611245
+}[0m
+[2025-06-19 12:18:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750315245,
+  "exp": 1751611245
+}[0m
+[2025-06-19 12:18:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750315245,
+  "exp": 1751611245
+}[0m
+[2025-06-19 13:59:57] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-19 13:59:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 13:59:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 13:59:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 13:59:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 13:59:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 13:59:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 13:59:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 13:59:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 14:00:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-19 14:09:02] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-19 14:09:02] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-19 14:09:05] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750322342,
+  "exp": 1751618342
+}[0m
+[2025-06-19 14:18:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750322342,
+  "exp": 1751618342
+}[0m
+[2025-06-19 14:18:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750322342,
+  "exp": 1751618342
+}[0m
+[2025-06-19 14:19:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750322342,
+  "exp": 1751618342
+}[0m
+[2025-06-19 14:19:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750322342,
+  "exp": 1751618342
+}[0m
+[2025-06-19 14:20:31] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750322342,
+  "exp": 1751618342
+}[0m
+[2025-06-19 14:20:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750322342,
+  "exp": 1751618342
+}[0m
+[2025-06-19 14:30:36] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-19 14:30:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:30:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:31:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:31:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:32:05] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:32:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:32:17] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:37:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:37:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:37:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:37:51] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Hotel"[0m
+[2025-06-19 14:42:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:42:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750323636,
+  "exp": 1751619636
+}[0m
+[2025-06-19 14:47:30] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-19 14:47:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750324650,
+  "exp": 1751620650
+}[0m
+[2025-06-19 14:48:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750324650,
+  "exp": 1751620650
+}[0m
+[2025-06-19 14:48:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750324650,
+  "exp": 1751620650
+}[0m
+[2025-06-19 14:48:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750324650,
+  "exp": 1751620650
+}[0m
+[2025-06-19 14:54:00] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750324650,
+  "exp": 1751620650
+}[0m
+[2025-06-19 15:12:37] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-19 15:12:38] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:13:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:17:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:18:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:18:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:18:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:18:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:18:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:18:59] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:19:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:19:45] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:25:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:25:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:25:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750326157,
+  "exp": 1751622157
+}[0m
+[2025-06-19 15:29:26] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-19 15:29:32] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750327166,
+  "exp": 1751623166
+}[0m
+[2025-06-19 15:29:44] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "krishna",
+  "email": "adminAthul@gmail.com",
+  "phone": 1234567890,
+  "isBlocked": false,
+  "role": "admin",
+  "wishlist": [],
+  "subscriptionType": "basic",
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T15:52:07.765Z",
+  "updatedAt": "2025-06-19T09:59:44.064Z"
+}[0m
+[2025-06-19 15:29:46] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1750327183,
+  "exp": 1751623183
+}[0m
+[2025-06-19 15:29:48] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1750327183,
+  "exp": 1751623183
+}[0m
+[2025-06-19 15:29:48] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-06-19 15:30:06] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1750327183,
+  "exp": 1751623183
+}[0m
+[2025-06-19 15:30:06] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m

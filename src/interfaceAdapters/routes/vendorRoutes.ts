@@ -55,11 +55,11 @@ export class vendorRoutes extends BaseRouter {
         //rooms
         this.router
             .get('/rooms', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getAllRooms(req, res))
+            .get('/rooms/available', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res) => this._roomController.getAllAvlRooms(req, res))
             .post('/rooms', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req, res) => this._roomController.createRoom(req, res))
             .patch('/rooms/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req, res) => this._roomController.updateRoom(req, res))
             .get('/rooms/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getRoomById(req, res))
             .get('/hotels/:hotelId/rooms', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res) => this._roomController.getRoomsByHotel(req, res))
             .get('/hotels/:hotelId/rooms/available', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getAvailableRoomsByHotel(req, res));
-
     }
 }

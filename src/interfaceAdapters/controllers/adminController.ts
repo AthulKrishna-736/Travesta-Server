@@ -43,7 +43,7 @@ export class AdminController {
 
             const { users, total } = await this._getAllUsersUsecase.getAllUsers(page, limit, role, search);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-            let mappedUser = users.map(user => mapUserToResponseDTO(user))
+            let mappedUser = users.map(user => mapUserToResponseDTO(user));
 
             ResponseHandler.success(res, 'All users fetched successfully', mappedUser, HttpStatusCode.OK, meta);
         } catch (error) {

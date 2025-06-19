@@ -10,9 +10,9 @@ import { TResponseRoomData } from '../../../../domain/interfaces/model/hotel.int
 @injectable()
 export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) private _roomRepo: IRoomRepository,
-        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+        @inject(TOKENS.RoomRepository) protected _roomRepo: IRoomRepository,
+        @inject(TOKENS.AwsS3Service) protected _awsS3Service: IAwsS3Service,
+        @inject(TOKENS.RedisService) protected _redisService: IRedisService,
     ) { }
 
     async getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomData[]; message: string; total: number }> {
