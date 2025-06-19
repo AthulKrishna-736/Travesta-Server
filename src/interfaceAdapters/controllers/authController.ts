@@ -7,7 +7,7 @@ import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
 import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
-import { CreateUserDTO, ResponseUserDTO } from "../dtos/user.dto";
+import { CreateUserDTO } from "../dtos/user.dto";
 import { mapUserToResponseDTO } from "../../utils/responseMapper";
 import logger from "../../utils/logger";
 

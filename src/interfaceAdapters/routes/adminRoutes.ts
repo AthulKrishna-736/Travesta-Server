@@ -7,27 +7,37 @@ import { CustomRequest } from "../../utils/customRequest";
 import { authMiddleware } from "../../middlewares/auth";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
 import { AuthController } from "../controllers/authController";
+import { AmenityController } from "../controllers/amenityController";
 
 export class adminRoutes extends BaseRouter {
-    private authController: AuthController;
-    private adminController: AdminController;
+    private _authController: AuthController;
+    private _adminController: AdminController;
+    private _amenityController: AmenityController;
 
     constructor() {
         super();
-        this.authController = container.resolve(AuthController);
-        this.adminController = container.resolve(AdminController);
+        this._authController = container.resolve(AuthController);
+        this._adminController = container.resolve(AdminController);
+        this._amenityController = container.resolve(AmenityController);
         this.initializeRoutes();
     }
 
     protected initializeRoutes(): void {
         this.router
-            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this.authController.login(req, res))
-            .post('/auth/logout', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.authController.logout(req, res))
+            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this._authController.login(req, res))
+            .post('/auth/logout', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._authController.logout(req, res))
 
-            .get('/users', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.getAllUsers(req, res))
-            .patch('/users/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.blockOrUnblockUser(req, res))
+            .get('/users', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getAllUsers(req, res))
+            .patch('/users/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.blockOrUnblockUser(req, res))
 
-            .get('/vendor-requests', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.getVendorRequest(req, res))
-            .patch('/vendor/:vendorId/verify', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this.adminController.updateVendorReq(req, res))
+            .get('/vendor-requests', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getVendorRequest(req, res))
+            .patch('/vendor/:vendorId/verify', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.updateVendorReq(req, res));
+
+        this.router
+            .post("/amenities", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.createAmenity(req, res))
+            .patch("/amenities/:id", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.updateAmenity(req, res))
+            .patch("/amenities/:id/block-toggle", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.blockUnblockAmenity(req, res))
+            .get("/amenities", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.getAllAmenities(req, res))
+            .get("/amenities/active", authMiddleware, authorizeRoles("admin", "user", "vendor"), (req: CustomRequest, res) => this._amenityController.getAllActiveAmenities(req, res));
     }
 }
