@@ -47,11 +47,12 @@ import { GetBookingsByUserUseCase } from "../../application/use-cases/vendor/boo
 import { CancelBookingUseCase } from "../../application/use-cases/vendor/booking/cancelBookingUseCase";
 import { AmenitiesRepository } from "../database/repositories/amenitiesRepo";
 import { CreateAmenityUseCase } from "../../application/use-cases/admin/amenities/createAmenity.UseCase";
-import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
+import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IGetActiveAmenitiesUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
 import { UpdateAmenityUseCase } from "../../application/use-cases/admin/amenities/updateAmenity.UseCase";
 import { BlockUnblockAmenity } from "../../application/use-cases/admin/amenities/blockUnblockAmenity.UseCase";
 import { GetAmenityByIdUseCase } from "../../application/use-cases/admin/amenities/getAmenityById.UseCase";
 import { GetAllAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getAllAmenities.UseCase";
+import { GetActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getActiveAmenities.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -244,6 +245,9 @@ container.register<IGetAllAmenitiesUseCase>(TOKENS.GetAllAmenitiesUseCase, {
   useClass: GetAllAmenitiesUseCase,
 })
 
+container.register<IGetActiveAmenitiesUseCase>(TOKENS.GetActiveAmenitiesUseCase, {
+  useClass: GetActiveAmenitiesUseCase
+})
 
 
 

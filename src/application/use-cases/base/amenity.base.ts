@@ -17,18 +17,14 @@ export abstract class AmenityLookupBase {
         return new AmenitiesEntity(amenityData);
     }
 
-    protected async getAllAmenitiesOrThrow(): Promise<IAmenitiesEntity[]> {
-        const amenities = await this._amenityRepo.findAllAmenities();
+    protected async getAllAmenitiesOrThrow(page: number, limit: number, search?: string): Promise<{ amenities: IAmenitiesEntity[], total: number }> {
+        const { amenities, total } = await this._amenityRepo.findAllAmenities(page, limit, search);
 
         if (!amenities) {
             throw new AppError('amenities not found', HttpStatusCode.BAD_REQUEST);
         }
 
-        if (amenities.length == 0) {
-            throw new AppError('No amenities to fetch. Please create one', HttpStatusCode.BAD_REQUEST);
-        }
-
         const amenitiesEntity = amenities.map(a => new AmenitiesEntity(a));
-        return amenitiesEntity;
+        return { amenities: amenitiesEntity, total };
     }
 }

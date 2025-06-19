@@ -13,14 +13,17 @@ export class GetAllAmenitiesUseCase extends AmenityLookupBase implements IGetAll
         super(amenitiesRepo)
     }
 
-    async getAllAmenitiesUseCase(): Promise<{ amenities: TResponseAmenityData[]; message: string; }> {
-        const amenities = await this.getAllAmenitiesOrThrow();
+    async getAllAmenitiesUseCase(page: number, limit: number, search?: string): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }> {
+        const { amenities, total } = await this.getAllAmenitiesOrThrow(page, limit, search);
 
-        const mappedAmenityEnitites = amenities.map(a => a.toObject());
+        const mappedAmenityEntities = amenities.map(a => a.toObject());
 
         return {
-            amenities: mappedAmenityEnitites,
-            message: 'fetched amenities successfully',
-        }
+            amenities: mappedAmenityEntities,
+            message: mappedAmenityEntities.length > 0
+                ? 'Fetched amenities successfully.'
+                : 'No amenities found. You can create one.',
+            total
+        };
     }
 }

@@ -25,8 +25,28 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         return amenity?.toObject() || null;
     }
 
-    async findAllAmenities(): Promise<IAmenities[] | null> {
-        const amenities = await this.find({ isActive: true }).lean<IAmenities[]>()
-        return amenities
+    async findAllAmenities(page: number, limit: number, search?: string): Promise<{ amenities: IAmenities[] | null, total: number }> {
+        const skip = (page - 1) * limit;
+        const filter: any = {}
+        if (search) {
+            const searchRegex = new RegExp(search, 'i')
+            filter.$or = [
+                { name: searchRegex },
+            ]
+        }
+
+        const total = await this.model.countDocuments(filter);
+        const amenities = await this.find(filter).skip(skip).limit(limit).lean<IAmenities[]>();
+        return { amenities, total }
+    }
+
+    async getQuery(filter: any = {}): Promise<{ amenities: IAmenities[], total: number }> {
+        const amenities = await this.find(filter);
+        const total = await this.model.countDocuments(filter);
+
+        return {
+            amenities,
+            total,
+        }
     }
 }

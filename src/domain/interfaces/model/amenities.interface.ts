@@ -17,7 +17,7 @@ export type TResponseAmenityData = Omit<IAmenities, ''>
 
 // amenity use cases
 export interface ICreateAmenityUseCase {
-    createAmenity(data: TCreateAmenityData): Promise<TResponseAmenityData>
+    createAmenity(data: TCreateAmenityData): Promise<{ amenity: TResponseAmenityData, message: string }>
 }
 
 export interface IUpdateAmenityUseCase {
@@ -29,9 +29,13 @@ export interface IGetAmenityByIdUseCase {
 }
 
 export interface IGetAllAmenitiesUseCase {
-    getAllAmenitiesUseCase(): Promise<{ amenities: TResponseAmenityData[], message: string}>
+    getAllAmenitiesUseCase(page: number, limit: number, search?: string): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }>
 }
 
 export interface IBlockUnblockAmenityUseCase {
     blockUnblockAmenityUseCase(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }>
+}
+
+export interface IGetActiveAmenitiesUseCase {
+    getActiveAmenities(): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }>
 }

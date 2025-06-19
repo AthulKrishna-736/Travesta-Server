@@ -12,13 +12,16 @@ export class CreateAmenityUseCase implements ICreateAmenityUseCase {
         @inject(TOKENS.AmenitiesRepository) private _amenitiesRepo: IAmenitiesRepository,
     ) { }
 
-    async createAmenity(data: TCreateAmenityData): Promise<TResponseAmenityData> {
+    async createAmenity(data: TCreateAmenityData): Promise<{ amenity: TResponseAmenityData, message: string }> {
         const amenity = await this._amenitiesRepo.createAmenity(data);
 
         if (!amenity) {
             throw new AppError('Failed to create amenity', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
-        return amenity;
+        return {
+            amenity,
+            message: 'amenity created successfully',
+        };
     }
 }

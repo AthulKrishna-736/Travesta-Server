@@ -44,5 +44,6 @@ export interface IAmenitiesRepository {
   createAmenity(data: TCreateAmenityData): Promise<IAmenities | null>
   findAmenityById(id: string): Promise<IAmenities | null>
   updateAmenity(id: string, data: TUpdateAmenityData): Promise<IAmenities | null>
-  findAllAmenities(): Promise<IAmenities[] | null>
+  findAllAmenities(page: number, limit: number, search?: string): Promise<{ amenities: IAmenities[] | null, total: number }>
+  getQuery(filter: any): Promise<{ amenities: IAmenities[] | null, total: number }>
 }

@@ -17,7 +17,7 @@ export interface IAmenitiesEntity {
     unblock(): void;
     update(data: TUpdateAmenityData): void;
     toObject(): TResponseAmenityData;
-    getPersistableData(): Omit<IAmenities, '_id' | 'isActive' | 'createdAt'>
+    getPersistableData(): Omit<IAmenities, '_id' | 'createdAt'>
 }
 
 export class AmenitiesEntity implements IAmenitiesEntity {
@@ -89,12 +89,13 @@ export class AmenitiesEntity implements IAmenitiesEntity {
         return { ...this._props }
     }
 
-    getPersistableData(): Omit<IAmenities, "_id" | "isActive" | "createdAt"> {
+    getPersistableData(): Omit<IAmenities, "_id" | "createdAt"> {
         return {
             name: this._props.name,
             description: this._props.description,
             type: this._props.type,
             updatedAt: this._props.updatedAt,
+            isActive: this._props.isActive,
         }
     }
 }
