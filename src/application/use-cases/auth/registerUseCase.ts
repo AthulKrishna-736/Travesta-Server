@@ -34,9 +34,9 @@ export class RegisterUseCase implements IRegisterUseCase {
             ...userData,
             password: hashPass,
             role: userData.role || 'user',
-            subscriptionType: userData.subscriptionType || 'basic',
+            subscription: 'basic',
             createdAt: new Date(),
-            updatedAt: new Date()
+            updatedAt: new Date(),
         };
 
         await this._authService.storeOtp(tempUserId, otp, newUserData, 'signup');

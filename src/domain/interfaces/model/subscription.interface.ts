@@ -14,5 +14,18 @@ export interface ISubscription {
     updatedAt: Date
 }
 
+export interface IUserSubscription {
+    plan: ISubscription | string;
+    validFrom: Date;
+    validUntil: Date;
+}
 
-export type TUpdateSubscription = Partial<Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt'>>;
+//subscription types
+export type TCreateSubscriptionData = Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt'>;
+export type TUpdateSubscriptionData = Partial<Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt' | 'isActive' | 'duration'>>;
+export type TResponseSubscriptionData = ISubscription;
+
+
+//subscription repository
+
+

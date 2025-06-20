@@ -1,5 +1,7 @@
+import { TSubscription } from "../../../shared/types/client.types";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../model/amenities.interface";
 import { IBooking, IHotel, IRoom, TCreateHotelData, TCreateRoomData, TUpdateHotelData, TUpdateRoomData } from "../model/hotel.interface";
+import { ISubscription, TCreateSubscriptionData, TUpdateSubscriptionData } from "../model/subscription.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
 
 export interface IUserRepository {
@@ -46,4 +48,14 @@ export interface IAmenitiesRepository {
   updateAmenity(id: string, data: TUpdateAmenityData): Promise<IAmenities | null>
   findAllAmenities(page: number, limit: number, search?: string): Promise<{ amenities: IAmenities[] | null, total: number }>
   getQuery(filter: any): Promise<{ amenities: IAmenities[] | null, total: number }>
+}
+
+
+//subscription repo
+export interface ISubscriptionRepository {
+  createPlan(data: TCreateSubscriptionData): Promise<ISubscription | null>
+  updatePlan(id: string, data: TUpdateSubscriptionData): Promise<ISubscription | null>
+  findPlanById(id: string): Promise<ISubscription | null>
+  findPlanByType(type: TSubscription): Promise<ISubscription | null>
+  findAllPlans(): Promise<ISubscription[] | null>
 }
