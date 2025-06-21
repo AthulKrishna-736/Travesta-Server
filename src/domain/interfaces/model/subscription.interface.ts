@@ -26,6 +26,7 @@ export type TUpdateSubscriptionData = Partial<Omit<ISubscription, '_id' | 'creat
 export type TResponseSubscriptionData = ISubscription;
 
 
-//subscription repository
+//subscription use cases
+
 
 
