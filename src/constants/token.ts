@@ -6,6 +6,7 @@ export const TOKENS = {
   RoomRepository: 'RoomRepository',
   BookingRepository: 'BookingRepository',
   AmenitiesRepository: 'AmenitiesRepository',
+  SubscriptionRepository: 'SubscriptionRepository',
 
   // Services
   AuthService: 'AuthService',

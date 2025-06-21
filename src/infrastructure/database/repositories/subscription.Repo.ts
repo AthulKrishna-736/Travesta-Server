@@ -35,4 +35,10 @@ export class SusbcriptionRepository extends BaseRepository<TSubscriptionDocument
         const mappedPlans = plans.map(p => p.toObject());
         return mappedPlans;
     }
+
+    async findActivePlans(): Promise<ISubscription[] | null> {
+        const plans = await this.find({ isActive: true });
+        const mappedPlans = plans.map(p => p.toObject());
+        return mappedPlans;
+    }
 }

@@ -58,4 +58,5 @@ export interface ISubscriptionRepository {
   findPlanById(id: string): Promise<ISubscription | null>
   findPlanByType(type: TSubscription): Promise<ISubscription | null>
   findAllPlans(): Promise<ISubscription[] | null>
+  findActivePlans(): Promise<ISubscription[] | null>
 }
