@@ -6,6 +6,7 @@ import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, I
 import { TCreateSubscriptionDTO, TUpdateSubscriptionDTO } from "../dtos/subscription.dto";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { ResponseMapper } from "../../utils/responseMapper";
 
 
 @injectable()
@@ -30,7 +31,8 @@ export class SubscriptionController {
             }
 
             const { plan, message } = await this._createSubscription.createPlan(data);
-            ResponseHandler.success(res, message, plan, HttpStatusCode.CREATED);
+            const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(plan);
+            ResponseHandler.success(res, message, mappedPlan, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
         }
@@ -49,7 +51,8 @@ export class SubscriptionController {
             }
 
             const { plan, message } = await this._updateSubscription.updatePlan(id, data);
-            ResponseHandler.success(res, message, plan, HttpStatusCode.OK);
+            const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(plan);
+            ResponseHandler.success(res, message, mappedPlan, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -59,7 +62,8 @@ export class SubscriptionController {
         try {
             const id = req.params.id;
             const { plan, message } = await this._blockUnblockSubscription.blockUnblockPlan(id);
-            ResponseHandler.success(res, message, plan, HttpStatusCode.OK);
+            const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(plan);
+            ResponseHandler.success(res, message, mappedPlan, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -68,7 +72,8 @@ export class SubscriptionController {
     async getActiveSubscriptions(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { plans, message } = await this._getActiveSubscription.getActivePlans();
-            ResponseHandler.success(res, message, plans, HttpStatusCode.OK);
+            const mappedPlans = plans.map(p => ResponseMapper.mapSubscriptionToResponseDTO(p));
+            ResponseHandler.success(res, message, mappedPlans, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -77,7 +82,8 @@ export class SubscriptionController {
     async getAllSubscriptions(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { plans, message } = await this._getAllSubscriptions.getAllPlans();
-            ResponseHandler.success(res, message, plans, HttpStatusCode.OK);
+            const mappedPlans = plans.map(p => ResponseMapper.mapSubscriptionToResponseDTO(p));
+            ResponseHandler.success(res, message, mappedPlans, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }

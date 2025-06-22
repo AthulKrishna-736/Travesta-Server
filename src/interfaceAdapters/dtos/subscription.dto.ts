@@ -20,7 +20,7 @@ export type TUpdateSubscriptionDTO = {
 }
 
 export type TResponseSubscriptionDTO = {
-    _id: string
+    id: string
     name: string
     description: string
     type: TSubscription

@@ -2,6 +2,25 @@ import { IUser } from "../domain/interfaces/model/user.interface";
 import { ResponseUserDTO } from "../interfaceAdapters/dtos/user.dto";
 import { IHotel } from "../domain/interfaces/model/hotel.interface";
 import { ResponseHotelDTO } from "../interfaceAdapters/dtos/hotel.dto";
+import { ISubscription } from "../domain/interfaces/model/subscription.interface";
+import { TResponseSubscriptionDTO } from "../interfaceAdapters/dtos/subscription.dto";
+
+export class ResponseMapper {
+    static mapSubscriptionToResponseDTO(plan: ISubscription): TResponseSubscriptionDTO {
+        return {
+            id: plan._id,
+            name: plan.name,
+            description: plan.description,
+            type: plan.type,
+            duration: plan.duration,
+            isActive: plan.isActive,
+            price: plan.price,
+            features: plan.features,
+            createdAt: plan.createdAt,
+            updatedAt: plan.updatedAt,
+        }
+    }
+}
 
 
 export function mapUserToResponseDTO(user: Omit<IUser, 'password'> & { id?: string }): ResponseUserDTO {
