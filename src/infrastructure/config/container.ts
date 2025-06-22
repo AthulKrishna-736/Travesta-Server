@@ -54,6 +54,12 @@ import { GetAmenityByIdUseCase } from "../../application/use-cases/admin/ameniti
 import { GetAllAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getAllAmenities.UseCase";
 import { GetActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getActiveAmenities.UseCase";
 import { SusbcriptionRepository } from "../database/repositories/subscription.Repo";
+import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlansUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
+import { CreatePlanUseCase } from "../../application/use-cases/admin/subscription/createPlan.UseCase";
+import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscription/updatePlan.UseCase";
+import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
+import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscription/getAllPlans.UseCase";
+import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -254,8 +260,26 @@ container.register<IGetAllAmenitiesUseCase>(TOKENS.GetAllAmenitiesUseCase, {
 })
 
 container.register<IGetActiveAmenitiesUseCase>(TOKENS.GetActiveAmenitiesUseCase, {
-  useClass: GetActiveAmenitiesUseCase
+  useClass: GetActiveAmenitiesUseCase,
 })
 
+//subscriptoin use case
+container.register<ICreatePlanUseCase>(TOKENS.CreateSubscriptionUseCase, {
+  useClass: CreatePlanUseCase,
+})
 
+container.register<IUpdatePlanUseCase>(TOKENS.UpdateSubscriptionUseCase, {
+  useClass: UpdatePlanUseCase,
+})
 
+container.register<IGetActivePlansUseCase>(TOKENS.GetActiveSubscriptionsUseCase, {
+  useClass: GetActivePlansUseCase,
+})
+
+container.register<IGetAllPlansUseCase>(TOKENS.GetAllSubscriptionsUseCase, {
+  useClass: GetAllPlansUseCase,
+})
+
+container.register<IBlockUnblockPlanUseCase>(TOKENS.BlockUnblockSubscriptionUseCase, {
+  useClass: BlockUnblockPlanUseCase,
+})

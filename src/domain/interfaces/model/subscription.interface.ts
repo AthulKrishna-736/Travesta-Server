@@ -21,7 +21,7 @@ export interface IUserSubscription {
 }
 
 //subscription types
-export type TCreateSubscriptionData = Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt'>;
+export type TCreateSubscriptionData = Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt' | 'isActive'>;
 export type TUpdateSubscriptionData = Partial<Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt' | 'isActive' | 'duration'>>;
 export type TResponseSubscriptionData = ISubscription;
 

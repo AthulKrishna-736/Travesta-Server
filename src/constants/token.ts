@@ -63,4 +63,11 @@ export const TOKENS = {
   GetAllAmenitiesUseCase: 'GetAllAmenitiesUseCase',
   BlockUnblockAmenityUseCase: 'BlockUnblockAmenityUseCase',
   GetActiveAmenitiesUseCase: 'GetActiveAmenitiesUseCase',
+
+  //subscription UseCase
+  CreateSubscriptionUseCase: 'CreateSubscriptionUseCase',
+  UpdateSubscriptionUseCase: 'UpdateSubscriptionUseCase',
+  GetActiveSubscriptionsUseCase: 'GetActiveSubscriptionsUseCase',
+  GetAllSubscriptionsUseCase: 'GetAllSubscriptionsUseCase',
+  BlockUnblockSubscriptionUseCase: 'BlockUnblockSubscriptionUseCase',
 };
