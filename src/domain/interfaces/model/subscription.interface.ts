@@ -1,4 +1,5 @@
 import { TSubscription } from "../../../shared/types/client.types"
+import { IUser } from "./user.interface"
 
 //subscription model
 export interface ISubscription {
@@ -45,6 +46,10 @@ export interface IBlockUnblockPlanUseCase {
 
 export interface IGetAllPlansUseCase {
     getAllPlans(): Promise<{ plans: TResponseSubscriptionData[], message: string }>
+}
+
+export interface ISubscribePlanUseCase {
+    subscribePlan(userId: string, planId: string): Promise<{ user: IUser, message: string }>
 }
 
 

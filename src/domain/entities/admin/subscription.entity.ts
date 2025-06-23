@@ -10,7 +10,7 @@ export interface ISubscriptionEntity {
     readonly description: string
     readonly type: TSubscription
     readonly price: number
-    readonly duraiton: number
+    readonly duration: number
     readonly features: string[]
     readonly isActive: boolean
     readonly createdAt: Date
@@ -52,7 +52,7 @@ export class SubscriptionEntity implements ISubscriptionEntity {
         return this._props.price
     }
 
-    get duraiton() {
+    get duration() {
         return this._props.duration
     }
 
