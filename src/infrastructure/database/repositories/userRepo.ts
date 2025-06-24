@@ -11,23 +11,23 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
     }
 
     async findUserById(id: string): Promise<IUser | null> {
-        const user = await this.findById(id)
-        return user
+        const user = await this.findById(id);
+        return user;
     }
 
     async createUser(data: TUserRegistrationInput): Promise<IUser | null> {
-        const user = await this.create(data)
-        return user
+        const user = await this.create(data);
+        return user;
     }
 
     async updateUser(id: string, data: TUpdateUserData): Promise<IUser | null> {
-        const user = await this.update(id, data)
-        return user
+        const user = await this.update(id, data);
+        return user;
     }
 
     async findUser(email: string): Promise<IUser | null> {
         const user = await this.findOne({ email }).exec();
-        return user
+        return user;
     }
 
     async findAllUser(page: number, limit: number, role: string, search?: string): Promise<{ users: IUser[] | null, total: number }> {
@@ -43,10 +43,15 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
             ]
         }
 
-        const result = this.find(filter)
-        const total = await this.model.countDocuments(filter)
+        const result = this.find(filter);
+        const total = await this.model.countDocuments(filter);
         const user = await result.skip(skip).limit(limit).lean<IUser[]>();
 
         return { users: user, total }
+    }
+
+    async subscribeUser(id: string, data: Pick<IUser, "subscription">): Promise<IUser | null> {
+        const user = await this.update(id, data);
+        return user;
     }
 }

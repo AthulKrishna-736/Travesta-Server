@@ -43,7 +43,7 @@ export class SubscribePlanUseCase extends UserLookupBase implements ISubscribePl
 
         userEntity.subscribe(planId, validFrom, validUntil);
 
-        const subscribeUser = await this._userRepo.updateUser(userEntity.id as string, userEntity.getUpdatedSubscription());
+        const subscribeUser = await this._userRepo.subscribeUser(userEntity.id as string, userEntity.getUpdatedSubscription());
 
         if (!subscribeUser) {
             throw new AppError('Failed to subscribe plan', HttpStatusCode.INTERNAL_SERVER_ERROR);

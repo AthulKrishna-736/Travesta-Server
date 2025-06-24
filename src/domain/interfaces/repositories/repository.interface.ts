@@ -10,6 +10,7 @@ export interface IUserRepository {
   updateUser(id: string, data: TUpdateUserData): Promise<IUser | null>;
   findAllUser(page: number, limit: number, role: string, search?: string): Promise<{ users: IUser[] | null, total: number }>;
   findUser(email: string): Promise<IUser | null>
+  subscribeUser(id: string, data: Pick<IUser, 'subscription'>): Promise<IUser | null>
 }
 
 //hotel repo
