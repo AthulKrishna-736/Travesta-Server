@@ -35,7 +35,7 @@ export function mapUserToResponseDTO(user: Omit<IUser, 'password'> & { id?: stri
         role: user.role,
         profileImage: user.profileImage,
         wishlist: user.wishlist ?? [],
-        subscriptionType: user.subscriptionType,
+        subscription: user.subscription,
         kycDocuments: user.kycDocuments ?? [],
         createdAt: user.createdAt,
         updatedAt: user.updatedAt

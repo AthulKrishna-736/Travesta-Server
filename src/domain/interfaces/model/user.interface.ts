@@ -22,7 +22,7 @@ export interface IUser {
 }
 
 
-export type TUserRegistrationInput = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' | 'phone'> & { role?: TRole };
+export type TUserRegistrationInput = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' | 'phone' | 'role'>;
 
 export type TUpdateUserData = Partial<Omit<IUser, '_id' | 'email' | 'wishlist' | 'createdAt' | 'updatedAt' | 'isGoogle' | 'role' | 'subscription'>>;
 
