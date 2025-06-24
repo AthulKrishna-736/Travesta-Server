@@ -25959,3 +25959,6 @@
   "exp": 1751623183
 }[0m
 [2025-06-19 15:30:06] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-06-25 00:03:53] INFO: [34mRunning in development mode[0m
+[2025-06-25 00:03:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 00:03:55] INFO: [34mRedis connected successfully[0m

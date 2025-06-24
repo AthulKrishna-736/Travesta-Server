@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { ICreateHotelUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { ICreateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { IHotelRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";

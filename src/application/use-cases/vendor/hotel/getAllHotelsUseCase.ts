@@ -4,7 +4,7 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { TOKENS } from "../../../../constants/token";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
-import { IGetAllHotelsUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { IGetAllHotelsUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 

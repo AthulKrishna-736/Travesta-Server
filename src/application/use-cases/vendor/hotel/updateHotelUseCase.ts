@@ -5,7 +5,7 @@ import { TOKENS } from "../../../../constants/token";
 import { TUpdateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
-import { IUpdateHotelUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { IUpdateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";

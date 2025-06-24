@@ -1,13 +1,7 @@
-<<<<<<< HEAD:src/domain/entities/user.entity.ts
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { IUser } from "../interfaces/model/user.interface";
-=======
-import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
-import { IUserSubscription } from "../../interfaces/model/subscription.interface";
-import { IUser, TUpdateUserData } from "../../interfaces/model/user.interface";
->>>>>>> main:src/domain/entities/user/user.entity.ts
+import { IUserSubscription } from "../interfaces/model/subscription.interface";
+import { IUser, TUpdateUserData } from "../interfaces/model/user.interface";
 
 export interface IUserEntity {
     // Getters
@@ -154,28 +148,9 @@ export class UserEntity implements IUserEntity {
     }
 
     //user business logic
-<<<<<<< HEAD:src/domain/entities/user.entity.ts
-    updateProfile(data: Partial<Pick<IUser, 'firstName' | 'lastName' | 'phone' | 'password' | 'profileImage' | 'kycDocuments'>>): void {
-        if (data.firstName && data.firstName.trim().length > 0 && typeof data.firstName == 'string') {
-            this._user.firstName = data.firstName
-        }
-        if (data.lastName && data.lastName.trim().length > 0 && typeof data.lastName == 'string') {
-            this._user.lastName = data.lastName
-        }
-        if (data.password && data.password.trim().length > 0 && typeof data.lastName == 'string') {
-            this._user.password = data.password
-        }
-        if (data.phone  && data.phone) {
-            this._user.phone = data.phone
-        }
-        if (data.profileImage) this._user.profileImage = data.profileImage
-        if (data.kycDocuments && data.kycDocuments.length > 0) {
-            this._user.kycDocuments = [...data.kycDocuments]
-=======
     updateProfile(data: TUpdateUserData): void {
         if (data.firstName && typeof data.firstName === 'string' && data.firstName.trim().length > 0) {
             this._props.firstName = data.firstName.trim();
->>>>>>> main:src/domain/entities/user/user.entity.ts
         }
         if (data.lastName && typeof data.lastName === 'string' && data.lastName.trim().length > 0) {
             this._props.lastName = data.lastName.trim();

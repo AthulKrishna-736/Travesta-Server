@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { IHotelRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
-import { IGetHotelByIdUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { IGetHotelByIdUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
