@@ -1,4 +1,5 @@
-import { TRole, TSubscription } from "../../../shared/types/client.types";
+import { TRole } from "../../../shared/types/client.types";
+import { IUserSubscription } from "./subscription.interface";
 
 export interface IUser {
     _id?: string,
@@ -10,7 +11,7 @@ export interface IUser {
     role: TRole,
     phone: number,
     isBlocked: boolean,
-    subscriptionType: TSubscription,
+    subscription: IUserSubscription | null,
     profileImage?: string,
     wishlist: string[],
     isVerified: boolean,
@@ -21,8 +22,8 @@ export interface IUser {
 }
 
 
-export type TUserRegistrationInput = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' | 'phone'> & { role?: TRole; subscriptionType?: TSubscription; };
+export type TUserRegistrationInput = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' | 'phone' | 'role'>;
 
-export type TUpdateUserData = Partial<Omit<IUser, '_id' | 'email' | 'wishlist' | 'createdAt' | 'updatedAt' | 'isGoogle' | 'role' | 'subscriptionType'>>;
+export type TUpdateUserData = Partial<Omit<IUser, '_id' | 'email' | 'wishlist' | 'createdAt' | 'updatedAt' | 'isGoogle' | 'role' | 'subscription'>>;
 
 export type TResponseUserData = Omit<IUser, 'password'>;

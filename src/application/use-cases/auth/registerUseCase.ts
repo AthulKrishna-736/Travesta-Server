@@ -30,13 +30,10 @@ export class RegisterUseCase implements IRegisterUseCase {
 
         const tempUserId = `temp:signup:${uuidv4()}`
 
-        const newUserData = {
+        const newUserData: TUserRegistrationInput = {
             ...userData,
             password: hashPass,
             role: userData.role || 'user',
-            subscriptionType: userData.subscriptionType || 'basic',
-            createdAt: new Date(),
-            updatedAt: new Date()
         };
 
         await this._authService.storeOtp(tempUserId, otp, newUserData, 'signup');

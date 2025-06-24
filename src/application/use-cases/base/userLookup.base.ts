@@ -11,7 +11,7 @@ export abstract class UserLookupBase {
         const userData = await this._userRepo.findUserById(userId)
 
         if (!userData) {
-            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
+            throw new AppError('User not found', HttpStatusCode.NOT_FOUND);
         }
 
         return new UserEntity(userData);
@@ -21,7 +21,7 @@ export abstract class UserLookupBase {
         const userData = await this._userRepo.findUser(email)
 
         if (!userData) {
-            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
+            throw new AppError('User not found', HttpStatusCode.NOT_FOUND);
         }
 
         return new UserEntity(userData);

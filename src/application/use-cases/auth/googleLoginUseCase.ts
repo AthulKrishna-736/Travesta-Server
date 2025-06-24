@@ -59,7 +59,6 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
                 password: await this._authService.hashPassword(Math.random().toString(36).slice(-8)),
                 phone: 0,
                 role: role,
-                subscriptionType: "basic",
             }
 
             user = await this._userRepo.createUser(newUser)
