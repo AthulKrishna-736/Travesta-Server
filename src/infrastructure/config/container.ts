@@ -17,7 +17,7 @@ import { IAwsS3Service } from "../../domain/interfaces/services/awsS3Service.int
 import { AwsS3Service } from "../services/awsS3Service";
 import { GetUserProfileUseCase } from "../../application/use-cases/user/getUser";
 import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
-import { IAmenitiesRepository, IHotelRepository, IRoomRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository, IHotelRepository, IRoomRepository, ISubscriptionRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
 import { CreateHotelUseCase } from "../../application/use-cases/vendor/hotel/createHotelUseCase";
@@ -53,6 +53,13 @@ import { BlockUnblockAmenity } from "../../application/use-cases/admin/amenities
 import { GetAmenityByIdUseCase } from "../../application/use-cases/admin/amenities/getAmenityById.UseCase";
 import { GetAllAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getAllAmenities.UseCase";
 import { GetActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getActiveAmenities.UseCase";
+import { SusbcriptionRepository } from "../database/repositories/subscription.Repo";
+import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlansUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
+import { CreatePlanUseCase } from "../../application/use-cases/admin/subscription/createPlan.UseCase";
+import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscription/updatePlan.UseCase";
+import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
+import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscription/getAllPlans.UseCase";
+import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -74,6 +81,11 @@ container.register(TOKENS.BookingRepository, {
 container.register<IAmenitiesRepository>(TOKENS.AmenitiesRepository, {
   useClass: AmenitiesRepository,
 })
+
+container.register<ISubscriptionRepository>(TOKENS.SubscriptionRepository, {
+  useClass: SusbcriptionRepository,
+})
+
 
 //services
 container.register<IAuthService>(TOKENS.AuthService, {
@@ -148,6 +160,7 @@ container.register<IUpdateVendorReqUseCase>(TOKENS.UpdateVendorReqUseCase, {
   useClass: UpdateVendorReq,
 })
 
+
 //user UseCases
 container.register<IUpdateUserUseCase>(TOKENS.UpdateUserUseCase, {
   useClass: UpdateUser,
@@ -156,6 +169,7 @@ container.register<IUpdateUserUseCase>(TOKENS.UpdateUserUseCase, {
 container.register<IGetUserUseCase>(TOKENS.GetUserUseCase, {
   useClass: GetUserProfileUseCase,
 })
+
 
 //vendor UseCases
 container.register<IUpdateKycUseCase>(TOKENS.UpdateKycUseCase, {
@@ -246,8 +260,26 @@ container.register<IGetAllAmenitiesUseCase>(TOKENS.GetAllAmenitiesUseCase, {
 })
 
 container.register<IGetActiveAmenitiesUseCase>(TOKENS.GetActiveAmenitiesUseCase, {
-  useClass: GetActiveAmenitiesUseCase
+  useClass: GetActiveAmenitiesUseCase,
 })
 
+//subscriptoin use case
+container.register<ICreatePlanUseCase>(TOKENS.CreateSubscriptionUseCase, {
+  useClass: CreatePlanUseCase,
+})
 
+container.register<IUpdatePlanUseCase>(TOKENS.UpdateSubscriptionUseCase, {
+  useClass: UpdatePlanUseCase,
+})
 
+container.register<IGetActivePlansUseCase>(TOKENS.GetActiveSubscriptionsUseCase, {
+  useClass: GetActivePlansUseCase,
+})
+
+container.register<IGetAllPlansUseCase>(TOKENS.GetAllSubscriptionsUseCase, {
+  useClass: GetAllPlansUseCase,
+})
+
+container.register<IBlockUnblockPlanUseCase>(TOKENS.BlockUnblockSubscriptionUseCase, {
+  useClass: BlockUnblockPlanUseCase,
+})

@@ -36,10 +36,17 @@ const userSchema: Schema = new Schema<TUserDocument>({
         type: Boolean,
         default: false
     },
-    subscriptionType: {
-        type: String,
-        enum: ['basic', 'medium', 'vip'],
-        default: 'basic'
+    subscription: {
+        plan: {
+            type: Schema.Types.ObjectId,
+            ref: 'Subscription',
+        },
+        validFrom: {
+            type: Date,
+        },
+        validUntil: {
+            type: Date,
+        },
     },
     profileImage: {
         type: String

@@ -2,23 +2,26 @@ import { container } from "tsyringe";
 import { AdminController } from "../controllers/adminController";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema } from "../../shared/types/zodValidation";
+import { loginSchema, subscriptionSchema } from "../../shared/types/zodValidation";
 import { CustomRequest } from "../../utils/customRequest";
 import { authMiddleware } from "../../middlewares/auth";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
 import { AuthController } from "../controllers/authController";
 import { AmenityController } from "../controllers/amenityController";
+import { SubscriptionController } from "../controllers/subscriptionController";
 
 export class adminRoutes extends BaseRouter {
     private _authController: AuthController;
     private _adminController: AdminController;
     private _amenityController: AmenityController;
+    private _subscriptionController: SubscriptionController;
 
     constructor() {
         super();
         this._authController = container.resolve(AuthController);
         this._adminController = container.resolve(AdminController);
         this._amenityController = container.resolve(AmenityController);
+        this._subscriptionController = container.resolve(SubscriptionController);
         this.initializeRoutes();
     }
 
@@ -39,5 +42,12 @@ export class adminRoutes extends BaseRouter {
             .patch("/amenities/:id/block-toggle", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.blockUnblockAmenity(req, res))
             .get("/amenities", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.getAllAmenities(req, res))
             .get("/amenities/active", authMiddleware, authorizeRoles("admin", "user", "vendor"), (req: CustomRequest, res) => this._amenityController.getAllActiveAmenities(req, res));
+
+        this.router
+            .get('/plans', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.getAllSubscriptions(req, res))
+            .get('/plans/active', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), (req: CustomRequest, res) => this._subscriptionController.getActiveSubscriptions(req, res))
+            .post('/plans', authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.createSubscriptionPlan(req, res))
+            .patch('/plans/:id', authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.updateSubscriptionPlan(req, res))
+            .patch('/plans/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.blockUnblockSubscription(req, res));
     }
 }

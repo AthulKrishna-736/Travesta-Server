@@ -1,6 +1,13 @@
+<<<<<<< HEAD:src/domain/entities/user.entity.ts
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { IUser } from "../interfaces/model/user.interface";
+=======
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { IUserSubscription } from "../../interfaces/model/subscription.interface";
+import { IUser, TUpdateUserData } from "../../interfaces/model/user.interface";
+>>>>>>> main:src/domain/entities/user/user.entity.ts
 
 export interface IUserEntity {
     // Getters
@@ -15,7 +22,7 @@ export interface IUserEntity {
     readonly isGoogleUser: boolean;
     readonly isVerified: boolean;
     readonly wishlist: string[];
-    readonly subscriptionType: string;
+    readonly subscription: IUserSubscription | null;
     readonly profileImage: string | undefined;
     readonly kycDocuments: string[] | undefined;
     readonly createdAt: Date;
@@ -24,127 +31,130 @@ export interface IUserEntity {
     // Domain business logic
     block(): void;
     unblock(): void;
-    updateProfile(data: Partial<Pick<IUser, 'firstName' | 'lastName' | 'phone' | 'profileImage' | 'kycDocuments'>>): void;
+    updateProfile(data: TUpdateUserData): void;
     isAdmin(): boolean;
     verify(): void;
     unVerify(): void;
-    googleUser(): void
+    googleUser(): void;
+    subscribe(planId: string, validFrom: Date, validUntil: Date): void;
 
     // Return raw object (for persistence)
     toObject(): Omit<IUser, 'password'>;
-    getPersistableData(): Partial<Omit<IUser, "_id" | "createdAt">>
+    getPersistableData(): Partial<Omit<IUser, "_id" | "createdAt" | 'subscription'>>;
+    getUpdatedSubscription(): Pick<IUser, 'subscription'>;
 }
 
 
 export class UserEntity implements IUserEntity {
-    private _user: IUser
+    private _props: IUser
 
     constructor(data: IUser) {
-        this._user = data
+        this._props = data
     }
 
     //getter for user resource
     get id() {
-        return this._user._id
+        return this._props._id
     }
 
     get firstName() {
-        return this._user.firstName;
+        return this._props.firstName;
     }
 
     get lastName() {
-        return this._user.lastName;
+        return this._props.lastName;
     }
 
     get email() {
-        return this._user.email;
+        return this._props.email;
     }
 
     get password() {
-        return this._user.password;
+        return this._props.password;
     }
 
     get phone() {
-        return this._user.phone;
+        return this._props.phone;
     }
 
     get role() {
-        return this._user.role;
+        return this._props.role;
     }
 
     get isBlocked() {
-        return this._user.isBlocked;
+        return this._props.isBlocked;
     }
 
     get isVerified() {
-        return this._user.isVerified;
+        return this._props.isVerified;
     }
 
     get isGoogleUser() {
-        return this._user.isGoogle;
+        return this._props.isGoogle;
     }
 
     get wishlist() {
-        return this._user.wishlist;
+        return this._props.wishlist;
     }
 
-    get subscriptionType() {
-        return this._user.subscriptionType;
+    get subscription() {
+        return this._props.subscription;
     }
 
     get profileImage() {
-        return this._user.profileImage;
+        return this._props.profileImage;
     }
 
     get kycDocuments() {
-        return this._user.kycDocuments;
+        return this._props.kycDocuments;
     }
 
     get createdAt() {
-        return this._user.createdAt;
+        return this._props.createdAt;
     }
 
     get updatedAt() {
-        return this._user.updatedAt;
+        return this._props.updatedAt;
     }
 
     //admin business logic
 
     block(): void {
-        if (this._user.isBlocked) {
+        if (this._props.isBlocked) {
             throw new AppError('User is already blocked', HttpStatusCode.CONFLICT);
         }
 
-        this._user.isBlocked = true;
-        this._user.updatedAt = new Date();
+        this._props.isBlocked = true;
+        this._props.updatedAt = new Date();
     }
 
     unblock(): void {
-        if (!this._user.isBlocked) {
+        if (!this._props.isBlocked) {
             throw new AppError('User is not blocked', HttpStatusCode.CONFLICT);
         }
 
-        this._user.isBlocked = false;
-        this._user.updatedAt = new Date();
+        this._props.isBlocked = false;
+        this._props.updatedAt = new Date();
     }
 
     verify(): void {
-        if (this._user.isVerified) {
+        if (this._props.isVerified) {
             throw new AppError('User is already verified', HttpStatusCode.CONFLICT)
         }
-        this._user.isVerified = true;
-        this._user.updatedAt = new Date();
+        this._props.isVerified = true;
+        this._props.updatedAt = new Date();
     }
 
     unVerify(): void {
-        if (!this._user.isVerified) {
+        if (!this._props.isVerified) {
             throw new AppError('User is not verified', HttpStatusCode.CONFLICT);
         }
-        this._user.isVerified = false;
-        this._user.updatedAt = new Date();
+        this._props.isVerified = false;
+        this._props.updatedAt = new Date();
     }
 
     //user business logic
+<<<<<<< HEAD:src/domain/entities/user.entity.ts
     updateProfile(data: Partial<Pick<IUser, 'firstName' | 'lastName' | 'phone' | 'password' | 'profileImage' | 'kycDocuments'>>): void {
         if (data.firstName && data.firstName.trim().length > 0 && typeof data.firstName == 'string') {
             this._user.firstName = data.firstName
@@ -161,57 +171,95 @@ export class UserEntity implements IUserEntity {
         if (data.profileImage) this._user.profileImage = data.profileImage
         if (data.kycDocuments && data.kycDocuments.length > 0) {
             this._user.kycDocuments = [...data.kycDocuments]
+=======
+    updateProfile(data: TUpdateUserData): void {
+        if (data.firstName && typeof data.firstName === 'string' && data.firstName.trim().length > 0) {
+            this._props.firstName = data.firstName.trim();
+>>>>>>> main:src/domain/entities/user/user.entity.ts
         }
-        this._user.updatedAt = new Date();
+        if (data.lastName && typeof data.lastName === 'string' && data.lastName.trim().length > 0) {
+            this._props.lastName = data.lastName.trim();
+        }
+        if (data.password && typeof data.password === 'string' && data.password.trim().length > 0) {
+            this._props.password = data.password.trim();
+        }
+        if (data.phone && typeof data.phone === 'number' && data.phone > 0) {
+            this._props.phone = data.phone;
+        }
+        if (data.profileImage && typeof data.profileImage === 'string' && data.profileImage.trim().length > 0) {
+            this._props.profileImage = data.profileImage.trim();
+        }
+        if (data.kycDocuments && Array.isArray(data.kycDocuments) && data.kycDocuments.length > 0) {
+            this._props.kycDocuments = [...data.kycDocuments];
+        }
+        this._props.updatedAt = new Date();
     }
 
     googleUser(): void {
-        if (this._user.isGoogle) {
+        if (this._props.isGoogle) {
             throw new AppError('Already google user', HttpStatusCode.CONFLICT);
         }
 
-        this._user.isGoogle = true;
+        this._props.isGoogle = true;
     }
 
     isAdmin(): boolean {
-        return this._user.role == 'admin';
+        return this._props.role == 'admin';
     }
 
     toObject(): Omit<IUser, 'password'> {
         return {
-            _id: this._user._id,
-            firstName: this._user.firstName,
-            lastName: this._user.lastName,
-            email: this._user.email,
-            isGoogle: this._user.isGoogle,
-            phone: this._user.phone,
-            isBlocked: this._user.isBlocked,
-            role: this._user.role,
-            subscriptionType: this._user.subscriptionType,
-            profileImage: this._user.profileImage,
-            wishlist: this._user.wishlist ?? [],
-            isVerified: this._user.isVerified,
-            verificationReason: this._user.verificationReason,
-            kycDocuments: this._user.kycDocuments ?? [],
-            createdAt: this._user.createdAt,
-            updatedAt: this._user.updatedAt,
+            _id: this._props._id,
+            firstName: this._props.firstName,
+            lastName: this._props.lastName,
+            email: this._props.email,
+            isGoogle: this._props.isGoogle,
+            phone: this._props.phone,
+            isBlocked: this._props.isBlocked,
+            role: this._props.role,
+            subscription: this._props.subscription,
+            profileImage: this._props.profileImage,
+            wishlist: this._props.wishlist ?? [],
+            isVerified: this._props.isVerified,
+            verificationReason: this._props.verificationReason,
+            kycDocuments: this._props.kycDocuments ?? [],
+            createdAt: this._props.createdAt,
+            updatedAt: this._props.updatedAt,
         };
     }
 
-    getPersistableData(): Partial<Omit<IUser, "_id" | "createdAt">> {
+    getPersistableData(): Partial<Omit<IUser, "_id" | "createdAt" | 'subscription'>> {
         return {
-            firstName: this._user.firstName,
-            lastName: this._user.lastName,
-            phone: this._user.phone,
-            role: this._user.role,
-            isBlocked: this._user.isBlocked,
-            isVerified: this._user.isVerified,
-            isGoogle: this._user.isGoogle,
-            wishlist: this._user.wishlist,
-            subscriptionType: this._user.subscriptionType,
-            profileImage: this._user.profileImage,
-            kycDocuments: this._user.kycDocuments,
-            updatedAt: this._user.updatedAt,
+            firstName: this._props.firstName,
+            lastName: this._props.lastName,
+            phone: this._props.phone,
+            role: this._props.role,
+            isBlocked: this._props.isBlocked,
+            isVerified: this._props.isVerified,
+            isGoogle: this._props.isGoogle,
+            wishlist: this._props.wishlist,
+            profileImage: this._props.profileImage,
+            kycDocuments: this._props.kycDocuments,
+            updatedAt: this._props.updatedAt,
         };
+    }
+
+    subscribe(planId: string, validFrom: Date, validUntil: Date): void {
+        if (!planId) {
+            throw new AppError('PlanId is missing', HttpStatusCode.BAD_REQUEST);
+        }
+        this._props.subscription = {
+            plan: planId,
+            validFrom,
+            validUntil,
+        };
+        this._props.updatedAt = new Date();
+    }
+
+    getUpdatedSubscription(): Pick<IUser, 'subscription'> {
+        if (!this._props.subscription) {
+            throw new AppError('Subscription not found', HttpStatusCode.NOT_FOUND);
+        }
+        return { subscription: this._props.subscription };
     }
 }

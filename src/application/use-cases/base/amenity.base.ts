@@ -11,7 +11,7 @@ export abstract class AmenityLookupBase {
         const amenityData = await this._amenityRepo.findAmenityById(amenityId);
 
         if (!amenityData) {
-            throw new AppError('amenity not found', HttpStatusCode.BAD_REQUEST);
+            throw new AppError('amenity not found', HttpStatusCode.NOT_FOUND);
         }
 
         return new AmenitiesEntity(amenityData);
@@ -21,7 +21,7 @@ export abstract class AmenityLookupBase {
         const { amenities, total } = await this._amenityRepo.findAllAmenities(page, limit, search);
 
         if (!amenities) {
-            throw new AppError('amenities not found', HttpStatusCode.BAD_REQUEST);
+            throw new AppError('amenities not found', HttpStatusCode.NOT_FOUND);
         }
 
         const amenitiesEntity = amenities.map(a => new AmenitiesEntity(a));

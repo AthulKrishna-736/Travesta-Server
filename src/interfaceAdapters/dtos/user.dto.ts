@@ -1,3 +1,4 @@
+import { IUserSubscription } from "../../domain/interfaces/model/subscription.interface"
 import { TRole, TSubscription } from "../../shared/types/client.types"
 
 export interface CreateUserDTO {
@@ -6,8 +7,7 @@ export interface CreateUserDTO {
     email: string
     password: string
     phone: number
-    role?: TRole
-    subscriptionType?: TSubscription
+    role: TRole
 }
 
 export interface UpdateUserDTO {
@@ -21,7 +21,6 @@ export interface UpdateUserDTO {
     isVerified?: boolean
     kycDocuments?: string[]
     verificationReason?: string
-    subscriptionType?: TSubscription
 
 }
 
@@ -38,7 +37,7 @@ export interface ResponseUserDTO {
     role: TRole
     kycDocuments?: string[]
     verificationReason?: string
-    subscriptionType: TSubscription
+    subscription: IUserSubscription | null
     createdAt: Date
     updatedAt: Date
 }

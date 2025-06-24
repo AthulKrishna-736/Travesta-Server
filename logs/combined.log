@@ -17352,6 +17352,176 @@
   "iat": 1750307857,
   "exp": 1751603857
 }[0m
+[2025-06-24 12:36:35] INFO: [34mRunning in development mode[0m
+[2025-06-24 12:36:36] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 12:36:36] INFO: [34mRedis connected successfully[0m
+[2025-06-24 12:36:58] INFO: [34mRunning in development mode[0m
+[2025-06-24 12:36:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 12:36:59] INFO: [34mRedis connected successfully[0m
+[2025-06-24 12:37:11] INFO: [34mRunning in development mode[0m
+[2025-06-24 12:37:11] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 12:37:11] INFO: [34mRedis connected successfully[0m
+[2025-06-24 12:37:34] INFO: [34mRunning in development mode[0m
+[2025-06-24 12:37:34] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 12:37:35] INFO: [34mRedis connected successfully[0m
+[2025-06-24 12:41:24] INFO: [34mRunning in development mode[0m
+[2025-06-24 12:41:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 12:41:24] INFO: [34mRedis connected successfully[0m
+[2025-06-24 12:46:28] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "medium" }[0m
+[2025-06-24 13:51:49] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-24 13:51:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 13:51:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:55] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-24 14:57:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:57:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 14:58:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 15:06:38] INFO: [34mRunning in development mode[0m
+[2025-06-24 15:06:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 15:06:39] INFO: [34mRedis connected successfully[0m
+[2025-06-24 15:07:57] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "medium" }[0m
+[2025-06-24 15:41:21] INFO: [34mRunning in development mode[0m
+[2025-06-24 15:41:21] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 15:41:21] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:42:06] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:42:06] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:42:07] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:42:11] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "basic" }[0m
+[2025-06-24 19:43:03] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:43:03] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:43:03] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:43:31] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "basic" }[0m
+[2025-06-24 19:49:04] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:49:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:49:04] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:49:11] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "basic" }[0m
+[2025-06-24 19:49:33] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "basic" }[0m
+[2025-06-24 19:50:04] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:50:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:50:04] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:50:45] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "basic" }[0m
+[2025-06-24 19:51:22] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:51:22] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:51:23] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:51:27] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "basic" }[0m
+[2025-06-24 19:51:50] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:51:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:51:53] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:51:53] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:51:53] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:53:16] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:53:16] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:53:16] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:53:21] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "basic" }[0m
+[2025-06-24 19:53:48] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:54:12] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:54:12] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:54:12] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:54:19] ERROR: [31mcheck the error in handler:  Duplicate plan type: basic already exists[0m
+[2025-06-24 19:55:14] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:55:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:55:14] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:56:00] INFO: [34mRunning in development mode[0m
+[2025-06-24 19:56:00] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 19:56:01] INFO: [34mRedis connected successfully[0m
+[2025-06-24 19:56:06] ERROR: [31mcheck the error in handler:  E11000 duplicate key error collection: travesta.subscriptions index: type_1 dup key: { type: "basic" }[0m
+[2025-06-24 20:29:23] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-24 20:29:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:29:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:29:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:29:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:29:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:29:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:29:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:29:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:29:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-24 20:34:51] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:34:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:34:51] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:34:53] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:34:53] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:34:53] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:34:58] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:34:58] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:35:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-06-24 20:35:03] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:35:14] ERROR: [31mcheck the error in handler:  Duplicate plan type: basic already exists[0m
+[2025-06-24 20:35:49] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:35:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:35:49] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:35:52] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:35:52] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:35:52] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:35:55] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:35:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:35:56] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:35:58] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:35:58] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:35:58] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:36:00] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:36:00] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:36:00] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:36:25] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:36:25] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:36:26] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:36:30] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:36:30] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:36:30] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:37:37] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:37:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:37:37] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:37:40] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:37:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:37:41] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:37:42] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:37:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:37:43] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:38:31] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:38:32] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:38:32] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:43:51] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:43:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:43:52] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:44:28] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:44:28] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:44:28] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:44:34] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:44:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:44:35] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:44:49] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:44:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:44:49] INFO: [34mRedis connected successfully[0m
+[2025-06-24 20:45:27] INFO: [34mRunning in development mode[0m
+[2025-06-24 20:45:27] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-24 20:45:27] INFO: [34mRedis connected successfully[0m
 [2025-06-03 19:11:11] INFO: [34mRunning in development mode[0m
 [2025-06-03 19:11:11] INFO: [34mMongoDB connected: localhost[0m
 [2025-06-03 19:11:11] INFO: [34mRedis connected successfully[0m
