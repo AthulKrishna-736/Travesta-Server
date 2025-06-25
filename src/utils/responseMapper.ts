@@ -1,7 +1,7 @@
 import { IUser } from "../domain/interfaces/model/user.interface";
 import { ResponseUserDTO } from "../interfaceAdapters/dtos/user.dto";
 import { IHotel } from "../domain/interfaces/model/hotel.interface";
-import { ResponseHotelDTO } from "../interfaceAdapters/dtos/hotel.dto";
+import { TResponseHotelDTO } from "../interfaceAdapters/dtos/hotel.dto";
 import { ISubscription } from "../domain/interfaces/model/subscription.interface";
 import { TResponseSubscriptionDTO } from "../interfaceAdapters/dtos/subscription.dto";
 import { IRoom } from "../domain/interfaces/model/room.interface";
@@ -38,6 +38,27 @@ export class ResponseMapper {
             updatedAt: room.updatedAt,
         }
     }
+
+    static mapHotelToResponseDTO(hotel: IHotel): TResponseHotelDTO {
+        return {
+            id: hotel._id as string,
+            vendorId: hotel.vendorId.toString(),
+            name: hotel.name,
+            description: hotel.description,
+            images: hotel.images,
+            rating: hotel.rating ?? 0,
+            services: hotel.services,
+            amenities: hotel.amenities,
+            tags: hotel.tags,
+            state: hotel.state,
+            city: hotel.city,
+            address: hotel.address,
+            geoLocation: hotel.geoLocation,
+            isBlocked: hotel.isBlocked,
+            createdAt: hotel.createdAt,
+            updatedAt: hotel.updatedAt,
+        };
+    }
 }
 
 
@@ -57,27 +78,5 @@ export function mapUserToResponseDTO(user: Omit<IUser, 'password'> & { id?: stri
         kycDocuments: user.kycDocuments ?? [],
         createdAt: user.createdAt,
         updatedAt: user.updatedAt
-    };
-}
-
-
-export function mapHotelToResponseDTO(hotel: IHotel): ResponseHotelDTO {
-    return {
-        id: hotel._id!,
-        vendorId: hotel.vendorId.toString(),
-        name: hotel.name,
-        description: hotel.description,
-        images: hotel.images,
-        rating: hotel.rating ?? 0,
-        services: hotel.services,
-        amenities: hotel.amenities,
-        tags: hotel.tags,
-        state: hotel.state,
-        city: hotel.city,
-        address: hotel.address,
-        geoLocation: hotel.geoLocation,
-        isBlocked: hotel.isBlocked,
-        createdAt: hotel.createdAt,
-        updatedAt: hotel.updatedAt,
     };
 }

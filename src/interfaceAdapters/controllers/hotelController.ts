@@ -6,9 +6,9 @@ import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
-import { CreateHotelDTO, UpdateHotelDTO } from '../dtos/hotel.dto';
+import { TCreateHotelDTO, TUpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
-import { mapHotelToResponseDTO } from '../../utils/responseMapper';
+import { ResponseMapper } from '../../utils/responseMapper';
 
 @injectable()
 export class HotelController {
@@ -26,10 +26,10 @@ export class HotelController {
             const userId = req.user?.userId;
 
             const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0, isBlocked = false, } = req.body;
-            const hotelData: CreateHotelDTO = { vendorId: userId!, name, description, address, city, state, geoLocation: Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation), tags, amenities, services, rating, isBlocked, images: [] };
+            const hotelData: TCreateHotelDTO = { vendorId: userId!, name, description, address, city, state, geoLocation: Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation), tags, amenities, services, rating, isBlocked, images: [] };
             const { hotel, message } = await this._createHotelUseCase.createHotel(hotelData, files);
 
-            const mappedHotel = mapHotelToResponseDTO(hotel)
+            const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel)
             ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
@@ -42,13 +42,14 @@ export class HotelController {
             const hotelId = req.params.id;
             const files = req.files as Express.Multer.File[];
 
-            const updateData: UpdateHotelDTO = {
+            const updateData: TUpdateHotelDTO = {
                 ...req.body,
                 images: req.body.images ? JSON.parse(req.body.images) : []
             };
 
-            const result = await this._updateHotelUseCase.updateHotel(hotelId, updateData, files);
-            ResponseHandler.success(res, result.message, result.hotel, HttpStatusCode.OK);
+            const { hotel, message } = await this._updateHotelUseCase.updateHotel(hotelId, updateData, files);
+            const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel)
+            ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -64,9 +65,7 @@ export class HotelController {
             }
 
             const { message, hotel } = await this._getHotelByIdUseCae.getHotel(hotelId);
-
-            const mappedHotel = mapHotelToResponseDTO(hotel)
-
+            const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel)
             ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -82,9 +81,9 @@ export class HotelController {
 
             const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, search);
 
+            const mappedHotel = hotels.map(ResponseMapper.mapHotelToResponseDTO)
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
-
-            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

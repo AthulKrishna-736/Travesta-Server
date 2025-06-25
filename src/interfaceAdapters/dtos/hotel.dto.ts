@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 
 //hotel
-export interface CreateHotelDTO {
+export type TCreateHotelDTO = {
     vendorId: string | Types.ObjectId;
     name: string;
     description: string;
@@ -17,7 +17,7 @@ export interface CreateHotelDTO {
     isBlocked?: boolean;
 }
 
-export interface UpdateHotelDTO {
+export type TUpdateHotelDTO = {
     vendorId?: string | Types.ObjectId;
     name?: string;
     description?: string;
@@ -33,12 +33,12 @@ export interface UpdateHotelDTO {
     isBlocked?: boolean;
 }
 
-export interface ResponseHotelDTO {
+export type TResponseHotelDTO = {
     id: string;
     vendorId: string;
     name: string;
     description: string;
-    images: string[]; 
+    images: string[];
     rating: number;
     services: string[];
     amenities: string[];
