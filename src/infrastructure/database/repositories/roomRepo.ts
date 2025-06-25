@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
-import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfaces/model/hotel.interface";
+import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfaces/model/room.interface";
 import { IRoomRepository } from "../../../domain/interfaces/repositories/repository.interface";
 
 @injectable()

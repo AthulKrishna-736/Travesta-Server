@@ -2,8 +2,8 @@ import { inject, injectable } from "tsyringe";
 import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
-import { IUpdateRoomUseCase } from "../../../../domain/interfaces/model/usecases.interface";
-import { TResponseRoomData, TUpdateRoomData } from "../../../../domain/interfaces/model/hotel.interface";
+import { IUpdateRoomUseCase } from "../../../../domain/interfaces/model/room.interface";
+import { TResponseRoomData, TUpdateRoomData } from "../../../../domain/interfaces/model/room.interface";
 import { CreateRoomUseCase } from "./createRoomUseCase";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
@@ -26,9 +26,6 @@ export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomU
             throw new AppError("Room not found", HttpStatusCode.NOT_FOUND);
         }
 
-        console.log('updatedRoom: ', updateData);
-        console.log('imagefiles: ', files);
-
         if (updateData.images) {
             const deleted = await this._imageUploader.deleteImagesFromAws(updateData.images, room.images);
             if (deleted) {
@@ -46,14 +43,9 @@ export class UpdateRoomUseCase extends CreateRoomUseCase implements IUpdateRoomU
         if (updateData.images) {
             const images = Array.isArray(updateData.images) ? updateData.images : [updateData.images];
             keptImages = images.map((i) => decodeURIComponent(new URL(i).pathname).slice(1));
-            console.log('decoded urls: ', keptImages);
         }
 
-
         const finalImages = [...keptImages, ...uploadedImageKeys]
-        console.log('kep images: ', keptImages)
-        console.log('final Images: ', finalImages);
-
         const updatedRoom = await this._roomRepo.updateRoom(roomId, {
             ...updateData,
             images: finalImages,

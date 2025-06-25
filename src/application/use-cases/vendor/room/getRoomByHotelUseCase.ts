@@ -1,13 +1,13 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { TResponseRoomData } from "../../../../domain/interfaces/model/hotel.interface";
+import { TResponseRoomData } from "../../../../domain/interfaces/model/room.interface";
 import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
-import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/room.interface";
 
 @injectable()
 export class GetRoomsByHotelUseCase implements IGetRoomsByHotelUseCase {

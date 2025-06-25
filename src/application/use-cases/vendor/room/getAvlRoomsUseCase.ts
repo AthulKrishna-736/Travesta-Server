@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { TResponseRoomData } from "../../../../domain/interfaces/model/hotel.interface";
+import { TResponseRoomData } from "../../../../domain/interfaces/model/room.interface";
 import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
-import { IGetAvailableRoomsUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { IGetAvailableRoomsUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { GetAllRoomsUseCase } from "./getAllRoomsUseCase";
 
 @injectable()

@@ -4,8 +4,8 @@ import { IAwsS3Service } from '../../../../domain/interfaces/services/awsS3Servi
 import { IRedisService } from '../../../../domain/interfaces/services/redisService.interface';
 import { TOKENS } from '../../../../constants/token';
 import { awsS3Timer } from '../../../../infrastructure/config/jwtConfig';
-import { IGetAllRoomsUseCase } from '../../../../domain/interfaces/model/usecases.interface';
-import { TResponseRoomData } from '../../../../domain/interfaces/model/hotel.interface';
+import { IGetAllRoomsUseCase, IRoom } from '../../../../domain/interfaces/model/room.interface';
+import { TResponseRoomData } from '../../../../domain/interfaces/model/room.interface';
 
 @injectable()
 export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
@@ -24,7 +24,7 @@ export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
         }
 
         const mappedRooms = await Promise.all(
-            allRooms.map(async (room) => {
+            allRooms.map(async (room: IRoom) => {
                 let signedImageUrls = await this._redisService.getRoomImageUrls(room._id as string);
 
                 const roomImages = Array.isArray(room.images) ? room.images : [];

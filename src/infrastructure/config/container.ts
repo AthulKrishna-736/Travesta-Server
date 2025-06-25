@@ -8,7 +8,7 @@ import { RedisService } from "../services/redisService"
 import { IMailService } from "../../domain/interfaces/services/mailService.interface";
 import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
-import { IBlockUnblockUser, ICancelBookingUseCase, ICreateBookingUseCase, ICreateRoomUseCase, IGetAllRoomsUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetAvailableRoomsUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateKycUseCase, IUpdateRoomUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
+import { IBlockUnblockUser, ICancelBookingUseCase, ICreateBookingUseCase,  IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
 import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
@@ -61,6 +61,7 @@ import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscri
 import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscription/getAllPlans.UseCase";
 import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
 import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from "../../domain/interfaces/model/hotel.interface";
+import { ICreateRoomUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IUpdateRoomUseCase } from "../../domain/interfaces/model/room.interface";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {

@@ -1,9 +1,9 @@
 import { inject, injectable } from 'tsyringe';
-import { ICreateRoomUseCase } from '../../../../domain/interfaces/model/usecases.interface';
+import { ICreateRoomUseCase } from '../../../../domain/interfaces/model/room.interface';
 import { IRoomRepository } from '../../../../domain/interfaces/repositories/repository.interface';
 import { IAwsS3Service } from '../../../../domain/interfaces/services/awsS3Service.interface';
 import { TOKENS } from '../../../../constants/token';
-import { TCreateRoomData, TResponseRoomData } from '../../../../domain/interfaces/model/hotel.interface';
+import { TCreateRoomData, TResponseRoomData } from '../../../../domain/interfaces/model/room.interface';
 import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
 import { AwsImageUploader } from '../../base/imageUploader';
