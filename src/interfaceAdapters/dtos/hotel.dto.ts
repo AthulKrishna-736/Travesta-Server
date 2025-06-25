@@ -14,11 +14,9 @@ export type TCreateHotelDTO = {
     city: string;
     address: string;
     geoLocation: [number, number];
-    isBlocked?: boolean;
 }
 
 export type TUpdateHotelDTO = {
-    vendorId?: string | Types.ObjectId;
     name?: string;
     description?: string;
     images?: string[];
@@ -30,7 +28,6 @@ export type TUpdateHotelDTO = {
     city?: string;
     address?: string;
     geoLocation?: [number, number];
-    isBlocked?: boolean;
 }
 
 export type TResponseHotelDTO = {

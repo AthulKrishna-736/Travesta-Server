@@ -26816,3 +26816,949 @@
 [2025-06-25 19:33:51] INFO: [34mRunning in development mode[0m
 [2025-06-25 19:33:51] INFO: [34mMongoDB connected: localhost[0m
 [2025-06-25 19:33:51] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:57:28] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:57:29] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:57:29] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:58:26] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:58:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:58:26] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:58:35] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:58:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:58:35] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:58:37] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:58:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:58:38] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:58:42] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:58:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:58:43] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:59:20] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:59:20] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:59:22] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:59:22] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:59:22] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:59:34] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:59:34] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:59:34] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:59:37] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:59:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:59:37] INFO: [34mRedis connected successfully[0m
+[2025-06-25 19:59:47] INFO: [34mRunning in development mode[0m
+[2025-06-25 19:59:47] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 19:59:59] INFO: [34mRunning in development mode[0m
+[2025-06-25 20:00:00] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 20:00:00] INFO: [34mRedis connected successfully[0m
+[2025-06-25 20:00:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 20:00:05] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750861803,
+  "exp": 1752157803
+}[0m
+[2025-06-25 20:00:13] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750861803,
+  "exp": 1752157803
+}[0m
+[2025-06-25 20:00:18] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750861803,
+  "exp": 1752157803
+}[0m
+[2025-06-25 20:00:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750861803,
+  "exp": 1752157803
+}[0m
+[2025-06-25 20:39:33] INFO: [34mRunning in development mode[0m
+[2025-06-25 20:39:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 20:39:33] INFO: [34mRedis connected successfully[0m
+[2025-06-25 20:44:19] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 20:44:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750864459,
+  "exp": 1752160459
+}[0m
+[2025-06-25 20:46:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750864459,
+  "exp": 1752160459
+}[0m
+[2025-06-25 20:47:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750864459,
+  "exp": 1752160459
+}[0m
+[2025-06-25 20:47:40] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 20:51:57] INFO: [34mRunning in development mode[0m
+[2025-06-25 20:51:57] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 20:51:59] INFO: [34mRedis connected successfully[0m
+[2025-06-25 20:52:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:53:25] INFO: [34mRunning in development mode[0m
+[2025-06-25 20:53:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 20:53:26] INFO: [34mRedis connected successfully[0m
+[2025-06-25 20:53:31] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:53:46] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:54:36] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:54:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750864459,
+  "exp": 1752160459
+}[0m
+[2025-06-25 20:54:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750864459,
+  "exp": 1752160459
+}[0m
+[2025-06-25 20:54:54] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 20:55:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:57:57] INFO: [34mRunning in development mode[0m
+[2025-06-25 20:57:57] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 20:57:57] INFO: [34mRedis connected successfully[0m
+[2025-06-25 20:58:23] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750864459,
+  "exp": 1752160459
+}[0m
+[2025-06-25 20:59:06] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 21:03:21] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:03:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750865600,
+  "exp": 1752161600
+}[0m
+[2025-06-25 21:03:41] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750865600,
+  "exp": 1752161600
+}[0m
+[2025-06-25 21:09:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750865600,
+  "exp": 1752161600
+}[0m
+[2025-06-25 21:09:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750865600,
+  "exp": 1752161600
+}[0m
+[2025-06-25 21:11:13] ERROR: [31mcheck the error in handler:  No Hotels exits on this vendor id[0m
+[2025-06-25 21:13:37] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:13:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:13:38] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:13:41] ERROR: [31mcheck the error in handler:  Vendor id missing[0m
+[2025-06-25 21:13:43] ERROR: [31mcheck the error in handler:  Vendor id missing[0m
+[2025-06-25 21:13:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750865600,
+  "exp": 1752161600
+}[0m
+[2025-06-25 21:14:02] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250625%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250625T065506Z&X-Amz-Expires=84600&X-Amz-Signature=4e1cc7ac53865f2c8eac78fd1eda28655af4d1f54b8fc4cb91916166599f09d4&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "users/kyc_front_680e1f4632a706b6e9f0b8b3.png",
+    "users/kyc_back_680e1f4632a706b6e9f0b8b3.png"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-06-25T15:44:02.829Z"
+}[0m
+[2025-06-25 21:14:42] ERROR: [31mcheck the error in handler:  Vendor id missing[0m
+[2025-06-25 21:14:45] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:14:45] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:15:13] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:15:13] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:15:13] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:15:22] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:15:22] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:15:22] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:15:59] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:16:00] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:16:00] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:16:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:16:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:19:43] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:19:43] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:19:43] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:19:47] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:19:47] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:19:47] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:19:49] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:19:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:19:49] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:19:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:23:40] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:23:40] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:23:40] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:24:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:24:31] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:24:31] ERROR: [31mcheck the error in handler:  At least one valid amenity is required[0m
+[2025-06-25 21:24:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:24:36] ERROR: [31mcheck the error in handler:  At least one valid amenity is required[0m
+[2025-06-25 21:24:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:24:44] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750866242,
+  "exp": 1752162242
+}[0m
+[2025-06-25 21:38:26] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:38:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750867706,
+  "exp": 1752163706
+}[0m
+[2025-06-25 21:38:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750867706,
+  "exp": 1752163706
+}[0m
+[2025-06-25 21:38:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750867706,
+  "exp": 1752163706
+}[0m
+[2025-06-25 21:38:50] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 21:49:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750867706,
+  "exp": 1752163706
+}[0m
+[2025-06-25 21:49:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750867706,
+  "exp": 1752163706
+}[0m
+[2025-06-25 21:51:33] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:51:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:51:34] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:51:37] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:51:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:51:37] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:53:33] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:53:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:53:34] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:55:04] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:55:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:55:05] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:55:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:55:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:55:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:55:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750868706,
+  "exp": 1752164706
+}[0m
+[2025-06-25 21:55:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750868706,
+  "exp": 1752164706
+}[0m
+[2025-06-25 21:55:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750868706,
+  "exp": 1752164706
+}[0m
+[2025-06-25 21:55:09] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 21:55:36] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:55:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:55:37] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:55:53] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:55:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:56:04] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:56:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:56:05] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:56:19] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:56:19] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:56:20] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:56:23] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:56:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:56:23] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:56:27] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:56:27] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:56:28] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:56:39] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:56:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:56:39] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:56:48] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:56:48] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:56:48] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:58:14] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:58:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:58:15] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:58:36] INFO: [34mRunning in development mode[0m
+[2025-06-25 21:58:36] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 21:58:36] INFO: [34mRedis connected successfully[0m
+[2025-06-25 21:59:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750868706,
+  "exp": 1752164706
+}[0m
+[2025-06-25 21:59:56] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 22:00:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750868706,
+  "exp": 1752164706
+}[0m
+[2025-06-25 22:00:39] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750868706,
+  "exp": 1752164706
+}[0m
+[2025-06-25 22:49:07] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:10] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 22:49:11] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 22:49:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750871951,
+  "exp": 1752167951
+}[0m
+[2025-06-25 22:54:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750871951,
+  "exp": 1752167951
+}[0m
+[2025-06-25 22:54:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750871951,
+  "exp": 1752167951
+}[0m
+[2025-06-25 23:05:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 23:05:17] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:05:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:06:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:06:20] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 23:07:34] INFO: [34mRunning in development mode[0m
+[2025-06-25 23:07:34] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-25 23:07:35] INFO: [34mRedis connected successfully[0m
+[2025-06-25 23:07:59] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:07:59] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 23:13:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:13:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:13:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:15:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:16:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:16:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:16:17] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Hotel"[0m
+[2025-06-25 23:18:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:18:01] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Hotel"[0m
+[2025-06-25 23:18:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:19:18] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:20:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:20:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750872916,
+  "exp": 1752168916
+}[0m
+[2025-06-25 23:20:35] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 23:20:36] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:27:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:27:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:27:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:27:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:27:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:27:47] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:27:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:27:49] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:27:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:27:56] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:28:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:28:26] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:28:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:28:27] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:29:07] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:29:08] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:29:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:29:12] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:29:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:29:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:30:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:30:25] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:30:25] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:30:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:30:26] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:30:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:30:28] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:31:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:31:49] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:32:00] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:32:00] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:32:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:32:01] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:32:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:32:04] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:32:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:32:08] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:35:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:35:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:35:10] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:35:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:35:19] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:35:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750873835,
+  "exp": 1752169835
+}[0m
+[2025-06-25 23:35:43] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 23:35:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:35:54] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:35:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:36:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:40:54] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:40:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:41:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:41:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:41:08] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-25 23:41:12] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:41:13] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-25 23:41:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:41:50] ERROR: [31mcheck the error in handler:  Room validation failed: hotelId: Cast to ObjectId failed for value "sample hotel" (type string) at path "hotelId" because of "BSONError"[0m
+[2025-06-25 23:47:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:48:40] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:49:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:49:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750874743,
+  "exp": 1752170743
+}[0m
+[2025-06-25 23:52:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 23:53:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-25 23:54:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-25 23:55:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-25 23:55:09] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-25 23:55:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-25 23:55:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-25 23:58:48] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-25 23:59:31] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-25 23:59:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-26 00:01:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-26 00:01:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-26 00:02:17] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m

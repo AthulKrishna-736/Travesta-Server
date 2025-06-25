@@ -85,57 +85,121 @@ export const googleLoginSchema = z.object({
 
 
 //createhotel
-const nameRegex = /^[A-Za-z\s]+$/;
-const tagAmenityServiceRegex = /^[a-zA-Z0-9,\s]+$/;
-const SUPPORTED_IMAGE_FORMATS = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
-
 export const createHotelSchema = z.object({
-    body: z.object({
-        name: z
-            .string()
-            .regex(nameRegex, 'Name must contain only letters and spaces')
-            .min(1, 'Hotel name is required'),
+    name: z.string({
+        required_error: "Hotel name is required",
+        invalid_type_error: "Hotel name must be a string",
+    })
+        .min(3, "Hotel name must be at least 3 characters")
+        .max(100, "Hotel name must be less than 100 characters")
+        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Hotel name contains invalid characters (only letters, numbers, spaces, -, &, , allowed)"),
 
-        description: z
-            .string()
-            .min(10, 'Description must be at least 10 characters'),
+    description: z.string({
+        required_error: "Description is required",
+        invalid_type_error: "Description must be a string",
+    })
+        .min(10, "Description must be at least 10 characters")
+        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Description contains invalid characters"),
 
-        address: z
-            .string()
-            .min(5, 'Address must be at least 5 characters'),
+    services: z.preprocess(
+        (val) => (typeof val === "string" ? JSON.parse(val) : val),
+        z.array(z.string({ invalid_type_error: "Each service must be a string" }))
+            .min(1, "At least one service is required")
+    ),
 
-        state: z
-            .string()
-            .regex(nameRegex, 'State must contain only letters and spaces'),
+    amenities: z.preprocess(
+        (val) => (typeof val === "string" ? JSON.parse(val) : val),
+        z.array(z.string({ invalid_type_error: "Each amenity must be a string" }))
+            .min(1, "At least one amenity is required")
+    ),
 
-        city: z
-            .string()
-            .regex(nameRegex, 'City must contain only letters and spaces'),
+    tags: z.preprocess(
+        (val) => (typeof val === "string" ? JSON.parse(val) : val),
+        z.array(z.string()).default([])
+    ),
 
-        tags: z
-            .string()
-            .regex(tagAmenityServiceRegex, 'Tags must be letters, numbers, or commas'),
-
-        amenities: z
-            .string()
-            .regex(tagAmenityServiceRegex, 'Amenities must be letters, numbers, or commas'),
-
-        services: z
-            .string()
-            .regex(tagAmenityServiceRegex, 'Services must be letters, numbers, or commas'),
+    state: z.string({
+        required_error: "State is required",
+        invalid_type_error: "State must be a string",
     }),
 
-    file: z
-        .any()
-        .refine((files) => Array.isArray(files) && files.length > 0, {
-            message: 'At least one image is required',
-        })
-        .refine((files: Express.Multer.File[]) =>
-            files.every(file => SUPPORTED_IMAGE_FORMATS.includes(file.mimetype)),
-            {
-                message: 'Only JPG, PNG, or WEBP files are allowed',
-            }
-        ),
+    city: z.string({
+        required_error: "City is required",
+        invalid_type_error: "City must be a string",
+    }),
+
+    address: z.string({
+        required_error: "Address is required",
+        invalid_type_error: "Address must be a string",
+    }).min(5, "Address must be at least 5 characters"),
+
+    geoLocation: z.preprocess(
+        (val) => (typeof val === "string" ? JSON.parse(val) : val),
+        z.tuple([
+            z.number({ invalid_type_error: "Latitude must be a number" }),
+            z.number({ invalid_type_error: "Longitude must be a number" }),
+        ])
+    ),
+
+    rating: z.preprocess(
+        (val) => Number(val),
+        z.number({ invalid_type_error: "Rating must be a number" })
+            .min(0, "Rating must be at least 0")
+            .max(5, "Rating cannot exceed 5")
+    ).optional(),
+});
+
+export const updateHotelSchema = z.object({
+    name: z.string()
+        .min(3, "Hotel name must be at least 3 characters")
+        .max(100, "Hotel name must be less than 100 characters")
+        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Hotel name contains invalid characters")
+        .optional(),
+
+    description: z.string()
+        .min(10, "Description must be at least 10 characters")
+        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Description contains invalid characters")
+        .optional(),
+
+    rating: z.preprocess(
+        (val) => val !== undefined ? Number(val) : undefined,
+        z.number()
+            .min(0, "Rating must be at least 0")
+            .max(5, "Rating cannot exceed 5")
+    ).optional(),
+
+    services: z.preprocess(
+        (val) => typeof val === "string" ? JSON.parse(val) : val,
+        z.array(z.string().min(1, "Service must be a non-empty string"))
+            .min(1, "At least one service is required")
+    ).optional(),
+
+    amenities: z.preprocess(
+        (val) => typeof val === "string" ? JSON.parse(val) : val,
+        z.array(z.string().min(1, "Amenity must be a non-empty string"))
+            .min(1, "At least one amenity is required")
+    ).optional(),
+
+    tags: z.preprocess(
+        (val) => typeof val === "string" ? JSON.parse(val) : val,
+        z.array(z.string().min(1, "Tag must be a non-empty string"))
+    ).optional(),
+
+    state: z.string().optional(),
+
+    city: z.string().optional(),
+
+    address: z.string()
+        .min(5, "Address must be at least 5 characters")
+        .optional(),
+
+    geoLocation: z.preprocess(
+        (val) => typeof val === "string" ? JSON.parse(val) : val,
+        z.tuple([
+            z.number({ invalid_type_error: "Latitude must be a number" }),
+            z.number({ invalid_type_error: "Longitude must be a number" }),
+        ])
+    ).optional(),
 });
 
 
@@ -145,7 +209,7 @@ export const subscriptionSchema = z.object({
         required_error: 'name is required',
         invalid_type_error: 'name must be string',
     })
-        .min(3, 'name must be at least 3 characters'),
+        .min(3, 'name must be at dleast 3 characters'),
 
     description: z.string({
         required_error: 'description is required',
@@ -255,6 +319,4 @@ export const updateRoomSchema = z.object({
         z.number({ invalid_type_error: "Base price must be a number" })
             .gt(0, "Base price must be greater than 0")
     ).optional(),
-
-    images: z.array(z.string()).optional(),
 });

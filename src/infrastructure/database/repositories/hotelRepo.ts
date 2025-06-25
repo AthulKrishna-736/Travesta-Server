@@ -39,12 +39,12 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
             filter.$or = [
                 { name: regex },
                 { city: regex },
-                { state: regex }
+                { state: regex },
             ];
         }
 
         const total = await this.model.countDocuments(filter);
-        const hotels = await this.find(filter).skip(skip).limit(limit).lean<IHotel[]>();
+        const hotels = await this.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean<IHotel[]>();
 
         return { hotels, total };
     }

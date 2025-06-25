@@ -7204,3 +7204,85 @@
 [2025-06-25 18:50:07] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
 [2025-06-25 18:50:11] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
 [2025-06-25 18:50:17] ERROR: [31mcheck the error in handler:  Exactly 4 images are required to create a Room[0m
+[2025-06-25 20:00:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 20:44:19] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 20:47:40] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 20:52:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:53:31] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:53:46] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:54:36] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:54:54] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 20:55:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'length')[0m
+[2025-06-25 20:59:06] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 21:03:21] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:11:13] ERROR: [31mcheck the error in handler:  No Hotels exits on this vendor id[0m
+[2025-06-25 21:13:41] ERROR: [31mcheck the error in handler:  Vendor id missing[0m
+[2025-06-25 21:13:43] ERROR: [31mcheck the error in handler:  Vendor id missing[0m
+[2025-06-25 21:14:42] ERROR: [31mcheck the error in handler:  Vendor id missing[0m
+[2025-06-25 21:24:31] ERROR: [31mcheck the error in handler:  At least one valid amenity is required[0m
+[2025-06-25 21:24:36] ERROR: [31mcheck the error in handler:  At least one valid amenity is required[0m
+[2025-06-25 21:38:26] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:38:50] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 21:55:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:55:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:55:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 21:55:09] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 21:59:56] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 22:49:07] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:10] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 22:49:11] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 22:49:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 22:49:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-25 23:05:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 23:06:20] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 23:07:59] ERROR: [31mcheck the error in handler:  Invalid request data[0m
+[2025-06-25 23:16:17] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Hotel"[0m
+[2025-06-25 23:18:01] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Hotel"[0m
+[2025-06-25 23:20:35] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 23:27:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:27:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:27:47] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:27:49] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:27:56] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:28:26] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:28:27] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:29:08] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:29:12] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:30:25] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:30:26] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:30:28] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:31:49] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:32:00] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:32:01] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:32:04] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:32:08] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:35:10] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-25 23:35:43] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 23:41:08] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-25 23:41:13] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-25 23:41:50] ERROR: [31mcheck the error in handler:  Room validation failed: hotelId: Cast to ObjectId failed for value "sample hotel" (type string) at path "hotelId" because of "BSONError"[0m
+[2025-06-25 23:52:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-25 23:55:09] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
