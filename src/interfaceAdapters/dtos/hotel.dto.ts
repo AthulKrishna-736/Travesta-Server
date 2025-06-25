@@ -33,31 +33,6 @@ export interface UpdateHotelDTO {
     isBlocked?: boolean;
 }
 
-
-//rooms
-export interface CreateRoomDTO {
-    hotelId: string | Types.ObjectId;
-    name: string;
-    capacity: number;
-    bedType: string;
-    amenities: string[];
-    images: string[];
-    basePrice: number;
-    isAvailable?: boolean;
-}
-
-export interface UpdateRoomDTO {
-    hotelId?: string | Types.ObjectId;
-    name?: string;
-    capacity?: number;
-    bedType?: string;
-    amenities?: string[];
-    images?: string[];
-    basePrice?: number;
-    isAvailable?: boolean;
-}
-
-
 export interface ResponseHotelDTO {
     id: string;
     vendorId: string;

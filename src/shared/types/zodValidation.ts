@@ -171,3 +171,90 @@ export const subscriptionSchema = z.object({
     features: z.array(z.string({ invalid_type_error: 'features should be of string' }))
         .nonempty('features must have at least one item'),
 });
+
+
+//room schema
+export const createRoomSchema = z.object({
+    hotelId: z.string({
+        required_error: "hotelId is required",
+        invalid_type_error: "hotelId must be a string",
+    }).min(10, "hotelId is invalid"),
+
+    name: z.string({
+        required_error: "Room name is required",
+        invalid_type_error: "Room name must be a string",
+    })
+        .min(3, "Room name must be at least 3 characters")
+        .max(50, "Room name must be less than 50 characters")
+        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Room name contains invalid characters (only letters, numbers, spaces, -, &, , allowed)"),
+
+    capacity: z.preprocess(
+        (val) => Number(val),
+        z.number({ invalid_type_error: "Capacity must be a number" })
+            .int("Capacity must be an integer")
+            .min(1, "Capacity must be at least 1")
+    ),
+
+    bedType: z.string({
+        invalid_type_error: "Bed type must be a string",
+    })
+        .min(3, "Bed type must be at least 3 characters")
+        .max(50, "Bed type must be less than 50 characters")
+        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Bed type contains invalid characters")
+        .optional(),
+
+    amenities: z.preprocess(
+        (val) => (typeof val === "string" ? JSON.parse(val) : val),
+        z.array(z.string({ invalid_type_error: "Each amenity must be a string" }))
+            .min(1, "At least one amenity is required")
+    ),
+
+    basePrice: z.preprocess(
+        (val) => Number(val),
+        z.number({ invalid_type_error: "Base price must be a number" })
+            .gt(0, "Base price must be greater than 0")
+    ),
+});
+
+export const updateRoomSchema = z.object({
+    hotelId: z.string({
+        invalid_type_error: "hotelId must be a string",
+    }).min(10, "hotelId is invalid").optional(),
+
+    name: z.string({
+        invalid_type_error: "Room name must be a string",
+    })
+        .min(3, "Room name must be at least 3 characters")
+        .max(50, "Room name must be less than 50 characters")
+        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Room name contains invalid characters")
+        .optional(),
+
+    capacity: z.preprocess(
+        (val) => val !== undefined ? Number(val) : undefined,
+        z.number({ invalid_type_error: "Capacity must be a number" })
+            .int("Capacity must be an integer")
+            .min(1, "Capacity must be at least 1")
+    ).optional(),
+
+    bedType: z.string({
+        invalid_type_error: "Bed type must be a string",
+    })
+        .min(3, "Bed type must be at least 3 characters")
+        .max(50, "Bed type must be less than 50 characters")
+        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Bed type contains invalid characters")
+        .optional(),
+
+    amenities: z.preprocess(
+        (val) => (typeof val === "string" ? JSON.parse(val) : val),
+        z.array(z.string({ invalid_type_error: "Each amenity must be a string" }))
+            .min(1, "At least one amenity is required")
+    ).optional(),
+
+    basePrice: z.preprocess(
+        (val) => val !== undefined ? Number(val) : undefined,
+        z.number({ invalid_type_error: "Base price must be a number" })
+            .gt(0, "Base price must be greater than 0")
+    ).optional(),
+
+    images: z.array(z.string()).optional(),
+});

@@ -4,6 +4,8 @@ import { IHotel } from "../domain/interfaces/model/hotel.interface";
 import { ResponseHotelDTO } from "../interfaceAdapters/dtos/hotel.dto";
 import { ISubscription } from "../domain/interfaces/model/subscription.interface";
 import { TResponseSubscriptionDTO } from "../interfaceAdapters/dtos/subscription.dto";
+import { IRoom } from "../domain/interfaces/model/room.interface";
+import { TResponseRoomDTO } from "../interfaceAdapters/dtos/room.dto";
 
 export class ResponseMapper {
     static mapSubscriptionToResponseDTO(plan: ISubscription): TResponseSubscriptionDTO {
@@ -18,6 +20,22 @@ export class ResponseMapper {
             features: plan.features,
             createdAt: plan.createdAt,
             updatedAt: plan.updatedAt,
+        }
+    }
+
+    static mapRoomToResponseDTO(room: IRoom): TResponseRoomDTO {
+        return {
+            id: room._id as string,
+            hotelId: room.hotelId.toString(),
+            name: room.name,
+            capacity: room.capacity,
+            bedType: room.bedType,
+            amenities: room.amenities,
+            images: room.images,
+            basePrice: room.basePrice,
+            isAvailable: room.isAvailable,
+            createdAt: room.createdAt,
+            updatedAt: room.updatedAt,
         }
     }
 }

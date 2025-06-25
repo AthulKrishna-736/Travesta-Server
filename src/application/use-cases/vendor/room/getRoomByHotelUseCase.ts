@@ -1,45 +1,23 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { TResponseRoomData } from "../../../../domain/interfaces/model/hotel.interface";
+import { TResponseRoomData } from "../../../../domain/interfaces/model/room.interface";
 import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
-import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/room.interface";
+import { RoomLookupBase } from "../../base/room.base";
 
 @injectable()
-export class GetRoomsByHotelUseCase implements IGetRoomsByHotelUseCase {
+export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsByHotelUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) protected _roomRepo: IRoomRepository,
-        @inject(TOKENS.RedisService) protected _redisService: IRedisService,
-        @inject(TOKENS.AwsS3Service) protected _awsS3Service: IAwsS3Service
-    ) { }
-
-    protected async _getSignedUrls(roomId: string, imageKeys: string[]): Promise<string[]> {
-        const signedUrls: string[] = [];
-
-        for (const imageKey of imageKeys) {
-            const redisKey = `room:${roomId}:${imageKey}`;
-
-            const cached = await this._redisService.get<{ signedUrl: string }>(redisKey);
-            let signedUrl = cached?.signedUrl;
-
-            if (!signedUrl) {
-                signedUrl = await this._awsS3Service.getFileUrlFromAws(imageKey, awsS3Timer.expiresAt);
-
-                if (signedUrl) {
-                    await this._redisService.set(redisKey, { signedUrl }, awsS3Timer.expiresAt);
-                }
-            }
-
-            if (signedUrl) {
-                signedUrls.push(signedUrl);
-            }
-        }
-
-        return signedUrls;
+        @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
+    ) {
+        super(roomRepo);
     }
 
     async getRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]> {
@@ -47,17 +25,31 @@ export class GetRoomsByHotelUseCase implements IGetRoomsByHotelUseCase {
             throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
         }
 
-        const rooms = await this._roomRepo.findRoomsByHotel(hotelId);
+        const roomEntities = await this.getRoomsEntityByHotelId(hotelId);
 
-        if (!rooms || rooms.length === 0) return [];
+        const roomsWithSignedImages = await Promise.all(
+            roomEntities.map(async (roomEntity) => {
+                const roomId = roomEntity.id!;
+                const imageKeys = roomEntity.images;
 
-        for (const room of rooms) {
-            if (room.images?.length) {
-                const roomId = room._id?.toString() || '';
-                room.images = await this._getSignedUrls(roomId, room.images);
-            }
-        }
+                let signedUrls = await this._redisService.getRoomImageUrls(roomId);
 
-        return rooms;
+                if (!signedUrls) {
+                    signedUrls = await Promise.all(
+                        imageKeys.map((key) =>
+                            this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
+                        )
+                    );
+                    await this._redisService.storeRoomImageUrls(roomId, signedUrls, awsS3Timer.expiresAt);
+                }
+
+                return {
+                    ...roomEntity.toObject(),
+                    images: signedUrls
+                };
+            })
+        );
+
+        return roomsWithSignedImages;
     }
 }

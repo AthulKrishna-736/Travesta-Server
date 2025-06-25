@@ -5,9 +5,10 @@ import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, } from '../../domain/interfaces/model/usecases.interface';
-import { CreateRoomDTO, UpdateRoomDTO } from '../dtos/hotel.dto';
+import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, } from '../../domain/interfaces/model/room.interface';
+import { TCreateRoomDTO, TUpdateRoomDTO } from '../dtos/room.dto';
 import { Pagination } from '../../shared/types/common.types';
+import { ResponseMapper } from '../../utils/responseMapper';
 
 
 @injectable()
@@ -25,25 +26,39 @@ export class RoomController {
         try {
             const files = req.files as Express.Multer.File[];
 
-            const { hotelId, name, capacity, bedType, amenities, basePrice, isAvailable } = req.body;
+            const { hotelId, name, capacity, bedType, amenities, basePrice } = req.body;
 
-            const roomData: CreateRoomDTO = {
+            console.log('req body room: ', req.body);
+
+            const roomData: TCreateRoomDTO = {
                 hotelId,
                 name,
                 capacity: Number(capacity),
                 bedType,
                 amenities: typeof amenities === 'string' ? JSON.parse(amenities) : amenities,
                 basePrice: Number(basePrice),
-                isAvailable: isAvailable !== undefined ? Boolean(isAvailable) : true,
                 images: [],
             };
+
+            console.log('room data after dto mapping: ', roomData);
 
             if (!files || files.length === 0) {
                 throw new AppError('No images provided to create Room', HttpStatusCode.BAD_REQUEST);
             }
 
+            if (files.length < 4) {
+                throw new AppError('Exactly 4 images are required to create a Room', HttpStatusCode.BAD_REQUEST);
+            }
+
+            if (files.length > 4) {
+                throw new AppError('Only 4 images are allowed — please upload exactly 4 images', HttpStatusCode.BAD_REQUEST);
+            }
+
+            console.log('files check: ', files, files.length)
+
             const { room, message } = await this._createRoomUseCase.createRoom(roomData, files);
-            ResponseHandler.success(res, message, room, HttpStatusCode.CREATED);
+            const mappedRoom = ResponseMapper.mapRoomToResponseDTO(room);
+            ResponseHandler.success(res, message, mappedRoom, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
         }
@@ -58,25 +73,21 @@ export class RoomController {
 
             const files = req.files as Express.Multer.File[];
 
-            const { hotelId, name, capacity, bedType, amenities, basePrice, isAvailable } = req.body;
+            const { hotelId, name, capacity, bedType, amenities, basePrice } = req.body;
 
-            const updateData: UpdateRoomDTO = {
+            const updateData: TUpdateRoomDTO = {
                 hotelId,
                 name,
                 capacity: capacity !== undefined ? Number(capacity) : undefined,
                 bedType,
-                amenities: amenities
-                    ? typeof amenities === 'string'
-                        ? JSON.parse(amenities)
-                        : amenities
-                    : undefined,
+                amenities: typeof amenities === 'string' ? JSON.parse(amenities) : amenities,
                 basePrice: basePrice !== undefined ? Number(basePrice) : undefined,
-                isAvailable: isAvailable !== undefined ? Boolean(isAvailable) : undefined,
                 images: req.body.images ? JSON.parse(req.body.images) : [],
             };
 
             const { room, message } = await this._updateRoomUseCase.updateRoom(roomId, updateData, files);
-            ResponseHandler.success(res, message, room, HttpStatusCode.OK);
+            const mappedRoom = ResponseMapper.mapRoomToResponseDTO(room);
+            ResponseHandler.success(res, message, mappedRoom, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -90,7 +101,8 @@ export class RoomController {
             }
 
             const room = await this._getRoomByIdUseCase.getRoomById(roomId);
-            ResponseHandler.success(res, 'Room fetched successfully', room, HttpStatusCode.OK);
+            const mappedRoom = ResponseMapper.mapRoomToResponseDTO(room);
+            ResponseHandler.success(res, 'Room fetched successfully', mappedRoom, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -104,7 +116,8 @@ export class RoomController {
             }
 
             const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(hotelId);
-            ResponseHandler.success(res, 'Rooms fetched successfully', rooms, HttpStatusCode.OK);
+            const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
+            ResponseHandler.success(res, 'Rooms fetched successfully', mappedRooms, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -131,9 +144,9 @@ export class RoomController {
             const search = req.query.search as string
 
             const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(page, limit, search);
-
+            const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-            ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, message, mappedRooms, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }
@@ -146,9 +159,9 @@ export class RoomController {
             const search = req.query.search as string
 
             const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(page, limit, search);
-
+            const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-            ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, message, mappedRooms, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

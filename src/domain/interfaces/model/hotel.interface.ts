@@ -19,20 +19,6 @@ export interface IHotel {
     updatedAt: Date
 }
 
-export interface IRoom {
-    _id?: string
-    hotelId: string | Types.ObjectId
-    name: string
-    capacity: number
-    bedType: string
-    amenities: string[]
-    images: string[]
-    basePrice: number
-    isAvailable: boolean
-    createdAt: Date
-    updatedAt: Date
-}
-
 export interface IBooking {
     _id?: string;
     userId: string | Types.ObjectId;
@@ -53,7 +39,6 @@ export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'create
 export type TResponseHotelData = Omit<IHotel, ''>;
 
 //hotel use cases
-//hotels
 export interface ICreateHotelUseCase {
     createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
 }
@@ -70,10 +55,6 @@ export interface IGetAllHotelsUseCase {
     getAllHotel(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
 }
 
-
-export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'createdAt' | 'updatedAt'>;
-export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'createdAt' | 'updatedAt'>>;
-export type TResponseRoomData = Omit<IRoom, ''>;
 
 export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt' | 'status'>;
 export type TUpdateBookingData = Partial<Omit<IBooking, '_id' | 'userId' | 'hotelId' | 'roomId' | 'createdAt' | 'updatedAt'>>;
