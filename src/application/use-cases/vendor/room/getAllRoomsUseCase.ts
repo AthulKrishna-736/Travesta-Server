@@ -1,52 +1,52 @@
 import { inject, injectable } from 'tsyringe';
-import { IRoomRepository } from '../../../../domain/interfaces/repositories/repository.interface';
 import { IAwsS3Service } from '../../../../domain/interfaces/services/awsS3Service.interface';
 import { IRedisService } from '../../../../domain/interfaces/services/redisService.interface';
 import { TOKENS } from '../../../../constants/token';
 import { awsS3Timer } from '../../../../infrastructure/config/jwtConfig';
-import { IGetAllRoomsUseCase, IRoom } from '../../../../domain/interfaces/model/room.interface';
-import { TResponseRoomData } from '../../../../domain/interfaces/model/room.interface';
+import { IGetAllRoomsUseCase, TResponseRoomData } from '../../../../domain/interfaces/model/room.interface';
+import { IRoomRepository } from '../../../../domain/interfaces/repositories/repository.interface';
+import { RoomLookupBase } from '../../base/room.base';
 
 @injectable()
-export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
+export class GetAllRoomsUseCase extends RoomLookupBase implements IGetAllRoomsUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) protected _roomRepo: IRoomRepository,
-        @inject(TOKENS.AwsS3Service) protected _awsS3Service: IAwsS3Service,
-        @inject(TOKENS.RedisService) protected _redisService: IRedisService,
-    ) { }
+        @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
+        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+    ) {
+        super(roomRepo);
+    }
 
     async getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomData[]; message: string; total: number }> {
-
-        const { rooms: allRooms, total } = await this._roomRepo.findAllRooms(page, limit, search);
-
-        if (!allRooms || allRooms.length === 0) {
-            return { rooms: [], message: 'No rooms found', total };
-        }
+        const { rooms, total } = await this.getAllRoomsOrThrow(page, limit, search);
 
         const mappedRooms = await Promise.all(
-            allRooms.map(async (room: IRoom) => {
-                let signedImageUrls = await this._redisService.getRoomImageUrls(room._id as string);
+            rooms.map(async (roomEntity) => {
+                const roomId = roomEntity.id as string;
+                const originalImageKeys = Array.isArray(roomEntity.images) ? roomEntity.images : [];
 
-                const roomImages = Array.isArray(room.images) ? room.images : [];
+                let signedImageUrls = await this._redisService.getRoomImageUrls(roomId);
 
                 if (!signedImageUrls) {
                     signedImageUrls = await Promise.all(
-                        roomImages.map((imgKey) =>
+                        originalImageKeys.map((imgKey) =>
                             this._awsS3Service.getFileUrlFromAws(imgKey, awsS3Timer.expiresAt)
                         )
                     );
-                    await this._redisService.storeRoomImageUrls(room._id as string, signedImageUrls, awsS3Timer.expiresAt);
+                    await this._redisService.storeRoomImageUrls(roomId, signedImageUrls, awsS3Timer.expiresAt);
                 }
 
-                return { ...room, images: signedImageUrls };
+                return {
+                    ...roomEntity.toObject(),
+                    images: signedImageUrls,
+                };
             })
         );
 
         return {
             rooms: mappedRooms,
             message: 'Rooms fetched successfully',
-            total
+            total,
         };
     }
-
 }

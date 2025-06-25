@@ -54,7 +54,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         }
 
         const total = await this.model.countDocuments(filter);
-        const rooms = await this.model.find(filter).skip(skip).limit(limit).lean<IRoom[]>();
+        const rooms = await this.model.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean<IRoom[]>();
 
         return { rooms, total };
     }

@@ -37,10 +37,10 @@ export abstract class RoomLookupBase {
         return rooms.map((room) => new RoomEntity(room));
     }
 
-    protected async getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: IRoomEntity[], total: number }> {
+    protected async getAllRoomsOrThrow(page: number, limit: number, search?: string): Promise<{ rooms: IRoomEntity[], total: number }> {
         const { rooms, total } = await this._roomRepo.findAllRooms(page, limit, search);
 
-        if (!rooms || rooms.length === 0) {
+        if (!rooms || !Array.isArray(rooms) || rooms.length === 0) {
             throw new AppError("No rooms found", HttpStatusCode.NOT_FOUND);
         }
 
