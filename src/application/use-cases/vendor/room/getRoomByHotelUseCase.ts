@@ -32,24 +32,46 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
                 const roomId = roomEntity.id!;
                 const imageKeys = roomEntity.images;
 
-                let signedUrls = await this._redisService.getRoomImageUrls(roomId);
-
-                if (!signedUrls) {
-                    signedUrls = await Promise.all(
+                // Sign room images (cached in Redis)
+                let signedRoomUrls = await this._redisService.getRoomImageUrls(roomId);
+                if (!signedRoomUrls) {
+                    signedRoomUrls = await Promise.all(
                         imageKeys.map((key) =>
                             this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
                         )
                     );
-                    await this._redisService.storeRoomImageUrls(roomId, signedUrls, awsS3Timer.expiresAt);
+                    await this._redisService.storeRoomImageUrls(roomId, signedRoomUrls, awsS3Timer.expiresAt);
                 }
+
+                // 🔥 SIGN HOTEL IMAGES
+                const hotel = roomEntity.hotelId as any;
+                const hotelId = hotel._id?.toString();
+
+                let signedHotelUrls = await this._redisService.getHotelImageUrls(hotelId);
+                if (!signedHotelUrls) {
+                    signedHotelUrls = await Promise.all(
+                        (hotel.images || []).map((key: string) =>
+                            this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
+                        )
+                    );
+                    await this._redisService.storeHotelImageUrls(hotelId, signedHotelUrls, awsS3Timer.expiresAt);
+                }
+
+                // Replace hotel.images with signed URLs before returning
+                const hotelWithSignedImages = {
+                    ...hotel,
+                    images: signedHotelUrls,
+                };
 
                 return {
                     ...roomEntity.toObject(),
-                    images: signedUrls
+                    images: signedRoomUrls,
+                    hotelId: hotelWithSignedImages,
                 };
             })
         );
 
         return roomsWithSignedImages;
     }
+
 }

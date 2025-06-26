@@ -31,7 +31,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
     }
 
     async findRoomsByHotel(hotelId: string): Promise<IRoom[] | null> {
-        const rooms = await this.find({ hotelId }).lean<IRoom[]>();
+        const rooms = await this.find({ hotelId }).populate('hotelId').lean<IRoom[]>();
         return rooms;
     }
 

@@ -116,8 +116,8 @@ export class RoomController {
             }
 
             const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(hotelId);
-            const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
-            ResponseHandler.success(res, 'Rooms fetched successfully', mappedRooms, HttpStatusCode.OK);
+            // const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
+            ResponseHandler.success(res, 'Rooms fetched successfully', rooms, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }

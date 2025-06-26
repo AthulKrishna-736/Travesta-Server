@@ -7340,3 +7340,24 @@
 [2025-06-26 09:55:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
 [2025-06-26 09:56:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-06-26 09:56:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 10:04:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:04:51] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:05:00] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:05:01] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:05:04] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:05:06] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:05:27] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:13:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 10:13:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 10:20:42] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:20:43] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:20:48] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:20:49] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:20:51] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:20:55] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 10:36:32] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 10:36:32] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 10:38:56] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-26 10:38:57] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-26 10:39:02] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-26 10:39:11] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
