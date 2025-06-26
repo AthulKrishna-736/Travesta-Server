@@ -27762,3 +27762,856 @@
   "iat": 1750875736,
   "exp": 1752171736
 }[0m
+[2025-06-26 00:02:58] INFO: [34mRunning in development mode[0m
+[2025-06-26 00:02:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-26 00:02:59] INFO: [34mRedis connected successfully[0m
+[2025-06-26 00:03:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-26 00:03:21] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-26 00:03:39] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1750875736,
+  "exp": 1752171736
+}[0m
+[2025-06-26 00:04:22] ERROR: [31mcheck the error in handler:  user is blocked[0m
+[2025-06-26 00:04:52] INFO: [34m{
+  "id": "680e52ba7857a63825aea268",
+  "firstName": "Athul",
+  "lastName": "krishna",
+  "email": "adminAthul@gmail.com",
+  "phone": 1234567890,
+  "isBlocked": false,
+  "role": "admin",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T15:52:07.765Z",
+  "updatedAt": "2025-06-25T18:34:52.261Z"
+}[0m
+[2025-06-26 00:04:56] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1750876492,
+  "exp": 1752172492
+}[0m
+[2025-06-26 00:05:00] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1750876492,
+  "exp": 1752172492
+}[0m
+[2025-06-26 00:05:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1750876492,
+  "exp": 1752172492
+}[0m
+[2025-06-26 00:05:11] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1750876492,
+  "exp": 1752172492
+}[0m
+[2025-06-26 00:05:30] INFO: [34m{
+  "id": "67f9e6aa311060a56301b516",
+  "firstName": "slight",
+  "lastName": "change",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250625%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250625T183529Z&X-Amz-Expires=84600&X-Amz-Signature=94ff4ec7233d27b031b4de2f462e10928670c7249db36ac4924c86a077002ffc&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-06-25T18:35:30.005Z"
+}[0m
+[2025-06-26 00:06:51] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750876529,
+  "exp": 1752172529
+}[0m
+[2025-06-26 00:07:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750876529,
+  "exp": 1752172529
+}[0m
+[2025-06-26 00:07:18] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750876529,
+  "exp": 1752172529
+}[0m
+[2025-06-26 00:07:27] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750876529,
+  "exp": 1752172529
+}[0m
+[2025-06-26 00:08:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750876529,
+  "exp": 1752172529
+}[0m
+[2025-06-26 07:16:19] INFO: [34mRunning in development mode[0m
+[2025-06-26 07:16:19] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-26 07:16:20] INFO: [34mRedis connected successfully[0m
+[2025-06-26 07:17:06] INFO: [34m{
+  "id": "67f9e6aa311060a56301b516",
+  "firstName": "slight",
+  "lastName": "change",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250625%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250625T183529Z&X-Amz-Expires=84600&X-Amz-Signature=94ff4ec7233d27b031b4de2f462e10928670c7249db36ac4924c86a077002ffc&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-06-26T01:47:06.178Z"
+}[0m
+[2025-06-26 07:18:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:18:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:18:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:09] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:23] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:23] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:28] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:28] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:21:31] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:26:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:26:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:27:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:27:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:27:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:27:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:27:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:27:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:29:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:29:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:32:04] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750902426,
+  "exp": 1752198426
+}[0m
+[2025-06-26 07:32:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 07:32:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:33:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:35:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:19] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:20] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:20] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:21] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:23] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:23] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:27] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:27] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:35] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:35] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:35] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:35] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:36] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:36] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:40] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:40] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:46] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:38:46] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:39:00] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:39:33] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:39:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:39:38] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:41:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:41:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:41:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:41:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:41:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:41:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:41:29] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:41:29] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:42:37] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:42:43] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:42:43] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:42:51] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:43:00] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:43:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:44:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:44:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:45:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:45:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:45:39] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 07:45:39] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750903326,
+  "exp": 1752199326
+}[0m
+[2025-06-26 08:58:09] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-26 08:58:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 08:58:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 08:58:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 08:58:22] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 08:58:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 08:58:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 08:59:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 08:59:47] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 08:59:49] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 08:59:49] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:01:28] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:01:28] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:01:35] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:01:35] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:02:43] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:02:43] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:02:45] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:02:45] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750908500,
+  "exp": 1752204500
+}[0m
+[2025-06-26 09:37:50] INFO: [34mRunning in development mode[0m
+[2025-06-26 09:37:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-26 09:37:51] INFO: [34mRedis connected successfully[0m
+[2025-06-26 09:38:12] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 09:38:12] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 09:38:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750910892,
+  "exp": 1752206892
+}[0m
+[2025-06-26 09:38:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750910892,
+  "exp": 1752206892
+}[0m
+[2025-06-26 09:38:20] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750910892,
+  "exp": 1752206892
+}[0m
+[2025-06-26 09:38:23] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750910892,
+  "exp": 1752206892
+}[0m
+[2025-06-26 09:38:29] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750910892,
+  "exp": 1752206892
+}[0m
+[2025-06-26 09:38:33] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750910892,
+  "exp": 1752206892
+}[0m
+[2025-06-26 09:38:36] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750910892,
+  "exp": 1752206892
+}[0m
+[2025-06-26 09:38:36] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 09:38:38] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750910892,
+  "exp": 1752206892
+}[0m
+[2025-06-26 09:38:38] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 09:55:11] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-26 09:55:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:56:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 09:56:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 09:56:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750911973,
+  "exp": 1752207973
+}[0m
+[2025-06-26 09:56:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1750911973,
+  "exp": 1752207973
+}[0m
+[2025-06-26 10:03:19] INFO: [34mRunning in development mode[0m
+[2025-06-26 10:03:19] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-26 10:03:22] INFO: [34mRunning in development mode[0m
+[2025-06-26 10:03:22] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-26 10:03:22] INFO: [34mRedis connected successfully[0m
+[2025-06-26 10:03:31] INFO: [34mRunning in development mode[0m
+[2025-06-26 10:03:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-26 10:03:31] INFO: [34mRedis connected successfully[0m
+[2025-06-26 10:03:37] INFO: [34mRunning in development mode[0m
+[2025-06-26 10:03:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-26 10:03:37] INFO: [34mRedis connected successfully[0m

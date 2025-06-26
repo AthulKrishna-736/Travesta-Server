@@ -18,8 +18,8 @@ export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvai
         super(roomRepo);
     }
 
-    async getAvlRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomData[], total: number, message: string }> {
-        const { rooms, total } = await this.getAllRoomsOrThrow(page, limit, search);
+    async getAvlRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: TResponseRoomData[], total: number, message: string }> {
+        const { rooms, total } = await this.getFilteredAvailableRoomsOrThrow(page, limit, minPrice, maxPrice, amenities, search);
 
         const availableRooms = rooms.filter(r => r.isAvailable);
 
@@ -48,7 +48,7 @@ export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvai
 
         return {
             rooms: mappedRooms,
-            total: mappedRooms.length,
+            total: total,
             message: 'Available rooms fetched successfully',
         };
     }

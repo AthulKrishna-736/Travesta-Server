@@ -7286,3 +7286,57 @@
 [2025-06-25 23:41:50] ERROR: [31mcheck the error in handler:  Room validation failed: hotelId: Cast to ObjectId failed for value "sample hotel" (type string) at path "hotelId" because of "BSONError"[0m
 [2025-06-25 23:52:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-06-25 23:55:09] ERROR: [31mcheck the error in handler:  No images provided to create Room[0m
+[2025-06-26 00:04:22] ERROR: [31mcheck the error in handler:  user is blocked[0m
+[2025-06-26 07:32:06] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 07:38:19] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:20] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:21] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:23] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:27] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:34] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:35] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:35] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:36] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 07:38:40] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-06-26 08:58:09] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-26 08:58:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 08:58:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 08:58:20] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 09:38:12] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 09:38:12] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 09:38:36] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 09:38:38] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-06-26 09:55:11] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-06-26 09:55:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:55:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-06-26 09:56:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-26 09:56:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m

@@ -32,6 +32,7 @@ export interface IRoomRepository {
   findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
   findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
   findAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: IRoom[], total: number }>;
+  findFilteredAvailableRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: IRoom[]; total: number }>;
 }
 
 export interface IBookingRepository {

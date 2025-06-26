@@ -154,16 +154,22 @@ export class RoomController {
 
     async getAllAvlRooms(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const page = Number(req.query.page) || 1
-            const limit = Number(req.query.limit) || 10
-            const search = req.query.search as string
+            const page = Number(req.query.page) || 1;
+            const limit = Number(req.query.limit) || 10;
+            const search = req.query.search as string;
+            const minPrice = Number(req.query.minPrice ?? 0);
+            const maxPrice = Number(req.query.maxPrice ?? 100000);
+            const amenities = typeof req.query.amenities === 'string' && req.query.amenities.trim().length > 0 ? req.query.amenities.split(',') : undefined;
 
-            const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(page, limit, search);
+            const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(page, limit, minPrice, maxPrice, amenities, search);
+
             const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
-            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
+
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
             ResponseHandler.success(res, message, mappedRooms, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }
     }
+
 }

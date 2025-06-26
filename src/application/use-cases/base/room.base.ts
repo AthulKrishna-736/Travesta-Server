@@ -48,4 +48,16 @@ export abstract class RoomLookupBase {
 
         return { rooms: roomEntities, total };
     }
+
+    protected async getFilteredAvailableRoomsOrThrow(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: IRoomEntity[], total: number }> {
+        const { rooms, total } = await this._roomRepo.findFilteredAvailableRooms(page, limit, minPrice, maxPrice, amenities, search);
+
+        if (!rooms || rooms.length === 0) {
+            throw new AppError("No available rooms found", HttpStatusCode.NOT_FOUND);
+        }
+
+        const roomEntities = rooms.map((r) => new RoomEntity(r));
+        return { rooms: roomEntities, total };
+    }
+
 }
