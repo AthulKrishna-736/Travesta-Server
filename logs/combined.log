@@ -17522,3 +17522,333 @@
 [2025-06-24 20:45:27] INFO: [34mRunning in development mode[0m
 [2025-06-24 20:45:27] INFO: [34mMongoDB connected: localhost[0m
 [2025-06-24 20:45:27] INFO: [34mRedis connected successfully[0m
+[2025-06-27 15:15:44] INFO: [34mRunning in development mode[0m
+[2025-06-27 15:15:44] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 15:15:45] INFO: [34mRedis connected successfully[0m
+[2025-06-27 15:19:44] INFO: [34mRunning in development mode[0m
+[2025-06-27 15:19:44] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 15:19:44] INFO: [34mRedis connected successfully[0m
+[2025-06-27 15:21:44] INFO: [34mRunning in development mode[0m
+[2025-06-27 15:21:44] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 15:21:44] INFO: [34mRedis connected successfully[0m
+[2025-06-27 15:25:47] INFO: [34mRunning in development mode[0m
+[2025-06-27 15:25:47] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 15:25:48] INFO: [34mRedis connected successfully[0m
+[2025-06-27 15:39:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-27 15:39:03] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1751018941,
+  "exp": 1752314941
+}[0m
+[2025-06-27 15:39:03] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-27 15:39:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1751018941,
+  "exp": 1752314941
+}[0m
+[2025-06-27 15:39:05] ERROR: [31mcheck the error in handler:  You are not authorized to access this resource[0m
+[2025-06-27 15:39:27] INFO: [34mRunning in development mode[0m
+[2025-06-27 15:39:27] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 15:39:27] INFO: [34mRedis connected successfully[0m
+[2025-06-27 15:39:30] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1751018941,
+  "exp": 1752314941
+}[0m
+[2025-06-27 15:41:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1751018941,
+  "exp": 1752314941
+}[0m
+[2025-06-27 15:46:21] INFO: [34mRunning in development mode[0m
+[2025-06-27 15:46:21] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 15:46:21] INFO: [34mRedis connected successfully[0m
+[2025-06-27 15:46:27] INFO: [34mRunning in development mode[0m
+[2025-06-27 15:46:27] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 15:46:27] INFO: [34mRedis connected successfully[0m
+[2025-06-27 15:47:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1751018941,
+  "exp": 1752314941
+}[0m
+[2025-06-27 15:47:49] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1751018941,
+  "exp": 1752314941
+}[0m
+[2025-06-27 15:54:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-27 15:54:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1751019843,
+  "exp": 1752315843
+}[0m
+[2025-06-27 15:58:27] INFO: [34m{
+  "firstName": "Athul",
+  "lastName": "krishna",
+  "email": "adminAthul@gmail.com",
+  "phone": 1234567890,
+  "isBlocked": false,
+  "role": "admin",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T15:52:07.765Z",
+  "updatedAt": "2025-06-27T10:28:27.193Z"
+}[0m
+[2025-06-27 15:58:30] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 15:58:33] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 15:58:33] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-06-27 15:58:46] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 15:58:46] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-06-27 15:58:56] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 15:59:19] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 15:59:19] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-06-27 15:59:21] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 15:59:21] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-06-27 15:59:28] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 15:59:28] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-06-27 15:59:32] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 15:59:40] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 16:10:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 16:10:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 16:10:20] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "available" (type string) at path "_id" for model "Room"[0m
+[2025-06-27 16:10:21] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 16:10:21] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "available" (type string) at path "_id" for model "Room"[0m
+[2025-06-27 16:10:23] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 16:10:23] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "available" (type string) at path "_id" for model "Room"[0m
+[2025-06-27 16:10:27] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 16:10:27] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "available" (type string) at path "_id" for model "Room"[0m
+[2025-06-27 16:10:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751020107,
+  "exp": 1752316107
+}[0m
+[2025-06-27 16:10:29] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "available" (type string) at path "_id" for model "Room"[0m
+[2025-06-27 18:13:08] INFO: [34mRunning in development mode[0m
+[2025-06-27 18:13:08] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 18:13:09] INFO: [34mRedis connected successfully[0m
+[2025-06-27 18:23:56] INFO: [34mRunning in development mode[0m
+[2025-06-27 18:23:57] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 18:23:57] INFO: [34mRedis connected successfully[0m
+[2025-06-27 18:26:07] INFO: [34mRunning in development mode[0m
+[2025-06-27 18:26:07] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 18:26:08] INFO: [34mRedis connected successfully[0m
+[2025-06-27 18:28:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-27 18:28:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751029081,
+  "exp": 1752325081
+}[0m
+[2025-06-27 18:28:16] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751029081,
+  "exp": 1752325081
+}[0m
+[2025-06-27 18:29:03] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751029081,
+  "exp": 1752325081
+}[0m
+[2025-06-27 18:29:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751029081,
+  "exp": 1752325081
+}[0m
+[2025-06-27 18:52:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-27 18:52:14] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751030521,
+  "exp": 1752326521
+}[0m
+[2025-06-27 18:52:14] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 18:56:47] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 18:56:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751030521,
+  "exp": 1752326521
+}[0m
+[2025-06-27 18:57:58] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 19:00:27] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 19:10:08] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 19:16:41] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-27 19:16:42] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751032001,
+  "exp": 1752328001
+}[0m
+[2025-06-27 19:23:30] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751032001,
+  "exp": 1752328001
+}[0m
+[2025-06-27 19:27:03] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751032001,
+  "exp": 1752328001
+}[0m
+[2025-06-27 19:28:03] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751032001,
+  "exp": 1752328001
+}[0m
+[2025-06-27 19:28:10] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751032001,
+  "exp": 1752328001
+}[0m
+[2025-06-27 19:34:07] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-06-27 19:34:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751033047,
+  "exp": 1752329047
+}[0m
+[2025-06-27 19:34:42] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 19:34:50] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751033047,
+  "exp": 1752329047
+}[0m
+[2025-06-27 19:34:50] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 19:36:36] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 19:38:26] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1751033047,
+  "exp": 1752329047
+}[0m
+[2025-06-27 19:38:26] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 19:38:55] INFO: [34mRunning in development mode[0m
+[2025-06-27 19:38:55] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 19:38:55] INFO: [34mRedis connected successfully[0m
+[2025-06-27 19:38:55] WARN: [33m⚠️ Socket connected without user data[0m
+[2025-06-27 19:38:58] INFO: [34mRunning in development mode[0m
+[2025-06-27 19:38:58] INFO: [34mMongoDB connected: localhost[0m
+[2025-06-27 19:38:58] INFO: [34mRedis connected successfully[0m
+[2025-06-27 19:38:58] WARN: [33m⚠️ Socket connected without user data[0m

@@ -7,7 +7,7 @@ export interface CreateUserDTO {
     email: string
     password: string
     phone: number
-    role?: TRole
+    role: TRole
 }
 
 export interface UpdateUserDTO {
