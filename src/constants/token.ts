@@ -13,6 +13,7 @@ export const TOKENS = {
   MailService: 'MailService',
   RedisService: 'RedisService',
   AwsS3Service: 'AwsS3Service',
+  SocketService: 'SocketService',
 
   // Use Cases
   LoginUseCase: 'LoginUseCase',

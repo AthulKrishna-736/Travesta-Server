@@ -60,6 +60,7 @@ import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscriptio
 import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
 import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscription/getAllPlans.UseCase";
 import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
+import { SocketService } from "../services/socketService";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -102,6 +103,10 @@ container.register(TOKENS.RedisService, {
 
 container.register<IAwsS3Service>(TOKENS.AwsS3Service, {
   useClass: AwsS3Service,
+})
+
+container.register(TOKENS.SocketService, {
+  useClass: SocketService,
 })
 
 

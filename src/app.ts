@@ -12,7 +12,8 @@ import { userRoutes } from './interfaceAdapters/routes/userRoutes';
 import { vendorRoutes } from './interfaceAdapters/routes/vendorRoutes';
 import { adminRoutes } from './interfaceAdapters/routes/adminRoutes';
 import { errorHandler } from './middlewares/errorHandler';
-import { setupSocket } from './infrastructure/config/connectSocket';
+import { container } from 'tsyringe';
+import { TOKENS } from './constants/token';
 
 export class App {
   public app: Application;
@@ -32,10 +33,12 @@ export class App {
         origin: env.CLIENT_URL,
         credentials: true,
       },
-      path : '/path/chat',
-      transports: ['polling','websocket']      
+      path: '/path/chat',
+      transports: ['polling', 'websocket']
     })
-    setupSocket(this.io);
+
+    container.registerInstance(SocketIOServer, this.io)
+    container.resolve(TOKENS.SocketService);
   }
 
   private setSecurityMiddlewares(): void {
