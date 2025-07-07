@@ -33,9 +33,9 @@ export class App {
         origin: env.CLIENT_URL,
         credentials: true,
       },
-      path: '/path/chat',
+      path: '/api/chat',
       transports: ['polling', 'websocket']
-    })
+    });
 
     container.registerInstance(SocketIOServer, this.io)
     container.resolve(TOKENS.SocketService);
