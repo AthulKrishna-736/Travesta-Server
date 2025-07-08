@@ -63,25 +63,25 @@ export class SocketService {
                 return;
             }
 
-            const { id, role } = user;
-            const room = `${role}:${id}`;
+            const { userId, role } = user;
+            const room = `${role}:${userId}`;
             socket.join(room);
 
-            logger.info(`✅ Socket connected: ${socket.id} (User: ${role}:${id})`);
+            logger.info(`✅ Socket connected: ${socket.id} (User: ${role}:${userId})`);
 
             socket.on("send_message", ({ toId, toRole, message }) => {
                 const payload = {
-                    from: { id, role },
+                    from: { userId, role },
                     message,
                     timestamp: new Date().toISOString(),
                 };
 
-                logger.info(`📤 [${role}:${id}] → ${toRole}:${toId}: ${message}`);
+                logger.info(`📤 [${role}:${userId}] → ${toRole}:${toId}: ${message}`);
                 this.io.to(`${toRole}:${toId}`).emit("receive_message", payload);
             });
 
             socket.on("disconnect", () => {
-                logger.info(`❌ Disconnected: ${role}:${id}`);
+                logger.info(`❌ Disconnected: ${role}:${userId}`);
             });
         });
     }
