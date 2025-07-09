@@ -7,6 +7,7 @@ export const TOKENS = {
   BookingRepository: 'BookingRepository',
   AmenitiesRepository: 'AmenitiesRepository',
   SubscriptionRepository: 'SubscriptionRepository',
+  ChatRepository: 'ChatRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -71,4 +72,8 @@ export const TOKENS = {
   GetActiveSubscriptionsUseCase: 'GetActiveSubscriptionsUseCase',
   GetAllSubscriptionsUseCase: 'GetAllSubscriptionsUseCase',
   BlockUnblockSubscriptionUseCase: 'BlockUnblockSubscriptionUseCase',
+
+  //chat UseCase
+  GetChatMessagesUseCase: 'GetChatMessagesUseCase',
+  SendMessageUseCase: 'SendMessageUseCase',
 };

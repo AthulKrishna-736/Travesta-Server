@@ -17924,3 +17924,978 @@
   "iat": 1751301100,
   "exp": 1752597100
 }[0m
+[2025-07-09 16:38:46] INFO: [34mRunning in development mode[0m
+[2025-07-09 16:38:46] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 16:38:46] INFO: [34mRedis connected successfully[0m
+[2025-07-09 18:48:08] INFO: [34mRunning in development mode[0m
+[2025-07-09 18:48:08] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 18:48:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-09 18:48:44] INFO: [34mRunning in development mode[0m
+[2025-07-09 18:48:44] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 18:48:46] INFO: [34mRedis connected successfully[0m
+[2025-07-09 19:13:24] INFO: [34mRunning in development mode[0m
+[2025-07-09 19:13:25] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 19:13:25] INFO: [34mRedis connected successfully[0m
+[2025-07-09 19:19:53] INFO: [34mRunning in development mode[0m
+[2025-07-09 19:19:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 19:19:54] INFO: [34mRedis connected successfully[0m
+[2025-07-09 19:21:49] INFO: [34mRunning in development mode[0m
+[2025-07-09 19:21:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 19:21:50] INFO: [34mRedis connected successfully[0m
+[2025-07-09 20:31:26] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-09 20:44:23] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-07-09 20:44:37] INFO: [34m{
+  "firstName": "slight",
+  "lastName": "change",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250709%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250709T151437Z&X-Amz-Expires=84600&X-Amz-Signature=fb122565010ecaa2570f50cfd7448aa0148f6f047050bb7a2206042cc8631435&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-07-09T15:14:37.570Z"
+}[0m
+[2025-07-09 20:45:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:45:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:45:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:47:50] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:47:50] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:47:50] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:52:53] INFO: [34mRunning in development mode[0m
+[2025-07-09 20:52:53] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 20:52:53] INFO: [34mRedis connected successfully[0m
+[2025-07-09 20:53:07] INFO: [34mRunning in development mode[0m
+[2025-07-09 20:53:08] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 20:53:09] INFO: [34mRedis connected successfully[0m
+[2025-07-09 20:53:09] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:53:12] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:53:12] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:53:12] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:53:12] INFO: [34mcheck cookie header: g_state={"i_l":0}; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUzMzcwMDc2fQ.NXt3uGykjrTqabTeyjreYsPsOiD20SyD4NxPkvNNrS8; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y[0m
+[2025-07-09 20:55:01] INFO: [34mRunning in development mode[0m
+[2025-07-09 20:55:01] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 20:55:01] INFO: [34mRedis connected successfully[0m
+[2025-07-09 20:55:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:55:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:55:08] INFO: [34mcheck cookie header: g_state={"i_l":0}; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUzMzcwMDc2fQ.NXt3uGykjrTqabTeyjreYsPsOiD20SyD4NxPkvNNrS8; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y[0m
+[2025-07-09 20:55:08] INFO: [34m✅ Socket connected: 4oPn6oGk5fFHaDZXAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 20:55:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752074076,
+  "exp": 1753370076
+}[0m
+[2025-07-09 20:55:34] ERROR: [31merror req: [object Object][0m
+[2025-07-09 20:55:34] ERROR: [31merror code: 0[0m
+[2025-07-09 20:55:34] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 20:55:34] ERROR: [31merror context: [object Object][0m
+[2025-07-09 20:55:35] ERROR: [31merror req: [object Object][0m
+[2025-07-09 20:55:35] ERROR: [31merror code: 0[0m
+[2025-07-09 20:55:35] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 20:55:35] ERROR: [31merror context: [object Object][0m
+[2025-07-09 20:55:37] ERROR: [31merror req: [object Object][0m
+[2025-07-09 20:55:37] ERROR: [31merror code: 0[0m
+[2025-07-09 20:55:37] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 20:55:37] ERROR: [31merror context: [object Object][0m
+[2025-07-09 20:55:41] ERROR: [31merror req: [object Object][0m
+[2025-07-09 20:55:41] ERROR: [31merror code: 0[0m
+[2025-07-09 20:55:41] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 20:55:41] ERROR: [31merror context: [object Object][0m
+[2025-07-09 20:55:43] ERROR: [31m❌ Failed to save message: ValidationError: toId: Path `toId` is required.[0m
+[2025-07-09 20:55:43] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:undefined: hi sample check here[0m
+[2025-07-09 20:55:59] ERROR: [31merror req: [object Object][0m
+[2025-07-09 20:55:59] ERROR: [31merror code: 0[0m
+[2025-07-09 20:55:59] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 20:55:59] ERROR: [31merror context: [object Object][0m
+[2025-07-09 20:56:00] ERROR: [31merror req: [object Object][0m
+[2025-07-09 20:56:00] ERROR: [31merror code: 0[0m
+[2025-07-09 20:56:00] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 20:56:00] ERROR: [31merror context: [object Object][0m
+[2025-07-09 20:58:40] ERROR: [31merror req: [object Object][0m
+[2025-07-09 20:58:40] ERROR: [31merror code: 0[0m
+[2025-07-09 20:58:40] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 20:58:40] ERROR: [31merror context: [object Object][0m
+[2025-07-09 20:59:03] ERROR: [31merror req: [object Object][0m
+[2025-07-09 20:59:03] ERROR: [31merror code: 0[0m
+[2025-07-09 20:59:03] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 20:59:03] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:00:23] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 21:00:23] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-09 21:00:23] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-09 21:00:23] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-09 21:00:24] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y[0m
+[2025-07-09 21:00:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:00:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:00:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:00:32] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:00:33] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NTAyMywiZXhwIjoxNzUzMzcxMDIzfQ.pGtKo4DQJnVC985KQ8H00aafbWm5YaUmPX8aU44Hgi0[0m
+[2025-07-09 21:00:33] INFO: [34m✅ Socket connected: AnnUPgjRfQrXDI31AAAF (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:02:33] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 21:02:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:02:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:02:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:02:34] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NTAyMywiZXhwIjoxNzUzMzcxMDIzfQ.pGtKo4DQJnVC985KQ8H00aafbWm5YaUmPX8aU44Hgi0[0m
+[2025-07-09 21:02:34] INFO: [34m✅ Socket connected: H4O3n1N3PMkQiHNCAAAH (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:05:35] INFO: [34mRunning in development mode[0m
+[2025-07-09 21:05:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 21:05:35] INFO: [34mRedis connected successfully[0m
+[2025-07-09 21:05:35] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NTAyMywiZXhwIjoxNzUzMzcxMDIzfQ.pGtKo4DQJnVC985KQ8H00aafbWm5YaUmPX8aU44Hgi0[0m
+[2025-07-09 21:05:36] INFO: [34m✅ Socket connected: HTLM7AWI-sBW29tPAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:07:13] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:13] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:13] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:13] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:14] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:14] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:14] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:14] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:16] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:16] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:16] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:16] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:20] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:20] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:20] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:20] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:24] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 21:07:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:07:24] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:07:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:07:25] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NTAyMywiZXhwIjoxNzUzMzcxMDIzfQ.pGtKo4DQJnVC985KQ8H00aafbWm5YaUmPX8aU44Hgi0[0m
+[2025-07-09 21:07:25] INFO: [34m✅ Socket connected: pjbuyOuO78OueQEkAAAD (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:07:36] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:36] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:36] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:36] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:37] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:37] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:37] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:37] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:39] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:40] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:40] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:40] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:44] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:44] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:44] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:44] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:47] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:47] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:47] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:47] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:48] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:48] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:48] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:48] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:53] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:53] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:53] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:53] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:07:57] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:07:57] ERROR: [31merror code: 0[0m
+[2025-07-09 21:07:57] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:07:57] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:08:10] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:08:10] ERROR: [31merror code: 0[0m
+[2025-07-09 21:08:10] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:08:10] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:08:11] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:08:11] ERROR: [31merror code: 0[0m
+[2025-07-09 21:08:11] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:08:11] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:08:14] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:08:14] ERROR: [31merror code: 0[0m
+[2025-07-09 21:08:14] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:08:14] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:08:19] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:08:19] ERROR: [31merror code: 0[0m
+[2025-07-09 21:08:19] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:08:19] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:09:13] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:09:13] ERROR: [31merror code: 0[0m
+[2025-07-09 21:09:13] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:09:13] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:09:51] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:09:54] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:10:16] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 21:10:17] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:10:17] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:10:17] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752075023,
+  "exp": 1753371023
+}[0m
+[2025-07-09 21:10:17] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NTAyMywiZXhwIjoxNzUzMzcxMDIzfQ.pGtKo4DQJnVC985KQ8H00aafbWm5YaUmPX8aU44Hgi0[0m
+[2025-07-09 21:10:17] INFO: [34m✅ Socket connected: 5H7T9zwVtcXYlCw7AAAF (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:10:20] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:10:20] ERROR: [31merror code: 0[0m
+[2025-07-09 21:10:20] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:10:20] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:10:21] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:10:21] ERROR: [31merror code: 0[0m
+[2025-07-09 21:10:21] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:10:21] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:10:23] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:10:23] ERROR: [31merror code: 0[0m
+[2025-07-09 21:10:23] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:10:23] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:10:27] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:10:27] ERROR: [31merror code: 0[0m
+[2025-07-09 21:10:27] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:10:27] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:10:32] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:10:32] ERROR: [31merror code: 0[0m
+[2025-07-09 21:10:32] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:10:32] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:10:54] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:10:54] ERROR: [31merror code: 0[0m
+[2025-07-09 21:10:54] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:10:54] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:10:56] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:10:56] ERROR: [31merror code: 0[0m
+[2025-07-09 21:10:56] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:10:56] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:11:00] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:11:00] ERROR: [31merror code: 0[0m
+[2025-07-09 21:11:00] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:11:00] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:12:06] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:12:06] ERROR: [31merror code: 0[0m
+[2025-07-09 21:12:06] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:12:06] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:12:08] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:12:08] ERROR: [31merror code: 0[0m
+[2025-07-09 21:12:08] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:12:08] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:12:44] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:12:44] ERROR: [31merror code: 0[0m
+[2025-07-09 21:12:44] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:12:44] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:13:11] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:13:11] ERROR: [31merror code: 0[0m
+[2025-07-09 21:13:11] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:13:11] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:13:20] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:13:20] ERROR: [31merror code: 0[0m
+[2025-07-09 21:13:20] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:13:20] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:13:21] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:13:21] ERROR: [31merror code: 0[0m
+[2025-07-09 21:13:21] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:13:21] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:13:23] ERROR: [31merror req: [object Object][0m
+[2025-07-09 21:13:23] ERROR: [31merror code: 0[0m
+[2025-07-09 21:13:23] ERROR: [31merror msg: Transport unknown[0m
+[2025-07-09 21:13:23] ERROR: [31merror context: [object Object][0m
+[2025-07-09 21:30:38] INFO: [34mRunning in development mode[0m
+[2025-07-09 21:30:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 21:30:39] INFO: [34mRedis connected successfully[0m
+[2025-07-09 21:30:39] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y[0m
+[2025-07-09 21:31:11] INFO: [34mRunning in development mode[0m
+[2025-07-09 21:31:11] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 21:31:11] INFO: [34mRedis connected successfully[0m
+[2025-07-09 21:49:47] INFO: [34mRunning in development mode[0m
+[2025-07-09 21:49:47] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 21:49:48] INFO: [34mRedis connected successfully[0m
+[2025-07-09 21:49:50] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-09 21:49:51] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3Nzk5MCwiZXhwIjoxNzUzMzczOTkwfQ._KYD3ulo3VdDrTBduiwUEId9bPuJZwxUba9x7IFEzzs[0m
+[2025-07-09 21:49:51] INFO: [34m✅ Socket connected: H3D15DI3_qEfo7PRAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:49:52] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 21:49:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:49:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:49:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:49:52] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3Nzk5MCwiZXhwIjoxNzUzMzczOTkwfQ._KYD3ulo3VdDrTBduiwUEId9bPuJZwxUba9x7IFEzzs[0m
+[2025-07-09 21:49:52] INFO: [34m✅ Socket connected: -2WCJmW6reJlhw-nAAAD (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:49:55] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:52:55] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 21:52:55] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:52:55] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:52:56] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:52:56] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3Nzk5MCwiZXhwIjoxNzUzMzczOTkwfQ._KYD3ulo3VdDrTBduiwUEId9bPuJZwxUba9x7IFEzzs[0m
+[2025-07-09 21:52:56] INFO: [34m✅ Socket connected: _eAyVHlRaFfyk0MsAAAF (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:52:59] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:56:02] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 21:56:03] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3Nzk5MCwiZXhwIjoxNzUzMzczOTkwfQ._KYD3ulo3VdDrTBduiwUEId9bPuJZwxUba9x7IFEzzs[0m
+[2025-07-09 21:56:03] INFO: [34m✅ Socket connected: bfXP_Epmo99TqC3HAAAH (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:56:06] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:56:06] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:56:10] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:56:11] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:56:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:59:08] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:59:14] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 21:59:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:59:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:59:14] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:59:14] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3Nzk5MCwiZXhwIjoxNzUzMzczOTkwfQ._KYD3ulo3VdDrTBduiwUEId9bPuJZwxUba9x7IFEzzs[0m
+[2025-07-09 21:59:14] INFO: [34m✅ Socket connected: YUQCc4p3CKFsA_luAAAJ (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 21:59:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 21:59:29] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: hii[0m
+[2025-07-09 21:59:45] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 22:00:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 22:00:39] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: sample check here[0m
+[2025-07-09 22:00:45] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 22:00:46] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 22:00:46] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 22:00:46] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3Nzk5MCwiZXhwIjoxNzUzMzczOTkwfQ._KYD3ulo3VdDrTBduiwUEId9bPuJZwxUba9x7IFEzzs[0m
+[2025-07-09 22:00:46] INFO: [34m✅ Socket connected: 4kQVC5cA_KUfzgnrAAAL (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 22:00:46] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 22:00:48] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752077990,
+  "exp": 1753373990
+}[0m
+[2025-07-09 22:07:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-09 22:07:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-09 22:07:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:07:03] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:08:28] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:08:52] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: once again checking here[0m
+[2025-07-09 22:08:56] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 22:08:57] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3OTAyMSwiZXhwIjoxNzUzMzc1MDIxfQ.uK9oJJz82PIjnqJB3moMQMzq99XW38rsXTuqnRTKTzw[0m
+[2025-07-09 22:08:57] INFO: [34m✅ Socket connected: wnSvk3HTWL0tjc2SAAAN (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 22:08:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:08:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:08:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:09:00] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:09:17] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: check scrolling here[0m
+[2025-07-09 22:09:22] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: another scrolling[0m
+[2025-07-09 22:09:31] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: 1234 .... some symbols[0m
+[2025-07-09 22:09:32] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 22:09:33] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3OTAyMSwiZXhwIjoxNzUzMzc1MDIxfQ.uK9oJJz82PIjnqJB3moMQMzq99XW38rsXTuqnRTKTzw[0m
+[2025-07-09 22:09:33] INFO: [34m✅ Socket connected: wk62CkVBuIIbf0KmAAAP (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 22:09:33] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:09:33] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:09:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:09:35] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:10:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:11:16] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:11:43] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-09 22:11:48] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-09 22:11:53] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-09 22:11:58] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-09 22:12:01] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:12:04] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: sample sent check here[0m
+[2025-07-09 22:12:05] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:16:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:16:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:16:36] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-09 22:16:37] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:16:37] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:16:37] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3OTAyMSwiZXhwIjoxNzUzMzc1MDIxfQ.uK9oJJz82PIjnqJB3moMQMzq99XW38rsXTuqnRTKTzw[0m
+[2025-07-09 22:16:37] INFO: [34m✅ Socket connected: zLg1Ib6hNt1hzISsAAAR (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 22:16:38] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:16:40] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:16:46] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: sample check[0m
+[2025-07-09 22:16:46] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:16:53] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:680e1f4632a706b6e9f0b8b3: check gain nigga[0m
+[2025-07-09 22:16:53] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:18:10] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:18:13] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:19:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:19:26] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:681cf8e92318717abbe3f2ce: hello chat[0m
+[2025-07-09 22:19:26] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:19:34] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:681cf8e92318717abbe3f2ce: this iss sample hii from meee[0m
+[2025-07-09 22:19:34] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:19:40] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:20:40] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:21:12] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:21:42] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:21:42] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752079021,
+  "exp": 1753375021
+}[0m
+[2025-07-09 22:23:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-09 22:24:54] INFO: [34mRunning in development mode[0m
+[2025-07-09 22:24:55] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 22:24:55] INFO: [34mRedis connected successfully[0m
+[2025-07-09 22:24:57] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA4MDAzMiwiZXhwIjoxNzUzMzc2MDMyfQ.BTZOg-Mn1cotAjKsvZvK7PmUbLD2r7h4ndK9-5tLXoU[0m
+[2025-07-09 22:24:57] INFO: [34m✅ Socket connected: 2gIEzesLCZSBcyl_AAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 22:25:08] INFO: [34mRunning in development mode[0m
+[2025-07-09 22:25:08] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 22:25:09] INFO: [34mRedis connected successfully[0m
+[2025-07-09 22:25:09] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA3NDA3NiwiZXhwIjoxNzUyNjc4ODc2fQ.mkce7CMwDhQWtnA3rQWQ6ZgwPIhu179iVzc9uDJaY_Y; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MjA4MDAzMiwiZXhwIjoxNzUzMzc2MDMyfQ.BTZOg-Mn1cotAjKsvZvK7PmUbLD2r7h4ndK9-5tLXoU[0m
+[2025-07-09 22:25:09] INFO: [34m✅ Socket connected: o7yypLHrdbBl9B-hAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-09 22:25:57] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752080032,
+  "exp": 1753376032
+}[0m
+[2025-07-09 22:28:53] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752080032,
+  "exp": 1753376032
+}[0m
+[2025-07-09 22:28:53] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752080032,
+  "exp": 1753376032
+}[0m
+[2025-07-09 22:28:56] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752080032,
+  "exp": 1753376032
+}[0m
+[2025-07-09 22:29:04] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:681cf8e92318717abbe3f2ce: this one is the sample working her[0m
+[2025-07-09 22:29:04] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752080032,
+  "exp": 1753376032
+}[0m
+[2025-07-09 22:29:19] INFO: [34m📤 [user:67f9e6aa311060a56301b516] → vendor:681cf8e92318717abbe3f2ce: im also check on this to ensure the proper performance here[0m
+[2025-07-09 22:29:19] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752080032,
+  "exp": 1753376032
+}[0m
+[2025-07-09 22:30:21] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1752080032,
+  "exp": 1753376032
+}[0m
+[2025-07-09 22:31:29] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-09 22:38:23] INFO: [34mRunning in development mode[0m
+[2025-07-09 22:38:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 22:38:24] INFO: [34mRedis connected successfully[0m
+[2025-07-09 22:38:45] INFO: [34mRunning in development mode[0m
+[2025-07-09 22:38:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-09 22:38:46] INFO: [34mRedis connected successfully[0m
+[2025-07-09 22:39:38] INFO: [34mRunning in development mode[0m
+[2025-07-09 22:39:38] INFO: [34mMongoDB connected: localhost[0m

@@ -1,17 +1,21 @@
 import { Socket, Server as SocketIOServer } from "socket.io";
-import { injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import cookie from 'cookie';
+import * as cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 import { env } from "../config/env";
 import logger from "../../utils/logger";
+import { TOKENS } from "../../constants/token";
+import { IChatRepository } from "../../domain/interfaces/repositories/repository.interface";
+import { ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 
 
 @injectable()
 export class SocketService {
     constructor(
         private io: SocketIOServer,
+        @inject(TOKENS.ChatRepository) private chatRepo: IChatRepository,
     ) {
         this.registerMiddleware();
         this.trackEngineErrors();
@@ -28,6 +32,8 @@ export class SocketService {
             if (!cookieHeader) {
                 return next(new AppError('Please authenticate to chat', HttpStatusCode.UNAUTHORIZED));
             }
+
+            logger.info(`check cookie header: ${cookieHeader}`)
 
             const cookies = cookie.parse(cookieHeader);
             const token = cookies['access_token'];
@@ -69,15 +75,45 @@ export class SocketService {
 
             logger.info(`✅ Socket connected: ${socket.id} (User: ${role}:${userId})`);
 
-            socket.on("send_message", ({ toId, toRole, message }) => {
+            socket.on("send_message", async ({ toId, toRole, message }) => {
+                const timestamp = new Date().toISOString();
                 const payload = {
-                    from: { userId, role },
+                    fromId: userId,
+                    fromRole: role,
+                    toId,
+                    toRole,
                     message,
-                    timestamp: new Date().toISOString(),
+                    timestamp,
                 };
+
+                try {
+                    const useCase = container.resolve<ISendMessageUseCase>(TOKENS.SendMessageUseCase);
+                    await useCase.execute(payload);
+                } catch (err) {
+                    logger.error(`❌ Failed to save message: ${err}`);
+                }
 
                 logger.info(`📤 [${role}:${userId}] → ${toRole}:${toId}: ${message}`);
                 this.io.to(`${toRole}:${toId}`).emit("receive_message", payload);
+            });
+
+            socket.on("typing", ({ toId, toRole }) => {
+                this.io.to(`${toRole}:${toId}`).emit("typing", {
+                    fromId: userId,
+                    fromRole: role,
+                });
+            });
+
+            socket.on("read_message", async ({ messageId, toId, toRole }) => {
+                try {
+                    await this.chatRepo.markMessageAsRead(messageId);
+                    this.io.to(`${toRole}:${toId}`).emit("message_read", {
+                        messageId,
+                        by: { userId, role },
+                    });
+                } catch (err) {
+                    logger.error(`❌ Failed to mark message as read: ${err}`);
+                }
             });
 
             socket.on("disconnect", () => {
