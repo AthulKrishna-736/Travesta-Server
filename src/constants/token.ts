@@ -7,12 +7,14 @@ export const TOKENS = {
   BookingRepository: 'BookingRepository',
   AmenitiesRepository: 'AmenitiesRepository',
   SubscriptionRepository: 'SubscriptionRepository',
+  ChatRepository: 'ChatRepository',
 
   // Services
   AuthService: 'AuthService',
   MailService: 'MailService',
   RedisService: 'RedisService',
   AwsS3Service: 'AwsS3Service',
+  SocketService: 'SocketService',
 
   // Use Cases
   LoginUseCase: 'LoginUseCase',
@@ -70,4 +72,9 @@ export const TOKENS = {
   GetActiveSubscriptionsUseCase: 'GetActiveSubscriptionsUseCase',
   GetAllSubscriptionsUseCase: 'GetAllSubscriptionsUseCase',
   BlockUnblockSubscriptionUseCase: 'BlockUnblockSubscriptionUseCase',
+
+  //chat UseCase
+  GetChatMessagesUseCase: 'GetChatMessagesUseCase',
+  SendMessageUseCase: 'SendMessageUseCase',
+  GetChattedUsersUseCase: 'GetChattedUsersUseCase',
 };
