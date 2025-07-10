@@ -4,7 +4,7 @@ import { Response } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { IGetChatMessagesUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../utils/appError";
 
 @injectable()
@@ -12,6 +12,7 @@ export class ChatController {
     constructor(
         @inject(TOKENS.GetChatMessagesUseCase) private _getChatMessages: IGetChatMessagesUseCase,
         @inject(TOKENS.SendMessageUseCase) private _sendMessage: ISendMessageUseCase,
+        @inject(TOKENS.GetChattedUsersUseCase) private _getChattedUsers: IGetChattedUsersUseCase,
     ) { }
 
     async getChatMessages(req: CustomRequest, res: Response): Promise<void> {
@@ -49,5 +50,21 @@ export class ChatController {
         });
 
         ResponseHandler.success(res, 'Message sent', null, HttpStatusCode.OK);
+    }
+
+    async getChattedUsers(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const vendorId = req.user?.userId;
+
+            if (!vendorId) {
+                throw new AppError('Unauthorized vendor', HttpStatusCode.UNAUTHORIZED);
+            }
+
+            const { users, message } = await this._getChattedUsers.execute(vendorId);
+
+            ResponseHandler.success(res, message, users, HttpStatusCode.OK);
+        } catch (error) {
+            throw error;
+        }
     }
 }

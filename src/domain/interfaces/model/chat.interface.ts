@@ -25,3 +25,6 @@ export interface ISendMessageUseCase {
   execute(data: TCreateChatMessage): Promise<void>;
 }
 
+export interface IGetChattedUsersUseCase {
+  execute(vendorId: string): Promise<{ users: { id: string; firstName: string }[]; message: string; }>;
+}

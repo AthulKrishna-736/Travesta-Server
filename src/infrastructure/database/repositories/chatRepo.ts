@@ -28,4 +28,55 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
         const message = await this.update(messageId, { isRead: true });
         return message?.toObject() || null;
     }
+
+    async getUsersWhoChattedWithVendor(vendorId: string): Promise<{ id: string, firstName: string }[]> {
+        const messages = await this.model.aggregate([
+            {
+                $match: {
+                    $or: [{ fromId: vendorId }, { toId: vendorId }]
+                }
+            },
+            {
+                $project: {
+                    userId: {
+                        $cond: [
+                            { $eq: ["$fromId", vendorId] },
+                            "$toId",
+                            "$fromId"
+                        ]
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: "$userId"
+                }
+            },
+            {
+                $addFields: {
+                    objectUserId: { $toObjectId: "$_id" }
+                }
+            },
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "objectUserId",
+                    foreignField: "_id",
+                    as: "userDetails"
+                }
+            },
+            {
+                $unwind: "$userDetails"
+            },
+            {
+                $project: {
+                    id: "$userDetails._id",
+                    firstName: "$userDetails.firstName"
+                }
+            }
+        ]);
+
+        return messages;
+    }
+
 }

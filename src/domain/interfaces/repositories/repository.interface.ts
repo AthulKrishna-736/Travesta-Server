@@ -68,4 +68,5 @@ export interface IChatRepository {
   createMessage(data: TCreateChatMessage): Promise<IChatMessage>;
   getMessagesBetweenUsers(fromId: string, toId: string): Promise<IChatMessage[]>;
   markMessageAsRead(messageId: string): Promise<IChatMessage | null>;
+  getUsersWhoChattedWithVendor(vendorId: string): Promise<any>
 }
