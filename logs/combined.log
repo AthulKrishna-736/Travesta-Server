@@ -29120,3 +29120,9 @@
   "iat": 1750914392,
   "exp": 1752210392
 }[0m
+[2025-07-10 22:08:46] INFO: [34mRunning in development mode[0m
+[2025-07-10 22:08:46] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-10 22:08:46] INFO: [34mRedis connected successfully[0m
+[2025-07-12 22:51:28] INFO: [34mRunning in development mode[0m
+[2025-07-12 22:51:28] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-12 22:51:30] INFO: [34mRedis connected successfully[0m

@@ -8,6 +8,7 @@ import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
@@ -47,8 +48,10 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
             throw new AppError("Failed to create hotel", HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+        const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(newHotel);
+
         return {
-            hotel: newHotel,
+            hotel: customHotelMapping,
             message: "Hotel created successfully"
         };
     }

@@ -9,6 +9,7 @@ import { IUpdateHotelUseCase } from "../../../../domain/interfaces/model/hotel.i
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
@@ -69,9 +70,11 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
             throw new AppError("Failed to update hotel", HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+        const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(updatedHotel);
+
         return {
-            hotel: updatedHotel,
-            message: "Hotel updated successfully"
+            hotel: customHotelMapping,
+            message: "Hotel updated successfully",
         };
     }
 

@@ -28,7 +28,8 @@ export class HotelController {
                 throw new AppError('Vendor id missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0 } = req.body; const parsedTags = typeof tags === 'string' ? JSON.parse(tags) : tags;
+            const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0 } = req.body;
+            const parsedTags = typeof tags === 'string' ? JSON.parse(tags) : tags;
             const parsedAmenities = typeof amenities === 'string' ? JSON.parse(amenities) : amenities;
             const parsedServices = typeof services === 'string' ? JSON.parse(services) : services;
             const parsedGeoLocation = Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation);
@@ -70,41 +71,33 @@ export class HotelController {
             }
 
             if (files.length > 4) {
-                throw new
-                    AppError('Only 4 images are allowed — please upload exactly 4 images', HttpStatusCode.BAD_REQUEST);
+                throw new AppError('Only 4 images are allowed — please upload exactly 4 images', HttpStatusCode.BAD_REQUEST);
             }
             console.log('files : ', files, files.length);
 
             const { hotel, message } = await this._createHotelUseCase.createHotel(hotelData, files);
 
-            const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel)
-            ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.CREATED);
+            ResponseHandler.success(res, message, hotel, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
         }
     }
-
 
     async updateHotel(req: CustomRequest, res: Response): Promise<void> {
         try {
             const hotelId = req.params.id;
             const files = req.files as Express.Multer.File[];
-
-            console.log('req body: ', req.body);
             const updateData: TUpdateHotelDTO = {
                 ...req.body,
                 images: req.body.images ? JSON.parse(req.body.images) : [],
             };
 
-            console.log('data update: ', updateData);
             const { hotel, message } = await this._updateHotelUseCase.updateHotel(hotelId, updateData, files);
-            const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel);
-            ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
     }
-
 
     async getHotelById(req: CustomRequest, res: Response): Promise<void> {
         try {
@@ -115,13 +108,11 @@ export class HotelController {
             }
 
             const { message, hotel } = await this._getHotelByIdUseCae.getHotel(hotelId);
-            const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel)
-            ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
     }
-
 
     async getAllHotels(req: CustomRequest, res: Response) {
         try {
@@ -131,9 +122,8 @@ export class HotelController {
 
             const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, search);
 
-            const mappedHotel = hotels.map(ResponseMapper.mapHotelToResponseDTO)
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
-            ResponseHandler.success(res, message, mappedHotel, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

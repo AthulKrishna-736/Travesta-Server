@@ -7,6 +7,7 @@ import { IRedisService } from "../../../../domain/interfaces/services/redisServi
 import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
@@ -31,11 +32,12 @@ export class GetHotelByIdUseCase extends HotelLookupBase implements IGetHotelByI
             );
 
             await this._redisService.storeHotelImageUrls(hotelId, signedImageUrls, awsS3Timer.expiresAt);
-            hotel.updateHotel({ images: signedImageUrls})
+            hotel.updateHotel({ images: signedImageUrls })
         }
 
-        const mapHotel= hotel.toObject();
+        const mapHotel = hotel.toObject();
+        const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(mapHotel);
 
-        return { hotel: mapHotel, message: "Hotel fetched successfully" };
+        return { hotel: customHotelMapping, message: "Hotel fetched successfully" };
     }
 }

@@ -7,6 +7,7 @@ import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { IGetAllHotelsUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
@@ -41,8 +42,10 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
             })
         );
 
+        const customHotelsMapping = mappedHotels.map(h => ResponseMapper.mapHotelToResponseDTO(h));
+
         return {
-            hotels: mappedHotels,
+            hotels: customHotelsMapping,
             total,
             message: "Hotels fetched successfully",
         };
