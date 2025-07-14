@@ -11,7 +11,6 @@ import { upload } from "../../infrastructure/config/multer";
 import { VendorController } from "../controllers/vendorController";
 import { HotelController } from "../controllers/hotelController";
 import { RoomController } from "../controllers/roomController";
-import { ChatController } from "../controllers/chatController";
 
 
 export class vendorRoutes extends BaseRouter {
@@ -19,7 +18,6 @@ export class vendorRoutes extends BaseRouter {
     private _vendorController: VendorController
     private _hotelController: HotelController
     private _roomController: RoomController
-    private _chatController: ChatController
 
     constructor() {
         super();
@@ -27,7 +25,6 @@ export class vendorRoutes extends BaseRouter {
         this._vendorController = container.resolve(VendorController)
         this._hotelController = container.resolve(HotelController)
         this._roomController = container.resolve(RoomController)
-        this._chatController = container.resolve(ChatController)
         this.initializeRoutes()
     }
 
@@ -63,9 +60,6 @@ export class vendorRoutes extends BaseRouter {
             .get('/rooms/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getRoomById(req, res))
             .get('/hotels/:hotelId/rooms', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res) => this._roomController.getRoomsByHotel(req, res))
             .get('/hotels/:hotelId/rooms/available', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getAvailableRoomsByHotel(req, res));
-
-        this.router
-            .get('/chat-users', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._chatController.getChattedUsers(req, res));
 
     }
 }

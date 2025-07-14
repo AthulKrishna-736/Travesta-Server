@@ -1,6 +1,4 @@
 import express, { Application } from 'express';
-import { Server as SocketIOServer } from 'socket.io';
-import http from 'http'
 import helmet from 'helmet';
 import cors from 'cors';
 import hpp from 'hpp';
@@ -12,33 +10,16 @@ import { userRoutes } from './interfaceAdapters/routes/userRoutes';
 import { vendorRoutes } from './interfaceAdapters/routes/vendorRoutes';
 import { adminRoutes } from './interfaceAdapters/routes/adminRoutes';
 import { errorHandler } from './middlewares/errorHandler';
-import { container } from 'tsyringe';
-import { TOKENS } from './constants/token';
 
 export class App {
-  public app: Application;
-  public server: http.Server;
-  public io: SocketIOServer;
+  public app: Application
 
   constructor() {
     this.app = express()
-    this.server = http.createServer(this.app);
     this.setSecurityMiddlewares()
     this.setGlobalMiddlewares()
     this.setRoutes()
     this.setErrorHandling()
-
-    this.io = new SocketIOServer(this.server, {
-      cors: {
-        origin: env.CLIENT_URL,
-        credentials: true,
-      },
-      path: '/api/chat',
-      transports: ['polling', 'websocket']
-    });
-
-    container.registerInstance(SocketIOServer, this.io)
-    container.resolve(TOKENS.SocketService);
   }
 
   private setSecurityMiddlewares(): void {
@@ -81,7 +62,7 @@ export class App {
   }
 
   public listen(port: number): void {
-    this.server.listen(port, () => {
+    this.app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`)
     })
   }

@@ -17,7 +17,7 @@ import { IAwsS3Service } from "../../domain/interfaces/services/awsS3Service.int
 import { AwsS3Service } from "../services/awsS3Service";
 import { GetUserProfileUseCase } from "../../application/use-cases/user/getUser";
 import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
-import { IAmenitiesRepository, IChatRepository, IHotelRepository, IRoomRepository, ISubscriptionRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository, IHotelRepository, IRoomRepository, ISubscriptionRepository, IUserRepository } from "../../domain/interfaces/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
 import { CreateHotelUseCase } from "../../application/use-cases/vendor/hotel/createHotelUseCase";
@@ -60,12 +60,6 @@ import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscriptio
 import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
 import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscription/getAllPlans.UseCase";
 import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
-import { SocketService } from "../services/socketService";
-import { ChatRepository } from "../database/repositories/chatRepo";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
-import { GetChatMessagesUseCase } from "../../application/use-cases/chat/getChatMsg.UseCase.";
-import { SendMessageUseCase } from "../../application/use-cases/chat/sendMsg.UseCase";
-import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChatUsers.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -92,10 +86,6 @@ container.register<ISubscriptionRepository>(TOKENS.SubscriptionRepository, {
   useClass: SusbcriptionRepository,
 })
 
-container.register<IChatRepository>(TOKENS.ChatRepository, {
-  useClass: ChatRepository,
-})
-
 
 //services
 container.register<IAuthService>(TOKENS.AuthService, {
@@ -112,10 +102,6 @@ container.register(TOKENS.RedisService, {
 
 container.register<IAwsS3Service>(TOKENS.AwsS3Service, {
   useClass: AwsS3Service,
-})
-
-container.register(TOKENS.SocketService, {
-  useClass: SocketService,
 })
 
 
@@ -277,7 +263,7 @@ container.register<IGetActiveAmenitiesUseCase>(TOKENS.GetActiveAmenitiesUseCase,
   useClass: GetActiveAmenitiesUseCase,
 })
 
-//subscription use case
+//subscriptoin use case
 container.register<ICreatePlanUseCase>(TOKENS.CreateSubscriptionUseCase, {
   useClass: CreatePlanUseCase,
 })
@@ -296,17 +282,4 @@ container.register<IGetAllPlansUseCase>(TOKENS.GetAllSubscriptionsUseCase, {
 
 container.register<IBlockUnblockPlanUseCase>(TOKENS.BlockUnblockSubscriptionUseCase, {
   useClass: BlockUnblockPlanUseCase,
-})
-
-//chat use case
-container.register<IGetChatMessagesUseCase>(TOKENS.GetChatMessagesUseCase, {
-  useClass: GetChatMessagesUseCase,
-})
-
-container.register<ISendMessageUseCase>(TOKENS.SendMessageUseCase, {
-  useClass: SendMessageUseCase,
-})
-
-container.register<IGetChattedUsersUseCase>(TOKENS.GetChattedUsersUseCase, {
-  useClass: GetChattedUsersUseCase,
 })
