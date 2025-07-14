@@ -10,20 +10,17 @@ import { checkUserBlock } from "../../middlewares/checkBlock";
 import { UserController } from "../controllers/userController";
 import { upload } from "../../infrastructure/config/multer";
 import { HotelController } from "../controllers/hotelController";
-import { ChatController } from "../controllers/chatController";
 
 export class userRoutes extends BaseRouter {
     private _authController: AuthController
     private _userController: UserController
     private _hotelController: HotelController
-    private _chatController: ChatController
 
     constructor() {
         super();
         this._authController = container.resolve(AuthController)
         this._userController = container.resolve(UserController)
         this._hotelController = container.resolve(HotelController)
-        this._chatController = container.resolve(ChatController)
         this.initializeRoutes()
     }
 
@@ -46,9 +43,5 @@ export class userRoutes extends BaseRouter {
 
             .get('/hotels', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this._hotelController.getAllHotels(req, res))
             .get('/hotels/:id', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req, res) => this._hotelController.getHotelById(req, res));
-
-        //chat
-        this.router
-            .get('/chat/:userId', authMiddleware, authorizeRoles("admin", "vendor", "user"), checkUserBlock, (req: CustomRequest, res) => this._chatController.getChatMessages(req, res))
     }
 }
