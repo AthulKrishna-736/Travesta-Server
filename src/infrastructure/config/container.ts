@@ -62,10 +62,11 @@ import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscripti
 import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
 import { SocketService } from "../services/socketService";
 import { ChatRepository } from "../database/repositories/chatRepo";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { GetChatMessagesUseCase } from "../../application/use-cases/chat/getChatMsg.UseCase.";
 import { SendMessageUseCase } from "../../application/use-cases/chat/sendMsg.UseCase";
 import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChatUsers.UseCase";
+import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRead.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -309,4 +310,8 @@ container.register<ISendMessageUseCase>(TOKENS.SendMessageUseCase, {
 
 container.register<IGetChattedUsersUseCase>(TOKENS.GetChattedUsersUseCase, {
   useClass: GetChattedUsersUseCase,
+})
+
+container.register<IMarkMsgAsReadUseCase>(TOKENS.MarkMsgAsReadUseCase, {
+  useClass: MarkMsgAsReadUseCase,
 })

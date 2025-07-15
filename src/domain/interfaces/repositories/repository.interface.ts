@@ -65,6 +65,7 @@ export interface ISubscriptionRepository {
 
 //chat repo
 export interface IChatRepository {
+  findMsgById(messageId: string): Promise<IChatMessage | null>
   createMessage(data: TCreateChatMessage): Promise<IChatMessage>;
   getMessagesBetweenUsers(fromId: string, toId: string): Promise<IChatMessage[]>;
   markMessageAsRead(messageId: string): Promise<IChatMessage | null>;

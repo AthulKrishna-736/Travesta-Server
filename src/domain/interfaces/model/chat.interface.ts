@@ -18,13 +18,17 @@ export type TResponseChatMessage = IChatMessage;
 
 //chat use cases
 export interface IGetChatMessagesUseCase {
-  execute(currentUserId: string, targetUserId: string): Promise<{ chat: TResponseChatMessage[], message: string }>
+  getChatMessage(currentUserId: string, targetUserId: string): Promise<{ chat: TResponseChatMessage[], message: string }>
 }
 
 export interface ISendMessageUseCase {
-  execute(data: TCreateChatMessage): Promise<void>;
+  sendMessage(data: TCreateChatMessage): Promise<TResponseChatMessage | null>;
 }
 
 export interface IGetChattedUsersUseCase {
-  execute(vendorId: string): Promise<{ users: { id: string; firstName: string }[]; message: string; }>;
+  getChattedUsers(vendorId: string): Promise<{ users: { id: string; firstName: string }[]; message: string; }>;
+}
+
+export interface IMarkMsgAsReadUseCase {
+  markMsgAsRead(messageId: string): Promise<void>;
 }

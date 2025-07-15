@@ -77,4 +77,5 @@ export const TOKENS = {
   GetChatMessagesUseCase: 'GetChatMessagesUseCase',
   SendMessageUseCase: 'SendMessageUseCase',
   GetChattedUsersUseCase: 'GetChattedUsersUseCase',
+  MarkMsgAsReadUseCase: 'MarkMsgAsReadUseCase',
 };

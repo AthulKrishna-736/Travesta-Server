@@ -10,6 +10,11 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
         super(chatMessageModel);
     }
 
+    async findMsgById(messageId: string): Promise<IChatMessage> {
+        const message = await this.findById(messageId);
+        return message?.toObject();
+    }
+
     async createMessage(data: TCreateChatMessage): Promise<IChatMessage> {
         const message = await this.create({ ...data });
         return message.toObject();

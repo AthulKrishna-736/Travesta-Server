@@ -4,7 +4,7 @@ import { Response } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../utils/appError";
 
 @injectable()
@@ -24,7 +24,7 @@ export class ChatController {
                 throw new AppError('Curr or target user id missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { chat, message } = await this._getChatMessages.execute(currentUserId, targetUserId);
+            const { chat, message } = await this._getChatMessages.getChatMessage(currentUserId, targetUserId);
 
             ResponseHandler.success(res, message, chat, HttpStatusCode.OK);
         } catch (error) {
@@ -41,13 +41,15 @@ export class ChatController {
             throw new AppError('no fromid and from role or user', HttpStatusCode.BAD_REQUEST);
         }
 
-        await this._sendMessage.execute({
+        const payload = {
             fromId,
             fromRole,
             toId,
             toRole,
             message,
-        });
+        }
+
+        await this._sendMessage.sendMessage(payload);
 
         ResponseHandler.success(res, 'Message sent', null, HttpStatusCode.OK);
     }
@@ -60,7 +62,7 @@ export class ChatController {
                 throw new AppError('Unauthorized vendor', HttpStatusCode.UNAUTHORIZED);
             }
 
-            const { users, message } = await this._getChattedUsers.execute(vendorId);
+            const { users, message } = await this._getChattedUsers.getChattedUsers(vendorId);
 
             ResponseHandler.success(res, message, users, HttpStatusCode.OK);
         } catch (error) {

@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IChatRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { ISendMessageUseCase, TCreateChatMessage } from "../../../domain/interfaces/model/chat.interface";
+import { ISendMessageUseCase, TCreateChatMessage, TResponseChatMessage } from "../../../domain/interfaces/model/chat.interface";
 
 @injectable()
 export class SendMessageUseCase implements ISendMessageUseCase {
@@ -9,13 +9,14 @@ export class SendMessageUseCase implements ISendMessageUseCase {
         @inject(TOKENS.ChatRepository) private chatRepo: IChatRepository
     ) { }
 
-    async execute(data: TCreateChatMessage): Promise<void> {
+    async sendMessage(data: TCreateChatMessage): Promise<TResponseChatMessage> {
         const fullMessage = {
             ...data,
             timestamp: new Date(),
             isRead: false
         };
 
-        await this.chatRepo.createMessage(fullMessage);
+        const newMsg = await this.chatRepo.createMessage(fullMessage);
+        return newMsg;
     }
 }

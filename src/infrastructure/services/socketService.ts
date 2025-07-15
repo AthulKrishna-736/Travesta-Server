@@ -7,16 +7,12 @@ import jwt from 'jsonwebtoken';
 import { env } from "../config/env";
 import logger from "../../utils/logger";
 import { TOKENS } from "../../constants/token";
-import { IChatRepository } from "../../domain/interfaces/repositories/repository.interface";
-import { ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 
 
 @injectable()
 export class SocketService {
-    constructor(
-        private io: SocketIOServer,
-        @inject(TOKENS.ChatRepository) private chatRepo: IChatRepository,
-    ) {
+    constructor(private io: SocketIOServer) {
         this.registerMiddleware();
         this.trackEngineErrors();
         this.registerEvents();
@@ -87,14 +83,13 @@ export class SocketService {
                 };
 
                 try {
-                    const useCase = container.resolve<ISendMessageUseCase>(TOKENS.SendMessageUseCase);
-                    await useCase.execute(payload);
+                    const chatUseCase = container.resolve<ISendMessageUseCase>(TOKENS.SendMessageUseCase);
+                    const newMsg = await chatUseCase.sendMessage(payload);
+                    logger.info(`📤 [${role}:${userId}] → ${toRole}:${toId}: ${message}`);
+                    this.io.to(`${toRole}:${toId}`).emit("receive_message", newMsg);
                 } catch (err) {
                     logger.error(`❌ Failed to save message: ${err}`);
                 }
-
-                logger.info(`📤 [${role}:${userId}] → ${toRole}:${toId}: ${message}`);
-                this.io.to(`${toRole}:${toId}`).emit("receive_message", payload);
             });
 
             socket.on("typing", ({ toId, toRole }) => {
@@ -104,9 +99,21 @@ export class SocketService {
                 });
             });
 
+
             socket.on("read_message", async ({ messageId, toId, toRole }) => {
                 try {
-                    await this.chatRepo.markMessageAsRead(messageId);
+                    if (!messageId) {
+                        throw new AppError('No msg id found', HttpStatusCode.BAD_REQUEST);
+                    }
+
+                    if (!toId || !toRole) {
+                        throw new AppError('Missing recipient information (toId or toRole)', HttpStatusCode.BAD_REQUEST);
+                    }
+
+                    const chatUseCase = container.resolve<IMarkMsgAsReadUseCase>(TOKENS.MarkMsgAsReadUseCase);
+                    await chatUseCase.markMsgAsRead(messageId);
+                    logger.info(`message read by ${toRole}${toId}`)
+
                     this.io.to(`${toRole}:${toId}`).emit("message_read", {
                         messageId,
                         by: { userId, role },

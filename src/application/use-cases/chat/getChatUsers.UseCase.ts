@@ -9,7 +9,7 @@ export class GetChattedUsersUseCase implements IGetChattedUsersUseCase {
         @inject(TOKENS.ChatRepository) private chatRepo: IChatRepository,
     ) {}
 
-    async execute(vendorId: string): Promise<{ users: { id: string; firstName: string }[]; message: string }> {
+    async getChattedUsers(vendorId: string): Promise<{ users: { id: string; firstName: string }[]; message: string }> {
         const users = await this.chatRepo.getUsersWhoChattedWithVendor(vendorId);
         return {
             users,
