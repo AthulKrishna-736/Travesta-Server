@@ -9,20 +9,20 @@ import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 @injectable()
 export class MarkMsgAsReadUseCase implements IMarkMsgAsReadUseCase {
     constructor(
-        @inject(TOKENS.ChatRepository) private chatRepo: IChatRepository,
+        @inject(TOKENS.ChatRepository) private _chatRepo: IChatRepository,
     ) { }
 
     async markMsgAsRead(messageId: string): Promise<void> {
-        const message = await this.chatRepo.findMsgById(messageId);
+        const message = await this._chatRepo.findMsgById(messageId);
 
         if (!message) {
             throw new AppError('Invalid Id message does not exist!', HttpStatusCode.CONFLICT);
         }
 
         try {
-            await this.chatRepo.markMessageAsRead(messageId);
+            await this._chatRepo.markMessageAsRead(messageId);
         } catch (error) {
-            throw new AppError(`Error while marking msg read ${error}`,HttpStatusCode.INTERNAL_SERVER_ERROR);
+            throw new AppError(`Error while marking msg read ${error}`, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
     }
 }

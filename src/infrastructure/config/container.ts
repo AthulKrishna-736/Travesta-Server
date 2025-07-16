@@ -62,11 +62,13 @@ import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscripti
 import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
 import { SocketService } from "../services/socketService";
 import { ChatRepository } from "../database/repositories/chatRepo";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { GetChatMessagesUseCase } from "../../application/use-cases/chat/getChatMsg.UseCase.";
 import { SendMessageUseCase } from "../../application/use-cases/chat/sendMsg.UseCase";
 import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChatUsers.UseCase";
 import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRead.UseCase";
+import { GetVendorsChatWithUserUseCase } from "../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
+import { GetVendorsChatWithAdmiinUseCase } from "../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -314,4 +316,12 @@ container.register<IGetChattedUsersUseCase>(TOKENS.GetChattedUsersUseCase, {
 
 container.register<IMarkMsgAsReadUseCase>(TOKENS.MarkMsgAsReadUseCase, {
   useClass: MarkMsgAsReadUseCase,
+})
+
+container.register<IGetVendorsChatWithUserUseCase>(TOKENS.GetVendorsChatWithUserUseCase, {
+  useClass: GetVendorsChatWithUserUseCase,
+})
+
+container.register<IGetVendorsChatWithAdminUseCase>(TOKENS.GetVendorsChatWithAdminUseCase, {
+  useClass: GetVendorsChatWithAdmiinUseCase,
 })

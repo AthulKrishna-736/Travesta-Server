@@ -26,7 +26,15 @@ export interface ISendMessageUseCase {
 }
 
 export interface IGetChattedUsersUseCase {
-  getChattedUsers(vendorId: string): Promise<{ users: { id: string; firstName: string }[]; message: string; }>;
+  getChattedUsers(vendorId: string, search?: string): Promise<{ users: { id: string; firstName: string, role: string }[]; message: string; }>;
+}
+
+export interface IGetVendorsChatWithUserUseCase {
+  getVendorsChatWithUser(userId: string, search?: string): Promise<{ vendors: { id: string; firstName: string, role: string }[]; message: string; }>;
+}
+
+export interface IGetVendorsChatWithAdminUseCase {
+  getVendorsChatWithAdmin(adminId: string, search?: string): Promise<{ vendors: { id: string; firstName: string, role: string }[]; message: string; }>;
 }
 
 export interface IMarkMsgAsReadUseCase {

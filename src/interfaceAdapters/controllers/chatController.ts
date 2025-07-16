@@ -4,7 +4,7 @@ import { Response } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../utils/appError";
 
 @injectable()
@@ -13,6 +13,8 @@ export class ChatController {
         @inject(TOKENS.GetChatMessagesUseCase) private _getChatMessages: IGetChatMessagesUseCase,
         @inject(TOKENS.SendMessageUseCase) private _sendMessage: ISendMessageUseCase,
         @inject(TOKENS.GetChattedUsersUseCase) private _getChattedUsers: IGetChattedUsersUseCase,
+        @inject(TOKENS.GetVendorsChatWithUserUseCase) private _getVendorsChatUser: IGetVendorsChatWithUserUseCase,
+        @inject(TOKENS.GetVendorsChatWithAdminUseCase) private _getVendorsChatAdmin: IGetVendorsChatWithAdminUseCase,
     ) { }
 
     async getChatMessages(req: CustomRequest, res: Response): Promise<void> {
@@ -57,16 +59,40 @@ export class ChatController {
     async getChattedUsers(req: CustomRequest, res: Response): Promise<void> {
         try {
             const vendorId = req.user?.userId;
+            const search = req.params.search;
 
             if (!vendorId) {
                 throw new AppError('Unauthorized vendor', HttpStatusCode.UNAUTHORIZED);
             }
 
-            const { users, message } = await this._getChattedUsers.getChattedUsers(vendorId);
-
+            const { users, message } = await this._getChattedUsers.getChattedUsers(vendorId as string, search);
             ResponseHandler.success(res, message, users, HttpStatusCode.OK);
         } catch (error) {
             throw error;
+        }
+    }
+
+    async getVendorsChatWithUser(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const search = req.params.search;
+            const userId = req.user?.userId;
+
+            const { vendors, message } = await this._getVendorsChatUser.getVendorsChatWithUser(userId as string, search);
+            ResponseHandler.success(res, message, vendors, HttpStatusCode.OK);
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getVendorsChatWithAdmin(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const search = req.params.search;
+            const userId = req.user?.userId;
+
+            const { vendors, message } = await this._getVendorsChatAdmin.getVendorsChatWithAdmin(userId as string, search);
+            ResponseHandler.success(res, message, vendors, HttpStatusCode.OK);
+        } catch (error) {
+            throw error
         }
     }
 }

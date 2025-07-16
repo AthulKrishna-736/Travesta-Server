@@ -9,12 +9,14 @@ import { authorizeRoles } from "../../middlewares/roleMIddleware";
 import { AuthController } from "../controllers/authController";
 import { AmenityController } from "../controllers/amenityController";
 import { SubscriptionController } from "../controllers/subscriptionController";
+import { ChatController } from "../controllers/chatController";
 
 export class adminRoutes extends BaseRouter {
     private _authController: AuthController;
     private _adminController: AdminController;
     private _amenityController: AmenityController;
     private _subscriptionController: SubscriptionController;
+    private _chatController: ChatController;
 
     constructor() {
         super();
@@ -22,6 +24,7 @@ export class adminRoutes extends BaseRouter {
         this._adminController = container.resolve(AdminController);
         this._amenityController = container.resolve(AmenityController);
         this._subscriptionController = container.resolve(SubscriptionController);
+        this._chatController = container.resolve(ChatController);
         this.initializeRoutes();
     }
 
@@ -49,5 +52,8 @@ export class adminRoutes extends BaseRouter {
             .post('/plans', authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.createSubscriptionPlan(req, res))
             .patch('/plans/:id', authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.updateSubscriptionPlan(req, res))
             .patch('/plans/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.blockUnblockSubscription(req, res));
+
+        this.router
+            .get('/chat-vendors', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._chatController.getVendorsChatWithAdmin(req, res))
     }
 }
