@@ -59,7 +59,7 @@ export class ChatController {
     async getChattedUsers(req: CustomRequest, res: Response): Promise<void> {
         try {
             const vendorId = req.user?.userId;
-            const search = req.params.search;
+            const search = req.query.search as string;
 
             if (!vendorId) {
                 throw new AppError('Unauthorized vendor', HttpStatusCode.UNAUTHORIZED);
@@ -74,7 +74,7 @@ export class ChatController {
 
     async getVendorsChatWithUser(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const search = req.params.search;
+            const search = req.query.search as string;
             const userId = req.user?.userId;
 
             const { vendors, message } = await this._getVendorsChatUser.getVendorsChatWithUser(userId as string, search);
@@ -86,7 +86,7 @@ export class ChatController {
 
     async getVendorsChatWithAdmin(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const search = req.params.search;
+            const search = req.query.search as string;
             const userId = req.user?.userId;
 
             const { vendors, message } = await this._getVendorsChatAdmin.getVendorsChatWithAdmin(userId as string, search);

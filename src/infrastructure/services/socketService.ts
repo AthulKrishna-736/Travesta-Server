@@ -114,9 +114,17 @@ export class SocketService {
                     await chatUseCase.markMsgAsRead(messageId);
                     logger.info(`message read by ${toRole}${toId}`)
 
-                    this.io.to(`${toRole}:${toId}`).emit("message_read", {
+                    const fromRoom = `${role}:${userId}`;
+                    const toRoom = `${toRole}:${toId}`;
+
+                    this.io.to(fromRoom).emit("message_read", {
                         messageId,
-                        by: { userId, role },
+                        by: { userId, role }
+                    });
+
+                    this.io.to(toRoom).emit("message_read", {
+                        messageId,
+                        by: { userId, role }
                     });
                 } catch (err) {
                     logger.error(`❌ Failed to mark message as read: ${err}`);
