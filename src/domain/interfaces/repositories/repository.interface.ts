@@ -1,5 +1,6 @@
 import { TSubscription } from "../../../shared/types/client.types";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../model/amenities.interface";
+import { IChatMessage, TCreateChatMessage } from "../model/chat.interface";
 import { IBooking, IHotel, IRoom, TCreateHotelData, TCreateRoomData, TUpdateHotelData, TUpdateRoomData } from "../model/hotel.interface";
 import { ISubscription, TCreateSubscriptionData, TUpdateSubscriptionData } from "../model/subscription.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
@@ -60,4 +61,15 @@ export interface ISubscriptionRepository {
   findPlanByType(type: TSubscription): Promise<ISubscription | null>
   findAllPlans(): Promise<ISubscription[] | null>
   findActivePlans(): Promise<ISubscription[] | null>
+}
+
+//chat repo
+export interface IChatRepository {
+  findMsgById(messageId: string): Promise<IChatMessage | null>
+  createMessage(data: TCreateChatMessage): Promise<IChatMessage>;
+  getMessagesBetweenUsers(fromId: string, toId: string): Promise<IChatMessage[]>;
+  markMessageAsRead(messageId: string): Promise<IChatMessage | null>;
+  getUsersWhoChattedWithVendor(vendorId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
+  getVendorsWhoChattedWithAdmin(adminId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
+  getVendorsWhoChattedWithUser(userId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
 }
