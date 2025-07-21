@@ -1,5 +1,5 @@
 import { Socket, Server as SocketIOServer } from "socket.io";
-import { container, inject, injectable } from "tsyringe";
+import { container, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import * as cookie from 'cookie';

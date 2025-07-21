@@ -63,9 +63,8 @@ export class vendorRoutes extends BaseRouter {
             .get('/rooms/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getRoomById(req, res))
             .get('/hotels/:hotelId/rooms', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res) => this._roomController.getRoomsByHotel(req, res))
             .get('/hotels/:hotelId/rooms/available', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getAvailableRoomsByHotel(req, res));
-
+        //chat
         this.router
             .get('/chat-users', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._chatController.getChattedUsers(req, res));
-
     }
 }

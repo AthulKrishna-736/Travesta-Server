@@ -33,7 +33,7 @@ export class adminRoutes extends BaseRouter {
             .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res) => this._authController.login(req, res))
             .post('/auth/logout', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._authController.logout(req, res))
 
-            .get('/users', authMiddleware, authorizeRoles('admin', 'user'), (req: CustomRequest, res) => this._adminController.getAllUsers(req, res))
+            .get('/users', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getAllUsers(req, res))
             .patch('/users/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.blockOrUnblockUser(req, res))
 
             .get('/vendor-requests', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getVendorRequest(req, res))
