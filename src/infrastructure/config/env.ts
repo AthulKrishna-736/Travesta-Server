@@ -22,4 +22,5 @@ export const env = {
     AWS_ACCESSKEYID: process.env.AWS_ACCESSKEYID!,
     AWS_SECRETACCESSKEY: process.env.AWS_SECRETACCESSKEY!,
     AWS_REGION: process.env.AWS_REGION!,
+    STRIPE_SECRET: process.env.STRIPE_SECRET!,
 }

@@ -8,6 +8,7 @@ import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { RoomLookupBase } from "../../base/room.base";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 @injectable()
 export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseCase {
@@ -59,8 +60,10 @@ export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseC
             throw new AppError("Failed to update room", HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+        const finalMappedRooms = ResponseMapper.mapRoomToResponseDTO(updatedRoom);
+
         return {
-            room: updatedRoom,
+            room: finalMappedRooms,
             message: "Room updated successfully",
         };
     }

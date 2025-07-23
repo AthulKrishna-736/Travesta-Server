@@ -6,6 +6,7 @@ import { awsS3Timer } from '../../../../infrastructure/config/jwtConfig';
 import { IGetAllRoomsUseCase, TResponseRoomData } from '../../../../domain/interfaces/model/room.interface';
 import { IRoomRepository } from '../../../../domain/interfaces/repositories/repository.interface';
 import { RoomLookupBase } from '../../base/room.base';
+import { ResponseMapper } from '../../../../utils/responseMapper';
 
 @injectable()
 export class GetAllRoomsUseCase extends RoomLookupBase implements IGetAllRoomsUseCase {
@@ -43,8 +44,11 @@ export class GetAllRoomsUseCase extends RoomLookupBase implements IGetAllRoomsUs
             })
         );
 
+        const finalMappedRooms = mappedRooms.map(ResponseMapper.mapRoomToResponseDTO);
+
+
         return {
-            rooms: mappedRooms,
+            rooms: finalMappedRooms,
             message: 'Rooms fetched successfully',
             total,
         };

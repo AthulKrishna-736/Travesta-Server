@@ -8,6 +8,7 @@ import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { UserLookupBase } from "../base/userLookup.base";
 import { IUserEntity } from "../../../domain/entities/user.entity";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 @injectable()
 export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqUseCase {
@@ -39,7 +40,9 @@ export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqU
             })
         );
 
-        return { vendors, total };
+        const mappedVendors = vendors.map(ResponseMapper.mapUserToResponseDTO);
+
+        return { vendors: mappedVendors, total };
     }
 
     private async getSignedUrlsWithRedisCache(userId: string, kycDocs: string[]): Promise<string[]> {

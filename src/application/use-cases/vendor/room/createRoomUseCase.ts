@@ -7,6 +7,7 @@ import { TCreateRoomData, TResponseRoomData } from '../../../../domain/interface
 import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
 import { AwsImageUploader } from '../../base/imageUploader';
+import { ResponseMapper } from '../../../../utils/responseMapper';
 
 @injectable()
 export class CreateRoomUseCase implements ICreateRoomUseCase {
@@ -40,8 +41,10 @@ export class CreateRoomUseCase implements ICreateRoomUseCase {
             throw new AppError("Failed to create room", HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+        const finalMappedRooms = ResponseMapper.mapRoomToResponseDTO(newRoom);
+
         return {
-            room: newRoom,
+            room: finalMappedRooms,
             message: 'Room created successfully',
         };
     }

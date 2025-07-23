@@ -9,6 +9,7 @@ import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { RoomLookupBase } from "../../base/room.base";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 @injectable()
 export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsByHotelUseCase {
@@ -29,49 +30,47 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
 
         const roomsWithSignedImages = await Promise.all(
             roomEntities.map(async (roomEntity) => {
-                const roomId = roomEntity.id!;
-                const imageKeys = roomEntity.images;
+                const roomIdStr = roomEntity.id!;
+                const roomImages = roomEntity.images;
 
-                // Sign room images (cached in Redis)
-                let signedRoomUrls = await this._redisService.getRoomImageUrls(roomId);
+                let signedRoomUrls = await this._redisService.getRoomImageUrls(roomIdStr);
                 if (!signedRoomUrls) {
                     signedRoomUrls = await Promise.all(
-                        imageKeys.map((key) =>
+                        roomImages.map((key) =>
                             this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
                         )
                     );
-                    await this._redisService.storeRoomImageUrls(roomId, signedRoomUrls, awsS3Timer.expiresAt);
+                    await this._redisService.storeRoomImageUrls(roomIdStr, signedRoomUrls, awsS3Timer.expiresAt);
                 }
 
-                // 🔥 SIGN HOTEL IMAGES
-                const hotel = roomEntity.hotelId as any;
-                const hotelId = hotel._id?.toString();
+                const hotelObj = roomEntity.hotelId as any;
+                const hotelIdStr = hotelObj._id?.toString();
 
-                let signedHotelUrls = await this._redisService.getHotelImageUrls(hotelId);
+                let signedHotelUrls = await this._redisService.getHotelImageUrls(hotelIdStr);
                 if (!signedHotelUrls) {
                     signedHotelUrls = await Promise.all(
-                        (hotel.images || []).map((key: string) =>
+                        (hotelObj.images || []).map((key: string) =>
                             this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
                         )
                     );
-                    await this._redisService.storeHotelImageUrls(hotelId, signedHotelUrls, awsS3Timer.expiresAt);
+                    await this._redisService.storeHotelImageUrls(hotelIdStr, signedHotelUrls, awsS3Timer.expiresAt);
                 }
 
-                // Replace hotel.images with signed URLs before returning
                 const hotelWithSignedImages = {
-                    ...hotel,
+                    ...hotelObj,
                     images: signedHotelUrls,
                 };
 
-                return {
+                const finalRoomObj = {
                     ...roomEntity.toObject(),
                     images: signedRoomUrls,
                     hotelId: hotelWithSignedImages,
                 };
+
+                return ResponseMapper.mapRoomToResponseDTO(finalRoomObj);
             })
         );
 
         return roomsWithSignedImages;
     }
-
 }

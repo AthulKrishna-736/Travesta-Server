@@ -7,6 +7,9 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { IGetAvailableRoomsUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { RoomLookupBase } from "../../base/room.base";
+import { AppError } from "../../../../utils/appError";
+import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 @injectable()
 export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvailableRoomsUseCase {
@@ -21,12 +24,23 @@ export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvai
     async getAvlRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: TResponseRoomData[], total: number, message: string }> {
         const { rooms, total } = await this.getFilteredAvailableRoomsOrThrow(page, limit, minPrice, maxPrice, amenities, search);
 
+        if (!Array.isArray(rooms)) {
+            throw new AppError(`Expected 'rooms' to be an array but got: ${typeof rooms}`, HttpStatusCode.CONFLICT);
+        }
+
         const availableRooms = rooms.filter(r => r.isAvailable);
+        if (!Array.isArray(availableRooms)) {
+            throw new AppError("Expected 'availableRooms' to be an array", HttpStatusCode.CONFLICT);
+        }
 
         const mappedRooms = await Promise.all(
             availableRooms.map(async (roomEntity) => {
                 const roomId = roomEntity.id!;
                 const originalImageKeys = roomEntity.images;
+
+                if (!Array.isArray(originalImageKeys)) {
+                    throw new AppError(`Room ${roomId} has invalid images: ${originalImageKeys}`, HttpStatusCode.CONFLICT);
+                }
 
                 let signedImageUrls = await this._redisService.getRoomImageUrls(roomId);
 
@@ -46,8 +60,10 @@ export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvai
             })
         );
 
+        const finalMappedRooms = mappedRooms.map(ResponseMapper.mapRoomToResponseDTO);
+
         return {
-            rooms: mappedRooms,
+            rooms: finalMappedRooms,
             total: total,
             message: 'Available rooms fetched successfully',
         };

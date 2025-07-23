@@ -8,7 +8,6 @@ import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, } from '../../domain/interfaces/model/room.interface';
 import { TCreateRoomDTO, TUpdateRoomDTO } from '../dtos/room.dto';
 import { Pagination } from '../../shared/types/common.types';
-import { ResponseMapper } from '../../utils/responseMapper';
 
 
 @injectable()
@@ -57,8 +56,7 @@ export class RoomController {
             console.log('files check: ', files, files.length)
 
             const { room, message } = await this._createRoomUseCase.createRoom(roomData, files);
-            const mappedRoom = ResponseMapper.mapRoomToResponseDTO(room);
-            ResponseHandler.success(res, message, mappedRoom, HttpStatusCode.CREATED);
+            ResponseHandler.success(res, message, room, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
         }
@@ -86,8 +84,7 @@ export class RoomController {
             };
 
             const { room, message } = await this._updateRoomUseCase.updateRoom(roomId, updateData, files);
-            const mappedRoom = ResponseMapper.mapRoomToResponseDTO(room);
-            ResponseHandler.success(res, message, mappedRoom, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, room, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -101,8 +98,7 @@ export class RoomController {
             }
 
             const room = await this._getRoomByIdUseCase.getRoomById(roomId);
-            const mappedRoom = ResponseMapper.mapRoomToResponseDTO(room);
-            ResponseHandler.success(res, 'Room fetched successfully', mappedRoom, HttpStatusCode.OK);
+            ResponseHandler.success(res, 'Room fetched successfully', room, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -116,7 +112,6 @@ export class RoomController {
             }
 
             const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(hotelId);
-            // const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
             ResponseHandler.success(res, 'Rooms fetched successfully', rooms, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -144,9 +139,8 @@ export class RoomController {
             const search = req.query.search as string
 
             const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(page, limit, search);
-            const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-            ResponseHandler.success(res, message, mappedRooms, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }
@@ -163,10 +157,8 @@ export class RoomController {
 
             const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(page, limit, minPrice, maxPrice, amenities, search);
 
-            const mappedRooms = rooms.map(ResponseMapper.mapRoomToResponseDTO);
-
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
-            ResponseHandler.success(res, message, mappedRooms, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

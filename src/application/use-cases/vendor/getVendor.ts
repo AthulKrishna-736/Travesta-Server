@@ -7,6 +7,7 @@ import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IGetVendorUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { TOKENS } from "../../../constants/token";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 @injectable()
 export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IGetVendorUseCase {
@@ -37,8 +38,10 @@ export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IG
 
         const vendor = vendorEntity.toObject()
 
+        const mapVendor = ResponseMapper.mapUserToResponseDTO(vendor);
+
         return {
-            user: vendor,
+            user: mapVendor,
             message: 'Profile fetched successfully',
         };
     }

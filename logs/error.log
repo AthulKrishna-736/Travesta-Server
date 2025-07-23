@@ -9607,3 +9607,52 @@
 [2025-07-23 21:38:10] ERROR: [31mRedis Client Error:  Connection timeout[0m
 [2025-07-23 22:11:28] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
 [2025-07-23 22:11:33] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 23:47:28] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 23:47:45] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-07-23 23:47:57] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:47:58] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:48:01] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:48:05] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:48:33] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:48:35] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:48:37] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:48:41] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:50:04] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:50:15] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:50:18] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:52:41] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-07-23 23:52:59] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-07-24 00:03:39] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 00:03:39] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 00:26:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 00:26:13] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 00:26:14] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:16] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:20] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:21] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:23] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:24] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:25] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:26] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:27] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:27] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 00:26:27] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 00:26:28] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 00:26:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 00:26:34] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 00:26:39] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:41] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:43] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:26:47] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:00] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:01] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:03] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:08] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:09] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:10] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:12] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:16] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:39] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:27:41] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:28:47] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 00:29:00] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m

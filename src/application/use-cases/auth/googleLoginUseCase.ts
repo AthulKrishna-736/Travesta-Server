@@ -12,6 +12,7 @@ import { OAuth2Client } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { UserLookupBase } from "../base/userLookup.base";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 
 @injectable()
@@ -83,12 +84,14 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
         const accessToken = this._authService.generateAccessToken(userEntity.id as string, userEntity.role as TRole, userEntity.email);
         const refreshToken = this._authService.generateRefreshToken(userEntity.id as string, userEntity.role as TRole, userEntity.email);
 
-        await this._redisService.storeRefreshToken(userEntity.id as string, refreshToken, jwtConfig.refreshToken.maxAge / 1000)
+        await this._redisService.storeRefreshToken(userEntity.id as string, refreshToken, jwtConfig.refreshToken.maxAge / 1000);
+
+        const mapUser = ResponseMapper.mapUserToResponseDTO(userEntity.toObject())
 
         return {
             accessToken,
             refreshToken,
-            user: userEntity.toObject()
+            user: mapUser
         }
     }
 }

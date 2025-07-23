@@ -4,6 +4,7 @@ import { IGetAllUsersUseCase } from "../../../domain/interfaces/model/usecases.i
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { UserLookupBase } from "../base/userLookup.base";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 @injectable()
 export class GetAllUsers extends UserLookupBase implements IGetAllUsersUseCase {
@@ -19,6 +20,8 @@ export class GetAllUsers extends UserLookupBase implements IGetAllUsersUseCase {
 
         const nonAdminUsers = userEntities.filter(user => !user.isAdmin()).map(user => user.toObject());
 
-        return { users: nonAdminUsers, total };
+        const mappedUsers = nonAdminUsers.map(ResponseMapper.mapUserToResponseDTO)
+
+        return { users: mappedUsers, total };
     }
 }

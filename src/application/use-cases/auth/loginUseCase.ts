@@ -11,6 +11,7 @@ import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.
 import { TRole } from "../../../shared/types/client.types";
 import { awsS3Timer, jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { UserLookupBase } from "../base/userLookup.base";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 
 @injectable()
@@ -64,10 +65,12 @@ export class LoginUseCase extends UserLookupBase implements ILoginUseCase {
 
         await this._redisService.storeRefreshToken(userEntity.id!, refreshToken, jwtConfig.refreshToken.maxAge / 1000);
 
+        const mapUser = ResponseMapper.mapUserToResponseDTO(userEntity.toObject())
+
         return {
             accessToken,
             refreshToken,
-            user: userEntity.toObject()
+            user: mapUser
         };
     }
 

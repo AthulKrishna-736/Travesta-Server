@@ -1,5 +1,5 @@
 import { IUser } from "../domain/interfaces/model/user.interface";
-import { ResponseUserDTO } from "../interfaceAdapters/dtos/user.dto";
+import { TResponseUserDTO } from "../interfaceAdapters/dtos/user.dto";
 import { IHotel } from "../domain/interfaces/model/hotel.interface";
 import { TResponseHotelDTO } from "../interfaceAdapters/dtos/hotel.dto";
 import { ISubscription } from "../domain/interfaces/model/subscription.interface";
@@ -59,24 +59,24 @@ export class ResponseMapper {
             updatedAt: hotel.updatedAt,
         };
     }
-}
 
-
-export function mapUserToResponseDTO(user: Omit<IUser, 'password'> & { id?: string }): ResponseUserDTO {
-    return {
-        id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        isGoogle: user.isGoogle,
-        phone: user.phone,
-        isBlocked: user.isBlocked,
-        role: user.role,
-        profileImage: user.profileImage,
-        wishlist: user.wishlist ?? [],
-        subscription: user.subscription,
-        kycDocuments: user.kycDocuments ?? [],
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt
-    };
+    static mapUserToResponseDTO(user: Omit<IUser, 'password'> & { id?: string }): TResponseUserDTO {
+        return {
+            id: user._id ?? user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            isGoogle: user.isGoogle,
+            phone: user.phone,
+            isBlocked: user.isBlocked,
+            role: user.role,
+            isVerified: user.isVerified,
+            profileImage: user.profileImage,
+            wishlist: user.wishlist ?? [],
+            subscription: user.subscription,
+            kycDocuments: user.kycDocuments ?? [],
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt
+        };
+    }
 }
