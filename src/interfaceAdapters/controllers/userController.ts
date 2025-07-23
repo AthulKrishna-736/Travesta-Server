@@ -25,7 +25,8 @@ export class UserController {
 
             const userData: UpdateUserDTO = req.body;
 
-            const { user, message } = await this._updateUser.updateUser(userId, userData, req.file);
+            const image = req.file;
+            const { user, message } = await this._updateUser.updateUser(userId, userData, image);
 
             const mappedUser = mapUserToResponseDTO(user)
 

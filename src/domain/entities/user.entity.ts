@@ -158,8 +158,8 @@ export class UserEntity implements IUserEntity {
         if (data.password && typeof data.password === 'string' && data.password.trim().length > 0) {
             this._props.password = data.password.trim();
         }
-        if (data.phone && typeof data.phone === 'number' && data.phone > 0) {
-            this._props.phone = data.phone;
+        if (data.phone && ((typeof data.phone === 'string' && /^\d+$/.test(data.phone)) || (typeof data.phone === 'number' && data.phone > 0))) {
+            this._props.phone = Number(data.phone);
         }
         if (data.profileImage && typeof data.profileImage === 'string' && data.profileImage.trim().length > 0) {
             this._props.profileImage = data.profileImage.trim();
@@ -208,6 +208,7 @@ export class UserEntity implements IUserEntity {
             firstName: this._props.firstName,
             lastName: this._props.lastName,
             phone: this._props.phone,
+            password: this._props.password,
             role: this._props.role,
             isBlocked: this._props.isBlocked,
             isVerified: this._props.isVerified,

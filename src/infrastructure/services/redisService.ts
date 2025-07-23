@@ -59,7 +59,7 @@ export class RedisService implements IRedisService {
         tx.expire(key, windowSeconds)
         const [count] = await tx.exec();
 
-        return count as number;
+        return count as unknown as number;
     }
 
     //tokens
@@ -99,6 +99,10 @@ export class RedisService implements IRedisService {
     async getRedisSignedUrl(userId: string, purpose: 'profile' | 'kycDocs'): Promise<string | string[] | null> {
         const key = `${purpose}${userId}`;
         const result = await this.get(key);
+
+        if (purpose == 'kycDocs' && typeof result == 'string') {
+            return JSON.parse(result);
+        }
         if (typeof result == 'string') {
             return result
         }

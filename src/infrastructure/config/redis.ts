@@ -8,7 +8,6 @@ export const redisClient = createClient({
     socket: {
         host: env.REDIS_HOST,
         port: env.REDIS_PORT,
-        tls: env.NODE_ENV == 'production'
     }
 });
 
