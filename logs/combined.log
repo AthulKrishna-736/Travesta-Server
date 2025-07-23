@@ -48921,3 +48921,2644 @@
   "iat": 1753109258,
   "exp": 1754405258
 }[0m
+[2025-07-22 22:04:55] INFO: [34mRunning in development mode[0m
+[2025-07-22 22:04:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-22 22:04:58] INFO: [34mRedis connected successfully[0m
+[2025-07-22 22:04:58] INFO: [34mcheck cookie header: g_state={"i_l":0}[0m
+[2025-07-22 22:05:06] INFO: [34mcheck cookie header: g_state={"i_l":0}[0m
+[2025-07-22 22:05:31] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T163529Z&X-Amz-Expires=84600&X-Amz-Signature=e6eec67117229ec5193af59720b820d4c864b029dae0c425b638fc7ffaf79d9b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_front_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T163530Z&X-Amz-Expires=84600&X-Amz-Signature=4c946d37593aae0fe73704974cfe334c5205135d027fd608223ee1fcd4886d97&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_back_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T163530Z&X-Amz-Expires=84600&X-Amz-Signature=862c3bf8e64e21b45bb0b1959c982651e54dc5200173caa9349abe4cfff03122&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-22T16:35:30.843Z"
+}[0m
+[2025-07-22 22:09:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753202126,
+  "exp": 1754498126
+}[0m
+[2025-07-22 23:21:23] INFO: [34mcheck cookie header: g_state={"i_l":0}[0m
+[2025-07-22 23:21:29] INFO: [34mcheck cookie header: g_state={"i_l":0}[0m
+[2025-07-22 23:35:52] INFO: [34mRunning in development mode[0m
+[2025-07-22 23:35:52] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-22 23:35:55] INFO: [34mRunning in development mode[0m
+[2025-07-22 23:35:55] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-22 23:35:55] INFO: [34mRedis connected successfully[0m
+[2025-07-22 23:35:56] INFO: [34mRunning in development mode[0m
+[2025-07-22 23:35:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-22 23:35:57] INFO: [34mRedis connected successfully[0m
+[2025-07-22 23:35:58] INFO: [34mRunning in development mode[0m
+[2025-07-22 23:35:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-22 23:35:59] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:19:13] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:19:13] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:19:15] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:19:41] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:19:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:19:43] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:20:26] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:20:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:20:27] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:20:35] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:20:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:20:36] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:21:14] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:21:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:21:15] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:21:17] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:21:17] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:21:17] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:21:29] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:21:29] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:21:31] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:21:38] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:21:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:21:38] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:21:44] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:21:44] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:21:44] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:21:50] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:21:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:01] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:01] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:01] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:22:05] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:05] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:22:10] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:10] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:13] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:13] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:13] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:22:18] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:18] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:18] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:22:23] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:23] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:22:43] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:43] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:50] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:54] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:22:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:22:54] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:23:11] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:23:11] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:23:32] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:23:32] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:23:33] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:23:54] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:23:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:04] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:05] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:24:08] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:08] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:08] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:24:14] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:14] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:24:23] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:25] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:25] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:25] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:24:27] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:27] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:27] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:24:31] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:39] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:41] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:24:50] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:55] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:55] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:24:55] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:24:59] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:24:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:25:05] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:25:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:25:06] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:25:12] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:25:12] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:25:13] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:25:20] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:25:21] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:25:21] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:25:23] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:25:23] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:25:23] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:25:26] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:25:26] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:26:31] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:26:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:26:32] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:26:37] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:26:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:26:40] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:26:40] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:26:40] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:26:59] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:26:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:27:49] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:27:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:27:50] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:27:54] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:27:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:27:54] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:28:16] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:28:16] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:28:24] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:28:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:28:25] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:28:31] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:28:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:28:33] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:28:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:28:33] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:28:41] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:28:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:28:43] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:28:43] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:28:43] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:28:51] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:28:51] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:29:01] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:29:01] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:29:01] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:30:55] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjAyMTI2LCJleHAiOjE3NTM4MDY5MjZ9.2Zbtp4_2Ceg7gRvC1rTxpDkFq6KS-450_mkMgofFXNY[0m
+[2025-07-23 00:31:08] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T163908Z&X-Amz-Expires=84600&X-Amz-Signature=efd3b8f545dfc368c6e0c334de9ea818f2623fd8444903430d21401020e52203&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_front_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=5af35b2443dcf12595c7be69eda219ce8029475a7bd11abf6bdd9bd94e674668&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_back_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=90b4c60c6cf95b32a1386d56ec766ddbb9972491e557258ff6f18aed16ada768&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-22T19:01:07.991Z"
+}[0m
+[2025-07-23 00:31:51] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753210866,
+  "exp": 1754506866
+}[0m
+[2025-07-23 00:35:10] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:35:10] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:35:15] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:35:15] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:35:16] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:35:24] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:35:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:35:25] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:35:38] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:35:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:35:38] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:35:40] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:35:40] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:35:40] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:35:42] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:35:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:35:42] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:36:04] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:36:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:36:05] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:36:13] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:36:13] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:36:14] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:37:18] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:37:18] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:37:19] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:37:42] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul vendor",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190153Z&X-Amz-Expires=84600&X-Amz-Signature=252c998a5674c3338f59d89a4fbdefa742f992c57b53ce107100e5599510dacb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "users/kyc_front_680e1f4632a706b6e9f0b8b3.png",
+    "users/kyc_back_680e1f4632a706b6e9f0b8b3.png"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-22T19:07:41.905Z"
+}[0m
+[2025-07-23 00:39:17] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:39:18] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:39:19] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:39:19] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:39:19] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:39:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753211261,
+  "exp": 1754507261
+}[0m
+[2025-07-23 00:39:38] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul vendor",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190153Z&X-Amz-Expires=84600&X-Amz-Signature=252c998a5674c3338f59d89a4fbdefa742f992c57b53ce107100e5599510dacb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "users/kyc_front_680e1f4632a706b6e9f0b8b3.png",
+    "users/kyc_back_680e1f4632a706b6e9f0b8b3.png"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-22T19:09:38.834Z"
+}[0m
+[2025-07-23 00:40:47] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:40:47] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:40:49] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:40:49] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:40:50] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:40:50] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:40:50] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:42:05] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:42:05] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:42:07] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:42:07] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:42:07] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:42:12] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:42:12] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:42:13] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:42:18] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753211378,
+  "exp": 1754507378
+}[0m
+[2025-07-23 00:42:29] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul vendor",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190153Z&X-Amz-Expires=84600&X-Amz-Signature=252c998a5674c3338f59d89a4fbdefa742f992c57b53ce107100e5599510dacb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_front_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=5af35b2443dcf12595c7be69eda219ce8029475a7bd11abf6bdd9bd94e674668&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_back_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=90b4c60c6cf95b32a1386d56ec766ddbb9972491e557258ff6f18aed16ada768&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-22T19:12:28.927Z"
+}[0m
+[2025-07-23 00:43:29] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:43:30] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:43:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:44] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:43:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 00:43:55] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:43:58] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:44:14] INFO: [34mcheck cookie header: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNTQ4LCJleHAiOjE3NTQ1MDc1NDh9.YmEPIQlwZBjPu3j9pd0ClvVbPsOFasWOWnlZjyi5LrU; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNTQ4LCJleHAiOjE3NTM4MTYzNDh9.hUDEOdY994Qn4Y8hgDCeBx6iPo1Iso5BrXyEwvf7uD8[0m
+[2025-07-23 00:44:14] INFO: [34m✅ Socket connected: MXH3LvrNAvgpyFPAAAAB (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 00:44:18] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 00:44:19] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 00:44:20] INFO: [34mcheck cookie header: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNTQ4LCJleHAiOjE3NTQ1MDc1NDh9.YmEPIQlwZBjPu3j9pd0ClvVbPsOFasWOWnlZjyi5LrU; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNTQ4LCJleHAiOjE3NTM4MTYzNDh9.hUDEOdY994Qn4Y8hgDCeBx6iPo1Iso5BrXyEwvf7uD8[0m
+[2025-07-23 00:44:20] INFO: [34m✅ Socket connected: alNzVYO_8rhAlhEwAAAD (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 00:44:23] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:44:24] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 00:44:25] INFO: [34mcheck cookie header: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNTQ4LCJleHAiOjE3NTQ1MDc1NDh9.YmEPIQlwZBjPu3j9pd0ClvVbPsOFasWOWnlZjyi5LrU; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNTQ4LCJleHAiOjE3NTM4MTYzNDh9.hUDEOdY994Qn4Y8hgDCeBx6iPo1Iso5BrXyEwvf7uD8[0m
+[2025-07-23 00:44:25] INFO: [34m✅ Socket connected: O-OapHpzt4aMNb17AAAF (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 00:44:28] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 00:44:28] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:44:28] INFO: [34mcheck cookie header: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNTQ4LCJleHAiOjE3NTQ1MDc1NDh9.YmEPIQlwZBjPu3j9pd0ClvVbPsOFasWOWnlZjyi5LrU; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNTQ4LCJleHAiOjE3NTM4MTYzNDh9.hUDEOdY994Qn4Y8hgDCeBx6iPo1Iso5BrXyEwvf7uD8[0m
+[2025-07-23 00:44:28] INFO: [34m✅ Socket connected: HoWubByUv4KzlZmAAAAH (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 00:44:32] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753211548,
+  "exp": 1754507548
+}[0m
+[2025-07-23 00:44:46] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul vendor",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190153Z&X-Amz-Expires=84600&X-Amz-Signature=252c998a5674c3338f59d89a4fbdefa742f992c57b53ce107100e5599510dacb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_front_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=5af35b2443dcf12595c7be69eda219ce8029475a7bd11abf6bdd9bd94e674668&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_back_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=90b4c60c6cf95b32a1386d56ec766ddbb9972491e557258ff6f18aed16ada768&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-22T19:14:44.689Z"
+}[0m
+[2025-07-23 00:45:06] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 00:45:11] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:45:16] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:45:21] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:45:26] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:45:32] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 00:47:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753211683,
+  "exp": 1754507683
+}[0m
+[2025-07-23 00:47:31] ERROR: [31mcheck the error in handler:  Failed to upload file to S3[0m
+[2025-07-23 00:48:03] INFO: [34mRunning in development mode[0m
+[2025-07-23 00:48:03] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 00:48:04] INFO: [34mRedis connected successfully[0m
+[2025-07-23 00:48:04] INFO: [34mcheck cookie header: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNjgzLCJleHAiOjE3NTQ1MDc2ODN9.BRDadbUctQXK8MKu6HT1yV3fAa96WmBbJHXnnzhNsVA; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExNjgzLCJleHAiOjE3NTM4MTY0ODN9.XAjRqd7G1TF8MlT9V0RHeKO2_V6hfiBiAxTg3OCJ5CA[0m
+[2025-07-23 00:48:04] INFO: [34m✅ Socket connected: lEq2d11nkGg7X8dFAAAB (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 00:48:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753211683,
+  "exp": 1754507683
+}[0m
+[2025-07-23 00:48:53] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul vendor",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T191830Z&X-Amz-Expires=84600&X-Amz-Signature=589b2252a3792106c7863088df7af6d280a33020d82bb1d740264af16c4eb50a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_front_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=5af35b2443dcf12595c7be69eda219ce8029475a7bd11abf6bdd9bd94e674668&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_back_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=90b4c60c6cf95b32a1386d56ec766ddbb9972491e557258ff6f18aed16ada768&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-22T19:18:52.996Z"
+}[0m
+[2025-07-23 00:49:27] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 00:49:27] INFO: [34mcheck cookie header: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExOTMyLCJleHAiOjE3NTQ1MDc5MzJ9.QBe27izW0JL0mOb57QCB4li8Lw-TmxzSXcwcSg7eMLY; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjExOTMyLCJleHAiOjE3NTM4MTY3MzJ9.IpzzQFFjUZP5Eqfn8M2hk0Mfzg_SsMeKCm0pFl3ZCu0[0m
+[2025-07-23 00:49:27] INFO: [34m✅ Socket connected: nUCN8OBgDgU_sGVzAAAD (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 00:49:41] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753211932,
+  "exp": 1754507932
+}[0m
+[2025-07-23 12:33:59] INFO: [34mRunning in development mode[0m
+[2025-07-23 12:34:00] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 12:34:01] INFO: [34mRedis connected successfully[0m
+[2025-07-23 12:34:10] INFO: [34m{
+  "id": "67f9e6aa311060a56301b516",
+  "firstName": "slight",
+  "lastName": "dony",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250723%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250723T070410Z&X-Amz-Expires=84600&X-Amz-Signature=dbd73e16a7c046a417667e69ddf678bcc26f49fa29710293f9a2320aecf0ed81&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-07-23T07:04:10.725Z"
+}[0m
+[2025-07-23 12:35:07] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753254249,
+  "exp": 1754550249
+}[0m
+[2025-07-23 12:53:10] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 12:53:25] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753255390,
+  "exp": 1754551390
+}[0m
+[2025-07-23 13:01:45] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-07-23 13:01:47] INFO: [34m{
+  "id": "67f9e6aa311060a56301b516",
+  "firstName": "niggaUser",
+  "lastName": "dony",
+  "email": "sample123@gmail.com",
+  "phone": 9913453422,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250723%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250723T072326Z&X-Amz-Expires=84600&X-Amz-Signature=ca5fb66383f74039548b447fe9933837b24e85bca81d472489de7b8effad4be5&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-07-23T07:31:47.884Z"
+}[0m
+[2025-07-23 13:02:07] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753255907,
+  "exp": 1754551907
+}[0m
+[2025-07-23 13:08:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 13:08:59] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 13:08:59] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 13:09:04] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 13:09:10] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 13:15:24] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 13:15:29] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 13:16:03] INFO: [34mcheck cookie header: g_state={"i_l":0}; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzU0NTUxOTA3fQ.HCilifQoa8tBnPiuaXbn67xmAX7COKyLyMALQ4AAl7U; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 13:16:03] INFO: [34m✅ Socket connected: 01tY55mKT2fITCfjAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 13:40:09] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-23 13:40:11] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 13:41:12] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 13:41:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:41:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:42:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:43:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:44:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:45:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:46:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:47:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:48:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:49:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:49:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 13:59:57] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 13:59:59] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:03:54] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:03:57] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:04:30] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:04:59] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 14:05:59] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1OTY5OSwiZXhwIjoxNzU0NTU1Njk5fQ.qvu4cXzhzRryZOwgCOVcqfFnTtTf9AeXYSY2btLEg-c[0m
+[2025-07-23 14:05:59] INFO: [34m✅ Socket connected: teS6wmKA38oBp-U6AAAP (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 14:07:53] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753259699,
+  "exp": 1754555699
+}[0m
+[2025-07-23 14:08:41] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:08:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:08:43] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:08:43] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1OTY5OSwiZXhwIjoxNzU0NTU1Njk5fQ.qvu4cXzhzRryZOwgCOVcqfFnTtTf9AeXYSY2btLEg-c[0m
+[2025-07-23 14:08:43] INFO: [34m✅ Socket connected: 2UWXuMNCwIoKedN9AAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 14:16:55] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753259699,
+  "exp": 1754555699
+}[0m
+[2025-07-23 14:18:09] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:18:09] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:18:12] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:18:12] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:18:12] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:18:14] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1OTY5OSwiZXhwIjoxNzU0NTU1Njk5fQ.qvu4cXzhzRryZOwgCOVcqfFnTtTf9AeXYSY2btLEg-c[0m
+[2025-07-23 14:18:14] INFO: [34m✅ Socket connected: k7cQRKDtB6drh3SuAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 14:18:36] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753259699,
+  "exp": 1754555699
+}[0m
+[2025-07-23 14:18:36] ERROR: [31mcheck the error in handler:  Cannot convert object to primitive value[0m
+[2025-07-23 14:18:58] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:18:59] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:19:06] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:19:06] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:19:07] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:19:09] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1OTY5OSwiZXhwIjoxNzU0NTU1Njk5fQ.qvu4cXzhzRryZOwgCOVcqfFnTtTf9AeXYSY2btLEg-c[0m
+[2025-07-23 14:19:09] INFO: [34m✅ Socket connected: JVe516ipyHJOni7wAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 14:19:15] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753259699,
+  "exp": 1754555699
+}[0m
+[2025-07-23 14:19:15] INFO: [34muser data: {"firstName":"niggaUser","lastName":"smallsws","phone":"1234567890"}[0m
+[2025-07-23 14:20:39] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:20:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:20:41] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:20:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:20:41] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:20:42] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:21:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 14:21:06] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753260660,
+  "exp": 1754556660
+}[0m
+[2025-07-23 14:21:06] INFO: [34muser data: {"firstName":"niggaUser","lastName":"smea","phone":"1234567890"}[0m
+[2025-07-23 14:23:33] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:23:33] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:23:37] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:23:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:23:37] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:23:39] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:23:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:23:39] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:23:44] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:23:44] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:23:48] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:23:48] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:23:48] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:23:52] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:23:52] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:23:53] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:23:58] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:23:58] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:23:58] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:24:40] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753260660,
+  "exp": 1754556660
+}[0m
+[2025-07-23 14:24:40] INFO: [34muser data: {"firstName":"niggaUser","lastName":"smaller","phone":"1234567890"}[0m
+[2025-07-23 14:24:55] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:24:55] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:24:56] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:25:02] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:25:03] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:25:03] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:37:40] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:39:47] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:44:51] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:45:30] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:45:32] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8[0m
+[2025-07-23 14:49:41] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:49:45] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:49:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:49:47] INFO: [34mRedis connected successfully[0m
+[2025-07-23 14:58:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 14:59:01] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753262896,
+  "exp": 1754558896
+}[0m
+[2025-07-23 14:59:37] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:59:37] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:59:40] INFO: [34mRunning in development mode[0m
+[2025-07-23 14:59:40] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 14:59:40] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:00:42] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753262896,
+  "exp": 1754558896
+}[0m
+[2025-07-23 15:02:42] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI2Mjg5NiwiZXhwIjoxNzU0NTU4ODk2fQ.pizcJ2xx31MiPvO-LdOOdI25ePHtuAs8-i0MYMqD_MA[0m
+[2025-07-23 15:02:43] INFO: [34m✅ Socket connected: 13djJjOkjsQ9NHzUAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 15:02:52] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753262896,
+  "exp": 1754558896
+}[0m
+[2025-07-23 15:03:52] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:03:52] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:03:55] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:03:55] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI2Mjg5NiwiZXhwIjoxNzU0NTU4ODk2fQ.pizcJ2xx31MiPvO-LdOOdI25ePHtuAs8-i0MYMqD_MA[0m
+[2025-07-23 15:03:55] INFO: [34m✅ Socket connected: ToG6oFv-q6VgSiO-AAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 15:04:02] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753262896,
+  "exp": 1754558896
+}[0m
+[2025-07-23 15:04:39] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:04:39] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:04:41] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:04:54] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:04:54] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:04:56] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:04:56] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI1NTkwNywiZXhwIjoxNzUzODYwNzA3fQ.mQd7i9NoU8BgwG1y8JFH0qNIud1iVP9dGYLiwukmMu8; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI2Mjg5NiwiZXhwIjoxNzU0NTU4ODk2fQ.pizcJ2xx31MiPvO-LdOOdI25ePHtuAs8-i0MYMqD_MA[0m
+[2025-07-23 15:04:56] INFO: [34m✅ Socket connected: 2ciLQ2ZSNYLWHWaBAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 15:05:36] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:05:36] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:05:38] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:05:56] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:05:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:05:58] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:06:02] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:06:02] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:06:04] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:06:11] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:06:12] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:06:14] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:06:14] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:06:14] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:06:24] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:06:24] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:06:25] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:06:28] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:06:28] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:06:29] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:06:31] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:06:31] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:06:38] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:06:38] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:06:38] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:06:45] INFO: [34mRunning in development mode[0m
+[2025-07-23 15:06:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 15:06:47] INFO: [34mRedis connected successfully[0m
+[2025-07-23 15:07:29] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753262896,
+  "exp": 1754558896
+}[0m
+[2025-07-23 15:07:39] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753262896,
+  "exp": 1754558896
+}[0m
+[2025-07-23 15:07:45] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-07-23 15:07:54] INFO: [34m{
+  "id": "67f9e6aa311060a56301b516",
+  "firstName": "niggaUser",
+  "lastName": "larger",
+  "email": "sample123@gmail.com",
+  "phone": 1234567890,
+  "isBlocked": false,
+  "role": "user",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_67f9e6aa311060a56301b516.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250723%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250723T072326Z&X-Amz-Expires=84600&X-Amz-Signature=ca5fb66383f74039548b447fe9933837b24e85bca81d472489de7b8effad4be5&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-12T04:06:02.385Z",
+  "updatedAt": "2025-07-23T09:37:54.676Z"
+}[0m
+[2025-07-23 16:02:08] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:02:08] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:02:09] INFO: [34mRedis connected successfully[0m
+[2025-07-23 16:02:10] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI2MzQ3NCwiZXhwIjoxNzUzODY4Mjc0fQ.NvwHNJla5QzmVKt0Vgn6yhGEN8jo7GrKonbWLb_xnOE; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI2NjIzMCwiZXhwIjoxNzU0NTYyMjMwfQ.VyjowANkqe7M6XvHS7I9XGOnpO6aK88OTwgyszFUvHk[0m
+[2025-07-23 16:02:10] INFO: [34m✅ Socket connected: HFsYAJRfW_BIt-sZAAAB (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 16:03:58] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 16:04:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:04:08] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:04:13] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:04:18] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:04:24] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:04:30] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:04:37] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:04:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 16:04:50] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:04:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 16:05:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:05:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 16:05:16] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 16:05:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 16:06:04] INFO: [34m❌ Disconnected: user:67f9e6aa311060a56301b516[0m
+[2025-07-23 16:06:06] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI2MzQ3NCwiZXhwIjoxNzUzODY4Mjc0fQ.NvwHNJla5QzmVKt0Vgn6yhGEN8jo7GrKonbWLb_xnOE; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI2NjIzMCwiZXhwIjoxNzU0NTYyMjMwfQ.VyjowANkqe7M6XvHS7I9XGOnpO6aK88OTwgyszFUvHk[0m
+[2025-07-23 16:06:06] INFO: [34m✅ Socket connected: a_oSze_TPgHljx-vAAAD (User: user:67f9e6aa311060a56301b516)[0m
+[2025-07-23 16:10:41] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:10:41] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:10:43] INFO: [34mRedis connected successfully[0m
+[2025-07-23 16:12:35] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:12:35] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:12:36] INFO: [34mRedis connected successfully[0m
+[2025-07-23 16:19:48] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:19:48] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:19:49] INFO: [34mRedis connected successfully[0m
+[2025-07-23 16:19:56] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:19:56] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:19:58] INFO: [34mRedis connected successfully[0m
+[2025-07-23 16:34:42] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:34:42] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:34:45] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:34:45] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:34:45] INFO: [34mRedis connected successfully[0m
+[2025-07-23 16:35:04] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:35:04] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:35:05] INFO: [34mRedis connected successfully[0m
+[2025-07-23 16:40:16] INFO: [34mRunning in development mode[0m
+[2025-07-23 16:40:16] INFO: [34mMongoDB connected: localhost[0m
+[2025-07-23 16:40:17] INFO: [34mRedis connected successfully[0m
+[2025-07-23 16:43:58] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Y5ZTZhYTMxMTA2MGE1NjMwMWI1MTYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoic2FtcGxlMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1MzI2MzQ3NCwiZXhwIjoxNzUzODY4Mjc0fQ.NvwHNJla5QzmVKt0Vgn6yhGEN8jo7GrKonbWLb_xnOE[0m
+[2025-07-23 16:44:02] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 16:44:06] INFO: [34m{
+  "userId": "67f9e6aa311060a56301b516",
+  "role": "user",
+  "email": "sample123@gmail.com",
+  "iat": 1753269242,
+  "exp": 1754565242
+}[0m
+[2025-07-23 16:44:24] INFO: [34mcheck cookie header: g_state={"i_l":0}[0m
+[2025-07-23 16:44:38] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul vendor",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T191830Z&X-Amz-Expires=84600&X-Amz-Signature=589b2252a3792106c7863088df7af6d280a33020d82bb1d740264af16c4eb50a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_front_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=5af35b2443dcf12595c7be69eda219ce8029475a7bd11abf6bdd9bd94e674668&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_back_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=90b4c60c6cf95b32a1386d56ec766ddbb9972491e557258ff6f18aed16ada768&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-23T11:14:38.314Z"
+}[0m
+[2025-07-23 16:47:27] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753269278,
+  "exp": 1754565278
+}[0m
+[2025-07-23 16:49:40] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul vendor",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250723%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250723T111728Z&X-Amz-Expires=84600&X-Amz-Signature=89abfec22e5e7fd9e1d4f965dfe741604c30a394a8297647f3ff3b13f8f91e2c&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_front_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=5af35b2443dcf12595c7be69eda219ce8029475a7bd11abf6bdd9bd94e674668&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_back_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=90b4c60c6cf95b32a1386d56ec766ddbb9972491e557258ff6f18aed16ada768&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-23T11:19:40.025Z"
+}[0m
+[2025-07-23 16:49:56] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753269579,
+  "exp": 1754565579
+}[0m
+[2025-07-23 18:08:37] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 18:11:14] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjY5NTc5LCJleHAiOjE3NTM4NzQzNzl9.kgCddrlQfLObq3_sWIs1DxGIIdydPiYhgpw1Y5uUB1Q[0m
+[2025-07-23 18:23:17] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjY5NTc5LCJleHAiOjE3NTM4NzQzNzl9.kgCddrlQfLObq3_sWIs1DxGIIdydPiYhgpw1Y5uUB1Q[0m
+[2025-07-23 18:28:07] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 18:28:09] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753275487,
+  "exp": 1754571487
+}[0m
+[2025-07-23 18:28:11] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753275487,
+  "exp": 1754571487
+}[0m
+[2025-07-23 18:40:59] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjY5NTc5LCJleHAiOjE3NTM4NzQzNzl9.kgCddrlQfLObq3_sWIs1DxGIIdydPiYhgpw1Y5uUB1Q; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc1NDg3LCJleHAiOjE3NTQ1NzE0ODd9.7u2Y0Nu2d05x7HkDuVP8kk5uSP7raF_-qDZSvz5_uqs[0m
+[2025-07-23 18:40:59] INFO: [34m✅ Socket connected: Nh73ULmWEdGQJbK2AAAJ (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 18:41:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753275487,
+  "exp": 1754571487
+}[0m
+[2025-07-23 18:42:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753275487,
+  "exp": 1754571487
+}[0m
+[2025-07-23 18:42:28] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 18:42:29] INFO: [34mcheck cookie header: g_state={"i_l":0}[0m
+[2025-07-23 18:42:38] INFO: [34m{
+  "id": "680e52ba7857a63825aea268",
+  "firstName": "Athul",
+  "lastName": "krishna",
+  "email": "adminAthul@gmail.com",
+  "phone": 1234567890,
+  "isBlocked": false,
+  "role": "admin",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T15:52:07.765Z",
+  "updatedAt": "2025-07-23T13:12:38.719Z"
+}[0m
+[2025-07-23 18:42:46] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:42:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:42:55] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:42:59] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:44:07] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:44:42] INFO: [34mcheck cookie header: g_state={"i_l":0}; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTQ1NzIzNTh9.tRDVIvO797B3QfIVK6QtegZKKATaLT_JHEeUAqMh1iw; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 18:44:42] INFO: [34m✅ Socket connected: 4my39aJBDBIvu-7SAAAN (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 18:44:43] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:44:51] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 18:44:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:44:51] INFO: [34mcheck cookie header: g_state={"i_l":0}; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTQ1NzIzNTh9.tRDVIvO797B3QfIVK6QtegZKKATaLT_JHEeUAqMh1iw; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 18:44:51] INFO: [34m✅ Socket connected: QzR4q6R3K_AZNRHDAAAP (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 18:45:01] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:46:05] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 18:46:06] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:46:07] INFO: [34mcheck cookie header: g_state={"i_l":0}; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTQ1NzIzNTh9.tRDVIvO797B3QfIVK6QtegZKKATaLT_JHEeUAqMh1iw; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 18:46:07] INFO: [34m✅ Socket connected: oR5sqz7C8hOn49EZAAAR (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 18:49:23] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 18:49:24] INFO: [34mcheck cookie header: g_state={"i_l":0}; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTQ1NzIzNTh9.tRDVIvO797B3QfIVK6QtegZKKATaLT_JHEeUAqMh1iw; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 18:49:24] INFO: [34m✅ Socket connected: t0rulADW5hLuOrOiAAAT (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 18:49:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:49:28] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:52:14] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 18:52:15] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 18:52:15] INFO: [34mcheck cookie header: g_state={"i_l":0}; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTQ1NzIzNTh9.tRDVIvO797B3QfIVK6QtegZKKATaLT_JHEeUAqMh1iw; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 18:52:15] INFO: [34m✅ Socket connected: Lq6JMf4a9SfXZsCUAAAV (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 18:57:22] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753276358,
+  "exp": 1754572358
+}[0m
+[2025-07-23 19:01:59] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:02:00] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 19:02:01] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 19:02:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:02:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:02:51] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc3NTIwLCJleHAiOjE3NTQ1NzM1MjB9.MyPyzgGJ7Bqj0YsmabrgsmnyxPRIkz8jiNEQhxoW3KA[0m
+[2025-07-23 19:02:51] INFO: [34m✅ Socket connected: 6_R6E9NECfEf7GKIAAAZ (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:04:18] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:04:19] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:04:19] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc3NTIwLCJleHAiOjE3NTQ1NzM1MjB9.MyPyzgGJ7Bqj0YsmabrgsmnyxPRIkz8jiNEQhxoW3KA[0m
+[2025-07-23 19:04:19] INFO: [34m✅ Socket connected: OHf9K-TYL3TgESynAAAb (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:04:26] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:04:28] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:04:28] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc3NTIwLCJleHAiOjE3NTQ1NzM1MjB9.MyPyzgGJ7Bqj0YsmabrgsmnyxPRIkz8jiNEQhxoW3KA[0m
+[2025-07-23 19:04:28] INFO: [34m✅ Socket connected: nc_Qkft9YW_Kz5HIAAAd (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:07:02] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:07:03] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:07:03] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc3NTIwLCJleHAiOjE3NTQ1NzM1MjB9.MyPyzgGJ7Bqj0YsmabrgsmnyxPRIkz8jiNEQhxoW3KA[0m
+[2025-07-23 19:07:03] INFO: [34m✅ Socket connected: Yf9YPj1nA9i3SzLRAAAf (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:07:54] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:07:55] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:07:55] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc3NTIwLCJleHAiOjE3NTQ1NzM1MjB9.MyPyzgGJ7Bqj0YsmabrgsmnyxPRIkz8jiNEQhxoW3KA[0m
+[2025-07-23 19:07:55] INFO: [34m✅ Socket connected: LDCPmvkBJTZ3twGPAAAh (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:09:13] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:09:19] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:09:23] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:09:26] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:09:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:09:31] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:10:09] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:10:10] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:10:10] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc3NTIwLCJleHAiOjE3NTQ1NzM1MjB9.MyPyzgGJ7Bqj0YsmabrgsmnyxPRIkz8jiNEQhxoW3KA[0m
+[2025-07-23 19:10:10] INFO: [34m✅ Socket connected: z0ieUEbg2SXTsGj-AAAj (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:10:26] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:10:27] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753277520,
+  "exp": 1754573520
+}[0m
+[2025-07-23 19:10:27] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc3NTIwLCJleHAiOjE3NTQ1NzM1MjB9.MyPyzgGJ7Bqj0YsmabrgsmnyxPRIkz8jiNEQhxoW3KA[0m
+[2025-07-23 19:10:27] INFO: [34m✅ Socket connected: m8ZfBXHKoiVGGkD-AAAl (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:23:07] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 19:23:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:23:11] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:23:22] INFO: [34m{
+  "id": "680e52ba7857a63825aea268",
+  "firstName": "Athul",
+  "lastName": "krishna",
+  "email": "adminAthul@gmail.com",
+  "phone": 1234567890,
+  "isBlocked": false,
+  "role": "admin",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [],
+  "createdAt": "2025-04-27T15:52:07.765Z",
+  "updatedAt": "2025-07-23T13:53:22.798Z"
+}[0m
+[2025-07-23 19:23:28] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278802,
+  "exp": 1754574802
+}[0m
+[2025-07-23 19:23:30] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278802,
+  "exp": 1754574802
+}[0m
+[2025-07-23 19:23:39] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278802,
+  "exp": 1754574802
+}[0m
+[2025-07-23 19:23:52] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-07-23 19:23:54] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-07-23 19:24:00] INFO: [34m{
+  "id": "680e1f4632a706b6e9f0b8b3",
+  "firstName": "Athul vendor",
+  "lastName": "check",
+  "email": "biciboh907@ingitel.com",
+  "phone": 9876543210,
+  "isBlocked": false,
+  "role": "vendor",
+  "profileImage": "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/profile_680e1f4632a706b6e9f0b8b3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250723%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250723T111957Z&X-Amz-Expires=84600&X-Amz-Signature=ba4d8328552e53723363cc942b93a9505f10d0c582c36f51d8fb405e4fa26cae&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "wishlist": [],
+  "subscription": {},
+  "kycDocuments": [
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_front_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=5af35b2443dcf12595c7be69eda219ce8029475a7bd11abf6bdd9bd94e674668&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "https://travesta-bucket.s3.ap-south-1.amazonaws.com/users/kyc_back_680e1f4632a706b6e9f0b8b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA4SDNWAXPALWKOT3Y%2F20250722%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250722T190107Z&X-Amz-Expires=84600&X-Amz-Signature=90b4c60c6cf95b32a1386d56ec766ddbb9972491e557258ff6f18aed16ada768&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "createdAt": "2025-04-27T12:11:51.810Z",
+  "updatedAt": "2025-07-23T13:53:59.982Z"
+}[0m
+[2025-07-23 19:24:02] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:24:03] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:24:05] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:24:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:24:17] INFO: [34m📤 [admin:680e52ba7857a63825aea268] → vendor:680e1f4632a706b6e9f0b8b3: hello vendor[0m
+[2025-07-23 19:24:17] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:24:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:24:26] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:24:39] INFO: [34m📤 [admin:680e52ba7857a63825aea268] → vendor:680e1f4632a706b6e9f0b8b3: helllo[0m
+[2025-07-23 19:24:39] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:24:42] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:24:47] INFO: [34mcheck cookie header: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTQ1NzQ4Mzl9.dK-_GABj68ssA4PynMN3GePNMDmSaACfA-62GgHiIGY; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI[0m
+[2025-07-23 19:24:47] INFO: [34m✅ Socket connected: ZzDe2AQplBYNx4_TAAAr (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 19:24:47] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:24:48] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:24:48] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:24:49] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc4Nzg3LCJleHAiOjE3NTQ1NzQ3ODd9.lSC8lZa4O2ru1Pu0iE2XPt6uF86uiKUMcAcOfVVg-Yk[0m
+[2025-07-23 19:24:49] INFO: [34m✅ Socket connected: I--TtiRAALHi6NR2AAAt (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:24:50] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:24:57] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 19:24:57] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc4Nzg3LCJleHAiOjE3NTQ1NzQ3ODd9.lSC8lZa4O2ru1Pu0iE2XPt6uF86uiKUMcAcOfVVg-Yk[0m
+[2025-07-23 19:24:57] INFO: [34m✅ Socket connected: gmMuHxT6qCCq8DwKAAAv (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 19:24:57] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:24:58] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:25:02] INFO: [34m📤 [admin:680e52ba7857a63825aea268] → vendor:680e1f4632a706b6e9f0b8b3: oh hey[0m
+[2025-07-23 19:25:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:25:02] INFO: [34mmessage read by admin680e52ba7857a63825aea268[0m
+[2025-07-23 19:25:05] INFO: [34m📤 [vendor:680e1f4632a706b6e9f0b8b3] → admin:680e52ba7857a63825aea268: hello[0m
+[2025-07-23 19:25:05] INFO: [34mmessage read by vendor680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 19:25:05] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:25:10] INFO: [34m📤 [vendor:680e1f4632a706b6e9f0b8b3] → admin:680e52ba7857a63825aea268: just hello[0m
+[2025-07-23 19:25:10] INFO: [34mmessage read by vendor680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 19:25:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:25:13] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:25:29] INFO: [34m📤 [admin:680e52ba7857a63825aea268] → vendor:680e1f4632a706b6e9f0b8b3: hello check[0m
+[2025-07-23 19:25:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:25:42] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 19:25:42] INFO: [34mcheck cookie header: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTQ1NzQ4Mzl9.dK-_GABj68ssA4PynMN3GePNMDmSaACfA-62GgHiIGY; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI[0m
+[2025-07-23 19:25:42] INFO: [34m✅ Socket connected: M9W8Vx7pGtD0zLF_AAAx (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 19:25:43] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:25:44] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:25:49] INFO: [34m📤 [vendor:680e1f4632a706b6e9f0b8b3] → admin:680e52ba7857a63825aea268: oh hey hello[0m
+[2025-07-23 19:25:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:25:49] INFO: [34mmessage read by vendor680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 19:26:40] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:26:40] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:27:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:27:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:12] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:28:12] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:28:15] INFO: [34m📤 [admin:680e52ba7857a63825aea268] → vendor:680e1f4632a706b6e9f0b8b3: hey[0m
+[2025-07-23 19:28:15] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:28:18] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:30] INFO: [34m📤 [vendor:680e1f4632a706b6e9f0b8b3] → admin:680e52ba7857a63825aea268: oh hello[0m
+[2025-07-23 19:28:30] INFO: [34mmessage read by vendor680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 19:28:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:28:37] INFO: [34m📤 [admin:680e52ba7857a63825aea268] → vendor:680e1f4632a706b6e9f0b8b3: get agaub[0m
+[2025-07-23 19:28:37] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:28:39] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:29:41] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:29:41] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753278787,
+  "exp": 1754574787
+}[0m
+[2025-07-23 19:30:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:30:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:30:33] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:30:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:31:24] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753278839,
+  "exp": 1754574839
+}[0m
+[2025-07-23 19:33:57] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 19:34:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 19:34:08] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 19:34:13] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 19:34:18] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 19:34:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-07-23 19:42:04] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 19:42:04] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:32:06] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 20:32:08] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI[0m
+[2025-07-23 20:32:08] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 20:33:22] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 20:33:22] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 20:33:23] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjgzMDAyLCJleHAiOjE3NTQ1NzkwMDJ9.H5JC4Umsi4vZou6A_Q_pbDzUpyPxSQZolzqujggAwyk[0m
+[2025-07-23 20:33:23] INFO: [34m✅ Socket connected: gg_7vbJ7AfuRr-PuAAA3 (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 20:33:23] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283002,
+  "exp": 1754579002
+}[0m
+[2025-07-23 20:38:26] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283002,
+  "exp": 1754579002
+}[0m
+[2025-07-23 20:41:30] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 20:41:31] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:41:31] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjgzNDkwLCJleHAiOjE3NTQ1Nzk0OTB9.E1rJtXT4X68UCLgJuEMAbTaWcEZisem3FjQnxV3wJUU[0m
+[2025-07-23 20:41:31] INFO: [34m✅ Socket connected: CxusE1h7PLqI-ym1AAA5 (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:41:46] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:43:59] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:43:59] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:44:06] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283002,
+  "exp": 1754579002
+}[0m
+[2025-07-23 20:44:10] INFO: [34m📤 [vendor:680e1f4632a706b6e9f0b8b3] → admin:680e52ba7857a63825aea268: hey[0m
+[2025-07-23 20:44:10] INFO: [34mmessage read by vendor680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 20:44:10] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283002,
+  "exp": 1754579002
+}[0m
+[2025-07-23 20:44:18] INFO: [34m📤 [admin:680e52ba7857a63825aea268] → vendor:680e1f4632a706b6e9f0b8b3: hello[0m
+[2025-07-23 20:44:18] INFO: [34mmessage read by admin680e52ba7857a63825aea268[0m
+[2025-07-23 20:44:18] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:45:00] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283002,
+  "exp": 1754579002
+}[0m
+[2025-07-23 20:45:00] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:45:19] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:45:55] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283002,
+  "exp": 1754579002
+}[0m
+[2025-07-23 20:46:37] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283002,
+  "exp": 1754579002
+}[0m
+[2025-07-23 20:48:45] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 20:48:45] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 20:48:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:48:46] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:50:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:50:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:51:04] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 20:51:04] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:51:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:51:08] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjgzOTI1LCJleHAiOjE3NTQ1Nzk5MjV9.MbUQCx9BlRpkiebfunkBAUbbvkQdGQe-BXJwrYdut60[0m
+[2025-07-23 20:51:08] INFO: [34m✅ Socket connected: yVflGnWV9vCJiNy2AAA8 (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 20:51:09] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 20:51:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:51:10] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjgzNDkwLCJleHAiOjE3NTQ1Nzk0OTB9.E1rJtXT4X68UCLgJuEMAbTaWcEZisem3FjQnxV3wJUU[0m
+[2025-07-23 20:51:10] INFO: [34m✅ Socket connected: bCiepht2J1AkAPoRAAA9 (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:51:11] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:51:11] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjgzOTI1LCJleHAiOjE3NTQ1Nzk5MjV9.MbUQCx9BlRpkiebfunkBAUbbvkQdGQe-BXJwrYdut60[0m
+[2025-07-23 20:51:11] INFO: [34m✅ Socket connected: yzDyN2G-JsdnnRxzAAA_ (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 20:51:11] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:51:12] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:51:12] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjgzNDkwLCJleHAiOjE3NTQ1Nzk0OTB9.E1rJtXT4X68UCLgJuEMAbTaWcEZisem3FjQnxV3wJUU[0m
+[2025-07-23 20:51:12] INFO: [34m✅ Socket connected: Tx49EGRRy6tQ7M-NAABB (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:51:14] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 20:51:14] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:51:15] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjgzOTI1LCJleHAiOjE3NTQ1Nzk5MjV9.MbUQCx9BlRpkiebfunkBAUbbvkQdGQe-BXJwrYdut60[0m
+[2025-07-23 20:51:15] INFO: [34m✅ Socket connected: zLbCJRL_OQbECNEeAABE (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 20:51:15] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:51:15] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:51:15] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjgzNDkwLCJleHAiOjE3NTQ1Nzk0OTB9.E1rJtXT4X68UCLgJuEMAbTaWcEZisem3FjQnxV3wJUU[0m
+[2025-07-23 20:51:15] INFO: [34m✅ Socket connected: iAkgEJAoXjiDETkcAABF (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:51:16] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 20:51:16] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:51:17] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjgzOTI1LCJleHAiOjE3NTQ1Nzk5MjV9.MbUQCx9BlRpkiebfunkBAUbbvkQdGQe-BXJwrYdut60[0m
+[2025-07-23 20:51:17] INFO: [34m✅ Socket connected: qcjR3O3rIcBH42AVAABI (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 20:51:17] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:51:17] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjgzNDkwLCJleHAiOjE3NTQ1Nzk0OTB9.E1rJtXT4X68UCLgJuEMAbTaWcEZisem3FjQnxV3wJUU[0m
+[2025-07-23 20:51:17] INFO: [34m✅ Socket connected: 32H9d8JSpW17gTwhAABJ (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:51:17] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:51:18] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:51:18] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 20:51:20] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjgzOTI1LCJleHAiOjE3NTQ1Nzk5MjV9.MbUQCx9BlRpkiebfunkBAUbbvkQdGQe-BXJwrYdut60[0m
+[2025-07-23 20:51:20] INFO: [34m✅ Socket connected: Obbea3NH_lUq2YBVAABM (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 20:51:20] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:51:20] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 20:51:20] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:51:20] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjgzNDkwLCJleHAiOjE3NTQ1Nzk0OTB9.E1rJtXT4X68UCLgJuEMAbTaWcEZisem3FjQnxV3wJUU[0m
+[2025-07-23 20:51:20] INFO: [34m✅ Socket connected: BLMvusr1R-7SHs2PAABN (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:51:22] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:51:22] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjgzOTI1LCJleHAiOjE3NTQ1Nzk5MjV9.MbUQCx9BlRpkiebfunkBAUbbvkQdGQe-BXJwrYdut60[0m
+[2025-07-23 20:51:22] INFO: [34m✅ Socket connected: VoD78iydr666s-LSAABP (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 20:51:22] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:51:22] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:51:22] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjgzNDkwLCJleHAiOjE3NTQ1Nzk0OTB9.E1rJtXT4X68UCLgJuEMAbTaWcEZisem3FjQnxV3wJUU[0m
+[2025-07-23 20:51:22] INFO: [34m✅ Socket connected: UMnHp5LjhgECkDziAABR (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:54:55] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 20:55:01] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 20:55:06] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 20:55:09] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 20:55:14] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 20:55:20] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 20:55:26] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 20:55:32] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 20:55:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:56:30] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753283490,
+  "exp": 1754579490
+}[0m
+[2025-07-23 20:56:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 20:57:00] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:57:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 20:57:01] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 20:57:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 20:57:04] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 20:57:04] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 20:57:04] INFO: [34m✅ Socket connected: 7RDsbwGFcghn9XNZAABV (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:57:35] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 20:57:36] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 20:57:36] INFO: [34m✅ Socket connected: Au3-M32UWRno9XjYAABX (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 20:57:36] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 20:58:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 21:01:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753283925,
+  "exp": 1754579925
+}[0m
+[2025-07-23 21:04:29] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 21:04:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:07:49] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:09:25] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:09:25] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:09:28] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:09:28] INFO: [34m✅ Socket connected: SnegXfPnBIptCt_eAABZ (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:09:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:09:29] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 21:09:30] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:09:30] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 21:09:30] INFO: [34m✅ Socket connected: pAg_bYZtNubr14_bAABb (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:09:30] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:09:30] INFO: [34m✅ Socket connected: aQl-AP4UihltZrNgAABd (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:09:30] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:09:31] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:09:32] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 21:09:32] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 21:09:32] INFO: [34m✅ Socket connected: qoYTS2E_75os1MPKAABf (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:09:33] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:09:33] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:09:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:09:34] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:09:34] INFO: [34m✅ Socket connected: J2jg_TUb8tc6WnReAABi (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:09:35] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 21:09:35] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 21:09:35] INFO: [34m✅ Socket connected: mMehEfzPqpFMSMT5AABj (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:10:57] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:10:57] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:10:58] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:10:58] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:10:58] INFO: [34m✅ Socket connected: f6ha1l-bNnaIOaX2AABm (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:10:58] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 21:10:59] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 21:10:59] INFO: [34m✅ Socket connected: 70T0zoogCvzYF9EPAABn (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:10:59] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:10:59] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:11:00] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:11:00] INFO: [34m✅ Socket connected: Z6BzrL9HJqL6bPrbAABq (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:11:00] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:11:00] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 21:11:00] INFO: [34m✅ Socket connected: 4Gn1rM9D4GuFTKZKAABr (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:11:00] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 21:11:03] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:11:03] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:11:04] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:11:04] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:11:04] INFO: [34m✅ Socket connected: oPuknomzqVpzOjURAABu (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:11:04] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 21:11:04] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 21:11:04] INFO: [34m✅ Socket connected: E9acWNGVZj2y1yjBAABv (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:11:06] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:11:07] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:11:08] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:11:08] INFO: [34m✅ Socket connected: K8TqwGE7N3VFUZjMAABy (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:11:08] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:11:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753284421,
+  "exp": 1754580421
+}[0m
+[2025-07-23 21:11:08] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg0NDIxLCJleHAiOjE3NTQ1ODA0MjF9.saetEPbAMV19nRE1bC7ehvDuR-TzDsa2z8tXnu3f-j8[0m
+[2025-07-23 21:11:08] INFO: [34m✅ Socket connected: p2hXBctJDwanZnlnAABz (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:14:35] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:15:00] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:15:00] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:15:01] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:15:01] INFO: [34m✅ Socket connected: IZjXDGJFfcONsfIiAAB1 (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:15:01] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:15:02] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 21:15:02] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ[0m
+[2025-07-23 21:15:04] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:15:07] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg0ODY5LCJleHAiOjE3NTQ1ODA4Njl9.T-q6UNLfwEfp7bmMqNp5SCcbF7LUkpGYwMVX84RciQw[0m
+[2025-07-23 21:15:07] INFO: [34m✅ Socket connected: 4zghSTtmeZqOOd6aAAB6 (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:15:07] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:15:07] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:15:07] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg1NTAyLCJleHAiOjE3NTQ1ODE1MDJ9.ucqhyvqW71nSTBogRYmvcOtJIBGZoQNx0Am0qjzuBkg[0m
+[2025-07-23 21:15:07] INFO: [34m✅ Socket connected: Uv8FYHLraiVEhCQeAAB7 (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:15:17] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:16:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:17:23] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:17:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:17:24] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg1NTAyLCJleHAiOjE3NTQ1ODE1MDJ9.ucqhyvqW71nSTBogRYmvcOtJIBGZoQNx0Am0qjzuBkg[0m
+[2025-07-23 21:17:24] INFO: [34m✅ Socket connected: BzmOrIJCFsXATrBVAAB9 (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:17:34] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:17:35] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:17:36] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg1NTAyLCJleHAiOjE3NTQ1ODE1MDJ9.ucqhyvqW71nSTBogRYmvcOtJIBGZoQNx0Am0qjzuBkg[0m
+[2025-07-23 21:17:36] INFO: [34m✅ Socket connected: E12Ra95Xw68fNsWEAAB_ (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:17:36] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:17:54] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:17:55] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:17:55] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg1NTAyLCJleHAiOjE3NTQ1ODE1MDJ9.ucqhyvqW71nSTBogRYmvcOtJIBGZoQNx0Am0qjzuBkg[0m
+[2025-07-23 21:17:55] INFO: [34m✅ Socket connected: _eW57Dq5j-VxW0u_AACB (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:17:58] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:17:59] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:18:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:18:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:18:09] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:18:10] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:18:38] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753284869,
+  "exp": 1754580869
+}[0m
+[2025-07-23 21:19:34] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:19:34] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:19:36] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 21:19:36] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI[0m
+[2025-07-23 21:19:36] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:19:37] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg1NTAyLCJleHAiOjE3NTQ1ODE1MDJ9.ucqhyvqW71nSTBogRYmvcOtJIBGZoQNx0Am0qjzuBkg[0m
+[2025-07-23 21:19:37] INFO: [34m✅ Socket connected: Z_2mRJfPS9ylMCIdAACF (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:19:51] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:19:53] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753285776,
+  "exp": 1754581776
+}[0m
+[2025-07-23 21:19:53] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:19:53] INFO: [34m✅ Socket connected: DHVOra2rWPhSYzMlAACI (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:19:53] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:19:53] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg1NTAyLCJleHAiOjE3NTQ1ODE1MDJ9.ucqhyvqW71nSTBogRYmvcOtJIBGZoQNx0Am0qjzuBkg[0m
+[2025-07-23 21:19:53] INFO: [34m✅ Socket connected: ZOelTE4vu2VuIzjxAACJ (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:22:29] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753285776,
+  "exp": 1754581776
+}[0m
+[2025-07-23 21:22:37] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:22:37] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:22:37] INFO: [34m✅ Socket connected: 49kFragANJjOzAeNAACL (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:22:50] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:22:50] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:22:50] INFO: [34m✅ Socket connected: LfRvQBb6_P2h3uaQAACN (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:24:50] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:24:50] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:24:50] INFO: [34m✅ Socket connected: jfKMRcTviRbJJe_BAACP (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:24:52] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:24:52] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:24:52] INFO: [34m✅ Socket connected: 8KrJbJ-d2bBKADSSAACR (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:29:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753285502,
+  "exp": 1754581502
+}[0m
+[2025-07-23 21:29:28] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:29:28] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:29:28] INFO: [34m✅ Socket connected: j8ELQrjcfyunQTxHAACT (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:29:30] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:29:30] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:29:30] INFO: [34m✅ Socket connected: gtdw4ll2zdsB4h8WAACV (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:29:32] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:29:32] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:29:32] INFO: [34m✅ Socket connected: pXf4XVF0rEw5pXa5AACX (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:29:32] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753285776,
+  "exp": 1754581776
+}[0m
+[2025-07-23 21:29:35] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:29:35] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:29:35] INFO: [34m✅ Socket connected: IDuEAi5RMbtTBms3AACZ (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:29:38] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 21:29:38] INFO: [34mcheck cookie header: refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjc4ODM5LCJleHAiOjE3NTM4ODM2Mzl9.1w0U3gO-ufFSMfgiOYhqBRuR-7Hv5CM_crhRK6lIyhI; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlMWY0NjMyYTcwNmI2ZTlmMGI4YjMiLCJyb2xlIjoidmVuZG9yIiwiZW1haWwiOiJiaWNpYm9oOTA3QGluZ2l0ZWwuY29tIiwiaWF0IjoxNzUzMjg1Nzc2LCJleHAiOjE3NTQ1ODE3NzZ9.Y7y3WfYaaOIGdNOQNQYpwEp3ep0HzeOPanEWvRWUGP0[0m
+[2025-07-23 21:29:38] INFO: [34m✅ Socket connected: _asFYd-Xm3aEHVFvAACb (User: vendor:680e1f4632a706b6e9f0b8b3)[0m
+[2025-07-23 21:29:38] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753285776,
+  "exp": 1754581776
+}[0m
+[2025-07-23 21:31:28] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753285776,
+  "exp": 1754581776
+}[0m
+[2025-07-23 21:33:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 21:33:02] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:33:18] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:33:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753285776,
+  "exp": 1754581776
+}[0m
+[2025-07-23 21:35:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-23 21:35:02] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753286701,
+  "exp": 1754582701
+}[0m
+[2025-07-23 21:35:07] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:35:07] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:35:07] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg2NTgxLCJleHAiOjE3NTQ1ODI1ODF9.k_UbTd5j6JJo8CD2yUnipGEbsAPUyO56yhjtCTQ1BI0[0m
+[2025-07-23 21:35:07] INFO: [34m✅ Socket connected: 7KCRVeyztcMRvgnKAACd (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:37:02] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753286701,
+  "exp": 1754582701
+}[0m
+[2025-07-23 21:37:04] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:37:05] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg2NTgxLCJleHAiOjE3NTQ1ODI1ODF9.k_UbTd5j6JJo8CD2yUnipGEbsAPUyO56yhjtCTQ1BI0[0m
+[2025-07-23 21:37:05] INFO: [34m✅ Socket connected: -EzOkW84tHvOb-5-AACf (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:37:05] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:37:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:37:50] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 21:37:55] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 21:38:00] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 21:38:05] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 21:38:10] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-07-23 21:38:12] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:38:16] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753286701,
+  "exp": 1754582701
+}[0m
+[2025-07-23 21:38:24] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:38:24] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg2NTgxLCJleHAiOjE3NTQ1ODI1ODF9.k_UbTd5j6JJo8CD2yUnipGEbsAPUyO56yhjtCTQ1BI0[0m
+[2025-07-23 21:38:24] INFO: [34m✅ Socket connected: IN2Kpf4O9UmzNwC3AACh (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:38:24] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:39:08] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:40:41] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753286701,
+  "exp": 1754582701
+}[0m
+[2025-07-23 21:40:45] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:40:47] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:40:51] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:42:38] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753286701,
+  "exp": 1754582701
+}[0m
+[2025-07-23 21:43:52] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753286701,
+  "exp": 1754582701
+}[0m
+[2025-07-23 21:44:00] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:44:01] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg2NTgxLCJleHAiOjE3NTQ1ODI1ODF9.k_UbTd5j6JJo8CD2yUnipGEbsAPUyO56yhjtCTQ1BI0; sidebar_state=false[0m
+[2025-07-23 21:44:01] INFO: [34m✅ Socket connected: GstqWE6c5Ff4GIRcAACj (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:44:02] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:44:02] INFO: [34mcheck cookie header: g_state={"i_l":0}; refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjc2MzU4LCJleHAiOjE3NTM4ODExNTh9.796b-eM1K-p7gdyseZ0b8Kx5vza1jCOuou3GcKp8JpQ; access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlNTJiYTc4NTdhNjM4MjVhZWEyNjgiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQXRodWxAZ21haWwuY29tIiwiaWF0IjoxNzUzMjg2NTgxLCJleHAiOjE3NTQ1ODI1ODF9.k_UbTd5j6JJo8CD2yUnipGEbsAPUyO56yhjtCTQ1BI0; sidebar_state=false[0m
+[2025-07-23 21:44:02] INFO: [34m✅ Socket connected: KjSHjevGYPrA3ZQvAACl (User: admin:680e52ba7857a63825aea268)[0m
+[2025-07-23 21:44:04] INFO: [34m{
+  "userId": "680e52ba7857a63825aea268",
+  "role": "admin",
+  "email": "adminAthul@gmail.com",
+  "iat": 1753286581,
+  "exp": 1754582581
+}[0m
+[2025-07-23 21:44:09] INFO: [34m❌ Disconnected: admin:680e52ba7857a63825aea268[0m
+[2025-07-23 21:44:14] INFO: [34m{
+  "userId": "680e1f4632a706b6e9f0b8b3",
+  "role": "vendor",
+  "email": "biciboh907@ingitel.com",
+  "iat": 1753286701,
+  "exp": 1754582701
+}[0m
+[2025-07-23 21:44:20] INFO: [34m❌ Disconnected: vendor:680e1f4632a706b6e9f0b8b3[0m
+[2025-07-23 22:11:28] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-07-23 22:11:33] ERROR: [31mRedis Client Error:  Connection timeout[0m

@@ -53,16 +53,13 @@ export class LoginUseCase extends UserLookupBase implements ILoginUseCase {
         const kycDocsFromRedis = await this._redisService.getRedisSignedUrl(userEntity.id!, 'kycDocs');
 
         if (!kycDocsFromRedis && userEntity.kycDocuments?.length) {
-            kycDocs = await Promise.all(
-                userEntity.kycDocuments.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
-            );
-        } else if (Array.isArray(kycDocsFromRedis)) {
-            kycDocs = kycDocsFromRedis;
+            kycDocs = await Promise.all(userEntity.kycDocuments.map(async (key) => await this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)));
+            await this._redisService.storeKycDocs(userEntity.id!, kycDocs, awsS3Timer.expiresAt)
         }
 
         userEntity.updateProfile({
             profileImage: imageUrl as string,
-            kycDocuments: kycDocs.length > 0 ? kycDocs : undefined,
+            kycDocuments: kycDocs.length > 0 ? kycDocs : kycDocsFromRedis as string[],
         });
 
         await this._redisService.storeRefreshToken(userEntity.id!, refreshToken, jwtConfig.refreshToken.maxAge / 1000);
