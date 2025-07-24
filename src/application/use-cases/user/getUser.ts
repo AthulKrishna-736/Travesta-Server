@@ -5,7 +5,7 @@ import { IRedisService } from "../../../domain/interfaces/services/redisService.
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { IGetUserUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
-import { IUserEntity } from "../../../domain/entities/user/user.entity";
+import { IUserEntity } from "../../../domain/entities/user.entity";
 import { UserLookupBase } from "../base/userLookup.base";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 

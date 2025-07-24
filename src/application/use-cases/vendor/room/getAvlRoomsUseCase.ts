@@ -1,43 +1,71 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { TResponseRoomData } from "../../../../domain/interfaces/model/hotel.interface";
+import { TResponseRoomData } from "../../../../domain/interfaces/model/room.interface";
 import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
-import { GetRoomsByHotelUseCase } from "./getRoomByHotelUseCase";
-import { IGetAvailableRoomsByHotelUseCase } from "../../../../domain/interfaces/model/usecases.interface";
+import { IGetAvailableRoomsUseCase } from "../../../../domain/interfaces/model/room.interface";
+import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
+import { RoomLookupBase } from "../../base/room.base";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 @injectable()
-export class GetAvailableRoomsByHotelUseCase extends GetRoomsByHotelUseCase implements IGetAvailableRoomsByHotelUseCase {
+export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvailableRoomsUseCase {
     constructor(
         @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
-        @inject(TOKENS.RedisService) redisService: IRedisService,
-        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
+        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
+        @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(roomRepo, redisService, awsS3Service);
+        super(roomRepo);
     }
 
-    async getAvlRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]> {
-        if (!hotelId) {
-            throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
+    async getAvlRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: TResponseRoomData[], total: number, message: string }> {
+        const { rooms, total } = await this.getFilteredAvailableRoomsOrThrow(page, limit, minPrice, maxPrice, amenities, search);
+
+        if (!Array.isArray(rooms)) {
+            throw new AppError(`Expected 'rooms' to be an array but got: ${typeof rooms}`, HttpStatusCode.CONFLICT);
         }
 
-        const availableRooms = await this._roomRepo.findAvailableRoomsByHotel(hotelId);
-        if (!availableRooms || availableRooms.length === 0) {
-            return [];
+        const availableRooms = rooms.filter(r => r.isAvailable);
+        if (!Array.isArray(availableRooms)) {
+            throw new AppError("Expected 'availableRooms' to be an array", HttpStatusCode.CONFLICT);
         }
 
-        await Promise.all(
-            availableRooms.map(async (room) => {
-                if (room.images?.length) {
-                    const roomId = room._id?.toString() || '';
-                    room.images = await this._getSignedUrls(roomId, room.images);
+        const mappedRooms = await Promise.all(
+            availableRooms.map(async (roomEntity) => {
+                const roomId = roomEntity.id!;
+                const originalImageKeys = roomEntity.images;
+
+                if (!Array.isArray(originalImageKeys)) {
+                    throw new AppError(`Room ${roomId} has invalid images: ${originalImageKeys}`, HttpStatusCode.CONFLICT);
                 }
+
+                let signedImageUrls = await this._redisService.getRoomImageUrls(roomId);
+
+                if (!signedImageUrls) {
+                    signedImageUrls = await Promise.all(
+                        originalImageKeys.map((imgKey) =>
+                            this._awsS3Service.getFileUrlFromAws(imgKey, awsS3Timer.expiresAt)
+                        )
+                    );
+                    await this._redisService.storeRoomImageUrls(roomId, signedImageUrls, awsS3Timer.expiresAt);
+                }
+
+                return {
+                    ...roomEntity.toObject(),
+                    images: signedImageUrls,
+                };
             })
         );
 
-        return availableRooms;
+        const finalMappedRooms = mappedRooms.map(ResponseMapper.mapRoomToResponseDTO);
+
+        return {
+            rooms: finalMappedRooms,
+            total: total,
+            message: 'Available rooms fetched successfully',
+        };
     }
 }

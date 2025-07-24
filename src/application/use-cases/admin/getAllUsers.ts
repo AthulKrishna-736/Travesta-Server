@@ -2,12 +2,12 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IGetAllUsersUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { IUser, TResponseUserData } from "../../../domain/interfaces/model/user.interface";
-import { UsersListBase } from "../base/usersList.base";
-import { IUserEntity } from "../../../domain/entities/user/user.entity";
+import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
+import { UserLookupBase } from "../base/userLookup.base";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 @injectable()
-export class GetAllUsers extends UsersListBase implements IGetAllUsersUseCase {
+export class GetAllUsers extends UserLookupBase implements IGetAllUsersUseCase {
     constructor(
         @inject(TOKENS.UserRepository) userRepo: IUserRepository
     ) {
@@ -16,12 +16,12 @@ export class GetAllUsers extends UsersListBase implements IGetAllUsersUseCase {
 
     async getAllUsers(page: number, limit: number, role: string, search: string): Promise<{ users: TResponseUserData[]; total: number }> {
 
-        const { userEntities, total } = await this.getAllUserEntityOrThrow(page, limit, role, search);
+        const { userEntities, total } = await this.getAllUserEntity(page, limit, role, search);
 
         const nonAdminUsers = userEntities.filter(user => !user.isAdmin()).map(user => user.toObject());
 
-        return { users: nonAdminUsers, total };
+        const mappedUsers = nonAdminUsers.map(ResponseMapper.mapUserToResponseDTO)
+
+        return { users: mappedUsers, total };
     }
-
-
 }

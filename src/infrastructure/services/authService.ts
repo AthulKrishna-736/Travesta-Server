@@ -94,7 +94,6 @@ export class AuthService implements IAuthService {
 
     async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<TOtpData> {
         const storedData = await this.redisService.getOtp(userId, purpose)
-        console.log('storedData: ', storedData);
         if (!storedData) {
             throw new AppError('Otp not found or expired', HttpStatusCode.BAD_REQUEST)
         }

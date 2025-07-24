@@ -27,7 +27,6 @@ export class VerifyOtpUseCase implements IVerifyOtpUseCase {
                 data: user,
             }
         }
-        console.log(`[VERIFY_OTP] OTP verified for user ${userId} with purpose ${purpose}`);
 
         return {
             isOtpVerified: true,

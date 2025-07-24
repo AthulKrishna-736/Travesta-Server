@@ -7,7 +7,6 @@ import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { IGetUserUseCase, IUpdateUserUseCase } from "../../domain/interfaces/model/usecases.interface";
 import { UpdateUserDTO } from "../dtos/user.dto";
-import { mapUserToResponseDTO } from "../../utils/responseMapper";
 
 @injectable()
 export class UserController {
@@ -28,9 +27,7 @@ export class UserController {
             const image = req.file;
             const { user, message } = await this._updateUser.updateUser(userId, userData, image);
 
-            const mappedUser = mapUserToResponseDTO(user)
-
-            ResponseHandler.success(res, message, mappedUser, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -44,9 +41,7 @@ export class UserController {
             }
             const { user, message } = await this._getUser.getUser(userId);
 
-            const mappedUser = mapUserToResponseDTO(user)
-
-            ResponseHandler.success(res, message, mappedUser, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             throw error
         }

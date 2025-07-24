@@ -1,5 +1,5 @@
 import { TRole } from "../../../shared/types/client.types";
-import { TCreateBookingData, TCreateHotelData, TCreateRoomData, TResponseBookingData, TResponseHotelData, TResponseRoomData, TUpdateHotelData, TUpdateRoomData } from "./hotel.interface";
+import { TCreateBookingData, TResponseBookingData } from "./hotel.interface";
 import { TResponseUserData, TUpdateUserData } from "./user.interface";
 
 
@@ -38,47 +38,6 @@ export interface IGetVendorUseCase {
     getUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
 }
 
-//hotels
-export interface ICreateHotelUseCase {
-    execute(hotelData: TCreateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
-}
-
-export interface IUpdateHotelUseCase {
-    execute(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
-}
-
-export interface IGetHotelByIdUseCase {
-    execute(hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
-}
-
-export interface IGetAllHotelsUseCase {
-    execute(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
-}
-
-//rooms
-export interface ICreateRoomUseCase {
-    createRoom(roomData: TCreateRoomData, files: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }>;
-}
-
-export interface IUpdateRoomUseCase {
-    updateRoom(roomId: string, updateData: TUpdateRoomData, files: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }>;
-}
-
-export interface IGetRoomByIdUseCase {
-    getRoomById(roomId: string): Promise<TResponseRoomData>;
-}
-
-export interface IGetRoomsByHotelUseCase {
-    getRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]>;
-}
-
-export interface IGetAvailableRoomsByHotelUseCase {
-    getAvlRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]>;
-}
-
-export interface IGetAllRoomsUseCase {
-    execute(): Promise<{ rooms: TResponseRoomData[]; message: string }>;
-}
 
 //booking
 export interface ICreateBookingUseCase {

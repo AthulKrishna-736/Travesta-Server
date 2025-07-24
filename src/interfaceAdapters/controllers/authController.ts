@@ -8,7 +8,6 @@ import { CustomRequest } from "../../utils/customRequest";
 import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
 import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { CreateUserDTO } from "../dtos/user.dto";
-import { mapUserToResponseDTO } from "../../utils/responseMapper";
 import logger from "../../utils/logger";
 
 @injectable()
@@ -22,7 +21,6 @@ export class AuthController {
         @inject(TOKENS.ResendOtpUseCase) private _resendOtpUseCase: IResendOtpUseCase,
         @inject(TOKENS.VerifyOtpUseCase) private _verifyOtpUseCase: IVerifyOtpUseCase,
         @inject(TOKENS.LogoutUseCase) private _logoutOtpUseCase: ILogoutUseCases,
-
     ) { }
 
     async register(req: CustomRequest, res: Response): Promise<void> {
@@ -56,15 +54,11 @@ export class AuthController {
                 throw new AppError('Email password and role are required', HttpStatusCode.BAD_REQUEST)
             }
             const { accessToken, refreshToken, user } = await this._loginUseCase.login(email, password, role);
-            console.log('user: ', user)
 
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
-            const mappedUser = mapUserToResponseDTO(user);
-            logger.info(JSON.stringify(mappedUser, null, 2))
-
-            ResponseHandler.success(res, 'Login successfull', mappedUser, HttpStatusCode.OK)
+            ResponseHandler.success(res, 'Login successfull', user, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -83,9 +77,7 @@ export class AuthController {
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
-            const mappedUser = mapUserToResponseDTO(user)
-
-            ResponseHandler.success(res, 'Google login successful', mappedUser, HttpStatusCode.OK);
+            ResponseHandler.success(res, 'Google login successful', user, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }

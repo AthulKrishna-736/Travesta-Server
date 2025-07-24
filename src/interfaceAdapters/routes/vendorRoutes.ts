@@ -1,7 +1,7 @@
 import { container } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema } from "../../shared/types/zodValidation";
+import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema, createRoomSchema, updateRoomSchema, updateHotelSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
@@ -50,19 +50,22 @@ export class vendorRoutes extends BaseRouter {
 
         //hotels
         this.router
-            .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req: CustomRequest, res) => this._hotelController.createHotel(req, res))
+            .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(createHotelSchema), (req: CustomRequest, res) => this._hotelController.createHotel(req, res))
+            .get('/rooms/by-hotel/:hotelId', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req: CustomRequest, res) => this._roomController.getRoomsByHotel(req, res))
             .get('/hotels/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._hotelController.getHotelById(req, res))
             .get('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._hotelController.getAllHotels(req, res))
-            .patch('/hotels/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req: CustomRequest, res) => this._hotelController.updateHotel(req, res));
+            .patch('/hotels/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(updateHotelSchema), (req: CustomRequest, res) => this._hotelController.updateHotel(req, res));
 
         //rooms
         this.router
             .get('/rooms', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getAllRooms(req, res))
-            .post('/rooms', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req, res) => this._roomController.createRoom(req, res))
-            .patch('/rooms/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), (req, res) => this._roomController.updateRoom(req, res))
+            .get('/rooms/available', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res) => this._roomController.getAllAvlRooms(req, res))
+            .post('/rooms', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(createRoomSchema), (req, res) => this._roomController.createRoom(req, res))
+            .patch('/rooms/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(updateRoomSchema), (req, res) => this._roomController.updateRoom(req, res))
             .get('/rooms/:id', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getRoomById(req, res))
             .get('/hotels/:hotelId/rooms', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res) => this._roomController.getRoomsByHotel(req, res))
             .get('/hotels/:hotelId/rooms/available', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._roomController.getAvailableRoomsByHotel(req, res));
+            
         //chat
         this.router
             .get('/chat-users', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res) => this._chatController.getChattedUsers(req, res));

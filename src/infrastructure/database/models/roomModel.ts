@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IRoom } from "../../../domain/interfaces/model/hotel.interface";
+import { IRoom } from "../../../domain/interfaces/model/room.interface";
 
 export type TRoomDocument = IRoom & Document;
 

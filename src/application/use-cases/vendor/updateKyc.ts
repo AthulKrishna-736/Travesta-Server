@@ -11,6 +11,7 @@ import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 @injectable()
 export class UpdateKycUseCase implements IUpdateKycUseCase {
@@ -60,9 +61,11 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
             kycDocuments: signedUrls,
         };
 
+        const mapUser = ResponseMapper.mapUserToResponseDTO(mappedUser);
+
 
         return {
-            vendor: mappedUser,
+            vendor: mapUser,
             message: 'KYC documents updated successfully',
         };
     }

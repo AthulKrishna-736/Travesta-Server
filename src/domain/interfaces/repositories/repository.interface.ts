@@ -1,7 +1,8 @@
 import { TSubscription } from "../../../shared/types/client.types";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../model/amenities.interface";
 import { IChatMessage, TCreateChatMessage } from "../model/chat.interface";
-import { IBooking, IHotel, IRoom, TCreateHotelData, TCreateRoomData, TUpdateHotelData, TUpdateRoomData } from "../model/hotel.interface";
+import { IBooking, IHotel, TCreateHotelData, TUpdateHotelData } from "../model/hotel.interface";
+import { IRoom, TCreateRoomData, TUpdateRoomData } from "../model/room.interface";
 import { ISubscription, TCreateSubscriptionData, TUpdateSubscriptionData } from "../model/subscription.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
 
@@ -31,7 +32,8 @@ export interface IRoomRepository {
   deleteRoom(id: string): Promise<boolean>;
   findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
   findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
-  findAll(): Promise<IRoom[]>;
+  findAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: IRoom[], total: number }>;
+  findFilteredAvailableRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: IRoom[]; total: number }>;
 }
 
 export interface IBookingRepository {

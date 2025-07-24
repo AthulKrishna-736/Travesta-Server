@@ -12,6 +12,7 @@ import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { UserLookupBase } from "../base/userLookup.base";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 @injectable()
 export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
@@ -78,8 +79,10 @@ export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
             updatedUserData.kycDocuments = kycDocs as string[];
         }
 
+        const mapUser = ResponseMapper.mapUserToResponseDTO(updatedUserData);
+
         return {
-            user: updatedUserData,
+            user: mapUser,
             message: 'User updated successfully',
         };
     }

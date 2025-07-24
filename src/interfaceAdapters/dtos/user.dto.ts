@@ -7,7 +7,7 @@ export interface CreateUserDTO {
     email: string
     password: string
     phone: number
-    role?: TRole
+    role: TRole
 }
 
 export interface UpdateUserDTO {
@@ -24,7 +24,7 @@ export interface UpdateUserDTO {
 
 }
 
-export interface ResponseUserDTO {
+export interface TResponseUserDTO {
     id?: string
     firstName: string
     lastName: string
@@ -32,6 +32,7 @@ export interface ResponseUserDTO {
     isGoogle: boolean
     phone: number
     isBlocked: boolean
+    isVerified: boolean
     profileImage?: string
     wishlist: string[]
     role: TRole

@@ -6,7 +6,7 @@ export interface IHotel {
     name: string
     description: string
     images: string[]
-    rating?: number
+    rating: number
     services: string[]
     amenities: string[]
     tags: string[]
@@ -15,20 +15,6 @@ export interface IHotel {
     address: string
     geoLocation: [number, number]
     isBlocked: boolean
-    createdAt: Date
-    updatedAt: Date
-}
-
-export interface IRoom {
-    _id?: string
-    hotelId: string | Types.ObjectId
-    name: string
-    capacity: number
-    bedType: string
-    amenities: string[]
-    images: string[]
-    basePrice: number
-    isAvailable: boolean
     createdAt: Date
     updatedAt: Date
 }
@@ -47,21 +33,29 @@ export interface IBooking {
     updatedAt: Date;
 }
 
-
+//hotel types
 export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'rating'>;
-
 export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt'>>;
-
 export type TResponseHotelData = Omit<IHotel, ''>;
 
-export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'images' | 'createdAt' | 'updatedAt'>;
+//hotel use cases
+export interface ICreateHotelUseCase {
+    createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
+}
 
-export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'createdAt' | 'updatedAt'>>;
+export interface IUpdateHotelUseCase {
+    updateHotel(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
+}
 
-export type TResponseRoomData = Omit<IRoom, ''>;
+export interface IGetHotelByIdUseCase {
+    getHotel(hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
+}
+
+export interface IGetAllHotelsUseCase {
+    getAllHotel(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
+}
+
 
 export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt' | 'status'>;
-
 export type TUpdateBookingData = Partial<Omit<IBooking, '_id' | 'userId' | 'hotelId' | 'roomId' | 'createdAt' | 'updatedAt'>>;
-
 export type TResponseBookingData = IBooking;

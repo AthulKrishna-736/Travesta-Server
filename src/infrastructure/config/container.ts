@@ -8,7 +8,7 @@ import { RedisService } from "../services/redisService"
 import { IMailService } from "../../domain/interfaces/services/mailService.interface";
 import { IConfrimRegisterUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
-import { IBlockUnblockUser, ICancelBookingUseCase, ICreateBookingUseCase, ICreateHotelUseCase, ICreateRoomUseCase, IGetAllHotelsUseCase, IGetAllRoomsUseCase, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetAvailableRoomsByHotelUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetHotelByIdUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateHotelUseCase, IUpdateKycUseCase, IUpdateRoomUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
+import { IBlockUnblockUser, ICancelBookingUseCase, ICreateBookingUseCase,  IGetAllUsersUseCase, IGetAllVendorReqUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetUserUseCase, IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
 import { GetAllVendorReq } from "../../application/use-cases/admin/getAllVendorReq";
 import { UpdateVendorReq } from "../../application/use-cases/admin/updateVendorReq";
@@ -38,13 +38,13 @@ import { LogoutUseCase } from "../../application/use-cases/auth/logoutUseCase";
 import { RoomRepository } from "../database/repositories/roomRepo";
 import { GetRoomByIdUseCase } from "../../application/use-cases/vendor/room/getRoomByIdUseCase";
 import { GetRoomsByHotelUseCase } from "../../application/use-cases/vendor/room/getRoomByHotelUseCase";
-import { GetAvailableRoomsByHotelUseCase } from "../../application/use-cases/vendor/room/getAvlRoomsUseCase";
-import { GetAllRoomsUseCase } from "../../application/use-cases/vendor/room/getAllRoomsUseCase";
 import { BookingRepository } from "../database/repositories/bookingRepo";
 import { CreateBookingUseCase } from "../../application/use-cases/vendor/booking/createBookingUseCase";
 import { GetBookingsByHotelUseCase } from "../../application/use-cases/vendor/booking/getBookingHotelUseCase";
 import { GetBookingsByUserUseCase } from "../../application/use-cases/vendor/booking/getBookingUserUseCase";
 import { CancelBookingUseCase } from "../../application/use-cases/vendor/booking/cancelBookingUseCase";
+import { GetAllRoomsUseCase } from "../../application/use-cases/vendor/room/getAllRoomsUseCase";
+import { GetAvailableRoomsUseCase } from "../../application/use-cases/vendor/room/getAvlRoomsUseCase";
 import { AmenitiesRepository } from "../database/repositories/amenitiesRepo";
 import { CreateAmenityUseCase } from "../../application/use-cases/admin/amenities/createAmenity.UseCase";
 import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IGetActiveAmenitiesUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
@@ -60,6 +60,8 @@ import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscriptio
 import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
 import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscription/getAllPlans.UseCase";
 import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from "../../domain/interfaces/model/hotel.interface";
+import { ICreateRoomUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IUpdateRoomUseCase } from "../../domain/interfaces/model/room.interface";
 import { SocketService } from "../services/socketService";
 import { ChatRepository } from "../database/repositories/chatRepo";
 import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
@@ -229,8 +231,8 @@ container.register<IGetRoomsByHotelUseCase>(TOKENS.GetRoomsByHotelUseCase, {
   useClass: GetRoomsByHotelUseCase,
 })
 
-container.register<IGetAvailableRoomsByHotelUseCase>(TOKENS.GetAvailableRoomsByHotelUseCase, {
-  useClass: GetAvailableRoomsByHotelUseCase,
+container.register<IGetAvailableRoomsUseCase>(TOKENS.GetAvailableRoomsUseCase, {
+  useClass: GetAvailableRoomsUseCase,
 })
 
 container.register<IGetAllRoomsUseCase>(TOKENS.GetAllRoomsUseCase, {

@@ -7,7 +7,6 @@ import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase } from "../../domain/interfaces/model/usecases.interface";
 import { UpdateUserDTO } from "../dtos/user.dto";
-import { mapUserToResponseDTO } from "../../utils/responseMapper";
 
 @injectable()
 export class VendorController {
@@ -28,9 +27,7 @@ export class VendorController {
 
             const { user, message } = await this._updateUser.updateUser(userId, userData, req.file);
 
-            const mappedUser = mapUserToResponseDTO(user)
-
-            ResponseHandler.success(res, message, mappedUser, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -54,9 +51,7 @@ export class VendorController {
 
             const { message, vendor } = await this._updateKyc.updateKyc(userId, frontFile, backFile);
 
-            const mappedVendor = mapUserToResponseDTO(vendor)
-
-            ResponseHandler.success(res, message, mappedVendor, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, vendor, HttpStatusCode.OK);
         } catch (error) {
             throw error
         }
@@ -70,9 +65,7 @@ export class VendorController {
             }
             const { message, user } = await this._getVendor.getUser(userId)
 
-            const mappedVendor = mapUserToResponseDTO(user);
-
-            ResponseHandler.success(res, message, mappedVendor, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             throw error
         }
