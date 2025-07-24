@@ -7,7 +7,7 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { IGetRoomByIdUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { RoomLookupBase } from "../../base/room.base";
-import { ResponseMapper } from "../../../../utils/responseMapper"; // ✅ Import mapper
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 @injectable()
 export class GetRoomByIdUseCase extends RoomLookupBase implements IGetRoomByIdUseCase {
@@ -39,7 +39,6 @@ export class GetRoomByIdUseCase extends RoomLookupBase implements IGetRoomByIdUs
             ...roomEntity.toObject(),
             images: signedImageUrls,
         };
-
-        return ResponseMapper.mapRoomToResponseDTO(roomWithSignedImages); 
+        return ResponseMapper.mapRoomToResponseDTO(roomWithSignedImages);
     }
 }

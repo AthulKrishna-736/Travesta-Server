@@ -67,7 +67,7 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
                     hotelId: hotelWithSignedImages,
                 };
 
-                return ResponseMapper.mapRoomToResponseDTO(finalRoomObj);
+                return finalRoomObj;
             })
         );
 

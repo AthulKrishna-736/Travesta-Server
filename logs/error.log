@@ -9656,3 +9656,103 @@
 [2025-07-24 00:27:41] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
 [2025-07-24 00:28:47] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
 [2025-07-24 00:29:00] ERROR: [31mcheck the error in handler:  Room 68408696f44122ac51b5ab81 has invalid images: undefined[0m
+[2025-07-24 09:38:44] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 09:39:09] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-07-24 09:39:26] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:39:27] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:39:29] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:39:33] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:42:35] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:42:36] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:43:48] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:43:52] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:43:58] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:43:59] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:44:08] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:44:15] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:44:22] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:44:23] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:44:25] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:44:52] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:45:03] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:45:04] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:45:06] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:45:12] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:45:40] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:45:41] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:45:43] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:45:57] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:47:38] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:47:39] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:47:42] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:47:48] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:48:07] ERROR: [31mcheck the error in handler:  No Hotels exits on this vendor id[0m
+[2025-07-24 09:49:12] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:50:04] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:50:06] ERROR: [31mcheck the error in handler:  No hotels found[0m
+[2025-07-24 09:54:18] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 09:58:23] ERROR: [31mcheck the error in handler:  No rooms found[0m
+[2025-07-24 10:05:24] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:25] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:27] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:28] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:31] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:31] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:31] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:32] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:33] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:33] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:05:33] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:10:02] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:10:03] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:10:05] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:10:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:12:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 10:21:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 10:21:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 10:23:31] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:11] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:13] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:18] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:36] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:37] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:24:39] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-07-24 10:34:59] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 10:43:18] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 10:53:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 10:58:53] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 11:15:12] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 11:15:13] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "6852cfe3af6b03e270a6cdcc,6852cf83af6b03e270a6cdc0" (type string) at path "_id" for model "Amenities"[0m
+[2025-07-24 11:15:15] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "6852cfe3af6b03e270a6cdcc,6852cf83af6b03e270a6cdc0" (type string) at path "_id" for model "Amenities"[0m
+[2025-07-24 11:15:16] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "6852cfe3af6b03e270a6cdcc,6852cf83af6b03e270a6cdc0" (type string) at path "_id" for model "Amenities"[0m
+[2025-07-24 11:15:19] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "6852cfe3af6b03e270a6cdcc,6852cf83af6b03e270a6cdc0" (type string) at path "_id" for model "Amenities"[0m
+[2025-07-24 11:15:29] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "6852cfe3af6b03e270a6cdcc,6852cf83af6b03e270a6cdc0" (type string) at path "_id" for model "Amenities"[0m
+[2025-07-24 11:15:44] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "6852cfe3af6b03e270a6cdcc,6852cf83af6b03e270a6cdc0" (type string) at path "_id" for model "Amenities"[0m
+[2025-07-24 11:15:47] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "6852cfe3af6b03e270a6cdcc,6852cf83af6b03e270a6cdc0" (type string) at path "_id" for model "Amenities"[0m
+[2025-07-24 11:17:09] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 11:33:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 11:33:04] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:33:06] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:33:11] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:33:37] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:33:38] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:33:40] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:33:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-07-24 11:34:44] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:34:46] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:34:47] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:34:49] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m
+[2025-07-24 11:34:53] ERROR: [31mcheck the error in handler:  No rooms found for this hotel[0m

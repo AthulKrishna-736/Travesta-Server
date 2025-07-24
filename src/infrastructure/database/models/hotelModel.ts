@@ -30,10 +30,10 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
         type: [String],
         default: [],
     },
-    amenities: {
-        type: [String],
-        default: [],
-    },
+    amenities: [{
+        type: Schema.Types.ObjectId,
+        ref: "Amenities",
+    }],
     tags: {
         type: [String],
         default: [],

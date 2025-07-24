@@ -16,8 +16,11 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
     }
 
     async findRoomById(id: string): Promise<IRoom | null> {
-        const room = await this.findById(id);
-        return room?.toObject() || null;
+        const room = await this.model.findById(id)
+            .populate({ path: "hotelId", select: "name images rating city state address amenities tags", })
+            .lean();
+
+        return room || null;
     }
 
     async updateRoom(id: string, data: TUpdateRoomData): Promise<IRoom | null> {
@@ -31,7 +34,10 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
     }
 
     async findRoomsByHotel(hotelId: string): Promise<IRoom[] | null> {
-        const rooms = await this.find({ hotelId }).populate('hotelId').lean<IRoom[]>();
+        const rooms = await this.find({ hotelId })
+            .populate('hotelId')
+            .populate('amenities')
+            .lean<IRoom[]>();
         return rooms;
     }
 
@@ -75,7 +81,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         }
 
         if (amenities && amenities.length > 0) {
-            filter.amenities = { $all: amenities };
+            filter.amenities = { $in: amenities };
         }
 
         const total = await this.model.countDocuments(filter);

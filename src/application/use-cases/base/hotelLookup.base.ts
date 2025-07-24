@@ -10,13 +10,7 @@ export abstract class HotelLookupBase {
     protected async getHotelEntityByVendorId(vendorId: string): Promise<IHotelEntity[]> {
         const hotel = await this._hotelRepo.findHotelsByVendor(vendorId)
 
-        if (!hotel) {
-            throw new AppError('No Hotels exits on this vendor id', HttpStatusCode.NOT_FOUND);
-        }
-
-        if (hotel.length <= 0) {
-            throw new AppError('No Hotels exits on this vendor id', HttpStatusCode.NOT_FOUND);
-        }
+        if (!hotel || hotel.length === 0) return [];
 
         const hotels = hotel.map(h => new HotelEntity(h))
 
