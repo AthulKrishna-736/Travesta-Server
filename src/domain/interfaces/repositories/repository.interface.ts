@@ -1,7 +1,7 @@
 import { TSubscription } from "../../../shared/types/client.types";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../model/amenities.interface";
 import { IChatMessage, TCreateChatMessage } from "../model/chat.interface";
-import { IBooking, IHotel, TCreateHotelData, TUpdateHotelData } from "../model/hotel.interface";
+import { IBooking, IHotel, IWallet, TCreateHotelData, TUpdateHotelData } from "../model/hotel.interface";
 import { IRoom, TCreateRoomData, TUpdateRoomData } from "../model/room.interface";
 import { ISubscription, TCreateSubscriptionData, TUpdateSubscriptionData } from "../model/subscription.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
@@ -38,8 +38,8 @@ export interface IRoomRepository {
 
 export interface IBookingRepository {
   createBooking(data: Partial<IBooking>): Promise<IBooking | null>;
-  findBookingsByUser(userId: string): Promise<IBooking[]>;
-  findBookingsByHotel(hotelId: string): Promise<IBooking[]>;
+  findBookingsByUser(userId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }>;
+  findBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }>
   isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
   findByid(id: string): Promise<IBooking | null>;
   save(booking: IBooking): Promise<void>;
@@ -74,4 +74,12 @@ export interface IChatRepository {
   getUsersWhoChattedWithVendor(vendorId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
   getVendorsWhoChattedWithAdmin(adminId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
   getVendorsWhoChattedWithUser(userId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
+}
+
+//wallet repo
+export interface IWalletRepository {
+  createWallet(data: Partial<IWallet>): Promise<IWallet | null>;
+  findByUserId(userId: string): Promise<IWallet | null>;
+  updateBalance(userId: string, newBalance: number): Promise<void>;
+  addTransaction(userId: string, transaction: IWallet['transactions'][0]): Promise<void>;
 }

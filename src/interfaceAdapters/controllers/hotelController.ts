@@ -84,7 +84,11 @@ export class HotelController {
 
     async updateHotel(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const hotelId = req.params.id;
+            const hotelId = req.params.hotelId;
+            if (!hotelId) {
+                throw new AppError('Hotel id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
             const files = req.files as Express.Multer.File[];
             const updateData: TUpdateHotelDTO = {
                 ...req.body,
@@ -100,8 +104,7 @@ export class HotelController {
 
     async getHotelById(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const hotelId = req.params.id;
-
+            const hotelId = req.params.hotelId;
             if (!hotelId) {
                 throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
             }

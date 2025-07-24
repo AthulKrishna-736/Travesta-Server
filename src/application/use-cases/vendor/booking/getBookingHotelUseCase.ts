@@ -3,6 +3,7 @@ import { TResponseBookingData } from "../../../../domain/interfaces/model/hotel.
 import { IGetBookingsByHotelUseCase } from "../../../../domain/interfaces/model/usecases.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IBookingRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { formatDateString } from "../../../../utils/dateFormatter";
 
 @injectable()
 export class GetBookingsByHotelUseCase implements IGetBookingsByHotelUseCase {
@@ -10,7 +11,18 @@ export class GetBookingsByHotelUseCase implements IGetBookingsByHotelUseCase {
         @inject(TOKENS.BookingRepository) private _bookingRepo: IBookingRepository
     ) { }
 
-    async execute(hotelId: string): Promise<TResponseBookingData[]> {
-        return this._bookingRepo.findBookingsByHotel(hotelId);
+    async getBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }> {
+        const { bookings, total } = await this._bookingRepo.findBookingsByHotel(hotelId, page, limit);
+
+        const mappedBooking = bookings.map(b => ({
+            ...b,
+            checkIn: formatDateString(b.checkIn.toString()),
+            checkOut: formatDateString(b.checkOut.toString()),
+        }));
+
+        return {
+            bookings: mappedBooking,
+            total
+        }
     }
 }

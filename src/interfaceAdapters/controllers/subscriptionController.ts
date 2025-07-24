@@ -40,7 +40,7 @@ export class SubscriptionController {
 
     async updateSubscriptionPlan(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const id = req.params.id;
+            const id = req.params.planId;
             const data: TUpdateSubscriptionDTO = {
                 name: req.body.name,
                 description: req.body.description,
@@ -60,7 +60,7 @@ export class SubscriptionController {
 
     async blockUnblockSubscription(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const id = req.params.id;
+            const id = req.params.planId;
             const { plan, message } = await this._blockUnblockSubscription.blockUnblockPlan(id);
             const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(plan);
             ResponseHandler.success(res, message, mappedPlan, HttpStatusCode.OK);

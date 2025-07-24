@@ -6,6 +6,7 @@ import { ICreateBookingUseCase } from '../../../../domain/interfaces/model/useca
 import { TOKENS } from '../../../../constants/token';
 import { TCreateBookingData, TResponseBookingData } from '../../../../domain/interfaces/model/hotel.interface';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/repository.interface';
+import { formatDateString } from '../../../../utils/dateFormatter';
 
 @injectable()
 export class CreateBookingUseCase implements ICreateBookingUseCase {
@@ -13,7 +14,6 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
         @inject(TOKENS.BookingRepository) private _bookingRepo: IBookingRepository
     ) { }
 
-    // Create booking only if room is available for requested dates
     async execute(data: TCreateBookingData): Promise<{ booking: TResponseBookingData; message: string }> {
         const isAvailable = await this._bookingRepo.isRoomAvailable(data.roomId as string, data.checkIn, data.checkOut);
 
@@ -26,8 +26,16 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
             throw new AppError('Failed to create booking', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+
+        const mappedBook: TResponseBookingData = {
+            ...created,
+            checkIn: formatDateString(created.checkIn.toString()),
+            checkOut: formatDateString(created.checkOut.toString()),
+        };
+
+
         return {
-            booking: created,
+            booking: mappedBook,
             message: 'Booking created successfully',
         };
     }

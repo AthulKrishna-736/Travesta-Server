@@ -49,11 +49,11 @@ export interface ICancelBookingUseCase {
 }
 
 export interface IGetBookingsByUserUseCase {
-    execute(userId: string): Promise<TResponseBookingData[]>;
+    getBookingByUser(userId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
 }
 
 export interface IGetBookingsByHotelUseCase {
-    execute(hotelId: string): Promise<TResponseBookingData[]>;
+    getBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
 }
 
 export interface ICheckRoomAvailabilityUseCase {

@@ -64,7 +64,7 @@ export class RoomController {
 
     async updateRoom(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const roomId = req.params.id;
+            const roomId = req.params.roomId;
             if (!roomId) {
                 throw new AppError('Room ID is required', HttpStatusCode.BAD_REQUEST);
             }
@@ -92,7 +92,7 @@ export class RoomController {
 
     async getRoomById(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const roomId = req.params.id;
+            const roomId = req.params.roomId;
             if (!roomId) {
                 throw new AppError('Room ID is required', HttpStatusCode.BAD_REQUEST);
             }
