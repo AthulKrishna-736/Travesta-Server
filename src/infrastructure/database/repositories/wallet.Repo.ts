@@ -2,7 +2,7 @@ import { injectable } from 'tsyringe';
 import { BaseRepository } from './baseRepo';
 import { walletModel, TWalletDocument } from '../models/walletModel';
 import { IWalletRepository } from '../../../domain/interfaces/repositories/repository.interface';
-import { IWallet } from '../../../domain/interfaces/model/hotel.interface';
+import { IWallet, TCreateWalletData } from '../../../domain/interfaces/model/wallet.interface';
 
 @injectable()
 export class WalletRepository extends BaseRepository<TWalletDocument> implements IWalletRepository {
@@ -10,16 +10,22 @@ export class WalletRepository extends BaseRepository<TWalletDocument> implements
         super(walletModel);
     }
 
-    // Create wallet only once per user
-    async createWallet(data: Partial<IWallet>): Promise<IWallet | null> {
+    async createWallet(data: TCreateWalletData): Promise<IWallet | null> {
         const existing = await this.findOne({ userId: data.userId });
-        if (existing) return null; 
+        if (existing) return null;
         const wallet = await this.create(data);
         return wallet.toObject<IWallet>();
     }
 
-    async findByUserId(userId: string): Promise<IWallet | null> {
-        return this.findOne({ userId }).lean<IWallet>().exec();
+    async findUserWallet(userId: string, page: number, limit: number): Promise<{ wallet: IWallet | null, total: number }> {
+        const skip = (page - 1) * 10;
+        const total = await this.model.countDocuments({ userId });
+        const wallet = await this.findOne({ userId })
+            .sort({ updatedAt: -1 })
+            .skip(skip)
+            .limit(limit)
+            .lean<IWallet>().exec();
+        return { wallet, total }
     }
 
     async updateBalance(userId: string, newBalance: number): Promise<void> {
@@ -36,5 +42,10 @@ export class WalletRepository extends BaseRepository<TWalletDocument> implements
                 },
             }
         ).exec();
+    }
+
+    async findWalletExist(userId: string): Promise<IWallet | null> {
+        const wallet = await this.findOne({ userId }).exec();
+        return wallet;
     }
 }

@@ -2,11 +2,10 @@
 import { inject, injectable } from 'tsyringe';
 import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
-import { ICreateBookingUseCase } from '../../../../domain/interfaces/model/usecases.interface';
 import { TOKENS } from '../../../../constants/token';
-import { TCreateBookingData, TResponseBookingData } from '../../../../domain/interfaces/model/hotel.interface';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/repository.interface';
 import { formatDateString } from '../../../../utils/dateFormatter';
+import { ICreateBookingUseCase, TCreateBookingData, TResponseBookingData } from '../../../../domain/interfaces/model/booking.interface';
 
 @injectable()
 export class CreateBookingUseCase implements ICreateBookingUseCase {

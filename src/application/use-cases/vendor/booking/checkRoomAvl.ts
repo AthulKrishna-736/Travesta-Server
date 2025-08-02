@@ -1,8 +1,7 @@
-// checkRoomAvailabilityUseCase.ts
 import { inject, injectable } from 'tsyringe';
-import { ICheckRoomAvailabilityUseCase } from '../../../../domain/interfaces/model/usecases.interface';
 import { TOKENS } from '../../../../constants/token';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/repository.interface';
+import { ICheckRoomAvailabilityUseCase } from '../../../../domain/interfaces/model/booking.interface';
 
 @injectable()
 export class CheckRoomAvailabilityUseCase implements ICheckRoomAvailabilityUseCase {

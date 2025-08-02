@@ -4,7 +4,7 @@ import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
-import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase } from '../../domain/interfaces/model/usecases.interface';
+import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase } from '../../domain/interfaces/model/booking.interface';
 import { AppError } from '../../utils/appError';
 import { Pagination } from '../../shared/types/common.types';
 

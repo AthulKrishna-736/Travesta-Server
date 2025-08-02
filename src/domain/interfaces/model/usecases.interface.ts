@@ -1,5 +1,4 @@
 import { TRole } from "../../../shared/types/client.types";
-import { TCreateBookingData, TResponseBookingData } from "./hotel.interface";
 import { TResponseUserData, TUpdateUserData } from "./user.interface";
 
 
@@ -36,26 +35,4 @@ export interface IUpdateKycUseCase {
 
 export interface IGetVendorUseCase {
     getUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
-}
-
-
-//booking
-export interface ICreateBookingUseCase {
-    execute(data: TCreateBookingData): Promise<{ booking: TResponseBookingData; message: string }>;
-}
-
-export interface ICancelBookingUseCase {
-    execute(bookingId: string, userId: string): Promise<{ message: string }>;
-}
-
-export interface IGetBookingsByUserUseCase {
-    getBookingByUser(userId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
-}
-
-export interface IGetBookingsByHotelUseCase {
-    getBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
-}
-
-export interface ICheckRoomAvailabilityUseCase {
-    execute(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
 }

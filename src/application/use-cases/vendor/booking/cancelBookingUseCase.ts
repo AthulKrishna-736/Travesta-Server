@@ -1,9 +1,9 @@
 import { inject, injectable } from "tsyringe";
-import { ICancelBookingUseCase } from "../../../../domain/interfaces/model/usecases.interface";
 import { IBookingRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { TOKENS } from "../../../../constants/token";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import { AppError } from "../../../../utils/appError";
+import { ICancelBookingUseCase } from "../../../../domain/interfaces/model/booking.interface";
 
 @injectable()
 export class CancelBookingUseCase implements ICancelBookingUseCase {

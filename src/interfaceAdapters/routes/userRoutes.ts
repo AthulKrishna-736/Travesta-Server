@@ -12,6 +12,7 @@ import { upload } from "../../infrastructure/config/multer";
 import { HotelController } from "../controllers/hotelController";
 import { ChatController } from "../controllers/chatController";
 import { BookingController } from "../controllers/bookingController";
+import { WalletController } from "../controllers/walletController";
 
 export class userRoutes extends BaseRouter {
     private _authController: AuthController
@@ -19,6 +20,7 @@ export class userRoutes extends BaseRouter {
     private _hotelController: HotelController
     private _chatController: ChatController
     private _bookingController: BookingController
+    private _walletController: WalletController
 
     constructor() {
         super();
@@ -27,6 +29,7 @@ export class userRoutes extends BaseRouter {
         this._hotelController = container.resolve(HotelController)
         this._chatController = container.resolve(ChatController)
         this._bookingController = container.resolve(BookingController)
+        this._walletController = container.resolve(WalletController)
         this.initializeRoutes()
     }
 
@@ -61,5 +64,11 @@ export class userRoutes extends BaseRouter {
             .get('/bookings', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res) => this._bookingController.getBookingsByUser(req, res))
             .delete('/booking/:bookingId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res) => this._bookingController.cancelBooking(req, res))
 
+        // wallet routes
+        this.router
+            .post("/wallet/create", authMiddleware, authorizeRoles("user", "vendor"), checkUserBlock, (req: CustomRequest, res) => this._walletController.createWallet(req, res))
+            .get("/wallet", authMiddleware, authorizeRoles("user", "vendor", "admin"), checkUserBlock, (req: CustomRequest, res) => this._walletController.getWallet(req, res))
+            .post("/wallet/transaction", authMiddleware, authorizeRoles("user", "vendor"), checkUserBlock, (req: CustomRequest, res) => this._walletController.addTransaction(req, res))
+            .post("/wallet/payment-intent", authMiddleware, authorizeRoles("user", "vendor"), checkUserBlock, (req: CustomRequest, res) => this._walletController.createPaymentIntent(req, res))
     }
 }

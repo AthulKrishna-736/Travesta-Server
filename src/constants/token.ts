@@ -8,6 +8,7 @@ export const TOKENS = {
   AmenitiesRepository: 'AmenitiesRepository',
   SubscriptionRepository: 'SubscriptionRepository',
   ChatRepository: 'ChatRepository',
+  WalletRepository: 'WalletRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -15,6 +16,7 @@ export const TOKENS = {
   RedisService: 'RedisService',
   AwsS3Service: 'AwsS3Service',
   SocketService: 'SocketService',
+  StripeService: 'StripeService',
 
   // Use Cases
   LoginUseCase: 'LoginUseCase',
@@ -81,4 +83,8 @@ export const TOKENS = {
   GetVendorsChatWithUserUseCase: 'GetVendorsChatWithUserUseCase',
   GetVendorsChatWithAdminUseCase: 'GetVendorsChatWithAdminUseCase',
 
+  //wallet UseCase
+  CreateWalletUseCase: 'CreateWalletUseCase',
+  GetWalletUseCase: 'GetWalletUseCase',
+  AddWalletTransactionUseCase: 'AddWalletTransactionUseCase',
 };

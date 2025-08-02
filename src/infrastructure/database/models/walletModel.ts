@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IWallet, IWalletTransaction } from '../../../domain/interfaces/model/hotel.interface';
+import { IWallet, IWalletTransaction } from '../../../domain/interfaces/model/wallet.interface';
 
 
 export type TWalletDocument = IWallet & Document;
@@ -34,7 +34,11 @@ const transactionSchema = new Schema<IWalletTransaction>(
 
 const walletSchema = new Schema<TWalletDocument>(
     {
-        userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+        },
         balance: {
             type: Number,
             required: true,

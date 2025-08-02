@@ -1,9 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 import { TOKENS } from '../../../../constants/token';
-import { IGetBookingsByUserUseCase } from '../../../../domain/interfaces/model/usecases.interface';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/repository.interface';
-import { TResponseBookingData } from '../../../../domain/interfaces/model/hotel.interface';
 import { formatDateString } from '../../../../utils/dateFormatter';
+import { IGetBookingsByUserUseCase, TResponseBookingData } from '../../../../domain/interfaces/model/booking.interface';
 
 @injectable()
 export class GetBookingsByUserUseCase implements IGetBookingsByUserUseCase {

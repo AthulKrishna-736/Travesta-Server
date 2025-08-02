@@ -1,11 +1,14 @@
 import { TSubscription } from "../../../shared/types/client.types";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../model/amenities.interface";
+import { IBooking } from "../model/booking.interface";
 import { IChatMessage, TCreateChatMessage } from "../model/chat.interface";
-import { IBooking, IHotel, IWallet, TCreateHotelData, TUpdateHotelData } from "../model/hotel.interface";
+import { IHotel, TCreateHotelData, TUpdateHotelData } from "../model/hotel.interface";
 import { IRoom, TCreateRoomData, TUpdateRoomData } from "../model/room.interface";
 import { ISubscription, TCreateSubscriptionData, TUpdateSubscriptionData } from "../model/subscription.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
+import { IWallet, TCreateWalletData, TCreateWalletTransaction } from "../model/wallet.interface";
 
+//user repo
 export interface IUserRepository {
   findUserById(id: string): Promise<IUser | null>;
   createUser(data: TUserRegistrationInput): Promise<IUser | null>;
@@ -24,7 +27,7 @@ export interface IHotelRepository {
   findAllHotels(page: number, limit: number, search?: string): Promise<{ hotels: IHotel[] | null; total: number }>;
 }
 
-
+//room repo
 export interface IRoomRepository {
   createRoom(data: TCreateRoomData): Promise<IRoom | null>;
   findRoomById(id: string): Promise<IRoom | null>;
@@ -36,6 +39,7 @@ export interface IRoomRepository {
   findFilteredAvailableRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: IRoom[]; total: number }>;
 }
 
+//booking repo
 export interface IBookingRepository {
   createBooking(data: Partial<IBooking>): Promise<IBooking | null>;
   findBookingsByUser(userId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }>;
@@ -78,8 +82,9 @@ export interface IChatRepository {
 
 //wallet repo
 export interface IWalletRepository {
-  createWallet(data: Partial<IWallet>): Promise<IWallet | null>;
-  findByUserId(userId: string): Promise<IWallet | null>;
+  createWallet(data: TCreateWalletData): Promise<IWallet | null>;
+  findUserWallet(userId: string, page: number, limit: number): Promise<{ wallet: IWallet | null, total: number }>;
   updateBalance(userId: string, newBalance: number): Promise<void>;
-  addTransaction(userId: string, transaction: IWallet['transactions'][0]): Promise<void>;
+  addTransaction(userId: string, transaction: TCreateWalletTransaction): Promise<void>;
+  findWalletExist(userId: string): Promise<IWallet | null>;
 }
