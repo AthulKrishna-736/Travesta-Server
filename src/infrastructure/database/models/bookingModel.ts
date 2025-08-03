@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IBooking } from '../../../domain/interfaces/model/hotel.interface';
+import { IBooking } from '../../../domain/interfaces/model/booking.interface';
 
 export type TBookingDocument = IBooking & Document;
 

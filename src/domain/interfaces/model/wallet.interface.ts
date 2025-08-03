@@ -30,7 +30,7 @@ export interface ICreateWalletUseCase {
 }
 
 export interface IGetWalletUseCase {
-    execute(userId: string): Promise<IWallet | null>;
+    getUserWallet(userId: string, page?: number, limit?: number): Promise<{ wallet: IWallet | null, total: number }>;
 }
 
 export interface IAddWalletTransactionUseCase {

@@ -86,5 +86,5 @@ export interface IWalletRepository {
   findUserWallet(userId: string, page: number, limit: number): Promise<{ wallet: IWallet | null, total: number }>;
   updateBalance(userId: string, newBalance: number): Promise<void>;
   addTransaction(userId: string, transaction: TCreateWalletTransaction): Promise<void>;
-  findWalletExist(userId: string): Promise<IWallet | null>;
+  findWalletExist(userId: string): Promise<boolean>;
 }

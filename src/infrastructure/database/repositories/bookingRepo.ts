@@ -1,7 +1,7 @@
 import { injectable } from 'tsyringe';
 import { BaseRepository } from './baseRepo';
 import { bookingModel, TBookingDocument } from '../models/bookingModel';
-import { IBooking } from '../../../domain/interfaces/model/hotel.interface';
+import { IBooking } from '../../../domain/interfaces/model/booking.interface';
 import { IBookingRepository } from '../../../domain/interfaces/repositories/repository.interface';
 
 @injectable()

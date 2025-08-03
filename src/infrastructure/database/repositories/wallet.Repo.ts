@@ -44,8 +44,8 @@ export class WalletRepository extends BaseRepository<TWalletDocument> implements
         ).exec();
     }
 
-    async findWalletExist(userId: string): Promise<IWallet | null> {
-        const wallet = await this.findOne({ userId }).exec();
-        return wallet;
+    async findWalletExist(userId: string): Promise<boolean> {
+        const wallet = await this.model.countDocuments({ userId }, { limit: 1 });
+        return wallet ? true : false;
     }
 }
