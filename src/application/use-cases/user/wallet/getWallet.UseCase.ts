@@ -11,7 +11,7 @@ export class GetWalletUseCase implements IGetWalletUseCase {
         @inject(TOKENS.WalletRepository) private _walletRepo: IWalletRepository
     ) { }
 
-    async getUserWallet(userId: string, page: number, limit: number): Promise<{ wallet: IWallet | null, total: number }> {
+    async getUserWallet(userId: string, page: number, limit: number): Promise<{ wallet: IWallet | null, total: number, message: string }> {
         const checkWallet = await this._walletRepo.findWalletExist(userId);
 
         if (!checkWallet) {
@@ -20,6 +20,6 @@ export class GetWalletUseCase implements IGetWalletUseCase {
 
         const { wallet, total } = await this._walletRepo.findUserWallet(userId, page, limit);
 
-        return { wallet, total };
+        return { wallet, total, message: 'Wallet fetched successfully' };
     }
 }

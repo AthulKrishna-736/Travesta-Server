@@ -1,7 +1,7 @@
 import { injectable } from 'tsyringe';
 import Stripe from 'stripe';
 import { env } from '../config/env';
-import { IStripeService } from '../../domain/interfaces/model/wallet.interface';
+import { IStripeService } from '../../domain/interfaces/services/stripeService.interface';
 
 const stripe = new Stripe(env.STRIPE_SECRET, {
     apiVersion: '2025-06-30.basil'

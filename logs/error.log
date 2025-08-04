@@ -10601,3 +10601,24 @@
 [2025-07-27 23:02:47] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
 [2025-07-27 23:02:52] ERROR: [31mRedis Client Error:  Connection timeout[0m
 [2025-07-27 23:02:57] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-04 23:34:50] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:34:50] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:34:51] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:34:51] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:34:54] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:34:54] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:34:58] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:34:58] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:02] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:02] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:04] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:04] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:06] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:06] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:10] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:10] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:10] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-04 23:35:54] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-08-04 23:35:58] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-08-04 23:36:00] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-08-04 23:46:12] ERROR: [31mcheck the error in handler:  amount must be below 2000[0m
