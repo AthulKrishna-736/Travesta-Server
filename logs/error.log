@@ -10622,3 +10622,9 @@
 [2025-08-04 23:35:58] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
 [2025-08-04 23:36:00] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
 [2025-08-04 23:46:12] ERROR: [31mcheck the error in handler:  amount must be below 2000[0m
+[2025-08-04 23:54:26] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-05 22:53:26] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-05 22:53:26] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-05 23:15:09] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-05 23:39:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-05 23:40:08] ERROR: [31mcheck the error in handler:  Invalid transaction data[0m

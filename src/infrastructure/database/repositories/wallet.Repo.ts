@@ -16,15 +16,33 @@ export class WalletRepository extends BaseRepository<TWalletDocument> implements
     }
 
     async findUserWallet(userId: string, page: number, limit: number): Promise<{ wallet: IWallet | null, total: number }> {
-        const skip = (page - 1) * 10;
-        const total = await this.model.countDocuments({ userId });
-        const wallet = await this.findOne({ userId })
-            .sort({ updatedAt: -1 })
-            .skip(skip)
-            .limit(limit)
-            .lean<IWallet>().exec();
-        return { wallet, total }
+        const wallet = await this.model.findOne({ userId }).lean<IWallet>().exec();
+
+        if (!wallet) {
+            return { wallet: null, total: 0 };
+        }
+
+        const total = wallet.transactions.length;
+        const start = (page - 1) * limit;
+        const end = start + limit;
+
+        const paginatedTransactions = wallet.transactions
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .slice(start, end);
+
+        return {
+            wallet: {
+                _id: wallet._id,
+                userId: wallet.userId,
+                balance: wallet.balance,
+                transactions: paginatedTransactions,
+                createdAt: wallet.createdAt,
+                updatedAt: wallet.updatedAt,
+            },
+            total
+        };
     }
+
 
     async updateBalance(userId: string, newBalance: number): Promise<void> {
         await this.model.findOneAndUpdate({ userId }, { balance: newBalance }).exec();

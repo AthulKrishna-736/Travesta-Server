@@ -5,6 +5,7 @@ export interface IWalletTransaction {
     type: 'credit' | 'debit';
     amount: number;
     description: string;
+    transactionId: string;
     relatedBookingId?: Types.ObjectId | string;
     date: Date;
 }

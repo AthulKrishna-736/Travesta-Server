@@ -51,8 +51,8 @@ export class WalletController {
             const userId = req.user?.userId;
             if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
 
-            const { amount, type, description } = req.body;
-            if (!amount || !type || !description) {
+            const { amount, type, description, transactionId } = req.body;
+            if (!amount || !type || !description || !transactionId) {
                 throw new AppError("Invalid transaction data", HttpStatusCode.BAD_REQUEST);
             }
 
@@ -60,6 +60,7 @@ export class WalletController {
                 type,
                 amount,
                 description: description?.trim(),
+                transactionId,
             }
 
             const { message } = await this._addTransaction.addWalletAmount(userId, transaction);

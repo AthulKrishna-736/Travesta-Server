@@ -33,6 +33,10 @@ export class AddWalletTransactionUseCase implements IAddWalletTransactionUseCase
             throw new AppError('description must be at least 10 characters', HttpStatusCode.BAD_REQUEST);
         }
 
+        if(transaction.transactionId.trim().length == 0 || typeof transaction.transactionId !== 'string'){
+            throw new AppError('transaction should be a string', HttpStatusCode.CONFLICT);
+        }
+
         const finalTransactionData = {
             ...transaction,
             date: new Date(),

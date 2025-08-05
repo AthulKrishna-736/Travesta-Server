@@ -19,6 +19,10 @@ const transactionSchema = new Schema<IWalletTransaction>(
             type: String,
             required: true,
         },
+        transactionId: {
+            type: String,
+            required: true
+        },
         relatedBookingId: {
             type: Schema.Types.ObjectId,
             ref: 'Booking',
