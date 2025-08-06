@@ -5,7 +5,7 @@ import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
-import { ICreateWalletUseCase, IGetWalletUseCase, IAddWalletTransactionUseCase, TCreateWalletTransaction } from '../../domain/interfaces/model/wallet.interface';
+import { ICreateWalletUseCase, IGetWalletUseCase, IAddWalletTransactionUseCase, TCreateWalletTransaction, ITransferUsersAmountUseCase } from '../../domain/interfaces/model/wallet.interface';
 import { IWalletTransaction } from '../../domain/interfaces/model/wallet.interface';
 import { IStripeService } from '../../domain/interfaces/services/stripeService.interface';
 import { Pagination } from '../../shared/types/common.types';
@@ -17,6 +17,7 @@ export class WalletController {
         @inject(TOKENS.GetWalletUseCase) private _getWallet: IGetWalletUseCase,
         @inject(TOKENS.AddWalletTransactionUseCase) private _addTransaction: IAddWalletTransactionUseCase,
         @inject(TOKENS.StripeService) private _stripeService: IStripeService,
+        @inject(TOKENS.TransferUsersAmountUseCase) private _transferAmount: ITransferUsersAmountUseCase,
     ) { }
 
     async createWallet(req: CustomRequest, res: Response): Promise<void> {
@@ -81,6 +82,33 @@ export class WalletController {
 
             const result = await this._stripeService.createPaymentIntent(userId, amount);
             ResponseHandler.success(res, "Proceed payment gateway", result, HttpStatusCode.OK);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async transferUsersAmount(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const senderId = req.user?.userId;
+            const { receiverId, amount, transactionId, relatedBookingId, description } = req.body
+
+            if (!senderId) {
+                throw new AppError('Sender id missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            if (
+                !receiverId || !amount || !transactionId || !relatedBookingId || !description ||
+                typeof receiverId !== 'string' || receiverId.trim().length === 0 ||
+                typeof transactionId !== 'string' || transactionId.trim().length === 0 ||
+                typeof relatedBookingId !== 'string' || relatedBookingId.trim().length === 0 ||
+                typeof description !== 'string' || description.trim().length === 0 ||
+                typeof amount !== 'number' || amount <= 0
+            ) {
+                throw new AppError('Invalid or missing transaction data', HttpStatusCode.BAD_REQUEST);
+            }
+
+            await this._transferAmount.transferUsersAmount(senderId, receiverId, amount * 100, transactionId, relatedBookingId, description);
+            ResponseHandler.success(res, "Transaction completed successfully", null, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }

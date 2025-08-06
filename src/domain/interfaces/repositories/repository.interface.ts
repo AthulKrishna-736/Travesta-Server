@@ -1,3 +1,4 @@
+import { TWalletDocument } from "../../../infrastructure/database/models/walletModel";
 import { TSubscription } from "../../../shared/types/client.types";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../model/amenities.interface";
 import { IBooking } from "../model/booking.interface";
@@ -47,6 +48,7 @@ export interface IBookingRepository {
   isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
   findByid(id: string): Promise<IBooking | null>;
   save(booking: IBooking): Promise<void>;
+  confirmBookingPayment(bookingId: string): Promise<void>;
 }
 
 //amenities repo
@@ -87,4 +89,6 @@ export interface IWalletRepository {
   updateBalance(userId: string, newBalance: number): Promise<void>;
   addTransaction(userId: string, transaction: TCreateWalletTransaction): Promise<boolean>;
   findWalletExist(userId: string): Promise<boolean>;
+  findWallet(userId: string): Promise<TWalletDocument | null>
+  transferAmountBetweenUsers(senderId: string, receiverId: string, amount: number, transactionId: string, relatedBookingId: string, description: string): Promise<boolean>;
 }

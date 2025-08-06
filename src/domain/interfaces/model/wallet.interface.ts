@@ -41,3 +41,6 @@ export interface IBookingTransactionUseCase {
     bookingTransaction(userId: string, transaction: Required<TCreateWalletTransaction>): Promise<void>;
 }
 
+export interface ITransferUsersAmountUseCase {
+    transferUsersAmount(senderId: string, receiverId: string, amount: number, transactionId: string, relatedBookingId: string, description: string): Promise<void>;
+}

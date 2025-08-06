@@ -72,12 +72,13 @@ import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRe
 import { GetVendorsChatWithUserUseCase } from "../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
 import { GetVendorsChatWithAdmiinUseCase } from "../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
 import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase } from "../../domain/interfaces/model/booking.interface";
-import { IAddWalletTransactionUseCase, ICreateWalletUseCase, IGetWalletUseCase } from "../../domain/interfaces/model/wallet.interface";
+import { IAddWalletTransactionUseCase, ICreateWalletUseCase, IGetWalletUseCase, ITransferUsersAmountUseCase } from "../../domain/interfaces/model/wallet.interface";
 import { GetWalletUseCase } from "../../application/use-cases/user/wallet/getWallet.UseCase";
 import { CreateWalletUseCase } from "../../application/use-cases/user/wallet/createWallet.UseCase";
 import { AddWalletTransactionUseCase } from "../../application/use-cases/user/wallet/addTransaction.UseCase";
 import { WalletRepository } from "../database/repositories/wallet.Repo";
 import { StripeService } from "../services/stripeService";
+import { TransferUsersAmountUseCase } from "../../application/use-cases/user/wallet/transferUsersAmount.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -353,4 +354,8 @@ container.register<ICreateWalletUseCase>(TOKENS.CreateWalletUseCase, {
 
 container.register<IAddWalletTransactionUseCase>(TOKENS.AddWalletTransactionUseCase, {
   useClass: AddWalletTransactionUseCase,
+})
+
+container.register<ITransferUsersAmountUseCase>(TOKENS.TransferUsersAmountUseCase, {
+  useClass: TransferUsersAmountUseCase,
 })

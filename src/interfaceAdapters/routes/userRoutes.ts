@@ -70,5 +70,6 @@ export class userRoutes extends BaseRouter {
             .get("/wallet", authMiddleware, authorizeRoles("user", "vendor", "admin"), checkUserBlock, (req: CustomRequest, res) => this._walletController.getWallet(req, res))
             .post("/wallet/transaction", authMiddleware, authorizeRoles("user", "vendor"), checkUserBlock, (req: CustomRequest, res) => this._walletController.addTransaction(req, res))
             .post("/wallet/payment-intent", authMiddleware, authorizeRoles("user", "vendor"), checkUserBlock, (req: CustomRequest, res) => this._walletController.createPaymentIntent(req, res))
+            .post("/wallet/transaction-transfer", authMiddleware, authorizeRoles("user", "vendor"), checkUserBlock, (req: CustomRequest, res) => this._walletController.transferUsersAmount(req, res))
     }
 }

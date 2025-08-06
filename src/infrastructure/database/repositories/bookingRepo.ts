@@ -71,4 +71,16 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         ).exec();
     }
 
+    async confirmBookingPayment(bookingId: string): Promise<void> {
+        await this.model.findByIdAndUpdate(
+            bookingId,
+            {
+                $set: {
+                    status: 'confirmed',
+                    'payment.status': 'success',
+                },
+            },
+            { new: true }
+        ).exec();
+    }
 }

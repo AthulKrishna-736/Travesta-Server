@@ -25,7 +25,7 @@ export class AddWalletTransactionUseCase implements IAddWalletTransactionUseCase
             throw new AppError('amount must be great than 0', HttpStatusCode.CONFLICT);
         }
 
-        if (transaction.amount >= 2000) {
+        if (transaction.amount > 2000) {
             throw new AppError('amount must be below 2000', HttpStatusCode.CONFLICT);
         }
 

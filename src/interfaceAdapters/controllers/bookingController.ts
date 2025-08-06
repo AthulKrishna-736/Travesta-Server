@@ -14,7 +14,7 @@ export class BookingController {
         @inject(TOKENS.CreateBookingUseCase) private _createBooking: ICreateBookingUseCase,
         @inject(TOKENS.GetBookingsByHotelUseCase) private _getByHotel: IGetBookingsByHotelUseCase,
         @inject(TOKENS.GetBookingsByUserUseCase) private _getByUser: IGetBookingsByUserUseCase,
-        @inject(TOKENS.CancelRoomUseCase) private _cancelBooking: ICancelBookingUseCase
+        @inject(TOKENS.CancelRoomUseCase) private _cancelBooking: ICancelBookingUseCase,
     ) { }
 
     async createBooking(req: CustomRequest, res: Response): Promise<void> {

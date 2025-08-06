@@ -10628,3 +10628,118 @@
 [2025-08-05 23:15:09] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-08-05 23:39:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
 [2025-08-05 23:40:08] ERROR: [31mcheck the error in handler:  Invalid transaction data[0m
+[2025-08-05 23:58:17] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 00:16:59] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 15:14:11] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 15:17:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 15:17:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 15:17:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 15:17:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 15:17:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 15:17:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 15:17:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 17:18:40] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 17:45:34] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 17:45:34] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 17:45:35] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:45:35] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:45:38] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:45:38] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:45:45] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:45:45] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:46:25] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:46:25] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:46:26] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:46:27] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:49:32] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:49:32] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:49:34] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:49:34] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:49:35] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:49:35] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:49:37] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 17:49:37] ERROR: [31mcheck the error in handler:  not primary and secondaryOk=false[0m
+[2025-08-06 18:33:47] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 18:33:47] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 20:40:35] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 20:51:50] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 20:51:55] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:52:01] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:52:06] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:52:11] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:52:17] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:53:36] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 20:54:27] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 20:55:02] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 20:55:07] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:55:13] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:55:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:55:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:55:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:55:24] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:55:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:55:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:55:33] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 20:55:33] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 20:55:34] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 20:55:34] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 20:55:36] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:55:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:55:49] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:55:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:56:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 20:56:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 20:56:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 21:12:02] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 21:12:02] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 21:27:36] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 22:01:54] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 22:01:59] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:02:04] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:02:09] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:02:15] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:02:20] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:02:26] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:02:33] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:06:59] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 22:07:04] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:07:10] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:07:15] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:07:20] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:07:26] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:07:32] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:07:38] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:07:49] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:07:57] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:08:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-06 22:08:10] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:18:51] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 22:18:56] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:26:29] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 22:26:34] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:42:01] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 22:42:48] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-06 22:42:53] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-06 22:50:49] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 23:40:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 23:41:05] ERROR: [31mcheck the error in handler:  Receiver wallet not found[0m
+[2025-08-06 23:47:58] ERROR: [31mcheck the error in handler:  Transaction failed due to internal error[0m
+[2025-08-06 23:54:01] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-06 23:54:37] ERROR: [31mcheck the error in handler:  Transaction failed due to internal error[0m
+[2025-08-06 23:56:04] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-06 23:56:24] ERROR: [31mcheck the error in handler:  Transaction failed due to internal error[0m
+[2025-08-06 23:56:54] ERROR: [31mcheck the error in handler:  amount must be below 2000[0m
+[2025-08-07 00:02:38] ERROR: [31mcheck the error in handler:  Transaction failed due to internal error[0m
+[2025-08-07 00:06:07] ERROR: [31mcheck the error in handler:  Transaction failed due to internal error[0m
+[2025-08-07 00:17:31] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-07 00:19:09] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-07 00:19:58] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-07 00:19:58] ERROR: [31mcheck the error in handler:  read ECONNRESET[0m
+[2025-08-07 00:20:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-07 00:20:07] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-07 00:20:11] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-07 00:20:30] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
+[2025-08-07 00:20:46] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-08-07 00:36:00] ERROR: [31mcheck the error in handler:  Not authenticated[0m

@@ -87,4 +87,5 @@ export const TOKENS = {
   CreateWalletUseCase: 'CreateWalletUseCase',
   GetWalletUseCase: 'GetWalletUseCase',
   AddWalletTransactionUseCase: 'AddWalletTransactionUseCase',
+  TransferUsersAmountUseCase: 'TransferUsersAmountUseCase',
 };
