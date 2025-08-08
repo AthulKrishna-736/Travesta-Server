@@ -1,8 +1,10 @@
-import { injectable } from "tsyringe";
+import {  injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
 import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfaces/model/room.interface";
 import { IRoomRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { hotelModel } from "../models/hotelModel";
+import { bookingModel } from "../models/bookingModel";
 
 @injectable()
 export class RoomRepository extends BaseRepository<TRoomDocument> implements IRoomRepository {
@@ -61,39 +63,98 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         return { rooms, total };
     }
 
-    async findFilteredAvailableRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: IRoom[]; total: number }> {
-        const skip = (page - 1) * limit;
+    async findFilteredAvailableRooms(
+        page: number,
+        limit: number,
+        minPrice?: number,
+        maxPrice?: number,
+        amenities?: string[],
+        search?: string,
+        destination?: string,  // This should match hotel `state`
+        checkIn?: string,
+        checkOut?: string,
+        guests?: string
+    ): Promise<{ rooms: IRoom[]; total: number }> {
 
+        console.log('repo parameters: ', page, limit, minPrice, maxPrice, amenities, search, destination, checkIn, checkOut, guests);
+        const skip = (page - 1) * limit;
         const filter: any = {
-            isAvailable: true,
+            isAvailable: true
         };
 
+        // Basic search (name, bedType)
         if (search) {
             const regex = new RegExp(search, 'i');
             filter.$or = [
                 { name: regex },
-                { bedType: regex },
+                { bedType: regex }
             ];
         }
 
+        // Price range
         if (minPrice !== undefined && maxPrice !== undefined) {
             filter.basePrice = { $gte: minPrice, $lte: maxPrice };
         }
 
+        // Amenities filter
         if (amenities && amenities.length > 0) {
             filter.amenities = { $in: amenities };
         }
 
-        const total = await this.model.countDocuments(filter);
-        const rooms = await this.model.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit)
+        // Guests capacity
+        if (guests) {
+            const guestCount = parseInt(guests);
+            if (!isNaN(guestCount)) {
+                filter.capacity = { $gte: guestCount };
+            }
+        }
+
+        // First: Get all hotel IDs that match destination (state)
+        if (destination) {
+            const matchedHotels = await hotelModel.find({ state: new RegExp(destination, "i") }).select("_id");
+            const hotelIds = matchedHotels.map(h => h._id);
+            filter.hotelId = { $in: hotelIds };
+        }
+
+        // Get all rooms matching base filters
+        let rooms = await roomModel.find(filter)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit)
             .populate({
                 path: 'amenities',
                 select: 'name _id',
-                match: { isActive: true },
+                match: { isActive: true }
             })
             .lean();
 
+        // Total count for pagination
+        const total = await roomModel.countDocuments(filter);
+
+        // If date filtering is applied, remove rooms that are booked
+        if (checkIn && checkOut) {
+            const checkInDate = new Date(checkIn);
+            const checkOutDate = new Date(checkOut);
+
+            const roomIds = rooms.map(r => r._id);
+
+            const bookedRooms = await bookingModel.find({
+                roomId: { $in: roomIds },
+                status: { $ne: "cancelled" }, // Exclude cancelled bookings
+                $or: [
+                    {
+                        checkIn: { $lt: checkOutDate },
+                        checkOut: { $gt: checkInDate }
+                    }
+                ]
+            }).select("roomId");
+
+            const bookedRoomIds = new Set(bookedRooms.map(b => b.roomId.toString()));
+
+            // Filter out booked rooms
+            rooms = rooms.filter(room => !bookedRoomIds.has(room._id.toString()));
+        }
+
         return { rooms, total };
     }
-
 }

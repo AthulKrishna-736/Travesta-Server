@@ -59,6 +59,7 @@ export const TOKENS = {
   GetBookingsByUserUseCase: 'GetBookingsByUserUseCase',
   CheckRoomAvlUseCase: 'CheckRoomAvlUseCase',
   CancelRoomUseCase: 'CancelRoomUseCase',
+  GetBookingsToVendorUseCase: 'GetBookingsToVendorUseCase',
 
   //amenities UseCase
   CreateAmenityUseCase: 'CreateAmenityUseCase',

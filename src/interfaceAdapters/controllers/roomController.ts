@@ -148,14 +148,34 @@ export class RoomController {
 
     async getAllAvlRooms(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const page = Number(req.query.page) || 1;
-            const limit = Number(req.query.limit) || 10;
-            const search = req.query.search as string;
-            const minPrice = Number(req.query.minPrice ?? 0);
-            const maxPrice = Number(req.query.maxPrice ?? 100000);
-            const amenities = typeof req.query.amenities === 'string' && req.query.amenities.trim().length > 0 ? req.query.amenities.split(',') : undefined;
+            const page = Math.max(Number(req.query.page) || 1, 1);
+            const limit = Math.max(Number(req.query.limit) || 10, 1);
 
-            const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(page, limit, minPrice, maxPrice, amenities, search);
+            const search = typeof req.query.search === 'string' ? req.query.search.trim() : '';
+
+            const minPrice = req.query.minPrice !== undefined ? Number(req.query.minPrice) : 0;
+            const maxPrice = req.query.maxPrice !== undefined ? Number(req.query.maxPrice) : 100000;
+
+            const amenities =
+                typeof req.query.amenities === 'string' && req.query.amenities.trim().length > 0
+                    ? req.query.amenities.split(',')
+                    : undefined;
+
+            const checkIn = typeof req.query.checkIn === 'string' ? req.query.checkIn : undefined;
+            const checkOut = typeof req.query.checkOut === 'string' ? req.query.checkOut : undefined;
+            const guests = req.query.guests;
+
+            const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(
+                page,
+                limit,
+                minPrice,
+                maxPrice,
+                amenities,
+                search,
+                checkIn,
+                checkOut,
+                guests as string
+            );
 
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
@@ -163,5 +183,6 @@ export class RoomController {
             throw error;
         }
     }
+
 
 }

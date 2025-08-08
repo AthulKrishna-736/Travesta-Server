@@ -22,7 +22,34 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
     if (booking.userId.toString() !== userId) {
       throw new AppError("Unauthorized access", HttpStatusCode.UNAUTHORIZED);
     }
+
+    if (booking.status === 'cancelled') {
+      throw new AppError("Booking has already been cancelled", HttpStatusCode.BAD_REQUEST);
+    }
+
+    if (booking.status !== 'confirmed' || booking.payment.status !== 'success') {
+      throw new AppError("Only confirmed and successfully paid bookings can be refunded", HttpStatusCode.BAD_REQUEST);
+    }
+
+    const date = new Date();
+    const createdAt = new Date(booking.createdAt);
+    const timeDiffInMs = date.getTime() - createdAt.getTime();
+    const timeDiffInHours = timeDiffInMs / (1000 * 60 * 60);
+
+    if (timeDiffInHours > 3) {
+      throw new AppError("Bookings can only be cancelled within 3 hours of creation", HttpStatusCode.BAD_REQUEST);
+    }
+
     const refundAmount = booking.totalPrice * 0.9;
+    const vendorId = (booking.hotelId as any).vendorId;
+
+    await this._walletRepo.addTransaction(vendorId, {
+      type: 'debit',
+      amount: refundAmount,
+      description: `Refund for booking cancellation (${bookingId})`,
+      relatedBookingId: booking._id,
+      transactionId: new mongoose.Types.ObjectId().toString(),
+    })
 
     await this._walletRepo.addTransaction(booking.userId.toString(), {
       type: 'credit',

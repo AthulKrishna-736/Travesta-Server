@@ -71,7 +71,7 @@ import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChat
 import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRead.UseCase";
 import { GetVendorsChatWithUserUseCase } from "../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
 import { GetVendorsChatWithAdmiinUseCase } from "../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
-import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase } from "../../domain/interfaces/model/booking.interface";
+import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase } from "../../domain/interfaces/model/booking.interface";
 import { IAddWalletTransactionUseCase, ICreateWalletUseCase, IGetWalletUseCase, ITransferUsersAmountUseCase } from "../../domain/interfaces/model/wallet.interface";
 import { GetWalletUseCase } from "../../application/use-cases/user/wallet/getWallet.UseCase";
 import { CreateWalletUseCase } from "../../application/use-cases/user/wallet/createWallet.UseCase";
@@ -79,6 +79,7 @@ import { AddWalletTransactionUseCase } from "../../application/use-cases/user/wa
 import { WalletRepository } from "../database/repositories/wallet.Repo";
 import { StripeService } from "../services/stripeService";
 import { TransferUsersAmountUseCase } from "../../application/use-cases/user/wallet/transferUsersAmount.UseCase";
+import { GetBookingsToVendorUseCase } from "../../application/use-cases/vendor/booking/getBookingsToVendor";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -256,6 +257,7 @@ container.register<IGetAllRoomsUseCase>(TOKENS.GetAllRoomsUseCase, {
 })
 
 
+//bookings use case
 container.register<ICreateBookingUseCase>(TOKENS.CreateBookingUseCase, {
   useClass: CreateBookingUseCase,
 })
@@ -270,6 +272,10 @@ container.register<IGetBookingsByUserUseCase>(TOKENS.GetBookingsByUserUseCase, {
 
 container.register<ICancelBookingUseCase>(TOKENS.CancelRoomUseCase, {
   useClass: CancelBookingUseCase,
+})
+
+container.register<IGetBookingsToVendorUseCase>(TOKENS.GetBookingsToVendorUseCase, {
+  useClass: GetBookingsToVendorUseCase,
 })
 
 
@@ -344,6 +350,8 @@ container.register<IGetVendorsChatWithAdminUseCase>(TOKENS.GetVendorsChatWithAdm
   useClass: GetVendorsChatWithAdmiinUseCase,
 })
 
+
+//wallet use case
 container.register<IGetWalletUseCase>(TOKENS.GetWalletUseCase, {
   useClass: GetWalletUseCase,
 })

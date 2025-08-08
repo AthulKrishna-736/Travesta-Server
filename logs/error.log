@@ -10743,3 +10743,576 @@
 [2025-08-07 00:20:30] ERROR: [31mcheck the error in handler:  Authentication tokens are missing[0m
 [2025-08-07 00:20:46] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
 [2025-08-07 00:36:00] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-07 19:29:31] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-07 19:29:31] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-07 20:50:34] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-07 22:40:02] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-07 23:04:43] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-07 23:20:19] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-07 23:26:20] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:20] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:20] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:23] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-07 23:26:25] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:00:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 00:00:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 00:04:11] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:04:12] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:04:14] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:04:18] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:04:57] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:04:58] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:05:00] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:05:04] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:05:29] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:05:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:08] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:12] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:13] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:14] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:16] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:21] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:22] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:23] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:23] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:24] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:27] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:08:35] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:09:25] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:09:27] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:09:29] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:09:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:10:03] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:10:04] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:10:06] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:10:12] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:10:22] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 00:30:01] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 00:30:03] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:06] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:07] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:08] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:14] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:40] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:40] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:41] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:43] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:49] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:51] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:53] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:30:57] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:31:02] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:31:03] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:31:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:32:34] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:32:37] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:32:38] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:32:39] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:32:41] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:51] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:51] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:51] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:52] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:54] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:33:59] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 00:45:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 00:45:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 11:22:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 11:22:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 11:22:43] ERROR: [31mcheck the error in handler:  Check-in date cannot be in the past[0m
+[2025-08-08 11:23:08] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-08 11:23:11] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-08 11:41:03] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 11:41:08] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-08 11:41:10] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-08 11:42:45] ERROR: [31mcheck the error in handler:  Insufficient balance[0m
+[2025-08-08 11:46:26] ERROR: [31mcheck the error in handler:  Only confirmed and successfully paid bookings can be refunded[0m
+[2025-08-08 11:46:31] ERROR: [31mcheck the error in handler:  Only confirmed and successfully paid bookings can be refunded[0m
+[2025-08-08 11:46:36] ERROR: [31mcheck the error in handler:  Only confirmed and successfully paid bookings can be refunded[0m
+[2025-08-08 11:46:44] ERROR: [31mcheck the error in handler:  Only confirmed and successfully paid bookings can be refunded[0m
+[2025-08-08 11:47:44] ERROR: [31mcheck the error in handler:  Booking has already been cancelled[0m
+[2025-08-08 11:47:50] ERROR: [31mcheck the error in handler:  Booking has already been cancelled[0m
+[2025-08-08 11:49:15] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 11:50:57] ERROR: [31mcheck the error in handler:  Bookings can only be cancelled within 3 hours of creation[0m
+[2025-08-08 11:52:25] ERROR: [31mcheck the error in handler:  Bookings can only be cancelled within 3 hours of creation[0m
+[2025-08-08 11:56:04] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 12:10:39] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 12:20:35] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 12:37:04] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 12:37:23] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-08 12:37:27] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-08 12:38:40] ERROR: [31mcheck the error in handler:  Insufficient wallet balance to proceed with booking[0m
+[2025-08-08 12:38:44] ERROR: [31mcheck the error in handler:  Insufficient wallet balance to proceed with booking[0m
+[2025-08-08 12:46:36] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 13:30:45] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 13:30:50] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:30:55] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:31:00] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:31:05] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:31:11] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:31:17] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:31:46] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:31:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:31:51] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:31:57] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:32:02] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:32:08] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:32:15] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:32:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:32:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:33:02] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:33:07] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:33:12] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:33:18] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:33:24] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:33:30] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:33:37] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:33:45] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:33:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:33:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:33:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:34:06] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:34:12] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:34:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:34:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:34:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:34:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:34:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:34:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:34:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:06] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:35:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:41] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:35:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:56] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:35:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:06] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:36:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:17] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:36:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:35] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:36:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:49] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:36:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:36:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:11] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:37:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:33] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:37:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:37:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:44:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:44:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:44:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:45:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:45:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:45:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:45:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:45:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:45:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:48:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:48:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:48:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:48:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:48:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:48:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 13:49:38] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 13:58:43] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 14:16:07] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:16:12] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:16:18] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:16:23] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:16:28] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:16:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:53] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:16:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:16:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:17:41] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:17:46] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:17:51] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:18:37] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:18:42] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:18:47] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:18:52] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:18:57] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:19:03] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:19:09] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:19:15] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:19:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:19:29] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:19:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:19:43] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:19:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:20:41] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:20:46] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:20:51] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:20:56] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:21:13] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:21:13] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:21:32] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:21:37] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:21:53] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:21:58] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:25:57] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:26:02] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:26:07] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:26:28] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:26:33] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:26:38] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:26:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:26:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:26:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:26:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:26:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:26:51] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:26:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:26:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:27:02] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:27:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:27:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:27:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:27:16] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:27:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:27:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:27:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:27:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:27:31] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:27:39] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 14:28:13] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:28:18] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:28:23] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:28:48] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:29:15] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:29:20] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:29:25] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:29:30] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:29:36] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:30:47] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:30:52] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:31:50] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:31:56] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 14:35:32] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 14:53:22] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 14:54:22] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 14:54:27] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 15:09:33] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 15:44:12] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 15:45:09] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 16:06:08] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 16:06:16] ERROR: [31mcheck the error in handler:  Bookings can only be cancelled within 3 hours of creation[0m
+[2025-08-08 16:06:21] ERROR: [31mcheck the error in handler:  Bookings can only be cancelled within 3 hours of creation[0m
+[2025-08-08 16:06:58] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-08 16:07:14] ERROR: [31mcheck the error in handler:  Insufficient wallet balance to proceed with booking[0m
+[2025-08-08 16:08:35] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 16:11:39] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-08-08 16:24:53] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 16:24:53] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 16:26:23] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 16:26:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:26:57] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 16:27:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:10] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:19] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:21] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:23] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:25] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:27:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:12] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:14] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:16] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:18] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:27] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:29] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:31] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:33] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:35] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:37] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:40] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:42] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:44] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:46] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:48] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:50] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:57] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:28:59] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:01] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:03] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:05] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:07] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:09] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:15] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:17] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:20] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:22] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:24] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:26] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:28] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:30] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:32] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:34] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:36] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:38] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:41] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:43] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:45] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:47] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:49] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:29:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:30:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:30:02] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:30:04] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:30:06] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:30:08] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:30:11] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:30:13] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 16:32:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 16:32:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 16:44:24] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 16:52:40] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 17:01:05] ERROR: [31mcheck the error in handler:  Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"[0m
+[2025-08-08 17:07:03] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-08-08 17:07:29] ERROR: [31mcheck the error in handler:  Unauthorized: Invalid role for this login[0m
+[2025-08-08 17:15:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:15:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:15:52] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:15:54] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:15:58] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:16:20] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:16:22] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:16:24] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:16:28] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:17:52] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:17:54] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:18:18] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:25:57] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:26:01] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:26:02] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:26:03] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:26:05] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:26:09] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:27:58] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 17:27:59] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:01] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:03] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:04] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:05] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:06] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:07] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:08] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:12] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:13] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:15] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:19] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:28:24] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:32:02] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:32:04] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:39:22] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:39:23] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:39:25] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:39:29] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:39:32] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:40:11] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:40:13] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:40:18] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:40:43] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:40:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:40:57] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:41:02] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:41:06] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:41:10] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:41:12] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:41:16] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:41:26] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-08-08 17:41:27] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-08-08 17:41:30] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-08-08 17:41:34] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-08-08 17:41:35] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-08-08 17:41:36] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-08-08 17:41:38] ERROR: [31mcheck the error in handler:  Cannot read properties of undefined (reading 'map')[0m
+[2025-08-08 17:42:09] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:42:11] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:42:12] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:42:14] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:42:18] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:44:56] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 17:44:57] ERROR: [31mcheck the error in handler:  mongoose is not defined[0m
+[2025-08-08 17:44:59] ERROR: [31mcheck the error in handler:  mongoose is not defined[0m
+[2025-08-08 17:45:04] ERROR: [31mcheck the error in handler:  mongoose is not defined[0m
+[2025-08-08 17:45:22] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:45:24] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:45:27] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 17:47:50] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 18:04:23] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:04:23] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:04:24] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:04:26] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:04:30] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:06:27] ERROR: [31mcheck the error in handler:  Room is not available for selected dates[0m
+[2025-08-08 18:10:15] ERROR: [31mcheck the error in handler:  Insufficient wallet balance to proceed with booking[0m
+[2025-08-08 18:17:24] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 18:20:10] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-08-08 18:22:29] ERROR: [31mcheck the error in handler:  Vendor already verified[0m
+[2025-08-08 18:25:56] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 18:25:56] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 18:29:22] ERROR: [31mcheck the error in handler:  Hotel validation failed: amenities.0: Cast to [ObjectId] failed for value "[ '6852ce50af6b03e270a6cdb4,6852cfe3af6b03e270a6cdcc' ]" (type string) at path "amenities.0" because of "CastError"[0m
+[2025-08-08 18:31:08] ERROR: [31mcheck the error in handler:  Hotel validation failed: amenities.0: Cast to [ObjectId] failed for value "[\n' +
+  "  '6852ce50af6b03e270a6cdb4,6852cfe3af6b03e270a6cdcc,6852b6edaf6b03e270a6cd9c,6852cf83af6b03e270a6cdc0,68529c2baf6b03e270a6cd8e'\n" +
+  ']" (type string) at path "amenities.0" because of "CastError"[0m
+[2025-08-08 18:31:19] ERROR: [31mcheck the error in handler:  Hotel validation failed: amenities.0: Cast to [ObjectId] failed for value "[\n' +
+  "  '6852ce50af6b03e270a6cdb4,6852cfe3af6b03e270a6cdcc,6852b6edaf6b03e270a6cd9c,6852cf83af6b03e270a6cdc0,68529c2baf6b03e270a6cd8e'\n" +
+  ']" (type string) at path "amenities.0" because of "CastError"[0m
+[2025-08-08 18:31:41] ERROR: [31mcheck the error in handler:  Hotel validation failed: amenities.0: Cast to [ObjectId] failed for value "[\n' +
+  "  '6852ce50af6b03e270a6cdb4,6852cfe3af6b03e270a6cdcc,6852b6edaf6b03e270a6cd9c,6852cf83af6b03e270a6cdc0,68529c2baf6b03e270a6cd8e'\n" +
+  ']" (type string) at path "amenities.0" because of "CastError"[0m
+[2025-08-08 18:42:59] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 18:48:28] ERROR: [31mcheck the error in handler:  Invalid credentials[0m
+[2025-08-08 18:48:48] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:48:48] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:48:50] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:48:52] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:48:56] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:49:02] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 18:49:03] ERROR: [31mcheck the error in handler:  No available rooms found[0m
+[2025-08-08 21:13:50] ERROR: [31mRedis Client Error:  read ECONNRESET[0m
+[2025-08-08 21:13:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:13:51] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:13:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:13:52] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:13:53] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:13:54] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:13:55] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:13:58] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:14:00] ERROR: [31mRedis Client Error:  getaddrinfo ENOTFOUND redis-18399.c212.ap-south-1-1.ec2.redns.redis-cloud.com[0m
+[2025-08-08 21:14:07] ERROR: [31mRedis Client Error:  Connection timeout[0m
+[2025-08-08 21:14:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 21:14:16] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 21:42:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 21:42:52] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 22:03:47] ERROR: [31mcheck the error in handler:  Not authenticated[0m
+[2025-08-08 22:03:47] ERROR: [31mcheck the error in handler:  Not authenticated[0m

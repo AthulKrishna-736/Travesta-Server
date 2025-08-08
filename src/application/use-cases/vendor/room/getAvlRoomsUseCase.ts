@@ -21,8 +21,31 @@ export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvai
         super(roomRepo);
     }
 
-    async getAvlRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: TResponseRoomData[], total: number, message: string }> {
-        const { rooms, total } = await this.getFilteredAvailableRoomsOrThrow(page, limit, minPrice, maxPrice, amenities, search);
+    async getAvlRooms(
+        page: number,
+        limit: number,
+        minPrice?: number,
+        maxPrice?: number,
+        amenities?: string[],
+        search?: string,
+        destination?: string,
+        checkIn?: string,
+        checkOut?: string,
+        guests?: string
+    ): Promise<{ rooms: TResponseRoomData[], total: number, message: string }> {
+
+        const { rooms, total } = await this.getFilteredAvailableRoomsOrThrow(
+            page,
+            limit,
+            minPrice,
+            maxPrice,
+            amenities,
+            search,
+            destination,
+            checkIn,
+            checkOut,
+            guests
+        );
 
         if (!Array.isArray(rooms)) {
             throw new AppError(`Expected 'rooms' to be an array but got: ${typeof rooms}`, HttpStatusCode.CONFLICT);
@@ -32,6 +55,8 @@ export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvai
         if (!Array.isArray(availableRooms)) {
             throw new AppError("Expected 'availableRooms' to be an array", HttpStatusCode.CONFLICT);
         }
+
+        console.log('rooms: ', rooms);
 
         const mappedRooms = await Promise.all(
             availableRooms.map(async (roomEntity) => {

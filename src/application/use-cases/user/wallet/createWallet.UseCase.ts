@@ -3,12 +3,12 @@ import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
 import { TOKENS } from '../../../../constants/token';
 import { IWalletRepository } from '../../../../domain/interfaces/repositories/repository.interface';
-import { ICreateWalletUseCase, IWallet, TCreateWalletData, TResponseWalletData } from '../../../../domain/interfaces/model/wallet.interface';
+import { ICreateWalletUseCase, TCreateWalletData, TResponseWalletData } from '../../../../domain/interfaces/model/wallet.interface';
 
 @injectable()
 export class CreateWalletUseCase implements ICreateWalletUseCase {
     constructor(
-        @inject(TOKENS.WalletRepository) private _walletRepo: IWalletRepository
+        @inject(TOKENS.WalletRepository) private _walletRepo: IWalletRepository,
     ) { }
 
     async createUserWallet(userId: string): Promise<{ wallet: TResponseWalletData, message: string }> {

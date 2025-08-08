@@ -4,7 +4,7 @@ import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
-import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase } from '../../domain/interfaces/model/booking.interface';
+import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase } from '../../domain/interfaces/model/booking.interface';
 import { AppError } from '../../utils/appError';
 import { Pagination } from '../../shared/types/common.types';
 
@@ -15,6 +15,7 @@ export class BookingController {
         @inject(TOKENS.GetBookingsByHotelUseCase) private _getByHotel: IGetBookingsByHotelUseCase,
         @inject(TOKENS.GetBookingsByUserUseCase) private _getByUser: IGetBookingsByUserUseCase,
         @inject(TOKENS.CancelRoomUseCase) private _cancelBooking: ICancelBookingUseCase,
+        @inject(TOKENS.GetBookingsToVendorUseCase) private _getBookingsToVendor: IGetBookingsToVendorUseCase,
     ) { }
 
     async createBooking(req: CustomRequest, res: Response): Promise<void> {
@@ -69,7 +70,7 @@ export class BookingController {
             const limit = Number(req.query.limit);
 
             const { bookings, total } = await this._getByUser.getBookingByUser(userId as string, page, limit);
-            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit), };
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
             ResponseHandler.success(res, 'Bookings by user fetched successfully', bookings, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
@@ -87,6 +88,24 @@ export class BookingController {
             }
             const { message } = await this._cancelBooking.execute(bookingId, userId as string);
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getBookingsToVendor(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const vendorId = req.user?.userId;
+            const page = Number(req.query.page);
+            const limit = Number(req.query.limit);
+
+            if (!vendorId) {
+                throw new AppError('Vendor id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { bookings, total } = await this._getBookingsToVendor.getBookingsToVendor(vendorId, page, limit)
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
+            ResponseHandler.success(res, 'fetched users booked to vendor successfully', bookings, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

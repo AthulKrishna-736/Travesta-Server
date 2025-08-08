@@ -6,7 +6,6 @@ import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ICreateWalletUseCase, IGetWalletUseCase, IAddWalletTransactionUseCase, TCreateWalletTransaction, ITransferUsersAmountUseCase } from '../../domain/interfaces/model/wallet.interface';
-import { IWalletTransaction } from '../../domain/interfaces/model/wallet.interface';
 import { IStripeService } from '../../domain/interfaces/services/stripeService.interface';
 import { Pagination } from '../../shared/types/common.types';
 

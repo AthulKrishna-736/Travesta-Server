@@ -37,7 +37,18 @@ export interface IRoomRepository {
   findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
   findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
   findAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: IRoom[], total: number }>;
-  findFilteredAvailableRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string): Promise<{ rooms: IRoom[]; total: number }>;
+  findFilteredAvailableRooms(
+    page: number,
+    limit: number,
+    minPrice?: number,
+    maxPrice?: number,
+    amenities?: string[],
+    search?: string,
+    destination?: string,
+    checkIn?: string,
+    checkOut?: string,
+    guests?: string
+  ): Promise<{ rooms: IRoom[]; total: number }>;
 }
 
 //booking repo
@@ -49,6 +60,7 @@ export interface IBookingRepository {
   findByid(id: string): Promise<IBooking | null>;
   save(booking: IBooking): Promise<void>;
   confirmBookingPayment(bookingId: string): Promise<void>;
+  findBookingsByVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }>;
 }
 
 //amenities repo
