@@ -22,10 +22,10 @@ const roomSchema: Schema = new Schema<TRoomDocument>({
         type: String,
         required: true,
     },
-    amenities: {
-        type: [String],
-        default: [],
-    },
+    amenities: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Amenities",
+    }],
     images: {
         type: [String],
         default: [],

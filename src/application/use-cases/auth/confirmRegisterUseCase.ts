@@ -5,11 +5,13 @@ import { TOKENS } from "../../../constants/token";
 import { IUser, TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
+import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.interface";
 
 @injectable()
 export class ConfirmRegisterUseCase implements IConfrimRegisterUseCase {
     constructor(
         @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
     ) { }
 
     async confirmRegister(userData: TUserRegistrationInput): Promise<IUser> {
@@ -22,6 +24,9 @@ export class ConfirmRegisterUseCase implements IConfrimRegisterUseCase {
         if (!user) {
             throw new AppError('Failed to create user', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
+
+        await this._createWallet.createUserWallet(user._id as string)
+
         return user;
     }
 }

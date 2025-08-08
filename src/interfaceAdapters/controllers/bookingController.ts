@@ -4,13 +4,9 @@ import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../utils/HttpStatusCodes';
-import {
-    ICreateBookingUseCase,
-    IGetBookingsByHotelUseCase,
-    IGetBookingsByUserUseCase,
-    ICheckRoomAvailabilityUseCase,
-    ICancelBookingUseCase
-} from '../../domain/interfaces/model/usecases.interface';
+import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase } from '../../domain/interfaces/model/booking.interface';
+import { AppError } from '../../utils/appError';
+import { Pagination } from '../../shared/types/common.types';
 
 @injectable()
 export class BookingController {
@@ -18,41 +14,100 @@ export class BookingController {
         @inject(TOKENS.CreateBookingUseCase) private _createBooking: ICreateBookingUseCase,
         @inject(TOKENS.GetBookingsByHotelUseCase) private _getByHotel: IGetBookingsByHotelUseCase,
         @inject(TOKENS.GetBookingsByUserUseCase) private _getByUser: IGetBookingsByUserUseCase,
-        @inject(TOKENS.CancelRoomUseCase) private _cancelBooking: ICancelBookingUseCase
+        @inject(TOKENS.CancelRoomUseCase) private _cancelBooking: ICancelBookingUseCase,
+        @inject(TOKENS.GetBookingsToVendorUseCase) private _getBookingsToVendor: IGetBookingsToVendorUseCase,
     ) { }
 
     async createBooking(req: CustomRequest, res: Response): Promise<void> {
-        const data = { ...req.body, userId: req.user?.userId as string };
-        const { booking, message } = await this._createBooking.execute(data);
-        ResponseHandler.success(res, message, booking, HttpStatusCode.CREATED);
+        try {
+            const data = {
+                ...req.body,
+                userId: req.user?.userId as string,
+            };
+
+            if (!data.userId || !data.hotelId || !data.roomId || !data.checkIn || !data.checkOut || !data.totalPrice) {
+                throw new AppError('Missing booking fields', HttpStatusCode.BAD_REQUEST);
+            }
+            const checkInDate = new Date(data.checkIn);
+            const checkOutDate = new Date(data.checkOut);
+
+            if (isNaN(checkInDate.getTime()) || isNaN(checkOutDate.getTime())) {
+                throw new AppError("Invalid check-in or check-out date format", HttpStatusCode.BAD_REQUEST);
+            }
+
+            if (checkOutDate <= checkInDate) {
+                throw new AppError("Check-out date must be after check-in date", HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { booking, message } = await this._createBooking.execute(data);
+            ResponseHandler.success(res, message, booking, HttpStatusCode.CREATED);
+        } catch (error) {
+            throw error;
+        }
     }
 
     async getBookingsByHotel(req: CustomRequest, res: Response): Promise<void> {
-        const hotelId = req.params.hotelId;
-        const bookings = await this._getByHotel.execute(hotelId);
-        ResponseHandler.success(res, 'Bookings fetched', bookings, HttpStatusCode.OK);
+        try {
+            const hotelId = req.params.hotelId;
+            if (!hotelId) {
+                throw new AppError('hotelId is missing', HttpStatusCode.BAD_REQUEST);
+            }
+            const page = Number(req.query.page);
+            const limit = Number(req.query.limit);
+
+            const { bookings, total } = await this._getByHotel.getBookingsByHotel(hotelId, page, limit);
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit), };
+            ResponseHandler.success(res, 'Bookings by hotel fetched successfully', bookings, HttpStatusCode.OK, meta);
+        } catch (error) {
+            throw error;
+        }
     }
 
     async getBookingsByUser(req: CustomRequest, res: Response): Promise<void> {
-        const userId = req.user?.userId;
-        const bookings = await this._getByUser.execute(userId as string);
-        ResponseHandler.success(res, 'Bookings fetched', bookings, HttpStatusCode.OK);
+        try {
+            const userId = req.user?.userId;
+            const page = Number(req.query.page);
+            const limit = Number(req.query.limit);
+
+            const { bookings, total } = await this._getByUser.getBookingByUser(userId as string, page, limit);
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
+            ResponseHandler.success(res, 'Bookings by user fetched successfully', bookings, HttpStatusCode.OK, meta);
+        } catch (error) {
+            throw error;
+        }
+
     }
 
-    // async checkRoomAvailability(req: CustomRequest, res: Response): Promise<void> {
-    //     const { roomId, checkIn, checkOut } = req.query;
-    //     const isAvailable = await this._checkAvailability.execute(
-    //         roomId as string,
-    //         new Date(checkIn as string),
-    //         new Date(checkOut as string)
-    //     );
-    //     ResponseHandler.success(res, 'Availability status', isAvailable, HttpStatusCode.OK);
-    // }
-
     async cancelBooking(req: CustomRequest, res: Response): Promise<void> {
-        const bookingId = req.params.id;
-        const userId = req.user?.userId;
-        const result = await this._cancelBooking.execute(bookingId, userId as string);
-        ResponseHandler.success(res, result.message, null, HttpStatusCode.OK);
+        try {
+            const bookingId = req.params.bookingId;
+            const userId = req.user?.userId;
+
+            if (!bookingId) {
+                throw new AppError('Booking id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+            const { message } = await this._cancelBooking.execute(bookingId, userId as string);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getBookingsToVendor(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const vendorId = req.user?.userId;
+            const page = Number(req.query.page);
+            const limit = Number(req.query.limit);
+
+            if (!vendorId) {
+                throw new AppError('Vendor id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { bookings, total } = await this._getBookingsToVendor.getBookingsToVendor(vendorId, page, limit)
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
+            ResponseHandler.success(res, 'fetched users booked to vendor successfully', bookings, HttpStatusCode.OK, meta);
+        } catch (error) {
+            throw error;
+        }
     }
 }

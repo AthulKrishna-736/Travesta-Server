@@ -18,19 +18,20 @@ export class AdminController {
     ) { }
 
     async blockOrUnblockUser(req: CustomRequest, res: Response) {
-        const { id } = req.params;
+        try {
+            const { userId } = req.params;
 
-        if (!id) {
-            throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
+            if (!userId) {
+                throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const updatedUser = await this._blockUnblockUser.blockUnblockUser(userId);
+            if (!updatedUser) throw new AppError("User not found or could not be updated", HttpStatusCode.NOT_FOUND);
+            const message = updatedUser.isBlocked ? `${updatedUser.role} blocked successfully` : `${updatedUser.role} unblocked successfully`;
+            ResponseHandler.success(res, message, updatedUser, HttpStatusCode.OK);
+        } catch (error) {
+            throw error;
         }
-
-        const updatedUser = await this._blockUnblockUser.blockUnblockUser(id);
-
-        if (!updatedUser) throw new AppError("User not found or could not be updated", HttpStatusCode.NOT_FOUND);
-
-        const message = updatedUser.isBlocked ? `${updatedUser.role} blocked successfully` : `${updatedUser.role} unblocked successfully`;
-
-        ResponseHandler.success(res, message, updatedUser, HttpStatusCode.OK);
     }
 
     async getAllUsers(req: CustomRequest, res: Response) {

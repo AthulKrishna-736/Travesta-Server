@@ -71,12 +71,13 @@ export class ResponseMapper {
             isBlocked: user.isBlocked,
             role: user.role,
             isVerified: user.isVerified,
+            verificationReason: user.verificationReason,
             profileImage: user.profileImage,
             wishlist: user.wishlist ?? [],
             subscription: user.subscription,
             kycDocuments: user.kycDocuments ?? [],
             createdAt: user.createdAt,
-            updatedAt: user.updatedAt
+            updatedAt: user.updatedAt,
         };
     }
 }

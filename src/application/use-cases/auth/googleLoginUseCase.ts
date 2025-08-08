@@ -13,6 +13,7 @@ import { env } from "../../../infrastructure/config/env";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { UserLookupBase } from "../base/userLookup.base";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.interface";
 
 
 @injectable()
@@ -21,6 +22,7 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
         @inject(TOKENS.UserRepository) userRepo: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
+        @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
     ) {
         super(userRepo)
     }
@@ -63,6 +65,7 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
             }
 
             user = await this._userRepo.createUser(newUser)
+            await this._createWallet.createUserWallet(user?._id as string);
         }
 
         const userEntity = await this.getUserEntityByEmail(user?.email as string)

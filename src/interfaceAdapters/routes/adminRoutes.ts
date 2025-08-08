@@ -34,7 +34,7 @@ export class adminRoutes extends BaseRouter {
             .post('/auth/logout', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._authController.logout(req, res))
 
             .get('/users', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getAllUsers(req, res))
-            .patch('/users/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.blockOrUnblockUser(req, res))
+            .patch('/users/:userId/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.blockOrUnblockUser(req, res))
 
             .get('/vendor-requests', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getVendorRequest(req, res))
             .patch('/vendor/:vendorId/verify', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.updateVendorReq(req, res));
@@ -50,8 +50,8 @@ export class adminRoutes extends BaseRouter {
             .get('/plans', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.getAllSubscriptions(req, res))
             .get('/plans/active', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), (req: CustomRequest, res) => this._subscriptionController.getActiveSubscriptions(req, res))
             .post('/plans', authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.createSubscriptionPlan(req, res))
-            .patch('/plans/:id', authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.updateSubscriptionPlan(req, res))
-            .patch('/plans/:id/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.blockUnblockSubscription(req, res));
+            .patch('/plans/:planId', authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.updateSubscriptionPlan(req, res))
+            .patch('/plans/:planId/block-toggle', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.blockUnblockSubscription(req, res));
 
         this.router
             .get('/chat-vendors', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._chatController.getVendorsChatWithAdmin(req, res))
