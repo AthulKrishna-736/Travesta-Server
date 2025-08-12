@@ -4,7 +4,8 @@ export interface IRoom {
     _id?: string
     hotelId: string | Types.ObjectId
     name: string
-    capacity: number
+    roomType: string
+    roomCount: number
     bedType: string
     amenities: string[]
     images: string[]

@@ -14,7 +14,12 @@ const roomSchema: Schema = new Schema<TRoomDocument>({
         required: true,
         trim: true,
     },
-    capacity: {
+    roomType: {
+        type: String,
+        enum: ["AC", "Non-AC", "Deluxe", "Suite", "Standard", "Penthouse"],
+        required: true,
+    },
+    roomCount: {
         type: Number,
         required: true,
     },
