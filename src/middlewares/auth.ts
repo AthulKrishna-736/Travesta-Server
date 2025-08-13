@@ -11,6 +11,13 @@ import { CustomRequest } from "../utils/customRequest";
 import { setAccessCookie } from "../utils/setCookies";
 
 export const authMiddleware = async (req: CustomRequest, res: Response, next: NextFunction) => {
+
+    console.log('req body: ', req.body);
+    console.log('req query: ', req.query);
+    console.log('req params: ', req.params);
+    console.log('req files: ', req.files);
+    console.log('req details: ', req.method, '-', req.path);
+
     const authService = container.resolve<IAuthService>(TOKENS.AuthService);
     const redisService = container.resolve<IJwtService>(TOKENS.RedisService);
 

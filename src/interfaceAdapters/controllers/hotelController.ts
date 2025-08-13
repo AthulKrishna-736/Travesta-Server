@@ -30,15 +30,10 @@ export class HotelController {
             const { name, description, address, city, state, geoLocation, tags, amenities, services, rating = 0 } = req.body;
             const parsedTags = typeof tags === 'string' ? JSON.parse(tags) : tags;
             const parsedAmenities = typeof amenities === 'string' ? JSON.parse(amenities) : amenities;
-            const parsedServices = typeof services === 'string' ? JSON.parse(services) : services;
             const parsedGeoLocation = Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation);
 
             if (!Array.isArray(parsedAmenities) || parsedAmenities.length === 0 || parsedAmenities.some(item => !item || item.trim() === '')) {
                 throw new AppError("At least one valid amenity is required", HttpStatusCode.BAD_REQUEST);
-            }
-
-            if (!Array.isArray(parsedServices) || parsedServices.length === 0 || parsedServices.some(item => !item || item.trim() === '')) {
-                throw new AppError("At least one valid service is required", HttpStatusCode.BAD_REQUEST);
             }
 
             if (!Array.isArray(parsedTags)) {
@@ -55,11 +50,9 @@ export class HotelController {
                 geoLocation: parsedGeoLocation,
                 tags: parsedTags,
                 amenities: parsedAmenities,
-                services: parsedServices,
                 rating,
                 images: []
             };
-            console.log('hotel data: ', hotelData);
 
             if (!files || files.length === 0) {
                 throw new AppError('No images provided to create Hotel', HttpStatusCode.BAD_REQUEST);
@@ -72,7 +65,6 @@ export class HotelController {
             if (files.length > 4) {
                 throw new AppError('Only 4 images are allowed — please upload exactly 4 images', HttpStatusCode.BAD_REQUEST);
             }
-            console.log('files : ', files, files.length);
 
             const { hotel, message } = await this._createHotelUseCase.createHotel(hotelData, files);
 

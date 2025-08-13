@@ -7,7 +7,6 @@ export interface IHotel {
     description: string
     images: string[]
     rating: number
-    services: string[]
     amenities: string[]
     tags: string[]
     state: string

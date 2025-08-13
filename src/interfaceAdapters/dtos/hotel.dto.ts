@@ -7,7 +7,6 @@ export type TCreateHotelDTO = {
     description: string;
     images: string[];
     rating?: number;
-    services: string[];
     amenities: string[];
     tags: string[];
     state: string;
@@ -21,7 +20,6 @@ export type TUpdateHotelDTO = {
     description?: string;
     images?: string[];
     rating?: number;
-    services?: string[];
     amenities?: string[];
     tags?: string[];
     state?: string;
@@ -37,7 +35,6 @@ export type TResponseHotelDTO = {
     description: string;
     images: string[];
     rating: number;
-    services: string[];
     amenities: string[];
     tags: string[];
     state: string;
