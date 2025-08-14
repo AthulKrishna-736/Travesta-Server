@@ -16,7 +16,7 @@ export const authMiddleware = async (req: CustomRequest, res: Response, next: Ne
     console.log('req query: ', req.query);
     console.log('req params: ', req.params);
     console.log('req files: ', req.files);
-    console.log('req details: ', req.method, '-', req.path);
+    console.log('req details: ', req.method, '-', req.url);
 
     const authService = container.resolve<IAuthService>(TOKENS.AuthService);
     const redisService = container.resolve<IJwtService>(TOKENS.RedisService);

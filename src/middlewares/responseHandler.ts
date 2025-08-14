@@ -9,6 +9,7 @@ export class ResponseHandler {
         statusCode: number = HttpStatusCode.OK,
         meta: Record<string, any> | null = null
     ): Response {
+        console.log('res from Server: ', message, data);
         return res.status(statusCode).json({
             success: true,
             message,

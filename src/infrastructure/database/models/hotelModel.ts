@@ -49,10 +49,6 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
     geoLocation: {
         type: [Number],
         required: true,
-        validate: {
-            validator: (arr: number[]) => arr.length === 2,
-            message: "GeoLocation must be an array of [longitude, latitude]",
-        },
     },
     isBlocked: {
         type: Boolean,

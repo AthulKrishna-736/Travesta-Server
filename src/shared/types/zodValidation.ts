@@ -98,15 +98,8 @@ export const createHotelSchema = z.object({
         required_error: "Description is required",
         invalid_type_error: "Description must be a string",
     })
-        .min(10, "Description must be at least 10 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Description contains invalid characters"),
-
-    services: z.preprocess(
-        (val) => (typeof val === "string" ? JSON.parse(val) : val),
-        z.array(z.string({ invalid_type_error: "Each service must be a string" }))
-            .min(1, "At least one service is required")
-    ),
-
+        .min(10, "Description must be at least 10 characters"),
+        
     amenities: z.preprocess(
         (val) => (typeof val === "string" ? JSON.parse(val) : val),
         z.array(z.string({ invalid_type_error: "Each amenity must be a string" }))

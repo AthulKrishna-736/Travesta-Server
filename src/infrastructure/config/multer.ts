@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs'
 import { v4 as uuidv4 } from 'uuid';
 
-const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/avif'];
 
 const uploadDir = path.resolve(__dirname, '..', '..', 'uploads');
 

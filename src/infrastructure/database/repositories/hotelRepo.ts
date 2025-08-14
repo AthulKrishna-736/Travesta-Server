@@ -44,8 +44,14 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         }
 
         const total = await this.model.countDocuments(filter);
-        const hotels = await this.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean<IHotel[]>();
-
+        const hotels = await this.model
+            .find(filter)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit)
+            .populate<{ amenities: { _id: string; name: string }[] }>("amenities", "_id name")
+            .lean<IHotel[]>();
+            
         return { hotels, total };
     }
 }

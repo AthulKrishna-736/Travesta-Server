@@ -10,8 +10,6 @@ export interface IRoom {
     amenities: string[]
     images: string[]
     basePrice: number
-
-    
     isAvailable: boolean
     createdAt: Date
     updatedAt: Date

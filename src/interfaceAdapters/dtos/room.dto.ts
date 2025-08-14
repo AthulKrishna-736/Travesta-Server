@@ -4,7 +4,8 @@ import { Types } from "mongoose";
 export type TCreateRoomDTO = {
     hotelId: string | Types.ObjectId;
     name: string;
-    capacity: number;
+    roomCount: number;
+    roomType: string;
     bedType: string;
     amenities: string[];
     images: string[];
@@ -14,7 +15,8 @@ export type TCreateRoomDTO = {
 export type TUpdateRoomDTO = {
     hotelId?: string | Types.ObjectId;
     name?: string;
-    capacity?: number;
+    roomCount?: number;
+    roomType: string;
     bedType?: string;
     amenities?: string[];
     images?: string[];
@@ -22,16 +24,17 @@ export type TUpdateRoomDTO = {
 }
 
 export type TResponseRoomDTO = {
-    id: string
-    hotelId: string
-    name: string
-    capacity: number
-    bedType: string
-    amenities: string[]
-    images: string[]
-    basePrice: number
-    isAvailable: boolean
-    createdAt: Date
-    updatedAt: Date
+    id: string;
+    hotelId: string;
+    name: string;
+    roomCount: number;
+    roomType: string;
+    bedType: string;
+    amenities: string[];
+    images: string[];
+    basePrice: number;
+    isAvailable: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }
 

@@ -38,7 +38,6 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
 
         const newHotel = await this._hotelRepo.createHotel({
             ...hotelData,
-            services: hotelData.services,
             amenities: hotelData.amenities,
             tags: hotelData.tags,
             images: uploadedImageKeys as string[],
