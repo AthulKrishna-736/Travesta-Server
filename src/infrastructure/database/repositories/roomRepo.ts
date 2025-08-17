@@ -17,21 +17,21 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         return room.toObject();
     }
 
-    async findRoomById(id: string): Promise<IRoom | null> {
-        const room = await this.model.findById(id)
+    async findRoomById(roomId: string): Promise<IRoom | null> {
+        const room = await this.model.findById(roomId)
             .populate({ path: "hotelId", select: "name images rating city state address amenities tags", })
             .lean();
 
         return room || null;
     }
 
-    async updateRoom(id: string, data: TUpdateRoomData): Promise<IRoom | null> {
-        const room = await this.update(id, data);
+    async updateRoom(roomId: string, data: TUpdateRoomData): Promise<IRoom | null> {
+        const room = await this.update(roomId, data);
         return room?.toObject() || null;
     }
 
-    async deleteRoom(id: string): Promise<any> {
-        const result = await this.delete(id);
+    async deleteRoom(roomId: string): Promise<any> {
+        const result = await this.delete(roomId);
         return result
     }
 
@@ -70,7 +70,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         maxPrice?: number,
         amenities?: string[],
         search?: string,
-        destination?: string,  // This should match hotel `state`
+        destination?: string,  
         checkIn?: string,
         checkOut?: string,
         guests?: string

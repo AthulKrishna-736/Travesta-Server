@@ -39,3 +39,7 @@ export interface IBlockUnblockAmenityUseCase {
 export interface IGetActiveAmenitiesUseCase {
     getActiveAmenities(): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }>
 }
+
+export interface IFindUsedActiveAmenitiesUseCase {
+    findUsedActiveAmenities(): Promise<{ amenities: IAmenities[], message: string, total: number }>;
+}

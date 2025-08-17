@@ -3,6 +3,8 @@ import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/re
 import { amenitiesModel, TAmenitiesDocument } from "../models/amenitiesModel";
 import { BaseRepository } from "./baseRepo";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../../../domain/interfaces/model/amenities.interface";
+import { hotelModel } from "../models/hotelModel";
+import { roomModel } from "../models/roomModel";
 
 @injectable()
 export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> implements IAmenitiesRepository {
@@ -15,13 +17,13 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         return amenity.toObject();
     }
 
-    async updateAmenity(id: string, data: TUpdateAmenityData): Promise<IAmenities | null> {
-        const amenity = await this.update(id, data);
+    async updateAmenity(amenityId: string, data: TUpdateAmenityData): Promise<IAmenities | null> {
+        const amenity = await this.update(amenityId, data);
         return amenity?.toObject() || null;
     }
 
-    async findAmenityById(id: string): Promise<IAmenities | null> {
-        const amenity = await this.findById(id);
+    async findAmenityById(amenityId: string): Promise<IAmenities | null> {
+        const amenity = await this.findById(amenityId);
         return amenity?.toObject() || null;
     }
 
@@ -40,13 +42,23 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         return { amenities, total }
     }
 
+    async findUsedActiveAmenities(): Promise<IAmenities[] | null> {
+        const hotelAmenityIds = await hotelModel.distinct("amenities", { amenities: { $exists: true, $ne: [] } });
+        const roomAmenityIds = await roomModel.distinct("amenities", { amenities: { $exists: true, $ne: [] } });
+        const allAmenityIds = [...new Set([...hotelAmenityIds, ...roomAmenityIds])];
+
+        if (allAmenityIds.length === 0) {
+            return [];
+        }
+
+        const amenities = await this.model.find({ _id: { $in: allAmenityIds }, isActive: true }).lean<IAmenities[]>();
+        return amenities;
+    }
+
     async getQuery(filter: any = {}): Promise<{ amenities: IAmenities[], total: number }> {
         const amenities = await this.find(filter);
         const total = await this.model.countDocuments(filter);
 
-        return {
-            amenities,
-            total,
-        }
+        return { amenities, total }
     }
 }

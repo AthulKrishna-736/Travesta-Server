@@ -44,7 +44,8 @@ export class adminRoutes extends BaseRouter {
             .patch("/amenities/:id", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.updateAmenity(req, res))
             .patch("/amenities/:id/block-toggle", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.blockUnblockAmenity(req, res))
             .get("/amenities", authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._amenityController.getAllAmenities(req, res))
-            .get("/amenities/active", authMiddleware, authorizeRoles("admin", "user", "vendor"), (req: CustomRequest, res) => this._amenityController.getAllActiveAmenities(req, res));
+            .get("/amenities/active", authMiddleware, authorizeRoles("admin", "user", "vendor"), (req: CustomRequest, res) => this._amenityController.getAllActiveAmenities(req, res))
+            .get("/amenities/used", authMiddleware, authorizeRoles('admin', 'vendor', 'user'), (req: CustomRequest, res) => this._amenityController.getUsedActiveAmenities(req, res));
 
         this.router
             .get('/plans', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.getAllSubscriptions(req, res))

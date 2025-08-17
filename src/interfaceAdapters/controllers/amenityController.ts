@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
-import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IGetActiveAmenitiesUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
+import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IFindUsedActiveAmenitiesUseCase, IGetActiveAmenitiesUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
 import { CustomRequest } from "../../utils/customRequest";
 import { Response } from "express";
 import { ResponseHandler } from "../../middlewares/responseHandler";
@@ -18,6 +18,7 @@ export class AmenityController {
         @inject(TOKENS.GetAmenityByIdUseCase) private _getAmenityById: IGetAmenityByIdUseCase,
         @inject(TOKENS.GetAllAmenitiesUseCase) private _getAllAmenities: IGetAllAmenitiesUseCase,
         @inject(TOKENS.GetActiveAmenitiesUseCase) private _getAllActiveAmenities: IGetActiveAmenitiesUseCase,
+        @inject(TOKENS.FindUsedActiveAmenitiesUseCase) private _findUsedAmenities: IFindUsedActiveAmenitiesUseCase,
     ) { }
 
     async createAmenity(req: CustomRequest, res: Response): Promise<void> {
@@ -79,6 +80,15 @@ export class AmenityController {
         try {
             const { amenities, message, total } = await this._getAllActiveAmenities.getActiveAmenities();
 
+            ResponseHandler.success(res, message, amenities, HttpStatusCode.OK, { totalData: total });
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getUsedActiveAmenities(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const { amenities, message, total } = await this._findUsedAmenities.findUsedActiveAmenities();
             ResponseHandler.success(res, message, amenities, HttpStatusCode.OK, { totalData: total });
         } catch (error) {
             throw error;

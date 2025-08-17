@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { ICreateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
-import { IHotelRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IHotelRepository, IUserRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
 import { TCreateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
@@ -17,12 +17,18 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
     constructor(
         @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
         @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
     ) {
         super(hotelRepo);
         this._imageUploader = new AwsImageUploader(awsS3Service);
     }
 
     async createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {
+        const vendor = await this._userRepo.checkUserVerified(hotelData.vendorId as string);
+        if (!vendor) {
+            throw new AppError('Vendor is not verified. Please upload docs and verify!', HttpStatusCode.CONFLICT);
+        }
+        
         const existingHotels = await this.getHotelEntityByVendorId(hotelData.vendorId as string);
         const isDuplicate = existingHotels?.some(hotel => hotel.name === hotelData.name);
 

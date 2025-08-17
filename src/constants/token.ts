@@ -68,6 +68,7 @@ export const TOKENS = {
   GetAllAmenitiesUseCase: 'GetAllAmenitiesUseCase',
   BlockUnblockAmenityUseCase: 'BlockUnblockAmenityUseCase',
   GetActiveAmenitiesUseCase: 'GetActiveAmenitiesUseCase',
+  FindUsedActiveAmenitiesUseCase: 'FindUsedActiveAmenitiesUseCase',
 
   //subscription UseCase
   CreateSubscriptionUseCase: 'CreateSubscriptionUseCase',

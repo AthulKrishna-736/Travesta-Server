@@ -79,8 +79,8 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return !overlappingBookings;
     }
 
-    async findByid(id: string): Promise<IBooking | null> {
-        return this.model.findById(id)
+    async findByid(bookingId: string): Promise<IBooking | null> {
+        return this.model.findById(bookingId)
             .populate({ path: 'hotelId', select: 'name vendorId' })
             .lean<IBooking>().exec();
     }

@@ -15,13 +15,13 @@ export class SusbcriptionRepository extends BaseRepository<TSubscriptionDocument
         return plan.toObject();
     }
 
-    async updatePlan(id: string, data: TUpdateSubscriptionData): Promise<ISubscription | null> {
-        const plan = await this.update(id, data);
+    async updatePlan(planId: string, data: TUpdateSubscriptionData): Promise<ISubscription | null> {
+        const plan = await this.update(planId, data);
         return plan?.toObject();
     }
 
-    async findPlanById(id: string): Promise<ISubscription | null> {
-        const plan = await this.findById(id)
+    async findPlanById(planId: string): Promise<ISubscription | null> {
+        const plan = await this.findById(planId)
         return plan?.toObject();
     }
 

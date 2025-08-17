@@ -47,7 +47,7 @@ import { GetAllRoomsUseCase } from "../../application/use-cases/vendor/room/getA
 import { GetAvailableRoomsUseCase } from "../../application/use-cases/vendor/room/getAvlRoomsUseCase";
 import { AmenitiesRepository } from "../database/repositories/amenitiesRepo";
 import { CreateAmenityUseCase } from "../../application/use-cases/admin/amenities/createAmenity.UseCase";
-import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IGetActiveAmenitiesUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
+import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IFindUsedActiveAmenitiesUseCase, IGetActiveAmenitiesUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
 import { UpdateAmenityUseCase } from "../../application/use-cases/admin/amenities/updateAmenity.UseCase";
 import { BlockUnblockAmenity } from "../../application/use-cases/admin/amenities/blockUnblockAmenity.UseCase";
 import { GetAmenityByIdUseCase } from "../../application/use-cases/admin/amenities/getAmenityById.UseCase";
@@ -80,6 +80,7 @@ import { WalletRepository } from "../database/repositories/wallet.Repo";
 import { StripeService } from "../services/stripeService";
 import { TransferUsersAmountUseCase } from "../../application/use-cases/user/wallet/transferUsersAmount.UseCase";
 import { GetBookingsToVendorUseCase } from "../../application/use-cases/vendor/booking/getBookingsToVendor";
+import { FindUsedActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getUserActiveAmenities.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -302,6 +303,10 @@ container.register<IGetAllAmenitiesUseCase>(TOKENS.GetAllAmenitiesUseCase, {
 
 container.register<IGetActiveAmenitiesUseCase>(TOKENS.GetActiveAmenitiesUseCase, {
   useClass: GetActiveAmenitiesUseCase,
+})
+
+container.register<IFindUsedActiveAmenitiesUseCase>(TOKENS.FindUsedActiveAmenitiesUseCase, {
+  useClass: FindUsedActiveAmenitiesUseCase,
 })
 
 //subscription use case

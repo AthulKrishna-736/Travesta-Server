@@ -10,8 +10,8 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
         super(userModel)
     }
 
-    async findUserById(id: string): Promise<IUser | null> {
-        const user = await this.findById(id);
+    async findUserById(userId: string): Promise<IUser | null> {
+        const user = await this.findById(userId);
         return user;
     }
 
@@ -20,8 +20,8 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
         return user;
     }
 
-    async updateUser(id: string, data: TUpdateUserData): Promise<IUser | null> {
-        const user = await this.update(id, data);
+    async updateUser(userId: string, data: TUpdateUserData): Promise<IUser | null> {
+        const user = await this.update(userId, data);
         return user;
     }
 
@@ -50,8 +50,13 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
         return { users: user, total }
     }
 
-    async subscribeUser(id: string, data: Pick<IUser, "subscription">): Promise<IUser | null> {
-        const user = await this.update(id, data);
+    async subscribeUser(userId: string, data: Pick<IUser, "subscription">): Promise<IUser | null> {
+        const user = await this.update(userId, data);
         return user;
+    }
+
+    async checkUserVerified(userId: string): Promise<boolean> {
+        const user = await this.findOne({ userId, isVerified: true }).lean<IUser>();
+        return user ? true : false;
     }
 }

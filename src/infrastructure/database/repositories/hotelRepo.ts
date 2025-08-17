@@ -15,13 +15,13 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         return hotel.toObject();
     }
 
-    async findHotelById(id: string): Promise<IHotel | null> {
-        const hotel = await this.findById(id);
+    async findHotelById(hotelId: string): Promise<IHotel | null> {
+        const hotel = await this.findById(hotelId);
         return hotel?.toObject() || null;
     }
 
-    async updateHotel(id: string, data: TUpdateHotelData): Promise<IHotel | null> {
-        const hotel = await this.update(id, data);
+    async updateHotel(hotelId: string, data: TUpdateHotelData): Promise<IHotel | null> {
+        const hotel = await this.update(hotelId, data);
         return hotel?.toObject() || null;
     }
 
