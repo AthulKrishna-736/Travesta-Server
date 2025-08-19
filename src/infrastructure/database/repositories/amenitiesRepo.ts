@@ -27,8 +27,10 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         return amenity?.toObject() || null;
     }
 
-    async findAllAmenities(page: number, limit: number, search?: string): Promise<{ amenities: IAmenities[] | null, total: number }> {
+    async findAllAmenities(page: number, limit: number, search?: string, sortField: string = 'name', sortOrder: string = 'ascending'): Promise<{ amenities: IAmenities[] | null, total: number }> {
         const skip = (page - 1) * limit;
+        console.log('sortoptins: ', sortField, sortOrder)
+        const order = sortOrder == 'descending' ? -1 : 1;
         const filter: any = {}
         if (search) {
             const searchRegex = new RegExp(search, 'i')
@@ -38,7 +40,7 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         }
 
         const total = await this.model.countDocuments(filter);
-        const amenities = await this.find(filter).skip(skip).limit(limit).lean<IAmenities[]>();
+        const amenities = await this.find(filter).skip(skip).limit(limit).sort({ [sortField]: order }).lean<IAmenities[]>();
         return { amenities, total }
     }
 

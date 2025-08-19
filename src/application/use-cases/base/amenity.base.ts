@@ -1,5 +1,6 @@
 import { AmenitiesEntity, IAmenitiesEntity } from "../../../domain/entities/admin/amenities.entity";
 import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { TSortOptions } from "../../../shared/types/client.types";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 
@@ -17,8 +18,8 @@ export abstract class AmenityLookupBase {
         return new AmenitiesEntity(amenityData);
     }
 
-    protected async getAllAmenitiesOrThrow(page: number, limit: number, search?: string): Promise<{ amenities: IAmenitiesEntity[], total: number }> {
-        const { amenities, total } = await this._amenityRepo.findAllAmenities(page, limit, search);
+    protected async getAllAmenitiesOrThrow(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenitiesEntity[], total: number }> {
+        const { amenities, total } = await this._amenityRepo.findAllAmenities(page, limit, search, sortField, sortOrder);
 
         if (!amenities) {
             throw new AppError('amenities not found', HttpStatusCode.NOT_FOUND);

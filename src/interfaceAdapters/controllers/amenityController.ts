@@ -7,6 +7,7 @@ import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
 import { TCreateAmenityDTO, TUpdateAmenityDTO } from "../dtos/amenity.dto";
 import { Pagination } from "../../shared/types/common.types";
+import { TSortOptions } from "../../shared/types/client.types";
 
 
 @injectable()
@@ -67,7 +68,9 @@ export class AmenityController {
             const page = Number(req.query.page) || 1;
             const limit = Number(req.query.limit) || 8;
             const search = req.query.search as string || '';
-            const { amenities, message, total } = await this._getAllAmenities.getAllAmenitiesUseCase(page, limit, search);
+            const sortField = req.query.sortField as string;
+            const sortOrder = req.query.sortOrder as string;
+            const { amenities, message, total } = await this._getAllAmenities.getAllAmenitiesUseCase(page, limit, search, sortField, sortOrder);
 
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, message, amenities, HttpStatusCode.OK, meta);
