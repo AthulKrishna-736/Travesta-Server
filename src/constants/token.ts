@@ -84,6 +84,7 @@ export const TOKENS = {
   MarkMsgAsReadUseCase: 'MarkMsgAsReadUseCase',
   GetVendorsChatWithUserUseCase: 'GetVendorsChatWithUserUseCase',
   GetVendorsChatWithAdminUseCase: 'GetVendorsChatWithAdminUseCase',
+  GetUserUnreadMsgUseCase: 'GetUserUnreadMsgUseCase',
 
   //wallet UseCase
   CreateWalletUseCase: 'CreateWalletUseCase',

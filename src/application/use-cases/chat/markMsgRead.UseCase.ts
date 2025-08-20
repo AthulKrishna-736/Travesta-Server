@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IChatRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IChatRepository, IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { IMarkMsgAsReadUseCase } from "../../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
@@ -10,19 +10,20 @@ import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 export class MarkMsgAsReadUseCase implements IMarkMsgAsReadUseCase {
     constructor(
         @inject(TOKENS.ChatRepository) private _chatRepo: IChatRepository,
+        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
     ) { }
 
-    async markMsgAsRead(messageId: string): Promise<void> {
-        const message = await this._chatRepo.findMsgById(messageId);
+    async markMsgAsRead(senderId: string, receiverId: string): Promise<void> {
+        const [senderExists, receiverExists] = await Promise.all([
+            this._userRepo.findUserExist(senderId),
+            this._userRepo.findUserExist(receiverId)
+        ]);
 
-        if (!message) {
-            throw new AppError('Invalid Id message does not exist!', HttpStatusCode.CONFLICT);
+        if (!senderExists || !receiverExists) {
+            throw new AppError("Sender or Receiver not found", HttpStatusCode.NOT_FOUND);
         }
 
-        try {
-            await this._chatRepo.markMessageAsRead(messageId);
-        } catch (error) {
-            throw new AppError(`Error while marking msg read ${error}`, HttpStatusCode.INTERNAL_SERVER_ERROR);
-        }
+        await this._chatRepo.markConversationAsRead(senderId, receiverId);
     }
+
 }

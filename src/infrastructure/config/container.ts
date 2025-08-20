@@ -64,7 +64,7 @@ import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdat
 import { ICreateRoomUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IUpdateRoomUseCase } from "../../domain/interfaces/model/room.interface";
 import { SocketService } from "../services/socketService";
 import { ChatRepository } from "../database/repositories/chatRepo";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { GetChatMessagesUseCase } from "../../application/use-cases/chat/getChatMsg.UseCase.";
 import { SendMessageUseCase } from "../../application/use-cases/chat/sendMsg.UseCase";
 import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChatUsers.UseCase";
@@ -81,6 +81,7 @@ import { StripeService } from "../services/stripeService";
 import { TransferUsersAmountUseCase } from "../../application/use-cases/user/wallet/transferUsersAmount.UseCase";
 import { GetBookingsToVendorUseCase } from "../../application/use-cases/vendor/booking/getBookingsToVendor";
 import { FindUsedActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getUserActiveAmenities.UseCase";
+import { GetUserUnreadMsgUseCase } from "../../application/use-cases/chat/getUserUnreadMsg.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -353,6 +354,10 @@ container.register<IGetVendorsChatWithUserUseCase>(TOKENS.GetVendorsChatWithUser
 
 container.register<IGetVendorsChatWithAdminUseCase>(TOKENS.GetVendorsChatWithAdminUseCase, {
   useClass: GetVendorsChatWithAdmiinUseCase,
+})
+
+container.register<IGetUserUnreadMsgUseCase>(TOKENS.GetUserUnreadMsgUseCase, {
+  useClass: GetUserUnreadMsgUseCase,
 })
 
 

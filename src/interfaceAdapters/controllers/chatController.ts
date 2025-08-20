@@ -4,7 +4,7 @@ import { Response } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../utils/HttpStatusCodes";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../utils/appError";
 
 @injectable()
@@ -15,6 +15,7 @@ export class ChatController {
         @inject(TOKENS.GetChattedUsersUseCase) private _getChattedUsers: IGetChattedUsersUseCase,
         @inject(TOKENS.GetVendorsChatWithUserUseCase) private _getVendorsChatUser: IGetVendorsChatWithUserUseCase,
         @inject(TOKENS.GetVendorsChatWithAdminUseCase) private _getVendorsChatAdmin: IGetVendorsChatWithAdminUseCase,
+        @inject(TOKENS.GetUserUnreadMsgUseCase) private _getUserUnreadMsg: IGetUserUnreadMsgUseCase,
     ) { }
 
     async getChatMessages(req: CustomRequest, res: Response): Promise<void> {
@@ -91,6 +92,20 @@ export class ChatController {
 
             const { vendors, message } = await this._getVendorsChatAdmin.getVendorsChatWithAdmin(userId as string, search);
             ResponseHandler.success(res, message, vendors, HttpStatusCode.OK);
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getUnreadMsg(req: CustomRequest, res: Response): Promise<void> {
+        try {            
+            const userId = req.user?.userId;
+            if (!userId) {
+                throw new AppError('Userid is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { message, users } = await this._getUserUnreadMsg.getUnreadMsg(userId);
+            ResponseHandler.success(res, message, users, HttpStatusCode.OK);
         } catch (error) {
             throw error
         }

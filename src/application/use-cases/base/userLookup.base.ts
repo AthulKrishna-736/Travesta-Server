@@ -27,8 +27,8 @@ export abstract class UserLookupBase {
         return new UserEntity(userData);
     }
 
-    protected async getAllUserEntity(page: number, limit: number, role: string, search?: string): Promise<{ userEntities: IUserEntity[]; total: number }> {
-        const { users, total } = await this._userRepo.findAllUser(page, limit, role, search);
+    protected async getAllUserEntity(page: number, limit: number, role: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ userEntities: IUserEntity[]; total: number }> {
+        const { users, total } = await this._userRepo.findAllUser(page, limit, role, search, sortField, sortOrder);
         if (!users) {
             throw new AppError('Unable to fetch users', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }

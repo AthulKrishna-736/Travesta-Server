@@ -20,8 +20,8 @@ export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqU
         super(userRepo);
     }
 
-    async getAllVendorReq(page: number, limit: number, search?: string): Promise<{ vendors: TResponseUserData[]; total: number }> {
-        const { userEntities, total } = await this.getAllUserEntity(page, limit, 'vendor', search);
+    async getAllVendorReq(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ vendors: TResponseUserData[]; total: number }> {
+        const { userEntities, total } = await this.getAllUserEntity(page, limit, 'vendor', search, sortField, sortOrder);
 
         const vendors = await Promise.all(
             userEntities.map(async (vendorEntity: IUserEntity) => {

@@ -1,6 +1,5 @@
 import { AmenitiesEntity, IAmenitiesEntity } from "../../../domain/entities/admin/amenities.entity";
 import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { TSortOptions } from "../../../shared/types/client.types";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 

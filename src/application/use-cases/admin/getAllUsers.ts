@@ -14,9 +14,9 @@ export class GetAllUsers extends UserLookupBase implements IGetAllUsersUseCase {
         super(userRepo);
     }
 
-    async getAllUsers(page: number, limit: number, role: string, search: string): Promise<{ users: TResponseUserData[]; total: number }> {
+    async getAllUsers(page: number, limit: number, role: string, search: string, sortField?: string, sortOrder?: string): Promise<{ users: TResponseUserData[]; total: number }> {
 
-        const { userEntities, total } = await this.getAllUserEntity(page, limit, role, search);
+        const { userEntities, total } = await this.getAllUserEntity(page, limit, role, search, sortField, sortOrder);
 
         const nonAdminUsers = userEntities.filter(user => !user.isAdmin()).map(user => user.toObject());
 

@@ -32,18 +32,24 @@ export class SocketService {
             logger.info(`check cookie header: ${cookieHeader}`)
 
             const cookies = cookie.parse(cookieHeader);
-            const token = cookies['access_token'];
-
-            if (!token) {
-                return next(new AppError('Access token not found in cookie', HttpStatusCode.UNAUTHORIZED));
-            }
+            const accessToken = cookies['access_token'];
+            const refreshToken = cookies['refresh_token'];
 
             try {
-                const decode = jwt.verify(token, env.JWT_ACCESS_SECRET);
+                const decode = jwt.verify(accessToken as string, env.JWT_ACCESS_SECRET);
                 socket.data.user = decode;
                 next();
             } catch (error) {
-                return next(new AppError('Error while verify token', HttpStatusCode.UNAUTHORIZED));
+                if (!refreshToken) {
+                    return next(new AppError('No valid tokens found', HttpStatusCode.UNAUTHORIZED));
+                }
+                try {
+                    const decodedRefresh = jwt.verify(refreshToken, env.JWT_REFRESH_SECRET);
+                    socket.data.user = decodedRefresh;
+                    return next();
+                } catch (refreshErr) {
+                    return next(new AppError('Invalid refresh token', HttpStatusCode.UNAUTHORIZED));
+                }
             }
         })
     }
@@ -100,34 +106,26 @@ export class SocketService {
             });
 
 
-            socket.on("read_message", async ({ messageId, toId, toRole }) => {
+            socket.on("read_message", async ({ senderId, receiverId, toRole }) => {
                 try {
-                    if (!messageId) {
-                        throw new AppError('No msg id found', HttpStatusCode.BAD_REQUEST);
-                    }
-
-                    if (!toId || !toRole) {
-                        throw new AppError('Missing recipient information (toId or toRole)', HttpStatusCode.BAD_REQUEST);
+                    console.log("reaaading started//////////////////////////////", senderId, receiverId, toRole)
+                    if (!senderId || !receiverId) {
+                        throw new AppError('Missing sender or receiver id', HttpStatusCode.BAD_REQUEST);
                     }
 
                     const chatUseCase = container.resolve<IMarkMsgAsReadUseCase>(TOKENS.MarkMsgAsReadUseCase);
-                    await chatUseCase.markMsgAsRead(messageId);
-                    logger.info(`message read by ${toRole}${toId}`)
+                    await chatUseCase.markMsgAsRead(senderId, receiverId);
 
-                    const fromRoom = `${role}:${userId}`;
-                    const toRoom = `${toRole}:${toId}`;
+                    logger.info(`conversation read by ${toRole}${receiverId}`);
 
-                    this.io.to(fromRoom).emit("message_read", {
-                        messageId,
-                        by: { userId, role }
-                    });
+                    const fromRoom = `${role}:${senderId}`;
+                    const toRoom = `${toRole}:${receiverId}`;
 
-                    this.io.to(toRoom).emit("message_read", {
-                        messageId,
-                        by: { userId, role }
-                    });
+                    this.io.to(fromRoom).emit("message_read", { withUserId: receiverId });
+                    this.io.to(toRoom).emit("message_read", { withUserId: senderId });
+                    console.log('reading endeddddddddd/////////////////////////////////')
                 } catch (err) {
-                    logger.error(`❌ Failed to mark message as read: ${err}`);
+                    logger.error(`❌ Failed to mark conversation as read: ${err}`);
                 }
             });
 

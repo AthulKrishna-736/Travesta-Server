@@ -57,6 +57,7 @@ export class userRoutes extends BaseRouter {
         this.router
             .get('/chat/:userId', authMiddleware, authorizeRoles("admin", "vendor", "user"), checkUserBlock, (req: CustomRequest, res) => this._chatController.getChatMessages(req, res))
             .get('/chat-vendors', authMiddleware, authorizeRoles('admin', 'user', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._chatController.getVendorsChatWithUser(req, res))
+            .get('/chat-unread', authMiddleware, authorizeRoles('admin', 'user', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._chatController.getUnreadMsg(req, res))
 
         // booking routes
         this.router

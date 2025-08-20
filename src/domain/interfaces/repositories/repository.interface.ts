@@ -14,10 +14,11 @@ export interface IUserRepository {
   findUserById(userId: string): Promise<IUser | null>;
   createUser(data: TUserRegistrationInput): Promise<IUser | null>;
   updateUser(userId: string, data: TUpdateUserData): Promise<IUser | null>;
-  findAllUser(page: number, limit: number, role: string, search?: string): Promise<{ users: IUser[] | null, total: number }>;
+  findAllUser(page: number, limit: number, role: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ users: IUser[] | null, total: number }>;
   findUser(email: string): Promise<IUser | null>
   checkUserVerified(userId: string): Promise<boolean>
   subscribeUser(userId: string, data: Pick<IUser, 'subscription'>): Promise<IUser | null>
+  findUserExist(userId: string): Promise<boolean>
 }
 
 //hotel repo
@@ -90,10 +91,11 @@ export interface IChatRepository {
   findMsgById(messageId: string): Promise<IChatMessage | null>
   createMessage(data: TCreateChatMessage): Promise<IChatMessage>;
   getMessagesBetweenUsers(fromId: string, toId: string): Promise<IChatMessage[]>;
-  markMessageAsRead(messageId: string): Promise<IChatMessage | null>;
+  markConversationAsRead(senderId: string, receiverId: string): Promise<void>
   getUsersWhoChattedWithVendor(vendorId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
   getVendorsWhoChattedWithAdmin(adminId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
   getVendorsWhoChattedWithUser(userId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
+  getUnreadMessages(userId: string): Promise<{ id: string; count: number }[]>
 }
 
 //wallet repo
