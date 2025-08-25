@@ -113,4 +113,13 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
             { new: true }
         ).exec();
     }
+
+    async CancelMax3BookingSameHotel(bookingId: string, userId: string, hotelId: string): Promise<void> {
+        const user = await this.model.aggregate([{
+            $match: { userId: userId, hotelId: hotelId, status: 'cancelled' },
+            $group: { _id: '$userId', count: { $sum: 1 } },
+        }]);
+
+        console.log(user);
+    }
 }

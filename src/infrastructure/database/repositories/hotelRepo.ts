@@ -3,6 +3,7 @@ import { BaseRepository } from "./baseRepo";
 import { hotelModel, THotelDocument } from "../models/hotelModel";
 import { IHotel, TCreateHotelData, TUpdateHotelData } from "../../../domain/interfaces/model/hotel.interface";
 import { IHotelRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { roomModel } from "../models/roomModel";
 
 @injectable()
 export class HotelRepository extends BaseRepository<THotelDocument> implements IHotelRepository {
@@ -30,28 +31,82 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         return hotels;
     }
 
-    async findAllHotels(page: number, limit: number, search?: string): Promise<{ hotels: IHotel[] | null; total: number }> {
+    async findAllHotels(
+        page: number,
+        limit: number,
+        filters: {
+            search?: string;
+            amenities?: string[];
+            roomType?: string[];
+            checkIn?: string;
+            checkOut?: string;
+            guests?: number;
+            minPrice?: number;
+            maxPrice?: number;
+        } = {}
+    ): Promise<{ hotels: IHotel[] | null; total: number }> {
         const skip = (page - 1) * limit;
-        const filter: any = {};
 
-        if (search) {
-            const regex = new RegExp(search, "i");
-            filter.$or = [
+        const hotelFilter: any = { isBlocked: false };
+        const roomFilter: any = {};
+
+        if (filters.search) {
+            const regex = new RegExp(filters.search, "i");
+            hotelFilter.$or = [
                 { name: regex },
                 { city: regex },
                 { state: regex },
             ];
         }
 
-        const total = await this.model.countDocuments(filter);
-        const hotels = await this.model
-            .find(filter)
+        // Filter by hotel amenities
+        if (filters.amenities?.length) {
+            hotelFilter.amenities = { $all: filters.amenities };
+        }
+
+        // Filter by room type, guest count, price range
+        if (filters.roomType?.length) roomFilter.roomType = { $in: filters.roomType };
+        if (filters.guests) roomFilter.guest = { $gte: filters.guests };
+        if (filters.minPrice !== undefined || filters.maxPrice !== undefined) {
+            roomFilter.basePrice = {};
+            if (filters.minPrice !== undefined) roomFilter.basePrice.$gte = filters.minPrice;
+            if (filters.maxPrice !== undefined) roomFilter.basePrice.$lte = filters.maxPrice;
+        }
+
+        // Optionally: availability based on checkIn/checkOut can be handled in booking logic
+        if (filters.checkIn && filters.checkOut) {
+            roomFilter.isAvailable = true;
+        }
+
+        // First, find rooms that match the room filters
+        const matchedRooms = await roomModel
+            .find(roomFilter)
+            .select("hotelId")
+            .lean<{ hotelId: string }[]>();
+
+        const hotelIds = matchedRooms.map(r => r.hotelId);
+
+        if (filters.roomType || filters.guests || filters.minPrice || filters.maxPrice || (filters.checkIn && filters.checkOut)) {
+            if (hotelIds.length === 0) {
+                return { hotels: [], total: 0 };
+            }
+            hotelFilter._id = { $in: hotelIds };
+        }
+
+       // Add hotelIds to hotel filter if rooms are filtered
+        if (hotelIds.length) hotelFilter._id = { $in: hotelIds };
+
+        const total = await hotelModel.countDocuments(hotelFilter);
+
+        const hotels = await hotelModel
+            .find(hotelFilter)
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit)
-            .populate<{ amenities: { _id: string; name: string }[] }>("amenities", "_id name")
+            .populate("amenities", "_id name")
             .lean<IHotel[]>();
-            
+
         return { hotels, total };
     }
 }
+

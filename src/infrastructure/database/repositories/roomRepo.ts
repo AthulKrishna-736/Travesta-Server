@@ -1,4 +1,4 @@
-import {  injectable } from "tsyringe";
+import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
 import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfaces/model/room.interface";
@@ -58,7 +58,13 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         }
 
         const total = await this.model.countDocuments(filter);
-        const rooms = await this.model.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();
+        const rooms = await this.model
+            .find(filter)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit)
+            .populate({ path: "amenities", select: "name _id" })
+            .lean();
 
         return { rooms, total };
     }
@@ -70,7 +76,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         maxPrice?: number,
         amenities?: string[],
         search?: string,
-        destination?: string,  
+        destination?: string,
         checkIn?: string,
         checkOut?: string,
         guests?: string

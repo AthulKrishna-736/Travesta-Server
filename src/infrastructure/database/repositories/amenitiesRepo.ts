@@ -27,11 +27,10 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         return amenity?.toObject() || null;
     }
 
-    async findAllAmenities(page: number, limit: number, search?: string, sortField: string = 'name', sortOrder: string = 'ascending'): Promise<{ amenities: IAmenities[] | null, total: number }> {
+    async findAllAmenities(page: number, limit: number, type: string = 'hotel', search?: string, sortField: string = 'name', sortOrder: string = 'ascending'): Promise<{ amenities: IAmenities[] | null, total: number }> {
         const skip = (page - 1) * limit;
-        console.log('sortoptins: ', sortField, sortOrder)
         const order = sortOrder == 'descending' ? -1 : 1;
-        const filter: any = {}
+        const filter: any = { type }
         if (search) {
             const searchRegex = new RegExp(search, 'i')
             filter.$or = [

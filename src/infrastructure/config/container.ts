@@ -72,7 +72,7 @@ import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRe
 import { GetVendorsChatWithUserUseCase } from "../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
 import { GetVendorsChatWithAdmiinUseCase } from "../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
 import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase } from "../../domain/interfaces/model/booking.interface";
-import { IAddWalletTransactionUseCase, ICreateWalletUseCase, IGetWalletUseCase, ITransferUsersAmountUseCase } from "../../domain/interfaces/model/wallet.interface";
+import { IAddVendorTransactionUseCase, IAddWalletTransactionUseCase, ICreateWalletUseCase, IGetWalletUseCase, ITransferUsersAmountUseCase } from "../../domain/interfaces/model/wallet.interface";
 import { GetWalletUseCase } from "../../application/use-cases/user/wallet/getWallet.UseCase";
 import { CreateWalletUseCase } from "../../application/use-cases/user/wallet/createWallet.UseCase";
 import { AddWalletTransactionUseCase } from "../../application/use-cases/user/wallet/addTransaction.UseCase";
@@ -82,6 +82,7 @@ import { TransferUsersAmountUseCase } from "../../application/use-cases/user/wal
 import { GetBookingsToVendorUseCase } from "../../application/use-cases/vendor/booking/getBookingsToVendor";
 import { FindUsedActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getUserActiveAmenities.UseCase";
 import { GetUserUnreadMsgUseCase } from "../../application/use-cases/chat/getUserUnreadMsg.UseCase";
+import { AddVendorTransactionUseCase } from "../../application/use-cases/user/wallet/onlineTransfer.UseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -376,4 +377,8 @@ container.register<IAddWalletTransactionUseCase>(TOKENS.AddWalletTransactionUseC
 
 container.register<ITransferUsersAmountUseCase>(TOKENS.TransferUsersAmountUseCase, {
   useClass: TransferUsersAmountUseCase,
+})
+
+container.register<IAddVendorTransactionUseCase>(TOKENS.AddVendorTransactionUseCase, {
+  useClass: AddVendorTransactionUseCase,
 })
