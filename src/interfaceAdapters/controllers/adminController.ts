@@ -19,13 +19,12 @@ export class AdminController {
 
     async blockOrUnblockUser(req: CustomRequest, res: Response) {
         try {
-            const { userId } = req.params;
-
-            if (!userId) {
+            const { customerId } = req.params;
+            if (!customerId) {
                 throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const updatedUser = await this._blockUnblockUser.blockUnblockUser(userId);
+            const updatedUser = await this._blockUnblockUser.blockUnblockUser(customerId);
             if (!updatedUser) throw new AppError("User not found or could not be updated", HttpStatusCode.NOT_FOUND);
             const message = updatedUser.isBlocked ? `${updatedUser.role} blocked successfully` : `${updatedUser.role} unblocked successfully`;
             ResponseHandler.success(res, message, updatedUser, HttpStatusCode.OK);
@@ -72,7 +71,6 @@ export class AdminController {
         try {
             const { vendorId } = req.params;
             const { isVerified, reason } = req.body;
-
             if (!vendorId || typeof isVerified !== 'boolean') {
                 throw new AppError('Invalid request data', HttpStatusCode.BAD_REQUEST);
             }
