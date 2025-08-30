@@ -8,6 +8,7 @@ import { CustomRequest } from "../../utils/customRequest";
 import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
 import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { CreateUserDTO } from "../dtos/user.dto";
+import { USER_RES_MESSAGES } from "../../constants/resMessages";
 
 
 @injectable()
@@ -27,7 +28,7 @@ export class AuthController {
         try {
             const userData: CreateUserDTO = req.body
             const newUser = await this._registerUseCase.register(userData)
-            ResponseHandler.success(res, 'User registration on progress', newUser, HttpStatusCode.OK)
+            ResponseHandler.success(res, USER_RES_MESSAGES.register, newUser, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -39,9 +40,9 @@ export class AuthController {
             if (!userId || !purpose) {
                 throw new AppError('Userid and purpose are required', HttpStatusCode.BAD_REQUEST);
             }
-            const result = await this._resendOtpUseCase.resendOtp(userId, purpose);
+            const { message } = await this._resendOtpUseCase.resendOtp(userId, purpose);
 
-            ResponseHandler.success(res, result.message, null, HttpStatusCode.OK)
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -58,7 +59,7 @@ export class AuthController {
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
-            ResponseHandler.success(res, 'Login successfull', user, HttpStatusCode.OK)
+            ResponseHandler.success(res, USER_RES_MESSAGES.login, user, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -77,7 +78,7 @@ export class AuthController {
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
-            ResponseHandler.success(res, 'Google login successful', user, HttpStatusCode.OK);
+            ResponseHandler.success(res, USER_RES_MESSAGES.googleLogin, user, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -90,8 +91,8 @@ export class AuthController {
                 throw new AppError('Email and role missing in body', HttpStatusCode.BAD_REQUEST)
             }
 
-            const data = await this._forgotPassUseCase.forgotPass(email, role)
-            ResponseHandler.success(res, data.message, data.userId, HttpStatusCode.OK)
+            const { message, userId } = await this._forgotPassUseCase.forgotPass(email, role)
+            ResponseHandler.success(res, message, userId, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -105,7 +106,7 @@ export class AuthController {
             }
 
             await this._resetPassUseCase.resetPass(email, password)
-            ResponseHandler.success(res, 'Password updated successfully', null, HttpStatusCode.OK)
+            ResponseHandler.success(res, USER_RES_MESSAGES.resetPass, null, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -115,12 +116,12 @@ export class AuthController {
         try {
             const { userId, otp, purpose } = req.body;
 
-            const data = await this._verifyOtpUseCase.verifyOtp(userId, otp, purpose)
-            if (!data.isOtpVerified) {
+            const { data, isOtpVerified } = await this._verifyOtpUseCase.verifyOtp(userId, otp, purpose)
+            if (!isOtpVerified) {
                 throw new AppError('Otp verification failed or session expired', HttpStatusCode.BAD_REQUEST)
             }
 
-            ResponseHandler.success(res, 'Otp verified successfully', data.data, HttpStatusCode.OK)
+            ResponseHandler.success(res, USER_RES_MESSAGES.verifyOtp, data, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
