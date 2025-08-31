@@ -12,6 +12,7 @@ import { IRedisService } from "../../../domain/interfaces/services/redisService.
 import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { VENDOR_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class UpdateKycUseCase implements IUpdateKycUseCase {
@@ -66,7 +67,7 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
 
         return {
             vendor: mapUser,
-            message: 'KYC documents updated successfully',
+            message: VENDOR_RES_MESSAGES.kyc,
         };
     }
 }

@@ -8,6 +8,7 @@ import { IGetVendorUseCase } from "../../../domain/interfaces/model/usecases.int
 import { TOKENS } from "../../../constants/token";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { VENDOR_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IGetVendorUseCase {
@@ -42,7 +43,7 @@ export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IG
 
         return {
             user: mapVendor,
-            message: 'Profile fetched successfully',
+            message: VENDOR_RES_MESSAGES.profile,
         };
     }
 
