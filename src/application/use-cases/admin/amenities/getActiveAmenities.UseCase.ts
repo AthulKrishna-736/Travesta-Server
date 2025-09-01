@@ -4,6 +4,7 @@ import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -22,7 +23,7 @@ export class GetActiveAmenitiesUseCase implements IGetActiveAmenitiesUseCase {
         return {
             amenities,
             message: total > 0
-                ? 'Fetched active amenities successfully.'
+                ? AMENITIES_RES_MESSAGES.getActive
                 : 'No active amenities found.',
             total
         };

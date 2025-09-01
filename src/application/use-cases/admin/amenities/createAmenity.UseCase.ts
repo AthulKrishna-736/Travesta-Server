@@ -4,6 +4,7 @@ import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories
 import { ICreateAmenityUseCase, TCreateAmenityData, TResponseAmenityData } from "../../../../domain/interfaces/model/amenities.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -21,7 +22,7 @@ export class CreateAmenityUseCase implements ICreateAmenityUseCase {
 
         return {
             amenity,
-            message: 'amenity created successfully',
+            message: AMENITIES_RES_MESSAGES.create,
         };
     }
 }

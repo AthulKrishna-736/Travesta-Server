@@ -5,6 +5,7 @@ import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories
 import { AmenityLookupBase } from "../../base/amenity.base";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -28,7 +29,7 @@ export class UpdateAmenityUseCase extends AmenityLookupBase implements IUpdateAm
 
         return {
             amenity: updatedAmenity,
-            message: 'amenity updated successfully'
+            message: AMENITIES_RES_MESSAGES.update,
         }
     }
 }

@@ -5,6 +5,7 @@ import { TOKENS } from "../../../../constants/token";
 import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -32,7 +33,7 @@ export class BlockUnblockPlanUseCase extends SubscriptionLookupBase implements I
 
         return {
             plan: planEntity.toObject(),
-            message: `Subscription plan ${planEntity.isActive ? 'unblocked' : 'blocked'} successfully`,
+            message: `Subscription plan ${planEntity.isActive ? PLAN_RES_MESSAGES.unblock : PLAN_RES_MESSAGES.block}`,
         }
     }
 }

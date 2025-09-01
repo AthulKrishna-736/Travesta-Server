@@ -8,6 +8,7 @@ import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
 import { AwsImageUploader } from '../../base/imageUploader';
 import { ResponseMapper } from '../../../../utils/responseMapper';
+import { ROOM_RES_MESSAGES } from '../../../../constants/resMessages';
 
 @injectable()
 export class CreateRoomUseCase implements ICreateRoomUseCase {
@@ -45,7 +46,7 @@ export class CreateRoomUseCase implements ICreateRoomUseCase {
 
         return {
             room: finalMappedRooms,
-            message: 'Room created successfully',
+            message: ROOM_RES_MESSAGES.create,
         };
     }
 }

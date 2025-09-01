@@ -7,6 +7,7 @@ import logger from "../../../utils/logger";
 import { IMailService } from "../../../domain/interfaces/services/mailService.interface";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { UserLookupBase } from "../base/userLookup.base";
+import { ADMIN_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class UpdateVendorReq extends UserLookupBase implements IUpdateVendorReqUseCase {
@@ -43,7 +44,7 @@ export class UpdateVendorReq extends UserLookupBase implements IUpdateVendorReqU
         logger.info(`Vendor ${isVerified ? 'approved' : 'rejected'} for ${vendorEntity.email}`);
 
         return {
-            message: `Vendor ${isVerified ? 'approved' : 'rejected'} successfully`
+            message: `${isVerified ? ADMIN_RES_MESSAGES.approveVendor : ADMIN_RES_MESSAGES.rejectVendor}`
         };
     }
 }

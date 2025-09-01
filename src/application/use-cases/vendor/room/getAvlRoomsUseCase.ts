@@ -10,6 +10,7 @@ import { RoomLookupBase } from "../../base/room.base";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { ROOM_RES_MESSAGES } from "../../../../constants/resMessages";
 
 @injectable()
 export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvailableRoomsUseCase {
@@ -90,7 +91,7 @@ export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvai
         return {
             rooms: finalMappedRooms,
             total: total,
-            message: 'Available rooms fetched successfully',
+            message: ROOM_RES_MESSAGES.getAvl,
         };
     }
 }

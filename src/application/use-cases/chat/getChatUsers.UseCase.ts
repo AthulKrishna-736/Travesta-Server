@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { IChatRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { IGetChattedUsersUseCase } from "../../../domain/interfaces/model/chat.interface";
 import { TOKENS } from "../../../constants/token";
+import { CHAT_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class GetChattedUsersUseCase implements IGetChattedUsersUseCase {
@@ -13,7 +14,7 @@ export class GetChattedUsersUseCase implements IGetChattedUsersUseCase {
         const users = await this._chatRepo.getUsersWhoChattedWithVendor(vendorId, search);
         return {
             users,
-            message: "Fetched users who chatted with vendor"
+            message: CHAT_RES_MESSAGES.getUsers,
         };
     }
 }

@@ -10,6 +10,7 @@ import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -74,7 +75,7 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
 
         return {
             hotel: customHotelMapping,
-            message: "Hotel updated successfully",
+            message: HOTEL_RES_MESSAGES.update,
         };
     }
 

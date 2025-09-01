@@ -9,6 +9,7 @@ import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { ROOM_RES_MESSAGES } from "../../../../constants/resMessages";
 
 @injectable()
 export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseCase {
@@ -64,7 +65,7 @@ export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseC
 
         return {
             room: finalMappedRooms,
-            message: "Room updated successfully",
+            message: ROOM_RES_MESSAGES.update,
         };
     }
 }

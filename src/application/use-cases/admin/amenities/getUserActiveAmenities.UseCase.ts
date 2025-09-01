@@ -4,6 +4,7 @@ import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 @injectable()
 export class FindUsedActiveAmenitiesUseCase implements IFindUsedActiveAmenitiesUseCase {
@@ -20,7 +21,7 @@ export class FindUsedActiveAmenitiesUseCase implements IFindUsedActiveAmenitiesU
 
         return {
             amenities,
-            message: "Fetched used active amenities successfully.",
+            message: AMENITIES_RES_MESSAGES.getUsed,
             total: amenities.length
         };
     }

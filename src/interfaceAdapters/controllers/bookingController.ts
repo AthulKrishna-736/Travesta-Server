@@ -7,6 +7,7 @@ import { HttpStatusCode } from '../../utils/HttpStatusCodes';
 import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase } from '../../domain/interfaces/model/booking.interface';
 import { AppError } from '../../utils/appError';
 import { Pagination } from '../../shared/types/common.types';
+import { BOOKING_RES_MESSAGES } from '../../constants/resMessages';
 
 @injectable()
 export class BookingController {
@@ -39,7 +40,7 @@ export class BookingController {
                 throw new AppError("Check-out date must be after check-in date", HttpStatusCode.BAD_REQUEST);
             }
 
-            const { booking, message } = await this._createBooking.execute(data);
+            const { booking, message } = await this._createBooking.createBooking(data);
             ResponseHandler.success(res, message, booking, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
@@ -57,7 +58,7 @@ export class BookingController {
 
             const { bookings, total } = await this._getByHotel.getBookingsByHotel(hotelId, page, limit);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit), };
-            ResponseHandler.success(res, 'Bookings by hotel fetched successfully', bookings, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByHotel, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }
@@ -71,7 +72,7 @@ export class BookingController {
 
             const { bookings, total } = await this._getByUser.getBookingByUser(userId as string, page, limit);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
-            ResponseHandler.success(res, 'Bookings by user fetched successfully', bookings, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByUser, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }
@@ -86,7 +87,7 @@ export class BookingController {
             if (!bookingId) {
                 throw new AppError('Booking id is missing', HttpStatusCode.BAD_REQUEST);
             }
-            const { message } = await this._cancelBooking.execute(bookingId, userId as string);
+            const { message } = await this._cancelBooking.cancelBooking(bookingId, userId as string);
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -105,7 +106,7 @@ export class BookingController {
 
             const { bookings, total } = await this._getBookingsToVendor.getBookingsToVendor(vendorId, page, limit)
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-            ResponseHandler.success(res, 'fetched users booked to vendor successfully', bookings, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByUsers, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

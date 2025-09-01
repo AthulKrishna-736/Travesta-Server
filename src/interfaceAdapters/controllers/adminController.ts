@@ -7,6 +7,7 @@ import { TOKENS } from "../../constants/token";
 import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
 import { Pagination } from "../../shared/types/common.types";
 import { AppError } from "../../utils/appError";
+import { ADMIN_RES_MESSAGES } from "../../constants/resMessages";
 
 @injectable()
 export class AdminController {
@@ -24,10 +25,8 @@ export class AdminController {
                 throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const updatedUser = await this._blockUnblockUser.blockUnblockUser(customerId);
-            if (!updatedUser) throw new AppError("User not found or could not be updated", HttpStatusCode.NOT_FOUND);
-            const message = updatedUser.isBlocked ? `${updatedUser.role} blocked successfully` : `${updatedUser.role} unblocked successfully`;
-            ResponseHandler.success(res, message, updatedUser, HttpStatusCode.OK);
+            const { user, message } = await this._blockUnblockUser.blockUnblockUser(customerId);
+            ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -45,7 +44,7 @@ export class AdminController {
             const { users, total } = await this._getAllUsersUsecase.getAllUsers(page, limit, role, search, sortField, sortOrder);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
 
-            ResponseHandler.success(res, 'All users fetched successfully', users, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, ADMIN_RES_MESSAGES.users, users, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }
@@ -61,7 +60,7 @@ export class AdminController {
 
             const { vendors, total } = await this._getAllVendorReqUseCase.getAllVendorReq(page, limit, search, sortField, sortOrder)
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-            ResponseHandler.success(res, 'Vendor requests fetched successfully', vendors, HttpStatusCode.OK, meta);
+            ResponseHandler.success(res, ADMIN_RES_MESSAGES.vendorReq, vendors, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error
         }

@@ -8,6 +8,7 @@ import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, } from '../../domain/interfaces/model/room.interface';
 import { TCreateRoomDTO, TUpdateRoomDTO } from '../dtos/room.dto';
 import { Pagination } from '../../shared/types/common.types';
+import { ROOM_RES_MESSAGES } from '../../constants/resMessages';
 
 
 @injectable()
@@ -24,36 +25,36 @@ export class RoomController {
     async createRoom(req: CustomRequest, res: Response): Promise<void> {
         try {
             const files = req.files as Express.Multer.File[];
+            const { hotelId, name, roomType, roomCount, bedType, guest, amenities, basePrice, images } = req.body;
 
-            const { hotelId, name, capacity, bedType, amenities, basePrice } = req.body;
-
-            console.log('req body room: ', req.body);
+            let amenitiesArray: string[] = []
+            if (amenities) {
+                if (Array.isArray(amenities)) {
+                    amenitiesArray = amenities.flatMap(a => a.split(',').map((s: string) => s.trim()));
+                } else if (typeof amenities === 'string') {
+                    const parsed = JSON.parse(amenities);
+                    amenitiesArray = parsed.flatMap((a: string) => a.split(',').map(s => s.trim()));
+                }
+            }
 
             const roomData: TCreateRoomDTO = {
                 hotelId,
                 name,
-                capacity: Number(capacity),
+                roomType,
+                roomCount,
                 bedType,
-                amenities: typeof amenities === 'string' ? JSON.parse(amenities) : amenities,
-                basePrice: Number(basePrice),
-                images: [],
+                guest,
+                amenities: amenitiesArray,
+                basePrice,
+                images,
             };
 
-            console.log('room data after dto mapping: ', roomData);
-
             if (!files || files.length === 0) {
-                throw new AppError('No images provided to create Room', HttpStatusCode.BAD_REQUEST);
+                throw new AppError('At least 1 image is required to create a room', HttpStatusCode.BAD_REQUEST);
             }
-
-            if (files.length < 4) {
-                throw new AppError('Exactly 4 images are required to create a Room', HttpStatusCode.BAD_REQUEST);
+            if (files.length > 10) {
+                throw new AppError('You can upload a maximum of 10 images', HttpStatusCode.BAD_REQUEST);
             }
-
-            if (files.length > 4) {
-                throw new AppError('Only 4 images are allowed — please upload exactly 4 images', HttpStatusCode.BAD_REQUEST);
-            }
-
-            console.log('files check: ', files, files.length)
 
             const { room, message } = await this._createRoomUseCase.createRoom(roomData, files);
             ResponseHandler.success(res, message, room, HttpStatusCode.CREATED);
@@ -70,17 +71,18 @@ export class RoomController {
             }
 
             const files = req.files as Express.Multer.File[];
-
-            const { hotelId, name, capacity, bedType, amenities, basePrice } = req.body;
+            const { hotelId, name, roomType, roomCount, bedType, guest, amenities, basePrice, images } = req.body;
 
             const updateData: TUpdateRoomDTO = {
                 hotelId,
                 name,
-                capacity: capacity !== undefined ? Number(capacity) : undefined,
+                roomType,
+                roomCount: roomCount ? Number(roomCount) : undefined,
                 bedType,
+                guest: guest ? Number(guest) : undefined,
                 amenities: typeof amenities === 'string' ? JSON.parse(amenities) : amenities,
-                basePrice: basePrice !== undefined ? Number(basePrice) : undefined,
-                images: req.body.images ? JSON.parse(req.body.images) : [],
+                basePrice: basePrice ? Number(basePrice) : undefined,
+                images: typeof images == 'string' ? JSON.parse(images) : images,
             };
 
             const { room, message } = await this._updateRoomUseCase.updateRoom(roomId, updateData, files);
@@ -98,7 +100,7 @@ export class RoomController {
             }
 
             const room = await this._getRoomByIdUseCase.getRoomById(roomId);
-            ResponseHandler.success(res, 'Room fetched successfully', room, HttpStatusCode.OK);
+            ResponseHandler.success(res, ROOM_RES_MESSAGES.getRoom, room, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -112,7 +114,7 @@ export class RoomController {
             }
 
             const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(hotelId);
-            ResponseHandler.success(res, 'Rooms fetched successfully', rooms, HttpStatusCode.OK);
+            ResponseHandler.success(res, ROOM_RES_MESSAGES.getAll, rooms, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -183,6 +185,4 @@ export class RoomController {
             throw error;
         }
     }
-
-
 }

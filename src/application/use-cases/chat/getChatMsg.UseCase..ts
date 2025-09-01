@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IChatRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { IGetChatMessagesUseCase, TResponseChatMessage } from "../../../domain/interfaces/model/chat.interface";
+import { CHAT_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class GetChatMessagesUseCase implements IGetChatMessagesUseCase {
@@ -15,7 +16,7 @@ export class GetChatMessagesUseCase implements IGetChatMessagesUseCase {
 
         return {
             chat,
-            message: 'fetched full chat successfully'
+            message: CHAT_RES_MESSAGES.getChat,
         }
     }
 }

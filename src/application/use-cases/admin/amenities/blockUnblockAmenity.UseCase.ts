@@ -5,6 +5,7 @@ import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -32,7 +33,7 @@ export class BlockUnblockAmenity extends AmenityLookupBase implements IBlockUnbl
 
         return {
             amenity: amenityEntity.toObject(),
-            message: `amenity ${amenityEntity.isActive ? 'unblocked' : 'blocked'} successfully`
+            message: `amenity ${amenityEntity.isActive ? AMENITIES_RES_MESSAGES.unblock : AMENITIES_RES_MESSAGES.unblock}`
         }
     }
 }

@@ -5,6 +5,7 @@ import { IBlockUnblockUser } from "../../../domain/interfaces/model/usecases.int
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { UserLookupBase } from "../base/userLookup.base";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { ADMIN_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class BlockUnblockUser extends UserLookupBase implements IBlockUnblockUser {
@@ -14,7 +15,7 @@ export class BlockUnblockUser extends UserLookupBase implements IBlockUnblockUse
         super(userRepo)
     }
 
-    async blockUnblockUser(userId: string): Promise<TResponseUserData> {
+    async blockUnblockUser(userId: string): Promise<{ user: TResponseUserData, message: string }> {
 
         const userEntity = await this.getUserEntityOrThrow(userId);
 
@@ -28,6 +29,9 @@ export class BlockUnblockUser extends UserLookupBase implements IBlockUnblockUse
 
         const mappedUser = ResponseMapper.mapUserToResponseDTO(updatedUser!);
 
-        return mappedUser;
+        return {
+            user: mappedUser,
+            message: mappedUser.isBlocked ? `${mappedUser.role}${ADMIN_RES_MESSAGES.block}` : `${mappedUser.isBlocked}${ADMIN_RES_MESSAGES.unblock}`
+        };
     }
 }

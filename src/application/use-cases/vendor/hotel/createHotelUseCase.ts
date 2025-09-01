@@ -9,6 +9,7 @@ import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -24,11 +25,11 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
     }
 
     async createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {
-        const vendor = await this._userRepo.checkUserVerified(hotelData.vendorId as string);
-        if (!vendor) {
+        const vendor = await this._userRepo.findUserById(hotelData.vendorId as string);
+        if (!vendor?.isVerified) {
             throw new AppError('Vendor is not verified. Please upload docs and verify!', HttpStatusCode.CONFLICT);
         }
-        
+
         const existingHotels = await this.getHotelEntityByVendorId(hotelData.vendorId as string);
         const isDuplicate = existingHotels?.some(hotel => hotel.name === hotelData.name);
 
@@ -57,7 +58,7 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
 
         return {
             hotel: customHotelMapping,
-            message: "Hotel created successfully"
+            message: HOTEL_RES_MESSAGES.create,
         };
     }
 }

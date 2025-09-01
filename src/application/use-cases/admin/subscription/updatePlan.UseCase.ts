@@ -6,6 +6,7 @@ import { ISubscriptionRepository } from "../../../../domain/interfaces/repositor
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import mongoose from "mongoose";
+import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -30,7 +31,7 @@ export class UpdatePlanUseCase extends SubscriptionLookupBase implements IUpdate
 
             return {
                 plan: planEntity.toObject(),
-                message: 'Subscription plan updated successfully',
+                message: PLAN_RES_MESSAGES.update,
             };
         } catch (error: unknown) {
             if (error instanceof mongoose.mongo.MongoServerError && error.code === 11000) {

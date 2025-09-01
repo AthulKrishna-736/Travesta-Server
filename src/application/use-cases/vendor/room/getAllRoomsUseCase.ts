@@ -7,6 +7,7 @@ import { IGetAllRoomsUseCase, TResponseRoomData } from '../../../../domain/inter
 import { IRoomRepository } from '../../../../domain/interfaces/repositories/repository.interface';
 import { RoomLookupBase } from '../../base/room.base';
 import { ResponseMapper } from '../../../../utils/responseMapper';
+import { ROOM_RES_MESSAGES } from '../../../../constants/resMessages';
 
 @injectable()
 export class GetAllRoomsUseCase extends RoomLookupBase implements IGetAllRoomsUseCase {
@@ -49,7 +50,7 @@ export class GetAllRoomsUseCase extends RoomLookupBase implements IGetAllRoomsUs
 
         return {
             rooms: finalMappedRooms,
-            message: 'Rooms fetched successfully',
+            message: ROOM_RES_MESSAGES.getAll,
             total,
         };
     }

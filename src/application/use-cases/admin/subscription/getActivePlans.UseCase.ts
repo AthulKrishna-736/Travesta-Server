@@ -5,6 +5,7 @@ import { ISubscriptionRepository } from "../../../../domain/interfaces/repositor
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
 import { SubscriptionEntity } from "../../../../domain/entities/admin/subscription.entity";
+import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -24,7 +25,7 @@ export class GetActivePlansUseCase implements IGetActivePlansUseCase {
 
         return {
             plans: mappedPlans,
-            message: 'Active plans fetched successfully',
+            message: PLAN_RES_MESSAGES.active,
         }
     }
 }
