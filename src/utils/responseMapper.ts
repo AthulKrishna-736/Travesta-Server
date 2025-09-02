@@ -6,6 +6,7 @@ import { ISubscription } from "../domain/interfaces/model/subscription.interface
 import { TResponseSubscriptionDTO } from "../interfaceAdapters/dtos/subscription.dto";
 import { IRoom } from "../domain/interfaces/model/room.interface";
 import { TResponseRoomDTO } from "../interfaceAdapters/dtos/room.dto";
+import { ITransactions, TResponseTransactions } from "../domain/interfaces/model/wallet.interface";
 
 export class ResponseMapper {
     static mapSubscriptionToResponseDTO(plan: ISubscription): TResponseSubscriptionDTO {
@@ -31,6 +32,7 @@ export class ResponseMapper {
             roomType: room.roomType,
             roomCount: room.roomCount,
             bedType: room.bedType,
+            guest: room.guest,
             amenities: room.amenities,
             images: room.images,
             basePrice: room.basePrice,
@@ -79,5 +81,20 @@ export class ResponseMapper {
             createdAt: user.createdAt,
             updatedAt: user.updatedAt,
         };
+    }
+
+    static mapTransactionToResponseDTO(transactions: ITransactions): TResponseTransactions {
+        return {
+            _id: transactions._id,
+            walletId: transactions.walletId,
+            type: transactions.type,
+            amount: transactions.amount,
+            description: transactions.description,
+            transactionId: transactions?.transactionId,
+            relatedEntityId: transactions?.relatedEntityId,
+            relatedEntityType: transactions?.relatedEntityType,
+            createdAt: transactions.createdAt,
+            updatedAt: transactions.updatedAt,
+        }
     }
 }

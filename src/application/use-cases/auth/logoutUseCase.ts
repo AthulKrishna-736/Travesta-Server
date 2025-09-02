@@ -6,6 +6,7 @@ import { IAuthService } from "../../../domain/interfaces/services/authService.in
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import logger from "../../../utils/logger";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
+import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
 
 
 @injectable()
@@ -36,6 +37,6 @@ export class LogoutUseCase {
 
         await this._redisService.blacklistAccessToken(accessToken, jwtConfig.accessToken.maxAge / 1000)
 
-        return { message: 'Logged out successfully' }
+        return { message: AUTH_RES_MESSAGES.logout }
     }
 }

@@ -17,8 +17,8 @@ export abstract class AmenityLookupBase {
         return new AmenitiesEntity(amenityData);
     }
 
-    protected async getAllAmenitiesOrThrow(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenitiesEntity[], total: number }> {
-        const { amenities, total } = await this._amenityRepo.findAllAmenities(page, limit, search, sortField, sortOrder);
+    protected async getAllAmenitiesOrThrow(page: number, limit: number, type: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenitiesEntity[], total: number }> {
+        const { amenities, total } = await this._amenityRepo.findAllAmenities(page, limit, type, search, sortField, sortOrder);
 
         if (!amenities) {
             throw new AppError('amenities not found', HttpStatusCode.NOT_FOUND);

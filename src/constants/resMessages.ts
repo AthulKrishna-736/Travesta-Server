@@ -74,3 +74,15 @@ export enum PLAN_RES_MESSAGES {
     getAll = 'Fetched all plans successfully',
     update = 'Subscription plan updated successfully',
 }
+
+export enum WALLET_RES_MESSAGES{
+    create = 'Created wallet successfully',
+    getWallet = 'Fetched wallet successfully',
+    paymentIntent = 'Payment intent created',
+    update = 'updated wallet successfully',
+}
+
+export enum TRANSACTION_RES_MESSAGES {
+    create = 'Created transaction successfully',
+    getTransaction = 'Fetched Transactions successfully',
+}

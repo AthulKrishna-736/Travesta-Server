@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { IForgotPassUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { TRole } from "../../../shared/types/client.types";
+import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class ForgotPassUseCase implements IForgotPassUseCase {
@@ -14,7 +15,7 @@ export class ForgotPassUseCase implements IForgotPassUseCase {
         @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
     ) { }
-
+  
     async forgotPass(email: string, role: TRole): Promise<{ userId: string; message: string; }> {
         const user = await this._userRepo.findUser(email)
         if (!user) {
@@ -35,7 +36,7 @@ export class ForgotPassUseCase implements IForgotPassUseCase {
 
         return {
             userId: tempUserId,
-            message: 'Otp sent successfully'
+            message: AUTH_RES_MESSAGES.forgotPass,
         }
     }
 }

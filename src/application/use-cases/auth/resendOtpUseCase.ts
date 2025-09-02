@@ -4,6 +4,7 @@ import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IResendOtpUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
+import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
 
 
 @injectable()
@@ -18,6 +19,6 @@ export class ResendOtpUseCase implements IResendOtpUseCase {
         }
 
         await this._authService.resendOtp(userId, purpose)
-        return { message: 'OTP resent to you email' }
+        return { message: AUTH_RES_MESSAGES.resendOtp }
     }
 }

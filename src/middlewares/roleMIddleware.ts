@@ -7,6 +7,7 @@ import { TRole } from "../shared/types/client.types";
 
 export const authorizeRoles = (...roles: TRole[]) => {
     return (req: CustomRequest, res: Response, next: NextFunction) => {
+        console.log('req user console: ', req.user);
         if (!req.user) {
             return next(new AppError("Not authenticated", HttpStatusCode.UNAUTHORIZED));
         }

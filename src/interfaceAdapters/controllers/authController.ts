@@ -8,7 +8,7 @@ import { CustomRequest } from "../../utils/customRequest";
 import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
 import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { CreateUserDTO } from "../dtos/user.dto";
-import { USER_RES_MESSAGES } from "../../constants/resMessages";
+import { AUTH_RES_MESSAGES } from "../../constants/resMessages";
 
 
 @injectable()
@@ -28,7 +28,7 @@ export class AuthController {
         try {
             const userData: CreateUserDTO = req.body
             const newUser = await this._registerUseCase.register(userData)
-            ResponseHandler.success(res, USER_RES_MESSAGES.register, newUser, HttpStatusCode.OK)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.register, newUser, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -41,7 +41,6 @@ export class AuthController {
                 throw new AppError('Userid and purpose are required', HttpStatusCode.BAD_REQUEST);
             }
             const { message } = await this._resendOtpUseCase.resendOtp(userId, purpose);
-
             ResponseHandler.success(res, message, null, HttpStatusCode.OK)
         } catch (error) {
             throw error
@@ -59,7 +58,7 @@ export class AuthController {
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
-            ResponseHandler.success(res, USER_RES_MESSAGES.login, user, HttpStatusCode.OK)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.login, user, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -78,7 +77,7 @@ export class AuthController {
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
-            ResponseHandler.success(res, USER_RES_MESSAGES.googleLogin, user, HttpStatusCode.OK);
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.googleLogin, user, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -106,7 +105,7 @@ export class AuthController {
             }
 
             await this._resetPassUseCase.resetPass(email, password)
-            ResponseHandler.success(res, USER_RES_MESSAGES.resetPass, null, HttpStatusCode.OK)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.resetPass, null, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }
@@ -121,7 +120,7 @@ export class AuthController {
                 throw new AppError('Otp verification failed or session expired', HttpStatusCode.BAD_REQUEST)
             }
 
-            ResponseHandler.success(res, USER_RES_MESSAGES.verifyOtp, data, HttpStatusCode.OK)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.verifyOtp, data, HttpStatusCode.OK)
         } catch (error) {
             throw error
         }

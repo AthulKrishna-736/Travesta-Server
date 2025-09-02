@@ -37,9 +37,9 @@ export class adminRoutes extends BaseRouter {
         //customers
         this.router
             .get('/customers', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getAllUsers(req, res))
-            .patch('/customer/:customerId/status', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.blockOrUnblockUser(req, res))
-            .get('/vendor/requests', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getVendorRequest(req, res))
-            .patch('/vendor/:vendorId/verify', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.updateVendorReq(req, res));
+            .patch('/customers/:customerId/status', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.blockOrUnblockUser(req, res))
+            .get('/vendors/requests', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.getVendorRequest(req, res))
+            .patch('/vendors/:vendorId/verify', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._adminController.updateVendorReq(req, res));
 
         //amenities
         this.router.route('/amenities')
@@ -55,7 +55,7 @@ export class adminRoutes extends BaseRouter {
             .get(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.getAllSubscriptions(req, res))
             .post(authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.createSubscriptionPlan(req, res))
         // .get('/plans/active', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), (req: CustomRequest, res) => this._subscriptionController.getActiveSubscriptions(req, res))
-        
+
         this.router.route('/plans/:planId')
             .put(authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res) => this._subscriptionController.updateSubscriptionPlan(req, res))
             .patch(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res) => this._subscriptionController.blockUnblockSubscription(req, res));

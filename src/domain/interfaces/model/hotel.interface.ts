@@ -37,5 +37,18 @@ export interface IGetHotelByIdUseCase {
 }
 
 export interface IGetAllHotelsUseCase {
-    getAllHotel(page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
+    getAllHotel(
+        page: number,
+        limit: number,
+        filters?: {
+            search?: string;
+            amenities?: string[];
+            roomType?: string[];
+            checkIn?: string;
+            checkOut?: string;
+            guests?: number;
+            minPrice?: number;
+            maxPrice?: number;
+        }
+    ): Promise<{ hotels: TResponseHotelData[]; total: number; message: string }>
 }

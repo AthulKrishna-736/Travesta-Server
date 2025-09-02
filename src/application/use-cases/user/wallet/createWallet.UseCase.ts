@@ -4,6 +4,7 @@ import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
 import { TOKENS } from '../../../../constants/token';
 import { IWalletRepository } from '../../../../domain/interfaces/repositories/repository.interface';
 import { ICreateWalletUseCase, TCreateWalletData, TResponseWalletData } from '../../../../domain/interfaces/model/wallet.interface';
+import { WALLET_RES_MESSAGES } from '../../../../constants/resMessages';
 
 @injectable()
 export class CreateWalletUseCase implements ICreateWalletUseCase {
@@ -12,7 +13,7 @@ export class CreateWalletUseCase implements ICreateWalletUseCase {
     ) { }
 
     async createUserWallet(userId: string): Promise<{ wallet: TResponseWalletData, message: string }> {
-        const walletExist = await this._walletRepo.findWalletExist(userId);
+        const walletExist = await this._walletRepo.findUserWallet(userId);
 
         if (walletExist) {
             throw new AppError('Wallet already exist', HttpStatusCode.CONFLICT);
@@ -28,6 +29,6 @@ export class CreateWalletUseCase implements ICreateWalletUseCase {
             throw new AppError('Wallet already exists or creation failed', HttpStatusCode.BAD_REQUEST);
         }
 
-        return { wallet: created, message: 'Wallet created successfully' };
+        return { wallet: created, message: WALLET_RES_MESSAGES.create };
     }
 }

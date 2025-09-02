@@ -30,7 +30,7 @@ export interface IGetAmenityByIdUseCase {
 }
 
 export interface IGetAllAmenitiesUseCase {
-    getAllAmenitiesUseCase(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }>
+    getAllAmenitiesUseCase(page: number, limit: number, type: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }>
 }
 
 export interface IBlockUnblockAmenityUseCase {

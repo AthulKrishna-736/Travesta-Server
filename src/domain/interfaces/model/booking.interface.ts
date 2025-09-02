@@ -1,5 +1,8 @@
 import { Types } from "mongoose";
 
+export type TStatus = 'confirmed' | 'cancelled' | 'pending';
+export type TPaymentStatus = 'pending' | 'success' | 'failed' | 'refunded';
+
 //booking model
 export interface IBooking {
     _id?: string;
@@ -10,27 +13,25 @@ export interface IBooking {
     checkOut: Date;
     guests: number;
     totalPrice: number;
-    status: 'confirmed' | 'cancelled' | 'pending';
-    payment: {
-        status: 'pending' | 'success' | 'failed' | 'refunded';
-    };
+    status: TStatus;
+    payment: TPaymentStatus;
     createdAt: Date;
     updatedAt: Date;
 }
 
 //booking types
-export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt' | 'status'>;
+export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt' | 'status' | 'payment'>;
 export type TUpdateBookingData = Partial<Omit<IBooking, '_id' | 'userId' | 'hotelId' | 'roomId' | 'createdAt' | 'updatedAt'>>;
 export type TResponseBookingData = Omit<IBooking, 'checkIn' | 'checkOut'> & { checkIn: string, checkOut: string };
 
 
 //booking use case
 export interface ICreateBookingUseCase {
-    execute(data: TCreateBookingData): Promise<{ booking: TResponseBookingData; message: string }>;
+    createBooking(data: TCreateBookingData): Promise<{ booking: TResponseBookingData; message: string }>;
 }
 
 export interface ICancelBookingUseCase {
-    execute(bookingId: string, userId: string): Promise<{ message: string }>;
+    cancelBooking(bookingId: string, userId: string): Promise<{ message: string }>;
 }
 
 export interface IGetBookingsByUserUseCase {
