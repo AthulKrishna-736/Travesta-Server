@@ -3,20 +3,23 @@ import { Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { HttpStatusCode } from '../../utils/HttpStatusCodes';
+import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
-import { ICreateWalletUseCase, IGetWalletUseCase, IAddWalletTransactionUseCase, TCreateWalletTransaction, ITransferUsersAmountUseCase } from '../../domain/interfaces/model/wallet.interface';
+import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from '../../domain/interfaces/model/wallet.interface';
 import { IStripeService } from '../../domain/interfaces/services/stripeService.interface';
+import { TCreateBookingData } from '../../domain/interfaces/model/booking.interface';
+import { WALLET_RES_MESSAGES } from '../../constants/resMessages';
 import { Pagination } from '../../shared/types/common.types';
 
 @injectable()
 export class WalletController {
     constructor(
-        @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
-        @inject(TOKENS.GetWalletUseCase) private _getWallet: IGetWalletUseCase,
-        @inject(TOKENS.AddWalletTransactionUseCase) private _addTransaction: IAddWalletTransactionUseCase,
-        @inject(TOKENS.StripeService) private _stripeService: IStripeService,
-        @inject(TOKENS.TransferUsersAmountUseCase) private _transferAmount: ITransferUsersAmountUseCase,
+        @inject(TOKENS.CreateWalletUseCase) private _createWalletUseCase: ICreateWalletUseCase,
+        @inject(TOKENS.GetWalletUseCase) private _getWalletUseCase: IGetWalletUseCase,
+        @inject(TOKENS.StripeService) private _stripeServiceUseCase: IStripeService,
+        @inject(TOKENS.BookingTransactionUseCase) private _bookingConfirmUseCase: IBookingTransactionUseCase,
+        @inject(TOKENS.AddMoneyToWalletUseCase) private _addMoneyToWalletUseCase: IAddMoneyToWalletUseCase,
+        @inject(TOKENS.GetTransactionsUseCase) private _getTransactionUseCase: IGetTransactionsUseCase,
     ) { }
 
     async createWallet(req: CustomRequest, res: Response): Promise<void> {
@@ -24,7 +27,7 @@ export class WalletController {
             const userId = req.user?.userId;
             if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
 
-            const { wallet, message } = await this._createWallet.createUserWallet(userId);
+            const { wallet, message } = await this._createWalletUseCase.createUserWallet(userId);
             ResponseHandler.success(res, message, wallet, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
@@ -34,37 +37,10 @@ export class WalletController {
     async getWallet(req: CustomRequest, res: Response): Promise<void> {
         try {
             const userId = req.user?.userId;
-            const page = Number(req.query.page);
-            const limit = Number(req.query.limit);
             if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
 
-            const { wallet, total, message } = await this._getWallet.getUserWallet(userId, page, limit);
-            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-            ResponseHandler.success(res, message, wallet, HttpStatusCode.OK, meta);
-        } catch (error) {
-            throw error;
-        }
-    }
-
-    async addTransaction(req: CustomRequest, res: Response): Promise<void> {
-        try {
-            const userId = req.user?.userId;
-            if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
-
-            const { amount, type, description, transactionId } = req.body;
-            if (!amount || !type || !description || !transactionId) {
-                throw new AppError("Invalid transaction data", HttpStatusCode.BAD_REQUEST);
-            }
-
-            const transaction: TCreateWalletTransaction = {
-                type,
-                amount,
-                description: description?.trim(),
-                transactionId,
-            }
-
-            const { message } = await this._addTransaction.addWalletAmount(userId, transaction);
-            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
+            const { wallet, message } = await this._getWalletUseCase.getUserWallet(userId);
+            ResponseHandler.success(res, message, wallet, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
@@ -79,35 +55,90 @@ export class WalletController {
                 throw new AppError("User ID and amount are required", HttpStatusCode.BAD_REQUEST);
             }
 
-            const result = await this._stripeService.createPaymentIntent(userId, amount);
-            ResponseHandler.success(res, "Proceed payment gateway", result, HttpStatusCode.OK);
+            const result = await this._stripeServiceUseCase.createPaymentIntent(userId, amount);
+            ResponseHandler.success(res, WALLET_RES_MESSAGES.paymentIntent, result, HttpStatusCode.OK);
         } catch (error) {
             throw error;
         }
     }
 
-    async transferUsersAmount(req: CustomRequest, res: Response): Promise<void> {
+    async BookingConfirmTransaction(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const senderId = req.user?.userId;
-            const { receiverId, amount, transactionId, relatedBookingId, description } = req.body
-
-            if (!senderId) {
-                throw new AppError('Sender id missing', HttpStatusCode.BAD_REQUEST);
+            const userId = req.user?.userId;
+            const { vendorId } = req.params;
+            const { method } = req.query as { method: 'wallet' | 'online' };
+            if (!vendorId || !method || !userId) {
+                throw new AppError('User, Vendor id or method is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            if (
-                !receiverId || !amount || !transactionId || !relatedBookingId || !description ||
-                typeof receiverId !== 'string' || receiverId.trim().length === 0 ||
-                typeof transactionId !== 'string' || transactionId.trim().length === 0 ||
-                typeof relatedBookingId !== 'string' || relatedBookingId.trim().length === 0 ||
-                typeof description !== 'string' || description.trim().length === 0 ||
-                typeof amount !== 'number' || amount <= 0
-            ) {
-                throw new AppError('Invalid or missing transaction data', HttpStatusCode.BAD_REQUEST);
+            const { hotelId, roomId, checkIn, checkOut, guests, totalPrice } = req.body;
+
+            if (!hotelId || !roomId || !checkIn || !checkOut || !guests || !totalPrice) {
+                throw new AppError('booking confirmation fields is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            await this._transferAmount.transferUsersAmount(senderId, receiverId, amount * 100, transactionId, relatedBookingId, description);
-            ResponseHandler.success(res, "Transaction completed successfully", null, HttpStatusCode.OK);
+            const checkInDate = new Date(checkIn);
+            const checkOutDate = new Date(checkOut);
+
+            if (isNaN(checkInDate.getTime()) || isNaN(checkOutDate.getTime())) {
+                throw new AppError("Invalid check-in or check-out date format", HttpStatusCode.BAD_REQUEST);
+            }
+
+            if (checkOutDate <= checkInDate) {
+                throw new AppError("Check-out date must be after check-in date", HttpStatusCode.BAD_REQUEST);
+            }
+
+            const bookingData: TCreateBookingData = {
+                userId,
+                hotelId,
+                roomId,
+                checkIn: checkInDate,
+                checkOut: checkOutDate,
+                guests,
+                totalPrice,
+            };
+            const { transaction, message } = await this._bookingConfirmUseCase.bookingTransaction(vendorId, bookingData, method)
+            ResponseHandler.success(res, message, transaction, HttpStatusCode.OK);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async AddMoneyTransaction(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const userId = req.user?.userId;
+            const { amount } = req.body;
+
+            if (!userId) {
+                throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            if (typeof amount !== 'number') {
+                throw new AppError('Amount should be positive number', HttpStatusCode.BAD_REQUEST);
+            }
+
+            if (amount < 1 || amount > 2000) {
+                throw new AppError('Amount shoube between 1 to 2000', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { transaction, message } = await this._addMoneyToWalletUseCase.addMoneyToWallet(userId, amount);
+            ResponseHandler.success(res, message, transaction, HttpStatusCode.OK);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getTransactions(req: CustomRequest, res: Response): Promise<void> {
+        try {
+            const userId = req.user?.userId;
+            const page = parseInt(req.query.page as string);
+            const limit = parseInt(req.query.limit as string);
+            if (!userId) {
+                throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+            const { transactions, total, message } = await this._getTransactionUseCase.getTransactions(userId, page, limit);
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
+            ResponseHandler.success(res, message, transactions, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error;
         }

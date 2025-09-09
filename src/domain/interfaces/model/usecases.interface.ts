@@ -17,7 +17,7 @@ export interface IGetAllUsersUseCase {
 }
 
 export interface IBlockUnblockUser {
-    blockUnblockUser(userId: string): Promise<TResponseUserData | null>
+    blockUnblockUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
 }
 
 export interface IGetAllVendorReqUseCase {

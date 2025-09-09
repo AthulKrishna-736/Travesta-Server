@@ -6,7 +6,7 @@ import { TCreateTransaction } from "../../../domain/interfaces/model/wallet.inte
 
 
 @injectable()
-export class TransactionRepo extends BaseRepository<TTransactionDoc> implements ITransactionRepository {
+export class TransactionRepository extends BaseRepository<TTransactionDoc> implements ITransactionRepository {
     constructor() {
         super(transactionModel);
     }

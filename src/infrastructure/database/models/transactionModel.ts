@@ -25,16 +25,14 @@ const transactionSchema = new Schema<TTransactionDoc>({
     },
     transactionId: {
         type: String,
-        required: true,
-        unique: true,
     },
     relatedEntityId: {
         type: Types.ObjectId,
     },
     relatedEntityType: {
         type: String,
-        enum: ['booking', 'subscription'],
+        enum: ['Booking', 'Subscription'],
     }
-});
+}, { timestamps: true });
 
 export const transactionModel = mongoose.model<TTransactionDoc>('Transactions', transactionSchema)

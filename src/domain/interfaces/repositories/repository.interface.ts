@@ -1,3 +1,4 @@
+import { TTransactionDoc } from "../../../infrastructure/database/models/transactionModel";
 import { TWalletDocument } from "../../../infrastructure/database/models/walletModel";
 import { TSubscription } from "../../../shared/types/client.types";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../model/amenities.interface";
@@ -7,7 +8,7 @@ import { IHotel, TCreateHotelData, TUpdateHotelData } from "../model/hotel.inter
 import { IRoom, TCreateRoomData, TUpdateRoomData } from "../model/room.interface";
 import { ISubscription, TCreateSubscriptionData, TUpdateSubscriptionData } from "../model/subscription.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
-import { IWallet, TCreateWalletData, TCreateWalletTransaction } from "../model/wallet.interface";
+import { IWallet, TCreateTransaction, TCreateWalletData, TResponseTransactions } from "../model/wallet.interface";
 
 //user repo
 export interface IUserRepository {
@@ -27,7 +28,20 @@ export interface IHotelRepository {
   findHotelById(hotelId: string): Promise<IHotel | null>;
   updateHotel(hotelId: string, data: TUpdateHotelData): Promise<IHotel | null>;
   findHotelsByVendor(vendorId: string): Promise<IHotel[] | null>;
-  findAllHotels(page: number, limit: number, search?: string): Promise<{ hotels: IHotel[] | null; total: number }>;
+  findAllHotels(
+    page: number,
+    limit: number,
+    filters?: {
+      search?: string;
+      amenities?: string[];
+      roomType?: string[];
+      checkIn?: string;
+      checkOut?: string;
+      guests?: number;
+      minPrice?: number;
+      maxPrice?: number;
+    }
+  ): Promise<{ hotels: IHotel[] | null; total: number }>;
 }
 
 //room repo
@@ -70,7 +84,7 @@ export interface IAmenitiesRepository {
   createAmenity(data: TCreateAmenityData): Promise<IAmenities | null>
   findAmenityById(amenityId: string): Promise<IAmenities | null>
   updateAmenity(amenityId: string, data: TUpdateAmenityData): Promise<IAmenities | null>
-  findAllAmenities(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenities[] | null, total: number }>
+  findAllAmenities(page: number, limit: number, rype: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenities[] | null, total: number }>
   getQuery(filter: any): Promise<{ amenities: IAmenities[] | null, total: number }>
   findUsedActiveAmenities(): Promise<IAmenities[] | null>
 }
@@ -100,11 +114,18 @@ export interface IChatRepository {
 
 //wallet repo
 export interface IWalletRepository {
-  createWallet(data: TCreateWalletData): Promise<IWallet | null>;
-  findUserWallet(userId: string, page: number, limit: number): Promise<{ wallet: IWallet | null, total: number }>;
-  updateBalance(userId: string, newBalance: number): Promise<void>;
-  addTransaction(userId: string, transaction: TCreateWalletTransaction): Promise<boolean>;
-  findWalletExist(userId: string): Promise<boolean>;
-  findWallet(userId: string): Promise<TWalletDocument | null>
-  transferAmountBetweenUsers(senderId: string, receiverId: string, amount: number, transactionId: string, relatedBookingId: string, description: string): Promise<boolean>;
+  createWallet(data: TCreateWalletData): Promise<TWalletDocument | null>;
+  updateBalance(userId: string, amount: number): Promise<TWalletDocument | null>;
+  findUserWallet(userId: string): Promise<TWalletDocument | null>
+  findWalletById(walletId: string): Promise<TWalletDocument | null>
+  updateBalanceByWalletId(walletId: string, amount: number): Promise<TWalletDocument | null>
+}
+
+//transaction repo
+export interface ITransactionRepository {
+  findUserTransactions(walletId: string, page: number, limit: number): Promise<{ transactions: TResponseTransactions[], total: number }>;
+  findUserBookingTransactions(walletId: string, bookingId: string): Promise<TResponseTransactions[] | null>
+  findUserSubscriptionTransactions(walletId: string, subscriptionId: string): Promise<TResponseTransactions[] | null>
+  createTransaction(data: TCreateTransaction): Promise<TResponseTransactions | null>
+  findTransactionById(transactionId: string): Promise<TResponseTransactions | null>
 }

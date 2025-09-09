@@ -97,5 +97,5 @@ export const TOKENS = {
   //transaction UseCase
   BookingTransactionUseCase: 'BookingTransactionUseCase',
   AddMoneyToWalletUseCase: 'AddMoneyToWalletUseCase',
-
+  GetTransactionsUseCase: 'GetTransactionsUseCase',
 };

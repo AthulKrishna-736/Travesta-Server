@@ -3,7 +3,7 @@ import { TOKENS } from "../../../constants/token";
 import { IChatRepository, IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { IMarkMsgAsReadUseCase } from "../../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
 
 @injectable()
