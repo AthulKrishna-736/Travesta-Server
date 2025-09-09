@@ -1,7 +1,7 @@
 import { Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";

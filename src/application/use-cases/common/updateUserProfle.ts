@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { IUpdateUserUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import path from 'path';
@@ -17,12 +17,12 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 @injectable()
 export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
     ) {
-        super(userRepo)
+        super(_userRepository)
     }
 
     async updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserData, message: string }> {
@@ -56,7 +56,7 @@ export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
 
         const persistableData = userEntity.getPersistableData();
 
-        const updatedUserData = await this._userRepo.updateUser(userId, persistableData);
+        const updatedUserData = await this._userRepository.updateUser(userId, persistableData);
 
         if (!updatedUserData) {
             throw new AppError('Error while updating user', HttpStatusCode.INTERNAL_SERVER_ERROR);

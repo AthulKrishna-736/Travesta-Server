@@ -9,7 +9,7 @@ import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.in
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { HotelEntity } from "../../../../domain/entities/hotel.entity";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 
@@ -17,11 +17,11 @@ import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 @injectable()
 export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotelsUseCase {
     constructor(
-        @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
+        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
     ) {
-        super(hotelRepo);
+        super(_hotelRepository);
     }
 
     async getAllHotel(
@@ -39,7 +39,7 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
         }
     ): Promise<{ hotels: TResponseHotelData[]; total: number; message: string }> {
 
-        const { hotels, total } = await this._hotelRepo.findAllHotels(page, limit, filters);
+        const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, filters);
 
         if (!hotels || hotels.length === 0) {
             throw new AppError('No hotels found', HttpStatusCode.NOT_FOUND);

@@ -4,7 +4,7 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { TOKENS } from "../../../../constants/token";
 import { TUpdateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IUpdateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
@@ -17,11 +17,11 @@ import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelUseCase {
     private _imageUploader;
     constructor(
-        @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
+        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
         @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(hotelRepo);
+        super(_hotelRepository);
         this._imageUploader = new AwsImageUploader(awsS3Service)
     }
 
@@ -65,7 +65,7 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
             images: finalImages
         })
 
-        const updatedHotel = await this._hotelRepo.updateHotel(hotelId, hotel.getPersistableData());
+        const updatedHotel = await this._hotelRepository.updateHotel(hotelId, hotel.getPersistableData());
 
         if (!updatedHotel) {
             throw new AppError("Failed to update hotel", HttpStatusCode.INTERNAL_SERVER_ERROR);

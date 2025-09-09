@@ -1,7 +1,7 @@
 import { Types } from "mongoose"
 import { IHotel, TUpdateHotelData } from "../interfaces/model/hotel.interface"
 import { AppError } from "../../utils/appError"
-import { HttpStatusCode } from "../../utils/HttpStatusCodes"
+import { HttpStatusCode } from "../../constants/HttpStatusCodes"
 
 
 export interface IHotelEntity {

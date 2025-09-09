@@ -5,7 +5,7 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { TOKENS } from "../../../../constants/token";
 import { TCreateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { ResponseMapper } from "../../../../utils/responseMapper";
@@ -16,11 +16,11 @@ import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelUseCase {
     private _imageUploader;
     constructor(
-        @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
+        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
         @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
         @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
     ) {
-        super(hotelRepo);
+        super(_hotelRepository);
         this._imageUploader = new AwsImageUploader(awsS3Service);
     }
 
@@ -43,7 +43,7 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
             uploadedImageKeys = await this._imageUploader.uploadHotelImages(hotelData.vendorId as string, files);
         }
 
-        const newHotel = await this._hotelRepo.createHotel({
+        const newHotel = await this._hotelRepository.createHotel({
             ...hotelData,
             amenities: hotelData.amenities,
             tags: hotelData.tags,

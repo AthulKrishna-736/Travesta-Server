@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe';
 import { Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
-import { HttpStatusCode } from '../../utils/HttpStatusCodes';
+import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
@@ -91,9 +91,6 @@ export class HotelController {
                 throw new AppError('Hotel id is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            if (!files || files.length === 0) {
-                throw new AppError('At least 1 image is required to create a hotel', HttpStatusCode.BAD_REQUEST);
-            }
             if (files.length > 10) {
                 throw new AppError('You can upload a maximum of 10 images', HttpStatusCode.BAD_REQUEST);
             }
@@ -166,16 +163,30 @@ export class HotelController {
 
     async getAllHotels(req: CustomRequest, res: Response) {
         try {
-            const page = parseInt(req.query.page as string) || 1;
-            const limit = parseInt(req.query.limit as string) || 10;
-            const search = req.query.search as string | undefined;
+            const page = Number(req.query.page) || 1;
+            const limit = Number(req.query.limit) || 10;
 
-            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, search);
+            const filters = {
+                search: req.query.search as string | undefined,
+                checkIn: req.query.checkIn as string | undefined,
+                checkOut: req.query.checkOut as string | undefined,
+                guests: req.query.guests ? Number(req.query.guests) : undefined,
+                minPrice: req.query.minPrice ? Number(req.query.minPrice) : undefined,
+                maxPrice: req.query.maxPrice ? Number(req.query.maxPrice) : undefined,
+                amenities: req.query.amenities ? (req.query.amenities as string).split(",") : undefined,
+                roomType: req.query.roomType ? (req.query.roomType as string).split(",") : undefined,
+            };
 
-            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
-            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
+            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, filters);
+
+            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, {
+                currentPage: page,
+                pageSize: limit,
+                totalData: total,
+                totalPages: Math.ceil(total / limit),
+            });
         } catch (error) {
-            throw error;
+            throw error
         }
     }
 

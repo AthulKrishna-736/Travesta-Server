@@ -1,6 +1,6 @@
 import { Response, NextFunction } from "express";
 import { AppError } from "../utils/appError";
-import { HttpStatusCode } from "../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../constants/HttpStatusCodes";
 import { CustomRequest } from "../utils/customRequest";
 import { TRole } from "../shared/types/client.types";
 

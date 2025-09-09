@@ -86,6 +86,9 @@ export class userRoutes extends BaseRouter {
         this.router
             .post('/payment/online', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._walletController.createPaymentIntent(req, res))
             .post('/payment/:vendorId/booking', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res) => this._walletController.BookingConfirmTransaction(req, res))
-        // .post
+        // .post subsciption payement
+
+        this.router
+            .get('/transactions', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res) => this._walletController.getTransactions(req, res));
     }
 }

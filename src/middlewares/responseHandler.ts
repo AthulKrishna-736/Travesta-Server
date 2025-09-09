@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { HttpStatusCode } from "../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../constants/HttpStatusCodes";
 
 export class ResponseHandler {
     static success(

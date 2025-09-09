@@ -4,7 +4,7 @@ import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IFindUsedActiveAmen
 import { CustomRequest } from "../../utils/customRequest";
 import { Response } from "express";
 import { ResponseHandler } from "../../middlewares/responseHandler";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { TCreateAmenityDTO, TUpdateAmenityDTO } from "../dtos/amenity.dto";
 import { Pagination } from "../../shared/types/common.types";
 import { AppError } from "../../utils/appError";
@@ -13,19 +13,19 @@ import { AppError } from "../../utils/appError";
 @injectable()
 export class AmenityController {
     constructor(
-        @inject(TOKENS.CreateAmenityUseCase) private _createAmenity: ICreateAmenityUseCase,
-        @inject(TOKENS.UpdateAmenityUseCase) private _updateAmenity: IUpdateAmenityUseCase,
-        @inject(TOKENS.BlockUnblockAmenityUseCase) private _blockUnblockAmenity: IBlockUnblockAmenityUseCase,
-        @inject(TOKENS.GetAmenityByIdUseCase) private _getAmenityById: IGetAmenityByIdUseCase,
-        @inject(TOKENS.GetAllAmenitiesUseCase) private _getAllAmenities: IGetAllAmenitiesUseCase,
-        @inject(TOKENS.GetActiveAmenitiesUseCase) private _getAllActiveAmenities: IGetActiveAmenitiesUseCase,
-        @inject(TOKENS.FindUsedActiveAmenitiesUseCase) private _findUsedAmenities: IFindUsedActiveAmenitiesUseCase,
+        @inject(TOKENS.CreateAmenityUseCase) private _createAmenityUseCase: ICreateAmenityUseCase,
+        @inject(TOKENS.UpdateAmenityUseCase) private _updateAmenityUseCase: IUpdateAmenityUseCase,
+        @inject(TOKENS.BlockUnblockAmenityUseCase) private _blockUnblockAmenityUseCase: IBlockUnblockAmenityUseCase,
+        @inject(TOKENS.GetAmenityByIdUseCase) private _getAmenityByIdUseCase: IGetAmenityByIdUseCase,
+        @inject(TOKENS.GetAllAmenitiesUseCase) private _getAllAmenitiesUseCase: IGetAllAmenitiesUseCase,
+        @inject(TOKENS.GetActiveAmenitiesUseCase) private _getAllActiveAmenitiesUseCase: IGetActiveAmenitiesUseCase,
+        @inject(TOKENS.FindUsedActiveAmenitiesUseCase) private _findUsedAmenitiesUseCase: IFindUsedActiveAmenitiesUseCase,
     ) { }
 
     async createAmenity(req: CustomRequest, res: Response): Promise<void> {
         try {
             const data: TCreateAmenityDTO = req.body;
-            const { amenity, message } = await this._createAmenity.createAmenity(data);
+            const { amenity, message } = await this._createAmenityUseCase.createAmenity(data);
             ResponseHandler.success(res, message, amenity, HttpStatusCode.CREATED);
         } catch (error) {
             throw error;
@@ -40,7 +40,7 @@ export class AmenityController {
             }
 
             const data: TUpdateAmenityDTO = req.body;
-            const { amenity, message } = await this._updateAmenity.updateAmenity(amenityId, data);
+            const { amenity, message } = await this._updateAmenityUseCase.updateAmenity(amenityId, data);
             ResponseHandler.success(res, message, amenity, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -54,7 +54,7 @@ export class AmenityController {
                 throw new AppError('Amenityid is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { amenity, message } = await this._blockUnblockAmenity.blockUnblockAmenityUseCase(amenityId);
+            const { amenity, message } = await this._blockUnblockAmenityUseCase.blockUnblockAmenityUseCase(amenityId);
             ResponseHandler.success(res, message, amenity, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -64,7 +64,7 @@ export class AmenityController {
     async getAmenityById(req: CustomRequest, res: Response): Promise<void> {
         try {
             const { amenityId } = req.params;
-            const { amenity, message } = await this._getAmenityById.getAmenityById(amenityId);
+            const { amenity, message } = await this._getAmenityByIdUseCase.getAmenityById(amenityId);
             ResponseHandler.success(res, message, amenity, HttpStatusCode.OK);
         } catch (error) {
             throw error;
@@ -80,7 +80,7 @@ export class AmenityController {
             const sortField = req.query.sortField as string;
             const sortOrder = req.query.sortOrder as string;
 
-            const { amenities, message, total } = await this._getAllAmenities.getAllAmenitiesUseCase(page, limit, type, search, sortField, sortOrder);
+            const { amenities, message, total } = await this._getAllAmenitiesUseCase.getAllAmenitiesUseCase(page, limit, type, search, sortField, sortOrder);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, message, amenities, HttpStatusCode.OK, meta);
         } catch (error) {
@@ -90,7 +90,7 @@ export class AmenityController {
 
     async getAllActiveAmenities(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const { amenities, message, total } = await this._getAllActiveAmenities.getActiveAmenities();
+            const { amenities, message, total } = await this._getAllActiveAmenitiesUseCase.getActiveAmenities();
             ResponseHandler.success(res, message, amenities, HttpStatusCode.OK, { totalData: total });
         } catch (error) {
             throw error;
@@ -99,7 +99,7 @@ export class AmenityController {
 
     async getUsedActiveAmenities(req: CustomRequest, res: Response): Promise<void> {
         try {
-            const { amenities, message, total } = await this._findUsedAmenities.findUsedActiveAmenities();
+            const { amenities, message, total } = await this._findUsedAmenitiesUseCase.findUsedActiveAmenities();
             ResponseHandler.success(res, message, amenities, HttpStatusCode.OK, { totalData: total });
         } catch (error) {
             throw error;

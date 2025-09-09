@@ -5,17 +5,17 @@ import { TOKENS } from "../../../constants/token";
 import { ISubscriptionRepository, IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { IUser } from "../../../domain/interfaces/model/user.interface";
 import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { SubscriptionEntity } from "../../../domain/entities/admin/subscription.entity";
 
 
 @injectable()
 export class SubscribePlanUseCase extends UserLookupBase implements ISubscribePlanUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
         @inject(TOKENS.SubscriptionRepository) private _subscriptionRepo: ISubscriptionRepository,
     ) {
-        super(userRepo);
+        super(_userRepository);
     }
 
     async subscribePlan(userId: string, planId: string): Promise<{ user: IUser, message: string; }> {
@@ -43,7 +43,7 @@ export class SubscribePlanUseCase extends UserLookupBase implements ISubscribePl
 
         userEntity.subscribe(planId, validFrom, validUntil);
 
-        const subscribeUser = await this._userRepo.subscribeUser(userEntity.id as string, userEntity.getUpdatedSubscription());
+        const subscribeUser = await this._userRepository.subscribeUser(userEntity.id as string, userEntity.getUpdatedSubscription());
 
         if (!subscribeUser) {
             throw new AppError('Failed to subscribe plan', HttpStatusCode.INTERNAL_SERVER_ERROR);

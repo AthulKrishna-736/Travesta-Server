@@ -1,5 +1,5 @@
 import { AppError } from "../../utils/appError";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { IUserSubscription } from "../interfaces/model/subscription.interface";
 import { IUser, TUpdateUserData } from "../interfaces/model/user.interface";
 

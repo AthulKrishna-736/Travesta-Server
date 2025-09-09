@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe';
 import { Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
-import { HttpStatusCode } from '../../utils/HttpStatusCodes';
+import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, } from '../../domain/interfaces/model/room.interface';

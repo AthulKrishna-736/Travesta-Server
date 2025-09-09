@@ -1,7 +1,7 @@
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import path from 'path';
 import fs from 'fs';
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 
 export class AwsImageUploader {

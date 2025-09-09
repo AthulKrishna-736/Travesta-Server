@@ -1,7 +1,7 @@
 import { Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { CustomRequest } from "../../utils/customRequest";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdateVendorReqUseCase } from "../../domain/interfaces/model/usecases.interface";
@@ -12,7 +12,7 @@ import { ADMIN_RES_MESSAGES } from "../../constants/resMessages";
 @injectable()
 export class AdminController {
     constructor(
-        @inject(TOKENS.BlockUserUseCase) private _blockUnblockUser: IBlockUnblockUser,
+        @inject(TOKENS.BlockUserUseCase) private _blockUnblockUserUseCase: IBlockUnblockUser,
         @inject(TOKENS.GetAllUsersUseCase) private _getAllUsersUsecase: IGetAllUsersUseCase,
         @inject(TOKENS.GetAllVendorReqUseCase) private _getAllVendorReqUseCase: IGetAllVendorReqUseCase,
         @inject(TOKENS.UpdateVendorReqUseCase) private _updateVendorReqUseCase: IUpdateVendorReqUseCase,
@@ -25,7 +25,7 @@ export class AdminController {
                 throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { user, message } = await this._blockUnblockUser.blockUnblockUser(customerId);
+            const { user, message } = await this._blockUnblockUserUseCase.blockUnblockUser(customerId);
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             throw error;

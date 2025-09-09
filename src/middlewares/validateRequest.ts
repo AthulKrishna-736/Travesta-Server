@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { ZodError, ZodSchema } from "zod";
 import { AppError } from "../utils/appError";
-import { HttpStatusCode } from "../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../constants/HttpStatusCodes";
 import fs from 'fs/promises';
 
 export const validateRequest = (schema: ZodSchema<any>) => {

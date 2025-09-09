@@ -1,7 +1,7 @@
 import { ISubscriptionEntity, SubscriptionEntity } from "../../../domain/entities/admin/subscription.entity";
 import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
 
 export abstract class SubscriptionLookupBase {
