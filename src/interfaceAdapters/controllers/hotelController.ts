@@ -1,11 +1,11 @@
 import { injectable, inject } from 'tsyringe';
-import { Response } from 'express';
+import { NextFunction, Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
 import { TCreateHotelDTO, TUpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
 
@@ -16,9 +16,10 @@ export class HotelController {
         @inject(TOKENS.UpdateHotelUseCase) private _updateHotelUseCase: IUpdateHotelUseCase,
         @inject(TOKENS.GetHotelByIdUseCase) private _getHotelByIdUseCae: IGetHotelByIdUseCase,
         @inject(TOKENS.GetAllHotelsUseCase) private _getAllHotelsUseCase: IGetAllHotelsUseCase,
+        @inject(TOKENS.GetHotelsByVendorUseCase) private _getHotelsByVendorUseCase: IGetVendorHotelsUseCase,
     ) { }
 
-    async createHotel(req: CustomRequest, res: Response): Promise<void> {
+    async createHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const files = req.files as Express.Multer.File[];
             const userId = req.user?.userId;
@@ -79,11 +80,11 @@ export class HotelController {
             const { hotel, message } = await this._createHotelUseCase.createHotel(hotelData, files);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.CREATED);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async updateHotel(req: CustomRequest, res: Response): Promise<void> {
+    async updateHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
             const files = req.files as Express.Multer.File[];
@@ -143,11 +144,11 @@ export class HotelController {
             const { hotel, message } = await this._updateHotelUseCase.updateHotel(hotelId, updateData, files);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getHotelById(req: CustomRequest, res: Response): Promise<void> {
+    async getHotelById(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
@@ -157,11 +158,11 @@ export class HotelController {
             const { message, hotel } = await this._getHotelByIdUseCae.getHotel(hotelId);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAllHotels(req: CustomRequest, res: Response) {
+    async getAllHotelsToUser(req: CustomRequest, res: Response, next: NextFunction) {
         try {
             const page = Number(req.query.page) || 1;
             const limit = Number(req.query.limit) || 10;
@@ -178,16 +179,43 @@ export class HotelController {
             };
 
             const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, filters);
-
-            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, {
-                currentPage: page,
-                pageSize: limit,
-                totalData: total,
-                totalPages: Math.ceil(total / limit),
-            });
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
+            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error
         }
     }
 
+    async getHotelsByVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const vendorId = req.user?.userId;
+            const page = parseInt(req.query.page as string, 10);
+            const limit = parseInt(req.query.limit as string, 10);
+            const search = req.query.search as string;
+            if (!vendorId) {
+                throw new AppError('Vendor id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { hotels, total, message } = await this._getHotelsByVendorUseCase.getVendorHotels(vendorId, page, limit, search);
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
+            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async getHotelByVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const vendorId = req.user?.userId;
+            const { hotelId } = req.params;
+            if (!vendorId || !hotelId) {
+                throw new AppError('Vendor or hotel id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { hotel, message } = await this._getHotelsByVendorUseCase.getVendorHotel(vendorId, hotelId);
+            ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
+        }
+    }
 }

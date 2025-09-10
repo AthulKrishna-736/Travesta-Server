@@ -30,7 +30,7 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
             throw new AppError('Vendor is not verified. Please upload docs and verify!', HttpStatusCode.CONFLICT);
         }
 
-        const existingHotels = await this.getHotelEntityByVendorId(hotelData.vendorId as string);
+        const existingHotels = await this.getHotelEntityByVendorId(hotelData.vendorId as string, 1, 100);
         const isDuplicate = existingHotels?.some(hotel => hotel.name === hotelData.name);
 
         if (isDuplicate) {

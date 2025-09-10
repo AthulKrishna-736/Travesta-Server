@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
@@ -16,7 +16,7 @@ export class VendorController {
         @inject(TOKENS.GetVendorUseCase) private _getVendorUseCase: IGetVendorUseCase,
     ) { }
 
-    async updateProfile(req: CustomRequest, res: Response): Promise<void> {
+    async updateProfile(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) {
@@ -29,11 +29,11 @@ export class VendorController {
 
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async updateKyc(req: CustomRequest, res: Response): Promise<void> {
+    async updateKyc(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) {
@@ -53,11 +53,11 @@ export class VendorController {
 
             ResponseHandler.success(res, message, vendor, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async getVendor(req: CustomRequest, res: Response): Promise<void> {
+    async getVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) {
@@ -67,7 +67,7 @@ export class VendorController {
 
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 

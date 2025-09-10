@@ -36,6 +36,11 @@ export interface IGetHotelByIdUseCase {
     getHotel(hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
 }
 
+export interface IGetVendorHotelsUseCase {
+    getVendorHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
+    getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
+}
+
 export interface IGetAllHotelsUseCase {
     getAllHotel(
         page: number,

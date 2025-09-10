@@ -29,7 +29,7 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
         const hotel = await this.getHotelEntityById(hotelId)
 
         if (updateData.name && updateData.name !== hotel.name) {
-            const vendorHotels = await this.getHotelEntityByVendorId(hotel.vendorId as string)
+            const vendorHotels = await this.getHotelEntityByVendorId(hotel.vendorId as string, 1, 100);
 
             if (vendorHotels && vendorHotels.some(h => h.name === updateData.name && h.id !== hotelId)) {
                 throw new AppError("Hotel name already exists for this vendor", HttpStatusCode.BAD_REQUEST);

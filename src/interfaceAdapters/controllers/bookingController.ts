@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-import { Response } from 'express';
+import { NextFunction, Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
@@ -19,7 +19,7 @@ export class BookingController {
         @inject(TOKENS.GetBookingsToVendorUseCase) private _getBookingsToVendorUseCase: IGetBookingsToVendorUseCase,
     ) { }
 
-    async createBooking(req: CustomRequest, res: Response): Promise<void> {
+    async createBooking(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const data = {
                 ...req.body,
@@ -43,11 +43,11 @@ export class BookingController {
             const { booking, message } = await this._createBookingUseCase.createBooking(data);
             ResponseHandler.success(res, message, booking, HttpStatusCode.CREATED);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getBookingsByHotel(req: CustomRequest, res: Response): Promise<void> {
+    async getBookingsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
@@ -60,11 +60,11 @@ export class BookingController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit), };
             ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByHotel, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getBookingsByUser(req: CustomRequest, res: Response): Promise<void> {
+    async getBookingsByUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             const page = Number(req.query.page);
@@ -74,12 +74,12 @@ export class BookingController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
             ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByUser, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
 
     }
 
-    async cancelBooking(req: CustomRequest, res: Response): Promise<void> {
+    async cancelBooking(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const bookingId = req.params.bookingId;
             const userId = req.user?.userId;
@@ -90,11 +90,11 @@ export class BookingController {
             const { message } = await this._cancelBookingUseCase.cancelBooking(bookingId, userId as string);
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getBookingsToVendor(req: CustomRequest, res: Response): Promise<void> {
+    async getBookingsToVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const vendorId = req.user?.userId;
             const page = Number(req.query.page);
@@ -108,7 +108,7 @@ export class BookingController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByUsers, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 }

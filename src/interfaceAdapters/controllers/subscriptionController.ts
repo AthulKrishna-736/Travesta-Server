@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { CustomRequest } from "../../utils/customRequest";
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { TOKENS } from "../../constants/token";
 import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlansUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
 import { TCreateSubscriptionDTO, TUpdateSubscriptionDTO } from "../dtos/subscription.dto";
@@ -19,7 +19,7 @@ export class SubscriptionController {
         @inject(TOKENS.GetAllSubscriptionsUseCase) private _getAllSubscriptionsUseCase: IGetAllPlansUseCase,
     ) { }
 
-    async createSubscriptionPlan(req: CustomRequest, res: Response): Promise<void> {
+    async createSubscriptionPlan(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const data: TCreateSubscriptionDTO = {
                 name: req.body.name,
@@ -34,11 +34,11 @@ export class SubscriptionController {
             const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(plan);
             ResponseHandler.success(res, message, mappedPlan, HttpStatusCode.CREATED);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async updateSubscriptionPlan(req: CustomRequest, res: Response): Promise<void> {
+    async updateSubscriptionPlan(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const id = req.params.planId;
             const data: TUpdateSubscriptionDTO = {
@@ -54,38 +54,38 @@ export class SubscriptionController {
             const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(plan);
             ResponseHandler.success(res, message, mappedPlan, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async blockUnblockSubscription(req: CustomRequest, res: Response): Promise<void> {
+    async blockUnblockSubscription(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const id = req.params.planId;
             const { plan, message } = await this._blockUnblockSubscriptionUseCase.blockUnblockPlan(id);
             const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(plan);
             ResponseHandler.success(res, message, mappedPlan, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getActiveSubscriptions(req: CustomRequest, res: Response): Promise<void> {
+    async getActiveSubscriptions(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { plans, message } = await this._getActiveSubscriptionUseCase.getActivePlans();
             const mappedPlans = plans.map(p => ResponseMapper.mapSubscriptionToResponseDTO(p));
             ResponseHandler.success(res, message, mappedPlans, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAllSubscriptions(req: CustomRequest, res: Response): Promise<void> {
+    async getAllSubscriptions(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { plans, message } = await this._getAllSubscriptionsUseCase.getAllPlans();
             const mappedPlans = plans.map(p => ResponseMapper.mapSubscriptionToResponseDTO(p));
             ResponseHandler.success(res, message, mappedPlans, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 }

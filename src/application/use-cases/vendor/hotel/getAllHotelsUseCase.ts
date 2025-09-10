@@ -27,17 +27,8 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
     async getAllHotel(
         page: number,
         limit: number,
-        filters?: {
-            search?: string;
-            amenities?: string[];
-            roomType?: string[];
-            checkIn?: string;
-            checkOut?: string;
-            guests?: number;
-            minPrice?: number;
-            maxPrice?: number;
-        }
-    ): Promise<{ hotels: TResponseHotelData[]; total: number; message: string }> {
+        filters?: { search?: string; amenities?: string[]; roomType?: string[]; checkIn?: string; checkOut?: string; guests?: number; minPrice?: number; maxPrice?: number; })
+        : Promise<{ hotels: TResponseHotelData[]; total: number; message: string }> {
 
         const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, filters);
 

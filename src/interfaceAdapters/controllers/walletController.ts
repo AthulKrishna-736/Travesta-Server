@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-import { Response } from 'express';
+import { NextFunction, Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
@@ -22,7 +22,7 @@ export class WalletController {
         @inject(TOKENS.GetTransactionsUseCase) private _getTransactionUseCase: IGetTransactionsUseCase,
     ) { }
 
-    async createWallet(req: CustomRequest, res: Response): Promise<void> {
+    async createWallet(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
@@ -30,11 +30,11 @@ export class WalletController {
             const { wallet, message } = await this._createWalletUseCase.createUserWallet(userId);
             ResponseHandler.success(res, message, wallet, HttpStatusCode.CREATED);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getWallet(req: CustomRequest, res: Response): Promise<void> {
+    async getWallet(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
@@ -42,11 +42,11 @@ export class WalletController {
             const { wallet, message } = await this._getWalletUseCase.getUserWallet(userId);
             ResponseHandler.success(res, message, wallet, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async createPaymentIntent(req: CustomRequest, res: Response): Promise<void> {
+    async createPaymentIntent(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId
             const { amount } = req.body;
@@ -58,11 +58,11 @@ export class WalletController {
             const result = await this._stripeServiceUseCase.createPaymentIntent(userId, amount);
             ResponseHandler.success(res, WALLET_RES_MESSAGES.paymentIntent, result, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async BookingConfirmTransaction(req: CustomRequest, res: Response): Promise<void> {
+    async BookingConfirmTransaction(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             const { vendorId } = req.params;
@@ -100,11 +100,11 @@ export class WalletController {
             const { transaction, message } = await this._bookingConfirmUseCase.bookingTransaction(vendorId, bookingData, method)
             ResponseHandler.success(res, message, transaction, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async AddMoneyTransaction(req: CustomRequest, res: Response): Promise<void> {
+    async AddMoneyTransaction(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             const { amount } = req.body;
@@ -124,11 +124,11 @@ export class WalletController {
             const { transaction, message } = await this._addMoneyToWalletUseCase.addMoneyToWallet(userId, amount);
             ResponseHandler.success(res, message, transaction, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getTransactions(req: CustomRequest, res: Response): Promise<void> {
+    async getTransactions(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             const page = parseInt(req.query.page as string);
@@ -140,7 +140,7 @@ export class WalletController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, message, transactions, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 }

@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
@@ -18,7 +18,7 @@ export class ChatController {
         @inject(TOKENS.GetUserUnreadMsgUseCase) private _getUserUnreadMsgUseCase: IGetUserUnreadMsgUseCase,
     ) { }
 
-    async getChatMessages(req: CustomRequest, res: Response): Promise<void> {
+    async getChatMessages(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const currentUserId = req.user?.userId;
             const targetUserId = req.params.userId;
@@ -31,11 +31,11 @@ export class ChatController {
 
             ResponseHandler.success(res, message, chat, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async sendMessage(req: CustomRequest, res: Response): Promise<void> {
+    async sendMessage(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         const { toId, toRole, message } = req.body;
         const fromId = req.user?.userId;
         const fromRole = req.user?.role;
@@ -53,11 +53,10 @@ export class ChatController {
         }
 
         await this._sendMessageUseCase.sendMessage(payload);
-
         ResponseHandler.success(res, 'Message sent', null, HttpStatusCode.OK);
     }
 
-    async getChattedUsers(req: CustomRequest, res: Response): Promise<void> {
+    async getChattedUsers(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const vendorId = req.user?.userId;
             const search = req.query.search as string;
@@ -69,11 +68,11 @@ export class ChatController {
             const { users, message } = await this._getChattedUsersUseCase.getChattedUsers(vendorId as string, search);
             ResponseHandler.success(res, message, users, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getVendorsChatWithUser(req: CustomRequest, res: Response): Promise<void> {
+    async getVendorsChatWithUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const search = req.query.search as string;
             const userId = req.user?.userId;
@@ -81,11 +80,11 @@ export class ChatController {
             const { vendors, message } = await this._getVendorsChatUserUseCase.getVendorsChatWithUser(userId as string, search);
             ResponseHandler.success(res, message, vendors, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async getVendorsChatWithAdmin(req: CustomRequest, res: Response): Promise<void> {
+    async getVendorsChatWithAdmin(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const search = req.query.search as string;
             const userId = req.user?.userId;
@@ -93,12 +92,12 @@ export class ChatController {
             const { vendors, message } = await this._getVendorsChatAdminUseCase.getVendorsChatWithAdmin(userId as string, search);
             ResponseHandler.success(res, message, vendors, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async getUnreadMsg(req: CustomRequest, res: Response): Promise<void> {
-        try {            
+    async getUnreadMsg(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
             const userId = req.user?.userId;
             if (!userId) {
                 throw new AppError('Userid is missing', HttpStatusCode.BAD_REQUEST);
@@ -107,7 +106,7 @@ export class ChatController {
             const { message, users } = await this._getUserUnreadMsgUseCase.getUnreadMsg(userId);
             ResponseHandler.success(res, message, users, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 }

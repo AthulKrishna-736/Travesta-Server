@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Response, NextFunction } from "express";
 import { inject, injectable } from "tsyringe";
 import { CustomRequest } from "../../utils/customRequest";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
@@ -18,7 +18,7 @@ export class AdminController {
         @inject(TOKENS.UpdateVendorReqUseCase) private _updateVendorReqUseCase: IUpdateVendorReqUseCase,
     ) { }
 
-    async blockOrUnblockUser(req: CustomRequest, res: Response) {
+    async blockOrUnblockUser(req: CustomRequest, res: Response, next: NextFunction) {
         try {
             const { customerId } = req.params;
             if (!customerId) {
@@ -28,11 +28,11 @@ export class AdminController {
             const { user, message } = await this._blockUnblockUserUseCase.blockUnblockUser(customerId);
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAllUsers(req: CustomRequest, res: Response) {
+    async getAllUsers(req: CustomRequest, res: Response, next: NextFunction) {
         try {
             const page = Number(req.query.page) || 1;
             const limit = Number(req.query.limit) || 10;
@@ -46,11 +46,11 @@ export class AdminController {
 
             ResponseHandler.success(res, ADMIN_RES_MESSAGES.users, users, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getVendorRequest(req: CustomRequest, res: Response) {
+    async getVendorRequest(req: CustomRequest, res: Response, next: NextFunction) {
         try {
             const page = Number(req.query.page) || 1
             const limit = Number(req.query.limit) || 10
@@ -62,11 +62,11 @@ export class AdminController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, ADMIN_RES_MESSAGES.vendorReq, vendors, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async updateVendorReq(req: CustomRequest, res: Response) {
+    async updateVendorReq(req: CustomRequest, res: Response, next: NextFunction) {
         try {
             const { vendorId } = req.params;
             const { isVerified, reason } = req.body;
@@ -77,7 +77,7 @@ export class AdminController {
             const { message } = await this._updateVendorReqUseCase.updateVendorReq(vendorId, isVerified, reason)
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 

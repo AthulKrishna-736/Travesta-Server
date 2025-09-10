@@ -26,9 +26,31 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         return hotel?.toObject() || null;
     }
 
-    async findHotelsByVendor(vendorId: string): Promise<IHotel[] | null> {
-        const hotels = await this.find({ vendorId }).lean<IHotel[]>();
-        return hotels;
+    async findHotelByVendor(vendorId: string, hotelId: string): Promise<IHotel | null> {
+        const hotel = await this.model.findOne({ vendorId: vendorId, _id: hotelId }).lean();
+        return hotel;
+    }
+
+    async findHotelsByVendor(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: IHotel[] | null, total: number }> {
+        const skip = (page - 1) * limit;
+        const filter: any = { vendorId };
+        if (search) {
+            const searchRegex = new RegExp('^' + search, 'i')
+            filter.$or = [
+                { name: searchRegex },
+                { state: searchRegex },
+            ]
+        }
+        const total = await this.model.countDocuments(filter);
+        const hotels = await this.model
+            .find(filter)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .populate("amenities", "_id name")
+            .limit(limit)
+            .lean();
+
+        return { hotels, total };
     }
 
     async findAllHotels(
@@ -93,7 +115,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
             hotelFilter._id = { $in: hotelIds };
         }
 
-       // Add hotelIds to hotel filter if rooms are filtered
+        // Add hotelIds to hotel filter if rooms are filtered
         if (hotelIds.length) hotelFilter._id = { $in: hotelIds };
 
         const total = await hotelModel.countDocuments(hotelFilter);

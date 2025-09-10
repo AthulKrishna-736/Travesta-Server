@@ -27,7 +27,8 @@ export interface IHotelRepository {
   createHotel(data: TCreateHotelData): Promise<IHotel | null>;
   findHotelById(hotelId: string): Promise<IHotel | null>;
   updateHotel(hotelId: string, data: TUpdateHotelData): Promise<IHotel | null>;
-  findHotelsByVendor(vendorId: string): Promise<IHotel[] | null>;
+  findHotelByVendor(vendorId: string, hotelId: string): Promise<IHotel | null>
+  findHotelsByVendor(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: IHotel[] | null, total: number }>;
   findAllHotels(
     page: number,
     limit: number,

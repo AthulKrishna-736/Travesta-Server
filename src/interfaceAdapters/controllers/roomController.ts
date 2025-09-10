@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-import { Response } from 'express';
+import { NextFunction, Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
@@ -22,7 +22,7 @@ export class RoomController {
         @inject(TOKENS.GetAvailableRoomsUseCase) private _getAvlRoomsUseCase: IGetAvailableRoomsUseCase,
     ) { }
 
-    async createRoom(req: CustomRequest, res: Response): Promise<void> {
+    async createRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const files = req.files as Express.Multer.File[];
             const { hotelId, name, roomType, roomCount, bedType, guest, amenities, basePrice, images } = req.body;
@@ -59,11 +59,11 @@ export class RoomController {
             const { room, message } = await this._createRoomUseCase.createRoom(roomData, files);
             ResponseHandler.success(res, message, room, HttpStatusCode.CREATED);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async updateRoom(req: CustomRequest, res: Response): Promise<void> {
+    async updateRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const roomId = req.params.roomId;
             if (!roomId) {
@@ -88,11 +88,11 @@ export class RoomController {
             const { room, message } = await this._updateRoomUseCase.updateRoom(roomId, updateData, files);
             ResponseHandler.success(res, message, room, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getRoomById(req: CustomRequest, res: Response): Promise<void> {
+    async getRoomById(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const roomId = req.params.roomId;
             if (!roomId) {
@@ -102,11 +102,11 @@ export class RoomController {
             const room = await this._getRoomByIdUseCase.getRoomById(roomId);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getRoom, room, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getRoomsByHotel(req: CustomRequest, res: Response): Promise<void> {
+    async getRoomsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
@@ -116,11 +116,11 @@ export class RoomController {
             const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(hotelId);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getAll, rooms, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAvailableRoomsByHotel(req: CustomRequest, res: Response): Promise<void> {
+    async getAvailableRoomsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
@@ -130,11 +130,11 @@ export class RoomController {
             // const rooms = await this._getAvailableRoomsByHotelUseCase.getAvlRoomsByHotel(hotelId);
             // ResponseHandler.success(res, 'Available rooms fetched successfully', rooms, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAllRooms(req: CustomRequest, res: Response): Promise<void> {
+    async getAllRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const page = Number(req.query.page) || 1
             const limit = Number(req.query.limit) || 10
@@ -144,11 +144,11 @@ export class RoomController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAllAvlRooms(req: CustomRequest, res: Response): Promise<void> {
+    async getAllAvlRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const page = Math.max(Number(req.query.page) || 1, 1);
             const limit = Math.max(Number(req.query.limit) || 10, 1);
@@ -182,7 +182,7 @@ export class RoomController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 }

@@ -46,6 +46,7 @@ export const TOKENS = {
   CreateHotelUseCase: 'CreteHotelUseCase',
   UpdateHotelUseCase: 'UpdateHotelUseCase',
   GetHotelByIdUseCase: 'GetHotelByIdUseCase',
+  GetHotelsByVendorUseCase: 'GetHotelsByVendorUseCase',
   GetAllHotelsUseCase: 'GetAllHotelsUseCase',
   CreateRoomUseCase: 'CreateRoomUseCase',
   UpdateRoomUseCase: 'UpdateRoomUseCase',
@@ -98,4 +99,5 @@ export const TOKENS = {
   BookingTransactionUseCase: 'BookingTransactionUseCase',
   AddMoneyToWalletUseCase: 'AddMoneyToWalletUseCase',
   GetTransactionsUseCase: 'GetTransactionsUseCase',
+
 };

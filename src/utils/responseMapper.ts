@@ -45,7 +45,7 @@ export class ResponseMapper {
     static mapHotelToResponseDTO(hotel: IHotel): TResponseHotelDTO {
         return {
             id: hotel._id as string,
-            vendorId: hotel.vendorId.toString(),
+            vendorId: hotel.vendorId as string,
             name: hotel.name,
             description: hotel.description,
             images: hotel.images,
