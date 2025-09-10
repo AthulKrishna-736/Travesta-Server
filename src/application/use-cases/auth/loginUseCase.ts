@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { TOKENS } from "../../../constants/token";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { ILoginUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
@@ -17,12 +17,12 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 @injectable()
 export class LoginUseCase extends UserLookupBase implements ILoginUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) {
-        super(userRepo)
+        super(_userRepository)
     }
 
     async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserData }> {

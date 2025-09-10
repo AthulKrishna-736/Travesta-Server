@@ -7,11 +7,11 @@ import { IGetBookingsToVendorUseCase, TResponseBookingData } from '../../../../d
 @injectable()
 export class GetBookingsToVendorUseCase implements IGetBookingsToVendorUseCase {
     constructor(
-        @inject(TOKENS.BookingRepository) private _bookingRepo: IBookingRepository
+        @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository
     ) { }
 
     async getBookingsToVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }> {
-        const { bookings, total } = await this._bookingRepo.findBookingsByVendor(vendorId, page, limit);
+        const { bookings, total } = await this._bookingRepository.findBookingsByVendor(vendorId, page, limit);
 
         const mappedBookings = bookings.map(b => ({
             ...b,

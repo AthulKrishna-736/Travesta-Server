@@ -9,21 +9,21 @@ import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 @injectable()
 export class MarkMsgAsReadUseCase implements IMarkMsgAsReadUseCase {
     constructor(
-        @inject(TOKENS.ChatRepository) private _chatRepo: IChatRepository,
-        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.ChatRepository) private _chatRepository: IChatRepository,
+        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
     ) { }
 
     async markMsgAsRead(senderId: string, receiverId: string): Promise<void> {
         const [senderExists, receiverExists] = await Promise.all([
-            this._userRepo.findUserExist(senderId),
-            this._userRepo.findUserExist(receiverId)
+            this._userRepository.findUserExist(senderId),
+            this._userRepository.findUserExist(receiverId)
         ]);
 
         if (!senderExists || !receiverExists) {
             throw new AppError("Sender or Receiver not found", HttpStatusCode.NOT_FOUND);
         }
 
-        await this._chatRepo.markConversationAsRead(senderId, receiverId);
+        await this._chatRepository.markConversationAsRead(senderId, receiverId);
     }
 
 }

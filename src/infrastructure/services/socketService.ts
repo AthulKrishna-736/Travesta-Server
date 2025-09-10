@@ -1,7 +1,7 @@
 import { Socket, Server as SocketIOServer } from "socket.io";
 import { container, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import * as cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 import { env } from "../config/env";

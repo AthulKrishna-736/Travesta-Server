@@ -17,11 +17,11 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
     private _imageUploader;
     constructor(
         @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
-        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
+        @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
         @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
     ) {
         super(_hotelRepository);
-        this._imageUploader = new AwsImageUploader(awsS3Service);
+        this._imageUploader = new AwsImageUploader(_awsS3Service);
     }
 
     async createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {

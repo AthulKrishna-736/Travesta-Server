@@ -6,11 +6,11 @@ import { ICheckRoomAvailabilityUseCase } from '../../../../domain/interfaces/mod
 @injectable()
 export class CheckRoomAvailabilityUseCase implements ICheckRoomAvailabilityUseCase {
     constructor(
-        @inject(TOKENS.BookingRepository) private _bookingRepo: IBookingRepository
+        @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository
     ) { }
 
     // Simple availability check
     async execute(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean> {
-        return this._bookingRepo.isRoomAvailable(roomId, checkIn, checkOut);
+        return this._bookingRepository.isRoomAvailable(roomId, checkIn, checkOut);
     }
 }

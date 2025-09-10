@@ -8,9 +8,9 @@ import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 @injectable()
 export class GetAllAmenitiesUseCase extends AmenityLookupBase implements IGetAllAmenitiesUseCase {
     constructor(
-        @inject(TOKENS.AmenitiesRepository) amenitiesRepo: IAmenitiesRepository,
+        @inject(TOKENS.AmenitiesRepository) _amenitiesRepository: IAmenitiesRepository,
     ) {
-        super(amenitiesRepo)
+        super(_amenitiesRepository)
     }
 
     async getAllAmenitiesUseCase(page: number, limit: number, type: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }> {

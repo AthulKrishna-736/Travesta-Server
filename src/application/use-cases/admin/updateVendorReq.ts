@@ -12,10 +12,10 @@ import { ADMIN_RES_MESSAGES } from "../../../constants/resMessages";
 @injectable()
 export class UpdateVendorReq extends UserLookupBase implements IUpdateVendorReqUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepository: IUserRepository,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
         @inject(TOKENS.MailService) private _mailService: IMailService,
     ) {
-        super(userRepository);
+        super(_userRepository);
     }
 
     async updateVendorReq(vendorId: string, isVerified: boolean, verificationReason: string): Promise<{ message: string }> {

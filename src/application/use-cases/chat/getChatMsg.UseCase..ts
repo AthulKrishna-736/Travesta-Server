@@ -7,12 +7,12 @@ import { CHAT_RES_MESSAGES } from "../../../constants/resMessages";
 @injectable()
 export class GetChatMessagesUseCase implements IGetChatMessagesUseCase {
     constructor(
-        @inject(TOKENS.ChatRepository) private _chatRepo: IChatRepository,
+        @inject(TOKENS.ChatRepository) private _chatRepository: IChatRepository,
     ) { }
 
     async getChatMessage(currentUserId: string, targetUserId: string): Promise<{ chat: TResponseChatMessage[], message: string }> {
 
-        const chat = await this._chatRepo.getMessagesBetweenUsers(currentUserId, targetUserId);
+        const chat = await this._chatRepository.getMessagesBetweenUsers(currentUserId, targetUserId);
 
         return {
             chat,

@@ -3,18 +3,18 @@ import { IGetActiveAmenitiesUseCase, TResponseAmenityData } from "../../../../do
 import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class GetActiveAmenitiesUseCase implements IGetActiveAmenitiesUseCase {
     constructor(
-        @inject(TOKENS.AmenitiesRepository) private _amenityRepo: IAmenitiesRepository,
+        @inject(TOKENS.AmenitiesRepository) private _amenityRepository: IAmenitiesRepository,
     ) { }
 
     async getActiveAmenities(): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }> {
-        const { amenities, total } = await this._amenityRepo.getQuery({ isActive: true });
+        const { amenities, total } = await this._amenityRepository.getQuery({ isActive: true });
 
         if (!amenities) {
             throw new AppError('no amenities found', HttpStatusCode.NOT_FOUND);

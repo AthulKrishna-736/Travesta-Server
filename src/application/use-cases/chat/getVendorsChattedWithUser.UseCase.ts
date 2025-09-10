@@ -7,11 +7,11 @@ import { CHAT_RES_MESSAGES } from "../../../constants/resMessages";
 @injectable()
 export class GetVendorsChatWithUserUseCase implements IGetVendorsChatWithUserUseCase {
     constructor(
-        @inject(TOKENS.ChatRepository) private _chatRepo: IChatRepository,
+        @inject(TOKENS.ChatRepository) private _chatRepository: IChatRepository,
     ) { }
 
     async getVendorsChatWithUser(userId: string, search?: string): Promise<{ vendors: { id: string; firstName: string, role: string }[]; message: string }> {
-        const vendors = await this._chatRepo.getVendorsWhoChattedWithUser(userId, search);
+        const vendors = await this._chatRepository.getVendorsWhoChattedWithUser(userId, search);
         return {
             vendors,
             message: CHAT_RES_MESSAGES.getVendor,

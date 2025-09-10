@@ -6,7 +6,7 @@ import { ISendMessageUseCase, TCreateChatMessage, TResponseChatMessage } from ".
 @injectable()
 export class SendMessageUseCase implements ISendMessageUseCase {
     constructor(
-        @inject(TOKENS.ChatRepository) private _chatRepo: IChatRepository
+        @inject(TOKENS.ChatRepository) private _chatRepository: IChatRepository
     ) { }
 
     async sendMessage(data: TCreateChatMessage): Promise<TResponseChatMessage> {
@@ -16,7 +16,7 @@ export class SendMessageUseCase implements ISendMessageUseCase {
             isRead: false
         };
 
-        const newMsg = await this._chatRepo.createMessage(fullMessage);
+        const newMsg = await this._chatRepository.createMessage(fullMessage);
         return newMsg;
     }
 }

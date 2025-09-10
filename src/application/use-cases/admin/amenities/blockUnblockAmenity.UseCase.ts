@@ -4,16 +4,16 @@ import { AmenityLookupBase } from "../../base/amenity.base";
 import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class BlockUnblockAmenity extends AmenityLookupBase implements IBlockUnblockAmenityUseCase {
     constructor(
-        @inject(TOKENS.AmenitiesRepository) amenitiesRepo: IAmenitiesRepository,
+        @inject(TOKENS.AmenitiesRepository) _amenityRepository: IAmenitiesRepository,
     ) {
-        super(amenitiesRepo);
+        super(_amenityRepository);
     }
 
     async blockUnblockAmenityUseCase(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }> {
@@ -25,7 +25,7 @@ export class BlockUnblockAmenity extends AmenityLookupBase implements IBlockUnbl
             amenityEntity.unblock();
         }
 
-        const updateAmenity = await this._amenityRepo.updateAmenity(amenityEntity.id, amenityEntity.getPersistableData());
+        const updateAmenity = await this._amenityRepository.updateAmenity(amenityEntity.id, amenityEntity.getPersistableData());
 
         if (!updateAmenity) {
             throw new AppError('failed to block/unblock amenity', HttpStatusCode.INTERNAL_SERVER_ERROR);

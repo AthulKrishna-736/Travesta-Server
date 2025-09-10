@@ -12,11 +12,11 @@ import { ROOM_RES_MESSAGES } from '../../../../constants/resMessages';
 @injectable()
 export class GetAllRoomsUseCase extends RoomLookupBase implements IGetAllRoomsUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
+        @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(roomRepo);
+        super(_roomRepository);
     }
 
     async getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomData[]; message: string; total: number }> {

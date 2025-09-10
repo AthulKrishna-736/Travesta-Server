@@ -10,9 +10,9 @@ import { ADMIN_RES_MESSAGES } from "../../../constants/resMessages";
 @injectable()
 export class BlockUnblockUser extends UserLookupBase implements IBlockUnblockUser {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository
     ) {
-        super(userRepo)
+        super(_userRepository)
     }
 
     async blockUnblockUser(userId: string): Promise<{ user: TResponseUserData, message: string }> {
@@ -25,7 +25,7 @@ export class BlockUnblockUser extends UserLookupBase implements IBlockUnblockUse
             userEntity.block();
         }
 
-        const updatedUser = await this._userRepo.updateUser(userId, userEntity.getPersistableData());
+        const updatedUser = await this._userRepository.updateUser(userId, userEntity.getPersistableData());
 
         const mappedUser = ResponseMapper.mapUserToResponseDTO(updatedUser!);
 

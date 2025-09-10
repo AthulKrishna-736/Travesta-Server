@@ -3,7 +3,7 @@ import { ICreatePlanUseCase, TCreateSubscriptionData, TResponseSubscriptionData 
 import { TOKENS } from "../../../../constants/token";
 import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import mongoose from "mongoose";
 import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 

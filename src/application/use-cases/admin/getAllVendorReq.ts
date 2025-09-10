@@ -13,11 +13,11 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 @injectable()
 export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(userRepo);
+        super(_userRepository);
     }
 
     async getAllVendorReq(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ vendors: TResponseUserData[]; total: number }> {

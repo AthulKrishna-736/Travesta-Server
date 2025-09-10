@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IConfrimRegisterUseCase, IVerifyOtpUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { TOKENS } from "../../../constants/token";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IAuthService, TOtpData } from "../../../domain/interfaces/services/authService.interface";
 import { TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
@@ -11,7 +11,7 @@ import { TUserRegistrationInput } from "../../../domain/interfaces/model/user.in
 export class VerifyOtpUseCase implements IVerifyOtpUseCase {
     constructor(
         @inject(TOKENS.AuthService) private _authService: IAuthService,
-        @inject(TOKENS.ConfirmRegisterUseCase) private _register: IConfrimRegisterUseCase,
+        @inject(TOKENS.ConfirmRegisterUseCase) private _registerUseCase: IConfrimRegisterUseCase,
     ) { }
 
     async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ isOtpVerified: boolean, data: TOtpData }> {
@@ -21,7 +21,7 @@ export class VerifyOtpUseCase implements IVerifyOtpUseCase {
         }
 
         if (purpose == 'signup') {
-            const user = await this._register.confirmRegister(data as TUserRegistrationInput)
+            const user = await this._registerUseCase.confirmRegister(data as TUserRegistrationInput)
             return {
                 isOtpVerified: true,
                 data: user,

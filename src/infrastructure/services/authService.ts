@@ -4,7 +4,7 @@ import * as crypto from 'crypto';
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
 import { env } from "../config/env";
 import { AppError } from "../../utils/appError";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { jwtConfig, otpTimer } from "../config/jwtConfig";
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";

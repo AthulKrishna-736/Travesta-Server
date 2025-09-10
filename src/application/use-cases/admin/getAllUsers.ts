@@ -9,9 +9,9 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 @injectable()
 export class GetAllUsers extends UserLookupBase implements IGetAllUsersUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository
     ) {
-        super(userRepo);
+        super(_userRepository);
     }
 
     async getAllUsers(page: number, limit: number, role: string, search: string, sortField?: string, sortOrder?: string): Promise<{ users: TResponseUserData[]; total: number }> {

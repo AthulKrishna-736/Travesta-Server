@@ -5,7 +5,7 @@ import { IRedisService } from "../../../../domain/interfaces/services/redisServi
 import { TOKENS } from "../../../../constants/token";
 import { TUpdateRoomData, TResponseRoomData, IUpdateRoomUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
@@ -16,11 +16,11 @@ export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseC
     private _imageUploader: AwsImageUploader;
 
     constructor(
-        @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
+        @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
         @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(roomRepo);
+        super(_roomRepository);
         this._imageUploader = new AwsImageUploader(awsS3Service);
     }
 
@@ -55,7 +55,7 @@ export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseC
             images: finalImages,
         });
 
-        const updatedRoom = await this._roomRepo.updateRoom(roomId, roomEntity.getPersistableData());
+        const updatedRoom = await this._roomRepository.updateRoom(roomId, roomEntity.getPersistableData());
 
         if (!updatedRoom) {
             throw new AppError("Failed to update room", HttpStatusCode.INTERNAL_SERVER_ERROR);

@@ -18,11 +18,11 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
     private _imageUploader;
     constructor(
         @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
-        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
+        @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
         super(_hotelRepository);
-        this._imageUploader = new AwsImageUploader(awsS3Service)
+        this._imageUploader = new AwsImageUploader(_awsS3Service)
     }
 
     async updateHotel(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {

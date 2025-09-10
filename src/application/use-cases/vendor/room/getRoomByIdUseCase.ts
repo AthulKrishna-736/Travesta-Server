@@ -12,11 +12,11 @@ import { ResponseMapper } from "../../../../utils/responseMapper";
 @injectable()
 export class GetRoomByIdUseCase extends RoomLookupBase implements IGetRoomByIdUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
+        @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
     ) {
-        super(roomRepo);
+        super(_roomRepository);
     }
 
     async getRoomById(roomId: string): Promise<TResponseRoomData> {

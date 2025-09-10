@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { TOKENS } from "../../../constants/token";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { v4 as uuidv4 } from 'uuid';
 import { IForgotPassUseCase } from "../../../domain/interfaces/model/auth.interface";
@@ -12,12 +12,12 @@ import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
 @injectable()
 export class ForgotPassUseCase implements IForgotPassUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
     ) { }
   
     async forgotPass(email: string, role: TRole): Promise<{ userId: string; message: string; }> {
-        const user = await this._userRepo.findUser(email)
+        const user = await this._userRepository.findUser(email)
         if (!user) {
             throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
         }

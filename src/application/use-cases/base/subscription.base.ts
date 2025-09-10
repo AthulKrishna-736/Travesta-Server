@@ -5,10 +5,10 @@ import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
 
 export abstract class SubscriptionLookupBase {
-    constructor(protected _subscriptionRepo: ISubscriptionRepository) { }
+    constructor(protected _subscriptionRepository: ISubscriptionRepository) { }
 
     async getSubscriptionByIdOrThrow(id: string): Promise<ISubscriptionEntity> {
-        const plan = await this._subscriptionRepo.findPlanById(id);
+        const plan = await this._subscriptionRepository.findPlanById(id);
 
         if (!plan) {
             throw new AppError('subscription plan not found', HttpStatusCode.NOT_FOUND);
@@ -18,7 +18,7 @@ export abstract class SubscriptionLookupBase {
     }
 
     async getAllSubscriptionOrThrow(): Promise<ISubscriptionEntity[]> {
-        const plans = await this._subscriptionRepo.findAllPlans();
+        const plans = await this._subscriptionRepository.findAllPlans();
 
         if (!plans) {
             throw new AppError('No subscription plans found', HttpStatusCode.NOT_FOUND);

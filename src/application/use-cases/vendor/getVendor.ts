@@ -13,11 +13,11 @@ import { VENDOR_RES_MESSAGES } from "../../../constants/resMessages";
 @injectable()
 export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IGetVendorUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
-        @inject(TOKENS.RedisService) redisService: IRedisService,
-        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
+        @inject(TOKENS.RedisService) _redisService: IRedisService,
+        @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
     ) {
-        super(userRepo, redisService, awsS3Service);
+        super(_userRepository, _redisService, _awsS3Service);
     }
 
     async getVendor(userId: string): Promise<{ user: TResponseUserData; message: string }> {

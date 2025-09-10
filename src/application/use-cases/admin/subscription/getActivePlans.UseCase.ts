@@ -3,7 +3,7 @@ import { IGetActivePlansUseCase, TResponseSubscriptionData } from "../../../../d
 import { TOKENS } from "../../../../constants/token";
 import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { SubscriptionEntity } from "../../../../domain/entities/admin/subscription.entity";
 import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 
@@ -11,11 +11,11 @@ import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 @injectable()
 export class GetActivePlansUseCase implements IGetActivePlansUseCase {
     constructor(
-        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepo: ISubscriptionRepository,
+        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepository: ISubscriptionRepository,
     ) { }
 
     async getActivePlans(): Promise<{ plans: TResponseSubscriptionData[]; message: string; }> {
-        const plans = await this._subscriptionRepo.findActivePlans();
+        const plans = await this._subscriptionRepository.findActivePlans();
 
         if (!plans) {
             throw new AppError('No active plans found', HttpStatusCode.NOT_FOUND);

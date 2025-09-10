@@ -9,9 +9,9 @@ import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 @injectable()
 export class GetAmenityByIdUseCase extends AmenityLookupBase implements IGetAmenityByIdUseCase {
     constructor(
-        @inject(TOKENS.AmenitiesRepository) amenitiesRepo: IAmenitiesRepository,
+        @inject(TOKENS.AmenitiesRepository) _amenitiesRepository: IAmenitiesRepository,
     ) {
-        super(amenitiesRepo);
+        super(_amenitiesRepository);
     }
 
     async getAmenityById(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }> {

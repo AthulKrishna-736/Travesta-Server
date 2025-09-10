@@ -5,7 +5,7 @@ import { IAwsS3Service } from '../../../../domain/interfaces/services/awsS3Servi
 import { TOKENS } from '../../../../constants/token';
 import { TCreateRoomData, TResponseRoomData } from '../../../../domain/interfaces/model/room.interface';
 import { AppError } from '../../../../utils/appError';
-import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
+import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
 import { AwsImageUploader } from '../../base/imageUploader';
 import { ResponseMapper } from '../../../../utils/responseMapper';
 import { ROOM_RES_MESSAGES } from '../../../../constants/resMessages';
@@ -15,7 +15,7 @@ export class CreateRoomUseCase implements ICreateRoomUseCase {
     protected _imageUploader: AwsImageUploader;
 
     constructor(
-        @inject(TOKENS.RoomRepository) protected _roomRepo: IRoomRepository,
+        @inject(TOKENS.RoomRepository) protected _roomRepository: IRoomRepository,
         @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
     ) {
         this._imageUploader = new AwsImageUploader(awsS3Service);
@@ -36,7 +36,7 @@ export class CreateRoomUseCase implements ICreateRoomUseCase {
             uploadedImageKeys = await this.uploadRoomImages(roomData.hotelId as string, files)
         }
 
-        const newRoom = await this._roomRepo.createRoom({ ...roomData, images: uploadedImageKeys as string[] });
+        const newRoom = await this._roomRepository.createRoom({ ...roomData, images: uploadedImageKeys as string[] });
 
         if (!newRoom) {
             throw new AppError("Failed to create room", HttpStatusCode.INTERNAL_SERVER_ERROR);

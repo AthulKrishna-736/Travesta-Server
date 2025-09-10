@@ -8,18 +8,18 @@ import { IGetAvailableRoomsUseCase } from "../../../../domain/interfaces/model/r
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { RoomLookupBase } from "../../base/room.base";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { ROOM_RES_MESSAGES } from "../../../../constants/resMessages";
 
 @injectable()
 export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvailableRoomsUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
+        @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(roomRepo);
+        super(_roomRepository);
     }
 
     async getAvlRooms(

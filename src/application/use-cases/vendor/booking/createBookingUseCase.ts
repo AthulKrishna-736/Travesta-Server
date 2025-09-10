@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { AppError } from '../../../../utils/appError';
-import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
+import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
 import { TOKENS } from '../../../../constants/token';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/repository.interface';
 import { formatDateString } from '../../../../utils/dateFormatter';
@@ -10,11 +10,11 @@ import { BOOKING_RES_MESSAGES } from '../../../../constants/resMessages';
 @injectable()
 export class CreateBookingUseCase implements ICreateBookingUseCase {
     constructor(
-        @inject(TOKENS.BookingRepository) private _bookingRepo: IBookingRepository,
+        @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
     ) { }
 
     async createBooking(data: TCreateBookingData): Promise<{ booking: TResponseBookingData; message: string }> {
-        const isAvailable = await this._bookingRepo.isRoomAvailable(data.roomId as string, data.checkIn, data.checkOut);
+        const isAvailable = await this._bookingRepository.isRoomAvailable(data.roomId as string, data.checkIn, data.checkOut);
 
         if (!isAvailable) {
             throw new AppError('Room is not available for selected dates', HttpStatusCode.BAD_REQUEST);
@@ -28,7 +28,7 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
             throw new AppError('Check-in date must be before check-out date', HttpStatusCode.BAD_REQUEST);
         }
 
-        const created = await this._bookingRepo.createBooking(data);
+        const created = await this._bookingRepository.createBooking(data);
         if (!created) {
             throw new AppError('Failed to create booking', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }

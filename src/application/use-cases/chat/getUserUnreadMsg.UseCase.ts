@@ -7,11 +7,11 @@ import { CHAT_RES_MESSAGES } from "../../../constants/resMessages";
 @injectable()
 export class GetUserUnreadMsgUseCase implements IGetUserUnreadMsgUseCase {
     constructor(
-        @inject(TOKENS.ChatRepository) private _chatRepo: IChatRepository,
+        @inject(TOKENS.ChatRepository) private _chatRepository: IChatRepository,
     ) { }
 
     async getUnreadMsg(userId: string): Promise<{ message: string, users: { id: string, count: number }[] }> {
-        const unreadUsers = await this._chatRepo.getUnreadMessages(userId);
+        const unreadUsers = await this._chatRepository.getUnreadMessages(userId);
         return {
             message: CHAT_RES_MESSAGES.unread,
             users: unreadUsers,

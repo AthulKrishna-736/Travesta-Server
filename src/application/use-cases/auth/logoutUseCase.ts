@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";

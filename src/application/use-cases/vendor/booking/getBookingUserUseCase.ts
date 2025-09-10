@@ -7,11 +7,11 @@ import { IGetBookingsByUserUseCase, TResponseBookingData } from '../../../../dom
 @injectable()
 export class GetBookingsByUserUseCase implements IGetBookingsByUserUseCase {
   constructor(
-    @inject(TOKENS.BookingRepository) private _bookingRepo: IBookingRepository
+    @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository
   ) { }
 
   async getBookingByUser(userId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }> {
-    const { bookings, total } = await this._bookingRepo.findBookingsByUser(userId, page, limit);
+    const { bookings, total } = await this._bookingRepository.findBookingsByUser(userId, page, limit);
 
     const mappedBookings = bookings.map(b => ({
       ...b,
