@@ -19,18 +19,63 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return booking.toObject<IBooking>();
     }
 
-    async findBookingsByUser(userId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }> {
+    async findBookingsByUser(
+        userId: string,
+        page: number,
+        limit: number,
+        search?: string,
+        sort?: string
+    ): Promise<{ bookings: IBooking[]; total: number }> {
         const skip = (page - 1) * limit;
-        const filter = { userId };
+
+        const filter: any = { userId };
+
+        // ✅ search (match hotel name OR city OR state)
+        if (search) {
+            const searchRegex = new RegExp(search, "i");
+            filter.$or = [
+                { "hotelId.name": searchRegex },
+                { "hotelId.city": searchRegex },
+                { "hotelId.state": searchRegex },
+            ];
+        }
+
+        // ✅ sort mapping
+        let sortQuery: Record<string, 1 | -1> = { createdAt: -1 }; // default recent
+        switch (sort) {
+            case "recent":
+                sortQuery = { createdAt: -1 };
+                break;
+            case "name_asc":
+                sortQuery = { "hotelId.name": 1 };
+                break;
+            case "name_desc":
+                sortQuery = { "hotelId.name": -1 };
+                break;
+            case "price_asc":
+                sortQuery = { totalPrice: 1 };
+                break;
+            case "price_desc":
+                sortQuery = { totalPrice: -1 };
+                break;
+            default:
+                sortQuery = { createdAt: -1 };
+        }
 
         const total = await this.model.countDocuments(filter);
-        const bookings = await this.model.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit)
-            .populate({ path: 'roomId', select: 'name basePrice' })
-            .populate({ path: 'hotelId', select: 'name state city images' })
+
+        const bookings = await this.model
+            .find(filter)
+            .sort(sortQuery)
+            .skip(skip)
+            .limit(limit)
+            .populate({ path: "roomId", select: "name basePrice" })
+            .populate({ path: "hotelId", select: "name state city images" })
             .lean<IBooking[]>();
 
         return { bookings, total };
     }
+
 
     async findBookingsByVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }> {
         const skip = (page - 1) * limit;

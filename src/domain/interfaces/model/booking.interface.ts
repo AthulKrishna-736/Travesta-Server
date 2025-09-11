@@ -35,7 +35,7 @@ export interface ICancelBookingUseCase {
 }
 
 export interface IGetBookingsByUserUseCase {
-    getBookingByUser(userId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
+    getBookingByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: TResponseBookingData[], total: number }>
 }
 
 export interface IGetBookingsByHotelUseCase {

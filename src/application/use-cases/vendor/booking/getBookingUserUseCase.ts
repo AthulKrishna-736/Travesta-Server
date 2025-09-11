@@ -15,8 +15,8 @@ export class GetBookingsByUserUseCase implements IGetBookingsByUserUseCase {
     @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
   ) { }
 
-  async getBookingByUser(userId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }> {
-    const { bookings, total } = await this._bookingRepository.findBookingsByUser(userId, page, limit);
+  async getBookingByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: TResponseBookingData[], total: number }> {
+    const { bookings, total } = await this._bookingRepository.findBookingsByUser(userId, page, limit, search, sort);
 
     const mappedBookings = await Promise.all(
       bookings.map(async (b) => {

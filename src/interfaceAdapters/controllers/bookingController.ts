@@ -69,8 +69,10 @@ export class BookingController {
             const userId = req.user?.userId;
             const page = Number(req.query.page);
             const limit = Number(req.query.limit);
+            const search = req.query.search as string;
+            const sort = req.query.sort as string;
 
-            const { bookings, total } = await this._getByUserUseCase.getBookingByUser(userId as string, page, limit);
+            const { bookings, total } = await this._getByUserUseCase.getBookingByUser(userId as string, page, limit, search, sort);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
             ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByUser, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
