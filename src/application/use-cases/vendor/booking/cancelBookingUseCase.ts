@@ -1,69 +1,73 @@
 import { inject, injectable } from "tsyringe";
-import { IBookingRepository, IWalletRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IBookingRepository, IWalletRepository, ITransactionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { TOKENS } from "../../../../constants/token";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AppError } from "../../../../utils/appError";
 import { ICancelBookingUseCase } from "../../../../domain/interfaces/model/booking.interface";
-import mongoose from "mongoose";
+import { BOOKING_RES_MESSAGES } from "../../../../constants/resMessages";
 
 @injectable()
 export class CancelBookingUseCase implements ICancelBookingUseCase {
   constructor(
-    @inject(TOKENS.BookingRepository) private _bookingRepo: IBookingRepository,
-    @inject(TOKENS.WalletRepository) private _walletRepo: IWalletRepository,
+    @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
+    @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
+    @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
   ) { }
 
-  async execute(bookingId: string, userId: string): Promise<{ message: string }> {
-    const booking = await this._bookingRepo.findByid(bookingId);
-    if (!booking) {
-      throw new AppError("Booking not found", HttpStatusCode.NOT_FOUND);
-    }
+  async cancelBooking(bookingId: string, userId: string): Promise<{ message: string }> {
 
-    if (booking.userId.toString() !== userId) {
-      throw new AppError("Unauthorized access", HttpStatusCode.UNAUTHORIZED);
-    }
+    const booking = await this._bookingRepository.findByid(bookingId);
+    if (!booking) throw new AppError("Booking not found", HttpStatusCode.NOT_FOUND);
 
-    if (booking.status === 'cancelled') {
-      throw new AppError("Booking has already been cancelled", HttpStatusCode.BAD_REQUEST);
-    }
+    if (booking.userId.toString() !== userId) throw new AppError("Unauthorized access", HttpStatusCode.UNAUTHORIZED);
 
-    if (booking.status !== 'confirmed' || booking.payment.status !== 'success') {
-      throw new AppError("Only confirmed and successfully paid bookings can be refunded", HttpStatusCode.BAD_REQUEST);
-    }
+    if (booking.status === 'cancelled') throw new AppError("Booking has already been cancelled", HttpStatusCode.BAD_REQUEST);
 
-    const date = new Date();
-    const createdAt = new Date(booking.createdAt);
-    const timeDiffInMs = date.getTime() - createdAt.getTime();
-    const timeDiffInHours = timeDiffInMs / (1000 * 60 * 60);
+    if (booking.status !== 'confirmed' || booking.payment !== 'success') throw new AppError("Only confirmed and successfully paid bookings can be refunded", HttpStatusCode.BAD_REQUEST);
 
-    if (timeDiffInHours > 3) {
-      throw new AppError("Bookings can only be cancelled within 3 hours of creation", HttpStatusCode.BAD_REQUEST);
-    }
+    const timeDiffInHours = (Date.now() - new Date(booking.createdAt).getTime()) / (1000 * 60 * 60);
+    if (timeDiffInHours > 3) throw new AppError("Bookings can only be cancelled within 3 hours of creation", HttpStatusCode.BAD_REQUEST);
 
     const refundAmount = booking.totalPrice * 0.9;
     const vendorId = (booking.hotelId as any).vendorId;
 
-    await this._walletRepo.addTransaction(vendorId, {
+    const vendorWallet = await this._walletRepository.findUserWallet(vendorId);
+    if (!vendorWallet) throw new AppError("Vendor wallet not found", HttpStatusCode.NOT_FOUND);
+
+    const vendorTransactionData = {
+      walletId: vendorWallet._id!,
       type: 'debit',
       amount: refundAmount,
       description: `Refund for booking cancellation (${bookingId})`,
-      relatedBookingId: booking._id,
-      transactionId: new mongoose.Types.ObjectId().toString(),
-    })
+      relatedEntityId: booking._id!,
+      relatedEntityType: 'Booking',
+    };
 
-    await this._walletRepo.addTransaction(booking.userId.toString(), {
+    const vendorTransaction = await this._transactionRepository.createTransaction(vendorTransactionData);
+    if (!vendorTransaction) throw new AppError("Failed to create vendor transaction", HttpStatusCode.INTERNAL_SERVER_ERROR);
+
+    await this._walletRepository.updateBalanceByWalletId(vendorWallet._id!, -refundAmount);
+
+    const userWallet = await this._walletRepository.findUserWallet(booking.userId.toString());
+    if (!userWallet) throw new AppError("User wallet not found", HttpStatusCode.NOT_FOUND);
+
+    const userTransactionData = {
+      walletId: userWallet._id!,
       type: 'credit',
       amount: refundAmount,
       description: `Refund for booking cancellation (${bookingId})`,
-      relatedBookingId: booking._id,
-      transactionId: new mongoose.Types.ObjectId().toString(),
-    });
+      relatedBookingId: booking._id!,
+    };
+
+    const userTransaction = await this._transactionRepository.createTransaction(userTransactionData);
+    if (!userTransaction) throw new AppError("Failed to create user transaction", HttpStatusCode.INTERNAL_SERVER_ERROR);
+
+    await this._walletRepository.updateBalanceByWalletId(userWallet._id!, refundAmount);
 
     booking.status = "cancelled";
-    booking.payment.status = "refunded";
+    booking.payment = "refunded";
+    await this._bookingRepository.save(booking);
 
-    await this._bookingRepo.save(booking);
-
-    return { message: "Booking cancelled successfully" };
+    return { message: BOOKING_RES_MESSAGES.cancel };
   }
 }

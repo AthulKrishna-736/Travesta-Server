@@ -13,15 +13,15 @@ export interface IGetUserUseCase {
 
 //admin UseCases
 export interface IGetAllUsersUseCase {
-    getAllUsers(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string): Promise<{ users: TResponseUserData[]; total: number }>
+    getAllUsers(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string, sortField?: string, sortOrder?: string): Promise<{ users: TResponseUserData[]; total: number }>
 }
 
 export interface IBlockUnblockUser {
-    blockUnblockUser(userId: string): Promise<TResponseUserData | null>
+    blockUnblockUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
 }
 
 export interface IGetAllVendorReqUseCase {
-    getAllVendorReq(page: number, limit: number, search?: string): Promise<{ vendors: TResponseUserData[]; total: number }>
+    getAllVendorReq(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ vendors: TResponseUserData[]; total: number }>
 }
 
 export interface IUpdateVendorReqUseCase {

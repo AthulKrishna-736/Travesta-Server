@@ -1,4 +1,4 @@
-import {  injectable } from "tsyringe";
+import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
 import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfaces/model/room.interface";
@@ -37,9 +37,19 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
 
     async findRoomsByHotel(hotelId: string): Promise<IRoom[] | null> {
         const rooms = await this.find({ hotelId })
-            .populate('hotelId')
-            .populate('amenities')
+            .populate({
+                path: "hotelId",
+                populate: {
+                    path: "amenities",
+                    select: "_id name",
+                },
+            })
+            .populate({
+                path: "amenities",
+                select: "_id name",
+            })
             .lean<IRoom[]>();
+
         return rooms;
     }
 
@@ -58,7 +68,13 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         }
 
         const total = await this.model.countDocuments(filter);
-        const rooms = await this.model.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean();
+        const rooms = await this.model
+            .find(filter)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit)
+            .populate({ path: "amenities", select: "name _id" })
+            .lean();
 
         return { rooms, total };
     }
@@ -70,7 +86,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         maxPrice?: number,
         amenities?: string[],
         search?: string,
-        destination?: string,  
+        destination?: string,
         checkIn?: string,
         checkOut?: string,
         guests?: string
@@ -140,7 +156,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
 
             const bookedRooms = await bookingModel.find({
                 roomId: { $in: roomIds },
-                status: { $ne: "cancelled" }, // Exclude cancelled bookings
+                status: { $ne: "cancelled" },
                 $or: [
                     {
                         checkIn: { $lt: checkOutDate },
@@ -151,7 +167,6 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
 
             const bookedRoomIds = new Set(bookedRooms.map(b => b.roomId.toString()));
 
-            // Filter out booked rooms
             rooms = rooms.filter(room => !bookedRoomIds.has(room._id.toString()));
         }
 

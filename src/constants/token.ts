@@ -9,6 +9,7 @@ export const TOKENS = {
   SubscriptionRepository: 'SubscriptionRepository',
   ChatRepository: 'ChatRepository',
   WalletRepository: 'WalletRepository',
+  TransactionRepository: 'TransactionRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -45,6 +46,7 @@ export const TOKENS = {
   CreateHotelUseCase: 'CreteHotelUseCase',
   UpdateHotelUseCase: 'UpdateHotelUseCase',
   GetHotelByIdUseCase: 'GetHotelByIdUseCase',
+  GetHotelsByVendorUseCase: 'GetHotelsByVendorUseCase',
   GetAllHotelsUseCase: 'GetAllHotelsUseCase',
   CreateRoomUseCase: 'CreateRoomUseCase',
   UpdateRoomUseCase: 'UpdateRoomUseCase',
@@ -84,10 +86,18 @@ export const TOKENS = {
   MarkMsgAsReadUseCase: 'MarkMsgAsReadUseCase',
   GetVendorsChatWithUserUseCase: 'GetVendorsChatWithUserUseCase',
   GetVendorsChatWithAdminUseCase: 'GetVendorsChatWithAdminUseCase',
+  GetUserUnreadMsgUseCase: 'GetUserUnreadMsgUseCase',
 
   //wallet UseCase
   CreateWalletUseCase: 'CreateWalletUseCase',
   GetWalletUseCase: 'GetWalletUseCase',
   AddWalletTransactionUseCase: 'AddWalletTransactionUseCase',
   TransferUsersAmountUseCase: 'TransferUsersAmountUseCase',
+  AddVendorTransactionUseCase: 'AddVendorTransactionUseCase',
+
+  //transaction UseCase
+  BookingTransactionUseCase: 'BookingTransactionUseCase',
+  AddMoneyToWalletUseCase: 'AddMoneyToWalletUseCase',
+  GetTransactionsUseCase: 'GetTransactionsUseCase',
+
 };

@@ -4,6 +4,9 @@ import { bookingModel, TBookingDocument } from '../models/bookingModel';
 import { IBooking } from '../../../domain/interfaces/model/booking.interface';
 import { IBookingRepository } from '../../../domain/interfaces/repositories/repository.interface';
 import { hotelModel } from '../models/hotelModel';
+import { roomModel } from '../models/roomModel';
+import mongoose from 'mongoose';
+import { userModel } from '../models/userModels';
 
 @injectable()
 export class BookingRepository extends BaseRepository<TBookingDocument> implements IBookingRepository {
@@ -16,42 +19,79 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return booking.toObject<IBooking>();
     }
 
-    async findBookingsByUser(userId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }> {
+    async findBookingsByUser(
+        userId: string,
+        page: number,
+        limit: number,
+        search?: string,
+        sort?: string
+    ): Promise<{ bookings: IBooking[]; total: number }> {
         const skip = (page - 1) * limit;
-        const filter = { userId };
+
+        const filter: any = { userId };
+
+        // ✅ search (match hotel name OR city OR state)
+        if (search) {
+            const searchRegex = new RegExp(search, "i");
+            filter.$or = [
+                { "hotelId.name": searchRegex },
+                { "hotelId.city": searchRegex },
+                { "hotelId.state": searchRegex },
+            ];
+        }
+
+        // ✅ sort mapping
+        let sortQuery: Record<string, 1 | -1> = { createdAt: -1 }; // default recent
+        switch (sort) {
+            case "recent":
+                sortQuery = { createdAt: -1 };
+                break;
+            case "name_asc":
+                sortQuery = { "hotelId.name": 1 };
+                break;
+            case "name_desc":
+                sortQuery = { "hotelId.name": -1 };
+                break;
+            case "price_asc":
+                sortQuery = { totalPrice: 1 };
+                break;
+            case "price_desc":
+                sortQuery = { totalPrice: -1 };
+                break;
+            default:
+                sortQuery = { createdAt: -1 };
+        }
 
         const total = await this.model.countDocuments(filter);
-        const bookings = await this.model.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit)
-            .populate({ path: 'roomId', select: 'name basePrice' })
-            .populate({ path: 'hotelId', select: 'name' })
+
+        const bookings = await this.model
+            .find(filter)
+            .sort(sortQuery)
+            .skip(skip)
+            .limit(limit)
+            .populate({ path: "roomId", select: "name basePrice" })
+            .populate({ path: "hotelId", select: "name state city images" })
             .lean<IBooking[]>();
 
         return { bookings, total };
     }
 
+
     async findBookingsByVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }> {
         const skip = (page - 1) * limit;
-
-        // Step 1: Find hotel IDs for this vendor
         const vendorHotels = await hotelModel.find({ vendorId }, { _id: 1 }).lean();
         const hotelIds = vendorHotels.map(h => h._id);
 
         if (!hotelIds.length) return { bookings: [], total: 0 };
-
-        // Step 2: Filter bookings by those hotel IDs
         const filter = { hotelId: { $in: hotelIds } };
-
-        // Step 3: Count total
         const total = await this.model.countDocuments(filter);
-
-        // Step 4: Fetch bookings with hotel and room populated
         const bookings = await this.model.find(filter)
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit)
             .populate({ path: 'roomId', select: 'name basePrice' })
             .populate({ path: 'hotelId', select: 'name vendorId' })
-            .populate({ path: 'userId', select: 'firstName lastName' })
+            .populate({ path: 'userId', select: 'firstName lastName email phone' })
             .lean<IBooking[]>();
 
         return { bookings, total };
@@ -67,16 +107,34 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return { bookings, total };
     }
 
+    async hasActiveBooking(userId: string): Promise<boolean> {
+        const user = await userModel.findById(userId).select('role').lean();
+        if (!user) return false;
+
+        if (user.role !== 'user') {
+            return true;
+        }
+
+        const result = await this.model.aggregate([
+            { $match: { userId: new mongoose.Types.ObjectId(userId), status: 'confirmed', checkOut: { $gte: new Date() } } },
+            { $count: "total" }
+        ]);
+
+        return result.length > 0 && result[0].total > 0;
+    }
 
     async isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean> {
-        const overlappingBookings = await this.model.findOne({
+        const room = await roomModel.findById(roomId);
+        if (!room) throw new Error("Room not found");
+
+        const bookedCount = await bookingModel.countDocuments({
             roomId,
-            status: { $ne: 'cancelled' },
-            $or: [
-                { checkIn: { $lt: checkOut }, checkOut: { $gt: checkIn } },
-            ],
+            status: { $ne: "cancelled" },
+            checkIn: { $lt: checkOut },
+            checkOut: { $gt: checkIn },
         });
-        return !overlappingBookings;
+
+        return bookedCount < room.roomCount;
     }
 
     async findByid(bookingId: string): Promise<IBooking | null> {
@@ -95,7 +153,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
             id,
             {
                 status: 'cancelled',
-                'payment.status': 'refunded',
+                payment: 'refunded',
             },
             { new: true }
         ).exec();
@@ -107,7 +165,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
             {
                 $set: {
                     status: 'confirmed',
-                    'payment.status': 'success',
+                    payment: 'success',
                 },
             },
             { new: true }

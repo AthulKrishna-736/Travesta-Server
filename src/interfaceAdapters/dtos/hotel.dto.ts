@@ -42,6 +42,12 @@ export type TResponseHotelDTO = {
     address: string;
     geoLocation: [number, number];
     isBlocked: boolean;
+    startingPrice?: number | null;
+    cheapestRoom?: {
+        _id: string;
+        name: string;
+        basePrice: number;
+    } | null;
     createdAt: Date;
     updatedAt: Date;
 }

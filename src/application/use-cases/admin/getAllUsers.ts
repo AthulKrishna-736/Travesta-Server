@@ -9,14 +9,14 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 @injectable()
 export class GetAllUsers extends UserLookupBase implements IGetAllUsersUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository
     ) {
-        super(userRepo);
+        super(_userRepository);
     }
 
-    async getAllUsers(page: number, limit: number, role: string, search: string): Promise<{ users: TResponseUserData[]; total: number }> {
+    async getAllUsers(page: number, limit: number, role: string, search: string, sortField?: string, sortOrder?: string): Promise<{ users: TResponseUserData[]; total: number }> {
 
-        const { userEntities, total } = await this.getAllUserEntity(page, limit, role, search);
+        const { userEntities, total } = await this.getAllUserEntity(page, limit, role, search, sortField, sortOrder);
 
         const nonAdminUsers = userEntities.filter(user => !user.isAdmin()).map(user => user.toObject());
 

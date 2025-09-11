@@ -1,13 +1,14 @@
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
 import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { CreateUserDTO } from "../dtos/user.dto";
+import { AUTH_RES_MESSAGES } from "../../constants/resMessages";
 
 
 @injectable()
@@ -23,31 +24,30 @@ export class AuthController {
         @inject(TOKENS.LogoutUseCase) private _logoutOtpUseCase: ILogoutUseCases,
     ) { }
 
-    async register(req: CustomRequest, res: Response): Promise<void> {
+    async register(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userData: CreateUserDTO = req.body
             const newUser = await this._registerUseCase.register(userData)
-            ResponseHandler.success(res, 'User registration on progress', newUser, HttpStatusCode.OK)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.register, newUser, HttpStatusCode.OK)
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async resendOtp(req: CustomRequest, res: Response): Promise<void> {
+    async resendOtp(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { userId, purpose } = req.body;
             if (!userId || !purpose) {
                 throw new AppError('Userid and purpose are required', HttpStatusCode.BAD_REQUEST);
             }
-            const result = await this._resendOtpUseCase.resendOtp(userId, purpose);
-
-            ResponseHandler.success(res, result.message, null, HttpStatusCode.OK)
+            const { message } = await this._resendOtpUseCase.resendOtp(userId, purpose);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK)
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async login(req: CustomRequest, res: Response): Promise<void> {
+    async login(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { email, password, role } = req.body
             if (!email || !password || !role) {
@@ -58,13 +58,13 @@ export class AuthController {
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
-            ResponseHandler.success(res, 'Login successfull', user, HttpStatusCode.OK)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.login, user, HttpStatusCode.OK)
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async loginGoogle(req: CustomRequest, res: Response): Promise<void> {
+    async loginGoogle(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { credential, role } = req.body;
 
@@ -77,27 +77,27 @@ export class AuthController {
             setAccessCookie(accessToken, res);
             setRefreshCookie(refreshToken, res);
 
-            ResponseHandler.success(res, 'Google login successful', user, HttpStatusCode.OK);
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.googleLogin, user, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);;
         }
     }
 
-    async forgotPassword(req: CustomRequest, res: Response): Promise<void> {
+    async forgotPassword(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { email, role } = req.body
             if (!email || !role) {
                 throw new AppError('Email and role missing in body', HttpStatusCode.BAD_REQUEST)
             }
 
-            const data = await this._forgotPassUseCase.forgotPass(email, role)
-            ResponseHandler.success(res, data.message, data.userId, HttpStatusCode.OK)
+            const { message, userId } = await this._forgotPassUseCase.forgotPass(email, role)
+            ResponseHandler.success(res, message, userId, HttpStatusCode.OK)
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async updatePassword(req: CustomRequest, res: Response): Promise<void> {
+    async updatePassword(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { email, password } = req.body
             if (!email || !password) {
@@ -105,28 +105,28 @@ export class AuthController {
             }
 
             await this._resetPassUseCase.resetPass(email, password)
-            ResponseHandler.success(res, 'Password updated successfully', null, HttpStatusCode.OK)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.resetPass, null, HttpStatusCode.OK)
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async verifyOTP(req: CustomRequest, res: Response): Promise<void> {
+    async verifyOTP(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { userId, otp, purpose } = req.body;
 
-            const data = await this._verifyOtpUseCase.verifyOtp(userId, otp, purpose)
-            if (!data.isOtpVerified) {
+            const { data, isOtpVerified } = await this._verifyOtpUseCase.verifyOtp(userId, otp, purpose)
+            if (!isOtpVerified) {
                 throw new AppError('Otp verification failed or session expired', HttpStatusCode.BAD_REQUEST)
             }
 
-            ResponseHandler.success(res, 'Otp verified successfully', data.data, HttpStatusCode.OK)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.verifyOtp, data, HttpStatusCode.OK)
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async logout(req: CustomRequest, res: Response): Promise<void> {
+    async logout(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const accessToken = req.cookies['access_token'];
             const refreshToken = req.cookies['refresh_token'];
@@ -142,7 +142,7 @@ export class AuthController {
 
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 }

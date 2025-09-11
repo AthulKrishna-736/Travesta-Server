@@ -29,9 +29,20 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
         }).sort({ timestamp: 1 }).lean<IChatMessage[]>();
     }
 
-    async markMessageAsRead(messageId: string): Promise<IChatMessage | null> {
-        const message = await this.update(messageId, { isRead: true });
-        return message?.toObject() || null;
+    async markConversationAsRead(senderId: string, receiverId: string): Promise<void> {
+        await chatMessageModel.updateMany(
+            { fromId: senderId, toId: receiverId, isRead: false },
+            { $set: { isRead: true } }
+        );
+    }
+
+    async getUnreadMessages(userId: string): Promise<{ id: string; count: number }[]> {
+        const result = await this.model.aggregate([
+            { $match: { toId: userId.toString(), isRead: false } },
+            { $group: { '_id': '$fromId', count: { $sum: 1 } } },
+            { $project: { id: '$_id', count: 1, _id: 0 } }
+        ])
+        return result;
     }
 
     async getUsersWhoChattedWithVendor(vendorId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]> {

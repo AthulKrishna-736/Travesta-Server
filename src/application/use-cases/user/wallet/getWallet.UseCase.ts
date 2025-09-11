@@ -3,23 +3,22 @@ import { TOKENS } from '../../../../constants/token';
 import { IWalletRepository } from '../../../../domain/interfaces/repositories/repository.interface';
 import { IGetWalletUseCase, IWallet } from '../../../../domain/interfaces/model/wallet.interface';
 import { AppError } from '../../../../utils/appError';
-import { HttpStatusCode } from '../../../../utils/HttpStatusCodes';
+import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
+import { WALLET_RES_MESSAGES } from '../../../../constants/resMessages';
 
 @injectable()
 export class GetWalletUseCase implements IGetWalletUseCase {
     constructor(
-        @inject(TOKENS.WalletRepository) private _walletRepo: IWalletRepository
+        @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository
     ) { }
 
-    async getUserWallet(userId: string, page: number, limit: number): Promise<{ wallet: IWallet | null, total: number, message: string }> {
-        const checkWallet = await this._walletRepo.findWalletExist(userId);
+    async getUserWallet(userId: string): Promise<{ wallet: IWallet | null, message: string }> {
+        const wallet = await this._walletRepository.findUserWallet(userId);
 
-        if (!checkWallet) {
+        if (!wallet) {
             throw new AppError('Wallet not found', HttpStatusCode.NOT_FOUND);
         }
-
-        const { wallet, total } = await this._walletRepo.findUserWallet(userId, page, limit);
-
-        return { wallet, total, message: 'Wallet fetched successfully' };
+        
+        return { wallet, message: WALLET_RES_MESSAGES.getWallet };
     }
 }

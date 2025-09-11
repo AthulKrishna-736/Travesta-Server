@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { HttpStatusCode } from "../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../constants/HttpStatusCodes";
 
 export class ResponseHandler {
     static success(
@@ -9,7 +9,7 @@ export class ResponseHandler {
         statusCode: number = HttpStatusCode.OK,
         meta: Record<string, any> | null = null
     ): Response {
-        console.log('res from Server: ', message, data);
+        console.log('res from Server: ', message);
         return res.status(statusCode).json({
             success: true,
             message,

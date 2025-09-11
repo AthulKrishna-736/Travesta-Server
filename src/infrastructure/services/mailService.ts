@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import { env } from '../config/env';
 import { AppError } from '../../utils/appError';
-import { HttpStatusCode } from '../../utils/HttpStatusCodes';
+import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { injectable } from 'tsyringe';
 import { IMailService } from '../../domain/interfaces/services/mailService.interface';
 

@@ -5,31 +5,32 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { TOKENS } from "../../../../constants/token";
 import { TCreateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelUseCase {
     private _imageUploader;
     constructor(
-        @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
-        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
+        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
+        @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
         @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
     ) {
-        super(hotelRepo);
-        this._imageUploader = new AwsImageUploader(awsS3Service);
+        super(_hotelRepository);
+        this._imageUploader = new AwsImageUploader(_awsS3Service);
     }
 
     async createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {
-        const vendor = await this._userRepo.checkUserVerified(hotelData.vendorId as string);
-        if (!vendor) {
+        const vendor = await this._userRepo.findUserById(hotelData.vendorId as string);
+        if (!vendor?.isVerified) {
             throw new AppError('Vendor is not verified. Please upload docs and verify!', HttpStatusCode.CONFLICT);
         }
-        
-        const existingHotels = await this.getHotelEntityByVendorId(hotelData.vendorId as string);
+
+        const existingHotels = await this.getHotelEntityByVendorId(hotelData.vendorId as string, 1, 100);
         const isDuplicate = existingHotels?.some(hotel => hotel.name === hotelData.name);
 
         if (isDuplicate) {
@@ -42,7 +43,7 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
             uploadedImageKeys = await this._imageUploader.uploadHotelImages(hotelData.vendorId as string, files);
         }
 
-        const newHotel = await this._hotelRepo.createHotel({
+        const newHotel = await this._hotelRepository.createHotel({
             ...hotelData,
             amenities: hotelData.amenities,
             tags: hotelData.tags,
@@ -57,7 +58,7 @@ export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelU
 
         return {
             hotel: customHotelMapping,
-            message: "Hotel created successfully"
+            message: HOTEL_RES_MESSAGES.create,
         };
     }
 }

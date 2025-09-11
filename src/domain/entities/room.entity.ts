@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import { IRoom, TUpdateRoomData } from "../interfaces/model/room.interface";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { AppError } from "../../utils/appError";
 
 
@@ -8,8 +8,10 @@ export interface IRoomEntity {
     readonly id: string | undefined;
     readonly hotelId: string | Types.ObjectId;
     readonly name: string;
-    readonly capacity: number;
+    readonly roomType: string;
+    readonly roomCount: number;
     readonly bedType: string;
+    readonly guest: number;
     readonly amenities: string[];
     readonly images: string[];
     readonly basePrice: number;
@@ -44,8 +46,16 @@ export class RoomEntity implements IRoomEntity {
         return this._props.name;
     }
 
-    get capacity() {
-        return this._props.capacity;
+    get roomType() {
+        return this._props.roomType;
+    }
+
+    get roomCount() {
+        return this._props.roomCount;
+    }
+
+    get guest() {
+        return this._props.guest;
     }
 
     get bedType() {
@@ -98,8 +108,16 @@ export class RoomEntity implements IRoomEntity {
             this._props.name = data.name.trim();
         }
 
-        if (typeof data.capacity === 'number' && data.capacity > 0) {
-            this._props.capacity = data.capacity;
+        if (data.roomType && typeof data.roomType === 'string') {
+            this._props.roomType = data.roomType;
+        }
+
+        if (typeof data.roomCount === 'number' && data.roomCount > 0) {
+            this._props.roomCount = data.roomCount;
+        }
+
+        if (typeof data.guest === 'number' && data.guest > 0) {
+            this._props.guest = data.guest;
         }
 
         if (data.bedType && typeof data.bedType === 'string' && data.bedType.trim().length > 0) {
@@ -124,8 +142,10 @@ export class RoomEntity implements IRoomEntity {
     getPersistableData(): Partial<Omit<IRoom, "_id" | "createdAt" | "hotelId">> {
         return {
             name: this._props.name,
-            capacity: this._props.capacity,
+            roomType: this._props.roomType,
+            roomCount: this._props.roomCount,
             bedType: this._props.bedType,
+            guest: this._props.guest,
             amenities: this._props.amenities,
             images: this._props.images,
             basePrice: this._props.basePrice,

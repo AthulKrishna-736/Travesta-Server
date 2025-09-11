@@ -4,16 +4,17 @@ import { SubscriptionLookupBase } from "../../base/subscription.base";
 import { TOKENS } from "../../../../constants/token";
 import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import mongoose from "mongoose";
+import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class UpdatePlanUseCase extends SubscriptionLookupBase implements IUpdatePlanUseCase {
     constructor(
-        @inject(TOKENS.SubscriptionRepository) subscritionRepo: ISubscriptionRepository,
+        @inject(TOKENS.SubscriptionRepository) _subscriptionRepository: ISubscriptionRepository,
     ) {
-        super(subscritionRepo);
+        super(_subscriptionRepository);
     }
 
     async updatePlan(id: string, data: TUpdateSubscriptionData): Promise<{ plan: TResponseSubscriptionData; message: string; }> {
@@ -22,7 +23,7 @@ export class UpdatePlanUseCase extends SubscriptionLookupBase implements IUpdate
 
             planEntity.updatePlan(data);
 
-            const updatedPlan = await this._subscriptionRepo.updatePlan(planEntity.id, planEntity.getPersistablestate());
+            const updatedPlan = await this._subscriptionRepository.updatePlan(planEntity.id, planEntity.getPersistablestate());
 
             if (!updatedPlan) {
                 throw new AppError('Error while updating the plan', HttpStatusCode.INTERNAL_SERVER_ERROR);
@@ -30,7 +31,7 @@ export class UpdatePlanUseCase extends SubscriptionLookupBase implements IUpdate
 
             return {
                 plan: planEntity.toObject(),
-                message: 'Subscription plan updated successfully',
+                message: PLAN_RES_MESSAGES.update,
             };
         } catch (error: unknown) {
             if (error instanceof mongoose.mongo.MongoServerError && error.code === 11000) {

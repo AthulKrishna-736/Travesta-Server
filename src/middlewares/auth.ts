@@ -1,7 +1,7 @@
 import { Response, NextFunction } from "express";
 import { IAuthService } from "../domain/interfaces/services/authService.interface";
 import { AppError } from "../utils/appError";
-import { HttpStatusCode } from "../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../constants/HttpStatusCodes";
 import { container } from "tsyringe";
 import { jwtConfig } from "../infrastructure/config/jwtConfig";
 import logger from "../utils/logger";

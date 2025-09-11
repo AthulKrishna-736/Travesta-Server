@@ -1,12 +1,13 @@
 import { Response, NextFunction } from "express";
 import { AppError } from "../utils/appError";
-import { HttpStatusCode } from "../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../constants/HttpStatusCodes";
 import { CustomRequest } from "../utils/customRequest";
 import { TRole } from "../shared/types/client.types";
 
 
 export const authorizeRoles = (...roles: TRole[]) => {
     return (req: CustomRequest, res: Response, next: NextFunction) => {
+        console.log('req user console: ', req.user);
         if (!req.user) {
             return next(new AppError("Not authenticated", HttpStatusCode.UNAUTHORIZED));
         }

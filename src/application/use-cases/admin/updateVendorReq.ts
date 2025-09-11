@@ -2,19 +2,20 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IUpdateVendorReqUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import logger from "../../../utils/logger";
 import { IMailService } from "../../../domain/interfaces/services/mailService.interface";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { UserLookupBase } from "../base/userLookup.base";
+import { ADMIN_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class UpdateVendorReq extends UserLookupBase implements IUpdateVendorReqUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
         @inject(TOKENS.MailService) private _mailService: IMailService,
     ) {
-        super(userRepo);
+        super(_userRepository);
     }
 
     async updateVendorReq(vendorId: string, isVerified: boolean, verificationReason: string): Promise<{ message: string }> {
@@ -38,12 +39,12 @@ export class UpdateVendorReq extends UserLookupBase implements IUpdateVendorReqU
             verificationReason
         };
 
-        await this._userRepo.updateUser(vendorId, updatedData);
+        await this._userRepository.updateUser(vendorId, updatedData);
 
         logger.info(`Vendor ${isVerified ? 'approved' : 'rejected'} for ${vendorEntity.email}`);
 
         return {
-            message: `Vendor ${isVerified ? 'approved' : 'rejected'} successfully`
+            message: `${isVerified ? ADMIN_RES_MESSAGES.approveVendor : ADMIN_RES_MESSAGES.rejectVendor}`
         };
     }
 }

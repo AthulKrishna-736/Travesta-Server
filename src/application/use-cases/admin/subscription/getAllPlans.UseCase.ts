@@ -3,14 +3,15 @@ import { IGetAllPlansUseCase, TResponseSubscriptionData } from "../../../../doma
 import { TOKENS } from "../../../../constants/token";
 import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { SubscriptionLookupBase } from "../../base/subscription.base";
+import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class GetAllPlansUseCase extends SubscriptionLookupBase implements IGetAllPlansUseCase {
     constructor(
-        @inject(TOKENS.SubscriptionRepository) subscriptionRepo: ISubscriptionRepository,
+        @inject(TOKENS.SubscriptionRepository) _subscriptionRepository: ISubscriptionRepository,
     ) {
-        super(subscriptionRepo);
+        super(_subscriptionRepository);
     }
 
     async getAllPlans(): Promise<{ plans: TResponseSubscriptionData[]; message: string; }> {
@@ -20,7 +21,7 @@ export class GetAllPlansUseCase extends SubscriptionLookupBase implements IGetAl
 
         return {
             plans: mappedPlans,
-            message: 'All plans fetched successfully',
+            message: PLAN_RES_MESSAGES.getAll,
         }
     }
 }

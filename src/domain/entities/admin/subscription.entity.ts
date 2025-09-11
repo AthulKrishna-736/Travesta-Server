@@ -1,6 +1,6 @@
 import { TSubscription } from "../../../shared/types/client.types"
 import { AppError } from "../../../utils/appError"
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes"
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes"
 import { ISubscription, TUpdateSubscriptionData } from "../../interfaces/model/subscription.interface"
 
 

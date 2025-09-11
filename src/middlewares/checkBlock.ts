@@ -3,7 +3,7 @@ import { CustomRequest } from "../utils/customRequest";
 import { container } from "tsyringe";
 import { TOKENS } from "../constants/token";
 import { AppError } from "../utils/appError";
-import { HttpStatusCode } from "../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../constants/HttpStatusCodes";
 import { IUserRepository } from "../domain/interfaces/repositories/repository.interface";
 
 

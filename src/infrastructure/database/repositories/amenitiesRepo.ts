@@ -27,9 +27,10 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         return amenity?.toObject() || null;
     }
 
-    async findAllAmenities(page: number, limit: number, search?: string): Promise<{ amenities: IAmenities[] | null, total: number }> {
+    async findAllAmenities(page: number, limit: number, type: string = 'hotel', search?: string, sortField: string = 'name', sortOrder: string = 'ascending'): Promise<{ amenities: IAmenities[] | null, total: number }> {
         const skip = (page - 1) * limit;
-        const filter: any = {}
+        const order = sortOrder == 'descending' ? -1 : 1;
+        const filter: any = { type }
         if (search) {
             const searchRegex = new RegExp(search, 'i')
             filter.$or = [
@@ -38,7 +39,7 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         }
 
         const total = await this.model.countDocuments(filter);
-        const amenities = await this.find(filter).skip(skip).limit(limit).lean<IAmenities[]>();
+        const amenities = await this.find(filter).skip(skip).limit(limit).sort({ [sortField]: order }).lean<IAmenities[]>();
         return { amenities, total }
     }
 
@@ -60,5 +61,18 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         const total = await this.model.countDocuments(filter);
 
         return { amenities, total }
+    }
+
+    async separateHotelAndRoomAmenities(amenityIds: string[]): Promise<{ hotelAmenities: IAmenities[], roomAmenities: IAmenities[] }> {
+        if (!amenityIds || amenityIds.length === 0) {
+            return { hotelAmenities: [], roomAmenities: [] };
+        }
+
+        const amenities = await this.model.find({ _id: { $in: amenityIds }, isActive: true }).lean<IAmenities[]>();
+
+        const hotelAmenities = amenities.filter(a => a.type === 'hotel');
+        const roomAmenities = amenities.filter(a => a.type === 'room');
+
+        return { hotelAmenities, roomAmenities };
     }
 }

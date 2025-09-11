@@ -12,11 +12,11 @@ import { TResponseUserData } from "../../../domain/interfaces/model/user.interfa
 @injectable()
 export class GetUserProfileUseCase extends UserLookupBase implements IGetUserUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
         @inject(TOKENS.RedisService) protected _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) protected _awsS3Service: IAwsS3Service,
     ) {
-        super(userRepo)
+        super(_userRepository)
     }
 
     protected async _getBaseUserEntityWithProfile(userId: string): Promise<IUserEntity> {

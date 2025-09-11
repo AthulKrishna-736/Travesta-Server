@@ -30,8 +30,9 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
         return user;
     }
 
-    async findAllUser(page: number, limit: number, role: string, search?: string): Promise<{ users: IUser[] | null, total: number }> {
+    async findAllUser(page: number, limit: number, role: string, search?: string, sortField: string = 'firstName', sortOrder: string = 'ascending'): Promise<{ users: IUser[] | null, total: number }> {
         const skip = (page - 1) * limit;
+        const sortDirection = sortOrder == 'descending' ? -1 : 1;
         const filter: any = {
             role
         }
@@ -45,7 +46,7 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
 
         const result = this.find(filter);
         const total = await this.model.countDocuments(filter);
-        const user = await result.skip(skip).limit(limit).lean<IUser[]>();
+        const user = await result.skip(skip).limit(limit).sort({ [sortField]: sortDirection }).lean<IUser[]>();
 
         return { users: user, total }
     }
@@ -57,6 +58,11 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
 
     async checkUserVerified(userId: string): Promise<boolean> {
         const user = await this.findOne({ userId, isVerified: true }).lean<IUser>();
+        return user ? true : false;
+    }
+
+    async findUserExist(userId: string): Promise<boolean> {
+        const user = await this.findById(userId);
         return user ? true : false;
     }
 }

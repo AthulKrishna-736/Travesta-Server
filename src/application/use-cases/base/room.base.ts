@@ -2,13 +2,13 @@ import { IRoomRepository } from "../../../domain/interfaces/repositories/reposit
 import { IRoomEntity } from "../../../domain/entities/room.entity";
 import { RoomEntity } from "../../../domain/entities/room.entity";
 import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
 export abstract class RoomLookupBase {
-    constructor(protected readonly _roomRepo: IRoomRepository) { }
+    constructor(protected readonly _roomRepository: IRoomRepository) { }
 
     protected async getRoomEntityById(roomId: string): Promise<IRoomEntity> {
-        const room = await this._roomRepo.findRoomById(roomId);
+        const room = await this._roomRepository.findRoomById(roomId);
 
         if (!room) {
             throw new AppError("Room does not exist with this id", HttpStatusCode.NOT_FOUND);
@@ -18,7 +18,7 @@ export abstract class RoomLookupBase {
     }
 
     protected async getRoomsEntityByHotelId(hotelId: string): Promise<IRoomEntity[]> {
-        const rooms = await this._roomRepo.findRoomsByHotel(hotelId);
+        const rooms = await this._roomRepository.findRoomsByHotel(hotelId);
 
         if (!rooms || rooms.length === 0) {
             throw new AppError("No rooms found for this hotel", HttpStatusCode.NOT_FOUND);
@@ -28,7 +28,7 @@ export abstract class RoomLookupBase {
     }
 
     protected async getAvailableRoomsByHotelId(hotelId: string): Promise<IRoomEntity[]> {
-        const rooms = await this._roomRepo.findAvailableRoomsByHotel(hotelId);
+        const rooms = await this._roomRepository.findAvailableRoomsByHotel(hotelId);
 
         if (!rooms || rooms.length === 0) {
             throw new AppError("No available rooms found for this hotel", HttpStatusCode.NOT_FOUND);
@@ -38,7 +38,7 @@ export abstract class RoomLookupBase {
     }
 
     protected async getAllRoomsOrThrow(page: number, limit: number, search?: string): Promise<{ rooms: IRoomEntity[], total: number }> {
-        const { rooms, total } = await this._roomRepo.findAllRooms(page, limit, search);
+        const { rooms, total } = await this._roomRepository.findAllRooms(page, limit, search);
 
         if (!rooms || !Array.isArray(rooms) || rooms.length === 0) {
             throw new AppError("No rooms found", HttpStatusCode.NOT_FOUND);
@@ -61,7 +61,7 @@ export abstract class RoomLookupBase {
         checkOut?: string,
         guests?: string
     ): Promise<{ rooms: IRoomEntity[], total: number }> {
-        const { rooms, total } = await this._roomRepo.findFilteredAvailableRooms(
+        const { rooms, total } = await this._roomRepository.findFilteredAvailableRooms(
             page,
             limit,
             minPrice,

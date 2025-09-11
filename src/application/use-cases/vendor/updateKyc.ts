@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import path from 'path';
 import fs from 'fs';
 import { IUpdateKycUseCase } from "../../../domain/interfaces/model/usecases.interface";
@@ -12,17 +12,18 @@ import { IRedisService } from "../../../domain/interfaces/services/redisService.
 import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { VENDOR_RES_MESSAGES } from "../../../constants/resMessages";
 
 @injectable()
 export class UpdateKycUseCase implements IUpdateKycUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AwsS3Service) private _s3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
     async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: TResponseUserData, message: string }> {
-        const user = await this._userRepo.findUserById(userId);
+        const user = await this._userRepository.findUserById(userId);
         if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
 
         const uploadAndClean = async (file: Express.Multer.File, name: string) => {
@@ -42,7 +43,7 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
 
         const existingDocs = user.kycDocuments || [];
         const updatedDocs = [...existingDocs, frontKey, backKey];
-        const updated = await this._userRepo.updateUser(userId, { kycDocuments: updatedDocs });
+        const updated = await this._userRepository.updateUser(userId, { kycDocuments: updatedDocs });
 
         if (!updated) {
             throw new AppError('Error while updating user', HttpStatusCode.BAD_REQUEST);
@@ -66,7 +67,7 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
 
         return {
             vendor: mapUser,
-            message: 'KYC documents updated successfully',
+            message: VENDOR_RES_MESSAGES.kyc,
         };
     }
 }

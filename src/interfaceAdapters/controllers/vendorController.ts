@@ -1,7 +1,7 @@
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../utils/appError";
-import { HttpStatusCode } from "../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
@@ -11,12 +11,12 @@ import { UpdateUserDTO } from "../dtos/user.dto";
 @injectable()
 export class VendorController {
     constructor(
-        @inject(TOKENS.UpdateUserUseCase) private _updateUser: IUpdateUserUseCase,
-        @inject(TOKENS.UpdateKycUseCase) private _updateKyc: IUpdateKycUseCase,
-        @inject(TOKENS.GetVendorUseCase) private _getVendor: IGetVendorUseCase,
+        @inject(TOKENS.UpdateUserUseCase) private _updateUserUseCase: IUpdateUserUseCase,
+        @inject(TOKENS.UpdateKycUseCase) private _updateKycUseCase: IUpdateKycUseCase,
+        @inject(TOKENS.GetVendorUseCase) private _getVendorUseCase: IGetVendorUseCase,
     ) { }
 
-    async updateProfile(req: CustomRequest, res: Response): Promise<void> {
+    async updateProfile(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) {
@@ -25,15 +25,15 @@ export class VendorController {
 
             const userData: UpdateUserDTO = req.body;
 
-            const { user, message } = await this._updateUser.updateUser(userId, userData, req.file);
+            const { user, message } = await this._updateUserUseCase.updateUser(userId, userData, req.file);
 
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async updateKyc(req: CustomRequest, res: Response): Promise<void> {
+    async updateKyc(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) {
@@ -49,25 +49,25 @@ export class VendorController {
             const frontFile = files.front[0];
             const backFile = files.back[0];
 
-            const { message, vendor } = await this._updateKyc.updateKyc(userId, frontFile, backFile);
+            const { message, vendor } = await this._updateKycUseCase.updateKyc(userId, frontFile, backFile);
 
             ResponseHandler.success(res, message, vendor, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 
-    async getVendor(req: CustomRequest, res: Response): Promise<void> {
+    async getVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) {
                 throw new AppError('userid missing in req body', HttpStatusCode.BAD_REQUEST);
             }
-            const { message, user } = await this._getVendor.getUser(userId)
+            const { message, user } = await this._getVendorUseCase.getUser(userId)
 
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 

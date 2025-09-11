@@ -4,31 +4,32 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { TOKENS } from "../../../../constants/token";
 import { TUpdateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IUpdateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelUseCase {
     private _imageUploader;
     constructor(
-        @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
-        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
+        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
+        @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(hotelRepo);
-        this._imageUploader = new AwsImageUploader(awsS3Service)
+        super(_hotelRepository);
+        this._imageUploader = new AwsImageUploader(_awsS3Service)
     }
 
     async updateHotel(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {
         const hotel = await this.getHotelEntityById(hotelId)
 
         if (updateData.name && updateData.name !== hotel.name) {
-            const vendorHotels = await this.getHotelEntityByVendorId(hotel.vendorId as string)
+            const vendorHotels = await this.getHotelEntityByVendorId(hotel.vendorId as string, 1, 100);
 
             if (vendorHotels && vendorHotels.some(h => h.name === updateData.name && h.id !== hotelId)) {
                 throw new AppError("Hotel name already exists for this vendor", HttpStatusCode.BAD_REQUEST);
@@ -64,7 +65,7 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
             images: finalImages
         })
 
-        const updatedHotel = await this._hotelRepo.updateHotel(hotelId, hotel.getPersistableData());
+        const updatedHotel = await this._hotelRepository.updateHotel(hotelId, hotel.getPersistableData());
 
         if (!updatedHotel) {
             throw new AppError("Failed to update hotel", HttpStatusCode.INTERNAL_SERVER_ERROR);
@@ -74,7 +75,7 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
 
         return {
             hotel: customHotelMapping,
-            message: "Hotel updated successfully",
+            message: HOTEL_RES_MESSAGES.update,
         };
     }
 

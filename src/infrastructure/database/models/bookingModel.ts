@@ -42,11 +42,9 @@ const bookingSchema: Schema = new Schema<TBookingDocument>(
             default: 'pending',
         },
         payment: {
-            status: {
                 type: String,
                 enum: ['pending', 'success', 'failed', 'refunded'],
                 default: 'pending',
-            },
         },
     },
     { timestamps: true }

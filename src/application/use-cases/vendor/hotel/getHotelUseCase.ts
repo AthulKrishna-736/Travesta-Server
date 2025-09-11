@@ -8,16 +8,17 @@ import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.in
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class GetHotelByIdUseCase extends HotelLookupBase implements IGetHotelByIdUseCase {
     constructor(
-        @inject(TOKENS.HotelRepository) hotelRepo: IHotelRepository,
+        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) {
-        super(hotelRepo);
+        super(_hotelRepository);
     }
 
     async getHotel(hotelId: string): Promise<{ hotel: TResponseHotelData; message: string }> {
@@ -38,6 +39,6 @@ export class GetHotelByIdUseCase extends HotelLookupBase implements IGetHotelByI
         const mapHotel = hotel.toObject();
         const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(mapHotel);
 
-        return { hotel: customHotelMapping, message: "Hotel fetched successfully" };
+        return { hotel: customHotelMapping, message: HOTEL_RES_MESSAGES.getHotelById };
     }
 }

@@ -1,40 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IWallet, IWalletTransaction } from '../../../domain/interfaces/model/wallet.interface';
-
+import { IWallet } from '../../../domain/interfaces/model/wallet.interface';
 
 export type TWalletDocument = IWallet & Document;
-
-const transactionSchema = new Schema<IWalletTransaction>(
-    {
-        type: {
-            type: String,
-            enum: ['credit', 'debit'],
-            required: true,
-        },
-        amount: {
-            type: Number,
-            required: true,
-        },
-        description: {
-            type: String,
-            required: true,
-        },
-        transactionId: {
-            type: String,
-            required: false,
-        },
-        relatedBookingId: {
-            type: Schema.Types.ObjectId,
-            ref: 'Booking',
-        },
-        date: {
-            type: Date,
-            default: Date.now,
-            required: true,
-        },
-    },
-    { _id: false }
-);
 
 const walletSchema = new Schema<TWalletDocument>(
     {
@@ -49,7 +16,6 @@ const walletSchema = new Schema<TWalletDocument>(
             default: 0,
             min: [0, 'Balance cannot be negative'],
         },
-        transactions: [transactionSchema],
     },
     { timestamps: true }
 );

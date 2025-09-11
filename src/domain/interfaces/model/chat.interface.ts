@@ -38,5 +38,9 @@ export interface IGetVendorsChatWithAdminUseCase {
 }
 
 export interface IMarkMsgAsReadUseCase {
-  markMsgAsRead(messageId: string): Promise<void>;
+  markMsgAsRead(senderId: string, receiverId: string): Promise<void>;
+}
+
+export interface IGetUserUnreadMsgUseCase {
+  getUnreadMsg(userId: string): Promise<{ message: string, users: { id: string, count: number }[] }>
 }

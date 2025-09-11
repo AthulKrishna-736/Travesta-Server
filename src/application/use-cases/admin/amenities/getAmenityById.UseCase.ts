@@ -3,14 +3,15 @@ import { AmenityLookupBase } from "../../base/amenity.base";
 import { IGetAmenityByIdUseCase, TResponseAmenityData } from "../../../../domain/interfaces/model/amenities.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class GetAmenityByIdUseCase extends AmenityLookupBase implements IGetAmenityByIdUseCase {
     constructor(
-        @inject(TOKENS.AmenitiesRepository) amenitiesRepo: IAmenitiesRepository,
+        @inject(TOKENS.AmenitiesRepository) _amenitiesRepository: IAmenitiesRepository,
     ) {
-        super(amenitiesRepo);
+        super(_amenitiesRepository);
     }
 
     async getAmenityById(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }> {
@@ -18,7 +19,7 @@ export class GetAmenityByIdUseCase extends AmenityLookupBase implements IGetAmen
 
         return {
             amenity: amenityEntity.toObject(),
-            message: 'fetched amenity successfully',
+            message: AMENITIES_RES_MESSAGES.getOne,
         }
     }
 }

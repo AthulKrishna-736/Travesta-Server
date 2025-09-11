@@ -17,7 +17,7 @@ import { IAwsS3Service } from "../../domain/interfaces/services/awsS3Service.int
 import { AwsS3Service } from "../services/awsS3Service";
 import { GetUserProfileUseCase } from "../../application/use-cases/user/getUser";
 import { UpdateKycUseCase } from "../../application/use-cases/vendor/updateKyc";
-import { IAmenitiesRepository, IChatRepository, IHotelRepository, IRoomRepository, ISubscriptionRepository, IUserRepository, IWalletRepository } from "../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository, IChatRepository, IHotelRepository, IRoomRepository, ISubscriptionRepository, ITransactionRepository, IUserRepository, IWalletRepository } from "../../domain/interfaces/repositories/repository.interface";
 import { GetVendorProfileUseCase } from "../../application/use-cases/vendor/getVendor";
 import { HotelRepository } from "../database/repositories/hotelRepo";
 import { CreateHotelUseCase } from "../../application/use-cases/vendor/hotel/createHotelUseCase";
@@ -60,11 +60,11 @@ import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscriptio
 import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
 import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscription/getAllPlans.UseCase";
 import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IUpdateHotelUseCase } from "../../domain/interfaces/model/hotel.interface";
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from "../../domain/interfaces/model/hotel.interface";
 import { ICreateRoomUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IUpdateRoomUseCase } from "../../domain/interfaces/model/room.interface";
 import { SocketService } from "../services/socketService";
 import { ChatRepository } from "../database/repositories/chatRepo";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { GetChatMessagesUseCase } from "../../application/use-cases/chat/getChatMsg.UseCase.";
 import { SendMessageUseCase } from "../../application/use-cases/chat/sendMsg.UseCase";
 import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChatUsers.UseCase";
@@ -72,15 +72,19 @@ import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRe
 import { GetVendorsChatWithUserUseCase } from "../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
 import { GetVendorsChatWithAdmiinUseCase } from "../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
 import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase } from "../../domain/interfaces/model/booking.interface";
-import { IAddWalletTransactionUseCase, ICreateWalletUseCase, IGetWalletUseCase, ITransferUsersAmountUseCase } from "../../domain/interfaces/model/wallet.interface";
+import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from "../../domain/interfaces/model/wallet.interface";
 import { GetWalletUseCase } from "../../application/use-cases/user/wallet/getWallet.UseCase";
 import { CreateWalletUseCase } from "../../application/use-cases/user/wallet/createWallet.UseCase";
-import { AddWalletTransactionUseCase } from "../../application/use-cases/user/wallet/addTransaction.UseCase";
 import { WalletRepository } from "../database/repositories/wallet.Repo";
 import { StripeService } from "../services/stripeService";
-import { TransferUsersAmountUseCase } from "../../application/use-cases/user/wallet/transferUsersAmount.UseCase";
 import { GetBookingsToVendorUseCase } from "../../application/use-cases/vendor/booking/getBookingsToVendor";
 import { FindUsedActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getUserActiveAmenities.UseCase";
+import { GetUserUnreadMsgUseCase } from "../../application/use-cases/chat/getUserUnreadMsg.UseCase";
+import { TransactionRepository } from "../database/repositories/transactionRepo";
+import { BookingTransactionUseCase } from "../../application/use-cases/user/wallet/bookingTransaction.UseCase";
+import { AddMoneyToWalletUseCase } from "../../application/use-cases/user/wallet/addMoneyTransaction.UseCase";
+import { GetTransactionsUseCase } from "../../application/use-cases/user/wallet/getTransactions.UseCase";
+import { GetVendorHotelsUseCase } from "../../application/use-cases/vendor/hotel/getHotelsByVendorUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -115,6 +119,9 @@ container.register<IWalletRepository>(TOKENS.WalletRepository, {
   useClass: WalletRepository,
 })
 
+container.register<ITransactionRepository>(TOKENS.TransactionRepository, {
+  useClass: TransactionRepository,
+})
 
 //services
 container.register<IAuthService>(TOKENS.AuthService, {
@@ -217,6 +224,8 @@ container.register<IGetVendorUseCase>(TOKENS.GetVendorUseCase, {
   useClass: GetVendorProfileUseCase,
 })
 
+
+//hotel UseCases
 container.register<ICreateHotelUseCase>(TOKENS.CreateHotelUseCase, {
   useClass: CreateHotelUseCase,
 })
@@ -233,6 +242,11 @@ container.register<IGetAllHotelsUseCase>(TOKENS.GetAllHotelsUseCase, {
   useClass: GetAllHotelsUseCase,
 })
 
+container.register<IGetVendorHotelsUseCase>(TOKENS.GetHotelsByVendorUseCase, {
+  useClass: GetVendorHotelsUseCase,
+})
+
+//room UseCase
 container.register<ICreateRoomUseCase>(TOKENS.CreateRoomUseCase, {
   useClass: CreateRoomUseCase,
 })
@@ -355,6 +369,10 @@ container.register<IGetVendorsChatWithAdminUseCase>(TOKENS.GetVendorsChatWithAdm
   useClass: GetVendorsChatWithAdmiinUseCase,
 })
 
+container.register<IGetUserUnreadMsgUseCase>(TOKENS.GetUserUnreadMsgUseCase, {
+  useClass: GetUserUnreadMsgUseCase,
+})
+
 
 //wallet use case
 container.register<IGetWalletUseCase>(TOKENS.GetWalletUseCase, {
@@ -365,10 +383,15 @@ container.register<ICreateWalletUseCase>(TOKENS.CreateWalletUseCase, {
   useClass: CreateWalletUseCase,
 })
 
-container.register<IAddWalletTransactionUseCase>(TOKENS.AddWalletTransactionUseCase, {
-  useClass: AddWalletTransactionUseCase,
+//transaction use case
+container.register<IBookingTransactionUseCase>(TOKENS.BookingTransactionUseCase, {
+  useClass: BookingTransactionUseCase,
+});
+
+container.register<IAddMoneyToWalletUseCase>(TOKENS.AddMoneyToWalletUseCase, {
+  useClass: AddMoneyToWalletUseCase,
 })
 
-container.register<ITransferUsersAmountUseCase>(TOKENS.TransferUsersAmountUseCase, {
-  useClass: TransferUsersAmountUseCase,
+container.register<IGetTransactionsUseCase>(TOKENS.GetTransactionsUseCase, {
+  useClass: GetTransactionsUseCase,
 })

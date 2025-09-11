@@ -6,7 +6,7 @@ import { IRedisService } from "../../../../domain/interfaces/services/redisServi
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
@@ -14,11 +14,11 @@ import { ResponseMapper } from "../../../../utils/responseMapper";
 @injectable()
 export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsByHotelUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) roomRepo: IRoomRepository,
+        @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
     ) {
-        super(roomRepo);
+        super(_roomRepository);
     }
 
     async getRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]> {

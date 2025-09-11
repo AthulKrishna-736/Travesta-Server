@@ -1,5 +1,5 @@
 import { AppError } from "../../../utils/appError"
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes"
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes"
 import { IAmenities, TResponseAmenityData, TUpdateAmenityData } from "../../interfaces/model/amenities.interface"
 
 

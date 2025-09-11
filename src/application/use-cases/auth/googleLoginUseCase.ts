@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
 import { TOKENS } from "../../../constants/token";
 import { TResponseUserData, TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IGoogleLoginUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
@@ -19,12 +19,12 @@ import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.in
 @injectable()
 export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
     ) {
-        super(userRepo)
+        super(_userRepository)
     }
     async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserData; }> {
         const client = new OAuth2Client(env.GOOGLE_ID);
@@ -48,7 +48,7 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
 
         const email = payload.email;
 
-        let user = await this._userRepo.findUser(email);
+        let user = await this._userRepository.findUser(email);
 
         if (user?.role !== role) {
             throw new AppError("Sorry, the user does not have the required role to proceed.", HttpStatusCode.FORBIDDEN)
@@ -64,7 +64,7 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
                 role: role,
             }
 
-            user = await this._userRepo.createUser(newUser)
+            user = await this._userRepository.createUser(newUser)
             await this._createWallet.createUserWallet(user?._id as string);
         }
 
@@ -78,7 +78,7 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
         }
 
 
-        await this._userRepo.updateUser(userEntity.id as string, userEntity.getPersistableData())
+        await this._userRepository.updateUser(userEntity.id as string, userEntity.getPersistableData())
 
         if (userEntity.isBlocked) {
             throw new AppError('User is blocked', HttpStatusCode.UNAUTHORIZED);

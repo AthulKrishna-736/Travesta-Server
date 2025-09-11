@@ -3,7 +3,7 @@ import { IUserRepository } from "../../../domain/interfaces/repositories/reposit
 import { TOKENS } from "../../../constants/token";
 import { v4 as uuidv4 } from 'uuid';
 import { TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
-import { HttpStatusCode } from "../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IRegisterUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
@@ -13,12 +13,12 @@ import logger from "../../../utils/logger";
 @injectable()
 export class RegisterUseCase implements IRegisterUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
     ) { }
 
     async register(userData: TUserRegistrationInput): Promise<{ userId: string; message: string; }> {
-        const existingUser = await this._userRepo.findUser(userData.email as string)
+        const existingUser = await this._userRepository.findUser(userData.email as string)
 
         if (existingUser) {
             throw new AppError('User already exists', HttpStatusCode.BAD_REQUEST)

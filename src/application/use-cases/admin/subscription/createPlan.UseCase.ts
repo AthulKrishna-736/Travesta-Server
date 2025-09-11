@@ -3,8 +3,9 @@ import { ICreatePlanUseCase, TCreateSubscriptionData, TResponseSubscriptionData 
 import { TOKENS } from "../../../../constants/token";
 import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import mongoose from "mongoose";
+import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
@@ -23,7 +24,7 @@ export class CreatePlanUseCase implements ICreatePlanUseCase {
 
             return {
                 plan,
-                message: 'Subscription plan created successfully'
+                message: PLAN_RES_MESSAGES.create,
             };
         } catch (error: unknown) {
             if (error instanceof mongoose.mongo.MongoServerError && error.code === 11000) {

@@ -4,15 +4,16 @@ import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { AmenityLookupBase } from "../../base/amenity.base";
 import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../utils/HttpStatusCodes";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
+import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 
 
 @injectable()
 export class UpdateAmenityUseCase extends AmenityLookupBase implements IUpdateAmenityUseCase {
     constructor(
-        @inject(TOKENS.AmenitiesRepository) amenitiesRepo: IAmenitiesRepository,
+        @inject(TOKENS.AmenitiesRepository) _amenitiesRepository: IAmenitiesRepository,
     ) {
-        super(amenitiesRepo);
+        super(_amenitiesRepository);
     }
 
     async updateAmenity(amenityId: string, data: TUpdateAmenityData): Promise<{ amenity: TResponseAmenityData, message: string }> {
@@ -20,7 +21,7 @@ export class UpdateAmenityUseCase extends AmenityLookupBase implements IUpdateAm
 
         amenityEntity.update(data);
 
-        const updatedAmenity = await this._amenityRepo.updateAmenity(amenityEntity.id, amenityEntity.getPersistableData());
+        const updatedAmenity = await this._amenityRepository.updateAmenity(amenityEntity.id, amenityEntity.getPersistableData());
 
         if (!updatedAmenity) {
             throw new AppError('error while updating amenity', HttpStatusCode.INTERNAL_SERVER_ERROR);
@@ -28,7 +29,7 @@ export class UpdateAmenityUseCase extends AmenityLookupBase implements IUpdateAm
 
         return {
             amenity: updatedAmenity,
-            message: 'amenity updated successfully'
+            message: AMENITIES_RES_MESSAGES.update,
         }
     }
 }

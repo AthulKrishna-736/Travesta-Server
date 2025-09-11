@@ -1,13 +1,14 @@
 import { injectable, inject } from 'tsyringe';
-import { Response } from 'express';
+import { NextFunction, Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
-import { HttpStatusCode } from '../../utils/HttpStatusCodes';
+import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, } from '../../domain/interfaces/model/room.interface';
 import { TCreateRoomDTO, TUpdateRoomDTO } from '../dtos/room.dto';
 import { Pagination } from '../../shared/types/common.types';
+import { ROOM_RES_MESSAGES } from '../../constants/resMessages';
 
 
 @injectable()
@@ -21,48 +22,48 @@ export class RoomController {
         @inject(TOKENS.GetAvailableRoomsUseCase) private _getAvlRoomsUseCase: IGetAvailableRoomsUseCase,
     ) { }
 
-    async createRoom(req: CustomRequest, res: Response): Promise<void> {
+    async createRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const files = req.files as Express.Multer.File[];
+            const { hotelId, name, roomType, roomCount, bedType, guest, amenities, basePrice, images } = req.body;
 
-            const { hotelId, name, capacity, bedType, amenities, basePrice } = req.body;
-
-            console.log('req body room: ', req.body);
+            let amenitiesArray: string[] = []
+            if (amenities) {
+                if (Array.isArray(amenities)) {
+                    amenitiesArray = amenities.flatMap(a => a.split(',').map((s: string) => s.trim()));
+                } else if (typeof amenities === 'string') {
+                    const parsed = JSON.parse(amenities);
+                    amenitiesArray = parsed.flatMap((a: string) => a.split(',').map(s => s.trim()));
+                }
+            }
 
             const roomData: TCreateRoomDTO = {
                 hotelId,
                 name,
-                capacity: Number(capacity),
+                roomType,
+                roomCount,
                 bedType,
-                amenities: typeof amenities === 'string' ? JSON.parse(amenities) : amenities,
-                basePrice: Number(basePrice),
-                images: [],
+                guest,
+                amenities: amenitiesArray,
+                basePrice,
+                images,
             };
 
-            console.log('room data after dto mapping: ', roomData);
-
             if (!files || files.length === 0) {
-                throw new AppError('No images provided to create Room', HttpStatusCode.BAD_REQUEST);
+                throw new AppError('At least 1 image is required to create a room', HttpStatusCode.BAD_REQUEST);
             }
-
-            if (files.length < 4) {
-                throw new AppError('Exactly 4 images are required to create a Room', HttpStatusCode.BAD_REQUEST);
+            if (files.length > 10) {
+                throw new AppError('You can upload a maximum of 10 images', HttpStatusCode.BAD_REQUEST);
             }
-
-            if (files.length > 4) {
-                throw new AppError('Only 4 images are allowed — please upload exactly 4 images', HttpStatusCode.BAD_REQUEST);
-            }
-
-            console.log('files check: ', files, files.length)
 
             const { room, message } = await this._createRoomUseCase.createRoom(roomData, files);
             ResponseHandler.success(res, message, room, HttpStatusCode.CREATED);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async updateRoom(req: CustomRequest, res: Response): Promise<void> {
+    async updateRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const roomId = req.params.roomId;
             if (!roomId) {
@@ -70,27 +71,28 @@ export class RoomController {
             }
 
             const files = req.files as Express.Multer.File[];
-
-            const { hotelId, name, capacity, bedType, amenities, basePrice } = req.body;
+            const { hotelId, name, roomType, roomCount, bedType, guest, amenities, basePrice, images } = req.body;
 
             const updateData: TUpdateRoomDTO = {
                 hotelId,
                 name,
-                capacity: capacity !== undefined ? Number(capacity) : undefined,
+                roomType,
+                roomCount: roomCount ? Number(roomCount) : undefined,
                 bedType,
+                guest: guest ? Number(guest) : undefined,
                 amenities: typeof amenities === 'string' ? JSON.parse(amenities) : amenities,
-                basePrice: basePrice !== undefined ? Number(basePrice) : undefined,
-                images: req.body.images ? JSON.parse(req.body.images) : [],
+                basePrice: basePrice ? Number(basePrice) : undefined,
+                images: typeof images == 'string' ? JSON.parse(images) : images,
             };
 
             const { room, message } = await this._updateRoomUseCase.updateRoom(roomId, updateData, files);
             ResponseHandler.success(res, message, room, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getRoomById(req: CustomRequest, res: Response): Promise<void> {
+    async getRoomById(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const roomId = req.params.roomId;
             if (!roomId) {
@@ -98,13 +100,13 @@ export class RoomController {
             }
 
             const room = await this._getRoomByIdUseCase.getRoomById(roomId);
-            ResponseHandler.success(res, 'Room fetched successfully', room, HttpStatusCode.OK);
+            ResponseHandler.success(res, ROOM_RES_MESSAGES.getRoom, room, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getRoomsByHotel(req: CustomRequest, res: Response): Promise<void> {
+    async getRoomsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
@@ -112,13 +114,13 @@ export class RoomController {
             }
 
             const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(hotelId);
-            ResponseHandler.success(res, 'Rooms fetched successfully', rooms, HttpStatusCode.OK);
+            ResponseHandler.success(res, ROOM_RES_MESSAGES.getAll, rooms, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAvailableRoomsByHotel(req: CustomRequest, res: Response): Promise<void> {
+    async getAvailableRoomsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
@@ -128,11 +130,11 @@ export class RoomController {
             // const rooms = await this._getAvailableRoomsByHotelUseCase.getAvlRoomsByHotel(hotelId);
             // ResponseHandler.success(res, 'Available rooms fetched successfully', rooms, HttpStatusCode.OK);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAllRooms(req: CustomRequest, res: Response): Promise<void> {
+    async getAllRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const page = Number(req.query.page) || 1
             const limit = Number(req.query.limit) || 10
@@ -142,11 +144,11 @@ export class RoomController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
 
-    async getAllAvlRooms(req: CustomRequest, res: Response): Promise<void> {
+    async getAllAvlRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const page = Math.max(Number(req.query.page) || 1, 1);
             const limit = Math.max(Number(req.query.limit) || 10, 1);
@@ -180,9 +182,7 @@ export class RoomController {
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error;
+            next(error);
         }
     }
-
-
 }
