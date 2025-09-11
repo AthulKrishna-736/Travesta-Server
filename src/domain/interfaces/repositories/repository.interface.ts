@@ -34,13 +34,15 @@ export interface IHotelRepository {
     limit: number,
     filters?: {
       search?: string;
-      amenities?: string[];
+      hotelAmenities?: string[];
+      roomAmenities?: string[];
       roomType?: string[];
       checkIn?: string;
       checkOut?: string;
       guests?: number;
       minPrice?: number;
       maxPrice?: number;
+      sort?: string;
     }
   ): Promise<{ hotels: IHotel[] | null; total: number }>;
 }
@@ -76,6 +78,7 @@ export interface IBookingRepository {
   isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
   findByid(bookingId: string): Promise<IBooking | null>;
   save(booking: IBooking): Promise<void>;
+  hasActiveBooking(userId: string): Promise<boolean>
   confirmBookingPayment(bookingId: string): Promise<void>;
   findBookingsByVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }>;
 }
@@ -88,6 +91,7 @@ export interface IAmenitiesRepository {
   findAllAmenities(page: number, limit: number, rype: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenities[] | null, total: number }>
   getQuery(filter: any): Promise<{ amenities: IAmenities[] | null, total: number }>
   findUsedActiveAmenities(): Promise<IAmenities[] | null>
+  separateHotelAndRoomAmenities(amenityIds: string[]): Promise<{ hotelAmenities: IAmenities[], roomAmenities: IAmenities[] }>
 }
 
 

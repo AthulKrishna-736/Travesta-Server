@@ -19,7 +19,7 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
     async bookingTransaction(vendorId: string, bookingData: TCreateBookingData, method: 'online' | 'wallet'): Promise<{ transaction: TResponseTransactions, message: string }> {
         const [userWallet, vendorWallet] = await Promise.all([
             this._walletRepository.findUserWallet(bookingData.userId.toString()),
-            this._walletRepository.findUserWallet(vendorId),
+            this._walletRepository.findUserWallet(vendorId.toString()),
         ]);
         if (!userWallet || !vendorWallet) {
             throw new AppError('Wallet not found', HttpStatusCode.NOT_FOUND);

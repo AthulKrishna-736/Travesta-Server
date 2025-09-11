@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { IHotelRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository, IHotelRepository } from "../../../../domain/interfaces/repositories/repository.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
@@ -18,8 +18,9 @@ import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotelsUseCase {
     constructor(
         @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
+        @inject(TOKENS.AmenitiesRepository) private _amenitiesRepository: IAmenitiesRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
-        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
+        @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) {
         super(_hotelRepository);
     }
@@ -27,10 +28,29 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
     async getAllHotel(
         page: number,
         limit: number,
-        filters?: { search?: string; amenities?: string[]; roomType?: string[]; checkIn?: string; checkOut?: string; guests?: number; minPrice?: number; maxPrice?: number; })
-        : Promise<{ hotels: TResponseHotelData[]; total: number; message: string }> {
+        filters: { search?: string; amenities?: string[]; roomType?: string[]; checkIn?: string; checkOut?: string; guests?: number; minPrice?: number; maxPrice?: number; sort?: string }
+    ): Promise<{ hotels: TResponseHotelData[]; total: number; message: string }> {
 
-        const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, filters);
+        let hotelAmenities: string[] = [];
+        let roomAmenities: string[] = [];
+
+        if (filters.amenities && filters.amenities.length > 0) {
+            const { hotelAmenities: hAmns, roomAmenities: rAmns } =
+                await this._amenitiesRepository.separateHotelAndRoomAmenities(filters.amenities);
+
+            hotelAmenities = hAmns.map(a => a._id.toString());
+            roomAmenities = rAmns.map(a => a._id.toString());
+        }
+
+        const repoFilters = {
+            ...filters,
+            hotelAmenities,
+            roomAmenities,
+        };
+
+        console.log('hotelameniteis: ', hotelAmenities)
+        console.log('room amenities', roomAmenities)
+        const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, repoFilters);
 
         if (!hotels || hotels.length === 0) {
             throw new AppError('No hotels found', HttpStatusCode.NOT_FOUND);
@@ -55,6 +75,7 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
             })
         );
 
+        console.log('cccccccccccccccccccccc', mappedHotels)
         const customHotelsMapping = mappedHotels.map(h => ResponseMapper.mapHotelToResponseDTO(h));
 
         return {

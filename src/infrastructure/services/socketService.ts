@@ -8,6 +8,7 @@ import { env } from "../config/env";
 import logger from "../../utils/logger";
 import { TOKENS } from "../../constants/token";
 import { IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IBookingRepository } from "../../domain/interfaces/repositories/repository.interface";
 
 
 @injectable()
@@ -23,7 +24,7 @@ export class SocketService {
     }
 
     private registerMiddleware() {
-        this.io.use((socket: Socket, next) => {
+        this.io.use(async (socket: Socket, next) => {
             const cookieHeader = socket.handshake.headers.cookie;
             if (!cookieHeader) {
                 return next(new AppError('Please authenticate to chat', HttpStatusCode.UNAUTHORIZED));
@@ -36,16 +37,46 @@ export class SocketService {
             const refreshToken = cookies['refresh_token'];
 
             try {
-                const decode = jwt.verify(accessToken as string, env.JWT_ACCESS_SECRET);
+                const decode: any = jwt.verify(accessToken as string, env.JWT_ACCESS_SECRET);
                 socket.data.user = decode;
+
+                const userId = decode.userId;
+                if (!userId) {
+                    return next(new AppError('Invalid token payload', HttpStatusCode.UNAUTHORIZED));
+                }
+
+                const bookingRepo = container.resolve<IBookingRepository>(TOKENS.BookingRepository);
+                const hasBooking = await bookingRepo.hasActiveBooking(userId);
+                if (!hasBooking) {
+                    logger.warn(`🚫 User ${userId} attempted to connect without active booking`);
+                    socket.emit("booking_error", { message: "You must have an active booking to use chat." });
+                    socket.disconnect();
+                    return;
+                }
+
                 next();
             } catch (error) {
                 if (!refreshToken) {
                     return next(new AppError('No valid tokens found', HttpStatusCode.UNAUTHORIZED));
                 }
                 try {
-                    const decodedRefresh = jwt.verify(refreshToken, env.JWT_REFRESH_SECRET);
+                    const decodedRefresh: any = jwt.verify(refreshToken, env.JWT_REFRESH_SECRET);
                     socket.data.user = decodedRefresh;
+
+                    const userId = decodedRefresh.userId;
+                    if (!userId) {
+                        return next(new AppError('Invalid refresh token payload', HttpStatusCode.UNAUTHORIZED));
+                    }
+
+                    const bookingRepo = container.resolve<IBookingRepository>(TOKENS.BookingRepository);
+                    const hasBooking = await bookingRepo.hasActiveBooking(userId);
+                    if (!hasBooking) {
+                        logger.warn(`🚫 User ${userId} attempted to connect without active booking`);
+                        socket.emit("booking_error", { message: "You must have an active booking to use chat." });
+                        socket.disconnect();
+                        return;
+                    }
+
                     return next();
                 } catch (refreshErr) {
                     return next(new AppError('Invalid refresh token', HttpStatusCode.UNAUTHORIZED));

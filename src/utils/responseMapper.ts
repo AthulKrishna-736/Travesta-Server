@@ -57,6 +57,8 @@ export class ResponseMapper {
             address: hotel.address,
             geoLocation: hotel.geoLocation,
             isBlocked: hotel.isBlocked,
+            startingPrice: (hotel as any).startingPrice ?? null,
+            cheapestRoom: (hotel as any).cheapestRoom ?? null,
             createdAt: hotel.createdAt,
             updatedAt: hotel.updatedAt,
         };

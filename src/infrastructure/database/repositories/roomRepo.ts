@@ -37,9 +37,19 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
 
     async findRoomsByHotel(hotelId: string): Promise<IRoom[] | null> {
         const rooms = await this.find({ hotelId })
-            .populate('hotelId')
-            .populate('amenities')
+            .populate({
+                path: "hotelId",
+                populate: {
+                    path: "amenities",
+                    select: "_id name",
+                },
+            })
+            .populate({
+                path: "amenities",
+                select: "_id name",
+            })
             .lean<IRoom[]>();
+
         return rooms;
     }
 
@@ -146,7 +156,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
 
             const bookedRooms = await bookingModel.find({
                 roomId: { $in: roomIds },
-                status: { $ne: "cancelled" }, // Exclude cancelled bookings
+                status: { $ne: "cancelled" },
                 $or: [
                     {
                         checkIn: { $lt: checkOutDate },
@@ -157,7 +167,6 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
 
             const bookedRoomIds = new Set(bookedRooms.map(b => b.roomId.toString()));
 
-            // Filter out booked rooms
             rooms = rooms.filter(room => !bookedRoomIds.has(room._id.toString()));
         }
 

@@ -168,14 +168,15 @@ export class HotelController {
             const limit = Number(req.query.limit) || 10;
 
             const filters = {
-                search: req.query.search as string | undefined,
-                checkIn: req.query.checkIn as string | undefined,
-                checkOut: req.query.checkOut as string | undefined,
+                search: req.query.search as string,
+                checkIn: req.query.checkIn as string,
+                checkOut: req.query.checkOut as string,
                 guests: req.query.guests ? Number(req.query.guests) : undefined,
                 minPrice: req.query.minPrice ? Number(req.query.minPrice) : undefined,
                 maxPrice: req.query.maxPrice ? Number(req.query.maxPrice) : undefined,
                 amenities: req.query.amenities ? (req.query.amenities as string).split(",") : undefined,
                 roomType: req.query.roomType ? (req.query.roomType as string).split(",") : undefined,
+                sort: req.query.sort as string
             };
 
             const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, filters);

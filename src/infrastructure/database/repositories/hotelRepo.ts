@@ -3,7 +3,7 @@ import { BaseRepository } from "./baseRepo";
 import { hotelModel, THotelDocument } from "../models/hotelModel";
 import { IHotel, TCreateHotelData, TUpdateHotelData } from "../../../domain/interfaces/model/hotel.interface";
 import { IHotelRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { roomModel } from "../models/roomModel";
+import mongoose from "mongoose";
 
 @injectable()
 export class HotelRepository extends BaseRepository<THotelDocument> implements IHotelRepository {
@@ -58,75 +58,128 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         limit: number,
         filters: {
             search?: string;
-            amenities?: string[];
+            hotelAmenities?: string[];
+            roomAmenities?: string[];
             roomType?: string[];
             checkIn?: string;
             checkOut?: string;
             guests?: number;
             minPrice?: number;
             maxPrice?: number;
+            sort?: string;
         } = {}
-    ): Promise<{ hotels: IHotel[] | null; total: number }> {
+    ): Promise<{ hotels: any[]; total: number }> {
         const skip = (page - 1) * limit;
 
-        const hotelFilter: any = { isBlocked: false };
-        const roomFilter: any = {};
+        const hotelAmenitiesIds = filters.hotelAmenities?.map(id => new mongoose.Types.ObjectId(id));
+        const roomAmenitiesIds = filters.roomAmenities?.map(id => new mongoose.Types.ObjectId(id));
 
+        // Base hotel filter
+        const hotelMatch: any = { isBlocked: false };
         if (filters.search) {
             const regex = new RegExp(filters.search, "i");
-            hotelFilter.$or = [
-                { name: regex },
-                { city: regex },
-                { state: regex },
-            ];
+            hotelMatch.$or = [{ name: regex }, { city: regex }, { state: regex }];
+        }
+        if (hotelAmenitiesIds?.length) {
+            hotelMatch.amenities = { $all: hotelAmenitiesIds };
         }
 
-        // Filter by hotel amenities
-        if (filters.amenities?.length) {
-            hotelFilter.amenities = { $all: filters.amenities };
-        }
+        // Sorting
+        let sortQuery: any = { createdAt: -1 };
+        if (filters.sort === "price_asc") sortQuery = { startingPrice: 1 };
+        if (filters.sort === "price_desc") sortQuery = { startingPrice: -1 };
+        if (filters.sort === "name_asc") sortQuery = { name: 1 };
+        if (filters.sort === "name_desc") sortQuery = { name: -1 };
 
-        // Filter by room type, guest count, price range
-        if (filters.roomType?.length) roomFilter.roomType = { $in: filters.roomType };
-        if (filters.guests) roomFilter.guest = { $gte: filters.guests };
-        if (filters.minPrice !== undefined || filters.maxPrice !== undefined) {
-            roomFilter.basePrice = {};
-            if (filters.minPrice !== undefined) roomFilter.basePrice.$gte = filters.minPrice;
-            if (filters.maxPrice !== undefined) roomFilter.basePrice.$lte = filters.maxPrice;
-        }
+        const pipeline: any[] = [
+            { $match: hotelMatch },
+            {
+                $lookup: {
+                    from: "rooms",
+                    localField: "_id",
+                    foreignField: "hotelId",
+                    as: "rooms",
+                },
+            },
+            {
+                $lookup: {
+                    from: "amenities",
+                    localField: "amenities",
+                    foreignField: "_id",
+                    as: "amenities",
+                    pipeline: [{ $project: { _id: 1, name: 1 } }],
+                },
+            },
+            {
+                $addFields: {
+                    filteredRooms: {
+                        $filter: {
+                            input: "$rooms",
+                            as: "room",
+                            cond: {
+                                $and: [
+                                    filters.roomType ? { $in: ["$$room.roomType", filters.roomType] } : true,
+                                    roomAmenitiesIds?.length
+                                        ? { $setIsSubset: [roomAmenitiesIds, "$$room.amenities"] }
+                                        : true,
+                                    filters.guests ? { $gte: ["$$room.guest", filters.guests] } : true,
+                                    filters.minPrice !== undefined ? { $gte: ["$$room.basePrice", filters.minPrice] } : true,
+                                    filters.maxPrice !== undefined ? { $lte: ["$$room.basePrice", filters.maxPrice] } : true,
+                                ],
+                            },
+                        },
+                    },
+                },
+            },
+            {
+                $addFields: {
+                    startingPrice: {
+                        $cond: [
+                            { $gt: [{ $size: "$filteredRooms" }, 0] },
+                            { $min: "$filteredRooms.basePrice" },
+                            null,
+                        ],
+                    },
+                    cheapestRoom: {
+                        $arrayElemAt: [
+                            {
+                                $filter: {
+                                    input: "$filteredRooms",
+                                    as: "room",
+                                    cond: {
+                                        $eq: ["$$room.basePrice", { $min: "$filteredRooms.basePrice" }],
+                                    },
+                                },
+                            },
+                            0,
+                        ],
+                    },
+                },
+            },
+            { $match: { startingPrice: { $ne: null } } },
+            { $sort: sortQuery },
+            { $skip: skip },
+            { $limit: limit },
+            {
+                $project: {
+                    name: 1,
+                    city: 1,
+                    state: 1,
+                    description: 1,
+                    images: 1,
+                    amenities: 1,
+                    startingPrice: 1,
+                    cheapestRoom: {
+                        _id: 1,
+                        name: 1,
+                        basePrice: 1,
+                    },
+                },
+            },
+        ];
 
-        // Optionally: availability based on checkIn/checkOut can be handled in booking logic
-        if (filters.checkIn && filters.checkOut) {
-            roomFilter.isAvailable = true;
-        }
-
-        // First, find rooms that match the room filters
-        const matchedRooms = await roomModel
-            .find(roomFilter)
-            .select("hotelId")
-            .lean<{ hotelId: string }[]>();
-
-        const hotelIds = matchedRooms.map(r => r.hotelId);
-
-        if (filters.roomType || filters.guests || filters.minPrice || filters.maxPrice || (filters.checkIn && filters.checkOut)) {
-            if (hotelIds.length === 0) {
-                return { hotels: [], total: 0 };
-            }
-            hotelFilter._id = { $in: hotelIds };
-        }
-
-        // Add hotelIds to hotel filter if rooms are filtered
-        if (hotelIds.length) hotelFilter._id = { $in: hotelIds };
-
-        const total = await hotelModel.countDocuments(hotelFilter);
-
-        const hotels = await hotelModel
-            .find(hotelFilter)
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit)
-            .populate("amenities", "_id name")
-            .lean<IHotel[]>();
+        const hotels = await hotelModel.aggregate(pipeline);
+        const total = hotels.length;
 
         return { hotels, total };
     }

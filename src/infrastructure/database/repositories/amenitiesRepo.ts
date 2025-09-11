@@ -62,4 +62,17 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
 
         return { amenities, total }
     }
+
+    async separateHotelAndRoomAmenities(amenityIds: string[]): Promise<{ hotelAmenities: IAmenities[], roomAmenities: IAmenities[] }> {
+        if (!amenityIds || amenityIds.length === 0) {
+            return { hotelAmenities: [], roomAmenities: [] };
+        }
+
+        const amenities = await this.model.find({ _id: { $in: amenityIds }, isActive: true }).lean<IAmenities[]>();
+
+        const hotelAmenities = amenities.filter(a => a.type === 'hotel');
+        const roomAmenities = amenities.filter(a => a.type === 'room');
+
+        return { hotelAmenities, roomAmenities };
+    }
 }

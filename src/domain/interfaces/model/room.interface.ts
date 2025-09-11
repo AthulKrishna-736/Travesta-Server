@@ -7,6 +7,7 @@ export interface IRoom {
     roomType: string
     roomCount: number
     bedType: string
+    guest: number
     amenities: string[]
     images: string[]
     basePrice: number
@@ -14,6 +15,28 @@ export interface IRoom {
     createdAt: Date
     updatedAt: Date
 }
+
+// Bed Types
+export enum BedType {
+    KING = "King",
+    QUEEN = "Queen",
+    DOUBLE = "Double",
+    TWIN = "Twin",
+    SINGLE = "Single",
+    SOFA = "Sofa",
+    BUNK = "Bunk",
+}
+
+// Guest capacity mapping per bed type
+export const BED_TYPE_CAPACITY: Record<BedType, number> = {
+    [BedType.KING]: 2,
+    [BedType.QUEEN]: 2,
+    [BedType.DOUBLE]: 2,
+    [BedType.TWIN]: 1,
+    [BedType.SINGLE]: 1,
+    [BedType.SOFA]: 1,
+    [BedType.BUNK]: 1,
+};
 
 //room types
 export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'createdAt' | 'updatedAt'>;

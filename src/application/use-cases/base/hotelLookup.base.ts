@@ -7,14 +7,14 @@ import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 export abstract class HotelLookupBase {
     constructor(protected readonly _hotelRepository: IHotelRepository) { }
 
-    protected async getHotelEntityByVendorId(vendorId: string): Promise<IHotelEntity[]> {
-        const hotel = await this._hotelRepository.findHotelsByVendor(vendorId)
+    protected async getHotelEntityByVendorId(vendorId: string, page: number, limit: number, search?: string): Promise<IHotelEntity[]> {
+        const { hotels, total } = await this._hotelRepository.findHotelsByVendor(vendorId, page, limit, search)
 
-        if (!hotel || hotel.length === 0) return [];
+        if (!hotels || total === 0) return [];
 
-        const hotels = hotel.map(h => new HotelEntity(h))
+        const hotelsEntity = hotels.map(h => new HotelEntity(h))
 
-        return hotels
+        return hotelsEntity;
     }
 
     protected async getHotelEntityById(hotelId: string): Promise<IHotelEntity> {
@@ -27,15 +27,15 @@ export abstract class HotelLookupBase {
         return new HotelEntity(hotel)
     }
 
-    protected async getAllHotels(page: number, limit: number, search?: string): Promise<{ hotels: IHotelEntity[], total: number }> {
-        const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, search);
+    // protected async getAllHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: IHotelEntity[], total: number }> {
+    //     const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, search);
 
-        if (!hotels || hotels.length == 0) {
-            throw new AppError('No hotels found', HttpStatusCode.NOT_FOUND);
-        }
+    //     if (!hotels || hotels.length == 0) {
+    //         throw new AppError('No hotels found', HttpStatusCode.NOT_FOUND);
+    //     }
 
-        const hotelEntities = hotels.map(h => new HotelEntity(h))
+    //     const hotelEntities = hotels.map(h => new HotelEntity(h))
 
-        return { hotels: hotelEntities, total }
-    }
+    //     return { hotels: hotelEntities, total }
+    // }
 }

@@ -45,12 +45,10 @@ export class GetVendorHotelsUseCase implements IGetVendorHotelsUseCase {
             })
         );
 
-        console.log(signUrlHotels?.[0])
         const mappedHotels = signUrlHotels.map(h => ResponseMapper.mapHotelToResponseDTO(h));
-        console.log('mapped', mappedHotels?.[0])
 
         return {
-            hotels: signUrlHotels,
+            hotels: mappedHotels,
             total,
             message: HOTEL_RES_MESSAGES.getHotels,
         }

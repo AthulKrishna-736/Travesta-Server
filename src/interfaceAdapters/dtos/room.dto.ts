@@ -7,6 +7,7 @@ export type TCreateRoomDTO = {
     roomCount: number;
     roomType: string;
     bedType: string;
+    guest: number;
     amenities: string[];
     images: string[];
     basePrice: number;
@@ -16,7 +17,8 @@ export type TUpdateRoomDTO = {
     hotelId?: string | Types.ObjectId;
     name?: string;
     roomCount?: number;
-    roomType: string;
+    roomType?: string;
+    guest?: number;
     bedType?: string;
     amenities?: string[];
     images?: string[];
@@ -29,6 +31,7 @@ export type TResponseRoomDTO = {
     name: string;
     roomCount: number;
     roomType: string;
+    guest: number;
     bedType: string;
     amenities: string[];
     images: string[];

@@ -26,7 +26,7 @@ export class WalletRepository extends BaseRepository<TWalletDocument> implements
     }
 
     async updateBalance(userId: string, amount: number): Promise<TWalletDocument | null> {
-        const wallet = await this.model.findByIdAndUpdate(
+        const wallet = await this.model.findOneAndUpdate(
             { userId },
             { $inc: { balance: amount } },
             { new: true },
