@@ -1,30 +1,27 @@
-import { container } from "tsyringe";
-import { AdminController } from "../controllers/adminController";
+import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
 import { loginSchema, subscriptionSchema } from "../../shared/types/zodValidation";
 import { CustomRequest } from "../../utils/customRequest";
 import { authMiddleware } from "../../middlewares/auth";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
-import { AuthController } from "../controllers/authController";
-import { AmenityController } from "../controllers/amenityController";
-import { SubscriptionController } from "../controllers/subscriptionController";
-import { ChatController } from "../controllers/chatController";
+import { TOKENS } from "../../constants/token";
+import { IAuthController } from "../../domain/interfaces/controllers/authController.interface";
+import { IAdminController } from "../../domain/interfaces/controllers/adminController.interface";
+import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
+import { IChatController } from "../../domain/interfaces/controllers/chatController.interface";
+import { ISubscriptionController } from "../../domain/interfaces/controllers/subscriptionController.interface";
 
+@injectable()
 export class adminRoutes extends BaseRouter {
-    private _authController: AuthController;
-    private _adminController: AdminController;
-    private _amenityController: AmenityController;
-    private _subscriptionController: SubscriptionController;
-    private _chatController: ChatController;
-
-    constructor() {
+    constructor(
+        @inject(TOKENS.AuthController) private _authController: IAuthController,
+        @inject(TOKENS.AdminController) private _adminController: IAdminController,
+        @inject(TOKENS.ChatController) private _chatController: IChatController,
+        @inject(TOKENS.SubscriptionController) private _subscriptionController: ISubscriptionController,
+        @inject(TOKENS.AmenityController) private _amenityController: IAmenityController,
+    ) {
         super();
-        this._authController = container.resolve(AuthController);
-        this._adminController = container.resolve(AdminController);
-        this._amenityController = container.resolve(AmenityController);
-        this._subscriptionController = container.resolve(SubscriptionController);
-        this._chatController = container.resolve(ChatController);
         this.initializeRoutes();
     }
 

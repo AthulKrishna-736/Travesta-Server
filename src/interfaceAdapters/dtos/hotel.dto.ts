@@ -1,8 +1,5 @@
-import { Types } from "mongoose";
-
 //hotel
 export type TCreateHotelDTO = {
-    vendorId: string | Types.ObjectId;
     name: string;
     description: string;
     images: string[];
@@ -43,11 +40,6 @@ export type TResponseHotelDTO = {
     geoLocation: [number, number];
     isBlocked: boolean;
     startingPrice?: number | null;
-    cheapestRoom?: {
-        _id: string;
-        name: string;
-        basePrice: number;
-    } | null;
     createdAt: Date;
     updatedAt: Date;
 }

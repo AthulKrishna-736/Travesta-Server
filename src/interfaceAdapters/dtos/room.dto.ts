@@ -1,12 +1,12 @@
 import { Types } from "mongoose";
-
+import { TBedType, TRoomType } from "../../domain/interfaces/model/room.interface";
 
 export type TCreateRoomDTO = {
     hotelId: string | Types.ObjectId;
     name: string;
+    roomType: TRoomType;
     roomCount: number;
-    roomType: string;
-    bedType: string;
+    bedType: TBedType;
     guest: number;
     amenities: string[];
     images: string[];
@@ -17,9 +17,9 @@ export type TUpdateRoomDTO = {
     hotelId?: string | Types.ObjectId;
     name?: string;
     roomCount?: number;
-    roomType?: string;
+    roomType?: TRoomType;
     guest?: number;
-    bedType?: string;
+    bedType?: TBedType;
     amenities?: string[];
     images?: string[];
     basePrice?: number;
@@ -30,9 +30,9 @@ export type TResponseRoomDTO = {
     hotelId: string;
     name: string;
     roomCount: number;
-    roomType: string;
+    roomType: TRoomType;
     guest: number;
-    bedType: string;
+    bedType: TBedType;
     amenities: string[];
     images: string[];
     basePrice: number;

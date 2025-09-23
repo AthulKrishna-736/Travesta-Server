@@ -8,9 +8,11 @@ import { IBlockUnblockUser, IGetAllUsersUseCase, IGetAllVendorReqUseCase, IUpdat
 import { Pagination } from "../../shared/types/common.types";
 import { AppError } from "../../utils/appError";
 import { ADMIN_RES_MESSAGES } from "../../constants/resMessages";
+import { AUTH_ERROR_MESSAGES } from "../../constants/errorMessages";
+import { IAdminController } from "../../domain/interfaces/controllers/adminController.interface";
 
 @injectable()
-export class AdminController {
+export class AdminController implements IAdminController {
     constructor(
         @inject(TOKENS.BlockUserUseCase) private _blockUnblockUserUseCase: IBlockUnblockUser,
         @inject(TOKENS.GetAllUsersUseCase) private _getAllUsersUsecase: IGetAllUsersUseCase,
@@ -18,11 +20,11 @@ export class AdminController {
         @inject(TOKENS.UpdateVendorReqUseCase) private _updateVendorReqUseCase: IUpdateVendorReqUseCase,
     ) { }
 
-    async blockOrUnblockUser(req: CustomRequest, res: Response, next: NextFunction) {
+    async blockOrUnblockUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { customerId } = req.params;
             if (!customerId) {
-                throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { user, message } = await this._blockUnblockUserUseCase.blockUnblockUser(customerId);
@@ -32,7 +34,7 @@ export class AdminController {
         }
     }
 
-    async getAllUsers(req: CustomRequest, res: Response, next: NextFunction) {
+    async getAllUsers(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const page = Number(req.query.page) || 1;
             const limit = Number(req.query.limit) || 10;
@@ -50,7 +52,7 @@ export class AdminController {
         }
     }
 
-    async getVendorRequest(req: CustomRequest, res: Response, next: NextFunction) {
+    async getVendorRequest(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const page = Number(req.query.page) || 1
             const limit = Number(req.query.limit) || 10
@@ -66,12 +68,12 @@ export class AdminController {
         }
     }
 
-    async updateVendorReq(req: CustomRequest, res: Response, next: NextFunction) {
+    async updateVendorReq(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { vendorId } = req.params;
             const { isVerified, reason } = req.body;
             if (!vendorId || typeof isVerified !== 'boolean') {
-                throw new AppError('Invalid request data', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.invalidData, HttpStatusCode.BAD_REQUEST);
             }
 
             const { message } = await this._updateVendorReqUseCase.updateVendorReq(vendorId, isVerified, reason)

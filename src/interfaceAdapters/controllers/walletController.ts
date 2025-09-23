@@ -10,9 +10,11 @@ import { IStripeService } from '../../domain/interfaces/services/stripeService.i
 import { TCreateBookingData } from '../../domain/interfaces/model/booking.interface';
 import { WALLET_RES_MESSAGES } from '../../constants/resMessages';
 import { Pagination } from '../../shared/types/common.types';
+import { AUTH_ERROR_MESSAGES } from '../../constants/errorMessages';
+import { IWalletController } from '../../domain/interfaces/controllers/walletController.interface';
 
 @injectable()
-export class WalletController {
+export class WalletController implements IWalletController {
     constructor(
         @inject(TOKENS.CreateWalletUseCase) private _createWalletUseCase: ICreateWalletUseCase,
         @inject(TOKENS.GetWalletUseCase) private _getWalletUseCase: IGetWalletUseCase,
@@ -25,7 +27,7 @@ export class WalletController {
     async createWallet(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
-            if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
+            if (!userId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
 
             const { wallet, message } = await this._createWalletUseCase.createUserWallet(userId);
             ResponseHandler.success(res, message, wallet, HttpStatusCode.CREATED);
@@ -37,7 +39,7 @@ export class WalletController {
     async getWallet(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
-            if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
+            if (!userId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
 
             const { wallet, message } = await this._getWalletUseCase.getUserWallet(userId);
             ResponseHandler.success(res, message, wallet, HttpStatusCode.OK);
@@ -52,7 +54,7 @@ export class WalletController {
             const { amount } = req.body;
 
             if (!userId || !amount) {
-                throw new AppError("User ID and amount are required", HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.invalidData, HttpStatusCode.BAD_REQUEST);
             }
 
             const result = await this._stripeServiceUseCase.createPaymentIntent(userId, amount);
@@ -67,6 +69,7 @@ export class WalletController {
             const userId = req.user?.userId;
             const { vendorId } = req.params;
             const { method } = req.query as { method: 'wallet' | 'online' };
+
             if (!vendorId || !method || !userId) {
                 throw new AppError('User, Vendor id or method is missing', HttpStatusCode.BAD_REQUEST);
             }
@@ -133,9 +136,11 @@ export class WalletController {
             const userId = req.user?.userId;
             const page = parseInt(req.query.page as string);
             const limit = parseInt(req.query.limit as string);
+
             if (!userId) {
-                throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
+
             const { transactions, total, message } = await this._getTransactionUseCase.getTransactions(userId, page, limit);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, message, transactions, HttpStatusCode.OK, meta);

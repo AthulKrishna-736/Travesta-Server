@@ -9,10 +9,12 @@ import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsB
 import { TCreateRoomDTO, TUpdateRoomDTO } from '../dtos/room.dto';
 import { Pagination } from '../../shared/types/common.types';
 import { ROOM_RES_MESSAGES } from '../../constants/resMessages';
+import { HOTEL_ERROR_MESSAGES, ROOM_ERROR_MESSAGES } from '../../constants/errorMessages';
+import { IRoomController } from '../../domain/interfaces/controllers/roomController.interface';
 
 
 @injectable()
-export class RoomController {
+export class RoomController implements IRoomController {
     constructor(
         @inject(TOKENS.CreateRoomUseCase) private _createRoomUseCase: ICreateRoomUseCase,
         @inject(TOKENS.UpdateRoomUseCase) private _updateRoomUseCase: IUpdateRoomUseCase,
@@ -50,10 +52,10 @@ export class RoomController {
             };
 
             if (!files || files.length === 0) {
-                throw new AppError('At least 1 image is required to create a room', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(ROOM_ERROR_MESSAGES.minImages, HttpStatusCode.BAD_REQUEST);
             }
             if (files.length > 10) {
-                throw new AppError('You can upload a maximum of 10 images', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(ROOM_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
             const { room, message } = await this._createRoomUseCase.createRoom(roomData, files);
@@ -67,7 +69,7 @@ export class RoomController {
         try {
             const roomId = req.params.roomId;
             if (!roomId) {
-                throw new AppError('Room ID is required', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(ROOM_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const files = req.files as Express.Multer.File[];
@@ -96,7 +98,7 @@ export class RoomController {
         try {
             const roomId = req.params.roomId;
             if (!roomId) {
-                throw new AppError('Room ID is required', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(ROOM_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const room = await this._getRoomByIdUseCase.getRoomById(roomId);
@@ -110,7 +112,7 @@ export class RoomController {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
-                throw new AppError('Hotel ID is required', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(hotelId);
@@ -124,7 +126,7 @@ export class RoomController {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
-                throw new AppError('Hotel ID is required', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             // const rooms = await this._getAvailableRoomsByHotelUseCase.getAvlRoomsByHotel(hotelId);

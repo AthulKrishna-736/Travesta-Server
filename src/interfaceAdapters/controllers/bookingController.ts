@@ -8,6 +8,7 @@ import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUs
 import { AppError } from '../../utils/appError';
 import { Pagination } from '../../shared/types/common.types';
 import { BOOKING_RES_MESSAGES } from '../../constants/resMessages';
+import { AUTH_ERROR_MESSAGES, BOOKING_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from '../../constants/errorMessages';
 
 @injectable()
 export class BookingController {
@@ -27,7 +28,7 @@ export class BookingController {
             };
 
             if (!data.userId || !data.hotelId || !data.roomId || !data.checkIn || !data.checkOut || !data.totalPrice) {
-                throw new AppError('Missing booking fields', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(BOOKING_ERROR_MESSAGES.invalidData, HttpStatusCode.BAD_REQUEST);
             }
             const checkInDate = new Date(data.checkIn);
             const checkOutDate = new Date(data.checkOut);
@@ -51,7 +52,7 @@ export class BookingController {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
-                throw new AppError('hotelId is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
             const page = Number(req.query.page);
             const limit = Number(req.query.limit);
@@ -87,7 +88,7 @@ export class BookingController {
             const userId = req.user?.userId;
 
             if (!bookingId) {
-                throw new AppError('Booking id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(BOOKING_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
             const { message } = await this._cancelBookingUseCase.cancelBooking(bookingId, userId as string);
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
@@ -103,7 +104,7 @@ export class BookingController {
             const limit = Number(req.query.limit);
 
             if (!vendorId) {
-                throw new AppError('Vendor id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { bookings, total } = await this._getBookingsToVendorUseCase.getBookingsToVendor(vendorId, page, limit)

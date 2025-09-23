@@ -8,9 +8,11 @@ import { ResponseHandler } from '../../middlewares/responseHandler';
 import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
 import { TCreateHotelDTO, TUpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
+import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from '../../constants/errorMessages';
+import { IHotelController } from '../../domain/interfaces/controllers/hotelController.interface';
 
 @injectable()
-export class HotelController {
+export class HotelController implements IHotelController {
     constructor(
         @inject(TOKENS.CreateHotelUseCase) private _createHotelUseCase: ICreateHotelUseCase,
         @inject(TOKENS.UpdateHotelUseCase) private _updateHotelUseCase: IUpdateHotelUseCase,
@@ -22,17 +24,17 @@ export class HotelController {
     async createHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const files = req.files as Express.Multer.File[];
-            const userId = req.user?.userId;
+            const vendorId = req.user?.userId;
 
-            if (!userId) {
-                throw new AppError('Vendor ID missing', HttpStatusCode.BAD_REQUEST);
+            if (!vendorId) {
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             if (!files || files.length === 0) {
-                throw new AppError('At least 1 image is required to create a hotel', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.minImages, HttpStatusCode.BAD_REQUEST);
             }
             if (files.length > 10) {
-                throw new AppError('You can upload a maximum of 10 images', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
             const { name, description, address, city, state, geoLocation, tags, amenities, rating = 0 } = req.body;
@@ -62,9 +64,7 @@ export class HotelController {
                 }
             }
 
-
             const hotelData: TCreateHotelDTO = {
-                vendorId: userId,
                 name,
                 description,
                 address,
@@ -77,7 +77,7 @@ export class HotelController {
                 images: []
             };
 
-            const { hotel, message } = await this._createHotelUseCase.createHotel(hotelData, files);
+            const { hotel, message } = await this._createHotelUseCase.createHotel(vendorId, hotelData, files);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.CREATED);
         } catch (error) {
             next(error);
@@ -86,14 +86,15 @@ export class HotelController {
 
     async updateHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const hotelId = req.params.hotelId;
+            const { hotelId } = req.params;
             const files = req.files as Express.Multer.File[];
+
             if (!hotelId) {
-                throw new AppError('Hotel id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             if (files.length > 10) {
-                throw new AppError('You can upload a maximum of 10 images', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
             let updateData: TUpdateHotelDTO = {};
@@ -151,8 +152,9 @@ export class HotelController {
     async getHotelById(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
+
             if (!hotelId) {
-                throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { message, hotel } = await this._getHotelByIdUseCae.getHotel(hotelId);
@@ -162,7 +164,7 @@ export class HotelController {
         }
     }
 
-    async getAllHotelsToUser(req: CustomRequest, res: Response, next: NextFunction) {
+    async getAllHotelsToUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const page = Number(req.query.page) || 1;
             const limit = Number(req.query.limit) || 10;
@@ -193,8 +195,9 @@ export class HotelController {
             const page = parseInt(req.query.page as string, 10);
             const limit = parseInt(req.query.limit as string, 10);
             const search = req.query.search as string;
+
             if (!vendorId) {
-                throw new AppError('Vendor id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { hotels, total, message } = await this._getHotelsByVendorUseCase.getVendorHotels(vendorId, page, limit, search);
@@ -209,8 +212,11 @@ export class HotelController {
         try {
             const vendorId = req.user?.userId;
             const { hotelId } = req.params;
-            if (!vendorId || !hotelId) {
-                throw new AppError('Vendor or hotel id is missing', HttpStatusCode.BAD_REQUEST);
+
+            if (!vendorId) {
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            } else if (!hotelId) {
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_GATEWAY);
             }
 
             const { hotel, message } = await this._getHotelsByVendorUseCase.getVendorHotel(vendorId, hotelId);

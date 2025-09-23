@@ -1,38 +1,33 @@
-import { container } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
 import { loginSchema, createUserSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, googleLoginSchema, updateUserSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
-import { AuthController } from "../controllers/authController";
 import { checkUserBlock } from "../../middlewares/checkBlock";
-import { UserController } from "../controllers/userController";
 import { upload } from "../../infrastructure/config/multer";
-import { HotelController } from "../controllers/hotelController";
-import { ChatController } from "../controllers/chatController";
-import { BookingController } from "../controllers/bookingController";
-import { WalletController } from "../controllers/walletController";
-import { AmenityController } from "../controllers/amenityController";
+import { TOKENS } from "../../constants/token";
+import { IUserController } from "../../domain/interfaces/controllers/userController.interface";
+import { IAuthController } from "../../domain/interfaces/controllers/authController.interface";
+import { IHotelController } from "../../domain/interfaces/controllers/hotelController.interface";
+import { IChatController } from "../../domain/interfaces/controllers/chatController.interface";
+import { IBookingController } from "../../domain/interfaces/controllers/bookingController.interface";
+import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
+import { IWalletController } from "../../domain/interfaces/controllers/walletController.interface";
 
+@injectable()
 export class userRoutes extends BaseRouter {
-    private _authController: AuthController;
-    private _userController: UserController;
-    private _hotelController: HotelController;
-    private _chatController: ChatController;
-    private _bookingController: BookingController;
-    private _walletController: WalletController;
-    private _amenityController: AmenityController;
-
-    constructor() {
+    constructor(
+        @inject(TOKENS.AuthController) private _authController: IAuthController,
+        @inject(TOKENS.UserController) private _userController: IUserController,
+        @inject(TOKENS.HotelController) private _hotelController: IHotelController,
+        @inject(TOKENS.ChatController) private _chatController: IChatController,
+        @inject(TOKENS.BookingController) private _bookingController: IBookingController,
+        @inject(TOKENS.WalletController) private _walletController: IWalletController,
+        @inject(TOKENS.AmenityController) private _amenityController: IAmenityController,
+    ) {
         super();
-        this._authController = container.resolve(AuthController);
-        this._userController = container.resolve(UserController);
-        this._hotelController = container.resolve(HotelController);
-        this._chatController = container.resolve(ChatController);
-        this._bookingController = container.resolve(BookingController);
-        this._walletController = container.resolve(WalletController);
-        this._amenityController = container.resolve(AmenityController);
         this.initializeRoutes();
     }
 
@@ -60,6 +55,7 @@ export class userRoutes extends BaseRouter {
 
         //chat
         this.router
+            .get('/chat/access', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getchatAccess(req, res, next))
             .get('/chat/vendors', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getVendorsChatWithUser(req, res, next))
             .get('/chat/unread', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getUnreadMsg(req, res, next))
             .get('/chat/:userId/messages', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getChatMessages(req, res, next))

@@ -1,7 +1,7 @@
 import { IUserSubscription } from "../../domain/interfaces/model/subscription.interface"
 import { TRole, TSubscription } from "../../shared/types/client.types"
 
-export interface CreateUserDTO {
+export type TCreateUserDTO = {
     firstName: string
     lastName: string
     email: string
@@ -10,7 +10,7 @@ export interface CreateUserDTO {
     role: TRole
 }
 
-export interface UpdateUserDTO {
+export type TUpdateUserDTO = {
     firstName?: string
     lastName?: string
     password?: string
@@ -21,24 +21,22 @@ export interface UpdateUserDTO {
     isVerified?: boolean
     kycDocuments?: string[]
     verificationReason?: string
-
 }
 
-export interface TResponseUserDTO {
-    id?: string
+export type TResponseUserDTO = {
+    id: string
     firstName: string
     lastName: string
-    email: string
     isGoogle: boolean
+    email: string
+    role: TRole
     phone: number
     isBlocked: boolean
-    isVerified: boolean
-    profileImage?: string
-    wishlist: string[]
-    role: TRole
-    kycDocuments?: string[]
-    verificationReason?: string
     subscription: IUserSubscription | null
+    profileImage?: string
+    isVerified: boolean
+    verificationReason?: string
+    kycDocuments?: string[]
     createdAt: Date
     updatedAt: Date
 }

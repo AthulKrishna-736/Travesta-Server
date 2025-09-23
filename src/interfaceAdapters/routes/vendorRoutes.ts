@@ -1,39 +1,33 @@
-import { container } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
 import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema, createRoomSchema, updateRoomSchema, updateHotelSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
-import { AuthController } from "../controllers/authController";
 import { checkUserBlock } from "../../middlewares/checkBlock";
 import { upload } from "../../infrastructure/config/multer";
-import { VendorController } from "../controllers/vendorController";
-import { HotelController } from "../controllers/hotelController";
-import { RoomController } from "../controllers/roomController";
-import { ChatController } from "../controllers/chatController";
-import { BookingController } from "../controllers/bookingController";
-import { AmenityController } from "../controllers/amenityController";
+import { IAuthController } from "../../domain/interfaces/controllers/authController.interface";
+import { IVendorController } from "../../domain/interfaces/controllers/vendorController.interface";
+import { IHotelController } from "../../domain/interfaces/controllers/hotelController.interface";
+import { IRoomController } from "../../domain/interfaces/controllers/roomController.interface";
+import { IChatController } from "../../domain/interfaces/controllers/chatController.interface";
+import { IBookingController } from "../../domain/interfaces/controllers/bookingController.interface";
+import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
+import { TOKENS } from "../../constants/token";
 
-
+@injectable()
 export class vendorRoutes extends BaseRouter {
-    private _authController: AuthController
-    private _vendorController: VendorController
-    private _hotelController: HotelController
-    private _roomController: RoomController
-    private _chatController: ChatController
-    private _bookingController: BookingController
-    private _amenityController: AmenityController
-
-    constructor() {
+    constructor(
+        @inject(TOKENS.AuthController) private _authController: IAuthController,
+        @inject(TOKENS.VendorController) private _vendorController: IVendorController,
+        @inject(TOKENS.HotelController) private _hotelController: IHotelController,
+        @inject(TOKENS.RoomController) private _roomController: IRoomController,
+        @inject(TOKENS.ChatController) private _chatController: IChatController,
+        @inject(TOKENS.BookingController) private _bookingController: IBookingController,
+        @inject(TOKENS.AmenityController) private _amenityController: IAmenityController,
+    ) {
         super();
-        this._authController = container.resolve(AuthController)
-        this._vendorController = container.resolve(VendorController)
-        this._hotelController = container.resolve(HotelController)
-        this._roomController = container.resolve(RoomController)
-        this._chatController = container.resolve(ChatController)
-        this._bookingController = container.resolve(BookingController)
-        this._amenityController = container.resolve(AmenityController);
         this.initializeRoutes()
     }
 
@@ -52,7 +46,7 @@ export class vendorRoutes extends BaseRouter {
         //profile
         this.router.route('/profile')
             .put(authMiddleware, authorizeRoles('vendor'), checkUserBlock, upload.single('image'), validateRequest(updateUserSchema), (req: CustomRequest, res, next) => this._vendorController.updateProfile(req, res, next))
-            .get(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._vendorController.getVendor(req, res, next))
+            .get(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._vendorController.getVendorProfile(req, res, next))
             .patch(authMiddleware, authorizeRoles('vendor'), checkUserBlock, upload.fields([{ name: 'front', maxCount: 1 }, { name: 'back', maxCount: 1 }]), (req: CustomRequest, res, next) => this._vendorController.updateKyc(req, res, next));
 
         //hotels
