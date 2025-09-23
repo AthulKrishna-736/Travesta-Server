@@ -1,5 +1,5 @@
 import { AmenitiesEntity, IAmenitiesEntity } from "../../../domain/entities/admin/amenities.entity";
-import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/amenitiesRepo.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 

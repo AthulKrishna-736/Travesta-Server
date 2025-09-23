@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IGetAllUsersUseCase } from "../../../domain/interfaces/model/usecases.interface";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { UserLookupBase } from "../base/userLookup.base";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 @injectable()
 export class GetAllUsers extends UserLookupBase implements IGetAllUsersUseCase {
@@ -14,7 +14,7 @@ export class GetAllUsers extends UserLookupBase implements IGetAllUsersUseCase {
         super(_userRepository);
     }
 
-    async getAllUsers(page: number, limit: number, role: string, search: string, sortField?: string, sortOrder?: string): Promise<{ users: TResponseUserData[]; total: number }> {
+    async getAllUsers(page: number, limit: number, role: string, search: string, sortField?: string, sortOrder?: string): Promise<{ users: TResponseUserDTO[]; total: number }> {
 
         const { userEntities, total } = await this.getAllUserEntity(page, limit, role, search, sortField, sortOrder);
 

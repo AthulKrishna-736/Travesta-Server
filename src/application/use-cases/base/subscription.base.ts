@@ -1,5 +1,5 @@
 import { ISubscriptionEntity, SubscriptionEntity } from "../../../domain/entities/admin/subscription.entity";
-import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 

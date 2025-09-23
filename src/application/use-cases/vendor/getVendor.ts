@@ -1,14 +1,14 @@
 import { inject, injectable } from "tsyringe";
 import { GetUserProfileUseCase } from "../user/getUser";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IGetVendorUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { TOKENS } from "../../../constants/token";
-import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { VENDOR_RES_MESSAGES } from "../../../constants/resMessages";
+import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 @injectable()
 export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IGetVendorUseCase {
@@ -20,7 +20,7 @@ export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IG
         super(_userRepository, _redisService, _awsS3Service);
     }
 
-    async getVendor(userId: string): Promise<{ user: TResponseUserData; message: string }> {
+    async getVendor(userId: string): Promise<{ user: TResponseUserDTO; message: string }> {
 
         const vendorEntity = await this._getBaseUserEntityWithProfile(userId);
 
@@ -37,9 +37,7 @@ export class GetVendorProfileUseCase extends GetUserProfileUseCase implements IG
             kycDocuments: kycDocumentsSignedUrls as string[],
         });
 
-        const vendor = vendorEntity.toObject()
-
-        const mapVendor = ResponseMapper.mapUserToResponseDTO(vendor);
+        const mapVendor = ResponseMapper.mapUserToResponseDTO(vendorEntity.toObject());
 
         return {
             user: mapVendor,

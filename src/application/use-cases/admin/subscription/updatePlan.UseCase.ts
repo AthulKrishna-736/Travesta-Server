@@ -1,12 +1,14 @@
 import { inject, injectable } from "tsyringe";
-import { IUpdatePlanUseCase, TResponseSubscriptionData, TUpdateSubscriptionData } from "../../../../domain/interfaces/model/subscription.interface";
+import { IUpdatePlanUseCase } from "../../../../domain/interfaces/model/subscription.interface";
 import { SubscriptionLookupBase } from "../../base/subscription.base";
 import { TOKENS } from "../../../../constants/token";
-import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import mongoose from "mongoose";
 import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
+import { SUBSCRIPTION_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TResponseSubscriptionDTO, TUpdateSubscriptionDTO } from "../../../../interfaceAdapters/dtos/subscription.dto";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
@@ -17,29 +19,29 @@ export class UpdatePlanUseCase extends SubscriptionLookupBase implements IUpdate
         super(_subscriptionRepository);
     }
 
-    async updatePlan(id: string, data: TUpdateSubscriptionData): Promise<{ plan: TResponseSubscriptionData; message: string; }> {
-        try {
-            const planEntity = await this.getSubscriptionByIdOrThrow(id);
+    async updatePlan(id: string, data: TUpdateSubscriptionDTO): Promise<{ plan: TResponseSubscriptionDTO; message: string; }> {
+        const planEntity = await this.getSubscriptionByIdOrThrow(id);
 
-            planEntity.updatePlan(data);
+        planEntity.updatePlan(data);
 
-            const updatedPlan = await this._subscriptionRepository.updatePlan(planEntity.id, planEntity.getPersistablestate());
-
-            if (!updatedPlan) {
-                throw new AppError('Error while updating the plan', HttpStatusCode.INTERNAL_SERVER_ERROR);
+        if (data.name && data.name.trim()) {
+            const isDuplicate = await this._subscriptionRepository.findDuplicatePlan(data.name.trim());
+            if (isDuplicate) {
+                throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
             }
-
-            return {
-                plan: planEntity.toObject(),
-                message: PLAN_RES_MESSAGES.update,
-            };
-        } catch (error: unknown) {
-            if (error instanceof mongoose.mongo.MongoServerError && error.code === 11000) {
-                throw new AppError(`Duplicate plan type: ${data.type} already exists`, HttpStatusCode.CONFLICT);
-            }
-
-            throw new AppError(error instanceof Error ? error.message : 'Unexpected error', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
+
+        const updatedPlan = await this._subscriptionRepository.updatePlan(planEntity.id, planEntity.getPersistablestate());
+        if (!updatedPlan) {
+            throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
+        }
+
+        const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(updatedPlan)
+
+        return {
+            plan: mappedPlan,
+            message: PLAN_RES_MESSAGES.update,
+        };
     }
 
 }

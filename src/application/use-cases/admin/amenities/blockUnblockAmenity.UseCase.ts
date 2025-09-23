@@ -1,11 +1,14 @@
 import { inject, injectable } from "tsyringe";
-import { IBlockUnblockAmenityUseCase, TResponseAmenityData } from "../../../../domain/interfaces/model/amenities.interface";
+import { IBlockUnblockAmenityUseCase } from "../../../../domain/interfaces/model/amenities.interface";
 import { AmenityLookupBase } from "../../base/amenity.base";
 import { TOKENS } from "../../../../constants/token";
-import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/amenitiesRepo.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
+import { AMENITIES_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TResponseAmenityDTO } from "../../../../interfaceAdapters/dtos/amenity.dto";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
@@ -16,7 +19,7 @@ export class BlockUnblockAmenity extends AmenityLookupBase implements IBlockUnbl
         super(_amenityRepository);
     }
 
-    async blockUnblockAmenityUseCase(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }> {
+    async blockUnblockAmenityUseCase(amenityId: string): Promise<{ amenity: TResponseAmenityDTO, message: string }> {
         const amenityEntity = await this.getAmenityByIdOrThrow(amenityId);
 
         if (amenityEntity.isActive) {
@@ -28,11 +31,13 @@ export class BlockUnblockAmenity extends AmenityLookupBase implements IBlockUnbl
         const updateAmenity = await this._amenityRepository.updateAmenity(amenityEntity.id, amenityEntity.getPersistableData());
 
         if (!updateAmenity) {
-            throw new AppError('failed to block/unblock amenity', HttpStatusCode.INTERNAL_SERVER_ERROR);
+            throw new AppError(AMENITIES_ERROR_MESSAGES.blockFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+        const mappedAmenity = ResponseMapper.mapAmenityToResponseDTO(amenityEntity.toObject());
+
         return {
-            amenity: amenityEntity.toObject(),
+            amenity: mappedAmenity,
             message: `amenity ${amenityEntity.isActive ? AMENITIES_RES_MESSAGES.unblock : AMENITIES_RES_MESSAGES.unblock}`
         }
     }

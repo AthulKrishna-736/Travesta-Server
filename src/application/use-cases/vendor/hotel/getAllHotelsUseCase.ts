@@ -1,17 +1,19 @@
 import { inject, injectable } from "tsyringe";
-import { IAmenitiesRepository, IHotelRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/amenitiesRepo.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { IGetAllHotelsUseCase } from "../../../../domain/interfaces/model/hotel.interface";
-import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { HotelEntity } from "../../../../domain/entities/hotel.entity";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
+import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
+import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
 
 
 @injectable()
@@ -29,7 +31,7 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
         page: number,
         limit: number,
         filters: { search?: string; amenities?: string[]; roomType?: string[]; checkIn?: string; checkOut?: string; guests?: number; minPrice?: number; maxPrice?: number; sort?: string }
-    ): Promise<{ hotels: TResponseHotelData[]; total: number; message: string }> {
+    ): Promise<{ hotels: TResponseHotelDTO[]; total: number; message: string }> {
 
         let hotelAmenities: string[] = [];
         let roomAmenities: string[] = [];
@@ -53,7 +55,7 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
         const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, repoFilters);
 
         if (!hotels || hotels.length === 0) {
-            throw new AppError('No hotels found', HttpStatusCode.NOT_FOUND);
+            throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
         const hotelEntities = hotels.map(h => new HotelEntity(h));

@@ -3,11 +3,12 @@ import { IAwsS3Service } from '../../../../domain/interfaces/services/awsS3Servi
 import { IRedisService } from '../../../../domain/interfaces/services/redisService.interface';
 import { TOKENS } from '../../../../constants/token';
 import { awsS3Timer } from '../../../../infrastructure/config/jwtConfig';
-import { IGetAllRoomsUseCase, TResponseRoomData } from '../../../../domain/interfaces/model/room.interface';
-import { IRoomRepository } from '../../../../domain/interfaces/repositories/repository.interface';
+import { IGetAllRoomsUseCase } from '../../../../domain/interfaces/model/room.interface';
+import { IRoomRepository } from '../../../../domain/interfaces/repositories/roomRepo.interface';
 import { RoomLookupBase } from '../../base/room.base';
 import { ResponseMapper } from '../../../../utils/responseMapper';
 import { ROOM_RES_MESSAGES } from '../../../../constants/resMessages';
+import { TResponseRoomDTO } from '../../../../interfaceAdapters/dtos/room.dto';
 
 @injectable()
 export class GetAllRoomsUseCase extends RoomLookupBase implements IGetAllRoomsUseCase {
@@ -19,7 +20,7 @@ export class GetAllRoomsUseCase extends RoomLookupBase implements IGetAllRoomsUs
         super(_roomRepository);
     }
 
-    async getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomData[]; message: string; total: number }> {
+    async getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomDTO[]; message: string; total: number }> {
         const { rooms, total } = await this.getAllRoomsOrThrow(page, limit, search);
 
         const mappedRooms = await Promise.all(

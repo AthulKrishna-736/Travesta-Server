@@ -5,7 +5,7 @@ import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import logger from "../../../utils/logger";
 import { IMailService } from "../../../domain/interfaces/services/mailService.interface";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { UserLookupBase } from "../base/userLookup.base";
 import { ADMIN_RES_MESSAGES } from "../../../constants/resMessages";
 

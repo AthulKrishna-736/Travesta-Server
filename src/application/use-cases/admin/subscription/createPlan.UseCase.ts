@@ -1,11 +1,13 @@
 import { inject, injectable } from "tsyringe";
-import { ICreatePlanUseCase, TCreateSubscriptionData, TResponseSubscriptionData } from "../../../../domain/interfaces/model/subscription.interface";
+import { ICreatePlanUseCase } from "../../../../domain/interfaces/model/subscription.interface";
 import { TOKENS } from "../../../../constants/token";
-import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import mongoose from "mongoose";
 import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
+import { SUBSCRIPTION_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TCreateSubscriptionDTO, TResponseSubscriptionDTO } from "../../../../interfaceAdapters/dtos/subscription.dto";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
@@ -14,24 +16,23 @@ export class CreatePlanUseCase implements ICreatePlanUseCase {
         @inject(TOKENS.SubscriptionRepository) private _subscriptionRepo: ISubscriptionRepository,
     ) { }
 
-    async createPlan(data: TCreateSubscriptionData): Promise<{ plan: TResponseSubscriptionData; message: string; }> {
-        try {
-            const plan = await this._subscriptionRepo.createPlan(data);
+    async createPlan(data: TCreateSubscriptionDTO): Promise<{ plan: TResponseSubscriptionDTO; message: string; }> {
+        const isDuplicate = await this._subscriptionRepo.findDuplicatePlan(data.name.trim());
 
-            if (!plan) {
-                throw new AppError('Error while creating plan', HttpStatusCode.INTERNAL_SERVER_ERROR);
-            }
-
-            return {
-                plan,
-                message: PLAN_RES_MESSAGES.create,
-            };
-        } catch (error: unknown) {
-            if (error instanceof mongoose.mongo.MongoServerError && error.code === 11000) {
-                throw new AppError(`Duplicate plan type: ${data.type} already exists`, HttpStatusCode.CONFLICT);
-            }
-
-            throw new AppError(error instanceof Error ? error.message : 'Unexpected error', HttpStatusCode.INTERNAL_SERVER_ERROR);
+        if (isDuplicate) {
+            throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
         }
+
+        const plan = await this._subscriptionRepo.createPlan(data);
+        if (!plan) {
+            throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
+        }
+
+        const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(plan);
+
+        return {
+            plan: mappedPlan,
+            message: PLAN_RES_MESSAGES.create,
+        };
     }
 }

@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { TOKENS } from "../../../constants/token";
-import { TResponseUserData, TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IGoogleLoginUseCase } from "../../../domain/interfaces/model/auth.interface";
@@ -14,6 +13,8 @@ import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { UserLookupBase } from "../base/userLookup.base";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.interface";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 
 @injectable()
@@ -26,7 +27,7 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
     ) {
         super(_userRepository)
     }
-    async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserData; }> {
+    async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserDTO; }> {
         const client = new OAuth2Client(env.GOOGLE_ID);
 
         let payload;
@@ -39,11 +40,11 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
 
             payload = ticket.getPayload();
         } catch (error) {
-            throw new AppError('Invalid Google Token', HttpStatusCode.UNAUTHORIZED);
+            throw new AppError(AUTH_ERROR_MESSAGES.invalidGoogle, HttpStatusCode.UNAUTHORIZED);
         }
 
         if (!payload || !payload.email) {
-            throw new AppError("Unable to retrieve user information from Google", HttpStatusCode.BAD_REQUEST);
+            throw new AppError(AUTH_ERROR_MESSAGES.googleError, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
         const email = payload.email;
@@ -51,11 +52,11 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
         let user = await this._userRepository.findUser(email);
 
         if (user?.role !== role) {
-            throw new AppError("Sorry, the user does not have the required role to proceed.", HttpStatusCode.FORBIDDEN)
+            throw new AppError(AUTH_ERROR_MESSAGES.invalidRole, HttpStatusCode.FORBIDDEN)
         }
 
         if (!user) {
-            const newUser: TUserRegistrationInput = {
+            const newUser: TCreateUserDTO = {
                 firstName: payload.given_name || "Google",
                 lastName: payload.family_name || "User",
                 email: email,
@@ -81,7 +82,7 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
         await this._userRepository.updateUser(userEntity.id as string, userEntity.getPersistableData())
 
         if (userEntity.isBlocked) {
-            throw new AppError('User is blocked', HttpStatusCode.UNAUTHORIZED);
+            throw new AppError(AUTH_ERROR_MESSAGES.blocked, HttpStatusCode.FORBIDDEN);
         }
 
         const accessToken = this._authService.generateAccessToken(userEntity.id as string, userEntity.role as TRole, userEntity.email);

@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { TOKENS } from "../../../constants/token";
-import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { ILoginUseCase } from "../../../domain/interfaces/model/auth.interface";
@@ -12,6 +11,8 @@ import { TRole } from "../../../shared/types/client.types";
 import { awsS3Timer, jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { UserLookupBase } from "../base/userLookup.base";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 
 @injectable()
@@ -25,20 +26,20 @@ export class LoginUseCase extends UserLookupBase implements ILoginUseCase {
         super(_userRepository)
     }
 
-    async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserData }> {
+    async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserDTO }> {
         const userEntity = await this.getUserEntityByEmail(email);
 
         if (userEntity.role !== expectedRole) {
-            throw new AppError(`Unauthorized: Invalid role for this login`, HttpStatusCode.UNAUTHORIZED);
+            throw new AppError(AUTH_ERROR_MESSAGES.invalidRole, HttpStatusCode.UNAUTHORIZED);
         }
 
         if (userEntity.isBlocked) {
-            throw new AppError(`${userEntity.role} is blocked`, HttpStatusCode.UNAUTHORIZED);
+            throw new AppError(AUTH_ERROR_MESSAGES.blocked, HttpStatusCode.UNAUTHORIZED);
         }
 
         const isValidPass = await this._authService.comparePassword(password, userEntity.password);
         if (!isValidPass) {
-            throw new AppError("Invalid credentials", HttpStatusCode.BAD_REQUEST);
+            throw new AppError(AUTH_ERROR_MESSAGES.invalidData, HttpStatusCode.BAD_REQUEST);
         }
 
         const accessToken = this._authService.generateAccessToken(userEntity.id!, userEntity.role, userEntity.email);

@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { TResponseRoomData } from "../../../../domain/interfaces/model/room.interface";
-import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IRoomRepository } from "../../../../domain/interfaces/repositories/roomRepo.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
@@ -10,6 +9,8 @@ import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TResponseRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
 
 @injectable()
 export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsByHotelUseCase {
@@ -21,9 +22,9 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
         super(_roomRepository);
     }
 
-    async getRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]> {
+    async getRoomsByHotel(hotelId: string): Promise<TResponseRoomDTO[]> {
         if (!hotelId) {
-            throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
+            throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
         }
 
         const roomEntities = await this.getRoomsEntityByHotelId(hotelId);
@@ -71,6 +72,8 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
             })
         );
 
-        return roomsWithSignedImages;
+        const mappedRooms = roomsWithSignedImages.map(r => ResponseMapper.mapRoomToResponseDTO(r));
+
+        return mappedRooms;
     }
 }

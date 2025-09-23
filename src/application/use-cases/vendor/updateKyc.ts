@@ -1,18 +1,19 @@
+import path from 'path';
+import fs from 'fs';
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
-import path from 'path';
-import fs from 'fs';
 import { IUpdateKycUseCase } from "../../../domain/interfaces/model/usecases.interface";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
-import { IVendor } from "../../../domain/interfaces/model/vendor.interface";
 import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { VENDOR_RES_MESSAGES } from "../../../constants/resMessages";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { TResponseUserDTO } from '../../../interfaceAdapters/dtos/user.dto';
 
 @injectable()
 export class UpdateKycUseCase implements IUpdateKycUseCase {
@@ -22,9 +23,10 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
-    async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: TResponseUserData, message: string }> {
+    async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: TResponseUserDTO, message: string }> {
         const user = await this._userRepository.findUserById(userId);
-        if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
+
+        if (!user) throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
         const uploadAndClean = async (file: Express.Multer.File, name: string) => {
             const ext = path.extname(file.path);
@@ -46,7 +48,7 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
         const updated = await this._userRepository.updateUser(userId, { kycDocuments: updatedDocs });
 
         if (!updated) {
-            throw new AppError('Error while updating user', HttpStatusCode.BAD_REQUEST);
+            throw new AppError(AUTH_ERROR_MESSAGES.updateFail, HttpStatusCode.BAD_REQUEST);
         }
         let signedUrls
         if (updated.kycDocuments) {
@@ -56,14 +58,12 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
             await this._redisService.storeKycDocs(user._id as string, signedUrls, awsS3Timer.expiresAt)
         }
 
-
         const mappedUser: TResponseUserData = {
             ...user,
             kycDocuments: signedUrls,
         };
 
         const mapUser = ResponseMapper.mapUserToResponseDTO(mappedUser);
-
 
         return {
             vendor: mapUser,

@@ -1,14 +1,14 @@
 import { inject, injectable } from "tsyringe";
-import { IHotelRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IGetHotelByIdUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
-import { TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
+import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
 
 
 @injectable()
@@ -21,7 +21,7 @@ export class GetHotelByIdUseCase extends HotelLookupBase implements IGetHotelByI
         super(_hotelRepository);
     }
 
-    async getHotel(hotelId: string): Promise<{ hotel: TResponseHotelData; message: string }> {
+    async getHotel(hotelId: string): Promise<{ hotel: TResponseHotelDTO; message: string }> {
 
         const hotel = await this.getHotelEntityById(hotelId);
 

@@ -1,14 +1,16 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { IHotelRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
-import { IGetVendorHotelsUseCase, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
+import { IGetVendorHotelsUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
+import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
 
 
 @injectable()
@@ -19,10 +21,10 @@ export class GetVendorHotelsUseCase implements IGetVendorHotelsUseCase {
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
-    async getVendorHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[]; total: number; message: string; }> {
+    async getVendorHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelDTO[]; total: number; message: string; }> {
         const { hotels, total } = await this._hotelRepository.findHotelsByVendor(vendorId, page, limit, search);
         if (!hotels) {
-            throw new AppError('No hotels found', HttpStatusCode.NOT_FOUND);
+            throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
         const signUrlHotels = await Promise.all(
@@ -54,10 +56,10 @@ export class GetVendorHotelsUseCase implements IGetVendorHotelsUseCase {
         }
     }
 
-    async getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelData; message: string; }> {
+    async getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelDTO; message: string; }> {
         const hotel = await this._hotelRepository.findHotelByVendor(vendorId, hotelId);
         if (!hotel) {
-            throw new AppError('No hotel found', HttpStatusCode.NOT_FOUND);
+            throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
         let signedHotelUrls = await this._redisService.getHotelImageUrls(hotel._id as string);

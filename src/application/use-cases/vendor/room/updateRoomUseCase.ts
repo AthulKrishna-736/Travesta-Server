@@ -1,15 +1,17 @@
 import { inject, injectable } from "tsyringe";
-import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IRoomRepository } from "../../../../domain/interfaces/repositories/roomRepo.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { TOKENS } from "../../../../constants/token";
-import { TUpdateRoomData, TResponseRoomData, IUpdateRoomUseCase } from "../../../../domain/interfaces/model/room.interface";
+import { IUpdateRoomUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { ROOM_RES_MESSAGES } from "../../../../constants/resMessages";
+import { ROOM_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TResponseRoomDTO, TUpdateRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
 
 @injectable()
 export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseCase {
@@ -24,7 +26,14 @@ export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseC
         this._imageUploader = new AwsImageUploader(awsS3Service);
     }
 
-    async updateRoom(roomId: string, updateData: TUpdateRoomData, files?: Express.Multer.File[]): Promise<{ room: TResponseRoomData, message: string }> {
+    async updateRoom(roomId: string, updateData: TUpdateRoomDTO, files?: Express.Multer.File[]): Promise<{ room: TResponseRoomDTO, message: string }> {
+        if (updateData.name) {
+            const isDuplicate = await this._roomRepository.findDuplicateRooms(updateData.name.trim());
+            if (isDuplicate) {
+                throw new AppError(ROOM_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
+            }
+        }
+
         const roomEntity = await this.getRoomEntityById(roomId);
         let deletedImages = false;
 
@@ -58,7 +67,7 @@ export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseC
         const updatedRoom = await this._roomRepository.updateRoom(roomId, roomEntity.getPersistableData());
 
         if (!updatedRoom) {
-            throw new AppError("Failed to update room", HttpStatusCode.INTERNAL_SERVER_ERROR);
+            throw new AppError(ROOM_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
         const finalMappedRooms = ResponseMapper.mapRoomToResponseDTO(updatedRoom);

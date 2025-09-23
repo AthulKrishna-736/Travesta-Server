@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { TResponseRoomData } from "../../../../domain/interfaces/model/room.interface";
-import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IRoomRepository } from "../../../../domain/interfaces/repositories/roomRepo.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { IGetAvailableRoomsUseCase } from "../../../../domain/interfaces/model/room.interface";
@@ -11,6 +10,7 @@ import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { ROOM_RES_MESSAGES } from "../../../../constants/resMessages";
+import { TResponseRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
 
 @injectable()
 export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvailableRoomsUseCase {
@@ -33,7 +33,7 @@ export class GetAvailableRoomsUseCase extends RoomLookupBase implements IGetAvai
         checkIn?: string,
         checkOut?: string,
         guests?: string
-    ): Promise<{ rooms: TResponseRoomData[], total: number, message: string }> {
+    ): Promise<{ rooms: TResponseRoomDTO[], total: number, message: string }> {
 
         const { rooms, total } = await this.getFilteredAvailableRoomsOrThrow(
             page,

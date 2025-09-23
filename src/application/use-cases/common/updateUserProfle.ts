@@ -1,18 +1,21 @@
+import fs from 'fs';
+import path from 'path';
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { IUpdateUserUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
-import path from 'path';
-import fs from 'fs';
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
-import { TResponseUserData, TUpdateUserData } from "../../../domain/interfaces/model/user.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
+import { TUpdateUserData } from "../../../domain/interfaces/model/user.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { UserLookupBase } from "../base/userLookup.base";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
+import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 @injectable()
 export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
@@ -25,7 +28,7 @@ export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
         super(_userRepository)
     }
 
-    async updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserData, message: string }> {
+    async updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserDTO, message: string }> {
 
         const userEntity = await this.getUserEntityOrThrow(userId);
 
@@ -59,7 +62,7 @@ export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
         const updatedUserData = await this._userRepository.updateUser(userId, persistableData);
 
         if (!updatedUserData) {
-            throw new AppError('Error while updating user', HttpStatusCode.INTERNAL_SERVER_ERROR);
+            throw new AppError(AUTH_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
         if (file && updatedUserData.profileImage) {
@@ -83,7 +86,7 @@ export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
 
         return {
             user: mapUser,
-            message: 'User updated successfully',
+            message: AUTH_RES_MESSAGES.update,
         };
     }
 }

@@ -1,10 +1,14 @@
 import { inject, injectable } from "tsyringe";
-import { IBookingRepository, IWalletRepository, ITransactionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
 import { TOKENS } from "../../../../constants/token";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AppError } from "../../../../utils/appError";
 import { ICancelBookingUseCase } from "../../../../domain/interfaces/model/booking.interface";
 import { BOOKING_RES_MESSAGES } from "../../../../constants/resMessages";
+import { IWalletRepository } from "../../../../domain/interfaces/repositories/walletRepo.interface";
+import { ITransactionRepository } from "../../../../domain/interfaces/repositories/transactionRepo.interface";
+import { TCreateTransaction } from "../../../../domain/interfaces/model/wallet.interface";
+import { AUTH_ERROR_MESSAGES, BOOKING_ERROR_MESSAGES, TRANSACTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 
 @injectable()
 export class CancelBookingUseCase implements ICancelBookingUseCase {
@@ -17,9 +21,9 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
   async cancelBooking(bookingId: string, userId: string): Promise<{ message: string }> {
 
     const booking = await this._bookingRepository.findByid(bookingId);
-    if (!booking) throw new AppError("Booking not found", HttpStatusCode.NOT_FOUND);
+    if (!booking) throw new AppError(BOOKING_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
-    if (booking.userId.toString() !== userId) throw new AppError("Unauthorized access", HttpStatusCode.UNAUTHORIZED);
+    if (booking.userId.toString() !== userId) throw new AppError(AUTH_ERROR_MESSAGES.invalidRole, HttpStatusCode.UNAUTHORIZED);
 
     if (booking.status === 'cancelled') throw new AppError("Booking has already been cancelled", HttpStatusCode.BAD_REQUEST);
 
@@ -32,7 +36,7 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
     const vendorId = (booking.hotelId as any).vendorId;
 
     const vendorWallet = await this._walletRepository.findUserWallet(vendorId);
-    if (!vendorWallet) throw new AppError("Vendor wallet not found", HttpStatusCode.NOT_FOUND);
+    if (!vendorWallet) throw new AppError(WALLET_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
     const vendorTransactionData = {
       walletId: vendorWallet._id!,
@@ -44,15 +48,15 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
     };
 
     const vendorTransaction = await this._transactionRepository.createTransaction(vendorTransactionData);
-    if (!vendorTransaction) throw new AppError("Failed to create vendor transaction", HttpStatusCode.INTERNAL_SERVER_ERROR);
+    if (!vendorTransaction) throw new AppError(TRANSACTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
 
     await this._walletRepository.updateBalanceByWalletId(vendorWallet._id!, -refundAmount);
 
     const userWallet = await this._walletRepository.findUserWallet(booking.userId.toString());
-    if (!userWallet) throw new AppError("User wallet not found", HttpStatusCode.NOT_FOUND);
+    if (!userWallet) throw new AppError(WALLET_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
-    const userTransactionData = {
-      walletId: userWallet._id!,
+    const userTransactionData: TCreateTransaction = {
+      walletId: userWallet._id,
       type: 'credit',
       amount: refundAmount,
       description: `Refund for booking cancellation (${bookingId})`,
@@ -60,7 +64,7 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
     };
 
     const userTransaction = await this._transactionRepository.createTransaction(userTransactionData);
-    if (!userTransaction) throw new AppError("Failed to create user transaction", HttpStatusCode.INTERNAL_SERVER_ERROR);
+    if (!userTransaction) throw new AppError(TRANSACTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
 
     await this._walletRepository.updateBalanceByWalletId(userWallet._id!, refundAmount);
 

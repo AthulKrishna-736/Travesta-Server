@@ -1,4 +1,4 @@
-import { IRoomRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IRoomRepository } from "../../../domain/interfaces/repositories/roomRepo.interface";
 import { IRoomEntity } from "../../../domain/entities/room.entity";
 import { RoomEntity } from "../../../domain/entities/room.entity";
 import { AppError } from "../../../utils/appError";

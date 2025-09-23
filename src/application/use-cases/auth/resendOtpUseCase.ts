@@ -5,6 +5,7 @@ import { AppError } from "../../../utils/appError";
 import { IResendOtpUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 
 
 @injectable()
@@ -15,7 +16,7 @@ export class ResendOtpUseCase implements IResendOtpUseCase {
     async resendOtp(userId: string, purpose: "signup" | "reset"): Promise<{ message: string; }> {
 
         if (!userId) {
-            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
+            throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
         await this._authService.resendOtp(userId, purpose)

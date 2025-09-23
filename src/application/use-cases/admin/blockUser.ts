@@ -1,11 +1,11 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { IBlockUnblockUser } from "../../../domain/interfaces/model/usecases.interface";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { UserLookupBase } from "../base/userLookup.base";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { ADMIN_RES_MESSAGES } from "../../../constants/resMessages";
+import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 @injectable()
 export class BlockUnblockUser extends UserLookupBase implements IBlockUnblockUser {
@@ -15,7 +15,7 @@ export class BlockUnblockUser extends UserLookupBase implements IBlockUnblockUse
         super(_userRepository)
     }
 
-    async blockUnblockUser(userId: string): Promise<{ user: TResponseUserData, message: string }> {
+    async blockUnblockUser(userId: string): Promise<{ user: TResponseUserDTO, message: string }> {
 
         const userEntity = await this.getUserEntityOrThrow(userId);
 

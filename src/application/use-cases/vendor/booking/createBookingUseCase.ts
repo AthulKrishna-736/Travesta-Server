@@ -2,10 +2,11 @@ import { inject, injectable } from 'tsyringe';
 import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
 import { TOKENS } from '../../../../constants/token';
-import { IBookingRepository } from '../../../../domain/interfaces/repositories/repository.interface';
+import { IBookingRepository } from '../../../../domain/interfaces/repositories/bookingRepo.interface';
 import { formatDateString } from '../../../../utils/dateFormatter';
 import { ICreateBookingUseCase, TCreateBookingData, TResponseBookingData } from '../../../../domain/interfaces/model/booking.interface';
 import { BOOKING_RES_MESSAGES } from '../../../../constants/resMessages';
+import { BOOKING_ERROR_MESSAGES } from '../../../../constants/errorMessages';
 
 @injectable()
 export class CreateBookingUseCase implements ICreateBookingUseCase {
@@ -30,7 +31,7 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
 
         const created = await this._bookingRepository.createBooking(data);
         if (!created) {
-            throw new AppError('Failed to create booking', HttpStatusCode.INTERNAL_SERVER_ERROR);
+            throw new AppError(BOOKING_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
         const mappedBook: TResponseBookingData = {

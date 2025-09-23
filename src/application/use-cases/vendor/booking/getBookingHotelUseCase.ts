@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { IBookingRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
 import { formatDateString } from "../../../../utils/dateFormatter";
 import { IGetBookingsByHotelUseCase, TResponseBookingData } from "../../../../domain/interfaces/model/booking.interface";
 

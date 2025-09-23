@@ -1,13 +1,13 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { TResponseRoomData } from "../../../../domain/interfaces/model/room.interface";
-import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IRoomRepository } from "../../../../domain/interfaces/repositories/roomRepo.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { IGetRoomByIdUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { TResponseRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
 
 @injectable()
 export class GetRoomByIdUseCase extends RoomLookupBase implements IGetRoomByIdUseCase {
@@ -19,7 +19,7 @@ export class GetRoomByIdUseCase extends RoomLookupBase implements IGetRoomByIdUs
         super(_roomRepository);
     }
 
-    async getRoomById(roomId: string): Promise<TResponseRoomData> {
+    async getRoomById(roomId: string): Promise<TResponseRoomDTO> {
         const roomEntity = await this.getRoomEntityById(roomId);
         const roomIdStr = roomEntity.id!;
         const originalImages = roomEntity.images;

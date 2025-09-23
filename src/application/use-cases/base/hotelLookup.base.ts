@@ -1,5 +1,5 @@
 import { HotelEntity, IHotelEntity } from "../../../domain/entities/hotel.entity";
-import { IHotelRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IHotelRepository } from "../../../domain/interfaces/repositories/hotelRepo.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 

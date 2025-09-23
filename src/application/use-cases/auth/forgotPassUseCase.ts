@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { TOKENS } from "../../../constants/token";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
@@ -8,6 +8,7 @@ import { IForgotPassUseCase } from "../../../domain/interfaces/model/auth.interf
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { TRole } from "../../../shared/types/client.types";
 import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 
 @injectable()
 export class ForgotPassUseCase implements IForgotPassUseCase {
@@ -15,15 +16,15 @@ export class ForgotPassUseCase implements IForgotPassUseCase {
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
     ) { }
-  
+
     async forgotPass(email: string, role: TRole): Promise<{ userId: string; message: string; }> {
         const user = await this._userRepository.findUser(email)
         if (!user) {
-            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST);
+            throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
         if (user.role !== role) {
-            throw new AppError('Unauthorized: Invalid role for the reset password', HttpStatusCode.UNAUTHORIZED)
+            throw new AppError(AUTH_ERROR_MESSAGES.invalidRole, HttpStatusCode.UNAUTHORIZED);
         }
 
         const otp = this._authService.generateOtp();

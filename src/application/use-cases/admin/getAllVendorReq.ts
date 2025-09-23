@@ -2,13 +2,13 @@ import { inject, injectable } from "tsyringe";
 import { IGetAllVendorReqUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { TOKENS } from "../../../constants/token";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
-import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { UserLookupBase } from "../base/userLookup.base";
 import { IUserEntity } from "../../../domain/entities/user.entity";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 @injectable()
 export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqUseCase {
@@ -20,7 +20,7 @@ export class GetAllVendorReq extends UserLookupBase implements IGetAllVendorReqU
         super(_userRepository);
     }
 
-    async getAllVendorReq(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ vendors: TResponseUserData[]; total: number }> {
+    async getAllVendorReq(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ vendors: TResponseUserDTO[]; total: number }> {
         const { userEntities, total } = await this.getAllUserEntity(page, limit, 'vendor', search, sortField, sortOrder);
 
         const vendors = await Promise.all(
