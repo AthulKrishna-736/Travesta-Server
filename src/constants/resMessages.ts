@@ -8,6 +8,8 @@ export enum AUTH_RES_MESSAGES {
     verifyOtp = 'Otp verified successfully',
     logout = 'Logged out successfully',
     resetPass = 'Password updated successfully',
+    otp = 'OTP sent to email. Please verify to complete registration',
+    update = 'User updated successfully',
 }
 
 export enum VENDOR_RES_MESSAGES {
@@ -64,6 +66,7 @@ export enum CHAT_RES_MESSAGES {
     getUsers = 'Fetched users who chatted',
     unread = 'Fetched unread messages',
     getVendor = 'Fetched vendors who chatted',
+    access = 'Chat is available for user',
 }
 
 export enum PLAN_RES_MESSAGES {
@@ -75,7 +78,7 @@ export enum PLAN_RES_MESSAGES {
     update = 'Subscription plan updated successfully',
 }
 
-export enum WALLET_RES_MESSAGES{
+export enum WALLET_RES_MESSAGES {
     create = 'Created wallet successfully',
     getWallet = 'Fetched wallet successfully',
     paymentIntent = 'Payment intent created',

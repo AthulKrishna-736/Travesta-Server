@@ -1,5 +1,18 @@
 
 export const TOKENS = {
+  //controllers
+  AuthController: 'AuthController',
+  UserController: 'UserController',
+  VendorController: 'VendorController',
+  AdminController: 'AdminController',
+  HotelController: 'HotelController',
+  RoomController: 'RoomController',
+  AmenityController: 'AmenityController',
+  ChatController: 'ChatController',
+  WalletController: 'WalletController',
+  BookingController: 'BookingController',
+  SubscriptionController: 'SubscriptionController',
+
   // Repositories
   UserRepository: 'UserRepository',
   HotelRepository: 'HotelRepository',
@@ -19,7 +32,7 @@ export const TOKENS = {
   SocketService: 'SocketService',
   StripeService: 'StripeService',
 
-  // Use Cases
+  //auth Use Cases
   LoginUseCase: 'LoginUseCase',
   RegisterUseCase: 'RegisterUseCase',
   ConfirmRegisterUseCase: 'ConfirmRegisterUseCase',
@@ -43,11 +56,15 @@ export const TOKENS = {
   //vendor UseCases
   UpdateKycUseCase: 'UpdateKycUseCase',
   GetVendorUseCase: 'GetVendorUseCase',
+
+  //hotel UseCases
   CreateHotelUseCase: 'CreteHotelUseCase',
   UpdateHotelUseCase: 'UpdateHotelUseCase',
   GetHotelByIdUseCase: 'GetHotelByIdUseCase',
   GetHotelsByVendorUseCase: 'GetHotelsByVendorUseCase',
   GetAllHotelsUseCase: 'GetAllHotelsUseCase',
+
+  //room UseCases
   CreateRoomUseCase: 'CreateRoomUseCase',
   UpdateRoomUseCase: 'UpdateRoomUseCase',
   GetRoomByIdUseCase: 'GetRoomByIdUseCase',
@@ -55,7 +72,7 @@ export const TOKENS = {
   GetAvailableRoomsUseCase: 'GetAvailableRoomsUseCase',
   GetAllRoomsUseCase: 'GetAllRoomsUseCase',
 
-  //booking
+  //booking UseCase
   CreateBookingUseCase: 'CreateBookingUseCase',
   GetBookingsByHotelUseCase: 'GetBookingByHotelUseCase',
   GetBookingsByUserUseCase: 'GetBookingsByUserUseCase',
@@ -63,7 +80,7 @@ export const TOKENS = {
   CancelRoomUseCase: 'CancelRoomUseCase',
   GetBookingsToVendorUseCase: 'GetBookingsToVendorUseCase',
 
-  //amenities UseCase
+  //amenities UseCases
   CreateAmenityUseCase: 'CreateAmenityUseCase',
   UpdateAmenityUseCase: 'UpdateAmenityUseCase',
   GetAmenityByIdUseCase: 'GetAmenityByIdUseCase',
@@ -72,14 +89,14 @@ export const TOKENS = {
   GetActiveAmenitiesUseCase: 'GetActiveAmenitiesUseCase',
   FindUsedActiveAmenitiesUseCase: 'FindUsedActiveAmenitiesUseCase',
 
-  //subscription UseCase
+  //subscription UseCases
   CreateSubscriptionUseCase: 'CreateSubscriptionUseCase',
   UpdateSubscriptionUseCase: 'UpdateSubscriptionUseCase',
   GetActiveSubscriptionsUseCase: 'GetActiveSubscriptionsUseCase',
   GetAllSubscriptionsUseCase: 'GetAllSubscriptionsUseCase',
   BlockUnblockSubscriptionUseCase: 'BlockUnblockSubscriptionUseCase',
 
-  //chat UseCase
+  //chat UseCases
   GetChatMessagesUseCase: 'GetChatMessagesUseCase',
   SendMessageUseCase: 'SendMessageUseCase',
   GetChattedUsersUseCase: 'GetChattedUsersUseCase',
@@ -87,15 +104,16 @@ export const TOKENS = {
   GetVendorsChatWithUserUseCase: 'GetVendorsChatWithUserUseCase',
   GetVendorsChatWithAdminUseCase: 'GetVendorsChatWithAdminUseCase',
   GetUserUnreadMsgUseCase: 'GetUserUnreadMsgUseCase',
+  GetChatAccessUseCase: 'GetChatAccessUseCase',
 
-  //wallet UseCase
+  //wallet UseCases
   CreateWalletUseCase: 'CreateWalletUseCase',
   GetWalletUseCase: 'GetWalletUseCase',
   AddWalletTransactionUseCase: 'AddWalletTransactionUseCase',
   TransferUsersAmountUseCase: 'TransferUsersAmountUseCase',
   AddVendorTransactionUseCase: 'AddVendorTransactionUseCase',
 
-  //transaction UseCase
+  //transaction UseCases
   BookingTransactionUseCase: 'BookingTransactionUseCase',
   AddMoneyToWalletUseCase: 'AddMoneyToWalletUseCase',
   GetTransactionsUseCase: 'GetTransactionsUseCase',
