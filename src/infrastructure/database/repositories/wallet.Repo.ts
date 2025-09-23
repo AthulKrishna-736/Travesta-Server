@@ -1,7 +1,7 @@
 import { injectable } from 'tsyringe';
 import { BaseRepository } from './baseRepo';
 import { TWalletDocument, walletModel } from '../models/walletModel';
-import { IWalletRepository } from '../../../domain/interfaces/repositories/repository.interface';
+import { IWalletRepository } from '../../../domain/interfaces/repositories/walletRepo.interface';
 import { TCreateWalletData } from '../../../domain/interfaces/model/wallet.interface';
 
 @injectable()

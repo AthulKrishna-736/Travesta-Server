@@ -2,7 +2,7 @@ import { injectable } from 'tsyringe';
 import { BaseRepository } from './baseRepo';
 import { bookingModel, TBookingDocument } from '../models/bookingModel';
 import { IBooking } from '../../../domain/interfaces/model/booking.interface';
-import { IBookingRepository } from '../../../domain/interfaces/repositories/repository.interface';
+import { IBookingRepository } from '../../../domain/interfaces/repositories/bookingRepo.interface';
 import { hotelModel } from '../models/hotelModel';
 import { roomModel } from '../models/roomModel';
 import mongoose from 'mongoose';

@@ -1,5 +1,5 @@
 import { injectable } from "tsyringe";
-import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/amenitiesRepo.interface";
 import { amenitiesModel, TAmenitiesDocument } from "../models/amenitiesModel";
 import { BaseRepository } from "./baseRepo";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../../../domain/interfaces/model/amenities.interface";

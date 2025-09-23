@@ -51,9 +51,6 @@ const userSchema: Schema = new Schema<TUserDocument>({
     profileImage: {
         type: String
     },
-    wishlist: [{
-        type: String
-    }],
     isVerified: {
         type: Boolean,
         default: false

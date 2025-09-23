@@ -2,7 +2,7 @@ import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
 import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfaces/model/room.interface";
-import { IRoomRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IRoomRepository } from "../../../domain/interfaces/repositories/roomRepo.interface";
 import { hotelModel } from "../models/hotelModel";
 import { bookingModel } from "../models/bookingModel";
 
@@ -33,6 +33,11 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
     async deleteRoom(roomId: string): Promise<any> {
         const result = await this.delete(roomId);
         return result
+    }
+
+    async findDuplicateRooms(roomName: string): Promise<boolean> {
+        const rooms = await this.model.countDocuments({ name: { $regex: `^${roomName}$`, $options: 'i' } });
+        return rooms > 0;
     }
 
     async findRoomsByHotel(hotelId: string): Promise<IRoom[] | null> {

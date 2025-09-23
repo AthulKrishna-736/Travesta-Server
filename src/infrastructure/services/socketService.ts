@@ -8,7 +8,6 @@ import { env } from "../config/env";
 import logger from "../../utils/logger";
 import { TOKENS } from "../../constants/token";
 import { IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
-import { IBookingRepository } from "../../domain/interfaces/repositories/repository.interface";
 
 
 @injectable()
@@ -34,53 +33,17 @@ export class SocketService {
 
             const cookies = cookie.parse(cookieHeader);
             const accessToken = cookies['access_token'];
-            const refreshToken = cookies['refresh_token'];
 
             try {
                 const decode: any = jwt.verify(accessToken as string, env.JWT_ACCESS_SECRET);
                 socket.data.user = decode;
-
                 const userId = decode.userId;
                 if (!userId) {
                     return next(new AppError('Invalid token payload', HttpStatusCode.UNAUTHORIZED));
                 }
-
-                const bookingRepo = container.resolve<IBookingRepository>(TOKENS.BookingRepository);
-                const hasBooking = await bookingRepo.hasActiveBooking(userId);
-                if (!hasBooking) {
-                    logger.warn(`🚫 User ${userId} attempted to connect without active booking`);
-                    socket.emit("booking_error", { message: "You must have an active booking to use chat." });
-                    socket.disconnect();
-                    return;
-                }
-
                 next();
-            } catch (error) {
-                if (!refreshToken) {
-                    return next(new AppError('No valid tokens found', HttpStatusCode.UNAUTHORIZED));
-                }
-                try {
-                    const decodedRefresh: any = jwt.verify(refreshToken, env.JWT_REFRESH_SECRET);
-                    socket.data.user = decodedRefresh;
-
-                    const userId = decodedRefresh.userId;
-                    if (!userId) {
-                        return next(new AppError('Invalid refresh token payload', HttpStatusCode.UNAUTHORIZED));
-                    }
-
-                    const bookingRepo = container.resolve<IBookingRepository>(TOKENS.BookingRepository);
-                    const hasBooking = await bookingRepo.hasActiveBooking(userId);
-                    if (!hasBooking) {
-                        logger.warn(`🚫 User ${userId} attempted to connect without active booking`);
-                        socket.emit("booking_error", { message: "You must have an active booking to use chat." });
-                        socket.disconnect();
-                        return;
-                    }
-
-                    return next();
-                } catch (refreshErr) {
-                    return next(new AppError('Invalid refresh token', HttpStatusCode.UNAUTHORIZED));
-                }
+            } catch (error: any) {
+                next(error);
             }
         })
     }
@@ -91,21 +54,20 @@ export class SocketService {
             logger.error(`error code: ${err.code}`);
             logger.error(`error msg: ${err.message}`);
             logger.error(`error context: ${err.context}`);
-        })
+        });
     }
 
     private registerEvents() {
-        this.io.on("connection", (socket: Socket) => {
+        this.io.on("connection", async (socket: Socket) => {
             const user = socket.data.user;
             if (!user) {
                 logger.warn("⚠️ Socket connected without user data");
                 return;
             }
-
             const { userId, role } = user;
+
             const room = `${role}:${userId}`;
             socket.join(room);
-
             logger.info(`✅ Socket connected: ${socket.id} (User: ${role}:${userId})`);
 
             socket.on("send_message", async ({ toId, toRole, message }) => {
@@ -139,7 +101,6 @@ export class SocketService {
 
             socket.on("read_message", async ({ senderId, receiverId, toRole }) => {
                 try {
-                    console.log("reaaading started//////////////////////////////", senderId, receiverId, toRole)
                     if (!senderId || !receiverId) {
                         throw new AppError('Missing sender or receiver id', HttpStatusCode.BAD_REQUEST);
                     }
@@ -154,7 +115,6 @@ export class SocketService {
 
                     this.io.to(fromRoom).emit("message_read", { withUserId: receiverId });
                     this.io.to(toRoom).emit("message_read", { withUserId: senderId });
-                    console.log('reading endeddddddddd/////////////////////////////////')
                 } catch (err) {
                     logger.error(`❌ Failed to mark conversation as read: ${err}`);
                 }

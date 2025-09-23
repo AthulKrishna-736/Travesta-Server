@@ -1,4 +1,4 @@
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
 import { TUserDocument, userModel } from "../models/userModels";
 import { BaseRepository } from "./baseRepo";

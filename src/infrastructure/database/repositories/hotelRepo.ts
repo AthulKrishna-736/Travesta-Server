@@ -2,7 +2,7 @@ import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { hotelModel, THotelDocument } from "../models/hotelModel";
 import { IHotel, TCreateHotelData, TUpdateHotelData } from "../../../domain/interfaces/model/hotel.interface";
-import { IHotelRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IHotelRepository } from "../../../domain/interfaces/repositories/hotelRepo.interface";
 import mongoose from "mongoose";
 
 @injectable()
@@ -24,6 +24,11 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
     async updateHotel(hotelId: string, data: TUpdateHotelData): Promise<IHotel | null> {
         const hotel = await this.update(hotelId, data);
         return hotel?.toObject() || null;
+    }
+
+    async findDuplicateHotels(hotelName: string): Promise<boolean> {
+        const hotels = await this.model.countDocuments({ name: { $regex: `^${hotelName}$`, $options: 'i' } });
+        return hotels > 0;
     }
 
     async findHotelByVendor(vendorId: string, hotelId: string): Promise<IHotel | null> {

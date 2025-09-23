@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { transactionModel, TTransactionDoc } from "../models/transactionModel";
-import { ITransactionRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { ITransactionRepository } from "../../../domain/interfaces/repositories/transactionRepo.interface";
 import { TCreateTransaction } from "../../../domain/interfaces/model/wallet.interface";
 
 
