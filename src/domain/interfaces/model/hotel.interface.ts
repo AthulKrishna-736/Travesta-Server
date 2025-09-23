@@ -1,4 +1,5 @@
 import { Types } from "mongoose"
+import { TCreateHotelDTO, TResponseHotelDTO, TUpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto"
 
 export interface IHotel {
     _id?: string
@@ -25,20 +26,20 @@ export type TResponseHotelData = Omit<IHotel, ''>;
 
 //hotel use cases
 export interface ICreateHotelUseCase {
-    createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
+    createHotel(vendorId: string, hotelData: TCreateHotelDTO, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelDTO; message: string }>;
 }
 
 export interface IUpdateHotelUseCase {
-    updateHotel(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
+    updateHotel(hotelId: string, updateData: TUpdateHotelDTO, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelDTO; message: string }>;
 }
 
 export interface IGetHotelByIdUseCase {
-    getHotel(hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
+    getHotel(hotelId: string): Promise<{ hotel: TResponseHotelDTO, message: string }>
 }
 
 export interface IGetVendorHotelsUseCase {
-    getVendorHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
-    getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
+    getVendorHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelDTO[], total: number, message: string }>
+    getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelDTO, message: string }>
 }
 
 export interface IGetAllHotelsUseCase {

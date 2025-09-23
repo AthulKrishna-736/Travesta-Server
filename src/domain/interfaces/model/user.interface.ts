@@ -13,7 +13,6 @@ export interface IUser {
     isBlocked: boolean,
     subscription: IUserSubscription | null,
     profileImage?: string,
-    wishlist: string[],
     isVerified: boolean,
     verificationReason?: string,
     kycDocuments?: string[],
@@ -23,7 +22,5 @@ export interface IUser {
 
 
 export type TUserRegistrationInput = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' | 'phone' | 'role'>;
-
-export type TUpdateUserData = Partial<Omit<IUser, '_id' | 'email' | 'wishlist' | 'createdAt' | 'updatedAt' | 'isGoogle' | 'role' | 'subscription'>>;
-
-export type TResponseUserData = Omit<IUser, 'password'>;
+export type TUpdateUserData = Partial<Omit<IUser, '_id' | 'email' | 'createdAt' | 'updatedAt' | 'isGoogle' | 'role' | 'subscription'>>;
+export type TResponseUserData = Omit<IUser, ''>;

@@ -1,27 +1,26 @@
+import { TResponseUserDTO, TUpdateUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 import { TRole } from "../../../shared/types/client.types";
-import { TResponseUserData, TUpdateUserData } from "./user.interface";
-
 
 //user UserCases
 export interface IUpdateUserUseCase {
-    updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserData, message: string }>
+    updateUser(userId: string, userData: TUpdateUserDTO, file?: Express.Multer.File): Promise<{ user: TResponseUserDTO, message: string }>
 }
 
 export interface IGetUserUseCase {
-    getUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
+    getUser(userId: string): Promise<{ user: TResponseUserDTO, message: string }>
 }
 
 //admin UseCases
 export interface IGetAllUsersUseCase {
-    getAllUsers(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string, sortField?: string, sortOrder?: string): Promise<{ users: TResponseUserData[]; total: number }>
+    getAllUsers(page: number, limit: number, role: Exclude<TRole, 'admin'>, search?: string, sortField?: string, sortOrder?: string): Promise<{ users: TResponseUserDTO[]; total: number }>
 }
 
 export interface IBlockUnblockUser {
-    blockUnblockUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
+    blockUnblockUser(userId: string): Promise<{ user: TResponseUserDTO, message: string }>
 }
 
 export interface IGetAllVendorReqUseCase {
-    getAllVendorReq(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ vendors: TResponseUserData[]; total: number }>
+    getAllVendorReq(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ vendors: TResponseUserDTO[]; total: number }>
 }
 
 export interface IUpdateVendorReqUseCase {
@@ -30,9 +29,9 @@ export interface IUpdateVendorReqUseCase {
 
 //vendor UseCases
 export interface IUpdateKycUseCase {
-    updateKyc(vendorId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: TResponseUserData, message: string }>
+    updateKyc(vendorId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: TResponseUserDTO, message: string }>
 }
 
 export interface IGetVendorUseCase {
-    getUser(userId: string): Promise<{ user: TResponseUserData, message: string }>
+    getVendor(userId: string): Promise<{ user: TResponseUserDTO, message: string }>
 }

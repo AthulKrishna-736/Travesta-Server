@@ -1,3 +1,4 @@
+import { TCreateSubscriptionDTO, TResponseSubscriptionDTO, TUpdateSubscriptionDTO } from "../../../interfaceAdapters/dtos/subscription.dto"
 import { TSubscription } from "../../../shared/types/client.types"
 import { IUser } from "./user.interface"
 
@@ -23,29 +24,29 @@ export interface IUserSubscription {
 
 //subscription types
 export type TCreateSubscriptionData = Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt' | 'isActive'>;
-export type TUpdateSubscriptionData = Partial<Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt' | 'isActive' | 'duration'>>;
+export type TUpdateSubscriptionData = Partial<Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt' | 'isActive'>>;
 export type TResponseSubscriptionData = ISubscription;
 
 
 //subscription use cases
 export interface ICreatePlanUseCase {
-    createPlan(data: TCreateSubscriptionData): Promise<{ plan: TResponseSubscriptionData, message: string }>
+    createPlan(data: TCreateSubscriptionDTO): Promise<{ plan: TResponseSubscriptionDTO, message: string }>
 }
 
 export interface IUpdatePlanUseCase {
-    updatePlan(id: string, data: TUpdateSubscriptionData): Promise<{ plan: TResponseSubscriptionData, message: string }>
+    updatePlan(id: string, data: TUpdateSubscriptionDTO): Promise<{ plan: TResponseSubscriptionDTO, message: string }>
 }
 
 export interface IGetActivePlansUseCase {
-    getActivePlans(): Promise<{ plans: TResponseSubscriptionData[], message: string }>
+    getActivePlans(): Promise<{ plans: TResponseSubscriptionDTO[], message: string }>
 }
 
 export interface IBlockUnblockPlanUseCase {
-    blockUnblockPlan(id: string): Promise<{ plan: TResponseSubscriptionData, message: string }>
+    blockUnblockPlan(id: string): Promise<{ plan: TResponseSubscriptionDTO, message: string }>
 }
 
 export interface IGetAllPlansUseCase {
-    getAllPlans(): Promise<{ plans: TResponseSubscriptionData[], message: string }>
+    getAllPlans(): Promise<{ plans: TResponseSubscriptionDTO[], message: string }>
 }
 
 export interface ISubscribePlanUseCase {

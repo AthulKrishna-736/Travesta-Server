@@ -1,7 +1,7 @@
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { IUserSubscription } from "../interfaces/model/subscription.interface";
-import { IUser, TUpdateUserData } from "../interfaces/model/user.interface";
+import { IUser, TResponseUserData, TUpdateUserData } from "../interfaces/model/user.interface";
 
 export interface IUserEntity {
     // Getters
@@ -15,7 +15,6 @@ export interface IUserEntity {
     readonly isBlocked: boolean;
     readonly isGoogleUser: boolean;
     readonly isVerified: boolean;
-    readonly wishlist: string[];
     readonly subscription: IUserSubscription | null;
     readonly profileImage: string | undefined;
     readonly kycDocuments: string[] | undefined;
@@ -33,7 +32,7 @@ export interface IUserEntity {
     subscribe(planId: string, validFrom: Date, validUntil: Date): void;
 
     // Return raw object (for persistence)
-    toObject(): Omit<IUser, 'password'>;
+    toObject(): TResponseUserData;
     getPersistableData(): Partial<Omit<IUser, "_id" | "createdAt" | 'subscription'>>;
     getUpdatedSubscription(): Pick<IUser, 'subscription'>;
 }
@@ -85,10 +84,6 @@ export class UserEntity implements IUserEntity {
 
     get isGoogleUser() {
         return this._props.isGoogle;
-    }
-
-    get wishlist() {
-        return this._props.wishlist;
     }
 
     get subscription() {
@@ -182,19 +177,19 @@ export class UserEntity implements IUserEntity {
         return this._props.role == 'admin';
     }
 
-    toObject(): Omit<IUser, 'password'> {
+    toObject(): TResponseUserData {
         return {
             _id: this._props._id,
             firstName: this._props.firstName,
             lastName: this._props.lastName,
             email: this._props.email,
+            password: this._props.password,
             isGoogle: this._props.isGoogle,
             phone: this._props.phone,
             isBlocked: this._props.isBlocked,
             role: this._props.role,
             subscription: this._props.subscription,
             profileImage: this._props.profileImage,
-            wishlist: this._props.wishlist ?? [],
             isVerified: this._props.isVerified,
             verificationReason: this._props.verificationReason,
             kycDocuments: this._props.kycDocuments ?? [],
@@ -213,7 +208,6 @@ export class UserEntity implements IUserEntity {
             isBlocked: this._props.isBlocked,
             isVerified: this._props.isVerified,
             isGoogle: this._props.isGoogle,
-            wishlist: this._props.wishlist,
             profileImage: this._props.profileImage,
             kycDocuments: this._props.kycDocuments,
             updatedAt: this._props.updatedAt,

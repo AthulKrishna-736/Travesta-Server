@@ -1,69 +1,63 @@
 import { Types } from "mongoose"
+import { TCreateRoomDTO, TResponseRoomDTO, TUpdateRoomDTO } from "../../../interfaceAdapters/dtos/room.dto";
 
 export interface IRoom {
-    _id?: string
-    hotelId: string | Types.ObjectId
-    name: string
-    roomType: string
-    roomCount: number
-    bedType: string
-    guest: number
-    amenities: string[]
-    images: string[]
-    basePrice: number
-    isAvailable: boolean
-    createdAt: Date
-    updatedAt: Date
+    _id?: string;
+    hotelId: string | Types.ObjectId;
+    name: string;
+    roomType: TRoomType;
+    roomCount: number;
+    bedType: TBedType;
+    guest: number;
+    amenities: string[];
+    images: string[];
+    basePrice: number;
+    isAvailable: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
-// Bed Types
-export enum BedType {
-    KING = "King",
-    QUEEN = "Queen",
-    DOUBLE = "Double",
-    TWIN = "Twin",
-    SINGLE = "Single",
-    SOFA = "Sofa",
-    BUNK = "Bunk",
-}
+export type TRoomType = 'AC' | 'Non-AC' | 'Deluxe' | 'Suite' | 'Standard' | 'Penthouse';
+export type TBedType = "King" | "Queen" | "Double" | "Twin" | "Single" | "Sofa" | "Bunk";
+
 
 // Guest capacity mapping per bed type
-export const BED_TYPE_CAPACITY: Record<BedType, number> = {
-    [BedType.KING]: 2,
-    [BedType.QUEEN]: 2,
-    [BedType.DOUBLE]: 2,
-    [BedType.TWIN]: 1,
-    [BedType.SINGLE]: 1,
-    [BedType.SOFA]: 1,
-    [BedType.BUNK]: 1,
+export const BED_TYPE_CAPACITY: Record<TBedType, number> = {
+    King: 2,
+    Queen: 2,
+    Double: 2,
+    Twin: 1,
+    Single: 1,
+    Sofa: 1,
+    Bunk: 1,
 };
 
 //room types
 export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'createdAt' | 'updatedAt'>;
-export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'createdAt' | 'updatedAt'>>;
+export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'isAvailable' | 'createdAt' | 'updatedAt'>>;
 export type TResponseRoomData = Omit<IRoom, ''>;
 
 //room use cases
 export interface ICreateRoomUseCase {
-    createRoom(roomData: TCreateRoomData, files: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }>;
+    createRoom(roomData: TCreateRoomDTO, files: Express.Multer.File[]): Promise<{ room: TResponseRoomDTO; message: string }>;
 }
 
 export interface IUpdateRoomUseCase {
-    updateRoom(roomId: string, updateData: TUpdateRoomData, files: Express.Multer.File[]): Promise<{ room: TResponseRoomData; message: string }>;
+    updateRoom(roomId: string, updateData: TUpdateRoomDTO, files: Express.Multer.File[]): Promise<{ room: TResponseRoomDTO; message: string }>;
 }
 
 export interface IGetRoomByIdUseCase {
-    getRoomById(roomId: string): Promise<TResponseRoomData>;
+    getRoomById(roomId: string): Promise<TResponseRoomDTO>;
 }
 
 export interface IGetRoomsByHotelUseCase {
-    getRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]>;
+    getRoomsByHotel(hotelId: string): Promise<TResponseRoomDTO[]>;
 }
 
 export interface IGetAvailableRoomsUseCase {
-    getAvlRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string, destination?: string, checkIn?: string, checkOut?: string, guests?: string): Promise<{ rooms: TResponseRoomData[], total: number, message: string }>;
+    getAvlRooms(page: number, limit: number, minPrice?: number, maxPrice?: number, amenities?: string[], search?: string, destination?: string, checkIn?: string, checkOut?: string, guests?: string): Promise<{ rooms: TResponseRoomDTO[], total: number, message: string }>;
 }
 
 export interface IGetAllRoomsUseCase {
-    getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomData[]; message: string; total: number }>;
+    getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomDTO[]; message: string; total: number }>;
 }
