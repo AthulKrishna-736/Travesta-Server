@@ -43,6 +43,7 @@ export enum ROOM_ERROR_MESSAGES {
     nameError = 'Room with the same name already exists',
     minImages = 'At least 1 image is required to create a room',
     maxImages = 'You can upload a maximum of 10 images',
+    notFound = 'Room not found',
 }
 
 export enum AMENITIES_ERROR_MESSAGES {

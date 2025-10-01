@@ -27,7 +27,7 @@ export type TUpdateRoomDTO = {
 
 export type TResponseRoomDTO = {
     id: string;
-    hotelId: string;
+    hotelId: string | Object;
     name: string;
     roomCount: number;
     roomType: TRoomType;

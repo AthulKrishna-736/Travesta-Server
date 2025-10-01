@@ -213,7 +213,7 @@ export const subscriptionSchema = z.object({
     type: z.enum(['basic', 'medium', 'vip'], {
         required_error: 'type is required',
         invalid_type_error: 'invalid type should be specified ones'
-    }),
+    }).optional(),
 
     price: z.number({
         required_error: 'price is required',

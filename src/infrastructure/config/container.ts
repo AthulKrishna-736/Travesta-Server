@@ -70,7 +70,7 @@ import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChat
 import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRead.UseCase";
 import { GetVendorsChatWithUserUseCase } from "../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
 import { GetVendorsChatWithAdmiinUseCase } from "../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
-import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase } from "../../domain/interfaces/model/booking.interface";
+import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase, IGetCustomRoomDatesUseCase } from "../../domain/interfaces/model/booking.interface";
 import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from "../../domain/interfaces/model/wallet.interface";
 import { GetWalletUseCase } from "../../application/use-cases/user/wallet/getWallet.UseCase";
 import { CreateWalletUseCase } from "../../application/use-cases/user/wallet/createWallet.UseCase";
@@ -115,6 +115,7 @@ import { IAmenityController } from "../../domain/interfaces/controllers/amenityC
 import { AmenityController } from "../../interfaceAdapters/controllers/amenityController";
 import { SubscriptionController } from "../../interfaceAdapters/controllers/subscriptionController";
 import { GetChatAccessUseCase } from "../../application/use-cases/chat/getChatAccess.UseCase";
+import { GetCustomRoomDatesUseCase } from "../../application/use-cases/vendor/room/getCustomRoomDatesUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -198,6 +199,7 @@ container.register<IAmenityController>(TOKENS.AmenityController, {
 container.register<SubscriptionController>(TOKENS.SubscriptionController, {
   useClass: SubscriptionController,
 });
+
 
 //services
 container.register<IAuthService>(TOKENS.AuthService, {
@@ -322,6 +324,7 @@ container.register<IGetVendorHotelsUseCase>(TOKENS.GetHotelsByVendorUseCase, {
   useClass: GetVendorHotelsUseCase,
 })
 
+
 //room UseCase
 container.register<ICreateRoomUseCase>(TOKENS.CreateRoomUseCase, {
   useClass: CreateRoomUseCase,
@@ -345,6 +348,10 @@ container.register<IGetAvailableRoomsUseCase>(TOKENS.GetAvailableRoomsUseCase, {
 
 container.register<IGetAllRoomsUseCase>(TOKENS.GetAllRoomsUseCase, {
   useClass: GetAllRoomsUseCase,
+})
+
+container.register<IGetCustomRoomDatesUseCase>(TOKENS.GetCustomRoomDatesUseCase, {
+  useClass: GetCustomRoomDatesUseCase,
 })
 
 
@@ -399,6 +406,7 @@ container.register<IFindUsedActiveAmenitiesUseCase>(TOKENS.FindUsedActiveAmeniti
   useClass: FindUsedActiveAmenitiesUseCase,
 })
 
+
 //subscription use case
 container.register<ICreatePlanUseCase>(TOKENS.CreateSubscriptionUseCase, {
   useClass: CreatePlanUseCase,
@@ -419,6 +427,7 @@ container.register<IGetAllPlansUseCase>(TOKENS.GetAllSubscriptionsUseCase, {
 container.register<IBlockUnblockPlanUseCase>(TOKENS.BlockUnblockSubscriptionUseCase, {
   useClass: BlockUnblockPlanUseCase,
 })
+
 
 //chat use case
 container.register<IGetChatMessagesUseCase>(TOKENS.GetChatMessagesUseCase, {
@@ -462,6 +471,7 @@ container.register<IGetWalletUseCase>(TOKENS.GetWalletUseCase, {
 container.register<ICreateWalletUseCase>(TOKENS.CreateWalletUseCase, {
   useClass: CreateWalletUseCase,
 })
+
 
 //transaction use case
 container.register<IBookingTransactionUseCase>(TOKENS.BookingTransactionUseCase, {

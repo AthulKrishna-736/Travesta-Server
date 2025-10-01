@@ -66,20 +66,23 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
             hotelAmenities?: string[];
             roomAmenities?: string[];
             roomType?: string[];
-            checkIn?: string;
-            checkOut?: string;
+            checkIn: string;
+            checkOut: string;
             guests?: number;
-            minPrice?: number;
-            maxPrice?: number;
-            sort?: string;
-        } = {}
+        }
     ): Promise<{ hotels: any[]; total: number }> {
         const skip = (page - 1) * limit;
+
+        if (!filters.checkIn || !filters.checkOut) {
+            throw new Error("Check-in and check-out dates are required");
+        }
 
         const hotelAmenitiesIds = filters.hotelAmenities?.map(id => new mongoose.Types.ObjectId(id));
         const roomAmenitiesIds = filters.roomAmenities?.map(id => new mongoose.Types.ObjectId(id));
 
-        // Base hotel filter
+        const checkInDate = new Date(filters.checkIn);
+        const checkOutDate = new Date(filters.checkOut);
+
         const hotelMatch: any = { isBlocked: false };
         if (filters.search) {
             const regex = new RegExp(filters.search, "i");
@@ -89,15 +92,10 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
             hotelMatch.amenities = { $all: hotelAmenitiesIds };
         }
 
-        // Sorting
-        let sortQuery: any = { createdAt: -1 };
-        if (filters.sort === "price_asc") sortQuery = { startingPrice: 1 };
-        if (filters.sort === "price_desc") sortQuery = { startingPrice: -1 };
-        if (filters.sort === "name_asc") sortQuery = { name: 1 };
-        if (filters.sort === "name_desc") sortQuery = { name: -1 };
-
         const pipeline: any[] = [
             { $match: hotelMatch },
+
+            // Lookup rooms
             {
                 $lookup: {
                     from: "rooms",
@@ -106,6 +104,8 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
                     as: "rooms",
                 },
             },
+
+            //Lookup amenities
             {
                 $lookup: {
                     from: "amenities",
@@ -115,56 +115,69 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
                     pipeline: [{ $project: { _id: 1, name: 1 } }],
                 },
             },
+
+            // Lookup bookings
+            {
+                $lookup: {
+                    from: "bookings",
+                    let: { roomIds: "$rooms._id" },
+                    pipeline: [
+                        { $match: { status: { $ne: "cancelled" } } }
+                    ],
+                    as: "bookings",
+                },
+            },
+
+            // Filter rooms that match filters AND have no overlapping bookings
             {
                 $addFields: {
-                    filteredRooms: {
+                    availableRooms: {
                         $filter: {
                             input: "$rooms",
                             as: "room",
                             cond: {
                                 $and: [
                                     filters.roomType ? { $in: ["$$room.roomType", filters.roomType] } : true,
-                                    roomAmenitiesIds?.length
-                                        ? { $setIsSubset: [roomAmenitiesIds, "$$room.amenities"] }
-                                        : true,
+                                    roomAmenitiesIds?.length ? { $setIsSubset: [roomAmenitiesIds, "$$room.amenities"] } : true,
                                     filters.guests ? { $gte: ["$$room.guest", filters.guests] } : true,
-                                    filters.minPrice !== undefined ? { $gte: ["$$room.basePrice", filters.minPrice] } : true,
-                                    filters.maxPrice !== undefined ? { $lte: ["$$room.basePrice", filters.maxPrice] } : true,
-                                ],
-                            },
-                        },
-                    },
-                },
+                                    {
+                                        $not: {
+                                            $anyElementTrue: {
+                                                $map: {
+                                                    input: "$bookings",
+                                                    as: "b",
+                                                    in: {
+                                                        $and: [
+                                                            { $lt: [checkInDate, "$$b.checkOut"] },
+                                                            { $gt: [checkOutDate, "$$b.checkIn"] },
+                                                            { $eq: ["$$b.roomId", "$$room._id"] }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
             },
+
+            // Only keep hotels with at least one available room
+            { $match: { "availableRooms.0": { $exists: true } } },
+
+            // Pick cheapest room
             {
                 $addFields: {
-                    startingPrice: {
-                        $cond: [
-                            { $gt: [{ $size: "$filteredRooms" }, 0] },
-                            { $min: "$filteredRooms.basePrice" },
-                            null,
-                        ],
-                    },
-                    cheapestRoom: {
-                        $arrayElemAt: [
-                            {
-                                $filter: {
-                                    input: "$filteredRooms",
-                                    as: "room",
-                                    cond: {
-                                        $eq: ["$$room.basePrice", { $min: "$filteredRooms.basePrice" }],
-                                    },
-                                },
-                            },
-                            0,
-                        ],
-                    },
+                    cheapestRoom: { $arrayElemAt: [{ $sortArray: { input: "$availableRooms", sortBy: { basePrice: 1 } } }, 0] },
                 },
             },
-            { $match: { startingPrice: { $ne: null } } },
-            { $sort: sortQuery },
+
+            { $sort: { createdAt: -1 } },
             { $skip: skip },
             { $limit: limit },
+
             {
                 $project: {
                     name: 1,
@@ -173,12 +186,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
                     description: 1,
                     images: 1,
                     amenities: 1,
-                    startingPrice: 1,
-                    cheapestRoom: {
-                        _id: 1,
-                        name: 1,
-                        basePrice: 1,
-                    },
+                    cheapestRoom: { _id: 1, name: 1, basePrice: 1 },
                 },
             },
         ];

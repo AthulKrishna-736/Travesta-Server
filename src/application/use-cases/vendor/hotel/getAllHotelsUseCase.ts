@@ -50,8 +50,6 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
             roomAmenities,
         };
 
-        console.log('hotelameniteis: ', hotelAmenities)
-        console.log('room amenities', roomAmenities)
         const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, repoFilters);
 
         if (!hotels || hotels.length === 0) {
@@ -77,7 +75,6 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
             })
         );
 
-        console.log('cccccccccccccccccccccc', mappedHotels)
         const customHotelsMapping = mappedHotels.map(h => ResponseMapper.mapHotelToResponseDTO(h));
 
         return {

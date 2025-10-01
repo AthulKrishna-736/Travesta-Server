@@ -26,7 +26,7 @@ export class RoomController implements IRoomController {
 
     async createRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const files = req.files as Express.Multer.File[];
+            const FILES = req.files as Express.Multer.File[];
             const { hotelId, name, roomType, roomCount, bedType, guest, amenities, basePrice, images } = req.body;
 
             let amenitiesArray: string[] = []
@@ -51,14 +51,14 @@ export class RoomController implements IRoomController {
                 images,
             };
 
-            if (!files || files.length === 0) {
+            if (!FILES || FILES.length === 0) {
                 throw new AppError(ROOM_ERROR_MESSAGES.minImages, HttpStatusCode.BAD_REQUEST);
             }
-            if (files.length > 10) {
+            if (FILES.length > 10) {
                 throw new AppError(ROOM_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { room, message } = await this._createRoomUseCase.createRoom(roomData, files);
+            const { room, message } = await this._createRoomUseCase.createRoom(roomData, FILES);
             ResponseHandler.success(res, message, room, HttpStatusCode.CREATED);
         } catch (error) {
             next(error);
@@ -67,12 +67,12 @@ export class RoomController implements IRoomController {
 
     async updateRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const roomId = req.params.roomId;
-            if (!roomId) {
+            const ROOM_ID = req.params.roomId;
+            if (!ROOM_ID) {
                 throw new AppError(ROOM_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const files = req.files as Express.Multer.File[];
+            const FILES = req.files as Express.Multer.File[];
             const { hotelId, name, roomType, roomCount, bedType, guest, amenities, basePrice, images } = req.body;
 
             const updateData: TUpdateRoomDTO = {
@@ -87,7 +87,7 @@ export class RoomController implements IRoomController {
                 images: typeof images == 'string' ? JSON.parse(images) : images,
             };
 
-            const { room, message } = await this._updateRoomUseCase.updateRoom(roomId, updateData, files);
+            const { room, message } = await this._updateRoomUseCase.updateRoom(ROOM_ID, updateData, FILES);
             ResponseHandler.success(res, message, room, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -96,12 +96,12 @@ export class RoomController implements IRoomController {
 
     async getRoomById(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const roomId = req.params.roomId;
-            if (!roomId) {
+            const ROOM_ID = req.params.roomId;
+            if (!ROOM_ID) {
                 throw new AppError(ROOM_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const room = await this._getRoomByIdUseCase.getRoomById(roomId);
+            const room = await this._getRoomByIdUseCase.getRoomById(ROOM_ID);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getRoom, room, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -110,12 +110,12 @@ export class RoomController implements IRoomController {
 
     async getRoomsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const hotelId = req.params.hotelId;
-            if (!hotelId) {
+            const HOTEL_ID = req.params.hotelId;
+            if (!HOTEL_ID) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(hotelId);
+            const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(HOTEL_ID);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getAll, rooms, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -138,12 +138,12 @@ export class RoomController implements IRoomController {
 
     async getAllRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const page = Number(req.query.page) || 1
-            const limit = Number(req.query.limit) || 10
-            const search = req.query.search as string
+            const PAGE = Number(req.query.page) || 1
+            const LIMIT = Number(req.query.limit) || 10
+            const SEARCH = req.query.search as string
 
-            const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(page, limit, search);
-            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
+            const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(PAGE, LIMIT, SEARCH);
+            const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) }
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);
@@ -152,36 +152,33 @@ export class RoomController implements IRoomController {
 
     async getAllAvlRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const page = Math.max(Number(req.query.page) || 1, 1);
-            const limit = Math.max(Number(req.query.limit) || 10, 1);
+            const PAGE = Math.max(Number(req.query.page) || 1, 1);
+            const LIMIT = Math.max(Number(req.query.limit) || 10, 1);
 
-            const search = typeof req.query.search === 'string' ? req.query.search.trim() : '';
+            const SEARCH = typeof req.query.search === 'string' ? req.query.search.trim() : '';
 
-            const minPrice = req.query.minPrice !== undefined ? Number(req.query.minPrice) : 0;
-            const maxPrice = req.query.maxPrice !== undefined ? Number(req.query.maxPrice) : 100000;
+            const MIN_PRICE = req.query.minPrice !== undefined ? Number(req.query.minPrice) : 0;
+            const MAX_PRICE = req.query.maxPrice !== undefined ? Number(req.query.maxPrice) : 100000;
 
-            const amenities =
-                typeof req.query.amenities === 'string' && req.query.amenities.trim().length > 0
-                    ? req.query.amenities.split(',')
-                    : undefined;
+            const AMENITIES = typeof req.query.amenities === 'string' && req.query.amenities.trim().length > 0 ? req.query.amenities.split(',') : undefined;
 
-            const checkIn = typeof req.query.checkIn === 'string' ? req.query.checkIn : undefined;
-            const checkOut = typeof req.query.checkOut === 'string' ? req.query.checkOut : undefined;
-            const guests = req.query.guests;
+            const CHECK_IN = typeof req.query.checkIn === 'string' ? req.query.checkIn : undefined;
+            const CHECK_OUT = typeof req.query.checkOut === 'string' ? req.query.checkOut : undefined;
+            const GUESTS = req.query.guests;
 
             const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(
-                page,
-                limit,
-                minPrice,
-                maxPrice,
-                amenities,
-                search,
-                checkIn,
-                checkOut,
-                guests as string
+                PAGE,
+                LIMIT,
+                MIN_PRICE,
+                MAX_PRICE,
+                AMENITIES,
+                SEARCH,
+                CHECK_IN,
+                CHECK_OUT,
+                GUESTS as string
             );
 
-            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
+            const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) };
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);

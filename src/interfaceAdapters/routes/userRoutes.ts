@@ -15,6 +15,7 @@ import { IChatController } from "../../domain/interfaces/controllers/chatControl
 import { IBookingController } from "../../domain/interfaces/controllers/bookingController.interface";
 import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
 import { IWalletController } from "../../domain/interfaces/controllers/walletController.interface";
+import { ISubscriptionController } from "../../domain/interfaces/controllers/subscriptionController.interface";
 
 @injectable()
 export class userRoutes extends BaseRouter {
@@ -26,6 +27,7 @@ export class userRoutes extends BaseRouter {
         @inject(TOKENS.BookingController) private _bookingController: IBookingController,
         @inject(TOKENS.WalletController) private _walletController: IWalletController,
         @inject(TOKENS.AmenityController) private _amenityController: IAmenityController,
+        @inject(TOKENS.SubscriptionController) private _subscriptionController: ISubscriptionController,
     ) {
         super();
         this.initializeRoutes();
@@ -53,6 +55,10 @@ export class userRoutes extends BaseRouter {
             .get('/hotels', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getAllHotelsToUser(req, res, next))
             .get('/hotels/:hotelId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelById(req, res, next));
 
+        //rooms
+        this.router
+            .get('/room/custom', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getCustomRoomDates(req, res, next));
+
         //chat
         this.router
             .get('/chat/access', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getchatAccess(req, res, next))
@@ -73,6 +79,10 @@ export class userRoutes extends BaseRouter {
         this.router.route('/amenities')
             .get(authMiddleware, authorizeRoles('user'), (req: CustomRequest, res, next) => this._amenityController.getUsedActiveAmenities(req, res, next));
 
+        //subscription
+        this.router
+            .get('/plans', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getActiveSubscriptions(req, res, next))
+
         // wallet
         this.router.route('/wallet')
             .post(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.createWallet(req, res, next))
@@ -82,7 +92,6 @@ export class userRoutes extends BaseRouter {
         this.router
             .post('/payment/online', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.createPaymentIntent(req, res, next))
             .post('/payment/:vendorId/booking', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.BookingConfirmTransaction(req, res, next))
-        // .post subsciption payement
 
         this.router
             .get('/transactions', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getTransactions(req, res, next));

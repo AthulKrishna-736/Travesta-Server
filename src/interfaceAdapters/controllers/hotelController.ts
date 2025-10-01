@@ -23,17 +23,17 @@ export class HotelController implements IHotelController {
 
     async createHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const files = req.files as Express.Multer.File[];
-            const vendorId = req.user?.userId;
+            const FILES = req.files as Express.Multer.File[];
+            const VENDOR_ID = req.user?.userId;
 
-            if (!vendorId) {
+            if (!VENDOR_ID) {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            if (!files || files.length === 0) {
+            if (!FILES || FILES.length === 0) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.minImages, HttpStatusCode.BAD_REQUEST);
             }
-            if (files.length > 10) {
+            if (FILES.length > 10) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
@@ -77,7 +77,7 @@ export class HotelController implements IHotelController {
                 images: []
             };
 
-            const { hotel, message } = await this._createHotelUseCase.createHotel(vendorId, hotelData, files);
+            const { hotel, message } = await this._createHotelUseCase.createHotel(VENDOR_ID, hotelData, FILES);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.CREATED);
         } catch (error) {
             next(error);
@@ -87,13 +87,13 @@ export class HotelController implements IHotelController {
     async updateHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { hotelId } = req.params;
-            const files = req.files as Express.Multer.File[];
+            const FILES = req.files as Express.Multer.File[];
 
             if (!hotelId) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            if (files.length > 10) {
+            if (FILES.length > 10) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
@@ -142,7 +142,7 @@ export class HotelController implements IHotelController {
                 updateData.images = typeof images === 'string' ? JSON.parse(images) : images;
             }
 
-            const { hotel, message } = await this._updateHotelUseCase.updateHotel(hotelId, updateData, files);
+            const { hotel, message } = await this._updateHotelUseCase.updateHotel(hotelId, updateData, FILES);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -151,13 +151,13 @@ export class HotelController implements IHotelController {
 
     async getHotelById(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const hotelId = req.params.hotelId;
+            const HOTEL_ID = req.params.hotelId;
 
-            if (!hotelId) {
+            if (!HOTEL_ID) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { message, hotel } = await this._getHotelByIdUseCae.getHotel(hotelId);
+            const { message, hotel } = await this._getHotelByIdUseCae.getHotel(HOTEL_ID);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -166,10 +166,10 @@ export class HotelController implements IHotelController {
 
     async getAllHotelsToUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const page = Number(req.query.page) || 1;
-            const limit = Number(req.query.limit) || 10;
+            const PAGE = Number(req.query.page) || 1;
+            const LIMIT = Number(req.query.limit) || 10;
 
-            const filters = {
+            const FILTERS = {
                 search: req.query.search as string,
                 checkIn: req.query.checkIn as string,
                 checkOut: req.query.checkOut as string,
@@ -181,8 +181,8 @@ export class HotelController implements IHotelController {
                 sort: req.query.sort as string
             };
 
-            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(page, limit, filters);
-            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
+            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(PAGE, LIMIT, FILTERS);
+            const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) };
             ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
         } catch (error) {
             throw error
@@ -191,17 +191,17 @@ export class HotelController implements IHotelController {
 
     async getHotelsByVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const vendorId = req.user?.userId;
-            const page = parseInt(req.query.page as string, 10);
-            const limit = parseInt(req.query.limit as string, 10);
-            const search = req.query.search as string;
+            const VENDOR_ID = req.user?.userId;
+            const PAGE = parseInt(req.query.page as string, 10);
+            const LIMIT = parseInt(req.query.limit as string, 10);
+            const SEARCH = req.query.search as string;
 
-            if (!vendorId) {
+            if (!VENDOR_ID) {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { hotels, total, message } = await this._getHotelsByVendorUseCase.getVendorHotels(vendorId, page, limit, search);
-            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) };
+            const { hotels, total, message } = await this._getHotelsByVendorUseCase.getVendorHotels(VENDOR_ID, PAGE, LIMIT, SEARCH);
+            const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) };
             ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);
@@ -210,16 +210,16 @@ export class HotelController implements IHotelController {
 
     async getHotelByVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const vendorId = req.user?.userId;
+            const VENDOR_ID = req.user?.userId;
             const { hotelId } = req.params;
 
-            if (!vendorId) {
+            if (!VENDOR_ID) {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             } else if (!hotelId) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_GATEWAY);
             }
 
-            const { hotel, message } = await this._getHotelsByVendorUseCase.getVendorHotel(vendorId, hotelId);
+            const { hotel, message } = await this._getHotelsByVendorUseCase.getVendorHotel(VENDOR_ID, hotelId);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             next(error);

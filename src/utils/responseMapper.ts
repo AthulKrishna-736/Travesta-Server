@@ -6,7 +6,7 @@ import { ISubscription } from "../domain/interfaces/model/subscription.interface
 import { TResponseSubscriptionDTO } from "../interfaceAdapters/dtos/subscription.dto";
 import { IRoom } from "../domain/interfaces/model/room.interface";
 import { TResponseRoomDTO } from "../interfaceAdapters/dtos/room.dto";
-import { ITransactions, IWallet, TResponseTransactions } from "../domain/interfaces/model/wallet.interface";
+import { ITransactions, IWallet } from "../domain/interfaces/model/wallet.interface";
 import { IAmenities } from "../domain/interfaces/model/amenities.interface";
 import { TResponseAmenityDTO } from "../interfaceAdapters/dtos/amenity.dto";
 import { TResponseWalletDTO } from "../interfaceAdapters/dtos/wallet.dto";
@@ -31,7 +31,7 @@ export class ResponseMapper {
     static mapRoomToResponseDTO(room: IRoom): TResponseRoomDTO {
         return {
             id: room._id as string,
-            hotelId: room.hotelId.toString(),
+            hotelId: room.hotelId,
             name: room.name,
             roomType: room.roomType,
             roomCount: room.roomCount,
@@ -61,7 +61,7 @@ export class ResponseMapper {
             address: hotel.address,
             geoLocation: hotel.geoLocation,
             isBlocked: hotel.isBlocked,
-            startingPrice: (hotel as any).startingPrice ?? null,
+            room: (hotel as any).cheapestRoom ?? null,
             createdAt: hotel.createdAt,
             updatedAt: hotel.updatedAt,
         };

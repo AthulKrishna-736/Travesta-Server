@@ -59,6 +59,7 @@ export enum ROOM_RES_MESSAGES {
     getAvl = 'Available rooms fetched successfully',
     update = 'Room updated successfully',
     getRoom = 'Room fetched successfully',
+    customRoomDates = 'Custom room dates fetched successfully',
 }
 
 export enum CHAT_RES_MESSAGES {
