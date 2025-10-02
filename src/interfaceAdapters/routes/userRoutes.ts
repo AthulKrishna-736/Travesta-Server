@@ -85,15 +85,15 @@ export class userRoutes extends BaseRouter {
 
         // wallet
         this.router.route('/wallet')
-            .post(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.createWallet(req, res, next))
-            .get(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getWallet(req, res, next))
-            .put(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.AddMoneyTransaction(req, res, next))
+            .post(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.createWallet(req, res, next))
+            .get(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getWallet(req, res, next))
+            .put(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.AddMoneyTransaction(req, res, next))
 
         this.router
             .post('/payment/online', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.createPaymentIntent(req, res, next))
             .post('/payment/:vendorId/booking', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.BookingConfirmTransaction(req, res, next))
 
         this.router
-            .get('/transactions', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getTransactions(req, res, next));
+            .get('/transactions', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getTransactions(req, res, next));
     }
 }

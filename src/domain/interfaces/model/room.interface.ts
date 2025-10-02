@@ -51,7 +51,7 @@ export interface IGetRoomByIdUseCase {
 }
 
 export interface IGetRoomsByHotelUseCase {
-    getRoomsByHotel(hotelId: string): Promise<TResponseRoomDTO[]>;
+    getRoomsByHotel(hotelId: string, checkIn: string, checkOut: string): Promise<TResponseRoomDTO[]>;
 }
 
 export interface IGetAvailableRoomsUseCase {

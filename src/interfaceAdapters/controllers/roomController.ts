@@ -111,11 +111,14 @@ export class RoomController implements IRoomController {
     async getRoomsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const HOTEL_ID = req.params.hotelId;
+            const CHECK_IN = req.query.checkIn as string;
+            const CHECK_OUT = req.query.checkOut as string;
+
             if (!HOTEL_ID) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(HOTEL_ID);
+            const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(HOTEL_ID, CHECK_IN, CHECK_OUT);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getAll, rooms, HttpStatusCode.OK);
         } catch (error) {
             next(error);

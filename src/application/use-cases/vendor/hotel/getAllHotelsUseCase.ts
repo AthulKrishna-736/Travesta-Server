@@ -14,6 +14,7 @@ import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
 import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
+import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
 
 
 @injectable()
@@ -21,10 +22,23 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
     constructor(
         @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
         @inject(TOKENS.AmenitiesRepository) private _amenitiesRepository: IAmenitiesRepository,
+        @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) {
         super(_hotelRepository);
+    }
+
+    private calculateDynamicPrice(basePrice: number, totalRooms: number, bookedRooms: number): number {
+        const occupancy = bookedRooms / totalRooms;
+        console.log('occuppancy ', occupancy, basePrice, totalRooms, bookedRooms);
+
+        if (occupancy >= 0.7) {
+            return Math.round(basePrice * 1.3);
+        } else if (occupancy >= 0.4) {
+            return Math.round(basePrice * 1.15);
+        }
+        return basePrice;
     }
 
     async getAllHotel(
@@ -75,7 +89,30 @@ export class GetAllHotelsUseCase extends HotelLookupBase implements IGetAllHotel
             })
         );
 
-        const customHotelsMapping = mappedHotels.map(h => ResponseMapper.mapHotelToResponseDTO(h));
+        const dynamicPricedHotels = await Promise.all(
+            mappedHotels.map(async (h: any) => {
+                let cheapestRoom = h.cheapestRoom;
+
+                if (cheapestRoom) {
+                    const bookedRooms = await this._bookingRepository.getBookedRoomsCount(cheapestRoom._id.toString(), filters.checkIn!, filters.checkOut!);
+
+                    const dynamicPrice = this.calculateDynamicPrice(cheapestRoom.basePrice, cheapestRoom.roomCount, bookedRooms);
+
+                    cheapestRoom = {
+                        ...cheapestRoom,
+                        basePrice: dynamicPrice,
+                    };
+                }
+
+                return {
+                    ...h,
+                    cheapestRoom
+                };
+            })
+        );
+
+
+        const customHotelsMapping = dynamicPricedHotels.map(h => ResponseMapper.mapHotelToResponseDTO(h));
 
         return {
             hotels: customHotelsMapping,

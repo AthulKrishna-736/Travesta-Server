@@ -9,9 +9,10 @@ import { AppError } from '../../utils/appError';
 import { Pagination } from '../../shared/types/common.types';
 import { BOOKING_RES_MESSAGES } from '../../constants/resMessages';
 import { AUTH_ERROR_MESSAGES, BOOKING_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from '../../constants/errorMessages';
+import { IBookingController } from '../../domain/interfaces/controllers/bookingController.interface';
 
 @injectable()
-export class BookingController {
+export class BookingController implements IBookingController {
     constructor(
         @inject(TOKENS.CreateBookingUseCase) private _createBookingUseCase: ICreateBookingUseCase,
         @inject(TOKENS.GetBookingsByHotelUseCase) private _getByHotelUseCase: IGetBookingsByHotelUseCase,
@@ -112,6 +113,14 @@ export class BookingController {
             ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByUsers, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);
+        }
+    }
+
+    async getCustomRoomDates(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            
+        } catch (error) {
+
         }
     }
 }

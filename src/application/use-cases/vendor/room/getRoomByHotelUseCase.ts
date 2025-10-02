@@ -11,18 +11,33 @@ import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TResponseRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
+import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
 
 @injectable()
 export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsByHotelUseCase {
     constructor(
         @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
+        @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
     ) {
         super(_roomRepository);
     }
 
-    async getRoomsByHotel(hotelId: string): Promise<TResponseRoomDTO[]> {
+    private calculateDynamicPrice(basePrice: number, totalRooms: number, bookedRooms: number): number {
+        const occupancy = bookedRooms / totalRooms;
+        console.log('occuppancy ', occupancy, bookedRooms, totalRooms, basePrice);
+
+        if (occupancy >= 0.7) {
+            return Math.round(basePrice * 1.3);
+        } else if (occupancy >= 0.4) {
+            return Math.round(basePrice * 1.15);
+        }
+        return basePrice;
+    }
+
+
+    async getRoomsByHotel(hotelId: string, checkIn: string, checkOut: string): Promise<TResponseRoomDTO[]> {
         if (!hotelId) {
             throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
         }
@@ -33,6 +48,12 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
             roomEntities.map(async (roomEntity) => {
                 const roomIdStr = roomEntity.id!;
                 const roomImages = roomEntity.images;
+
+                const isAvailable = await this._bookingRepository.isRoomAvailable(roomIdStr, new Date(checkIn), new Date(checkOut));
+
+                if (!isAvailable) {
+                    return null;
+                }
 
                 let signedRoomUrls = await this._redisService.getRoomImageUrls(roomIdStr);
                 if (!signedRoomUrls) {
@@ -62,8 +83,17 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
                     images: signedHotelUrls,
                 };
 
+                const bookedRooms = await this._bookingRepository.getBookedRoomsCount(roomIdStr, checkIn, checkOut);
+
+                const dynamicPrice = this.calculateDynamicPrice(
+                    roomEntity.basePrice,
+                    roomEntity.roomCount,
+                    bookedRooms
+                );
+
                 const finalRoomObj = {
                     ...roomEntity.toObject(),
+                    basePrice: dynamicPrice,
                     images: signedRoomUrls,
                     hotelId: hotelWithSignedImages,
                 };
@@ -72,7 +102,11 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
             })
         );
 
-        const mappedRooms = roomsWithSignedImages.map(r => ResponseMapper.mapRoomToResponseDTO(r));
+        const availableRooms = roomsWithSignedImages.filter(
+            (r): r is NonNullable<typeof r> => r !== null
+        );
+
+        const mappedRooms = availableRooms.map(r => ResponseMapper.mapRoomToResponseDTO(r));
 
         return mappedRooms;
     }

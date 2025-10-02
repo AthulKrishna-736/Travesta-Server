@@ -49,3 +49,7 @@ export interface ICheckRoomAvailabilityUseCase {
 export interface IGetBookingsToVendorUseCase {
     getBookingsToVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
 }
+
+export interface IGetCustomRoomDatesUseCase {
+    getCustomRoomDates(roomId: string, limit: number, checkIn: string, checkOut: string): Promise<{ message: string, roomDates: any }>;
+}

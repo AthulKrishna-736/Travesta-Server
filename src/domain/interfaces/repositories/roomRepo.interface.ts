@@ -21,4 +21,5 @@ export interface IRoomRepository {
         checkOut?: string,
         guests?: string
     ): Promise<{ rooms: IRoom[]; total: number }>;
+    getRoomPerformance(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
 }

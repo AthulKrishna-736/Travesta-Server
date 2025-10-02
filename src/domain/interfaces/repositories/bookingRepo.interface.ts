@@ -10,4 +10,11 @@ export interface IBookingRepository {
     hasActiveBooking(userId: string): Promise<boolean>
     confirmBookingPayment(bookingId: string): Promise<void>;
     findBookingsByVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }>;
+    findCustomRoomDates(roomId: string, limit: number): Promise<any>;
+    getBookedRoomsCount(roomId: string, checkIn: string, checkOut: string): Promise<number>
+    getTotalRevenue(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
+    getTotalBookings(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
+    getBookingStatusBreakdown(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
+    getPaymentStatusBreakdown(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
+    getRevenueTrend(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
 }

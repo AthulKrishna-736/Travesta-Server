@@ -5,6 +5,7 @@ import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfa
 import { IRoomRepository } from "../../../domain/interfaces/repositories/roomRepo.interface";
 import { hotelModel } from "../models/hotelModel";
 import { bookingModel } from "../models/bookingModel";
+import mongoose from "mongoose";
 
 @injectable()
 export class RoomRepository extends BaseRepository<TRoomDocument> implements IRoomRepository {
@@ -176,5 +177,49 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         }
 
         return { rooms, total };
+    }
+
+    async getRoomPerformance(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any> {
+        const now = new Date();
+        const start = new Date();
+        if (period === "week") start.setDate(now.getDate() - 7);
+        if (period === "month") start.setMonth(now.getMonth() - 1);
+        if (period === "year") start.setFullYear(now.getFullYear() - 1);
+
+
+        return bookingModel.aggregate([
+            {
+                $match: {
+                    hotelId: new mongoose.Types.ObjectId(hotelId),
+                    createdAt: { $gte: start, $lte: now },
+                    status: "confirmed"
+                }
+            },
+            {
+                $group: {
+                    _id: "$roomId",
+                    bookings: { $sum: 1 },
+                    revenue: { $sum: "$totalPrice" }
+                }
+            },
+            {
+                $lookup: {
+                    from: "rooms",
+                    localField: "_id",
+                    foreignField: "_id",
+                    as: "room"
+                }
+            },
+            { $unwind: "$room" },
+            {
+                $project: {
+                    name: "$room.name",
+                    type: "$room.roomType",
+                    bookings: 1,
+                    revenue: 1
+                }
+            },
+            { $sort: { revenue: -1 } }
+        ]);
     }
 }

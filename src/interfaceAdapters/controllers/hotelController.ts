@@ -5,7 +5,7 @@ import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelByIdUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelAnalyticsUseCase, IGetHotelByIdUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
 import { TCreateHotelDTO, TUpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
 import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from '../../constants/errorMessages';
@@ -19,6 +19,7 @@ export class HotelController implements IHotelController {
         @inject(TOKENS.GetHotelByIdUseCase) private _getHotelByIdUseCae: IGetHotelByIdUseCase,
         @inject(TOKENS.GetAllHotelsUseCase) private _getAllHotelsUseCase: IGetAllHotelsUseCase,
         @inject(TOKENS.GetHotelsByVendorUseCase) private _getHotelsByVendorUseCase: IGetVendorHotelsUseCase,
+        @inject(TOKENS.GetHotelAnalyticsUseCase) private _getHotelAnalyticsUseCase: IGetHotelAnalyticsUseCase,
     ) { }
 
     async createHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -223,6 +224,22 @@ export class HotelController implements IHotelController {
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             next(error);
+        }
+    }
+
+    async getHotelAnalytics(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { hotelId } = req.params;
+            const period = req.query.period as 'week' | 'month' | 'year';
+
+            if (!hotelId) {
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_GATEWAY);
+            }
+
+            const { hotel, message } = await this._getHotelAnalyticsUseCase.getHotelAnalytics(hotelId, period);
+            ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
+        } catch (error) {
+            next(error)
         }
     }
 }

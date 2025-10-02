@@ -23,4 +23,5 @@ export interface IHotelRepository {
             sort?: string;
         }
     ): Promise<{ hotels: IHotel[] | null; total: number }>;
+    getHotelAnalytics(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>
 }

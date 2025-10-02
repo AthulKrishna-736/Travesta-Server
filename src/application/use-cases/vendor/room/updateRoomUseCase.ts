@@ -27,14 +27,15 @@ export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseC
     }
 
     async updateRoom(roomId: string, updateData: TUpdateRoomDTO, files?: Express.Multer.File[]): Promise<{ room: TResponseRoomDTO, message: string }> {
-        if (updateData.name) {
+        const roomEntity = await this.getRoomEntityById(roomId);
+
+        if (updateData.name && updateData.name.trim() !== roomEntity.name.trim()) {
             const isDuplicate = await this._roomRepository.findDuplicateRooms(updateData.name.trim());
             if (isDuplicate) {
                 throw new AppError(ROOM_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
             }
         }
 
-        const roomEntity = await this.getRoomEntityById(roomId);
         let deletedImages = false;
 
         if (updateData.images) {

@@ -59,3 +59,7 @@ export interface IGetAllHotelsUseCase {
         }
     ): Promise<{ hotels: TResponseHotelData[]; total: number; message: string }>
 }
+
+export interface IGetHotelAnalyticsUseCase {
+    getHotelAnalytics(hotelId: string, period: 'week' | 'month' | 'year'): Promise<{ hotel: any, message: string }>;
+}

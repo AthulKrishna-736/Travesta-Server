@@ -5,13 +5,26 @@ import { IBooking } from '../../../domain/interfaces/model/booking.interface';
 import { IBookingRepository } from '../../../domain/interfaces/repositories/bookingRepo.interface';
 import { hotelModel } from '../models/hotelModel';
 import { roomModel } from '../models/roomModel';
-import mongoose from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import { userModel } from '../models/userModels';
 
 @injectable()
 export class BookingRepository extends BaseRepository<TBookingDocument> implements IBookingRepository {
     constructor() {
         super(bookingModel);
+    }
+
+    private _getDateMatch(period: 'week' | 'month' | 'year', hotelId: string) {
+        const now = new Date();
+        const start = new Date();
+        if (period === "week") start.setDate(now.getDate() - 7);
+        if (period === "month") start.setMonth(now.getMonth() - 1);
+        if (period === "year") start.setFullYear(now.getFullYear() - 1);
+
+        return {
+            hotelId: new mongoose.Types.ObjectId(hotelId),
+            createdAt: { $gte: start, $lte: now }
+        };
     }
 
     async createBooking(data: Partial<IBooking>): Promise<IBooking | null> {
@@ -170,5 +183,71 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
             },
             { new: true }
         ).exec();
+    }
+
+    async findCustomRoomDates(roomId: string, limit: number): Promise<any> {
+        // const 
+    }
+
+    async getBookedRoomsCount(roomId: string, checkIn: string, checkOut: string): Promise<number> {
+        const startOfDay = new Date(checkIn);
+        startOfDay.setHours(0, 0, 0, 0);
+
+        const endOfDay = new Date(checkOut);
+        endOfDay.setHours(23, 59, 59, 999);
+
+        const count = await bookingModel.countDocuments({
+            roomId: new Types.ObjectId(roomId),
+            status: 'confirmed',
+            $or: [
+                { checkIn: { $lte: endOfDay }, checkOut: { $gte: startOfDay } }
+            ]
+        });
+
+        return count;
+    }
+
+    async getTotalRevenue(hotelId: string, period: 'week' | 'month' | 'year'): Promise<number> {
+        const match = this._getDateMatch(period, hotelId);
+        const result = await bookingModel.aggregate([
+            { $match: { ...match, status: "confirmed", payment: "success" } },
+            { $group: { _id: null, revenue: { $sum: "$totalPrice" } } }
+        ]);
+        return result[0]?.revenue || 0;
+    }
+
+    async getTotalBookings(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any> {
+        const match = this._getDateMatch(period, hotelId);
+        return bookingModel.countDocuments(match);
+    }
+
+    async getBookingStatusBreakdown(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any> {
+        const match = this._getDateMatch(period, hotelId);
+        return bookingModel.aggregate([
+            { $match: match },
+            { $group: { _id: "$status", count: { $sum: 1 } } }
+        ]);
+    }
+
+    async getPaymentStatusBreakdown(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any> {
+        const match = this._getDateMatch(period, hotelId);
+        return bookingModel.aggregate([
+            { $match: match },
+            { $group: { _id: "$payment", count: { $sum: 1 } } }
+        ]);
+    }
+
+    async getRevenueTrend(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any> {
+        const match = this._getDateMatch(period, hotelId);
+        return bookingModel.aggregate([
+            { $match: match },
+            {
+                $group: {
+                    _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+                    revenue: { $sum: "$totalPrice" }
+                }
+            },
+            { $sort: { "_id": 1 } }
+        ]);
     }
 }
