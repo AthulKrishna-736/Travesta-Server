@@ -13,17 +13,17 @@ import { ResponseMapper } from "../../../../utils/responseMapper";
 @injectable()
 export class CreatePlanUseCase implements ICreatePlanUseCase {
     constructor(
-        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepo: ISubscriptionRepository,
+        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepository: ISubscriptionRepository,
     ) { }
 
     async createPlan(data: TCreateSubscriptionDTO): Promise<{ plan: TResponseSubscriptionDTO; message: string; }> {
-        const isDuplicate = await this._subscriptionRepo.findDuplicatePlan(data.name.trim());
+        const isDuplicate = await this._subscriptionRepository.findDuplicatePlan(data.name.trim());
 
         if (isDuplicate) {
             throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
         }
 
-        const plan = await this._subscriptionRepo.createPlan(data);
+        const plan = await this._subscriptionRepository.createPlan(data);
         if (!plan) {
             throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }

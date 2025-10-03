@@ -1,3 +1,4 @@
+import { Types } from "mongoose"
 import { TCreateSubscriptionDTO, TResponseSubscriptionDTO, TUpdateSubscriptionDTO } from "../../../interfaceAdapters/dtos/subscription.dto"
 import { TSubscription } from "../../../shared/types/client.types"
 import { IUser } from "./user.interface"
@@ -20,6 +21,19 @@ export interface IUserSubscription {
     plan: ISubscription | string;
     validFrom: Date;
     validUntil: Date;
+}
+
+//subscription history
+export interface IUserSubscriptionHistory {
+    userId: Types.ObjectId | string;
+    subscriptionId: string | ISubscription;
+    subscribedAt: Date;
+    validFrom: Date;
+    validUntil: Date;
+    isActive: boolean;
+    paymentAmount: number;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 //subscription types
@@ -51,6 +65,10 @@ export interface IGetAllPlansUseCase {
 
 export interface ISubscribePlanUseCase {
     subscribePlan(userId: string, planId: string): Promise<{ user: IUser, message: string }>
+}
+
+export interface IUserSubscribePlanUseCase {
+    subscribePlan(userId: string, planId: string, paymentAmount: number): Promise<{ user: any, message: string }>
 }
 
 

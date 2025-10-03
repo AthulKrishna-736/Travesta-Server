@@ -23,6 +23,7 @@ export const TOKENS = {
   ChatRepository: 'ChatRepository',
   WalletRepository: 'WalletRepository',
   TransactionRepository: 'TransactionRepository',
+  SubscriptionHistoryRepository: 'SubscriptionHistoryRepository',
 
   // Services
   AuthService: 'AuthService',

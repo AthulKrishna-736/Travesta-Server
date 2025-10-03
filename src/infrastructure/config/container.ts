@@ -93,7 +93,7 @@ import { IHotelRepository } from "../../domain/interfaces/repositories/hotelRepo
 import { IRoomRepository } from "../../domain/interfaces/repositories/roomRepo.interface";
 import { IBookingRepository } from "../../domain/interfaces/repositories/bookingRepo.interface";
 import { IAmenitiesRepository } from "../../domain/interfaces/repositories/amenitiesRepo.interface";
-import { ISubscriptionRepository } from "../../domain/interfaces/repositories/subscriptionRepo.interface";
+import { ISubscriptionHistoryRepository, ISubscriptionRepository } from "../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { IChatRepository } from "../../domain/interfaces/repositories/chatRepo.interface";
 import { IWalletRepository } from "../../domain/interfaces/repositories/walletRepo.interface";
 import { ITransactionRepository } from "../../domain/interfaces/repositories/transactionRepo.interface";
@@ -117,6 +117,7 @@ import { SubscriptionController } from "../../interfaceAdapters/controllers/subs
 import { GetChatAccessUseCase } from "../../application/use-cases/chat/getChatAccess.UseCase";
 import { GetCustomRoomDatesUseCase } from "../../application/use-cases/vendor/room/getCustomRoomDatesUseCase";
 import { GetHotelAnalyticsUseCase } from "../../application/use-cases/vendor/hotel/getHotelAnalyticsUseCase";
+import { SubscriptionHistoryRepository } from "../database/repositories/planHistoryRepo";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -153,6 +154,10 @@ container.register<IWalletRepository>(TOKENS.WalletRepository, {
 
 container.register<ITransactionRepository>(TOKENS.TransactionRepository, {
   useClass: TransactionRepository,
+})
+
+container.register<ISubscriptionHistoryRepository>(TOKENS.SubscriptionHistoryRepository, {
+  useClass: SubscriptionHistoryRepository,
 })
 
 
