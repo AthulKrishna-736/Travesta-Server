@@ -71,13 +71,13 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
         let transaction: TResponseTransactions | null = null;
 
         if (method === 'online') {
-            await this._walletRepository.updateBalance(vendorWallet.id.toString(), booking.totalPrice);
+            await this._walletRepository.updateBalance(vendorWallet.userId.toString(), booking.totalPrice);
 
             await this._transactionRepository.createTransaction(debitTransaction);
             transaction = await this._transactionRepository.createTransaction(creditTransaction);
         } else if (method === 'wallet') {
-            await this._walletRepository.updateBalance(userWallet.id.toString(), -booking.totalPrice);
-            await this._walletRepository.updateBalance(vendorWallet.id.toString(), booking.totalPrice);
+            await this._walletRepository.updateBalance(userWallet.userId.toString(), -booking.totalPrice);
+            await this._walletRepository.updateBalance(vendorWallet.userId.toString(), booking.totalPrice);
 
             await this._transactionRepository.createTransaction(debitTransaction);
             transaction = await this._transactionRepository.createTransaction(creditTransaction);

@@ -60,10 +60,10 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
                 sortQuery = { createdAt: -1 };
                 break;
             case "name_asc":
-                sortQuery = { "hotelId.name": 1 };
+                sortQuery = { "roomId.name": 1 };
                 break;
             case "name_desc":
-                sortQuery = { "hotelId.name": -1 };
+                sortQuery = { "roomId.name": -1 };
                 break;
             case "price_asc":
                 sortQuery = { totalPrice: 1 };
