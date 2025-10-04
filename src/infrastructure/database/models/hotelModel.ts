@@ -22,10 +22,6 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
         type: [String],
         default: [],
     },
-    rating: {
-        type: Number,
-        default: 0,
-    },
     amenities: [{
         type: Schema.Types.ObjectId,
         ref: "Amenities",

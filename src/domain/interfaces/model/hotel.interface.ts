@@ -1,13 +1,13 @@
 import { Types } from "mongoose"
 import { TCreateHotelDTO, TResponseHotelDTO, TUpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto"
 
+//hotel model
 export interface IHotel {
     _id?: string
     vendorId: string | Types.ObjectId
     name: string
     description: string
     images: string[]
-    rating: number
     amenities: string[]
     tags: string[]
     state: string
