@@ -11,6 +11,8 @@ import { IAmenities } from "../domain/interfaces/model/amenities.interface";
 import { TResponseAmenityDTO } from "../interfaceAdapters/dtos/amenity.dto";
 import { TResponseWalletDTO } from "../interfaceAdapters/dtos/wallet.dto";
 import { TResponseTransactionDTO } from "../interfaceAdapters/dtos/transactions.dto";
+import { IRating } from "../domain/interfaces/model/rating.interface";
+import { TResponseRatingDTO } from "../interfaceAdapters/dtos/rating.dto";
 
 export class ResponseMapper {
     static mapSubscriptionToResponseDTO(plan: ISubscription): TResponseSubscriptionDTO {
@@ -53,7 +55,6 @@ export class ResponseMapper {
             name: hotel.name,
             description: hotel.description,
             images: hotel.images,
-            rating: hotel.rating ?? 0,
             amenities: hotel.amenities,
             tags: hotel.tags,
             state: hotel.state,
@@ -121,6 +122,21 @@ export class ResponseMapper {
             relatedEntityType: transaction.relatedEntityType ? transaction.relatedEntityType : undefined,
             createdAt: transaction.createdAt,
             updatedAt: transaction.updatedAt,
+        }
+    }
+
+    static mapRatingToResponseDTO(rating: IRating): TResponseRatingDTO {
+        return {
+            id: rating._id as string,
+            hotelId: rating.hotelId.toString(),
+            userId: rating.userId.toString(),
+            hospitality: rating.hospitality,
+            cleanliness: rating.cleanliness,
+            facilities: rating.facilities,
+            room: rating.room,
+            moneyValue: rating.moneyValue,
+            createdAt: rating.createdAt,
+            updatedAt: rating.updatedAt,
         }
     }
 }

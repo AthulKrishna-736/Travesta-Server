@@ -35,9 +35,10 @@ export class LogoutUseCase implements ILogoutUseCases {
             userId = decoded.userId;
         }
 
-        await this._redisService.deleteRefreshToken(userId)
-
-        await this._redisService.blacklistAccessToken(accessToken, jwtConfig.accessToken.maxAge / 1000)
+        await Promise.all([
+            this._redisService.deleteRefreshToken(userId),
+            this._redisService.blacklistAccessToken(accessToken, jwtConfig.accessToken.maxAge / 1000)
+        ])
 
         return { message: AUTH_RES_MESSAGES.logout }
     }

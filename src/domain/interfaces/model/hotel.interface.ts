@@ -20,7 +20,7 @@ export interface IHotel {
 }
 
 //hotel types
-export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'rating'>;
+export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked'>;
 export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt'>>;
 export type TResponseHotelData = Omit<IHotel, ''>;
 

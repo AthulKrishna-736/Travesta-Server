@@ -18,13 +18,17 @@ export abstract class RoomLookupBase {
     }
 
     protected async getRoomsEntityByHotelId(hotelId: string): Promise<IRoomEntity[]> {
-        const rooms = await this._roomRepository.findRoomsByHotel(hotelId);
+        try {
+            const rooms = await this._roomRepository.findRoomsByHotel(hotelId);
 
-        if (!rooms || rooms.length === 0) {
-            throw new AppError("No rooms found for this hotel", HttpStatusCode.NOT_FOUND);
+            if (!rooms || rooms.length === 0) {
+                throw new AppError("No rooms found for this hotel", HttpStatusCode.NOT_FOUND);
+            }
+
+            return rooms.map((room) => new RoomEntity(room));
+        } catch (error) {
+            throw error;
         }
-
-        return rooms.map((room) => new RoomEntity(room));
     }
 
     protected async getAvailableRoomsByHotelId(hotelId: string): Promise<IRoomEntity[]> {
