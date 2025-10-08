@@ -10,7 +10,6 @@ export interface IHotelEntity {
     readonly name: string
     readonly description: string
     readonly images: string[]
-    readonly rating: number
     readonly amenities: string[]
     readonly tags: string[]
     readonly state: string
@@ -56,10 +55,6 @@ export class HotelEntity implements IHotelEntity {
 
     get images() {
         return this._props.images
-    }
-
-    get rating() {
-        return this._props.rating
     }
 
     get amenities() {
@@ -128,10 +123,6 @@ export class HotelEntity implements IHotelEntity {
             this._props.images = data.images
         }
 
-        if (typeof data.rating === 'number' && data.rating >= 0 && data.rating <= 5) {
-            this._props.rating = data.rating
-        }
-
         if (Array.isArray(data.amenities) && data.amenities.every(a => typeof a === 'string')) {
             this._props.amenities = data.amenities
         }
@@ -164,7 +155,6 @@ export class HotelEntity implements IHotelEntity {
             name: this._props.name,
             description: this._props.description,
             images: this._props.images,
-            rating: this._props.rating,
             amenities: this._props.amenities,
             tags: this._props.tags,
             state: this._props.state,

@@ -25,16 +25,12 @@ export class GetHotelByIdUseCase extends HotelLookupBase implements IGetHotelByI
 
         const hotel = await this.getHotelEntityById(hotelId);
 
-        let signedImageUrls = await this._redisService.getHotelImageUrls(hotelId);
+        let signedImageUrls: string[] = await Promise.all(
+            hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
+        );
 
-        if (!signedImageUrls) {
-            signedImageUrls = await Promise.all(
-                hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
-            );
-
-            await this._redisService.storeHotelImageUrls(hotelId, signedImageUrls, awsS3Timer.expiresAt);
-            hotel.updateHotel({ images: signedImageUrls })
-        }
+        await this._redisService.storeHotelImageUrls(hotelId, signedImageUrls, awsS3Timer.expiresAt);
+        hotel.updateHotel({ images: signedImageUrls });
 
         const mapHotel = hotel.toObject();
         const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(mapHotel);

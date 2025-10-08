@@ -16,6 +16,7 @@ import { IBookingController } from "../../domain/interfaces/controllers/bookingC
 import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
 import { IWalletController } from "../../domain/interfaces/controllers/walletController.interface";
 import { ISubscriptionController } from "../../domain/interfaces/controllers/subscriptionController.interface";
+import { IRoomController } from "../../domain/interfaces/controllers/roomController.interface";
 
 @injectable()
 export class userRoutes extends BaseRouter {
@@ -23,6 +24,7 @@ export class userRoutes extends BaseRouter {
         @inject(TOKENS.AuthController) private _authController: IAuthController,
         @inject(TOKENS.UserController) private _userController: IUserController,
         @inject(TOKENS.HotelController) private _hotelController: IHotelController,
+        @inject(TOKENS.RoomController) private _roomController: IRoomController,
         @inject(TOKENS.ChatController) private _chatController: IChatController,
         @inject(TOKENS.BookingController) private _bookingController: IBookingController,
         @inject(TOKENS.WalletController) private _walletController: IWalletController,
@@ -57,6 +59,7 @@ export class userRoutes extends BaseRouter {
 
         //rooms
         this.router
+            .get('/room/:roomId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._roomController.getRoomById(req, res, next))
             .get('/room/custom', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getCustomRoomDates(req, res, next));
 
         //chat

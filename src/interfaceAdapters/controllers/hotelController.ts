@@ -16,7 +16,7 @@ export class HotelController implements IHotelController {
     constructor(
         @inject(TOKENS.CreateHotelUseCase) private _createHotelUseCase: ICreateHotelUseCase,
         @inject(TOKENS.UpdateHotelUseCase) private _updateHotelUseCase: IUpdateHotelUseCase,
-        @inject(TOKENS.GetHotelByIdUseCase) private _getHotelByIdUseCae: IGetHotelByIdUseCase,
+        @inject(TOKENS.GetHotelByIdUseCase) private _getHotelByIdUseCase: IGetHotelByIdUseCase,
         @inject(TOKENS.GetAllHotelsUseCase) private _getAllHotelsUseCase: IGetAllHotelsUseCase,
         @inject(TOKENS.GetHotelsByVendorUseCase) private _getHotelsByVendorUseCase: IGetVendorHotelsUseCase,
         @inject(TOKENS.GetHotelAnalyticsUseCase) private _getHotelAnalyticsUseCase: IGetHotelAnalyticsUseCase,
@@ -74,7 +74,6 @@ export class HotelController implements IHotelController {
                 geoLocation: parsedGeoLocation,
                 tags: tagsArray,
                 amenities: amenitiesArray,
-                rating,
                 images: []
             };
 
@@ -107,7 +106,6 @@ export class HotelController implements IHotelController {
             if (address) updateData.address = address;
             if (city) updateData.city = city;
             if (state) updateData.state = state;
-            if (rating) updateData.rating = Number(rating);
 
             if (geoLocation) {
                 updateData.geoLocation = Array.isArray(geoLocation)
@@ -158,7 +156,7 @@ export class HotelController implements IHotelController {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { message, hotel } = await this._getHotelByIdUseCae.getHotel(HOTEL_ID);
+            const { message, hotel } = await this._getHotelByIdUseCase.getHotel(HOTEL_ID);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             next(error);
