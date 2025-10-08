@@ -3,8 +3,12 @@ import { ISubscriptionRepository } from "../../../domain/interfaces/repositories
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
+interface ISubscriptionBase {
+    getSubscriptionByIdOrThrow(id: string): Promise<ISubscriptionEntity>
+    getAllSubscriptionOrThrow(): Promise<ISubscriptionEntity[]>
+}
 
-export abstract class SubscriptionLookupBase {
+export abstract class SubscriptionLookupBase implements ISubscriptionBase {
     constructor(protected _subscriptionRepository: ISubscriptionRepository) { }
 
     async getSubscriptionByIdOrThrow(id: string): Promise<ISubscriptionEntity> {

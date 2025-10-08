@@ -3,11 +3,15 @@ import { IHotelRepository } from "../../../domain/interfaces/repositories/hotelR
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
+interface IHotelBase {
+    getHotelEntityByVendorId(vendorId: string, page: number, limit: number, search?: string): Promise<IHotelEntity[]>
+    getHotelEntityById(hotelId: string): Promise<IHotelEntity>
+}
 
 export abstract class HotelLookupBase {
     constructor(protected readonly _hotelRepository: IHotelRepository) { }
 
-    protected async getHotelEntityByVendorId(vendorId: string, page: number, limit: number, search?: string): Promise<IHotelEntity[]> {
+    async getHotelEntityByVendorId(vendorId: string, page: number, limit: number, search?: string): Promise<IHotelEntity[]> {
         const { hotels, total } = await this._hotelRepository.findHotelsByVendor(vendorId, page, limit, search)
 
         if (!hotels || total === 0) return [];
@@ -17,7 +21,7 @@ export abstract class HotelLookupBase {
         return hotelsEntity;
     }
 
-    protected async getHotelEntityById(hotelId: string): Promise<IHotelEntity> {
+    async getHotelEntityById(hotelId: string): Promise<IHotelEntity> {
         const hotel = await this._hotelRepository.findHotelById(hotelId);
 
         if (!hotel) {
@@ -26,16 +30,4 @@ export abstract class HotelLookupBase {
 
         return new HotelEntity(hotel)
     }
-
-    // protected async getAllHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: IHotelEntity[], total: number }> {
-    //     const { hotels, total } = await this._hotelRepository.findAllHotels(page, limit, search);
-
-    //     if (!hotels || hotels.length == 0) {
-    //         throw new AppError('No hotels found', HttpStatusCode.NOT_FOUND);
-    //     }
-
-    //     const hotelEntities = hotels.map(h => new HotelEntity(h))
-
-    //     return { hotels: hotelEntities, total }
-    // }
 }

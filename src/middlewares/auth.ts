@@ -47,7 +47,7 @@ export const authMiddleware = async (req: CustomRequest, res: Response, next: Ne
 
         if (refreshToken) {
             try {
-                const decoded = authService.verifyRefreshToken(refreshToken);
+                authService.verifyRefreshToken(refreshToken);
 
                 if (accessToken) {
                     await redisService.blacklistAccessToken(accessToken, jwtConfig.accessToken.maxAge / 1000);

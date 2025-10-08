@@ -3,11 +3,16 @@ import { IUserRepository } from "../../../domain/interfaces/repositories/userRep
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
+interface IUserBase {
+    getUserEntityOrThrow(userId: string): Promise<IUserEntity>
+    getUserEntityByEmail(email: string): Promise<IUserEntity>
+    getAllUserEntity(page: number, limit: number, role: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ userEntities: IUserEntity[]; total: number }>
+}
 
-export abstract class UserLookupBase {
+export abstract class UserLookupBase implements IUserBase {
     constructor(protected readonly _userRepository: IUserRepository) { }
 
-    protected async getUserEntityOrThrow(userId: string): Promise<IUserEntity> {
+    async getUserEntityOrThrow(userId: string): Promise<IUserEntity> {
         const userData = await this._userRepository.findUserById(userId)
 
         if (!userData) {
@@ -17,7 +22,7 @@ export abstract class UserLookupBase {
         return new UserEntity(userData);
     }
 
-    protected async getUserEntityByEmail(email: string): Promise<IUserEntity> {
+    async getUserEntityByEmail(email: string): Promise<IUserEntity> {
         const userData = await this._userRepository.findUser(email)
 
         if (!userData) {
@@ -27,7 +32,7 @@ export abstract class UserLookupBase {
         return new UserEntity(userData);
     }
 
-    protected async getAllUserEntity(page: number, limit: number, role: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ userEntities: IUserEntity[]; total: number }> {
+    async getAllUserEntity(page: number, limit: number, role: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ userEntities: IUserEntity[]; total: number }> {
         const { users, total } = await this._userRepository.findAllUser(page, limit, role, search, sortField, sortOrder);
         if (!users) {
             throw new AppError('Unable to fetch users', HttpStatusCode.INTERNAL_SERVER_ERROR);

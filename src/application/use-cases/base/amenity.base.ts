@@ -3,11 +3,15 @@ import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/am
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
+interface IAmenityBase {
+    getAmenityByIdOrThrow(amenityId: string): Promise<IAmenitiesEntity>;
+    getAllAmenitiesOrThrow(page: number, limit: number, type: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenitiesEntity[], total: number }>;
+}
 
-export abstract class AmenityLookupBase {
+export abstract class AmenityLookupBase implements IAmenityBase {
     constructor(protected readonly _amenityRepository: IAmenitiesRepository) { }
 
-    protected async getAmenityByIdOrThrow(amenityId: string): Promise<IAmenitiesEntity> {
+    async getAmenityByIdOrThrow(amenityId: string): Promise<IAmenitiesEntity> {
         const amenityData = await this._amenityRepository.findAmenityById(amenityId);
 
         if (!amenityData) {
@@ -17,7 +21,7 @@ export abstract class AmenityLookupBase {
         return new AmenitiesEntity(amenityData);
     }
 
-    protected async getAllAmenitiesOrThrow(page: number, limit: number, type: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenitiesEntity[], total: number }> {
+    async getAllAmenitiesOrThrow(page: number, limit: number, type: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: IAmenitiesEntity[], total: number }> {
         const { amenities, total } = await this._amenityRepository.findAllAmenities(page, limit, type, search, sortField, sortOrder);
 
         if (!amenities) {
