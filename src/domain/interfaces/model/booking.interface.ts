@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { ClientSession, Types } from "mongoose";
 
 export type TStatus = 'confirmed' | 'cancelled' | 'pending';
 export type TPaymentStatus = 'pending' | 'success' | 'failed' | 'refunded';
@@ -27,7 +27,7 @@ export type TResponseBookingData = Omit<IBooking, 'checkIn' | 'checkOut'> & { ch
 
 //booking use case
 export interface ICreateBookingUseCase {
-    createBooking(data: TCreateBookingData): Promise<{ booking: TResponseBookingData; message: string }>;
+    createBooking(data: TCreateBookingData, session: ClientSession): Promise<{ booking: TResponseBookingData; message: string }>;
 }
 
 export interface ICancelBookingUseCase {

@@ -1,10 +1,12 @@
-import { IBooking } from "../model/booking.interface";
+import { ClientSession } from "mongoose";
+import { IBooking, TCreateBookingData } from "../model/booking.interface";
 
 export interface IBookingRepository {
-    createBooking(data: Partial<IBooking>): Promise<IBooking | null>;
-    findBookingsByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: IBooking[]; total: number }>;
+    createBooking(data: Partial<IBooking>, session?: ClientSession): Promise<IBooking>;
+    createBookingIfAvailable(roomId: string, bookingData: TCreateBookingData, session: ClientSession): Promise<IBooking | null>;
+    findBookingsByUser(userId: string, page: number, limit: number, search ?: string, sort ?: string): Promise<{ bookings: IBooking[]; total: number }>;
     findBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }>
-    isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
+    isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date, session ?: ClientSession): Promise<boolean>;
     findByid(bookingId: string): Promise<IBooking | null>;
     save(booking: IBooking): Promise<void>;
     hasActiveBooking(userId: string): Promise<boolean>

@@ -100,8 +100,8 @@ export class WalletController implements IWalletController {
                 guests,
                 totalPrice,
             };
-            const { transaction, message } = await this._bookingConfirmUseCase.bookingTransaction(vendorId, bookingData, method)
-            ResponseHandler.success(res, message, transaction, HttpStatusCode.OK);
+            const { message } = await this._bookingConfirmUseCase.bookingTransaction(vendorId, bookingData, method)
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

@@ -1,11 +1,11 @@
 import { injectable } from 'tsyringe';
 import { BaseRepository } from './baseRepo';
 import { bookingModel, TBookingDocument } from '../models/bookingModel';
-import { IBooking } from '../../../domain/interfaces/model/booking.interface';
+import { IBooking, TCreateBookingData } from '../../../domain/interfaces/model/booking.interface';
 import { IBookingRepository } from '../../../domain/interfaces/repositories/bookingRepo.interface';
 import { hotelModel } from '../models/hotelModel';
 import { roomModel } from '../models/roomModel';
-import mongoose, { Types } from 'mongoose';
+import mongoose, { ClientSession, Types } from 'mongoose';
 import { userModel } from '../models/userModels';
 
 @injectable()
@@ -27,9 +27,29 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         };
     }
 
-    async createBooking(data: Partial<IBooking>): Promise<IBooking | null> {
-        const booking = await this.create(data);
-        return booking.toObject<IBooking>();
+    async createBooking(data: Partial<IBooking>, session?: ClientSession): Promise<IBooking> {
+        const [booking] = await this.model.create([{ ...data }], { session });
+        return booking.toObject();
+    };
+
+    async createBookingIfAvailable(roomId: string, bookingData: TCreateBookingData, session: ClientSession): Promise<IBooking | null> {
+
+        const room = await roomModel.findById(roomId).session(session);
+        if (!room) throw new Error('Room not found');
+
+        const bookedCount = await bookingModel.countDocuments({
+            roomId,
+            status: { $ne: 'cancelled' },
+            checkIn: { $lt: bookingData.checkOut },
+            checkOut: { $gt: bookingData.checkIn }
+        }).session(session);
+
+        if (bookedCount >= room.roomCount) {
+            return null;
+        }
+
+        const [booking] = await bookingModel.create([bookingData], { session });
+        return booking.toObject();
     }
 
     async findBookingsByUser(
@@ -136,8 +156,8 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return result.length > 0 && result[0].total > 0;
     }
 
-    async isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean> {
-        const room = await roomModel.findById(roomId);
+    async isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date, session?: ClientSession): Promise<boolean> {
+        const room = await roomModel.findById(roomId).session(session!);
         if (!room) throw new Error("Room not found");
 
         const bookedCount = await bookingModel.countDocuments({
@@ -145,7 +165,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
             status: { $ne: "cancelled" },
             checkIn: { $lt: checkOut },
             checkOut: { $gt: checkIn },
-        });
+        }).session(session!);
 
         return bookedCount < room.roomCount;
     }

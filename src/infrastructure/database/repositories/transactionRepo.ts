@@ -3,6 +3,7 @@ import { BaseRepository } from "./baseRepo";
 import { transactionModel, TTransactionDoc } from "../models/transactionModel";
 import { ITransactionRepository } from "../../../domain/interfaces/repositories/transactionRepo.interface";
 import { TCreateTransaction } from "../../../domain/interfaces/model/wallet.interface";
+import { ClientSession } from "mongoose";
 
 
 @injectable()
@@ -26,9 +27,14 @@ export class TransactionRepository extends BaseRepository<TTransactionDoc> imple
         return transactions;
     }
 
-    async createTransaction(data: TCreateTransaction): Promise<TTransactionDoc | null> {
-        const transaction = await this.create(data);
-        return transaction;
+    async createTransaction(data: TCreateTransaction, session?: ClientSession): Promise<TTransactionDoc | null> {
+        if (session) {
+            const [transaction] = await this.model.create([data], { session });
+            return transaction;
+        } else {
+            const [transaction] = await this.model.create([data]);
+            return transaction;
+        }
     }
 
     async findUserTransactions(walletId: string, page: number, limit: number): Promise<{ transactions: TTransactionDoc[]; total: number; }> {

@@ -7,6 +7,7 @@ import { formatDateString } from '../../../../utils/dateFormatter';
 import { ICreateBookingUseCase, TCreateBookingData, TResponseBookingData } from '../../../../domain/interfaces/model/booking.interface';
 import { BOOKING_RES_MESSAGES } from '../../../../constants/resMessages';
 import { BOOKING_ERROR_MESSAGES } from '../../../../constants/errorMessages';
+import { ClientSession } from 'mongoose';
 
 @injectable()
 export class CreateBookingUseCase implements ICreateBookingUseCase {
@@ -14,13 +15,7 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
     ) { }
 
-    async createBooking(data: TCreateBookingData): Promise<{ booking: TResponseBookingData; message: string }> {
-        const isAvailable = await this._bookingRepository.isRoomAvailable(data.roomId as string, data.checkIn, data.checkOut);
-
-        if (!isAvailable) {
-            throw new AppError('Room is not available for selected dates', HttpStatusCode.BAD_REQUEST);
-        }
-
+    async createBooking(data: TCreateBookingData, session: ClientSession): Promise<{ booking: TResponseBookingData; message: string }> {
         if (new Date(data.checkIn) < new Date()) {
             throw new AppError('Check-in date cannot be in the past', HttpStatusCode.BAD_REQUEST);
         }
@@ -29,7 +24,7 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
             throw new AppError('Check-in date must be before check-out date', HttpStatusCode.BAD_REQUEST);
         }
 
-        const created = await this._bookingRepository.createBooking(data);
+        const created = await this._bookingRepository.createBookingIfAvailable(data.roomId as string, data, session);
         if (!created) {
             throw new AppError(BOOKING_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }

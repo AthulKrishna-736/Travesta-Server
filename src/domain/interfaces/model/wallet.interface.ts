@@ -52,7 +52,7 @@ export interface IPlansTransactionUseCase {
 }
 
 export interface IBookingTransactionUseCase {
-    bookingTransaction(vendorId: string, bookingData: TCreateBookingData, method: 'online' | 'wallet'): Promise<{ transaction: TResponseTransactionDTO, message: string }>
+    bookingTransaction(vendorId: string, bookingData: TCreateBookingData, method: 'online' | 'wallet'): Promise<{ message: string }>
 }
 
 export interface IAddMoneyToWalletUseCase {
