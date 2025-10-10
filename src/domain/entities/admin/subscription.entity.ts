@@ -2,10 +2,11 @@ import { TSubscription } from "../../../shared/types/client.types"
 import { AppError } from "../../../utils/appError"
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes"
 import { ISubscription, TUpdateSubscriptionData } from "../../interfaces/model/subscription.interface"
+import { Types } from "mongoose"
 
 
 export interface ISubscriptionEntity {
-    readonly id: string
+    readonly id: string | Types.ObjectId
     readonly name: string
     readonly description: string
     readonly type: TSubscription

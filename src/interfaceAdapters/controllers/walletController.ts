@@ -12,6 +12,7 @@ import { WALLET_RES_MESSAGES } from '../../constants/resMessages';
 import { Pagination } from '../../shared/types/common.types';
 import { AUTH_ERROR_MESSAGES } from '../../constants/errorMessages';
 import { IWalletController } from '../../domain/interfaces/controllers/walletController.interface';
+import { ISubscribePlanUseCase } from '../../domain/interfaces/model/subscription.interface';
 
 @injectable()
 export class WalletController implements IWalletController {
@@ -22,6 +23,7 @@ export class WalletController implements IWalletController {
         @inject(TOKENS.BookingTransactionUseCase) private _bookingConfirmUseCase: IBookingTransactionUseCase,
         @inject(TOKENS.AddMoneyToWalletUseCase) private _addMoneyToWalletUseCase: IAddMoneyToWalletUseCase,
         @inject(TOKENS.GetTransactionsUseCase) private _getTransactionUseCase: IGetTransactionsUseCase,
+        @inject(TOKENS.SubscribePlanUseCase) private _subscribePlanUseCase: ISubscribePlanUseCase,
     ) { }
 
     async createWallet(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -144,6 +146,19 @@ export class WalletController implements IWalletController {
             const { transactions, total, message } = await this._getTransactionUseCase.getTransactions(userId, page, limit);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, message, transactions, HttpStatusCode.OK, meta);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async subscriptionConfirmTransaction(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const userId = req.user?.userId;
+            const planId = req.params.planId;
+            const { method } = req.query as { method: 'wallet' | 'online' };
+
+            const { message } = await this._subscribePlanUseCase.subscribePlan(userId!, planId, method);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

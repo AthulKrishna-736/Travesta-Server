@@ -5,7 +5,7 @@ import { IUser } from "./user.interface"
 
 //subscription model
 export interface ISubscription {
-    _id: string
+    _id: string | Types.ObjectId
     name: string
     description: string
     type: TSubscription
@@ -26,7 +26,7 @@ export interface IUserSubscription {
 //subscription history
 export interface IUserSubscriptionHistory {
     userId: Types.ObjectId | string;
-    subscriptionId: string | ISubscription;
+    subscriptionId: string | Types.ObjectId;
     subscribedAt: Date;
     validFrom: Date;
     validUntil: Date;
@@ -64,7 +64,7 @@ export interface IGetAllPlansUseCase {
 }
 
 export interface ISubscribePlanUseCase {
-    subscribePlan(userId: string, planId: string): Promise<{ user: IUser, message: string }>
+    subscribePlan(userId: string, planId: string, method: "wallet" | "online"): Promise<{ message: string }>
 }
 
 export interface IUserSubscribePlanUseCase {

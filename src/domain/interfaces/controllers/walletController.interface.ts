@@ -8,4 +8,5 @@ export interface IWalletController {
     BookingConfirmTransaction(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     AddMoneyTransaction(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getTransactions(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
+    subscriptionConfirmTransaction(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
 }
