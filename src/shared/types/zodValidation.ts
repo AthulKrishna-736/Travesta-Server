@@ -92,7 +92,7 @@ export const createHotelSchema = z.object({
     })
         .min(3, "Hotel name must be at least 3 characters")
         .max(100, "Hotel name must be less than 100 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Hotel name contains invalid characters (only letters, numbers, spaces, -, &, , allowed)"),
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Hotel name contains invalid characters (only letters, numbers, spaces, -, &, , allowed)"),
 
     description: z.string({
         required_error: "Description is required",
@@ -146,12 +146,12 @@ export const updateHotelSchema = z.object({
     name: z.string()
         .min(3, "Hotel name must be at least 3 characters")
         .max(100, "Hotel name must be less than 100 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Hotel name contains invalid characters")
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Hotel name contains invalid characters")
         .optional(),
 
     description: z.string()
         .min(10, "Description must be at least 10 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Description contains invalid characters")
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Description contains invalid characters")
         .optional(),
 
     rating: z.preprocess(
@@ -283,7 +283,7 @@ export const updateRoomSchema = z.object({
     })
         .min(3, "Room name must be at least 3 characters")
         .max(50, "Room name must be less than 50 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Room name contains invalid characters")
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Room name contains invalid characters")
         .optional(),
 
     roomType: z.string({
@@ -302,7 +302,7 @@ export const updateRoomSchema = z.object({
     })
         .min(3, "Bed type must be at least 3 characters")
         .max(50, "Bed type must be less than 50 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Bed type contains invalid characters")
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Bed type contains invalid characters")
         .optional(),
 
     guest: z.preprocess(

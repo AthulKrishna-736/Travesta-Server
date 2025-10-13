@@ -51,7 +51,7 @@ export class AuthService implements IAuthService {
             const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
         } catch (error) {
-            throw new AppError("Invalid or expired access token", HttpStatusCode.UNAUTHORIZED);
+            throw new AppError(`Invalid or expired access token ${error}`, HttpStatusCode.UNAUTHORIZED);
         }
     }
 
@@ -60,7 +60,7 @@ export class AuthService implements IAuthService {
             const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
         } catch (error) {
-            throw new AppError("Invalid or expired refresh token", HttpStatusCode.UNAUTHORIZED)
+            throw new AppError(`Invalid or expired refresh token ${error}`, HttpStatusCode.UNAUTHORIZED)
         }
     }
 

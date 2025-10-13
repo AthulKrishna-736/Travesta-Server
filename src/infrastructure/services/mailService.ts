@@ -6,7 +6,7 @@ import { injectable } from 'tsyringe';
 import { IMailService } from '../../domain/interfaces/services/mailService.interface';
 
 @injectable()
-export class MailService implements IMailService{
+export class MailService implements IMailService {
     private transporter: nodemailer.Transporter;
     constructor() {
         this.transporter = nodemailer.createTransport({
@@ -60,7 +60,7 @@ export class MailService implements IMailService{
                 otpExpireAt
             }
         } catch (error) {
-            throw new AppError('Failed to send OTP email. Please try again later.', HttpStatusCode.BAD_REQUEST);
+            throw new AppError(`Failed to send OTP email. Please try again later. ${error}`, HttpStatusCode.BAD_REQUEST);
         }
     }
 
@@ -88,23 +88,23 @@ export class MailService implements IMailService{
                     </div>
                 </div>
             `;
-    
+
             const mailOption = {
                 from: env.EMAIL,
                 to: email,
                 subject: 'Vendor Verification Rejected – Travesta',
                 html
             }
-    
+
             await this.transporter.sendMail(mailOption);
-    
+
             return {
                 message: 'Vendor rejection email sent successfully'
             };
         } catch (error) {
-            throw new AppError('Failed to send rejection email.', HttpStatusCode.BAD_REQUEST);
+            throw new AppError(`Failed to send rejection email. ${error}`, HttpStatusCode.BAD_REQUEST);
         }
     }
-    
+
 
 }
