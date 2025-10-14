@@ -17,9 +17,9 @@ export class GetActiveAmenitiesUseCase implements IGetActiveAmenitiesUseCase {
     ) { }
 
     async getActiveAmenities(): Promise<{ amenities: TResponseAmenityDTO[], message: string, total: number }> {
-        const { amenities, total } = await this._amenityRepository.getQuery({ isActive: true });
+        const { amenities, total } = await this._amenityRepository.getActiveAmenities();
 
-        if (!amenities) {
+        if (!amenities || amenities.length == 0) {
             throw new AppError(AMENITIES_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 

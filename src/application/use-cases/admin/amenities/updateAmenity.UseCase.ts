@@ -1,8 +1,7 @@
 import { inject, injectable } from "tsyringe";
-import { IUpdateAmenityUseCase, TResponseAmenityData, TUpdateAmenityData } from "../../../../domain/interfaces/model/amenities.interface";
+import { IUpdateAmenityUseCase } from "../../../../domain/interfaces/model/amenities.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/amenitiesRepo.interface";
-import { AmenityLookupBase } from "../../base/amenity.base";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
@@ -12,25 +11,25 @@ import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
-export class UpdateAmenityUseCase extends AmenityLookupBase implements IUpdateAmenityUseCase {
+export class UpdateAmenityUseCase implements IUpdateAmenityUseCase {
     constructor(
-        @inject(TOKENS.AmenitiesRepository) _amenitiesRepository: IAmenitiesRepository,
-    ) {
-        super(_amenitiesRepository);
-    }
+        @inject(TOKENS.AmenitiesRepository) private _amenitiesRepository: IAmenitiesRepository,
+    ) { }
 
     async updateAmenity(amenityId: string, data: TUpdateAmenityDTO): Promise<{ amenity: TResponseAmenityDTO, message: string }> {
-        const amenityEntity = await this.getAmenityByIdOrThrow(amenityId);
+        const amenity = await this._amenitiesRepository.findAmenityById(amenityId);
 
-        amenityEntity.update(data);
+        if (!amenity) {
+            throw new AppError(AMENITIES_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        }
 
-        const updatedAmenity = await this._amenityRepository.updateAmenity(amenityEntity.id, amenityEntity.getPersistableData());
+        const updatedAmenity = await this._amenitiesRepository.updateAmenity(amenity._id, data);
 
         if (!updatedAmenity) {
             throw new AppError(AMENITIES_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
-        const mappedAmenity = ResponseMapper.mapAmenityToResponseDTO(amenityEntity.toObject());
+        const mappedAmenity = ResponseMapper.mapAmenityToResponseDTO(updatedAmenity);
 
         return {
             amenity: mappedAmenity,

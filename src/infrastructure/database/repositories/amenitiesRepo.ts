@@ -56,11 +56,15 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
         return amenities;
     }
 
-    async getQuery(filter: any = {}): Promise<{ amenities: IAmenities[], total: number }> {
-        const amenities = await this.find(filter);
-        const total = await this.model.countDocuments(filter);
-
+    async getActiveAmenities(): Promise<{ amenities: IAmenities[], total: number }> {
+        const amenities = await this.find({ isActive: true });
+        const total = await this.model.countDocuments({ isActive: true });
         return { amenities, total }
+    }
+
+    async changeAmenityStatus(amenityId: string, status: boolean): Promise<IAmenities | null> {
+        const amenity = await this.update(amenityId, { isActive: status });
+        return amenity;
     }
 
     async separateHotelAndRoomAmenities(amenityIds: string[]): Promise<{ hotelAmenities: IAmenities[], roomAmenities: IAmenities[] }> {

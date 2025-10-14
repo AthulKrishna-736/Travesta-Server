@@ -1,25 +1,29 @@
 import { inject, injectable } from "tsyringe";
-import { AmenityLookupBase } from "../../base/amenity.base";
 import { IGetAmenityByIdUseCase } from "../../../../domain/interfaces/model/amenities.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/amenitiesRepo.interface";
 import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
 import { TResponseAmenityDTO } from "../../../../interfaceAdapters/dtos/amenity.dto";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { AppError } from "../../../../utils/appError";
+import { AMENITIES_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 
 
 @injectable()
-export class GetAmenityByIdUseCase extends AmenityLookupBase implements IGetAmenityByIdUseCase {
+export class GetAmenityByIdUseCase implements IGetAmenityByIdUseCase {
     constructor(
-        @inject(TOKENS.AmenitiesRepository) _amenitiesRepository: IAmenitiesRepository,
-    ) {
-        super(_amenitiesRepository);
-    }
+        @inject(TOKENS.AmenitiesRepository) private _amenitiesRepository: IAmenitiesRepository,
+    ) { }
 
     async getAmenityById(amenityId: string): Promise<{ amenity: TResponseAmenityDTO, message: string }> {
-        const amenityEntity = await this.getAmenityByIdOrThrow(amenityId);
+        const amenity = await this._amenitiesRepository.findAmenityById(amenityId);
 
-        const mappedAmenity = ResponseMapper.mapAmenityToResponseDTO(amenityEntity.toObject());
+        if (!amenity) {
+            throw new AppError(AMENITIES_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        }
+
+        const mappedAmenity = ResponseMapper.mapAmenityToResponseDTO(amenity);
 
         return {
             amenity: mappedAmenity,
