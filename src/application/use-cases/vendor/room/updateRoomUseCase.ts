@@ -1,54 +1,49 @@
 import { inject, injectable } from "tsyringe";
 import { IRoomRepository } from "../../../../domain/interfaces/repositories/roomRepo.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
-import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IUpdateRoomUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { AwsImageUploader } from "../../base/imageUploader";
-import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { ROOM_RES_MESSAGES } from "../../../../constants/resMessages";
 import { ROOM_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TResponseRoomDTO, TUpdateRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
 
 @injectable()
-export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseCase {
+export class UpdateRoomUseCase implements IUpdateRoomUseCase {
     private _imageUploader: AwsImageUploader;
 
     constructor(
-        @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
+        @inject(TOKENS.RoomRepository) private _roomRepository: IRoomRepository,
         @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(_roomRepository);
         this._imageUploader = new AwsImageUploader(awsS3Service);
     }
 
     async updateRoom(roomId: string, updateData: TUpdateRoomDTO, files?: Express.Multer.File[]): Promise<{ room: TResponseRoomDTO, message: string }> {
-        const roomEntity = await this.getRoomEntityById(roomId);
+        const room = await this._roomRepository.findRoomById(roomId);
 
-        if (updateData.name && updateData.name.trim() !== roomEntity.name.trim()) {
+        if (!room) {
+            throw new AppError(ROOM_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        }
+
+        if (updateData.name && updateData.name.trim() !== room.name.trim()) {
             const isDuplicate = await this._roomRepository.findDuplicateRooms(updateData.name.trim());
             if (isDuplicate) {
                 throw new AppError(ROOM_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
             }
         }
 
-        let deletedImages = false;
-
         if (updateData.images) {
-            deletedImages = await this._imageUploader.deleteImagesFromAws(updateData.images, roomEntity.images);
-            if (deletedImages) {
-                await this._redisService.del(`roomImages:${roomId}`);
-            }
+            await this._imageUploader.deleteImagesFromAws(updateData.images, room.images);
         }
 
         let uploadedImageKeys: string[] = [];
 
-        if (deletedImages && files && files.length > 0) {
-            uploadedImageKeys = await this._imageUploader.uploadRoomImages(roomEntity.hotelId.toString(), files);
+        if (files && files.length > 0) {
+            uploadedImageKeys = await this._imageUploader.uploadRoomImages(room.hotelId.toString(), files);
         }
 
         let keptImages: string[] = [];
@@ -60,12 +55,12 @@ export class UpdateRoomUseCase extends RoomLookupBase implements IUpdateRoomUseC
 
         const finalImages = [...keptImages, ...uploadedImageKeys];
 
-        roomEntity.updateRoom({
+        const finalRoomData = {
             ...updateData,
             images: finalImages,
-        });
+        }
 
-        const updatedRoom = await this._roomRepository.updateRoom(roomId, roomEntity.getPersistableData());
+        const updatedRoom = await this._roomRepository.updateRoom(roomId, finalRoomData);
 
         if (!updatedRoom) {
             throw new AppError(ROOM_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);

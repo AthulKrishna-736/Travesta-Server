@@ -7,22 +7,19 @@ import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/room.interface";
-import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
-import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { HOTEL_ERROR_MESSAGES, ROOM_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TResponseRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
 import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
 
 @injectable()
-export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsByHotelUseCase {
+export class GetRoomsByHotelUseCase implements IGetRoomsByHotelUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
+        @inject(TOKENS.RoomRepository) private _roomRepository: IRoomRepository,
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
-    ) {
-        super(_roomRepository);
-    }
+    ) { }
 
     private calculateDynamicPrice(basePrice: number, totalRooms: number, bookedRooms: number): number {
         const occupancy = bookedRooms / totalRooms;
@@ -42,60 +39,49 @@ export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsB
             throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
         }
 
-        const roomEntities = await this.getRoomsEntityByHotelId(hotelId);
+        const rooms = await this._roomRepository.findRoomsByHotel(hotelId);
+
+        if (!rooms || rooms.length === 0) {
+            throw new AppError(ROOM_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        }
 
         const roomsWithSignedImages = await Promise.all(
-            roomEntities.map(async (roomEntity) => {
-                const roomIdStr = roomEntity.id!;
-                const roomImages = roomEntity.images;
-
-                const isAvailable = await this._bookingRepository.isRoomAvailable(roomIdStr, new Date(checkIn), new Date(checkOut));
+            rooms.map(async (r) => {
+                const isAvailable = await this._bookingRepository.isRoomAvailable(r._id as string, new Date(checkIn), new Date(checkOut));
 
                 if (!isAvailable) {
                     return null;
                 }
 
-                let signedRoomUrls = await this._redisService.getRoomImageUrls(roomIdStr);
-                if (!signedRoomUrls) {
-                    signedRoomUrls = await Promise.all(
-                        roomImages.map((key) =>
-                            this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
-                        )
-                    );
-                    await this._redisService.storeRoomImageUrls(roomIdStr, signedRoomUrls, awsS3Timer.expiresAt);
+                if (!r.images || r.images.length <= 0) {
+                    throw new AppError(ROOM_ERROR_MESSAGES.noImagesfound, HttpStatusCode.NOT_FOUND);
+                }
+                const signedRoomImages = await Promise.all(r.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)));
+
+                const hotel = r.hotelId as any;
+
+                if (!hotel) {
+                    throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
                 }
 
-                const hotelObj = roomEntity.hotelId as any;
-                const hotelIdStr = hotelObj._id?.toString();
-
-                let signedHotelUrls = await this._redisService.getHotelImageUrls(hotelIdStr);
-                if (!signedHotelUrls) {
-                    signedHotelUrls = await Promise.all(
-                        (hotelObj.images || []).map((key: string) =>
-                            this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
-                        )
-                    );
-                    await this._redisService.storeHotelImageUrls(hotelIdStr, signedHotelUrls, awsS3Timer.expiresAt);
+                if (!hotel.images || hotel.images.length <= 0) {
+                    throw new AppError(HOTEL_ERROR_MESSAGES.noImagesfound, HttpStatusCode.NOT_FOUND);
                 }
 
-                const hotelWithSignedImages = {
-                    ...hotelObj,
-                    images: signedHotelUrls,
+                const signedHotelImages = await Promise.all(hotel.images.map((key: string) => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)));
+                const mappedHotel = {
+                    ...hotel,
+                    images: signedHotelImages,
                 };
 
-                const bookedRooms = await this._bookingRepository.getBookedRoomsCount(roomIdStr, checkIn, checkOut);
-
-                const dynamicPrice = this.calculateDynamicPrice(
-                    roomEntity.basePrice,
-                    roomEntity.roomCount,
-                    bookedRooms
-                );
+                const bookedRooms = await this._bookingRepository.getBookedRoomsCount(r._id as string, checkIn, checkOut);
+                const dynamicPrice = this.calculateDynamicPrice(r.basePrice, r.roomCount, bookedRooms);
 
                 const finalRoomObj = {
-                    ...roomEntity.toObject(),
+                    ...r,
                     basePrice: dynamicPrice,
-                    images: signedRoomUrls,
-                    hotelId: hotelWithSignedImages,
+                    images: signedRoomImages,
+                    hotelId: mappedHotel,
                 };
 
                 return finalRoomObj;

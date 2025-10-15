@@ -71,12 +71,10 @@ export class userRoutes extends BaseRouter {
 
         // booking
         this.router.route('/bookings')
-            .post(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.createBooking(req, res, next))
             .get(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getBookingsByUser(req, res, next))
 
         this.router
             .delete('/booking/:bookingId', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.cancelBooking(req, res, next))
-
 
         //amenities
         this.router.route('/amenities')
@@ -95,7 +93,7 @@ export class userRoutes extends BaseRouter {
         this.router
             .post('/payment/online', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.createPaymentIntent(req, res, next))
             .post('/payment/:vendorId/booking', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.BookingConfirmTransaction(req, res, next))
-            .post('/payment/:planId/subscribe', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next)=> this._walletController.subscriptionConfirmTransaction(req, res, next))
+            .post('/payment/:planId/subscribe', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.subscriptionConfirmTransaction(req, res, next))
 
         this.router
             .get('/transactions', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getTransactions(req, res, next));
