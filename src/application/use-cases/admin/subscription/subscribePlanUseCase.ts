@@ -16,13 +16,11 @@ export class SubscribePlanUseCase implements IUserSubscribePlanUseCase {
     ) { }
 
     async subscribePlan(userId: string, planId: string, paymentAmount: number): Promise<{ user: any, message: string }> {
-        // 1️⃣ Fetch user
         const user = await this._userRepository.findUserById(userId);
         if (!user) {
             throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
         }
 
-        // 2️⃣ Fetch subscription plan
         const plan = await this._subscriptionRepository.findPlanById(planId);
         if (!plan || !plan.isActive) {
             throw new AppError("Subscription plan not found or inactive", HttpStatusCode.NOT_FOUND);
@@ -32,11 +30,11 @@ export class SubscribePlanUseCase implements IUserSubscribePlanUseCase {
 
         const validFrom = new Date();
         const validUntil = new Date();
-        validUntil.setDate(validFrom.getDate() + plan.duration); 
+        validUntil.setDate(validFrom.getDate() + plan.duration);
 
         const updatedUser = await this._userRepository.subscribeUser(userId, {
             subscription: {
-                plan: plan._id,
+                plan: plan._id as string,
                 validFrom,
                 validUntil
             }
@@ -52,7 +50,6 @@ export class SubscribePlanUseCase implements IUserSubscribePlanUseCase {
             paymentAmount
         });
 
-        // 7️⃣ Return updated user
         return { user: updatedUser, message: "Subscription activated successfully" };
     }
 }

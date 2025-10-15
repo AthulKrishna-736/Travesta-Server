@@ -4,6 +4,7 @@ import { TWalletDocument, walletModel } from '../models/walletModel';
 import { IWalletRepository } from '../../../domain/interfaces/repositories/walletRepo.interface';
 import { TCreateWalletData } from '../../../domain/interfaces/model/wallet.interface';
 import { ClientSession } from 'mongoose';
+import { userModel } from '../models/userModels';
 
 @injectable()
 export class WalletRepository extends BaseRepository<TWalletDocument> implements IWalletRepository {
@@ -23,6 +24,14 @@ export class WalletRepository extends BaseRepository<TWalletDocument> implements
 
     async findWalletById(walletId: string): Promise<TWalletDocument | null> {
         const wallet = await this.findOne({ _id: walletId }).exec();
+        return wallet;
+    }
+
+    async findAdminWallet(): Promise<TWalletDocument | null> {
+        const adminUser = await userModel.findOne({ role: "admin" });
+        if (!adminUser) return null;
+
+        const wallet = await this.model.findOne({ userId: adminUser._id });
         return wallet;
     }
 

@@ -46,4 +46,9 @@ export class SusbcriptionRepository extends BaseRepository<TSubscriptionDocument
         const plans = await this.model.countDocuments({ name: { $regex: `^${planName}$`, $options: 'i' } }).exec();
         return plans > 0 ? true : false;
     }
+
+    async changePlanStatus(amenityId: string, status: boolean): Promise<ISubscription | null> {
+        const plan = await this.update(amenityId, { isActive: status });
+        return plan;
+    }
 }

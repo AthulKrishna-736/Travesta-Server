@@ -37,7 +37,7 @@ export interface IUserSubscriptionHistory {
 
 //subscription types
 export type TCreateSubscriptionData = Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt' | 'isActive'>;
-export type TUpdateSubscriptionData = Partial<Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt' | 'isActive'>>;
+export type TUpdateSubscriptionData = Partial<Omit<ISubscription, '_id' | 'createdAt' | 'updatedAt'>>;
 export type TResponseSubscriptionData = ISubscription;
 
 
@@ -47,7 +47,7 @@ export interface ICreatePlanUseCase {
 }
 
 export interface IUpdatePlanUseCase {
-    updatePlan(id: string, data: TUpdateSubscriptionDTO): Promise<{ plan: TResponseSubscriptionDTO, message: string }>
+    updatePlan(planId: string, data: TUpdateSubscriptionDTO): Promise<{ plan: TResponseSubscriptionDTO, message: string }>
 }
 
 export interface IGetActivePlansUseCase {
@@ -55,7 +55,7 @@ export interface IGetActivePlansUseCase {
 }
 
 export interface IBlockUnblockPlanUseCase {
-    blockUnblockPlan(id: string): Promise<{ plan: TResponseSubscriptionDTO, message: string }>
+    blockUnblockPlan(planId: string): Promise<{ plan: TResponseSubscriptionDTO, message: string }>
 }
 
 export interface IGetAllPlansUseCase {

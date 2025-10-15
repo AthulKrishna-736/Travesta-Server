@@ -9,80 +9,101 @@ import { ITransactionRepository } from "../../../domain/interfaces/repositories/
 import { ISubscriptionHistoryRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
-import { SubscriptionEntity } from "../../../domain/entities/admin/subscription.entity";
 import { SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../constants/errorMessages";
 
 @injectable()
 export class SubscribePlanUseCase implements ISubscribePlanUseCase {
     constructor(
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
-        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepo: ISubscriptionRepository,
+        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepository: ISubscriptionRepository,
         @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
         @inject(TOKENS.SubscriptionHistoryRepository) private _historyRepository: ISubscriptionHistoryRepository,
     ) { }
 
     async subscribePlan(userId: string, planId: string, method: "wallet" | "online"): Promise<{ message: string }> {
-        // 1️⃣ Get user
-        const user = await this._userRepository.findUserById(userId);
-        if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
 
-        // 2️⃣ Get subscription plan
-        const plan = await this._subscriptionRepo.findPlanById(planId);
-        if (!plan) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        const session = await mongoose.startSession();
+        session.startTransaction();
 
-        const subscription = new SubscriptionEntity(plan);
-        if (!subscription.isActive) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.notActive, HttpStatusCode.CONFLICT);
+        try {
+            const user = await this._userRepository.findUserById(userId);
+            if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
 
-        // 3️⃣ Calculate subscription validity
-        const validFrom = new Date();
-        const validUntil = new Date(validFrom);
-        validUntil.setDate(validFrom.getDate() + subscription.duration);
+            const plan = await this._subscriptionRepository.findPlanById(planId);
+            if (!plan) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
-        const userWallet = await this._walletRepository.findUserWallet(user._id!);
-        if (!userWallet) throw new AppError(WALLET_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+            if (!plan.isActive) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.notActive, HttpStatusCode.CONFLICT);
 
-        // 4️⃣ Wallet payment check
-        if (method === "wallet") {
-            const wallet = await this._walletRepository.findUserWallet(userId);
-            if (!wallet || wallet.balance < subscription.price) {
-                throw new AppError("Insufficient wallet balance", HttpStatusCode.BAD_REQUEST);
+            const validFrom = new Date();
+            const validUntil = new Date(validFrom);
+            validUntil.setDate(validFrom.getDate() + plan.duration);
+
+            const userWallet = await this._walletRepository.findUserWallet(user._id as string);
+            const adminWallet = await this._walletRepository.findAdminWallet();
+            if (!userWallet) throw new AppError(WALLET_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+            if (!adminWallet) throw new AppError(WALLET_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+
+            if (method === "wallet") {
+                if (!userWallet || userWallet.balance < plan.price) {
+                    throw new AppError("Insufficient wallet balance", HttpStatusCode.BAD_REQUEST);
+                }
+                await this._walletRepository.updateBalance(userId, -plan.price, session);
             }
-            await this._walletRepository.updateBalance(userId, -subscription.price);
+
+            user.subscription = {
+                plan: plan._id.toString(),
+                validFrom,
+                validUntil,
+            };
+
+            const updatedUser = await this._userRepository.subscribeUser(user._id as string, { subscription: user.subscription }, session);
+            if (!updatedUser) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
+
+            await this._historyRepository.deactivateActiveByUserId(user._id as string, session);
+
+            await this._historyRepository.createHistory({
+                userId: user._id,
+                subscriptionId: plan._id as Types.ObjectId,
+                subscribedAt: new Date(),
+                validFrom,
+                validUntil,
+                isActive: true,
+                paymentAmount: plan.price,
+            }, session);
+
+            await this._transactionRepository.createTransaction({
+                walletId: new mongoose.Types.ObjectId(userWallet._id!),
+                type: "debit",
+                amount: plan.price,
+                description: `Payment for subscription ${plan.name}`,
+                relatedEntityId: plan._id as Types.ObjectId,
+                relatedEntityType: "Subscription",
+                transactionId: new mongoose.Types.ObjectId().toString(),
+            }, session);
+
+            await this._walletRepository.updateBalance(adminWallet.userId.toString(), plan.price, session);
+
+            await this._transactionRepository.createTransaction({
+                walletId: new mongoose.Types.ObjectId(adminWallet._id!),
+                type: "credit",
+                amount: plan.price,
+                description: `Received payment from ${user.firstName} ${user.lastName} for subscription ${plan.name}`,
+                relatedEntityId: plan._id as Types.ObjectId,
+                relatedEntityType: "Subscription",
+                transactionId: new mongoose.Types.ObjectId().toString(),
+            }, session);
+
+            await session.commitTransaction();
+
+            return {
+                message: `User successfully subscribed to ${plan.name} plan`,
+            };
+        } catch (error) {
+            await session.abortTransaction();
+            throw error;
+        } finally {
+            session.endSession();
         }
-
-        // 5️⃣ Update user subscription
-        user.subscription = {
-            plan: plan._id.toString(),
-            validFrom,
-            validUntil,
-        };
-        const updatedUser = await this._userRepository.subscribeUser(user._id as string, { subscription: user.subscription });
-        if (!updatedUser) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
-
-        await this._historyRepository.createHistory({
-            userId: user._id,
-            subscriptionId: plan._id as Types.ObjectId,
-            subscribedAt: new Date(),
-            validFrom,
-            validUntil,
-            isActive: true,
-            paymentAmount: subscription.price,
-        });
-
-        // 7️⃣ Create transaction record
-        await this._transactionRepository.createTransaction({
-            walletId: new mongoose.Types.ObjectId(userWallet._id!),
-            type: "debit",
-            amount: subscription.price,
-            description: `Payment for subscription ${plan.name}`,
-            relatedEntityId: plan._id as Types.ObjectId,
-            relatedEntityType: "Subscription",
-            transactionId: new mongoose.Types.ObjectId().toString(),
-        });
-
-        return {
-            message: `User successfully subscribed to ${plan.name} plan`,
-        };
     }
 }

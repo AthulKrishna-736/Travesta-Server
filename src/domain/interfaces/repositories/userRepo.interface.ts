@@ -1,3 +1,4 @@
+import { ClientSession } from "mongoose";
 import { IUser, TUpdateUserData, TUserRegistrationInput } from "../model/user.interface";
 
 export interface IUserRepository {
@@ -7,6 +8,6 @@ export interface IUserRepository {
     findAllUser(page: number, limit: number, role: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ users: IUser[] | null, total: number }>;
     findUser(email: string): Promise<IUser | null>
     checkUserVerified(userId: string): Promise<boolean>
-    subscribeUser(userId: string, data: Pick<IUser, 'subscription'>): Promise<IUser | null>
+    subscribeUser(userId: string, data: Pick<IUser, "subscription">, session?: ClientSession): Promise<IUser | null>
     findUserExist(userId: string): Promise<boolean>
 }
