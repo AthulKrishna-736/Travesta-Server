@@ -5,7 +5,6 @@ import { TOKENS } from "../../../../constants/token";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IUpdateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
-import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { ResponseMapper } from "../../../../utils/responseMapper";
@@ -15,19 +14,22 @@ import { TResponseHotelDTO, TUpdateHotelDTO } from "../../../../interfaceAdapter
 
 
 @injectable()
-export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelUseCase {
+export class UpdateHotelUseCase implements IUpdateHotelUseCase {
     private _imageUploader;
     constructor(
-        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
+        @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
-        super(_hotelRepository);
         this._imageUploader = new AwsImageUploader(_awsS3Service)
     }
 
     async updateHotel(hotelId: string, updateData: TUpdateHotelDTO, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelDTO; message: string }> {
-        const hotel = await this.getHotelEntityById(hotelId)
+        const hotel = await this._hotelRepository.findHotelById(hotelId);;
+
+        if (!hotel) {
+            throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        }
 
         if (updateData.name && updateData.name !== hotel.name) {
             const isDuplicate = await this._hotelRepository.findDuplicateHotels(updateData.name.trim());
@@ -36,17 +38,13 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
             }
         }
 
-        let deletedImages;
         if (updateData.images) {
-            deletedImages = await this._imageUploader.deleteImagesFromAws(updateData.images, hotel.images)
-            if (deletedImages) {
-                await this._redisService.del(`hotelImages:${hotelId}`);
-            }
+            await this._imageUploader.deleteImagesFromAws(updateData.images, hotel.images)
         }
 
         let uploadedImageKeys: string[] = [];
 
-        if (deletedImages && files && files.length > 0) {
+        if (files && files.length > 0) {
             uploadedImageKeys = await this._imageUploader.uploadHotelImages(hotel.vendorId as string, files);
         }
 
@@ -55,17 +53,16 @@ export class UpdateHotelUseCase extends HotelLookupBase implements IUpdateHotelU
         if (updateData.images) {
             const images = Array.isArray(updateData.images) ? updateData.images : [updateData.images];
             keptImages = images.map((i) => decodeURIComponent(new URL(i).pathname).slice(1));
-
         }
 
         const finalImages = [...keptImages, ...uploadedImageKeys]
 
-        hotel.updateHotel({
+        const finalUpdateData = {
             ...updateData,
-            images: finalImages
-        })
+            images: finalImages,
+        }
 
-        const updatedHotel = await this._hotelRepository.updateHotel(hotelId, hotel.getPersistableData());
+        const updatedHotel = await this._hotelRepository.updateHotel(hotelId, finalUpdateData);
 
         if (!updatedHotel) {
             throw new AppError(HOTEL_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);

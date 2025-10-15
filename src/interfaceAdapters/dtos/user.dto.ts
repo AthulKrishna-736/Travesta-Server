@@ -1,5 +1,5 @@
 import { IUserSubscription } from "../../domain/interfaces/model/subscription.interface"
-import { TRole, TSubscription } from "../../shared/types/client.types"
+import { TRole } from "../../shared/types/client.types"
 
 export type TCreateUserDTO = {
     firstName: string

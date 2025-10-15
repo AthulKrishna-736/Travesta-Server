@@ -5,35 +5,40 @@ import { TOKENS } from "../../../../constants/token";
 import { IGetHotelByIdUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
-import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
+import { AppError } from "../../../../utils/appError";
+import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 
 
 @injectable()
-export class GetHotelByIdUseCase extends HotelLookupBase implements IGetHotelByIdUseCase {
+export class GetHotelByIdUseCase implements IGetHotelByIdUseCase {
     constructor(
-        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
+        @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
-    ) {
-        super(_hotelRepository);
-    }
+    ) { }
 
     async getHotel(hotelId: string): Promise<{ hotel: TResponseHotelDTO; message: string }> {
 
-        const hotel = await this.getHotelEntityById(hotelId);
+        const hotel = await this._hotelRepository.findHotelById(hotelId);
 
-        let signedImageUrls: string[] = await Promise.all(
+        if (!hotel) {
+            throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        }
+
+        if (!hotel.images || hotel.images.length <= 0) {
+            throw new AppError(HOTEL_ERROR_MESSAGES.noImagesfound, HttpStatusCode.NOT_FOUND);
+        }
+
+        const signedHotelImages = await Promise.all(
             hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
         );
+        hotel.images = signedHotelImages;
 
-        await this._redisService.storeHotelImageUrls(hotelId, signedImageUrls, awsS3Timer.expiresAt);
-        hotel.updateHotel({ images: signedImageUrls });
-
-        const mapHotel = hotel.toObject();
-        const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(mapHotel);
+        const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(hotel);
 
         return { hotel: customHotelMapping, message: HOTEL_RES_MESSAGES.getHotelById };
     }

@@ -4,7 +4,7 @@ import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
-import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase } from '../../domain/interfaces/model/booking.interface';
+import { IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase } from '../../domain/interfaces/model/booking.interface';
 import { AppError } from '../../utils/appError';
 import { Pagination } from '../../shared/types/common.types';
 import { BOOKING_RES_MESSAGES } from '../../constants/resMessages';
@@ -14,40 +14,11 @@ import { IBookingController } from '../../domain/interfaces/controllers/bookingC
 @injectable()
 export class BookingController implements IBookingController {
     constructor(
-        @inject(TOKENS.CreateBookingUseCase) private _createBookingUseCase: ICreateBookingUseCase,
         @inject(TOKENS.GetBookingsByHotelUseCase) private _getByHotelUseCase: IGetBookingsByHotelUseCase,
         @inject(TOKENS.GetBookingsByUserUseCase) private _getByUserUseCase: IGetBookingsByUserUseCase,
         @inject(TOKENS.CancelRoomUseCase) private _cancelBookingUseCase: ICancelBookingUseCase,
         @inject(TOKENS.GetBookingsToVendorUseCase) private _getBookingsToVendorUseCase: IGetBookingsToVendorUseCase,
     ) { }
-
-    async createBooking(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const data = {
-                ...req.body,
-                userId: req.user?.userId as string,
-            };
-
-            if (!data.userId || !data.hotelId || !data.roomId || !data.checkIn || !data.checkOut || !data.totalPrice) {
-                throw new AppError(BOOKING_ERROR_MESSAGES.invalidData, HttpStatusCode.BAD_REQUEST);
-            }
-            const checkInDate = new Date(data.checkIn);
-            const checkOutDate = new Date(data.checkOut);
-
-            if (isNaN(checkInDate.getTime()) || isNaN(checkOutDate.getTime())) {
-                throw new AppError("Invalid check-in or check-out date format", HttpStatusCode.BAD_REQUEST);
-            }
-
-            if (checkOutDate <= checkInDate) {
-                throw new AppError("Check-out date must be after check-in date", HttpStatusCode.BAD_REQUEST);
-            }
-
-            const { booking, message } = await this._createBookingUseCase.createBooking(data);
-            ResponseHandler.success(res, message, booking, HttpStatusCode.CREATED);
-        } catch (error) {
-            next(error);
-        }
-    }
 
     async getBookingsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
@@ -118,9 +89,9 @@ export class BookingController implements IBookingController {
 
     async getCustomRoomDates(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            
-        } catch (error) {
 
+        } catch (error) {
+            next(error);
         }
     }
 }

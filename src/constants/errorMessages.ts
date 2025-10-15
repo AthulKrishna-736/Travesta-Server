@@ -34,6 +34,7 @@ export enum HOTEL_ERROR_MESSAGES {
     IdMissing = 'Hotel id is missing',
     minImages = 'At least 1 image is required to create a hotel',
     maxImages = 'You can upload a maximum of 10 images',
+    noImagesfound = 'No images found in hotel',
 }
 
 export enum ROOM_ERROR_MESSAGES {
@@ -44,6 +45,7 @@ export enum ROOM_ERROR_MESSAGES {
     minImages = 'At least 1 image is required to create a room',
     maxImages = 'You can upload a maximum of 10 images',
     notFound = 'Room not found',
+    noImagesfound = 'No images found in room',
 }
 
 export enum AMENITIES_ERROR_MESSAGES {

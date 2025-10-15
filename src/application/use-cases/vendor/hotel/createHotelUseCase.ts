@@ -3,10 +3,8 @@ import { ICreateHotelUseCase } from "../../../../domain/interfaces/model/hotel.i
 import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
-import { TCreateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
@@ -16,14 +14,13 @@ import { TCreateHotelDTO, TResponseHotelDTO } from "../../../../interfaceAdapter
 
 
 @injectable()
-export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelUseCase {
+export class CreateHotelUseCase implements ICreateHotelUseCase {
     private _imageUploader;
     constructor(
-        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
+        @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
     ) {
-        super(_hotelRepository);
         this._imageUploader = new AwsImageUploader(_awsS3Service);
     }
 

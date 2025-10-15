@@ -41,7 +41,7 @@ export class adminRoutes extends BaseRouter {
         //amenities
         this.router.route('/amenities')
             .post(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.createAmenity(req, res, next))
-            .get(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.getAllAmenities(req, res, next))
+            .get(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.getAllAmenities(req, res, next));
 
         this.router.route('/amenities/:amenityId')
             .put(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.updateAmenity(req, res, next))
@@ -51,7 +51,6 @@ export class adminRoutes extends BaseRouter {
         this.router.route('/plans')
             .get(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._subscriptionController.getAllSubscriptions(req, res, next))
             .post(authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res, next) => this._subscriptionController.createSubscriptionPlan(req, res, next))
-        // .get('/plans/active', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), (req: CustomRequest, res, next) => this._subscriptionController.getActiveSubscriptions(req, res, next))
 
         this.router.route('/plans/:planId')
             .put(authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res, next) => this._subscriptionController.updateSubscriptionPlan(req, res, next))

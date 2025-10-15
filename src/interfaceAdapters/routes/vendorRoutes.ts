@@ -41,7 +41,7 @@ export class vendorRoutes extends BaseRouter {
             .post('/auth/resendOtp', validateRequest(resendOtpSchema), (req: CustomRequest, res, next) => this._authController.resendOtp(req, res, next))
             .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res, next) => this._authController.forgotPassword(req, res, next))
             .patch('/auth/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res, next) => this._authController.updatePassword(req, res, next))
-            .post('/auth/logout', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._authController.logout(req, res, next))
+            .post('/auth/logout', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._authController.logout(req, res, next));
 
         //profile
         this.router.route('/profile')
@@ -77,7 +77,7 @@ export class vendorRoutes extends BaseRouter {
         this.router
             .get('/chat/vendors', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getVendorsChatWithUser(req, res, next))
             .get('/chat/unread', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getUnreadMsg(req, res, next))
-            .get('/chat/:userId/messages', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getChatMessages(req, res, next))
+            .get('/chat/:userId/messages', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getChatMessages(req, res, next));
 
         //booking
         this.router

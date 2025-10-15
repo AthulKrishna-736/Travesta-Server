@@ -38,7 +38,7 @@ export class HotelController implements IHotelController {
                 throw new AppError(HOTEL_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { name, description, address, city, state, geoLocation, tags, amenities, rating = 0 } = req.body;
+            const { name, description, address, city, state, geoLocation, tags, amenities } = req.body;
             const parsedGeoLocation = Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation);
 
             let amenitiesArray: string[] = [];
@@ -99,7 +99,7 @@ export class HotelController implements IHotelController {
 
             let updateData: TUpdateHotelDTO = {};
 
-            const { name, description, address, city, state, geoLocation, tags, amenities, rating, images } = req.body;
+            const { name, description, address, city, state, geoLocation, tags, amenities, images } = req.body;
 
             if (name) updateData.name = name;
             if (description) updateData.description = description;
@@ -184,7 +184,7 @@ export class HotelController implements IHotelController {
             const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) };
             ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
         } catch (error) {
-            throw error
+            next(error);
         }
     }
 

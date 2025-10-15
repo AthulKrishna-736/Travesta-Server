@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
 import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
-import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { IGetVendorHotelsUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
@@ -17,7 +16,6 @@ import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto"
 export class GetVendorHotelsUseCase implements IGetVendorHotelsUseCase {
     constructor(
         @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
@@ -27,27 +25,22 @@ export class GetVendorHotelsUseCase implements IGetVendorHotelsUseCase {
             throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
-        const signUrlHotels = await Promise.all(
-            hotels.map(async (h, index) => {
-                const hotelId = h._id?.toString() as string;
-                let signedImageUrls = await this._redisService.getHotelImageUrls(hotelId);
-
-                if (!signedImageUrls) {
-                    const imageKeys = Array.isArray(h.images) ? h.images : [];
-                    signedImageUrls = await Promise.all(
-                        imageKeys.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
-                    )
-                    await this._redisService.storeHotelImageUrls(hotelId, signedImageUrls, awsS3Timer.expiresAt)
-                    console.log
+        const mappedHotelImages = await Promise.all(
+            hotels.map(async (h) => {
+                if (!h.images || h.images.length <= 0) {
+                    throw new AppError(HOTEL_ERROR_MESSAGES.noImagesfound, HttpStatusCode.NOT_FOUND);
                 }
+
+                const signedHotelImages = await Promise.all(h.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)))
+
                 return {
                     ...h,
-                    images: signedImageUrls,
+                    images: signedHotelImages,
                 }
             })
         );
 
-        const mappedHotels = signUrlHotels.map(h => ResponseMapper.mapHotelToResponseDTO(h));
+        const mappedHotels = mappedHotelImages.map(h => ResponseMapper.mapHotelToResponseDTO(h));
 
         return {
             hotels: mappedHotels,
@@ -62,16 +55,12 @@ export class GetVendorHotelsUseCase implements IGetVendorHotelsUseCase {
             throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
-        let signedHotelUrls = await this._redisService.getHotelImageUrls(hotel._id as string);
-        if (!signedHotelUrls) {
-            const imageKeys = Array.isArray(hotel.images) ? hotel.images : [];
-            signedHotelUrls = await Promise.all(
-                imageKeys.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
-            );
-            await this._redisService.storeHotelImageUrls(hotel._id as string, signedHotelUrls, awsS3Timer.expiresAt)
+        if (!hotel.images || hotel.images.length <= 0) {
+            throw new AppError(HOTEL_ERROR_MESSAGES.noImagesfound, HttpStatusCode.NOT_FOUND);
         }
 
-        hotel.images = signedHotelUrls;
+        const signedHotelImages = await Promise.all(hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)));
+        hotel.images = signedHotelImages;
 
         const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel);
 
