@@ -2,20 +2,23 @@ import { inject, injectable } from "tsyringe";
 import { CustomRequest } from "../../utils/customRequest";
 import { NextFunction, Response } from "express";
 import { TOKENS } from "../../constants/token";
-import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlansUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
+import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
 import { TCreateSubscriptionDTO, TUpdateSubscriptionDTO } from "../dtos/subscription.dto";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
+import { Pagination } from "../../shared/types/common.types";
+import { ISubscriptionController } from "../../domain/interfaces/controllers/subscriptionController.interface";
 
 
 @injectable()
-export class SubscriptionController {
+export class SubscriptionController implements ISubscriptionController {
     constructor(
         @inject(TOKENS.CreateSubscriptionUseCase) private _createSubscriptionUseCase: ICreatePlanUseCase,
         @inject(TOKENS.UpdateSubscriptionUseCase) private _updateSubscriptionUseCase: IUpdatePlanUseCase,
         @inject(TOKENS.BlockUnblockSubscriptionUseCase) private _blockUnblockSubscriptionUseCase: IBlockUnblockPlanUseCase,
         @inject(TOKENS.GetActiveSubscriptionsUseCase) private _getActiveSubscriptionUseCase: IGetActivePlansUseCase,
         @inject(TOKENS.GetAllSubscriptionsUseCase) private _getAllSubscriptionsUseCase: IGetAllPlansUseCase,
+        @inject(TOKENS.GetAllPlanHistoryUseCase) private _getAllPlanHistoryUseCase: IGetAllPlanHistoryUseCase,
     ) { }
 
     async createSubscriptionPlan(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -74,6 +77,20 @@ export class SubscriptionController {
         try {
             const { plans, message } = await this._getAllSubscriptionsUseCase.getAllPlans();
             ResponseHandler.success(res, message, plans, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async getAllPlanHistory(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const page = Number(req.query.page);
+            const limit = Number(req.query.limit);
+            const type = req.query.type as string;
+
+            const { histories, total, message } = await this._getAllPlanHistoryUseCase.getAllPlanHistory(page, limit, type);
+            const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.floor(total / limit) }
+            ResponseHandler.success(res, message, histories, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);
         }

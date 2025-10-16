@@ -20,4 +20,5 @@ export interface ISubscriptionHistoryRepository {
     findActiveByUserId(userId: string): Promise<IUserSubscriptionHistory | null>;
     deactivateActiveByUserId(userId: string, session?: ClientSession): Promise<void>;
     hasActiveSubscription(userId: string, session?: ClientSession): Promise<boolean>;
+    findAllPlanHistory(page: number, limit: number, type?: string): Promise<{ history: IUserSubscriptionHistory[]; total: number }>;
 }

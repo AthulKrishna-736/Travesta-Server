@@ -39,7 +39,7 @@ export class SubscriptionHistoryRepository extends BaseRepository<TUserSubscript
         );
     }
 
-      async hasActiveSubscription(userId: string, session?: ClientSession): Promise<boolean> {
+    async hasActiveSubscription(userId: string, session?: ClientSession): Promise<boolean> {
         const today = new Date();
         const activeSubscription = await this.model.findOne({
             userId,
@@ -50,4 +50,59 @@ export class SubscriptionHistoryRepository extends BaseRepository<TUserSubscript
 
         return !!activeSubscription;
     }
+
+    async findAllPlanHistory(page: number, limit: number, type?: string): Promise<{ history: IUserSubscriptionHistory[]; total: number }> {
+        const skip = (page - 1) * limit;
+        const filter: any = {};
+
+        if (type) {
+            filter['subscription.type'] = type;
+        }
+
+        const pipeline: any[] = [
+            {
+                $lookup: {
+                    from: 'users',
+                    localField: 'userId',
+                    foreignField: '_id',
+                    as: 'user',
+                },
+            },
+            {
+                $unwind: '$user',
+            },
+            {
+                $lookup: {
+                    from: 'subscriptions',
+                    localField: 'subscriptionId',
+                    foreignField: '_id',
+                    as: 'subscription',
+                },
+            },
+            {
+                $unwind: '$subscription',
+            },
+            { $match: { 'subscription.type': type } }
+        ];
+
+
+
+        const totalPipeline = [...pipeline, { $count: 'total' }];
+        const totalResult = await this.model.aggregate(totalPipeline);
+        const total = totalResult[0]?.total || 0;
+
+        pipeline.push(
+            { $sort: { createdAt: -1 } },
+            { $skip: skip },
+            { $limit: limit }
+        );
+
+        const histories = await this.model.aggregate(pipeline);
+
+        return {
+            history: histories,
+            total,
+        };
+    }
+
 }

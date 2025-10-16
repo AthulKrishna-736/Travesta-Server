@@ -56,6 +56,9 @@ export class adminRoutes extends BaseRouter {
             .put(authMiddleware, authorizeRoles('admin'), validateRequest(subscriptionSchema), (req: CustomRequest, res, next) => this._subscriptionController.updateSubscriptionPlan(req, res, next))
             .patch(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._subscriptionController.blockUnblockSubscription(req, res, next));
 
+        this.router
+            .get('/plans/history', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._subscriptionController.getAllPlanHistory(req, res, next))
+
         //chat
         this.router
             .get('/chat/vendors', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getVendorsChatWithAdmin(req, res, next))

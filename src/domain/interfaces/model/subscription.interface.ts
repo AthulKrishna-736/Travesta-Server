@@ -70,4 +70,7 @@ export interface IUserSubscribePlanUseCase {
     subscribePlan(userId: string, planId: string, paymentAmount: number): Promise<{ user: any, message: string }>
 }
 
+export interface IGetAllPlanHistoryUseCase {
+    getAllPlanHistory(page: number, limit: number, type?: string): Promise<{ histories: IUserSubscriptionHistory[], total: number, message: string }>
+}
 
