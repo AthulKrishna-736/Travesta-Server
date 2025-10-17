@@ -39,16 +39,17 @@ export class SubscriptionHistoryRepository extends BaseRepository<TUserSubscript
         );
     }
 
-    async hasActiveSubscription(userId: string, session?: ClientSession): Promise<boolean> {
+    async hasActiveSubscription(userId: string, session?: ClientSession): Promise<IUserSubscriptionHistory | null> {
         const today = new Date();
         const activeSubscription = await this.model.findOne({
             userId,
             isActive: true,
             validFrom: { $lte: today },
             validUntil: { $gte: today },
-        }, null, { session });
+        }, null, { session })
+            .populate('subscriptionId', 'name description type price duration features');
 
-        return !!activeSubscription;
+        return activeSubscription;
     }
 
     async findAllPlanHistory(page: number, limit: number, type?: string): Promise<{ history: IUserSubscriptionHistory[]; total: number }> {

@@ -1,5 +1,5 @@
+import { Types } from "mongoose";
 import { TRole } from "../../../shared/types/client.types";
-import { IUserSubscription } from "./subscription.interface";
 
 export interface IUser {
     _id?: string,
@@ -11,7 +11,7 @@ export interface IUser {
     role: TRole,
     phone: number,
     isBlocked: boolean,
-    subscription: IUserSubscription | null,
+    subscription: Types.ObjectId | string,
     profileImage?: string,
     isVerified: boolean,
     verificationReason?: string,

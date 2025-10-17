@@ -53,7 +53,7 @@ import { GetAmenityByIdUseCase } from "../../application/use-cases/admin/ameniti
 import { GetAllAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getAllAmenities.UseCase";
 import { GetActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getActiveAmenities.UseCase";
 import { SusbcriptionRepository } from "../database/repositories/subscription.Repo";
-import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, ISubscribePlanUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
+import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, IGetUserActivePlanUseCase, ISubscribePlanUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
 import { CreatePlanUseCase } from "../../application/use-cases/admin/subscription/createPlan.UseCase";
 import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscription/updatePlan.UseCase";
 import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
@@ -120,6 +120,7 @@ import { GetHotelAnalyticsUseCase } from "../../application/use-cases/vendor/hot
 import { SubscriptionHistoryRepository } from "../database/repositories/planHistoryRepo";
 import { SubscribePlanUseCase } from "../../application/use-cases/user/subscribePlan.UseCase";
 import { GetAllPlanHistoryUseCase } from "../../application/use-cases/admin/subscription/getAllPlansHistory.UseCase";
+import { GetUserActivePlanUseCase } from "../../application/use-cases/admin/subscription/getUserActivePlanUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -437,6 +438,10 @@ container.register<IGetAllPlansUseCase>(TOKENS.GetAllSubscriptionsUseCase, {
 
 container.register<IBlockUnblockPlanUseCase>(TOKENS.BlockUnblockSubscriptionUseCase, {
   useClass: BlockUnblockPlanUseCase,
+})
+
+container.register<IGetUserActivePlanUseCase>(TOKENS.GetUserActivePlanUseCase, {
+  useClass: GetUserActivePlanUseCase,
 })
 
 

@@ -37,16 +37,9 @@ const userSchema: Schema = new Schema<TUserDocument>({
         default: false
     },
     subscription: {
-        plan: {
-            type: Schema.Types.ObjectId,
-            ref: 'Subscription',
-        },
-        validFrom: {
-            type: Date,
-        },
-        validUntil: {
-            type: Date,
-        },
+        type: Schema.Types.ObjectId,
+        ref: 'SubscriptionHistory',
+        default: null,
     },
     profileImage: {
         type: String

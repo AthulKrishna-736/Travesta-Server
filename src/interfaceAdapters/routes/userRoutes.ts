@@ -83,6 +83,7 @@ export class userRoutes extends BaseRouter {
         //subscription
         this.router
             .get('/plans', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getActiveSubscriptions(req, res, next))
+            .get('/plans/active', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getUserActivePlan(req, res, next))
 
         // wallet
         this.router.route('/wallet')

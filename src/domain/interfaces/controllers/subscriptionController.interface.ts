@@ -8,4 +8,5 @@ export interface ISubscriptionController {
     getActiveSubscriptions(req: CustomRequest, res: Response, next: NextFunction): Promise<void>;
     getAllSubscriptions(req: CustomRequest, res: Response, next: NextFunction): Promise<void>;
     getAllPlanHistory(req: CustomRequest, res: Response, next: NextFunction): Promise<void>;
+    getUserActivePlan(req: CustomRequest, res: Response, next: NextFunction): Promise<void>;
 }

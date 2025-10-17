@@ -2,12 +2,14 @@ import { inject, injectable } from "tsyringe";
 import { CustomRequest } from "../../utils/customRequest";
 import { NextFunction, Response } from "express";
 import { TOKENS } from "../../constants/token";
-import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
+import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, IGetUserActivePlanUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
 import { TCreateSubscriptionDTO, TUpdateSubscriptionDTO } from "../dtos/subscription.dto";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { Pagination } from "../../shared/types/common.types";
 import { ISubscriptionController } from "../../domain/interfaces/controllers/subscriptionController.interface";
+import { AppError } from "../../utils/appError";
+import { AUTH_ERROR_MESSAGES } from "../../constants/errorMessages";
 
 
 @injectable()
@@ -19,6 +21,7 @@ export class SubscriptionController implements ISubscriptionController {
         @inject(TOKENS.GetActiveSubscriptionsUseCase) private _getActiveSubscriptionUseCase: IGetActivePlansUseCase,
         @inject(TOKENS.GetAllSubscriptionsUseCase) private _getAllSubscriptionsUseCase: IGetAllPlansUseCase,
         @inject(TOKENS.GetAllPlanHistoryUseCase) private _getAllPlanHistoryUseCase: IGetAllPlanHistoryUseCase,
+        @inject(TOKENS.GetUserActivePlanUseCase) private _getUserActivePlanUseCase: IGetUserActivePlanUseCase,
     ) { }
 
     async createSubscriptionPlan(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -91,6 +94,20 @@ export class SubscriptionController implements ISubscriptionController {
             const { histories, total, message } = await this._getAllPlanHistoryUseCase.getAllPlanHistory(page, limit, type);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.floor(total / limit) }
             ResponseHandler.success(res, message, histories, HttpStatusCode.OK, meta);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async getUserActivePlan(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const userId = req.user?.userId
+            if (!userId) {
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { plan, message } = await this._getUserActivePlanUseCase.getUserActivePlan(userId);
+            ResponseHandler.success(res, message, plan, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

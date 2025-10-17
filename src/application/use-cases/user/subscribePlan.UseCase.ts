@@ -9,7 +9,7 @@ import { ITransactionRepository } from "../../../domain/interfaces/repositories/
 import { ISubscriptionHistoryRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
-import { SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { AUTH_ERROR_MESSAGES, SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../constants/errorMessages";
 
 @injectable()
 export class SubscribePlanUseCase implements ISubscribePlanUseCase {
@@ -28,7 +28,7 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
 
         try {
             const user = await this._userRepository.findUserById(userId);
-            if (!user) throw new AppError("User not found", HttpStatusCode.NOT_FOUND);
+            if (!user) throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
             const plan = await this._subscriptionRepository.findPlanById(planId);
             if (!plan) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
@@ -46,23 +46,14 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
 
             if (method === "wallet") {
                 if (!userWallet || userWallet.balance < plan.price) {
-                    throw new AppError("Insufficient wallet balance", HttpStatusCode.BAD_REQUEST);
+                    throw new AppError(WALLET_ERROR_MESSAGES.Insufficient, HttpStatusCode.BAD_REQUEST);
                 }
                 await this._walletRepository.updateBalance(userId, -plan.price, session);
             }
 
-            user.subscription = {
-                plan: plan._id.toString(),
-                validFrom,
-                validUntil,
-            };
-
-            const updatedUser = await this._userRepository.subscribeUser(user._id as string, { subscription: user.subscription }, session);
-            if (!updatedUser) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
-
             await this._historyRepository.deactivateActiveByUserId(user._id as string, session);
 
-            await this._historyRepository.createHistory({
+            const planHistory = await this._historyRepository.createHistory({
                 userId: user._id,
                 subscriptionId: plan._id as Types.ObjectId,
                 subscribedAt: new Date(),
@@ -72,8 +63,13 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 paymentAmount: plan.price,
             }, session);
 
+            if (!planHistory) throw new AppError('Failed to create Subscription history', HttpStatusCode.INTERNAL_SERVER_ERROR);
+
+            const updatedUser = await this._userRepository.subscribeUser(user._id as string, { subscription: planHistory._id }, session);
+            if (!updatedUser) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
+
             await this._transactionRepository.createTransaction({
-                walletId: new mongoose.Types.ObjectId(userWallet._id!),
+                walletId: new mongoose.Types.ObjectId(userWallet._id),
                 type: "debit",
                 amount: plan.price,
                 description: `Payment for subscription ${plan.name}`,
@@ -85,7 +81,7 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
             await this._walletRepository.updateBalance(adminWallet.userId.toString(), plan.price, session);
 
             await this._transactionRepository.createTransaction({
-                walletId: new mongoose.Types.ObjectId(adminWallet._id!),
+                walletId: new mongoose.Types.ObjectId(adminWallet._id),
                 type: "credit",
                 amount: plan.price,
                 description: `Received payment from ${user.firstName} ${user.lastName} for subscription ${plan.name}`,

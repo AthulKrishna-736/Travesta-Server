@@ -16,14 +16,10 @@ export interface ISubscription {
     updatedAt: Date
 }
 
-export interface IUserSubscription {
-    plan: ISubscription | string;
-    validFrom: Date;
-    validUntil: Date;
-}
 
 //subscription history
 export interface IUserSubscriptionHistory {
+    _id: string | Types.ObjectId;
     userId: Types.ObjectId | string;
     subscriptionId: string | Types.ObjectId;
     subscribedAt: Date;
@@ -74,3 +70,6 @@ export interface IGetAllPlanHistoryUseCase {
     getAllPlanHistory(page: number, limit: number, type?: string): Promise<{ histories: IUserSubscriptionHistory[], total: number, message: string }>
 }
 
+export interface IGetUserActivePlanUseCase {
+    getUserActivePlan(userId: string): Promise<{ plan: IUserSubscriptionHistory, message: string }>
+}
