@@ -101,6 +101,7 @@ export const TOKENS = {
   SubscribePlanUseCase: 'SubscribePlanUseCase',
   GetAllPlanHistoryUseCase: 'GetAllPlanHistoryUseCase',
   GetUserActivePlanUseCase: 'GetUserActivePlanUseCase',
+  CancelSubscriptionUseCase: 'CancelSubscriptionUseCase',
 
   //chat UseCases
   GetChatMessagesUseCase: 'GetChatMessagesUseCase',

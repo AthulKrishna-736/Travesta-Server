@@ -53,7 +53,7 @@ import { GetAmenityByIdUseCase } from "../../application/use-cases/admin/ameniti
 import { GetAllAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getAllAmenities.UseCase";
 import { GetActiveAmenitiesUseCase } from "../../application/use-cases/admin/amenities/getActiveAmenities.UseCase";
 import { SusbcriptionRepository } from "../database/repositories/subscription.Repo";
-import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, IGetUserActivePlanUseCase, ISubscribePlanUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
+import { IBlockUnblockPlanUseCase, ICancelSubscriptionUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, IGetUserActivePlanUseCase, ISubscribePlanUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
 import { CreatePlanUseCase } from "../../application/use-cases/admin/subscription/createPlan.UseCase";
 import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscription/updatePlan.UseCase";
 import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
@@ -121,6 +121,7 @@ import { SubscriptionHistoryRepository } from "../database/repositories/planHist
 import { SubscribePlanUseCase } from "../../application/use-cases/user/subscribePlan.UseCase";
 import { GetAllPlanHistoryUseCase } from "../../application/use-cases/admin/subscription/getAllPlansHistory.UseCase";
 import { GetUserActivePlanUseCase } from "../../application/use-cases/admin/subscription/getUserActivePlanUseCase";
+import { CancelSubscriptionUseCase } from "../../application/use-cases/user/cancelSubscription";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -444,6 +445,9 @@ container.register<IGetUserActivePlanUseCase>(TOKENS.GetUserActivePlanUseCase, {
   useClass: GetUserActivePlanUseCase,
 })
 
+container.register<ICancelSubscriptionUseCase>(TOKENS.CancelSubscriptionUseCase, {
+  useClass: CancelSubscriptionUseCase,
+})
 
 //chat use case
 container.register<IGetChatMessagesUseCase>(TOKENS.GetChatMessagesUseCase, {

@@ -9,4 +9,5 @@ export interface ISubscriptionController {
     getAllSubscriptions(req: CustomRequest, res: Response, next: NextFunction): Promise<void>;
     getAllPlanHistory(req: CustomRequest, res: Response, next: NextFunction): Promise<void>;
     getUserActivePlan(req: CustomRequest, res: Response, next: NextFunction): Promise<void>;
+    cancelUserSubscription(req: CustomRequest, res: Response, next: NextFunction): Promise<void>;
 }

@@ -11,7 +11,7 @@ export interface IUser {
     role: TRole,
     phone: number,
     isBlocked: boolean,
-    subscription: Types.ObjectId | string,
+    subscription: Types.ObjectId | string | null,
     profileImage?: string,
     isVerified: boolean,
     verificationReason?: string,

@@ -73,3 +73,7 @@ export interface IGetAllPlanHistoryUseCase {
 export interface IGetUserActivePlanUseCase {
     getUserActivePlan(userId: string): Promise<{ plan: IUserSubscriptionHistory, message: string }>
 }
+
+export interface ICancelSubscriptionUseCase {
+    cancelSubscription(userId: string): Promise<{ message: string }>;
+}

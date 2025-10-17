@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { CustomRequest } from "../../utils/customRequest";
 import { NextFunction, Response } from "express";
 import { TOKENS } from "../../constants/token";
-import { IBlockUnblockPlanUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, IGetUserActivePlanUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
+import { IBlockUnblockPlanUseCase, ICancelSubscriptionUseCase, ICreatePlanUseCase, IGetActivePlansUseCase, IGetAllPlanHistoryUseCase, IGetAllPlansUseCase, IGetUserActivePlanUseCase, IUpdatePlanUseCase } from "../../domain/interfaces/model/subscription.interface";
 import { TCreateSubscriptionDTO, TUpdateSubscriptionDTO } from "../dtos/subscription.dto";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
@@ -22,6 +22,7 @@ export class SubscriptionController implements ISubscriptionController {
         @inject(TOKENS.GetAllSubscriptionsUseCase) private _getAllSubscriptionsUseCase: IGetAllPlansUseCase,
         @inject(TOKENS.GetAllPlanHistoryUseCase) private _getAllPlanHistoryUseCase: IGetAllPlanHistoryUseCase,
         @inject(TOKENS.GetUserActivePlanUseCase) private _getUserActivePlanUseCase: IGetUserActivePlanUseCase,
+        @inject(TOKENS.CancelSubscriptionUseCase) private _cancelSubscriptionUseCase: ICancelSubscriptionUseCase,
     ) { }
 
     async createSubscriptionPlan(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -108,6 +109,20 @@ export class SubscriptionController implements ISubscriptionController {
 
             const { plan, message } = await this._getUserActivePlanUseCase.getUserActivePlan(userId);
             ResponseHandler.success(res, message, plan, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async cancelUserSubscription(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const userId = req.user?.userId
+            if (!userId) {
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { message } = await this._cancelSubscriptionUseCase.cancelSubscription(userId);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

@@ -82,6 +82,7 @@ export enum SUBSCRIPTION_ERROR_MESSAGES {
     notActive = 'Cant subscribe. Plan is not active',
     blockError = 'Error while block/unblock plans',
     nameError = 'Plan with same name already exists',
+    noActivePlans = 'User does not have active plans',
 }
 
 export enum TRANSACTION_ERROR_MESSAGES {
