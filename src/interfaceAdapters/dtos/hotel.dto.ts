@@ -8,7 +8,10 @@ export type TCreateHotelDTO = {
     state: string;
     city: string;
     address: string;
-    geoLocation: [number, number];
+    geoLocation: {
+        type: string,
+        coordinates: [number, number]
+    };
 }
 
 export type TUpdateHotelDTO = {
@@ -20,7 +23,10 @@ export type TUpdateHotelDTO = {
     state?: string;
     city?: string;
     address?: string;
-    geoLocation?: [number, number];
+    geoLocation?: {
+        type: string,
+        coordinates: [number, number]
+    };
 }
 
 export type TResponseHotelDTO = {
@@ -34,7 +40,10 @@ export type TResponseHotelDTO = {
     state: string;
     city: string;
     address: string;
-    geoLocation: [number, number];
+    geoLocation: {
+        type: string,
+        coordinates: [number, number]
+    };
     isBlocked: boolean;
     room?: object | null;
     createdAt: Date;

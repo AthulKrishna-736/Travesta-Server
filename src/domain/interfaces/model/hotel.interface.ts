@@ -13,7 +13,10 @@ export interface IHotel {
     state: string
     city: string
     address: string
-    geoLocation: [number, number]
+    geoLocation: {
+        type: string,
+        coordinates: [number, number],
+    }
     isBlocked: boolean
     createdAt: Date
     updatedAt: Date

@@ -43,8 +43,16 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
         required: true,
     },
     geoLocation: {
-        type: [Number],
-        required: true,
+        type: {
+            type: String,
+            enum: ["Point"],
+            required: true,
+            default: "Point"
+        },
+        coordinates: {
+            type: [Number], 
+            required: true
+        }
     },
     isBlocked: {
         type: Boolean,
