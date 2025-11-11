@@ -30,7 +30,7 @@ export class ResponseMapper {
         }
     }
 
-    static mapRoomToResponseDTO(room: IRoom): TResponseRoomDTO {
+    static mapRoomToResponseDTO(room: IRoom & { gstPrice?: number }): TResponseRoomDTO {
         return {
             id: room._id as string,
             hotelId: room.hotelId,
@@ -42,6 +42,7 @@ export class ResponseMapper {
             amenities: room.amenities,
             images: room.images,
             basePrice: room.basePrice,
+            gstPrice: room.gstPrice ?? 0,
             isAvailable: room.isAvailable,
             createdAt: room.createdAt,
             updatedAt: room.updatedAt,
@@ -63,6 +64,7 @@ export class ResponseMapper {
             geoLocation: hotel.geoLocation,
             isBlocked: hotel.isBlocked,
             room: (hotel as any).cheapestRoom ?? null,
+            propertyRules: hotel.propertyRules,
             createdAt: hotel.createdAt,
             updatedAt: hotel.updatedAt,
         };
@@ -81,7 +83,7 @@ export class ResponseMapper {
             isVerified: user.isVerified,
             verificationReason: user.verificationReason,
             profileImage: user.profileImage,
-            subscription: user.subscription,
+            subscription: user.subscription?.toString()!,
             kycDocuments: user.kycDocuments ?? [],
             createdAt: user.createdAt,
             updatedAt: user.updatedAt,

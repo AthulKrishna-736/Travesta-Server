@@ -1,6 +1,8 @@
 import { Types } from "mongoose"
 import { TCreateHotelDTO, TResponseHotelDTO, TUpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto"
 
+export type TIdProof = 'Aadhaar' | 'Passport' | 'DrivingLicense' | 'PAN';
+
 //hotel model
 export interface IHotel {
     _id?: string
@@ -13,19 +15,32 @@ export interface IHotel {
     state: string
     city: string
     address: string
+    isBlocked: boolean
     geoLocation: {
         type: string,
         coordinates: [number, number],
     }
-    isBlocked: boolean
+    propertyRules: {
+        checkInTime: string,
+        checkOutTime: string,
+        minGuestAge: number,
+        petsAllowed: boolean,
+        breakfastFee?: number,
+        outsideFoodAllowed: boolean,
+        idProofAccepted: TIdProof[],
+        specialNotes?: string,
+    }
     createdAt: Date
     updatedAt: Date
 }
 
 //hotel types
 export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked'>;
-export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt'>>;
-export type TResponseHotelData = Omit<IHotel, ''>;
+export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'geoLocation' | 'propertyRules'>> & {
+    geoLocation?: Partial<IHotel['geoLocation']>;
+    propertyRules?: Partial<IHotel['propertyRules']>;
+};
+
 
 //hotel use cases
 export interface ICreateHotelUseCase {
@@ -60,7 +75,7 @@ export interface IGetAllHotelsUseCase {
             maxPrice?: number;
             sort?: string;
         }
-    ): Promise<{ hotels: TResponseHotelData[]; total: number; message: string }>
+    ): Promise<{ hotels: TResponseHotelDTO[]; total: number; message: string }>
 }
 
 export interface IGetHotelAnalyticsUseCase {

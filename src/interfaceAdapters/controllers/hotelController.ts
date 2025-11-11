@@ -38,32 +38,24 @@ export class HotelController implements IHotelController {
                 throw new AppError(HOTEL_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { name, description, address, city, state, geoLocation, tags, amenities } = req.body;
-            const parsedGeoLocation = Array.isArray(geoLocation) ? geoLocation : JSON.parse(geoLocation);
-
-            let amenitiesArray: string[] = [];
-            if (amenities) {
-                if (Array.isArray(amenities)) {
-                    amenitiesArray = amenities.flatMap(a => a.split(',').map((s: string) => s.trim()));
-                } else if (typeof amenities === 'string') {
-                    const parsed = JSON.parse(amenities);
-                    amenitiesArray = parsed.flatMap((a: string) => a.split(',').map(s => s.trim()));
-                }
-            }
-
-            let tagsArray: string[] = [];
-            if (Array.isArray(tags)) {
-                tagsArray = tags.map(t => t.trim());
-            } else if (typeof tags === 'string') {
-                try {
-                    const parsed = JSON.parse(tags);
-                    if (Array.isArray(parsed)) {
-                        tagsArray = parsed.map(t => t.trim());
-                    }
-                } catch {
-                    tagsArray = tags.split(',').map(t => t.trim());
-                }
-            }
+            const {
+                name,
+                description,
+                address,
+                city,
+                state,
+                geoLocation,
+                tags,
+                amenities,
+                checkInTime,
+                checkOutTime,
+                minGuestAge,
+                breakfastFee,
+                petsAllowed,
+                outsideFoodAllowed,
+                idProofAccepted,
+                specialNotes
+            } = req.body;
 
             const hotelData: TCreateHotelDTO = {
                 name,
@@ -71,10 +63,20 @@ export class HotelController implements IHotelController {
                 address,
                 city,
                 state,
-                geoLocation: parsedGeoLocation,
-                tags: tagsArray,
-                amenities: amenitiesArray,
-                images: []
+                geoLocation: { type: 'Point', coordinates: JSON.parse(geoLocation) },
+                tags: JSON.parse(tags),
+                amenities: JSON.parse(amenities),
+                images: [],
+                propertyRules: {
+                    checkInTime,
+                    checkOutTime,
+                    minGuestAge: Number(minGuestAge),
+                    breakfastFee: breakfastFee ? Number(breakfastFee) : undefined,
+                    petsAllowed: petsAllowed === 'true' ? true : false,
+                    outsideFoodAllowed: outsideFoodAllowed === 'true' ? true : false,
+                    idProofAccepted: JSON.parse(idProofAccepted),
+                    specialNotes,
+                }
             };
 
             const { hotel, message } = await this._createHotelUseCase.createHotel(VENDOR_ID, hotelData, FILES);
@@ -97,9 +99,27 @@ export class HotelController implements IHotelController {
                 throw new AppError(HOTEL_ERROR_MESSAGES.maxImages, HttpStatusCode.BAD_REQUEST);
             }
 
-            let updateData: TUpdateHotelDTO = {};
+            const updateData: TUpdateHotelDTO = {};
 
-            const { name, description, address, city, state, geoLocation, tags, amenities, images } = req.body;
+            const {
+                name,
+                description,
+                address,
+                city,
+                state,
+                geoLocation,
+                tags,
+                amenities,
+                images,
+                checkInTime,
+                checkOutTime,
+                minGuestAge,
+                breakfastFee,
+                petsAllowed,
+                outsideFoodAllowed,
+                idProofAccepted,
+                specialNotes,
+            } = req.body;
 
             if (name) updateData.name = name;
             if (description) updateData.description = description;
@@ -107,40 +127,36 @@ export class HotelController implements IHotelController {
             if (city) updateData.city = city;
             if (state) updateData.state = state;
 
+            if (tags) updateData.tags = JSON.parse(tags);
+            if (amenities) updateData.amenities = JSON.parse(amenities);
+            if (images) updateData.images = JSON.parse(images);
+
             if (geoLocation) {
-                updateData.geoLocation = Array.isArray(geoLocation)
-                    ? geoLocation
-                    : JSON.parse(geoLocation);
+                updateData.geoLocation = { type: 'Point' };
+                updateData.geoLocation.coordinates = JSON.parse(geoLocation);
             }
 
-            if (tags) {
-                if (Array.isArray(tags)) {
-                    updateData.tags = tags.map(t => t.trim());
-                } else if (typeof tags === 'string') {
-                    try {
-                        const parsed = JSON.parse(tags);
-                        if (Array.isArray(parsed)) {
-                            updateData.tags = parsed.map(t => t.trim());
-                        }
-                    } catch {
-                        updateData.tags = tags.split(',').map(t => t.trim());
-                    }
-                }
+            // Property rules
+            if (
+                checkInTime ||
+                checkOutTime ||
+                minGuestAge ||
+                breakfastFee ||
+                petsAllowed ||
+                outsideFoodAllowed ||
+                idProofAccepted ||
+                specialNotes
+            ) {
+                updateData.propertyRules = {};
+                if (checkInTime) updateData.propertyRules.checkInTime = checkInTime;
+                if (checkOutTime) updateData.propertyRules.checkOutTime = checkOutTime;
+                if (minGuestAge) updateData.propertyRules.minGuestAge = Number(minGuestAge);
+                if (breakfastFee) updateData.propertyRules.breakfastFee = Number(breakfastFee);
+                if (petsAllowed) updateData.propertyRules.petsAllowed = petsAllowed === 'true';
+                if (outsideFoodAllowed) updateData.propertyRules.outsideFoodAllowed = outsideFoodAllowed === 'true';
+                if (idProofAccepted) updateData.propertyRules.idProofAccepted = JSON.parse(idProofAccepted);
+                if (specialNotes) updateData.propertyRules.specialNotes = specialNotes;
             }
-
-            if (amenities) {
-                if (Array.isArray(amenities)) {
-                    updateData.amenities = amenities.flatMap(a => a.split(',').map((s: string) => s.trim()));
-                } else if (typeof amenities === 'string') {
-                    const parsed = JSON.parse(amenities);
-                    updateData.amenities = parsed.flatMap((a: string) => a.split(',').map(s => s.trim()));
-                }
-            }
-
-            if (images) {
-                updateData.images = typeof images === 'string' ? JSON.parse(images) : images;
-            }
-
             const { hotel, message } = await this._updateHotelUseCase.updateHotel(hotelId, updateData, FILES);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {

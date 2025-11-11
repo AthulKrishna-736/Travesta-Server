@@ -4,9 +4,8 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { TOKENS } from "../../../../constants/token";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import { IUpdateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
+import { IUpdateHotelUseCase, TUpdateHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AwsImageUploader } from "../../base/imageUploader";
-import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
@@ -19,7 +18,6 @@ export class UpdateHotelUseCase implements IUpdateHotelUseCase {
     constructor(
         @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) {
         this._imageUploader = new AwsImageUploader(_awsS3Service)
     }
@@ -55,9 +53,9 @@ export class UpdateHotelUseCase implements IUpdateHotelUseCase {
             keptImages = images.map((i) => decodeURIComponent(new URL(i).pathname).slice(1));
         }
 
-        const finalImages = [...keptImages, ...uploadedImageKeys]
+        const finalImages = [...keptImages, ...uploadedImageKeys];
 
-        const finalUpdateData = {
+        const finalUpdateData: TUpdateHotelData = {
             ...updateData,
             images: finalImages,
         }

@@ -151,7 +151,6 @@ export const updateHotelSchema = z.object({
 
     description: z.string()
         .min(10, "Description must be at least 10 characters")
-        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Description contains invalid characters")
         .optional(),
 
     rating: z.preprocess(
@@ -159,12 +158,6 @@ export const updateHotelSchema = z.object({
         z.number()
             .min(0, "Rating must be at least 0")
             .max(5, "Rating cannot exceed 5")
-    ).optional(),
-
-    services: z.preprocess(
-        (val) => typeof val === "string" ? JSON.parse(val) : val,
-        z.array(z.string().min(1, "Service must be a non-empty string"))
-            .min(1, "At least one service is required")
     ).optional(),
 
     amenities: z.preprocess(
@@ -189,8 +182,8 @@ export const updateHotelSchema = z.object({
     geoLocation: z.preprocess(
         (val) => typeof val === "string" ? JSON.parse(val) : val,
         z.tuple([
-            z.number({ invalid_type_error: "Latitude must be a number" }),
-            z.number({ invalid_type_error: "Longitude must be a number" }),
+            z.coerce.number({ invalid_type_error: "Latitude must be a number" }),
+            z.coerce.number({ invalid_type_error: "Longitude must be a number" }),
         ])
     ).optional(),
 });

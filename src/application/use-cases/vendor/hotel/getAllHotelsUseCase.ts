@@ -25,14 +25,33 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
 
     private calculateDynamicPrice(basePrice: number, totalRooms: number, bookedRooms: number): number {
         const occupancy = bookedRooms / totalRooms;
-        console.log('occuppancy ', occupancy, basePrice, totalRooms, bookedRooms);
 
-        if (occupancy >= 0.7) {
-            return Math.round(basePrice * 1.3);
-        } else if (occupancy >= 0.4) {
-            return Math.round(basePrice * 1.15);
-        }
-        return basePrice;
+        const DYNAMIC_PRICE = [
+            { range: [0.3, 0.5], percentage: 1.1 },
+            { range: [0.5, 0.7], percentage: 1.2 },
+            { range: [0.7, 0.9], percentage: 1.3 },
+            { range: [0.9, 1], percentage: 1.4 },
+        ]
+
+        const findPercentage = DYNAMIC_PRICE.find((val) => {
+            return occupancy >= val.range[0] && occupancy <= val.range[1];
+        });
+
+        return findPercentage ? Math.round(basePrice * findPercentage.percentage) : basePrice;
+    }
+
+    private calculateGSTPrice(basePrice: number): number {
+        const GST_PRICE = [
+            { range: [0, 1000], percentage: 0 },
+            { range: [1000, 7500], percentage: 5 },
+            { range: [7500, Infinity], percentage: 18 },
+        ]
+
+        const gstRate = GST_PRICE.find((val) => {
+            return basePrice >= val.range[0] && basePrice <= val.range[1];
+        });
+
+        return gstRate ? Math.round((basePrice * gstRate.percentage) / 100) : 0;
     }
 
     async getAllHotel(
@@ -86,11 +105,13 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
                 if (cheapestRoom) {
                     const bookedRooms = await this._bookingRepository.getBookedRoomsCount(cheapestRoom._id.toString(), filters.checkIn!, filters.checkOut!);
 
-                    const dynamicPrice = this.calculateDynamicPrice(cheapestRoom.basePrice, cheapestRoom.roomCount, bookedRooms);
+                    const DYNAMIC_PRICE = this.calculateDynamicPrice(cheapestRoom.basePrice, cheapestRoom.roomCount, bookedRooms);
+                    const GST_PRICE = this.calculateGSTPrice(cheapestRoom.basePrice);
 
                     cheapestRoom = {
                         ...cheapestRoom,
-                        basePrice: dynamicPrice,
+                        basePrice: DYNAMIC_PRICE,
+                        gstPrice: GST_PRICE,
                     };
                 }
 
