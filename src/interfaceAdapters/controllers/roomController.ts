@@ -131,11 +131,12 @@ export class RoomController implements IRoomController {
 
     async getAllRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const PAGE = Number(req.query.page) || 1
-            const LIMIT = Number(req.query.limit) || 10
-            const SEARCH = req.query.search as string
+            const PAGE = Number(req.query.page) || 1;
+            const LIMIT = Number(req.query.limit) || 10;
+            const SEARCH = req.query.search as string;
+            const HOTELID = req.query.hotelId as string;
 
-            const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(PAGE, LIMIT, SEARCH);
+            const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(PAGE, LIMIT, SEARCH, HOTELID);
             const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) }
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {

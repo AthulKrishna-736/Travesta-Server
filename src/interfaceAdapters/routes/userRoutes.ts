@@ -60,7 +60,6 @@ export class userRoutes extends BaseRouter {
         //rooms
         this.router
             .get('/room/:roomId', (req: CustomRequest, res, next) => this._roomController.getRoomById(req, res, next))
-            .get('/room/custom', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getCustomRoomDates(req, res, next));
 
         //chat
         this.router

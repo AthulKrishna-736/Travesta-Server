@@ -4,7 +4,7 @@ import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
-import { IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase } from '../../domain/interfaces/model/booking.interface';
+import { IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase, IGetVendorHotelAnalyticsUseCase } from '../../domain/interfaces/model/booking.interface';
 import { AppError } from '../../utils/appError';
 import { Pagination } from '../../shared/types/common.types';
 import { BOOKING_RES_MESSAGES } from '../../constants/resMessages';
@@ -18,6 +18,7 @@ export class BookingController implements IBookingController {
         @inject(TOKENS.GetBookingsByUserUseCase) private _getByUserUseCase: IGetBookingsByUserUseCase,
         @inject(TOKENS.CancelRoomUseCase) private _cancelBookingUseCase: ICancelBookingUseCase,
         @inject(TOKENS.GetBookingsToVendorUseCase) private _getBookingsToVendorUseCase: IGetBookingsToVendorUseCase,
+        @inject(TOKENS.GetVendorHotelAnalyticsUseCase) private _getVendorHotelAnalyticsUseCase: IGetVendorHotelAnalyticsUseCase,
     ) { }
 
     async getBookingsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -74,12 +75,15 @@ export class BookingController implements IBookingController {
             const vendorId = req.user?.userId;
             const page = Number(req.query.page);
             const limit = Number(req.query.limit);
+            const hotelId = req.query.hotelId as string;
+            const startDate = req.query.startDate as string;
+            const endDate = req.query.endDate as string;
 
             if (!vendorId) {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { bookings, total } = await this._getBookingsToVendorUseCase.getBookingsToVendor(vendorId, page, limit)
+            const { bookings, total } = await this._getBookingsToVendorUseCase.getBookingsToVendor(vendorId, page, limit, hotelId, startDate, endDate);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByUsers, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
@@ -87,11 +91,19 @@ export class BookingController implements IBookingController {
         }
     }
 
-    async getCustomRoomDates(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+    async getVendorHotelAnalytics(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
+            const vendorId = req.user?.userId;
+            const startDate = req.query.startDate as string;
+            const endDate = req.query.endDate as string;
+            if (!vendorId) {
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            }
 
+            const { message, analytics } = await this._getVendorHotelAnalyticsUseCase.getVendorHotelAnalytics(vendorId, startDate, endDate)
+            ResponseHandler.success(res, message, analytics, HttpStatusCode.OK);
         } catch (error) {
-            next(error);
+            next(error)
         }
     }
 }

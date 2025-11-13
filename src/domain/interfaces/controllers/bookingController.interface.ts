@@ -6,5 +6,5 @@ export interface IBookingController {
     getBookingsByUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     cancelBooking(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getBookingsToVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
-    getCustomRoomDates(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
+    getVendorHotelAnalytics(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
 }

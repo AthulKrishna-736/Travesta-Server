@@ -47,9 +47,21 @@ export interface ICheckRoomAvailabilityUseCase {
 }
 
 export interface IGetBookingsToVendorUseCase {
-    getBookingsToVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
+    getBookingsToVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: TResponseBookingData[], total: number }>
 }
 
 export interface IGetCustomRoomDatesUseCase {
     getCustomRoomDates(roomId: string, limit: number, checkIn: string, checkOut: string): Promise<{ message: string, roomDates: any }>;
+}
+
+export interface IGetVendorHotelAnalyticsUseCase {
+    getVendorHotelAnalytics(vendorId: string, startDate?: string, endDate?: string): Promise<{
+        message: string;
+        analytics: {
+            summary: any;
+            topHotels: Array<{ hotelId: string; hotelName: string; revenue: number; bookings: number }>;
+            monthlyRevenue: Array<{ month: string; revenue: number }>;
+            bookingStatus: Array<{ name: string; value: number; color: string }>;
+        };
+    }>
 }

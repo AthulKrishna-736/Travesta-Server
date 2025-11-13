@@ -18,8 +18,8 @@ export class GetAllRoomsUseCase implements IGetAllRoomsUseCase {
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
-    async getAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: TResponseRoomDTO[]; message: string; total: number }> {
-        const { rooms, total } = await this._roomRepository.findAllRooms(page, limit, search);
+    async getAllRooms(page: number, limit: number, search?: string, hotelId?: string): Promise<{ rooms: TResponseRoomDTO[]; message: string; total: number }> {
+        const { rooms, total } = await this._roomRepository.findAllRooms(page, limit, search, hotelId);
 
         const mappedRooms = await Promise.all(
             rooms.map(async (r) => {

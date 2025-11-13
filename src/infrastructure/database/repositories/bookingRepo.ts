@@ -5,7 +5,7 @@ import { IBooking, TCreateBookingData } from '../../../domain/interfaces/model/b
 import { IBookingRepository } from '../../../domain/interfaces/repositories/bookingRepo.interface';
 import { hotelModel } from '../models/hotelModel';
 import { roomModel } from '../models/roomModel';
-import mongoose, { ClientSession, Types } from 'mongoose';
+import mongoose, { ClientSession, PipelineStage, Types } from 'mongoose';
 import { userModel } from '../models/userModels';
 
 @injectable()
@@ -52,13 +52,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return booking.toObject();
     }
 
-    async findBookingsByUser(
-        userId: string,
-        page: number,
-        limit: number,
-        search?: string,
-        sort?: string
-    ): Promise<{ bookings: IBooking[]; total: number }> {
+    async findBookingsByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: IBooking[]; total: number }> {
         const skip = (page - 1) * limit;
 
         const filter: any = { userId };
@@ -110,20 +104,34 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
     }
 
 
-    async findBookingsByVendor(vendorId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }> {
+    async findBookingsByVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: IBooking[]; total: number }> {
         const skip = (page - 1) * limit;
         const vendorHotels = await hotelModel.find({ vendorId }, { _id: 1 }).lean();
         const hotelIds = vendorHotels.map(h => h._id);
 
         if (!hotelIds.length) return { bookings: [], total: 0 };
-        const filter = { hotelId: { $in: hotelIds } };
+        const filter: any = { hotelId: { $in: hotelIds } };
+
+        if (hotelId) {
+            filter.hotelId = hotelId;
+        }
+
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            filter.$or = [
+                { checkIn: { $gte: start, $lte: end } },
+                { checkOut: { $gte: start, $lte: end } }
+            ];
+        }
+
         const total = await this.model.countDocuments(filter);
         const bookings = await this.model.find(filter)
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit)
-            .populate({ path: 'roomId', select: 'name basePrice' })
-            .populate({ path: 'hotelId', select: 'name vendorId' })
+            .populate({ path: 'roomId', select: '_id name basePrice' })
+            .populate({ path: 'hotelId', select: '_id name vendorId' })
             .populate({ path: 'userId', select: 'firstName lastName email phone' })
             .lean<IBooking[]>();
 
@@ -204,6 +212,221 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
             { new: true }
         ).exec();
     }
+
+    async getVendorAnalyticsSummary(vendorId: string, startDate?: string, endDate?: string): Promise<{ totalRevenue: number; totalBookings: number; averageBookingValue: number; activeHotels: number; }> {
+        const dateFilter: any = {};
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            dateFilter.createdAt = { $gte: start, $lte: end };
+        }
+
+        const pipeline = [
+            {
+                $lookup: {
+                    from: 'hotels',
+                    localField: 'hotelId',
+                    foreignField: '_id',
+                    as: 'hotel'
+                }
+            },
+            { $unwind: '$hotel' },
+            {
+                $match: {
+                    'hotel.vendorId': new Types.ObjectId(vendorId),
+                    status: { $ne: 'cancelled' },
+                    payment: 'success',
+                    ...dateFilter
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalRevenue: { $sum: '$totalPrice' },
+                    totalBookings: { $sum: 1 },
+                    uniqueHotels: { $addToSet: '$hotelId' }
+                }
+            }
+        ];
+
+        const result = await this.model.aggregate(pipeline);
+
+        if (result.length === 0) {
+            return {
+                totalRevenue: 0,
+                totalBookings: 0,
+                averageBookingValue: 0,
+                activeHotels: 0
+            };
+        }
+
+        const data = result[0];
+        return {
+            totalRevenue: data.totalRevenue || 0,
+            totalBookings: data.totalBookings || 0,
+            averageBookingValue: data.totalBookings > 0
+                ? data.totalRevenue / data.totalBookings
+                : 0,
+            activeHotels: data.uniqueHotels?.length || 0
+        };
+    }
+
+    async getVendorTopHotels(vendorId: string, limit: number = 5, startDate?: string, endDate?: string): Promise<Array<{ hotelId: string; hotelName: string; revenue: number; bookings: number; }>> {
+        const dateFilter: any = {};
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            dateFilter.createdAt = { $gte: start, $lte: end };
+        }
+
+        const pipeline: PipelineStage[] = [
+            {
+                $lookup: {
+                    from: 'hotels',
+                    localField: 'hotelId',
+                    foreignField: '_id',
+                    as: 'hotel'
+                }
+            },
+            { $unwind: '$hotel' },
+            {
+                $match: {
+                    'hotel.vendorId': new Types.ObjectId(vendorId),
+                    status: { $ne: 'cancelled' },
+                    payment: 'success',
+                    ...dateFilter
+                }
+            },
+            {
+                $group: {
+                    _id: '$hotelId',
+                    hotelName: { $first: '$hotel.name' },
+                    revenue: { $sum: '$totalPrice' },
+                    bookings: { $sum: 1 }
+                }
+            },
+            { $sort: { revenue: -1 } },
+            { $limit: limit },
+            {
+                $project: {
+                    _id: 0,
+                    hotelId: { $toString: '$_id' },
+                    hotelName: 1,
+                    revenue: 1,
+                    bookings: 1
+                }
+            }
+        ];
+
+        return await this.model.aggregate(pipeline);
+    }
+
+    async getVendorMonthlyRevenue(vendorId: string, startDate?: string, endDate?: string): Promise<Array<{ month: string; revenue: number; bookings: number; }>> {
+        let start: Date;
+        let end: Date;
+
+        if (startDate && endDate) {
+            start = new Date(startDate);
+            end = new Date(endDate);
+        } else {
+            end = new Date();
+            start = new Date(end.getFullYear(), end.getMonth() - 11, 1);
+        }
+        
+        const pipeline: PipelineStage[] = [
+            {
+                $lookup: {
+                    from: 'hotels',
+                    localField: 'hotelId',
+                    foreignField: '_id',
+                    as: 'hotel'
+                }
+            },
+            { $unwind: '$hotel' },
+            {
+                $match: {
+                    'hotel.vendorId': new Types.ObjectId(vendorId),
+                    status: { $ne: 'cancelled' },
+                    payment: 'success',
+                    createdAt: { $gte: start, $lte: end }
+                }
+            },
+            {
+                $group: {
+                    _id: {
+                        year: { $year: '$createdAt' },
+                        month: { $month: '$createdAt' }
+                    },
+                    revenue: { $sum: '$totalPrice' },
+                    bookings: { $sum: 1 }
+                }
+            },
+            { $sort: { '_id.year': 1, '_id.month': 1 } },
+            {
+                $project: {
+                    _id: 0,
+                    month: {
+                        $dateToString: {
+                            format: '%b',
+                            date: {
+                                $dateFromParts: {
+                                    year: '$_id.year',
+                                    month: '$_id.month'
+                                }
+                            }
+                        }
+                    },
+                    revenue: 1,
+                    bookings: 1
+                }
+            }
+        ];
+
+        return await this.model.aggregate(pipeline);
+    }
+
+    async getVendorBookingStatus(vendorId: string, startDate?: string, endDate?: string): Promise<Array<{ status: string; count: number; }>> {
+        const dateFilter: any = {};
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            dateFilter.createdAt = { $gte: start, $lte: end };
+        }
+
+        const pipeline = [
+            {
+                $lookup: {
+                    from: 'hotels',
+                    localField: 'hotelId',
+                    foreignField: '_id',
+                    as: 'hotel'
+                }
+            },
+            { $unwind: '$hotel' },
+            {
+                $match: {
+                    'hotel.vendorId': new Types.ObjectId(vendorId),
+                    ...dateFilter
+                }
+            },
+            {
+                $group: {
+                    _id: '$status',
+                    count: { $sum: 1 }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    status: '$_id',
+                    count: 1
+                }
+            }
+        ];
+
+        return await this.model.aggregate(pipeline);
+    }
+
 
     async findCustomRoomDates(roomId: string, limit: number): Promise<any> {
         // const 

@@ -70,7 +70,7 @@ import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChat
 import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRead.UseCase";
 import { GetVendorsChatWithUserUseCase } from "../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
 import { GetVendorsChatWithAdmiinUseCase } from "../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
-import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase, IGetCustomRoomDatesUseCase } from "../../domain/interfaces/model/booking.interface";
+import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase, IGetCustomRoomDatesUseCase, IGetVendorHotelAnalyticsUseCase } from "../../domain/interfaces/model/booking.interface";
 import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from "../../domain/interfaces/model/wallet.interface";
 import { GetWalletUseCase } from "../../application/use-cases/user/wallet/getWallet.UseCase";
 import { CreateWalletUseCase } from "../../application/use-cases/user/wallet/createWallet.UseCase";
@@ -122,6 +122,7 @@ import { SubscribePlanUseCase } from "../../application/use-cases/user/subscribe
 import { GetAllPlanHistoryUseCase } from "../../application/use-cases/admin/subscription/getAllPlansHistory.UseCase";
 import { GetUserActivePlanUseCase } from "../../application/use-cases/admin/subscription/getUserActivePlanUseCase";
 import { CancelSubscriptionUseCase } from "../../application/use-cases/user/cancelSubscription";
+import { GetVendorHotelAnalyticsUseCase } from "../../application/use-cases/vendor/getVendorHotelAnalyticsUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -387,6 +388,10 @@ container.register<ICancelBookingUseCase>(TOKENS.CancelRoomUseCase, {
 
 container.register<IGetBookingsToVendorUseCase>(TOKENS.GetBookingsToVendorUseCase, {
   useClass: GetBookingsToVendorUseCase,
+})
+
+container.register<IGetVendorHotelAnalyticsUseCase>(TOKENS.GetVendorHotelAnalyticsUseCase, {
+  useClass: GetVendorHotelAnalyticsUseCase,
 })
 
 

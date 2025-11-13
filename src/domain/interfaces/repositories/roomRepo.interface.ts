@@ -8,7 +8,7 @@ export interface IRoomRepository {
     findDuplicateRooms(roomName: string, hotelId: string): Promise<boolean>;
     findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
     findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
-    findAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: IRoom[], total: number }>;
+    findAllRooms(page: number, limit: number, search?: string, hotelId?: string): Promise<{ rooms: IRoom[], total: number }>;
     findFilteredAvailableRooms(
         page: number,
         limit: number,
