@@ -1,4 +1,3 @@
-import { IUserSubscription } from "../../domain/interfaces/model/subscription.interface"
 import { TRole } from "../../shared/types/client.types"
 
 export type TCreateUserDTO = {
@@ -32,7 +31,7 @@ export type TResponseUserDTO = {
     role: TRole
     phone: number
     isBlocked: boolean
-    subscription: IUserSubscription | null
+    subscription: string | null
     profileImage?: string
     isVerified: boolean
     verificationReason?: string

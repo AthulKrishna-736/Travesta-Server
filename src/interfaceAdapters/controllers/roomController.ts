@@ -29,16 +29,6 @@ export class RoomController implements IRoomController {
             const FILES = req.files as Express.Multer.File[];
             const { hotelId, name, roomType, roomCount, bedType, guest, amenities, basePrice, images } = req.body;
 
-            let amenitiesArray: string[] = []
-            if (amenities) {
-                if (Array.isArray(amenities)) {
-                    amenitiesArray = amenities.flatMap(a => a.split(',').map((s: string) => s.trim()));
-                } else if (typeof amenities === 'string') {
-                    const parsed = JSON.parse(amenities);
-                    amenitiesArray = parsed.flatMap((a: string) => a.split(',').map(s => s.trim()));
-                }
-            }
-
             const roomData: TCreateRoomDTO = {
                 hotelId,
                 name,
@@ -46,7 +36,7 @@ export class RoomController implements IRoomController {
                 roomCount,
                 bedType,
                 guest,
-                amenities: amenitiesArray,
+                amenities: JSON.parse(amenities),
                 basePrice,
                 images,
             };
@@ -82,9 +72,9 @@ export class RoomController implements IRoomController {
                 roomCount: roomCount ? Number(roomCount) : undefined,
                 bedType,
                 guest: guest ? Number(guest) : undefined,
-                amenities: typeof amenities === 'string' ? JSON.parse(amenities) : amenities,
+                amenities: JSON.parse(amenities),
                 basePrice: basePrice ? Number(basePrice) : undefined,
-                images: typeof images == 'string' ? JSON.parse(images) : images,
+                images: images ? JSON.parse(images) : [],
             };
 
             const { room, message } = await this._updateRoomUseCase.updateRoom(ROOM_ID, updateData, FILES);

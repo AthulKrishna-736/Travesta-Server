@@ -98,7 +98,8 @@ export const createHotelSchema = z.object({
         required_error: "Description is required",
         invalid_type_error: "Description must be a string",
     })
-        .min(10, "Description must be at least 10 characters"),
+        .min(10, "Description must be at least 10 characters")
+        .max(3000, 'Description must be less than 3000 characters'),
 
     amenities: z.preprocess(
         (val) => (typeof val === "string" ? JSON.parse(val) : val),
@@ -124,7 +125,9 @@ export const createHotelSchema = z.object({
     address: z.string({
         required_error: "Address is required",
         invalid_type_error: "Address must be a string",
-    }).min(5, "Address must be at least 5 characters"),
+    })
+        .min(5, "Address must be at least 5 characters")
+        .min(50, 'Address must be less than 50 characters'),
 
     geoLocation: z.preprocess(
         (val) => (typeof val === "string" ? JSON.parse(val) : val),
@@ -151,6 +154,7 @@ export const updateHotelSchema = z.object({
 
     description: z.string()
         .min(10, "Description must be at least 10 characters")
+        .max(3000, 'Description must be less than 3000 characters')
         .optional(),
 
     rating: z.preprocess(
@@ -177,6 +181,7 @@ export const updateHotelSchema = z.object({
 
     address: z.string()
         .min(5, "Address must be at least 5 characters")
+        .max(50, 'Address must be less 50 characters')
         .optional(),
 
     geoLocation: z.preprocess(

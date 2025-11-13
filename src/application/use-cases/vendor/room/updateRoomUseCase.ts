@@ -29,8 +29,16 @@ export class UpdateRoomUseCase implements IUpdateRoomUseCase {
             throw new AppError(ROOM_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
+        const activeHotelId =
+            typeof updateData.hotelId === "string" && updateData.hotelId.trim() ? updateData.hotelId.trim() :
+                (room.hotelId && typeof room.hotelId === "object" && "_id" in room.hotelId ? room.hotelId._id.toString() : room.hotelId?.toString());
+
+        if (!activeHotelId) {
+            throw new AppError("Hotel ID is missing or invalid", HttpStatusCode.BAD_REQUEST);
+        }
+
         if (updateData.name && updateData.name.trim() !== room.name.trim()) {
-            const isDuplicate = await this._roomRepository.findDuplicateRooms(updateData.name.trim());
+            const isDuplicate = await this._roomRepository.findDuplicateRooms(updateData.name.trim(), activeHotelId);
             if (isDuplicate) {
                 throw new AppError(ROOM_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
             }
@@ -43,7 +51,7 @@ export class UpdateRoomUseCase implements IUpdateRoomUseCase {
         let uploadedImageKeys: string[] = [];
 
         if (files && files.length > 0) {
-            uploadedImageKeys = await this._imageUploader.uploadRoomImages(room.hotelId.toString(), files);
+            uploadedImageKeys = await this._imageUploader.uploadRoomImages(activeHotelId, files);
         }
 
         let keptImages: string[] = [];
@@ -57,6 +65,7 @@ export class UpdateRoomUseCase implements IUpdateRoomUseCase {
 
         const finalRoomData = {
             ...updateData,
+            hotelId: activeHotelId,
             images: finalImages,
         }
 

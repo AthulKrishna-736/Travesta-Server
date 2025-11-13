@@ -36,6 +36,7 @@ export type TResponseRoomDTO = {
     amenities: string[];
     images: string[];
     basePrice: number;
+    gstPrice?: number;
     isAvailable: boolean;
     createdAt: Date;
     updatedAt: Date;

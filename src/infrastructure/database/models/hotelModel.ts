@@ -50,7 +50,7 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
             default: "Point"
         },
         coordinates: {
-            type: [Number], 
+            type: [Number],
             required: true
         }
     },
@@ -58,6 +58,40 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
         type: Boolean,
         default: false,
     },
+    propertyRules: {
+        checkInTime: {
+            type: String,
+            default: '14:00',
+        },
+        checkOutTime: {
+            type: String,
+            default: '12:00',
+        },
+        minGuestAge: {
+            type: Number,
+            default: 18,
+        },
+        petsAllowed: {
+            type: Boolean,
+            default: false,
+        },
+        breakfastFee: {
+            type: Number,
+            min: 0,
+        },
+        outsideFoodAllowed: {
+            type: Boolean,
+            default: false,
+        },
+        idProofAccepted: {
+            type: [String],
+            enum: ['Aadhaar', 'Passport', 'DrivingLicense', 'PAN'],
+            required: true,
+        },
+        specialNotes: {
+            type: String,
+        }
+    }
 }, { timestamps: true });
 
 export const hotelModel = mongoose.model<THotelDocument>("Hotel", hotelSchema);

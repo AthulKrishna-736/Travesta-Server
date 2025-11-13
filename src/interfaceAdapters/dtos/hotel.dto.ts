@@ -1,3 +1,5 @@
+import { TIdProof } from "../../domain/interfaces/model/hotel.interface";
+
 //hotel
 export type TCreateHotelDTO = {
     name: string;
@@ -12,6 +14,16 @@ export type TCreateHotelDTO = {
         type: string,
         coordinates: [number, number]
     };
+    propertyRules: {
+        checkInTime: string;
+        checkOutTime: string;
+        minGuestAge: number;
+        petsAllowed: boolean;
+        breakfastFee?: number;
+        outsideFoodAllowed: boolean;
+        idProofAccepted: TIdProof[];
+        specialNotes?: string;
+    };
 }
 
 export type TUpdateHotelDTO = {
@@ -24,8 +36,18 @@ export type TUpdateHotelDTO = {
     city?: string;
     address?: string;
     geoLocation?: {
-        type: string,
-        coordinates: [number, number]
+        type?: string,
+        coordinates?: [number, number];
+    };
+    propertyRules?: {
+        checkInTime?: string;
+        checkOutTime?: string;
+        minGuestAge?: number;
+        petsAllowed?: boolean;
+        breakfastFee?: number;
+        outsideFoodAllowed?: boolean;
+        idProofAccepted?: TIdProof[];
+        specialNotes?: string;
     };
 }
 
@@ -43,6 +65,16 @@ export type TResponseHotelDTO = {
     geoLocation: {
         type: string,
         coordinates: [number, number]
+    };
+    propertyRules: {
+        checkInTime: string;
+        checkOutTime: string;
+        minGuestAge: number;
+        petsAllowed: boolean;
+        breakfastFee?: number;
+        outsideFoodAllowed: boolean;
+        idProofAccepted: TIdProof[];
+        specialNotes?: string;
     };
     isBlocked: boolean;
     room?: object | null;

@@ -36,8 +36,12 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         return result
     }
 
-    async findDuplicateRooms(roomName: string): Promise<boolean> {
-        const rooms = await this.model.countDocuments({ name: { $regex: `^${roomName}$`, $options: 'i' } });
+    async findDuplicateRooms(roomName: string, hotelId: string): Promise<boolean> {
+        const rooms = await this.model.countDocuments({
+            hotelId: hotelId,
+            name: { $regex: `^${roomName}$`, $options: 'i' } 
+        });
+
         return rooms > 0;
     }
 

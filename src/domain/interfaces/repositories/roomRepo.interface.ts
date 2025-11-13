@@ -5,7 +5,7 @@ export interface IRoomRepository {
     findRoomById(roomId: string): Promise<IRoom | null>;
     updateRoom(roomId: string, data: TUpdateRoomData): Promise<IRoom | null>;
     deleteRoom(roomId: string): Promise<boolean>;
-    findDuplicateRooms(roomName: string): Promise<boolean>;
+    findDuplicateRooms(roomName: string, hotelId: string): Promise<boolean>;
     findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
     findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
     findAllRooms(page: number, limit: number, search?: string): Promise<{ rooms: IRoom[], total: number }>;

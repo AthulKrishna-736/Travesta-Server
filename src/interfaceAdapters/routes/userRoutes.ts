@@ -54,12 +54,12 @@ export class userRoutes extends BaseRouter {
 
         //hotels
         this.router
-            .get('/hotels', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getAllHotelsToUser(req, res, next))
-            .get('/hotels/:hotelId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelById(req, res, next));
+            .get('/hotels', (req: CustomRequest, res, next) => this._hotelController.getAllHotelsToUser(req, res, next))
+            .get('/hotels/:hotelId', (req: CustomRequest, res, next) => this._hotelController.getHotelById(req, res, next));
 
         //rooms
         this.router
-            .get('/room/:roomId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._roomController.getRoomById(req, res, next))
+            .get('/room/:roomId', (req: CustomRequest, res, next) => this._roomController.getRoomById(req, res, next))
             .get('/room/custom', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getCustomRoomDates(req, res, next));
 
         //chat
@@ -78,7 +78,7 @@ export class userRoutes extends BaseRouter {
 
         //amenities
         this.router.route('/amenities')
-            .get(authMiddleware, authorizeRoles('user'), (req: CustomRequest, res, next) => this._amenityController.getUsedActiveAmenities(req, res, next));
+            .get((req: CustomRequest, res, next) => this._amenityController.getUsedActiveAmenities(req, res, next));
 
         //subscription
         this.router

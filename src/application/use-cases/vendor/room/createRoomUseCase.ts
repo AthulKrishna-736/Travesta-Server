@@ -31,7 +31,7 @@ export class CreateRoomUseCase implements ICreateRoomUseCase {
             throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
         }
 
-        const isDuplicate = await this._roomRepository.findDuplicateRooms(roomData.name.trim());
+        const isDuplicate = await this._roomRepository.findDuplicateRooms(roomData.name.trim(), roomData.hotelId.toString());
         if (isDuplicate) {
             throw new AppError(ROOM_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
         }
