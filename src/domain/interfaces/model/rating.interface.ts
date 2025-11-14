@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { TResponseRatingDTO } from "../../../interfaceAdapters/dtos/rating.dto";
+import { TCreateRatingDTO, TResponseRatingDTO, TUpdateRatingDTO } from "../../../interfaceAdapters/dtos/rating.dto";
 
 //rating model
 export interface IRating {
@@ -11,6 +11,8 @@ export interface IRating {
     facilities: number;
     room: number;
     moneyValue: number;
+    review: string;
+    images: string[];
     createdAt: Date;
     updatedAt: Date;
 }
@@ -21,14 +23,15 @@ export type TResponseRating = IRating;
 
 
 export interface ICreateRatingUseCase {
-    createRating(create: TCreateRating): Promise<{ rating: TResponseRatingDTO, message: string }>;
+    createRating(create: TCreateRatingDTO): Promise<{ rating: TResponseRatingDTO, message: string }>;
 }
 
 export interface IUpdateRatingUseCase {
-    updateRating(ratingId: string, update: TUpdateRating): Promise<{ rating: TResponseRatingDTO, message: string }>
+    updateRating(ratingId: string, update: TUpdateRatingDTO): Promise<{ rating: TResponseRatingDTO, message: string }>
 }
 
 export interface IGetRatingUseCase {
     getAllRatings(): Promise<{ ratings: TResponseRatingDTO[], message: string }>
-    getUserRatings(userId: string): Promise<{ ratings: TResponseRatingDTO[], messge: string }>
+    getUserRatings(userId: string): Promise<{ ratings: TResponseRatingDTO[], message: string }>
+    getHotelRatings(hotelId: string): Promise<{ ratings: TResponseRatingDTO[], message: string }>
 }

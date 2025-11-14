@@ -7,4 +7,6 @@ export interface IRatingRepository {
     getAllRatings(): Promise<IRating[] | null>;
     getUserRatings(userId: string): Promise<IRating[] | null>;
     getHotelRatings(hotelId: string): Promise<IRating[] | null>;
+    findUserDuplicateHotelRatings(userId: string, hotelId: string): Promise<IRating | null>
+    getHotelRatingSummary(hotelId: string): Promise<{ totalRatings: number; averageRating: number; averages: { hospitality: number; cleanliness: number; facilities: number; room: number; moneyValue: number; }; }>
 }

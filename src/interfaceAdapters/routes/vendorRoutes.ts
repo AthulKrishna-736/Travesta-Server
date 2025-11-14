@@ -15,6 +15,7 @@ import { IChatController } from "../../domain/interfaces/controllers/chatControl
 import { IBookingController } from "../../domain/interfaces/controllers/bookingController.interface";
 import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
 import { TOKENS } from "../../constants/token";
+import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 
 @injectable()
 export class vendorRoutes extends BaseRouter {
@@ -26,6 +27,7 @@ export class vendorRoutes extends BaseRouter {
         @inject(TOKENS.ChatController) private _chatController: IChatController,
         @inject(TOKENS.BookingController) private _bookingController: IBookingController,
         @inject(TOKENS.AmenityController) private _amenityController: IAmenityController,
+        @inject(TOKENS.RatingController) private _ratingController: IRatingController,
     ) {
         super();
         this.initializeRoutes()
@@ -83,5 +85,8 @@ export class vendorRoutes extends BaseRouter {
         this.router
             .get('/bookings', authMiddleware, authorizeRoles('vendor', 'admin'), checkUserBlock, (req, res, next) => this._bookingController.getBookingsToVendor(req, res, next))
             .get('/analytics', authMiddleware, authorizeRoles('vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getVendorHotelAnalytics(req, res, next))
+
+        this.router
+            .get('/ratings/:hotelId', (req: CustomRequest, res, next) => this._ratingController.getHotelRatings(req, res, next))
     }
 }

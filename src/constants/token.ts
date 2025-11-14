@@ -12,6 +12,7 @@ export const TOKENS = {
   WalletController: 'WalletController',
   BookingController: 'BookingController',
   SubscriptionController: 'SubscriptionController',
+  RatingController: 'RatingController',
 
   // Repositories
   UserRepository: 'UserRepository',
@@ -24,6 +25,7 @@ export const TOKENS = {
   WalletRepository: 'WalletRepository',
   TransactionRepository: 'TransactionRepository',
   SubscriptionHistoryRepository: 'SubscriptionHistoryRepository',
+  RatingRepository: 'RatingRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -125,5 +127,10 @@ export const TOKENS = {
   BookingTransactionUseCase: 'BookingTransactionUseCase',
   AddMoneyToWalletUseCase: 'AddMoneyToWalletUseCase',
   GetTransactionsUseCase: 'GetTransactionsUseCase',
+
+  //rating UseCases
+  CreateRatingUseCase: 'CreateRatingUseCase',
+  UpdateRatingUseCase: 'UpdateRatingUseCase',
+  GetRatingsUseCase: 'GetRatingsUseCase',
 
 };

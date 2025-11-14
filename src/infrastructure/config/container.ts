@@ -123,6 +123,14 @@ import { GetAllPlanHistoryUseCase } from "../../application/use-cases/admin/subs
 import { GetUserActivePlanUseCase } from "../../application/use-cases/admin/subscription/getUserActivePlanUseCase";
 import { CancelSubscriptionUseCase } from "../../application/use-cases/user/cancelSubscription";
 import { GetVendorHotelAnalyticsUseCase } from "../../application/use-cases/vendor/getVendorHotelAnalyticsUseCase";
+import { IRatingRepository } from "../../domain/interfaces/repositories/ratingRepo.interface";
+import { RatingRepository } from "../database/repositories/ratingRepo";
+import { ICreateRatingUseCase, IGetRatingUseCase, IUpdateRatingUseCase } from "../../domain/interfaces/model/rating.interface";
+import { CreateRatingUseCase } from "../../application/use-cases/rating/createRatingUseCase";
+import { UpdateRatingUseCase } from "../../application/use-cases/rating/updateRatingUseCase";
+import { GetRatingUseCase } from "../../application/use-cases/rating/getRatingsUseCase";
+import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
+import { RatingController } from "../../interfaceAdapters/controllers/ratingController";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -165,6 +173,9 @@ container.register<ISubscriptionHistoryRepository>(TOKENS.SubscriptionHistoryRep
   useClass: SubscriptionHistoryRepository,
 })
 
+container.register<IRatingRepository>(TOKENS.RatingRepository, {
+  useClass: RatingRepository,
+})
 
 //controllers
 container.register<IAuthController>(TOKENS.AuthController, {
@@ -210,6 +221,10 @@ container.register<IAmenityController>(TOKENS.AmenityController, {
 container.register<SubscriptionController>(TOKENS.SubscriptionController, {
   useClass: SubscriptionController,
 });
+
+container.register<IRatingController>(TOKENS.RatingController, {
+  useClass: RatingController,
+})
 
 
 //services
@@ -518,3 +533,18 @@ container.register<ISubscribePlanUseCase>(TOKENS.SubscribePlanUseCase, {
 container.register<IGetAllPlanHistoryUseCase>(TOKENS.GetAllPlanHistoryUseCase, {
   useClass: GetAllPlanHistoryUseCase,
 })
+
+
+//ratings
+container.register<ICreateRatingUseCase>(TOKENS.CreateRatingUseCase, {
+  useClass: CreateRatingUseCase,
+})
+
+container.register<IUpdateRatingUseCase>(TOKENS.UpdateRatingUseCase, {
+  useClass: UpdateRatingUseCase,
+})
+
+container.register<IGetRatingUseCase>(TOKENS.GetRatingsUseCase, {
+  useClass: GetRatingUseCase,
+})
+

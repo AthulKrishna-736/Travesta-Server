@@ -2,24 +2,27 @@ import { Types } from "mongoose"
 
 
 export type TCreateRatingDTO = {
-    hotelId: Types.ObjectId | string;
-    userId: Types.ObjectId | string;
+    hotelId: string;
+    userId: string;
     hospitality: number;
     cleanliness: number;
     facilities: number;
     room: number;
     moneyValue: number;
+    review: string;
+    images?: string[];
 }
 
-export type TUpdateRating = {
-    id: Types.ObjectId | string;
-    hotelId?: Types.ObjectId | string;
-    userId?: Types.ObjectId | string;
+export type TUpdateRatingDTO = {
+    hotelId?: string;
+    userId?: string;
     hospitality?: number;
     cleanliness?: number;
     facilities?: number;
     room?: number;
     moneyValue?: number;
+    review?: string;
+    images?: string[]
 }
 
 export type TResponseRatingDTO = {
@@ -31,6 +34,8 @@ export type TResponseRatingDTO = {
     facilities: number;
     room: number;
     moneyValue: number;
+    review: string;
+    images?: string[];
     createdAt: Date;
     updatedAt: Date;
 }

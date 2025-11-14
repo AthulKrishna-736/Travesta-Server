@@ -64,6 +64,7 @@ export class ResponseMapper {
             geoLocation: hotel.geoLocation,
             isBlocked: hotel.isBlocked,
             room: (hotel as any).cheapestRoom ?? null,
+            rating: (hotel as any).rating,
             propertyRules: hotel.propertyRules,
             createdAt: hotel.createdAt,
             updatedAt: hotel.updatedAt,
@@ -131,12 +132,14 @@ export class ResponseMapper {
         return {
             id: rating._id as string,
             hotelId: rating.hotelId.toString(),
-            userId: rating.userId.toString(),
+            userId: rating.userId,
             hospitality: rating.hospitality,
             cleanliness: rating.cleanliness,
             facilities: rating.facilities,
             room: rating.room,
             moneyValue: rating.moneyValue,
+            review: rating.review,
+            images: rating.images,
             createdAt: rating.createdAt,
             updatedAt: rating.updatedAt,
         }

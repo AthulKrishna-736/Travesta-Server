@@ -44,6 +44,14 @@ const ratingSchema = new Schema({
         max: 5,
         required: true,
     },
+    review: {
+        type: String,
+        required: true,
+    },
+    images: {
+        type: [String],
+        default: [],
+    }
 }, { timestamps: true });
 
 

@@ -61,6 +61,7 @@ export type TResponseHotelDTO = {
     tags: string[];
     state: string;
     city: string;
+    rating?: object
     address: string;
     geoLocation: {
         type: string,

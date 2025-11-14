@@ -12,6 +12,7 @@ import { IHotelRepository } from "../../../../domain/interfaces/repositories/hot
 import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
 import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
+import { IRatingRepository } from "../../../../domain/interfaces/repositories/ratingRepo.interface";
 
 
 @injectable()
@@ -20,6 +21,7 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
         @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.AmenitiesRepository) private _amenitiesRepository: IAmenitiesRepository,
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
+        @inject(TOKENS.RatingRepository) private _ratingRepository: IRatingRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
@@ -115,9 +117,12 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
                     };
                 }
 
+                const ratingSummary = await this._ratingRepository.getHotelRatingSummary(h._id.toString());
+
                 return {
                     ...h,
-                    cheapestRoom
+                    cheapestRoom,
+                    rating: ratingSummary,
                 };
             })
         );

@@ -3,6 +3,7 @@ import { BaseRepository } from "./baseRepo";
 import { ratingModel, TRatingDocument, } from "../models/ratingModel";
 import { IRatingRepository } from "../../../domain/interfaces/repositories/ratingRepo.interface";
 import { TCreateRating, IRating, TUpdateRating } from "../../../domain/interfaces/model/rating.interface";
+import mongoose from "mongoose";
 
 
 @injectable()
@@ -37,7 +38,82 @@ export class RatingRepository extends BaseRepository<TRatingDocument> implements
     }
 
     async getHotelRatings(hotelId: string): Promise<IRating[] | null> {
-        const ratings = await this.model.find({ hotelId: hotelId }).exec();
+        const ratings = await this.model
+            .find({ hotelId })
+            .populate({
+                path: "userId",
+                select: "firstName lastName profileImage _id"
+            })
+            .exec();
+
         return ratings;
     }
+
+
+    async findUserDuplicateHotelRatings(userId: string, hotelId: string): Promise<IRating | null> {
+        const rating = await this.model.findOne({ userId, hotelId }).exec();
+        return rating;
+    }
+
+    async getHotelRatingSummary(hotelId: string): Promise<{
+        totalRatings: number;
+        averageRating: number;
+        averages: {
+            hospitality: number;
+            cleanliness: number;
+            facilities: number;
+            room: number;
+            moneyValue: number;
+        };
+    }> {
+        const result = await this.model.aggregate([
+            { $match: { hotelId: new mongoose.Types.ObjectId(hotelId) } },
+            {
+                $group: {
+                    _id: "$hotelId",
+                    totalRatings: { $sum: 1 },
+                    hospitality: { $avg: "$hospitality" },
+                    cleanliness: { $avg: "$cleanliness" },
+                    facilities: { $avg: "$facilities" },
+                    room: { $avg: "$room" },
+                    moneyValue: { $avg: "$moneyValue" },
+                    averageRating: {
+                        $avg: {
+                            $avg: ["$hospitality", "$cleanliness", "$facilities", "$room", "$moneyValue"]
+                        }
+                    }
+                }
+            }
+        ]);
+
+        // If no data found → return default values
+        if (!result || result.length === 0) {
+            return {
+                totalRatings: 0,
+                averageRating: 0,
+                averages: {
+                    hospitality: 0,
+                    cleanliness: 0,
+                    facilities: 0,
+                    room: 0,
+                    moneyValue: 0
+                }
+            };
+        }
+
+        const data = result[0];
+
+        return {
+            totalRatings: data.totalRatings,
+            averageRating: Number(data.averageRating.toFixed(1)),
+            averages: {
+                hospitality: Number(data.hospitality.toFixed(1)),
+                cleanliness: Number(data.cleanliness.toFixed(1)),
+                facilities: Number(data.facilities.toFixed(1)),
+                room: Number(data.room.toFixed(1)),
+                moneyValue: Number(data.moneyValue.toFixed(1))
+            }
+        };
+    }
+
 } 
