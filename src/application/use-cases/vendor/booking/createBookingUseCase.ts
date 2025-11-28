@@ -16,7 +16,9 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
     ) { }
 
     async createBooking(data: TCreateBookingData, session: ClientSession): Promise<{ booking: TResponseBookingData; message: string }> {
-        if (new Date(data.checkIn) < new Date()) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (new Date(data.checkIn) < today) {
             throw new AppError('Check-in date cannot be in the past', HttpStatusCode.BAD_REQUEST);
         }
 

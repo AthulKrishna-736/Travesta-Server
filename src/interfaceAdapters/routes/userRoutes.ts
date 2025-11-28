@@ -18,6 +18,7 @@ import { IWalletController } from "../../domain/interfaces/controllers/walletCon
 import { ISubscriptionController } from "../../domain/interfaces/controllers/subscriptionController.interface";
 import { IRoomController } from "../../domain/interfaces/controllers/roomController.interface";
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
+import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
 
 @injectable()
 export class userRoutes extends BaseRouter {
@@ -32,6 +33,7 @@ export class userRoutes extends BaseRouter {
         @inject(TOKENS.AmenityController) private _amenityController: IAmenityController,
         @inject(TOKENS.SubscriptionController) private _subscriptionController: ISubscriptionController,
         @inject(TOKENS.RatingController) private _ratingController: IRatingController,
+        @inject(TOKENS.CouponController) private _couponController: ICouponController,
     ) {
         super();
         this.initializeRoutes();
@@ -107,5 +109,9 @@ export class userRoutes extends BaseRouter {
         this.router.route('/rating')
             .post(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._ratingController.createRating(req, res, next))
             .put(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._ratingController.updateRating(req, res, next))
+
+        //coupons
+        this.router
+            .get('/coupons/:vendorId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.getUserCoupons(req, res, next))
     }
 }

@@ -36,15 +36,24 @@ const bookingSchema: Schema = new Schema<TBookingDocument>(
             type: Number,
             required: true
         },
+        roomsCount: {
+            type: Number,
+            required: true,
+        },
+        couponId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Coupon',
+            default: null
+        },
         status: {
             type: String,
             enum: ['confirmed', 'cancelled', 'pending'],
             default: 'pending',
         },
         payment: {
-                type: String,
-                enum: ['pending', 'success', 'failed', 'refunded'],
-                default: 'pending',
+            type: String,
+            enum: ['pending', 'success', 'failed', 'refunded'],
+            default: 'pending',
         },
     },
     { timestamps: true }

@@ -13,6 +13,7 @@ export const TOKENS = {
   BookingController: 'BookingController',
   SubscriptionController: 'SubscriptionController',
   RatingController: 'RatingController',
+  CouponController: 'CouponController',
 
   // Repositories
   UserRepository: 'UserRepository',
@@ -26,6 +27,7 @@ export const TOKENS = {
   TransactionRepository: 'TransactionRepository',
   SubscriptionHistoryRepository: 'SubscriptionHistoryRepository',
   RatingRepository: 'RatingRepository',
+  CouponRepository: 'CouponRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -134,4 +136,10 @@ export const TOKENS = {
   UpdateRatingUseCase: 'UpdateRatingUseCase',
   GetRatingsUseCase: 'GetRatingsUseCase',
 
+  //coupon UseCases
+  CreateCouponUseCase: 'CreateCouponUseCase',
+  UpdateCouponUseCase: 'UpdateCouponUseCase',
+  GetVendorCouponsUseCase: 'GetVendorCouponsUseCase',
+  GetUserCouponsUseCase: 'GetUserCouponsUseCase',
+  ToggleCouponStatusUseCase: 'ToggleCouponStatusUseCase',
 };

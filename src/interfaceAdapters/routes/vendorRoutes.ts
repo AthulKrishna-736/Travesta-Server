@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema, createRoomSchema, updateRoomSchema, updateHotelSchema } from "../../shared/types/zodValidation";
+import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema, createRoomSchema, updateRoomSchema, updateHotelSchema, createCouponSchema, updateCouponSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
@@ -16,6 +16,7 @@ import { IBookingController } from "../../domain/interfaces/controllers/bookingC
 import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
 import { TOKENS } from "../../constants/token";
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
+import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
 
 @injectable()
 export class vendorRoutes extends BaseRouter {
@@ -28,6 +29,7 @@ export class vendorRoutes extends BaseRouter {
         @inject(TOKENS.BookingController) private _bookingController: IBookingController,
         @inject(TOKENS.AmenityController) private _amenityController: IAmenityController,
         @inject(TOKENS.RatingController) private _ratingController: IRatingController,
+        @inject(TOKENS.CouponController) private _couponController: ICouponController,
     ) {
         super();
         this.initializeRoutes()
@@ -88,5 +90,14 @@ export class vendorRoutes extends BaseRouter {
 
         this.router
             .get('/ratings/:hotelId', (req: CustomRequest, res, next) => this._ratingController.getHotelRatings(req, res, next))
+
+        //coupons
+        this.router.route('/coupon')
+            .get(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.getVendorCoupons(req, res, next))
+            .post(authMiddleware, authorizeRoles('vendor'), checkUserBlock, validateRequest(createCouponSchema), (req: CustomRequest, res, next) => this._couponController.createCoupon(req, res, next))
+
+        this.router.route('/coupon/:couponId')
+            .patch(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.toggleCouponStatus(req, res, next))
+            .put(authMiddleware, authorizeRoles('vendor'), checkUserBlock, validateRequest(updateCouponSchema), (req: CustomRequest, res, next) => this._couponController.updateCoupon(req, res, next))
     }
 }

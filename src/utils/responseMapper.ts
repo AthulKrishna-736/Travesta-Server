@@ -13,6 +13,8 @@ import { TResponseWalletDTO } from "../interfaceAdapters/dtos/wallet.dto";
 import { TResponseTransactionDTO } from "../interfaceAdapters/dtos/transactions.dto";
 import { IRating } from "../domain/interfaces/model/rating.interface";
 import { TResponseRatingDTO } from "../interfaceAdapters/dtos/rating.dto";
+import { ICoupon } from "../domain/interfaces/model/coupon.interface";
+import { TResponseCouponDTO } from "../interfaceAdapters/dtos/coupon.dto";
 
 export class ResponseMapper {
     static mapSubscriptionToResponseDTO(plan: ISubscription): TResponseSubscriptionDTO {
@@ -141,6 +143,24 @@ export class ResponseMapper {
             images: rating.images,
             createdAt: rating.createdAt,
             updatedAt: rating.updatedAt,
+        }
+    }
+
+    static mapCouponResponseToDTO(coupon: ICoupon): TResponseCouponDTO {
+        return {
+            id: coupon._id!.toString(),
+            vendorId: coupon.vendorId.toString(),
+            name: coupon.name,
+            code: coupon.code,
+            type: coupon.type,
+            value: coupon.value,
+            minPrice: coupon.minPrice,
+            maxPrice: coupon.maxPrice,
+            startDate: coupon.startDate,
+            endDate: coupon.endDate,
+            isBlocked: coupon.isBlocked,
+            createdAt: coupon.createdAt,
+            updatedAt: coupon.updatedAt,
         }
     }
 }

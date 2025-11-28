@@ -76,7 +76,7 @@ export class WalletController implements IWalletController {
                 throw new AppError('User, Vendor id or method is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { hotelId, roomId, checkIn, checkOut, guests, totalPrice } = req.body;
+            const { hotelId, roomId, checkIn, checkOut, guests, totalPrice, roomsCount, couponId } = req.body;
 
             if (!hotelId || !roomId || !checkIn || !checkOut || !guests || !totalPrice) {
                 throw new AppError('booking confirmation fields is missing', HttpStatusCode.BAD_REQUEST);
@@ -99,6 +99,8 @@ export class WalletController implements IWalletController {
                 roomId,
                 checkIn: checkInDate,
                 checkOut: checkOutDate,
+                roomsCount,
+                couponId,
                 guests,
                 totalPrice,
             };

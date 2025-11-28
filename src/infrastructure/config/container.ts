@@ -132,6 +132,16 @@ import { GetRatingUseCase } from "../../application/use-cases/rating/getRatingsU
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 import { RatingController } from "../../interfaceAdapters/controllers/ratingController";
 import { GetHotelDetailsWithRoomUseCase } from "../../application/use-cases/vendor/hotel/getHotelDetailWithRoomUseCase";
+import { ICouponRepository } from "../../domain/interfaces/repositories/couponRepo.interface";
+import { CouponRepository } from "../database/repositories/couponRepo";
+import { ICreateCouponUseCase, IGetUserCouponsUseCase, IGetVendorCouponsUseCase, IToggleCouponStatusUseCase, IUpdateCouponUseCase } from "../../domain/interfaces/model/coupon.interface";
+import { CreateCouponUseCase } from "../../application/use-cases/coupon/createCouponUseCase";
+import { UpdateCouponUseCase } from "../../application/use-cases/coupon/updateCouponUseCase";
+import { GetVendorCouponsUseCase } from "../../application/use-cases/coupon/getVendorCouponsUseCase";
+import { GetUserCouponsUseCase } from "../../application/use-cases/coupon/getUserCouponsUseCase";
+import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
+import { CouponController } from "../../interfaceAdapters/controllers/couponController";
+import { ToggleCouponStatusUseCase } from "../../application/use-cases/coupon/toggleCouponStatusUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -176,6 +186,10 @@ container.register<ISubscriptionHistoryRepository>(TOKENS.SubscriptionHistoryRep
 
 container.register<IRatingRepository>(TOKENS.RatingRepository, {
   useClass: RatingRepository,
+})
+
+container.register<ICouponRepository>(TOKENS.CouponRepository, {
+  useClass: CouponRepository,
 })
 
 //controllers
@@ -225,6 +239,10 @@ container.register<SubscriptionController>(TOKENS.SubscriptionController, {
 
 container.register<IRatingController>(TOKENS.RatingController, {
   useClass: RatingController,
+})
+
+container.register<ICouponController>(TOKENS.CouponController, {
+  useClass: CouponController,
 })
 
 
@@ -553,3 +571,23 @@ container.register<IGetRatingUseCase>(TOKENS.GetRatingsUseCase, {
   useClass: GetRatingUseCase,
 })
 
+//coupons
+container.register<ICreateCouponUseCase>(TOKENS.CreateCouponUseCase, {
+  useClass: CreateCouponUseCase,
+})
+
+container.register<IUpdateCouponUseCase>(TOKENS.UpdateCouponUseCase, {
+  useClass: UpdateCouponUseCase,
+})
+
+container.register<IGetVendorCouponsUseCase>(TOKENS.GetVendorCouponsUseCase, {
+  useClass: GetVendorCouponsUseCase,
+})
+
+container.register<IGetUserCouponsUseCase>(TOKENS.GetUserCouponsUseCase, {
+  useClass: GetUserCouponsUseCase,
+})
+
+container.register<IToggleCouponStatusUseCase>(TOKENS.ToggleCouponStatusUseCase, {
+  useClass: ToggleCouponStatusUseCase,
+})
