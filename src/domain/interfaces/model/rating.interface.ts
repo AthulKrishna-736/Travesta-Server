@@ -33,5 +33,5 @@ export interface IUpdateRatingUseCase {
 export interface IGetRatingUseCase {
     getAllRatings(): Promise<{ ratings: TResponseRatingDTO[], message: string }>
     getUserRatings(userId: string): Promise<{ ratings: TResponseRatingDTO[], message: string }>
-    getHotelRatings(hotelId: string): Promise<{ ratings: TResponseRatingDTO[], message: string }>
+    getHotelRatings(hotelId: string, page: number, limit: number): Promise<{ ratings: TResponseRatingDTO[], total: number, message: string }>
 }

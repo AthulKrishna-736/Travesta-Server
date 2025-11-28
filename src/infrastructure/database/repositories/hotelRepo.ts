@@ -3,7 +3,8 @@ import { BaseRepository } from "./baseRepo";
 import { hotelModel, THotelDocument } from "../models/hotelModel";
 import { IHotel, TCreateHotelData, TUpdateHotelData } from "../../../domain/interfaces/model/hotel.interface";
 import { IHotelRepository } from "../../../domain/interfaces/repositories/hotelRepo.interface";
-import mongoose from "mongoose";
+import mongoose, { PipelineStage, QueryOptions } from "mongoose";
+import { IRoom } from "../../../domain/interfaces/model/room.interface";
 
 @injectable()
 export class HotelRepository extends BaseRepository<THotelDocument> implements IHotelRepository {
@@ -17,7 +18,9 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
     }
 
     async findHotelById(hotelId: string): Promise<IHotel | null> {
-        const hotel = await this.findById(hotelId);
+        const hotel = await this.model
+            .findById(hotelId)
+            .populate("amenities", "_id name")
         return hotel?.toObject() || null;
     }
 
@@ -61,158 +64,183 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
     async findAllHotels(
         page: number,
         limit: number,
-        filters: {
-            search?: string;
-            hotelAmenities?: string[];
-            roomAmenities?: string[];
-            roomType?: string[];
-            checkIn: string;
-            checkOut: string;
-            guests?: number;
-            minPrice?: number,
-            maxPrice?: number,
-            sort?: string;
-        }
-    ): Promise<{ hotels: any[]; total: number }> {
+        checkIn: string,
+        checkOut: string,
+        geoLocation: { long: number, lat: number },
+        search?: string,
+        hotelAmenities?: string[],
+        roomAmenities?: string[],
+        roomType?: string[],
+        minPrice?: number,
+        maxPrice?: number,
+        sort?: string,
+    ): Promise<{ hotels: Array<IHotel & { rooms: IRoom[], bookings: { _id: string, bookedRooms: number }[] }>, total: number }> {
         const skip = (page - 1) * limit;
 
-        if (!filters.checkIn || !filters.checkOut) {
-            throw new Error("Check-in and check-out dates are required");
+        const hotelAmenitiesIds = hotelAmenities?.map(id => new mongoose.Types.ObjectId(id));
+        const roomAmenitiesIds = roomAmenities?.map(id => new mongoose.Types.ObjectId(id));
+
+        const hotelQuery: QueryOptions = { isBlocked: false };
+        const roomQuery: QueryOptions = { isAvailable: true };
+
+        //hotel query
+        if (search) {
+            const regex = new RegExp(search, 'i');
+            hotelQuery.$or = [{ name: regex }, { city: regex }, { state: regex }];
         }
 
-        const hotelAmenitiesIds = filters.hotelAmenities?.map(id => new mongoose.Types.ObjectId(id));
-        const roomAmenitiesIds = filters.roomAmenities?.map(id => new mongoose.Types.ObjectId(id));
-
-        const checkInDate = new Date(filters.checkIn);
-        const checkOutDate = new Date(filters.checkOut);
-
-        const hotelMatch: any = { isBlocked: false };
-        if (filters.search) {
-            const regex = new RegExp(filters.search, "i");
-            hotelMatch.$or = [{ name: regex }, { city: regex }, { state: regex }];
-        }
-        if (hotelAmenitiesIds?.length) {
-            hotelMatch.amenities = { $all: hotelAmenitiesIds };
+        if (hotelAmenities && hotelAmenities.length > 0) {
+            hotelQuery.amenities = { $all: hotelAmenitiesIds };
         }
 
-        const pipeline: any[] = [
-            { $match: hotelMatch },
+        //room query
+        if (roomAmenities && roomAmenities.length > 0) {
+            roomQuery.amenities = { $all: roomAmenitiesIds };
+        }
 
-            // Lookup rooms
+        if (roomType && roomType.length > 0) {
+            roomQuery.roomType = { $in: roomType };
+        }
+
+        if (minPrice !== undefined && maxPrice !== undefined) {
+            roomQuery.basePrice = { $gte: minPrice, $lte: maxPrice };
+        }
+
+        //aggregation
+        const pipeline: PipelineStage[] = [
+
+            //geolocation based search
             {
-                $lookup: {
-                    from: "rooms",
-                    localField: "_id",
-                    foreignField: "hotelId",
-                    as: "rooms",
-                },
+                $geoNear: {
+                    near: {
+                        type: "Point",
+                        coordinates: [geoLocation.long, geoLocation.lat],
+                    },
+                    distanceField: "distance",
+                    spherical: true,
+                    maxDistance: 20000,
+                }
             },
 
-            //Lookup amenities
+            //hotel query
             {
-                $lookup: {
-                    from: "amenities",
-                    localField: "amenities",
-                    foreignField: "_id",
-                    as: "amenities",
-                    pipeline: [{ $project: { _id: 1, name: 1 } }],
-                },
+                $match: hotelQuery,
             },
 
-            // Lookup bookings
-            {
-                $lookup: {
-                    from: "bookings",
-                    let: { roomIds: "$rooms._id" },
-                    pipeline: [
-                        { $match: { status: { $ne: "cancelled" } } }
-                    ],
-                    as: "bookings",
-                },
-            },
-
-            // Filter rooms that match filters AND have no overlapping bookings
+            //build dates based on hotel timing
             {
                 $addFields: {
-                    availableRooms: {
-                        $filter: {
-                            input: "$rooms",
-                            as: "room",
-                            cond: {
-                                $and: [
-                                    filters.roomType ? { $in: ["$$room.roomType", filters.roomType] } : true,
-                                    roomAmenitiesIds?.length ? { $setIsSubset: [roomAmenitiesIds, "$$room.amenities"] } : true,
-                                    filters.guests ? { $gte: ["$$room.guest", filters.guests] } : true,
-                                    filters.minPrice ? { $gte: ["$$room.basePrice", filters.minPrice] } : true,
-                                    filters.maxPrice ? { $lte: ["$$room.basePrice", filters.maxPrice] } : true,
-
-                                    // ✅ Check if roomCount > number of overlapping bookings
-                                    {
-                                        $gt: [
-                                            "$$room.roomCount",
-                                            {
-                                                $size: {
-                                                    $filter: {
-                                                        input: "$bookings",
-                                                        as: "b",
-                                                        cond: {
-                                                            $and: [
-                                                                { $eq: ["$$b.roomId", "$$room._id"] },
-                                                                { $lt: [checkInDate, "$$b.checkOut"] },
-                                                                { $gt: [checkOutDate, "$$b.checkIn"] },
-                                                                { $ne: ["$$b.status", "cancelled"] }
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
+                    hotelCheckIn: {
+                        $dateFromString: {
+                            dateString: { $concat: [checkIn, 'T', '$propertyRules.checkInTime'] }
+                        }
+                    },
+                    hotelCheckOut: {
+                        $dateFromString: {
+                            dateString: { $concat: [checkOut, 'T', '$propertyRules.checkOutTime'] }
                         }
                     }
                 }
             },
 
-
-            // Only keep hotels with at least one available room
-            { $match: { "availableRooms.0": { $exists: true } } },
-
-            // Pick cheapest room
+            //amenities collection lookup
             {
-                $addFields: {
-                    cheapestRoom: { $arrayElemAt: [{ $sortArray: { input: "$availableRooms", sortBy: { basePrice: 1 } } }, 0] },
-                },
+                $lookup: {
+                    from: 'amenities',
+                    localField: 'amenities',
+                    foreignField: '_id',
+                    as: 'amenities',
+                    pipeline: [
+                        {
+                            $project: {
+                                _id: 1,
+                                name: 1,
+                                type: 1,
+                            }
+                        }
+                    ]
+                }
             },
 
-            ...(filters.sort === "price_asc"
-                ? [{ $sort: { "cheapestRoom.basePrice": 1 } }]
-                : filters.sort === "price_desc"
-                    ? [{ $sort: { "cheapestRoom.basePrice": -1 } }]
-                    : filters.sort === "name_asc"
-                        ? [{ $sort: { name: 1 } }]
-                        : filters.sort === "name_desc"
-                            ? [{ $sort: { name: -1 } }]
-                            : [{ $sort: { createdAt: -1 } }]),
-            { $skip: skip },
-            { $limit: limit },
-
+            //booking collection lookup
             {
-                $project: {
-                    name: 1,
-                    city: 1,
-                    state: 1,
-                    description: 1,
-                    images: 1,
-                    amenities: 1,
-                    cheapestRoom: { _id: 1, name: 1, basePrice: 1, roomCount: 1 },
-                },
+                $lookup: {
+                    from: 'bookings',
+                    let: {
+                        hotelId: '$_id',
+                        hCheckIn: '$hotelCheckIn',
+                        hCheckOut: '$hotelCheckOut',
+                    },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $eq: ['$hotelId', '$$hotelId'] },
+                                        { $eq: ['$status', 'confirmed'] },
+                                        { $eq: ['$payment', 'success'] },
+                                        { $lt: ['$checkIn', '$$hCheckOut'] },
+                                        { $gt: ['$checkOut', '$$hCheckIn'] }
+                                    ]
+                                }
+                            },
+                        }, {
+                            $group: {
+                                _id: '$roomId',
+                                bookedRooms: { $sum: 1 },
+                            }
+                        },
+                    ],
+                    as: 'bookings',
+                }
             },
+
+            //rooms collection lookup
+            {
+                $lookup: {
+                    from: 'rooms',
+                    let: {
+                        hotelId: '$_id',
+                        bookings: '$booking',
+                    },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: { $eq: ['$hotelId', '$$hotelId'] },
+                                ...roomQuery,
+                            },
+                        }
+                    ],
+                    as: 'rooms',
+                }
+            },
+            {
+                $match: {
+                    $expr: { $gt: [{ $size: '$rooms' }, 0] }
+                }
+            },
+            {
+                $sort:
+                    sort === "name_asc" ? { name: 1 } :
+                        sort === "name_desc" ? { name: -1 } :
+                            { createdAt: -1 }
+            },
+            {
+                $facet: {
+                    data: [
+                        { $skip: skip },
+                        { $limit: limit }
+                    ],
+                    count: [
+                        { $count: "total" }
+                    ]
+                }
+            }
         ];
 
-        const hotels = await hotelModel.aggregate(pipeline);
-        const total = hotels.length;
+        const result = await this.model.aggregate(pipeline);
+        const hotels = result[0].data;
+        const total = result[0].count.length > 0 ? result[0].count[0].total : 0;
 
         return { hotels, total };
     }

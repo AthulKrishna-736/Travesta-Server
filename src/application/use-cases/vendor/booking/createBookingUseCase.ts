@@ -3,7 +3,7 @@ import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
 import { TOKENS } from '../../../../constants/token';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/bookingRepo.interface';
-import { formatDateString } from '../../../../utils/dateFormatter';
+import { formatDateString } from '../../../../utils/helperFunctions';
 import { ICreateBookingUseCase, TCreateBookingData, TResponseBookingData } from '../../../../domain/interfaces/model/booking.interface';
 import { BOOKING_RES_MESSAGES } from '../../../../constants/resMessages';
 import { BOOKING_ERROR_MESSAGES } from '../../../../constants/errorMessages';

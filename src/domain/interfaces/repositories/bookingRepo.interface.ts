@@ -6,14 +6,14 @@ export interface IBookingRepository {
     createBookingIfAvailable(roomId: string, bookingData: TCreateBookingData, session: ClientSession): Promise<IBooking | null>;
     findBookingsByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: IBooking[]; total: number }>;
     findBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: IBooking[]; total: number }>
-    isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date, session?: ClientSession): Promise<boolean>;
+    isRoomAvailable(roomId: string, rooms: number, checkIn: Date, checkOut: Date, session?: ClientSession): Promise<boolean>;
     findByid(bookingId: string): Promise<IBooking | null>;
     save(booking: IBooking): Promise<void>;
     hasActiveBooking(userId: string): Promise<boolean>
     confirmBookingPayment(bookingId: string): Promise<void>;
     findBookingsByVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: IBooking[]; total: number }>;
     findCustomRoomDates(roomId: string, limit: number): Promise<any>;
-    getBookedRoomsCount(roomId: string, checkIn: string, checkOut: string): Promise<number>
+    getBookedRoomsCount(roomId: string, checkIn: Date, checkOut: Date): Promise<number>
     getTotalRevenue(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
     getTotalBookings(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
     getBookingStatusBreakdown(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;

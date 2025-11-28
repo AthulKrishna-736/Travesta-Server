@@ -17,19 +17,18 @@ export interface IRoom {
     updatedAt: Date;
 }
 
-export type TRoomType = 'AC' | 'Non-AC' | 'Deluxe' | 'Suite' | 'Standard' | 'Penthouse';
-export type TBedType = "King" | "Queen" | "Double" | "Twin" | "Single" | "Sofa" | "Bunk";
+export type TRoomType = 'AC' | 'Non-AC' | 'Deluxe' | 'Suite' | 'Standard';
+export type TBedType = "King" | "Queen" | "Double" | "Single" | "TwinDouble" | "TwinQueen";
 
 
 // Guest capacity mapping per bed type
 export const BED_TYPE_CAPACITY: Record<TBedType, number> = {
-    King: 2,
+    King: 3,
     Queen: 2,
     Double: 2,
-    Twin: 1,
     Single: 1,
-    Sofa: 1,
-    Bunk: 1,
+    TwinDouble: 4,
+    TwinQueen: 4,
 };
 
 //room types
@@ -51,7 +50,7 @@ export interface IGetRoomByIdUseCase {
 }
 
 export interface IGetRoomsByHotelUseCase {
-    getRoomsByHotel(hotelId: string, checkIn: string, checkOut: string): Promise<TResponseRoomDTO[]>;
+    getRoomsByHotel(hotelId: string, checkIn: string, checkOut: string, roomCount: number, adults: number, children: number): Promise<TResponseRoomDTO[]>;
 }
 
 export interface IGetAvailableRoomsUseCase {

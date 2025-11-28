@@ -63,7 +63,6 @@ export class ResponseMapper {
             address: hotel.address,
             geoLocation: hotel.geoLocation,
             isBlocked: hotel.isBlocked,
-            room: (hotel as any).cheapestRoom ?? null,
             rating: (hotel as any).rating,
             propertyRules: hotel.propertyRules,
             createdAt: hotel.createdAt,

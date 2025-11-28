@@ -9,6 +9,7 @@ import { ICreateRatingUseCase, IUpdateRatingUseCase, IGetRatingUseCase } from ".
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 import { TCreateRatingDTO, TUpdateRatingDTO } from "../dtos/rating.dto";
 import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from "../../constants/errorMessages";
+import { Pagination } from "../../shared/types/common.types";
 
 @injectable()
 export class RatingController implements IRatingController {
@@ -24,7 +25,7 @@ export class RatingController implements IRatingController {
             const userId = req.user?.userId;
 
             if (!userId) {
-                throw new AppError("User ID missing", HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { hotelId, hospitality, cleanliness, facilities, room, moneyValue, review } = req.body;
@@ -38,7 +39,7 @@ export class RatingController implements IRatingController {
                 room: Number(room),
                 moneyValue: Number(moneyValue),
                 review,
-                images: FILES ? FILES.map(file => file.filename) : []
+                images: []
             };
 
             const { rating, message } = await this._createRatingUseCase.createRating(ratingData);
@@ -53,7 +54,7 @@ export class RatingController implements IRatingController {
         try {
             const FILES = req.files as Express.Multer.File[];
             const { ratingId, hospitality, cleanliness, facilities, room, moneyValue, review } = req.body;
-            
+
             if (!ratingId) throw new AppError("Rating ID missing", HttpStatusCode.BAD_REQUEST);
 
             const updateData: TUpdateRatingDTO = {
@@ -100,12 +101,16 @@ export class RatingController implements IRatingController {
     async getHotelRatings(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { hotelId } = req.params;
+            const PAGE = Number(req.query.page) || 1;
+            const LIMIT = Number(req.query.limit) || 5;
+
             if (!hotelId) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.NOT_FOUND);
             }
 
-            const { ratings, message } = await this._getRatingsUseCase.getHotelRatings(hotelId);
-            ResponseHandler.success(res, message, ratings, HttpStatusCode.OK);
+            const { ratings, total, message } = await this._getRatingsUseCase.getHotelRatings(hotelId, PAGE, LIMIT);
+            const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) }
+            ResponseHandler.success(res, message, ratings, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);
         }

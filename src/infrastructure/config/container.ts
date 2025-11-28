@@ -59,7 +59,7 @@ import { UpdatePlanUseCase } from "../../application/use-cases/admin/subscriptio
 import { GetActivePlansUseCase } from "../../application/use-cases/admin/subscription/getActivePlans.UseCase";
 import { GetAllPlansUseCase } from "../../application/use-cases/admin/subscription/getAllPlans.UseCase";
 import { BlockUnblockPlanUseCase } from "../../application/use-cases/admin/subscription/blockUnblockPlan.UseCase";
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelAnalyticsUseCase, IGetHotelByIdUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from "../../domain/interfaces/model/hotel.interface";
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelAnalyticsUseCase, IGetHotelByIdUseCase, IGetHotelDetailWithRoomUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from "../../domain/interfaces/model/hotel.interface";
 import { ICreateRoomUseCase, IGetAllRoomsUseCase, IGetAvailableRoomsUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IUpdateRoomUseCase } from "../../domain/interfaces/model/room.interface";
 import { SocketService } from "../services/socketService";
 import { ChatRepository } from "../database/repositories/chatRepo";
@@ -131,6 +131,7 @@ import { UpdateRatingUseCase } from "../../application/use-cases/rating/updateRa
 import { GetRatingUseCase } from "../../application/use-cases/rating/getRatingsUseCase";
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 import { RatingController } from "../../interfaceAdapters/controllers/ratingController";
+import { GetHotelDetailsWithRoomUseCase } from "../../application/use-cases/vendor/hotel/getHotelDetailWithRoomUseCase";
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -352,6 +353,10 @@ container.register<IGetVendorHotelsUseCase>(TOKENS.GetHotelsByVendorUseCase, {
 
 container.register<IGetHotelAnalyticsUseCase>(TOKENS.GetHotelAnalyticsUseCase, {
   useClass: GetHotelAnalyticsUseCase,
+})
+
+container.register<IGetHotelDetailWithRoomUseCase>(TOKENS.GetHotelDetailsWithRoomUseCase, {
+  useClass: GetHotelDetailsWithRoomUseCase,
 })
 
 //room UseCase

@@ -17,7 +17,7 @@ const roomSchema: Schema = new Schema<TRoomDocument>(
         },
         roomType: {
             type: String,
-            enum: ["AC", "Non-AC", "Deluxe", "Suite", "Standard", "Penthouse"],
+            enum: ["AC", "Non-AC", "Deluxe", "Suite", "Standard"],
             required: true,
         },
         roomCount: {
@@ -26,7 +26,7 @@ const roomSchema: Schema = new Schema<TRoomDocument>(
         },
         bedType: {
             type: String,
-            enum: ['King', 'Queen', 'Double', 'Twin', 'Single', 'Sofa', 'Bunk'],
+            enum: ['King', 'Queen', 'Double', 'Single', 'TwinDouble', 'TwinQueen'],
             required: true,
         },
         guest: {

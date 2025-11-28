@@ -1,5 +1,6 @@
 import { Types } from "mongoose"
 import { TCreateHotelDTO, TResponseHotelDTO, TUpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto"
+import { TResponseRoomDTO } from "../../../interfaceAdapters/dtos/room.dto";
 
 export type TIdProof = 'Aadhaar' | 'Passport' | 'DrivingLicense' | 'PAN';
 
@@ -64,20 +65,33 @@ export interface IGetAllHotelsUseCase {
     getAllHotel(
         page: number,
         limit: number,
-        filters: {
-            search?: string;
-            amenities?: string[];
-            roomType?: string[];
-            checkIn?: string;
-            checkOut?: string;
-            guests?: number;
-            minPrice?: number;
-            maxPrice?: number;
-            sort?: string;
-        }
-    ): Promise<{ hotels: TResponseHotelDTO[]; total: number; message: string }>
+        checkIn: string,
+        checkOut: string,
+        rooms: number,
+        adults: number,
+        children: number,
+        geoLocation: { long: number, lat: number },
+        search?: string,
+        amenities?: string[],
+        roomType?: string[],
+        minPrice?: number,
+        maxPrice?: number,
+        sort?: string,
+    ): Promise<{ hotels: (TResponseHotelDTO & { room: TResponseRoomDTO })[]; total: number; message: string }>
 }
 
 export interface IGetHotelAnalyticsUseCase {
     getHotelAnalytics(hotelId: string, period: 'week' | 'month' | 'year'): Promise<{ hotel: any, message: string }>;
+}
+
+export interface IGetHotelDetailWithRoomUseCase {
+    getHotelDetailWithRoom(
+        hotelId: string,
+        roomId: string,
+        checkIn: string,
+        checkOut: string,
+        rooms: number,
+        adults: number,
+        children: number
+    ): Promise<{ hotel: TResponseHotelDTO, room: TResponseRoomDTO, otherRooms: TResponseRoomDTO[], message: string }>
 }

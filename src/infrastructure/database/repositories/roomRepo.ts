@@ -21,6 +21,7 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
     async findRoomById(roomId: string): Promise<IRoom | null> {
         const room = await this.model.findById(roomId)
             .populate({ path: "hotelId", select: "name images rating city state address amenities tags", })
+            .populate('amenities', '_id name')
             .lean();
 
         return room || null;
@@ -47,20 +48,22 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
 
     async findRoomsByHotel(hotelId: string): Promise<IRoom[] | null> {
         const rooms = await this.find({ hotelId })
-            .populate({
-                path: "hotelId",
-                populate: {
-                    path: "amenities",
-                    select: "_id name",
-                },
-            })
-            .populate({
-                path: "amenities",
-                select: "_id name",
-            })
+            .populate({ path: "amenities", select: "_id name" })
             .lean<IRoom[]>();
 
         return rooms;
+    }
+
+    async findOtherRoomsByHotel(hotelId: string, excludeRoomId: string): Promise<IRoom[]> {
+        const rooms = await this.model
+            .find({
+                hotelId,
+                _id: { $ne: excludeRoomId }
+            })
+            .populate('amenities', '_id name')
+            .lean();
+
+        return rooms || [];
     }
 
     async findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null> {

@@ -67,6 +67,7 @@ export const TOKENS = {
   GetHotelsByVendorUseCase: 'GetHotelsByVendorUseCase',
   GetAllHotelsUseCase: 'GetAllHotelsUseCase',
   GetHotelAnalyticsUseCase: 'GetHotelAnalyticsUseCase',
+  GetHotelDetailsWithRoomUseCase: 'GetHotelDetailWithRoomUseCase',
 
   //room UseCases
   CreateRoomUseCase: 'CreateRoomUseCase',

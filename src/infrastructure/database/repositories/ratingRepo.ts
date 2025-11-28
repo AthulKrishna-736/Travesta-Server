@@ -37,16 +37,21 @@ export class RatingRepository extends BaseRepository<TRatingDocument> implements
         return ratings;
     }
 
-    async getHotelRatings(hotelId: string): Promise<IRating[] | null> {
+    async getHotelRatings(hotelId: string, page: number, limit: number): Promise<{ ratings: IRating[] | null, total: number }> {
+        const skip = (page - 1) * limit;
+
+        const total = await this.model.countDocuments({ hotelId });
         const ratings = await this.model
             .find({ hotelId })
             .populate({
                 path: "userId",
                 select: "firstName lastName profileImage _id"
             })
+            .skip(skip)
+            .limit(limit)
             .exec();
 
-        return ratings;
+        return { ratings, total };
     }
 
 

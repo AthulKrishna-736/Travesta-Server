@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { TOKENS } from '../../../../constants/token';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/bookingRepo.interface';
-import { formatDateString } from '../../../../utils/dateFormatter';
+import { formatDateString } from '../../../../utils/helperFunctions';
 import { IGetBookingsByUserUseCase, TResponseBookingData } from '../../../../domain/interfaces/model/booking.interface';
 import { IRedisService } from '../../../../domain/interfaces/services/redisService.interface';
 import { IAwsS3Service } from '../../../../domain/interfaces/services/awsS3Service.interface';

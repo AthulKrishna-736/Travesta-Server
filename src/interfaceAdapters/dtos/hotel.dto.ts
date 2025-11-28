@@ -78,7 +78,6 @@ export type TResponseHotelDTO = {
         specialNotes?: string;
     };
     isBlocked: boolean;
-    room?: object | null;
     createdAt: Date;
     updatedAt: Date;
 }

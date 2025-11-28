@@ -164,18 +164,25 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return result.length > 0 && result[0].total > 0;
     }
 
-    async isRoomAvailable(roomId: string, checkIn: Date, checkOut: Date, session?: ClientSession): Promise<boolean> {
-        const room = await roomModel.findById(roomId).session(session!);
+    async isRoomAvailable(roomId: string, rooms: number, checkIn: Date, checkOut: Date, session?: ClientSession): Promise<boolean> {
+        const query = roomModel.findById(roomId);
+        if (session) query.session(session);
+
+        const room = await query;
         if (!room) throw new Error("Room not found");
 
-        const bookedCount = await bookingModel.countDocuments({
+        const bookingQuery = bookingModel.countDocuments({
             roomId,
             status: { $ne: "cancelled" },
             checkIn: { $lt: checkOut },
             checkOut: { $gt: checkIn },
-        }).session(session!);
+        });
 
-        return bookedCount < room.roomCount;
+        if (session) bookingQuery.session(session);
+
+        const bookedCount = await bookingQuery;
+        const availableRooms = room.roomCount - bookedCount;
+        return availableRooms >= rooms;
     }
 
     async findByid(bookingId: string): Promise<IBooking | null> {
@@ -332,7 +339,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
             end = new Date();
             start = new Date(end.getFullYear(), end.getMonth() - 11, 1);
         }
-        
+
         const pipeline: PipelineStage[] = [
             {
                 $lookup: {
@@ -432,19 +439,12 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         // const 
     }
 
-    async getBookedRoomsCount(roomId: string, checkIn: string, checkOut: string): Promise<number> {
-        const startOfDay = new Date(checkIn);
-        startOfDay.setHours(0, 0, 0, 0);
-
-        const endOfDay = new Date(checkOut);
-        endOfDay.setHours(23, 59, 59, 999);
-
+    async getBookedRoomsCount(roomId: string, checkIn: Date, checkOut: Date): Promise<number> {
         const count = await bookingModel.countDocuments({
-            roomId: new Types.ObjectId(roomId),
+            roomId: roomId,
             status: 'confirmed',
-            $or: [
-                { checkIn: { $lte: endOfDay }, checkOut: { $gte: startOfDay } }
-            ]
+            checkIn: { $lt: checkOut },
+            checkOut: { $gt: checkIn }
         });
 
         return count;

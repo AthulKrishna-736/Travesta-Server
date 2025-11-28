@@ -1,6 +1,5 @@
 import { AppError } from "../../utils/appError";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
-import { IUserSubscription } from "../interfaces/model/subscription.interface";
 import { IUser, TResponseUserData, TUpdateUserData } from "../interfaces/model/user.interface";
 
 export interface IUserEntity {
@@ -15,7 +14,6 @@ export interface IUserEntity {
     readonly isBlocked: boolean;
     readonly isGoogleUser: boolean;
     readonly isVerified: boolean;
-    readonly subscription: IUserSubscription | null;
     readonly profileImage: string | undefined;
     readonly kycDocuments: string[] | undefined;
     readonly createdAt: Date;
@@ -29,7 +27,6 @@ export interface IUserEntity {
     verify(): void;
     unVerify(): void;
     googleUser(): void;
-    subscribe(planId: string, validFrom: Date, validUntil: Date): void;
 
     // Return raw object (for persistence)
     toObject(): TResponseUserData;
@@ -212,18 +209,6 @@ export class UserEntity implements IUserEntity {
             kycDocuments: this._props.kycDocuments,
             updatedAt: this._props.updatedAt,
         };
-    }
-
-    subscribe(planId: string, validFrom: Date, validUntil: Date): void {
-        if (!planId) {
-            throw new AppError('PlanId is missing', HttpStatusCode.BAD_REQUEST);
-        }
-        this._props.subscription = {
-            plan: planId,
-            validFrom,
-            validUntil,
-        };
-        this._props.updatedAt = new Date();
     }
 
     getUpdatedSubscription(): Pick<IUser, 'subscription'> {

@@ -5,7 +5,7 @@ import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelAnalyticsUseCase, IGetHotelByIdUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelAnalyticsUseCase, IGetHotelByIdUseCase, IGetHotelDetailWithRoomUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
 import { TCreateHotelDTO, TUpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
 import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from '../../constants/errorMessages';
@@ -20,6 +20,7 @@ export class HotelController implements IHotelController {
         @inject(TOKENS.GetAllHotelsUseCase) private _getAllHotelsUseCase: IGetAllHotelsUseCase,
         @inject(TOKENS.GetHotelsByVendorUseCase) private _getHotelsByVendorUseCase: IGetVendorHotelsUseCase,
         @inject(TOKENS.GetHotelAnalyticsUseCase) private _getHotelAnalyticsUseCase: IGetHotelAnalyticsUseCase,
+        @inject(TOKENS.GetHotelDetailsWithRoomUseCase) private _getHotelDetailsWithRoom: IGetHotelDetailWithRoomUseCase,
     ) { }
 
     async createHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -183,20 +184,41 @@ export class HotelController implements IHotelController {
         try {
             const PAGE = Number(req.query.page) || 1;
             const LIMIT = Number(req.query.limit) || 10;
+            const LAT = Number(req.query.lat);
+            const LONG = Number(req.query.long);
+            const SEARCH = req.query.search as string;
+            const CHECK_IN = req.query.checkIn as string;
+            const CHECK_OUT = req.query.checkOut as string;
+            const ROOMS = req.query.rooms ? Number(req.query.rooms) : 0;
+            const ADULTS = req.query.adults ? Number(req.query.adults) : 0;
+            const CHILDREN = req.query.children ? Number(req.query.children) : 0;
+            const MIN_PRICE = req.query.minPrice ? Number(req.query.minPrice) : 0;
+            const MAX_PRICE = req.query.maxPrice ? Number(req.query.maxPrice) : Infinity;
+            const AMENITIES = req.query.amenities ? (req.query.amenities as string).split(",") : undefined;
+            const ROOM_TYPE = req.query.roomType ? (req.query.roomType as string).split(",") : undefined;
+            const SORT = req.query.sort as string;
 
-            const FILTERS = {
-                search: req.query.search as string,
-                checkIn: req.query.checkIn as string,
-                checkOut: req.query.checkOut as string,
-                guests: req.query.guests ? Number(req.query.guests) : undefined,
-                minPrice: req.query.minPrice ? Number(req.query.minPrice) : undefined,
-                maxPrice: req.query.maxPrice ? Number(req.query.maxPrice) : undefined,
-                amenities: req.query.amenities ? (req.query.amenities as string).split(",") : undefined,
-                roomType: req.query.roomType ? (req.query.roomType as string).split(",") : undefined,
-                sort: req.query.sort as string
-            };
+            const GEO_LOCATION = {
+                lat: LAT,
+                long: LONG,
+            }
 
-            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(PAGE, LIMIT, FILTERS);
+            const { hotels, total, message } = await this._getAllHotelsUseCase.getAllHotel(
+                PAGE,
+                LIMIT,
+                CHECK_IN,
+                CHECK_OUT,
+                ROOMS,
+                ADULTS,
+                CHILDREN,
+                GEO_LOCATION,
+                SEARCH,
+                AMENITIES,
+                ROOM_TYPE,
+                MIN_PRICE,
+                MAX_PRICE,
+                SORT,
+            );
             const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) };
             ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
         } catch (error) {
@@ -254,6 +276,27 @@ export class HotelController implements IHotelController {
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             next(error)
+        }
+    }
+
+    async getHotelDetailsWithRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { hotelId, roomId } = req.params;
+
+            const CHECK_IN = req.query.checkIn as string;
+            const CHECK_OUT = req.query.checkOut as string;
+            const ROOMS = Number(req.query.rooms || 1);
+            const ADULTS = Number(req.query.adults || 1);
+            const CHILDREN = Number(req.query.children || 0);
+
+            if (!hotelId || !roomId) {
+                throw new AppError('Hotel id or room id is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { hotel, room, otherRooms, message } = await this._getHotelDetailsWithRoom.getHotelDetailWithRoom(hotelId, roomId, CHECK_IN, CHECK_OUT, ROOMS, ADULTS, CHILDREN)
+            ResponseHandler.success(res, message, { hotel, room, otherRooms }, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
         }
     }
 }

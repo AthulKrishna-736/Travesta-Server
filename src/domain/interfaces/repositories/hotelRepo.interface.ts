@@ -1,4 +1,5 @@
 import { IHotel, TCreateHotelData, TUpdateHotelData } from "../model/hotel.interface";
+import { IRoom } from "../model/room.interface";
 
 export interface IHotelRepository {
     createHotel(data: TCreateHotelData): Promise<IHotel | null>;
@@ -10,17 +11,15 @@ export interface IHotelRepository {
     findAllHotels(
         page: number,
         limit: number,
-        filters?: {
-            search?: string;
-            hotelAmenities?: string[];
-            roomAmenities?: string[];
-            roomType?: string[];
-            checkIn?: string;
-            checkOut?: string;
-            guests?: number;
-            minPrice?: number;
-            maxPrice?: number;
-            sort?: string;
-        }
-    ): Promise<{ hotels: IHotel[] | null; total: number }>;
+        checkIn: string,
+        checkOut: string,
+        geoLocation: { long: number, lat: number },
+        search?: string,
+        hotelAmenities?: string[],
+        roomAmenities?: string[],
+        roomType?: string[],
+        minPrice?: number,
+        maxPrice?: number,
+        sort?: string,
+    ): Promise<{ hotels: Array<IHotel & { rooms: IRoom[], bookings: { _id: string, bookedRooms: number }[] }> | null; total: number }>;
 }

@@ -108,6 +108,10 @@ export class RoomController implements IRoomController {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
+            if (!CHECK_IN || !CHECK_OUT) {
+                throw new AppError('CheckIn or CheckOut Date missing', HttpStatusCode.BAD_REQUEST);
+            }
+
             const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(HOTEL_ID, CHECK_IN, CHECK_OUT);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getAll, rooms, HttpStatusCode.OK);
         } catch (error) {

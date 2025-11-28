@@ -94,4 +94,7 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
     }
 }, { timestamps: true });
 
+hotelSchema.index({ geoLocation: "2dsphere" });
+hotelSchema.index({ name: 1 });
+
 export const hotelModel = mongoose.model<THotelDocument>("Hotel", hotelSchema);
