@@ -5,7 +5,7 @@ import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelAnalyticsUseCase, IGetHotelByIdUseCase, IGetHotelDetailWithRoomUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
+import { ICreateHotelUseCase, IGetAllHotelsUseCase, IGetHotelAnalyticsUseCase, IGetHotelByIdUseCase, IGetHotelDetailWithRoomUseCase, IGetTrendingHotelsUseCase, IGetVendorHotelsUseCase, IUpdateHotelUseCase } from '../../domain/interfaces/model/hotel.interface';
 import { TCreateHotelDTO, TUpdateHotelDTO } from '../dtos/hotel.dto';
 import { Pagination } from '../../shared/types/common.types';
 import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from '../../constants/errorMessages';
@@ -21,6 +21,7 @@ export class HotelController implements IHotelController {
         @inject(TOKENS.GetHotelsByVendorUseCase) private _getHotelsByVendorUseCase: IGetVendorHotelsUseCase,
         @inject(TOKENS.GetHotelAnalyticsUseCase) private _getHotelAnalyticsUseCase: IGetHotelAnalyticsUseCase,
         @inject(TOKENS.GetHotelDetailsWithRoomUseCase) private _getHotelDetailsWithRoom: IGetHotelDetailWithRoomUseCase,
+        @inject(TOKENS.GetTrendingHotelsUseCase) private _getTrendingHotelsUseCase: IGetTrendingHotelsUseCase,
     ) { }
 
     async createHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -299,4 +300,21 @@ export class HotelController implements IHotelController {
             next(error);
         }
     }
+
+    async getTrendingHotels(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const today = new Date();
+            const checkIn = today.toISOString();
+
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const checkOut = tomorrow.toISOString();
+
+            const { hotels, message } = await this._getTrendingHotelsUseCase.trendingHotels(checkIn, checkOut);
+            ResponseHandler.success(res, message, hotels, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
+        }
+    }
+
 }

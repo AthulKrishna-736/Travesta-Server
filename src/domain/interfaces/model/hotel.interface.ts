@@ -95,3 +95,7 @@ export interface IGetHotelDetailWithRoomUseCase {
         children: number
     ): Promise<{ hotel: TResponseHotelDTO, room: TResponseRoomDTO, otherRooms: TResponseRoomDTO[], message: string }>
 }
+
+export interface IGetTrendingHotelsUseCase {
+    trendingHotels(checkIn: string, checkOut: string): Promise<any>;
+}

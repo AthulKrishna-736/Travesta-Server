@@ -1,3 +1,5 @@
+import { IOffer, TDiscountType } from "../domain/interfaces/model/offer.interface";
+
 export function formatDateString(dateStr: string): string {
     const date = new Date(dateStr);
     const yyyy = date.getFullYear();
@@ -56,5 +58,36 @@ export const getPropertyTime = (checkIn: string, checkOut: string, hotelCheckInT
         checkInDate,
         checkOutDate,
     }
+}
+
+export function applyOfferToPrice(basePrice: number, offer: Partial<IOffer> & { discountType?: TDiscountType, discountValue?: number }): number {
+    if (!offer || !offer.discountType || offer.discountValue == null) return basePrice;
+
+    let final = basePrice;
+    if (offer.discountType === "flat") {
+        final = basePrice - (offer.discountValue as number);
+    } else { // percent
+        final = basePrice - (basePrice * ((offer.discountValue as number) / 100));
+    }
+
+    if (final < 0) final = 0;
+    // round to two decimals (optional)
+    return Math.round(final * 100) / 100;
+}
+
+export function pickBestOfferForPrice(basePrice: number, offers: (IOffer | null | undefined)[]) {
+    let bestOffer = null;
+    let bestPrice = basePrice;
+
+    for (const o of offers) {
+        if (!o) continue;
+        const price = applyOfferToPrice(basePrice, o);
+        if (price < bestPrice) {
+            bestPrice = price;
+            bestOffer = o;
+        }
+    }
+
+    return { offer: bestOffer, finalPrice: Math.round(bestPrice * 100) / 100 };
 }
 

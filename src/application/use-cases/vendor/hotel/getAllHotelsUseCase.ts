@@ -13,9 +13,11 @@ import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
 import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
 import { IRatingRepository } from "../../../../domain/interfaces/repositories/ratingRepo.interface";
-import { calculateDynamicPricing, calculateGSTPrice, getPropertyTime } from "../../../../utils/helperFunctions";
+import { calculateDynamicPricing, calculateGSTPrice, getPropertyTime, pickBestOfferForPrice } from "../../../../utils/helperFunctions";
 import { TResponseRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
 import { IRoom } from "../../../../domain/interfaces/model/room.interface";
+import { IOffer } from "../../../../domain/interfaces/model/offer.interface";
+import { IOfferRepository } from "../../../../domain/interfaces/repositories/offerRepo.interface";
 
 
 @injectable()
@@ -25,6 +27,7 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
         @inject(TOKENS.AmenitiesRepository) private _amenitiesRepository: IAmenitiesRepository,
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
         @inject(TOKENS.RatingRepository) private _ratingRepository: IRatingRepository,
+        @inject(TOKENS.OfferRepository) private _offerRepository: IOfferRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
@@ -112,7 +115,6 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
             throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
-
         const enrichedHotels = await Promise.all(
             validatedHotels.map(async (hotel) => {
 
@@ -120,26 +122,35 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
                     hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
                 );
 
-                const { checkInDate, checkOutDate } = getPropertyTime(
-                    checkIn, checkOut,
-                    hotel.propertyRules.checkInTime,
-                    hotel.propertyRules.checkOutTime
-                );
+                const { checkInDate, checkOutDate } = getPropertyTime(checkIn, checkOut, hotel.propertyRules.checkInTime, hotel.propertyRules.checkOutTime);
 
-                const bookedRooms = await this._bookingRepository.getBookedRoomsCount(
-                    hotel.cheapestRoom._id!.toString(),
-                    checkInDate,
-                    checkOutDate
-                );
+                const bookedRooms = await this._bookingRepository.getBookedRoomsCount(hotel.cheapestRoom._id!.toString(), checkInDate, checkOutDate);
 
                 const DYNAMIC_ROOM_PRICE = calculateDynamicPricing(hotel.cheapestRoom.basePrice, hotel.cheapestRoom.roomCount, bookedRooms);
                 const TOTAL_ROOM_PRICE = DYNAMIC_ROOM_PRICE * rooms;
                 const TOTAL_GST_PRICE = calculateGSTPrice(hotel.cheapestRoom.basePrice) * rooms
 
+                const applicableDate = checkInDate || new Date();
+                const offers: IOffer[] = await this._offerRepository.findApplicableOffers(hotel.cheapestRoom.roomType, applicableDate, hotel._id ? hotel._id.toString() : null);
+
+                const { offer: bestOffer, finalPrice: bestPrice } = pickBestOfferForPrice(TOTAL_ROOM_PRICE, offers);
+                const discountedPrice = bestOffer ? bestPrice : TOTAL_ROOM_PRICE;
+
                 const roomWithPricing = {
                     ...hotel.cheapestRoom,
                     basePrice: TOTAL_ROOM_PRICE,
                     gstPrice: TOTAL_GST_PRICE,
+                    discountedPrice,
+                    appliedOffer: bestOffer
+                        ? {
+                            id: (bestOffer._id as any)?.toString?.() ?? bestOffer._id,
+                            name: (bestOffer as any).name ?? undefined,
+                            discountType: bestOffer.discountType,
+                            discountValue: bestOffer.discountValue,
+                            startDate: bestOffer.startDate,
+                            expiryDate: bestOffer.expiryDate,
+                        }
+                        : null,
                 };
 
                 // get rating
@@ -161,13 +172,18 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
             enrichedHotels.sort((a, b) => b.cheapestRoom.basePrice - a.cheapestRoom.basePrice);
         }
 
+
         const customHotelsMapping = enrichedHotels.map((h) => {
             const mappedHotel = ResponseMapper.mapHotelToResponseDTO(h);
             const mappedRoom = ResponseMapper.mapRoomToResponseDTO(h.cheapestRoom);
 
             return {
                 ...mappedHotel,
-                room: mappedRoom,
+                room: {
+                    ...mappedRoom,
+                    discountedPrice: h.cheapestRoom.discountedPrice,
+                    appliedOffer: h.cheapestRoom.appliedOffer ?? null,
+                }
             }
         });
 

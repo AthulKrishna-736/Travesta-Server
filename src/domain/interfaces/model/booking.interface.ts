@@ -13,8 +13,8 @@ export interface IBooking {
     checkOut: Date;
     guests: number;
     totalPrice: number;
-    roomsCount: number;
-    couponId: string | Types.ObjectId;
+    roomsCount?: number;
+    couponId?: string | Types.ObjectId;
     status: TStatus;
     payment: TPaymentStatus;
     createdAt: Date;

@@ -22,4 +22,5 @@ export interface IHotelRepository {
         maxPrice?: number,
         sort?: string,
     ): Promise<{ hotels: Array<IHotel & { rooms: IRoom[], bookings: { _id: string, bookedRooms: number }[] }> | null; total: number }>;
+    getTrendingHotels(checkIn: Date, checkOut: Date): Promise<any>
 }

@@ -38,7 +38,6 @@ const bookingSchema: Schema = new Schema<TBookingDocument>(
         },
         roomsCount: {
             type: Number,
-            required: true,
         },
         couponId: {
             type: Schema.Types.ObjectId,

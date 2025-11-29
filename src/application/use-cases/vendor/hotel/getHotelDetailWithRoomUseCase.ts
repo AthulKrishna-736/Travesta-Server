@@ -13,7 +13,8 @@ import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Servi
 import { TResponseRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { ResponseMapper } from "../../../../utils/responseMapper";
-import { calculateDynamicPricing, calculateGSTPrice, getPropertyTime } from "../../../../utils/helperFunctions";
+import { calculateDynamicPricing, calculateGSTPrice, getPropertyTime, pickBestOfferForPrice } from "../../../../utils/helperFunctions";
+import { IOfferRepository } from "../../../../domain/interfaces/repositories/offerRepo.interface";
 
 
 @injectable()
@@ -22,6 +23,7 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
         @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.RoomRepository) private _roomRepository: IRoomRepository,
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
+        @inject(TOKENS.OfferRepository) private _offerRepository: IOfferRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
@@ -78,10 +80,27 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
         const dynamicPrice = calculateDynamicPricing(room.basePrice, room.roomCount, bookedRoomsCount);
         const gstPrice = calculateGSTPrice(dynamicPrice) * rooms;
 
-        const roomWithPricing: TResponseRoomDTO = {
+        const applicableOffers = await this._offerRepository.findApplicableOffers(room.roomType, checkInDate, hotel._id!.toString());
+
+
+        const totalRoomPrice = dynamicPrice;
+        const { offer: bestOffer, finalPrice: discountedPrice } = pickBestOfferForPrice(totalRoomPrice, applicableOffers);
+
+        const roomWithPricing = {
             ...ResponseMapper.mapRoomToResponseDTO(room),
-            basePrice: dynamicPrice,
+            basePrice: totalRoomPrice,
             gstPrice,
+            discountedPrice: bestOffer ? discountedPrice : null,
+            appliedOffer: bestOffer
+                ? {
+                    id: bestOffer._id!.toString(),
+                    name: bestOffer.name,
+                    discountType: bestOffer.discountType,
+                    discountValue: bestOffer.discountValue,
+                    startDate: bestOffer.startDate,
+                    expiryDate: bestOffer.expiryDate,
+                }
+                : null,
         };
 
         // Map and price other rooms
@@ -106,11 +125,27 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
                 const dyn = calculateDynamicPricing(r.basePrice, r.roomCount, bookedCount);
                 const gst = calculateGSTPrice(dyn);
 
+                const offers = await this._offerRepository.findApplicableOffers(r.roomType, checkInDate, hotelId);
+                const otherTotalPrice = dyn;
+                const { offer: otherBestOffer, finalPrice: otherDiscountedPrice } = pickBestOfferForPrice(otherTotalPrice, offers);
+
                 return {
                     ...ResponseMapper.mapRoomToResponseDTO(r),
-                    basePrice: dyn,
-                    gstPrice: gst
+                    basePrice: otherTotalPrice,
+                    gstPrice: gst,
+                    discountedPrice: otherBestOffer ? otherDiscountedPrice : null,
+                    appliedOffer: otherBestOffer
+                        ? {
+                            id: otherBestOffer._id?.toString() ?? "",
+                            name: otherBestOffer.name,
+                            discountType: otherBestOffer.discountType,
+                            discountValue: otherBestOffer.discountValue,
+                            startDate: otherBestOffer.startDate,
+                            expiryDate: otherBestOffer.expiryDate,
+                        }
+                        : null,
                 };
+
             })
         );
 

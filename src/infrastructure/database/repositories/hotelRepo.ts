@@ -244,5 +244,82 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
 
         return { hotels, total };
     }
-}
 
+    async getTrendingHotels(checkIn: Date, checkOut: Date): Promise<any> {
+        const hotels = await hotelModel.aggregate([
+            { $match: { isBlocked: false } },
+
+            {
+                $lookup: {
+                    from: "rooms",
+                    localField: "_id",
+                    foreignField: "hotelId",
+                    as: "rooms"
+                }
+            },
+
+            { $match: { "rooms.0": { $exists: true } } },
+
+            { $unwind: "$rooms" },
+
+            {
+                $lookup: {
+                    from: "bookings",
+                    let: { roomId: "$rooms._id" },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $eq: ["$roomId", "$$roomId"] },
+                                        { $ne: ["$status", "cancelled"] },
+
+                                        // Overlap check:
+                                        {
+                                            $or: [
+                                                {
+                                                    $and: [
+                                                        { $lte: ["$checkIn", checkOut] },
+                                                        { $gte: ["$checkOut", checkIn] }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    as: "roomBookings"
+                }
+            },
+
+            { $match: { "roomBookings": { $size: 0 } } },
+
+            {
+                $group: {
+                    _id: "$_id",
+                    hotel: { $first: "$$ROOT" },
+                    room: { $first: "$rooms" } // return only ONE available room
+                }
+            },
+
+            { $sort: { "hotel.createdAt": -1 } },
+            { $limit: 3 },
+
+            {
+                $project: {
+                    _id: "$hotel._id",
+                    name: "$hotel.name",
+                    images: "$hotel.images",
+                    city: "$hotel.city",
+                    state: "$hotel.state",
+                    room: "$room"
+                }
+            }
+        ]);
+
+        return hotels;
+    }
+
+}

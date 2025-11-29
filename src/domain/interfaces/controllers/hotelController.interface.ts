@@ -10,4 +10,5 @@ export interface IHotelController {
     getHotelByVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getHotelAnalytics(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getHotelDetailsWithRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
+    getTrendingHotels(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
 }
