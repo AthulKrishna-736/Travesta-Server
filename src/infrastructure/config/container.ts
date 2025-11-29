@@ -142,6 +142,17 @@ import { GetUserCouponsUseCase } from "../../application/use-cases/coupon/getUse
 import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
 import { CouponController } from "../../interfaceAdapters/controllers/couponController";
 import { ToggleCouponStatusUseCase } from "../../application/use-cases/coupon/toggleCouponStatusUseCase";
+import { IOfferRepository } from "../../domain/interfaces/repositories/offerRepo.interface";
+import { OfferRepository } from "../database/repositories/offerRepo";
+import { ICreateOfferUseCase, IDetectOfferForRoomUseCase, IGetVendorOffersUseCase, IToggleOfferStatusUseCase, IUpdateOfferUseCase } from "../../domain/interfaces/model/offer.interface";
+import { CreateOfferUseCase } from "../../application/use-cases/offer/createOfferUseCase";
+import { UpdateOfferUseCase } from "../../application/use-cases/offer/updateOfferUseCase";
+import { GetVendorOffersUseCase } from "../../application/use-cases/offer/getVendorOfferUseCase";
+import { DetectOfferForRoomUseCase } from "../../application/use-cases/offer/detectOffersForRoomUseCast";
+import { ToggleOfferStatusUseCase } from "../../application/use-cases/offer/toggleOfferStatusUseCase";
+import { IOfferController } from "../../domain/interfaces/controllers/offerController.interface";
+import { OfferController } from "../../interfaceAdapters/controllers/offerController";
+
 
 //repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -191,6 +202,11 @@ container.register<IRatingRepository>(TOKENS.RatingRepository, {
 container.register<ICouponRepository>(TOKENS.CouponRepository, {
   useClass: CouponRepository,
 })
+
+container.register<IOfferRepository>(TOKENS.OfferRepository, {
+  useClass: OfferRepository,
+})
+
 
 //controllers
 container.register<IAuthController>(TOKENS.AuthController, {
@@ -243,6 +259,10 @@ container.register<IRatingController>(TOKENS.RatingController, {
 
 container.register<ICouponController>(TOKENS.CouponController, {
   useClass: CouponController,
+})
+
+container.register<IOfferController>(TOKENS.OfferController, {
+  useClass: OfferController,
 })
 
 
@@ -590,4 +610,26 @@ container.register<IGetUserCouponsUseCase>(TOKENS.GetUserCouponsUseCase, {
 
 container.register<IToggleCouponStatusUseCase>(TOKENS.ToggleCouponStatusUseCase, {
   useClass: ToggleCouponStatusUseCase,
+})
+
+
+//Offer
+container.register<ICreateOfferUseCase>(TOKENS.CreateOfferUseCase, {
+  useClass: CreateOfferUseCase,
+})
+
+container.register<IUpdateOfferUseCase>(TOKENS.UpdateOfferUseCase, {
+  useClass: UpdateOfferUseCase,
+})
+
+container.register<IGetVendorOffersUseCase>(TOKENS.GetVendorOffersUseCase, {
+  useClass: GetVendorOffersUseCase,
+})
+
+container.register<IDetectOfferForRoomUseCase>(TOKENS.DetectOfferForRoomUseCase, {
+  useClass: DetectOfferForRoomUseCase,
+})
+
+container.register<IToggleOfferStatusUseCase>(TOKENS.ToggleOfferStatusUseCase, {
+  useClass: ToggleOfferStatusUseCase,
 })

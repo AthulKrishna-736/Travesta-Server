@@ -15,6 +15,8 @@ import { IRating } from "../domain/interfaces/model/rating.interface";
 import { TResponseRatingDTO } from "../interfaceAdapters/dtos/rating.dto";
 import { ICoupon } from "../domain/interfaces/model/coupon.interface";
 import { TResponseCouponDTO } from "../interfaceAdapters/dtos/coupon.dto";
+import { IOffer } from "../domain/interfaces/model/offer.interface";
+import { TResponseOfferDTO } from "../interfaceAdapters/dtos/offer.dto";
 
 export class ResponseMapper {
     static mapSubscriptionToResponseDTO(plan: ISubscription): TResponseSubscriptionDTO {
@@ -156,11 +158,29 @@ export class ResponseMapper {
             value: coupon.value,
             minPrice: coupon.minPrice,
             maxPrice: coupon.maxPrice,
+            count: coupon.count,
             startDate: coupon.startDate,
             endDate: coupon.endDate,
             isBlocked: coupon.isBlocked,
             createdAt: coupon.createdAt,
             updatedAt: coupon.updatedAt,
         }
+    }
+
+    static mapOfferResponseToDTO(offer: IOffer): TResponseOfferDTO {
+        return {
+            id: offer._id!.toString(),
+            vendorId: offer.vendorId.toString(),
+            name: offer.name,
+            hotelId: offer.hotelId ? offer.hotelId.toString() : null,
+            roomType: offer.roomType,
+            discountType: offer.discountType,
+            discountValue: offer.discountValue,
+            startDate: offer.startDate,
+            expiryDate: offer.expiryDate,
+            isBlocked: offer.isBlocked,
+            createdAt: offer.createdAt!,
+            updatedAt: offer.updatedAt!,
+        };
     }
 }

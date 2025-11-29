@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema, createRoomSchema, updateRoomSchema, updateHotelSchema, createCouponSchema, updateCouponSchema } from "../../shared/types/zodValidation";
+import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema, createRoomSchema, updateRoomSchema, updateHotelSchema, createCouponSchema, updateCouponSchema, createOfferSchema, updateOfferSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
@@ -17,6 +17,7 @@ import { IAmenityController } from "../../domain/interfaces/controllers/amenityC
 import { TOKENS } from "../../constants/token";
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
+import { IOfferController } from "../../domain/interfaces/controllers/offerController.interface";
 
 @injectable()
 export class vendorRoutes extends BaseRouter {
@@ -30,6 +31,7 @@ export class vendorRoutes extends BaseRouter {
         @inject(TOKENS.AmenityController) private _amenityController: IAmenityController,
         @inject(TOKENS.RatingController) private _ratingController: IRatingController,
         @inject(TOKENS.CouponController) private _couponController: ICouponController,
+        @inject(TOKENS.OfferController) private _offerController: IOfferController,
     ) {
         super();
         this.initializeRoutes()
@@ -54,24 +56,30 @@ export class vendorRoutes extends BaseRouter {
             .patch(authMiddleware, authorizeRoles('vendor'), checkUserBlock, upload.fields([{ name: 'front', maxCount: 1 }, { name: 'back', maxCount: 1 }]), (req: CustomRequest, res, next) => this._vendorController.updateKyc(req, res, next));
 
         //hotels
+        this.router.route('/hotels/:hotelId')
+            .get(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelById(req, res, next))
+            .put(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(updateHotelSchema), (req: CustomRequest, res, next) => this._hotelController.updateHotel(req, res, next));
+
+        this.router.route('/hotels')
+            .get(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelsByVendor(req, res, next))
+            .post(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(createHotelSchema), (req: CustomRequest, res, next) => this._hotelController.createHotel(req, res, next))
+
         this.router
-            .get('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelsByVendor(req, res, next))
-            .get('/hotel/:hotelId', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelByVendor(req, res, next))
             .get('/hotel/:hotelId/analytics', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelAnalytics(req, res, next))
-            .get('/hotels/:hotelId', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelById(req, res, next))
-            .get('/rooms/by-hotel/:hotelId', (req: CustomRequest, res, next) => this._roomController.getRoomsByHotel(req, res, next))
-            .post('/hotels', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(createHotelSchema), (req: CustomRequest, res, next) => this._hotelController.createHotel(req, res, next))
-            .put('/hotels/:hotelId', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(updateHotelSchema), (req: CustomRequest, res, next) => this._hotelController.updateHotel(req, res, next));
+            .get('/hotel/:hotelId', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelByVendor(req, res, next))
 
         //rooms
+        this.router.route('/rooms/:roomId')
+            .put(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(updateRoomSchema), (req, res, next) => this._roomController.updateRoom(req, res, next))
+            .get(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res, next) => this._roomController.getRoomById(req, res, next))
+
+        this.router.route('/rooms')
+            .get(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res, next) => this._roomController.getAllRooms(req, res, next))
+            .post(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(createRoomSchema), (req, res, next) => this._roomController.createRoom(req, res, next))
+
         this.router
-            .get('/rooms', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res, next) => this._roomController.getAllRooms(req, res, next))
             .get('/rooms/available', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res, next) => this._roomController.getAllAvlRooms(req, res, next))
-            .post('/rooms', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(createRoomSchema), (req, res, next) => this._roomController.createRoom(req, res, next))
-            .patch('/rooms/:roomId', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(updateRoomSchema), (req, res, next) => this._roomController.updateRoom(req, res, next))
-            .get('/rooms/:roomId', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res, next) => this._roomController.getRoomById(req, res, next))
             .get('/hotels/:hotelId/rooms', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res, next) => this._roomController.getRoomsByHotel(req, res, next))
-            .get('/hotels/:hotelId/rooms/available', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res, next) => this._roomController.getAvailableRoomsByHotel(req, res, next));
 
         //amenities
         this.router
@@ -99,5 +107,14 @@ export class vendorRoutes extends BaseRouter {
         this.router.route('/coupon/:couponId')
             .patch(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.toggleCouponStatus(req, res, next))
             .put(authMiddleware, authorizeRoles('vendor'), checkUserBlock, validateRequest(updateCouponSchema), (req: CustomRequest, res, next) => this._couponController.updateCoupon(req, res, next))
+
+        //offer
+        this.router.route('/offers')
+            .post(authMiddleware, authorizeRoles('vendor'), checkUserBlock, validateRequest(createOfferSchema), (req: CustomRequest, res, next) => this._offerController.createOffer(req, res, next))
+            .get(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._offerController.getVendorOffers(req, res, next))
+
+        this.router.route('/offers/:offerId')
+            .put(authMiddleware, authorizeRoles('vendor'), checkUserBlock, validateRequest(updateOfferSchema), (req: CustomRequest, res, next) => this._offerController.updateOffer(req, res, next))
+            .patch(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._offerController.toggleOfferStatus(req, res, next))
     }
 }

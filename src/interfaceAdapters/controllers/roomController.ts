@@ -103,6 +103,9 @@ export class RoomController implements IRoomController {
             const HOTEL_ID = req.params.hotelId;
             const CHECK_IN = req.query.checkIn as string;
             const CHECK_OUT = req.query.checkOut as string;
+            const ROOM_COUNT = Number(req.query.rooms) || 1;
+            const ADULTS = Number(req.query.adults) || 1;
+            const CHILDREN = Number(req.query.children) || 0;
 
             if (!HOTEL_ID) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
@@ -112,22 +115,8 @@ export class RoomController implements IRoomController {
                 throw new AppError('CheckIn or CheckOut Date missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(HOTEL_ID, CHECK_IN, CHECK_OUT);
+            const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(HOTEL_ID, CHECK_IN, CHECK_OUT, ROOM_COUNT, ADULTS, CHILDREN);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getAll, rooms, HttpStatusCode.OK);
-        } catch (error) {
-            next(error);
-        }
-    }
-
-    async getAvailableRoomsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const hotelId = req.params.hotelId;
-            if (!hotelId) {
-                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            }
-
-            // const rooms = await this._getAvailableRoomsByHotelUseCase.getAvlRoomsByHotel(hotelId);
-            // ResponseHandler.success(res, 'Available rooms fetched successfully', rooms, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

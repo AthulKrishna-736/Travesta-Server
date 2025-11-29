@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { IAmenities, IBlockUnblockAmenityUseCase } from "../../../../domain/interfaces/model/amenities.interface";
+import { IBlockUnblockAmenityUseCase } from "../../../../domain/interfaces/model/amenities.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/amenitiesRepo.interface";
 import { AppError } from "../../../../utils/appError";

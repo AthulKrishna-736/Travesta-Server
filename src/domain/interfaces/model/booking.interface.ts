@@ -44,9 +44,6 @@ export interface IGetBookingsByHotelUseCase {
     getBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
 }
 
-export interface ICheckRoomAvailabilityUseCase {
-    execute(roomId: string, checkIn: Date, checkOut: Date): Promise<boolean>;
-}
 
 export interface IGetBookingsToVendorUseCase {
     getBookingsToVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: TResponseBookingData[], total: number }>
