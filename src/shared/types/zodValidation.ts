@@ -127,7 +127,7 @@ export const createHotelSchema = z.object({
         invalid_type_error: "Address must be a string",
     })
         .min(5, "Address must be at least 5 characters")
-        .min(50, 'Address must be less than 50 characters'),
+        .max(100, 'Address must be less than 100 characters'),
 
     geoLocation: z.preprocess(
         (val) => (typeof val === "string" ? JSON.parse(val) : val),
@@ -181,7 +181,7 @@ export const updateHotelSchema = z.object({
 
     address: z.string()
         .min(5, "Address must be at least 5 characters")
-        .max(50, 'Address must be less 50 characters')
+        .max(100, 'Address must be less 100 characters')
         .optional(),
 
     geoLocation: z.preprocess(

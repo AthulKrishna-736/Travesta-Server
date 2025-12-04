@@ -8,8 +8,6 @@ import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { IUpdateKycUseCase } from "../../../domain/interfaces/model/usecases.interface";
 import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
-import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
-import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { VENDOR_RES_MESSAGES } from "../../../constants/resMessages";
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
@@ -20,7 +18,6 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
     constructor(
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AwsS3Service) private _s3Service: IAwsS3Service,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
     ) { }
 
     async updateKyc(userId: string, frontFile: Express.Multer.File, backFile: Express.Multer.File): Promise<{ vendor: TResponseUserDTO, message: string }> {
@@ -45,28 +42,23 @@ export class UpdateKycUseCase implements IUpdateKycUseCase {
 
         const existingDocs = user.kycDocuments || [];
         const updatedDocs = [...existingDocs, frontKey, backKey];
-        const updated = await this._userRepository.updateUser(userId, { kycDocuments: updatedDocs });
 
-        if (!updated) {
+        const updatedUser = await this._userRepository.updateUser(userId, { kycDocuments: updatedDocs });
+
+        if (!updatedUser) {
             throw new AppError(AUTH_ERROR_MESSAGES.updateFail, HttpStatusCode.BAD_REQUEST);
         }
-        let signedUrls
-        if (updated.kycDocuments) {
-            signedUrls = await Promise.all(
-                updated.kycDocuments.map((key) => this._s3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
+
+        if (updatedUser.kycDocuments && updatedUser.kycDocuments.length > 0) {
+            updatedUser.kycDocuments = await Promise.all(
+                updatedUser.kycDocuments.map((key) => this._s3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
             );
-            await this._redisService.storeKycDocs(user._id as string, signedUrls, awsS3Timer.expiresAt)
         }
 
-        const mappedUser: TResponseUserData = {
-            ...user,
-            kycDocuments: signedUrls,
-        };
-
-        const mapUser = ResponseMapper.mapUserToResponseDTO(mappedUser);
+        const mappedUser = ResponseMapper.mapUserToResponseDTO(updatedUser);
 
         return {
-            vendor: mapUser,
+            vendor: mappedUser,
             message: VENDOR_RES_MESSAGES.kyc,
         };
     }

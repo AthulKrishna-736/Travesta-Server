@@ -7,10 +7,9 @@ import { IGoogleLoginUseCase } from "../../../domain/interfaces/model/auth.inter
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { TRole } from "../../../shared/types/client.types";
-import { OAuth2Client } from "google-auth-library";
+import { OAuth2Client, TokenPayload } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
-import { UserLookupBase } from "../base/userLookup.base";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.interface";
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
@@ -18,19 +17,17 @@ import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dto
 
 
 @injectable()
-export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUseCase {
+export class GoogleLoginUseCase implements IGoogleLoginUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
+        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
-    ) {
-        super(_userRepository)
-    }
+    ) { }
     async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserDTO; }> {
         const client = new OAuth2Client(env.GOOGLE_ID);
 
-        let payload;
+        let payload: TokenPayload | undefined;
 
         try {
             const ticket = await client.verifyIdToken({
@@ -50,8 +47,11 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
         const email = payload.email;
 
         let user = await this._userRepository.findUser(email);
+        if (!user) {
+            throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        }
 
-        if (user?.role !== role) {
+        if (user.role !== role) {
             throw new AppError(AUTH_ERROR_MESSAGES.invalidRole, HttpStatusCode.FORBIDDEN)
         }
 
@@ -69,33 +69,37 @@ export class GoogleLoginUseCase extends UserLookupBase implements IGoogleLoginUs
             await this._createWallet.createUserWallet(user?._id as string);
         }
 
-        const userEntity = await this.getUserEntityByEmail(user?.email as string)
 
-        if (!user?.isGoogle) {
-            userEntity.googleUser();
-            if (payload.picture) {
-                userEntity.updateProfile({ profileImage: payload.picture });
-            }
+        const userByEmail = await this._userRepository.findUser(user?.email!)
+        if (!userByEmail || !userByEmail._id) {
+            throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
+        const updateData: Record<string, any> = { isGoogle: true }
+        if (payload.picture) {
+            updateData.profileImage = payload.picture;
+        }
 
-        await this._userRepository.updateUser(userEntity.id as string, userEntity.getPersistableData())
+        const updatedUser = await this._userRepository.updateUser(userByEmail._id, updateData)
+        if (!updatedUser || !updatedUser._id) {
+            throw new AppError(AUTH_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
+        }
 
-        if (userEntity.isBlocked) {
+        if (updatedUser.isBlocked) {
             throw new AppError(AUTH_ERROR_MESSAGES.blocked, HttpStatusCode.FORBIDDEN);
         }
 
-        const accessToken = this._authService.generateAccessToken(userEntity.id as string, userEntity.role as TRole, userEntity.email);
-        const refreshToken = this._authService.generateRefreshToken(userEntity.id as string, userEntity.role as TRole, userEntity.email);
+        const accessToken = this._authService.generateAccessToken(updatedUser._id, updatedUser.role, updatedUser.email);
+        const refreshToken = this._authService.generateRefreshToken(updatedUser._id, updatedUser.role, updatedUser.email);
 
-        await this._redisService.storeRefreshToken(userEntity.id as string, refreshToken, jwtConfig.refreshToken.maxAge / 1000);
+        await this._redisService.storeRefreshToken(updatedUser._id, refreshToken, jwtConfig.refreshToken.maxAge / 1000);
 
-        const mapUser = ResponseMapper.mapUserToResponseDTO(userEntity.toObject())
+        const mappedUser = ResponseMapper.mapUserToResponseDTO(updatedUser)
 
         return {
             accessToken,
             refreshToken,
-            user: mapUser
+            user: mappedUser,
         }
     }
 }

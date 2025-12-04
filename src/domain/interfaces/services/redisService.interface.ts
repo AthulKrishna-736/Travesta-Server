@@ -18,14 +18,6 @@ export interface IOtpService {
     del(key: string): Promise<void>
 }
 
-export interface IAwsRedisService {
-    storeRedisSignedUrl(userId: string, imageUrl: string, expiresAt: number): Promise<void>
-    getRedisSignedUrl(userId: string, purpose: 'profile' | 'kycDocs'): Promise<string | string[] | null>
-    storeKycDocs(userId: string, imagesUrls: string[], expiresAt: number): Promise<void>
-    storeHotelImageUrls(hotelId: string, imageUrls: string[], expiresAt: number): Promise<void>;
-    getHotelImageUrls(hotelId: string): Promise<string[] | null>;
-    getRoomImageUrls(roomId: string): Promise<string[] | null>;
-    storeRoomImageUrls(roomId: string, urls: string[], ttl: number): Promise<void>;
-}
 
-export interface IRedisService extends IJwtService, IOtpService, IAwsRedisService { }
+
+export interface IRedisService extends IJwtService, IOtpService { }

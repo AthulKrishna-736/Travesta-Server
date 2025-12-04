@@ -9,8 +9,6 @@ import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.
 import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { TUpdateUserData } from "../../../domain/interfaces/model/user.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
-import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
-import { UserLookupBase } from "../base/userLookup.base";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
@@ -18,19 +16,18 @@ import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
 import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 @injectable()
-export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
+export class UpdateUser implements IUpdateUserUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
+        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
-    ) {
-        super(_userRepository)
-    }
+    ) { }
 
     async updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserDTO, message: string }> {
-
-        const userEntity = await this.getUserEntityOrThrow(userId);
+        const user = await this._userRepository.findUserById(userId);
+        if (!user) {
+            throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        }
 
         if (file) {
             const filePath = file.path;
@@ -38,8 +35,7 @@ export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
             const s3Key = `users/profile_${userId}${fileExtension}`;
 
             await this._awsS3Service.uploadFileToAws(s3Key, filePath);
-
-            userEntity.updateProfile({ profileImage: s3Key });
+            userData.profileImage = s3Key;
 
             fs.unlink(filePath, (err) => {
                 if (err) {
@@ -55,34 +51,22 @@ export class UpdateUser extends UserLookupBase implements IUpdateUserUseCase {
             userData.password = hashPass;
         }
 
-        userEntity.updateProfile(userData);
-
-        const persistableData = userEntity.getPersistableData();
-
-        const updatedUserData = await this._userRepository.updateUser(userId, persistableData);
-
-        if (!updatedUserData) {
+        const updatedUser = await this._userRepository.updateUser(userId, userData);
+        if (!updatedUser) {
             throw new AppError(AUTH_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
-        if (file && updatedUserData.profileImage) {
-            updatedUserData.profileImage = await this._awsS3Service.getFileUrlFromAws(updatedUserData.profileImage as string, awsS3Timer.expiresAt);
-            await this._redisService.storeRedisSignedUrl(updatedUserData._id as string, updatedUserData.profileImage, awsS3Timer.expiresAt);
-        } else {
-            const signedUrl = await this._redisService.getRedisSignedUrl(updatedUserData._id!, 'profile');
-            updatedUserData.profileImage = signedUrl as string;
+        if (updatedUser.profileImage) {
+            updatedUser.profileImage = await this._awsS3Service.getFileUrlFromAws(updatedUser.profileImage, awsS3Timer.expiresAt);
         }
 
-        if (updatedUserData.kycDocuments && updatedUserData.kycDocuments.length > 0) {
-            let kycDocs = await this._redisService.getRedisSignedUrl(updatedUserData._id!, 'kycDocs');
-            if (!kycDocs) {
-                kycDocs = await Promise.all(updatedUserData.kycDocuments.map(async (i) => await this._awsS3Service.getFileUrlFromAws(i, awsS3Timer.expiresAt)));
-                await this._redisService.storeKycDocs(updatedUserData._id!, kycDocs, awsS3Timer.expiresAt)
-            }
-            updatedUserData.kycDocuments = kycDocs as string[];
+        if (updatedUser.kycDocuments && updatedUser.kycDocuments.length > 0) {
+            updatedUser.kycDocuments = await Promise.all(
+                updatedUser.kycDocuments.map((key) => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
+            )
         }
 
-        const mapUser = ResponseMapper.mapUserToResponseDTO(updatedUserData);
+        const mapUser = ResponseMapper.mapUserToResponseDTO(updatedUser);
 
         return {
             user: mapUser,
