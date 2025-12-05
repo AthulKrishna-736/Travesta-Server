@@ -28,7 +28,6 @@ export class ForgotPassUseCase implements IForgotPassUseCase {
         }
 
         const otp = this._authService.generateOtp();
-        console.log('password generate forgot: ', otp)
         const tempUserId = `temp:reset:${uuidv4()}`;
 
         await this._authService.storeOtp(tempUserId, otp, { email: user.email }, 'reset');

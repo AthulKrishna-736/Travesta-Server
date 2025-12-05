@@ -59,8 +59,6 @@ export class GetAvailableRoomsUseCase implements IGetAvailableRoomsUseCase {
             throw new AppError("Expected 'availableRooms' to be an array", HttpStatusCode.CONFLICT);
         }
 
-        console.log('rooms: ', rooms);
-
         const mappedRooms = await Promise.all(
             availableRooms.map(async (r) => {
                 if (!r.images || r.images.length <= 0) {

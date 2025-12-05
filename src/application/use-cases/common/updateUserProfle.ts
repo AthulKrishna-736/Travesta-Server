@@ -40,9 +40,7 @@ export class UpdateUser implements IUpdateUserUseCase {
             fs.unlink(filePath, (err) => {
                 if (err) {
                     console.error(`Error deleting file: ${err}`);
-                } else {
-                    console.log(`Successfully deleted local file: ${filePath}`);
-                }
+                } 
             });
         }
 

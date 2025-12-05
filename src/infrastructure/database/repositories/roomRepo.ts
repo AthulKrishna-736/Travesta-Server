@@ -112,7 +112,6 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         guests?: string
     ): Promise<{ rooms: IRoom[]; total: number }> {
 
-        console.log('repo parameters: ', page, limit, minPrice, maxPrice, amenities, search, destination, checkIn, checkOut, guests);
         const skip = (page - 1) * limit;
         const filter: any = {
             isAvailable: true
