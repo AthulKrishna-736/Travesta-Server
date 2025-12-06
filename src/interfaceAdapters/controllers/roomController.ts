@@ -9,7 +9,7 @@ import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsB
 import { TCreateRoomDTO, TUpdateRoomDTO } from '../dtos/room.dto';
 import { Pagination } from '../../shared/types/common.types';
 import { ROOM_RES_MESSAGES } from '../../constants/resMessages';
-import { HOTEL_ERROR_MESSAGES, ROOM_ERROR_MESSAGES } from '../../constants/errorMessages';
+import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES, ROOM_ERROR_MESSAGES } from '../../constants/errorMessages';
 import { IRoomController } from '../../domain/interfaces/controllers/roomController.interface';
 
 
@@ -21,7 +21,6 @@ export class RoomController implements IRoomController {
         @inject(TOKENS.GetRoomByIdUseCase) private _getRoomByIdUseCase: IGetRoomByIdUseCase,
         @inject(TOKENS.GetRoomsByHotelUseCase) private _getRoomsByHotelUseCase: IGetRoomsByHotelUseCase,
         @inject(TOKENS.GetAllRoomsUseCase) private _getAllRoomsUseCase: IGetAllRoomsUseCase,
-        @inject(TOKENS.GetAvailableRoomsUseCase) private _getAvlRoomsUseCase: IGetAvailableRoomsUseCase,
     ) { }
 
     async createRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -124,48 +123,18 @@ export class RoomController implements IRoomController {
 
     async getAllRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
+            const VENDOR_ID = req.user?.userId;
             const PAGE = Number(req.query.page) || 1;
             const LIMIT = Number(req.query.limit) || 10;
             const SEARCH = req.query.search as string;
             const HOTELID = req.query.hotelId as string;
 
-            const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(PAGE, LIMIT, SEARCH, HOTELID);
+            if (!VENDOR_ID) {
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_GATEWAY);
+            }
+
+            const { rooms, message, total } = await this._getAllRoomsUseCase.getAllRooms(VENDOR_ID, PAGE, LIMIT, SEARCH, HOTELID);
             const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) }
-            ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
-        } catch (error) {
-            next(error);
-        }
-    }
-
-    async getAllAvlRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const PAGE = Math.max(Number(req.query.page) || 1, 1);
-            const LIMIT = Math.max(Number(req.query.limit) || 10, 1);
-
-            const SEARCH = typeof req.query.search === 'string' ? req.query.search.trim() : '';
-
-            const MIN_PRICE = req.query.minPrice !== undefined ? Number(req.query.minPrice) : 0;
-            const MAX_PRICE = req.query.maxPrice !== undefined ? Number(req.query.maxPrice) : 100000;
-
-            const AMENITIES = typeof req.query.amenities === 'string' && req.query.amenities.trim().length > 0 ? req.query.amenities.split(',') : undefined;
-
-            const CHECK_IN = typeof req.query.checkIn === 'string' ? req.query.checkIn : undefined;
-            const CHECK_OUT = typeof req.query.checkOut === 'string' ? req.query.checkOut : undefined;
-            const GUESTS = req.query.guests;
-
-            const { rooms, message, total } = await this._getAvlRoomsUseCase.getAvlRooms(
-                PAGE,
-                LIMIT,
-                MIN_PRICE,
-                MAX_PRICE,
-                AMENITIES,
-                SEARCH,
-                CHECK_IN,
-                CHECK_OUT,
-                GUESTS as string
-            );
-
-            const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) };
             ResponseHandler.success(res, message, rooms, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);

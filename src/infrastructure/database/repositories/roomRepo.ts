@@ -5,7 +5,7 @@ import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfa
 import { IRoomRepository } from "../../../domain/interfaces/repositories/roomRepo.interface";
 import { hotelModel } from "../models/hotelModel";
 import { bookingModel } from "../models/bookingModel";
-import mongoose from "mongoose";
+import mongoose, { Types, PipelineStage, QueryOptions } from "mongoose";
 
 @injectable()
 export class RoomRepository extends BaseRepository<TRoomDocument> implements IRoomRepository {
@@ -71,9 +71,9 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         return rooms;
     }
 
-    async findAllRooms(page: number, limit: number, search?: string, hotelId?: string): Promise<{ rooms: IRoom[]; total: number }> {
+    async findAllRooms(vendorId: string, page: number, limit: number, search?: string, hotelId?: string): Promise<{ rooms: IRoom[]; total: number }> {
         const skip = (page - 1) * limit;
-        const filter: any = {};
+        const filter: QueryOptions = {};
 
         if (search) {
             const regex = new RegExp(search, "i");
@@ -81,113 +81,70 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         }
 
         if (hotelId) {
-            filter.hotelId = hotelId;
+            filter.hotelId = new Types.ObjectId(hotelId);
         }
 
-        const total = await this.model.countDocuments(filter);
+        const pipeline: PipelineStage[] = [
+            {
+                $match: { ...filter }
+            },
+            {
+                $lookup: {
+                    from: 'amenities',
+                    foreignField: '_id',
+                    localField: 'amenities',
+                    pipeline: [{ $project: { name: 1, type: 1 } }],
+                    as: 'amenities'
+                }
+            },
+            {
+                $lookup: {
+                    from: 'hotels',
+                    let: {
+                        hotelId: '$hotelId',
+                        vendorId: new Types.ObjectId(vendorId),
+                    },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $eq: ['$vendorId', '$$vendorId'] },
+                                        { $eq: ['$_id', '$$hotelId'] },
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            $project: {
+                                name: 1,
+                                vendorId: 1,
+                            }
+                        }
+                    ],
+                    as: 'hotel'
+                }
+            },
+            { $unwind: '$hotel' },
 
-        const rooms = await this.model
-            .find(filter)
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit)
-            .populate({ path: "amenities", select: "name _id" })
-            .populate({ path: "hotelId", select: "name _id" })
-            .lean();
-
-        return { rooms, total };
-    }
-
-
-    async findFilteredAvailableRooms(
-        page: number,
-        limit: number,
-        minPrice?: number,
-        maxPrice?: number,
-        amenities?: string[],
-        search?: string,
-        destination?: string,
-        checkIn?: string,
-        checkOut?: string,
-        guests?: string
-    ): Promise<{ rooms: IRoom[]; total: number }> {
-
-        const skip = (page - 1) * limit;
-        const filter: any = {
-            isAvailable: true
-        };
-
-        // Basic search (name, bedType)
-        if (search) {
-            const regex = new RegExp(search, 'i');
-            filter.$or = [
-                { name: regex },
-                { bedType: regex }
-            ];
-        }
-
-        // Price range
-        if (minPrice !== undefined && maxPrice !== undefined) {
-            filter.basePrice = { $gte: minPrice, $lte: maxPrice };
-        }
-
-        // Amenities filter
-        if (amenities && amenities.length > 0) {
-            filter.amenities = { $in: amenities };
-        }
-
-        // Guests capacity
-        if (guests) {
-            const guestCount = parseInt(guests);
-            if (!isNaN(guestCount)) {
-                filter.capacity = { $gte: guestCount };
+            {
+                $facet: {
+                    totalCount: [
+                        { $count: 'totalRooms' }
+                    ],
+                    rooms: [
+                        { $sort: { createdAt: -1 } },
+                        { $skip: skip },
+                        { $limit: limit },
+                    ]
+                }
             }
-        }
+        ]
 
-        // First: Get all hotel IDs that match destination (state)
-        if (destination) {
-            const matchedHotels = await hotelModel.find({ state: new RegExp(destination, "i") }).select("_id");
-            const hotelIds = matchedHotels.map(h => h._id);
-            filter.hotelId = { $in: hotelIds };
-        }
+        const result = await this.model.aggregate(pipeline);
 
-        // Get all rooms matching base filters
-        let rooms = await roomModel.find(filter)
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit)
-            .populate({
-                path: 'amenities',
-                select: 'name _id',
-                match: { isActive: true }
-            })
-            .lean();
-
-        // Total count for pagination
-        const total = await roomModel.countDocuments(filter);
-
-        // If date filtering is applied, remove rooms that are booked
-        if (checkIn && checkOut) {
-            const checkInDate = new Date(checkIn);
-            const checkOutDate = new Date(checkOut);
-
-            const roomIds = rooms.map(r => r._id);
-
-            const bookedRooms = await bookingModel.find({
-                roomId: { $in: roomIds },
-                status: { $ne: "cancelled" },
-                $or: [
-                    {
-                        checkIn: { $lt: checkOutDate },
-                        checkOut: { $gt: checkInDate }
-                    }
-                ]
-            }).select("roomId");
-
-            const bookedRoomIds = new Set(bookedRooms.map(b => b.roomId.toString()));
-
-            rooms = rooms.filter(room => !bookedRoomIds.has(room._id.toString()));
-        }
+        const rooms = result[0].rooms;
+        const total = result[0].totalCount[0]?.totalRooms;
 
         return { rooms, total };
     }

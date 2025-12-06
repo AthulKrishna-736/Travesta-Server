@@ -79,7 +79,6 @@ export const TOKENS = {
   UpdateRoomUseCase: 'UpdateRoomUseCase',
   GetRoomByIdUseCase: 'GetRoomByIdUseCase',
   GetRoomsByHotelUseCase: 'GetRoomsByHotelUseCase',
-  GetAvailableRoomsUseCase: 'GetAvailableRoomsUseCase',
   GetAllRoomsUseCase: 'GetAllRoomsUseCase',
   GetCustomRoomDatesUseCase: 'GetCustomRoomDatesUseCase',
 

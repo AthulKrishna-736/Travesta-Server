@@ -9,18 +9,6 @@ export interface IRoomRepository {
     findRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
     findOtherRoomsByHotel(hotelId: string, excludeRoomId: string): Promise<IRoom[]>;
     findAvailableRoomsByHotel(hotelId: string): Promise<IRoom[] | null>;
-    findAllRooms(page: number, limit: number, search?: string, hotelId?: string): Promise<{ rooms: IRoom[], total: number }>;
-    findFilteredAvailableRooms(
-        page: number,
-        limit: number,
-        minPrice?: number,
-        maxPrice?: number,
-        amenities?: string[],
-        search?: string,
-        destination?: string,
-        checkIn?: string,
-        checkOut?: string,
-        guests?: string
-    ): Promise<{ rooms: IRoom[]; total: number }>;
+    findAllRooms(vendorId: string, page: number, limit: number, search?: string, hotelId?: string): Promise<{ rooms: IRoom[], total: number }>;
     getRoomPerformance(hotelId: string, period: 'week' | 'month' | 'year'): Promise<any>;
 }

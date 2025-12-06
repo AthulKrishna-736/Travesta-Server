@@ -43,7 +43,6 @@ import { GetBookingsByHotelUseCase } from "../../application/use-cases/vendor/bo
 import { GetBookingsByUserUseCase } from "../../application/use-cases/vendor/booking/getBookingUserUseCase";
 import { CancelBookingUseCase } from "../../application/use-cases/vendor/booking/cancelBookingUseCase";
 import { GetAllRoomsUseCase } from "../../application/use-cases/vendor/room/getAllRoomsUseCase";
-import { GetAvailableRoomsUseCase } from "../../application/use-cases/vendor/room/getAvlRoomsUseCase";
 import { AmenitiesRepository } from "../database/repositories/amenitiesRepo";
 import { CreateAmenityUseCase } from "../../application/use-cases/admin/amenities/createAmenity.UseCase";
 import { IBlockUnblockAmenityUseCase, ICreateAmenityUseCase, IFindUsedActiveAmenitiesUseCase, IGetActiveAmenitiesUseCase, IGetAllAmenitiesUseCase, IGetAmenityByIdUseCase, IUpdateAmenityUseCase } from "../../domain/interfaces/model/amenities.interface";
@@ -417,10 +416,6 @@ container.register<IGetRoomByIdUseCase>(TOKENS.GetRoomByIdUseCase, {
 
 container.register<IGetRoomsByHotelUseCase>(TOKENS.GetRoomsByHotelUseCase, {
   useClass: GetRoomsByHotelUseCase,
-})
-
-container.register<IGetAvailableRoomsUseCase>(TOKENS.GetAvailableRoomsUseCase, {
-  useClass: GetAvailableRoomsUseCase,
 })
 
 container.register<IGetAllRoomsUseCase>(TOKENS.GetAllRoomsUseCase, {

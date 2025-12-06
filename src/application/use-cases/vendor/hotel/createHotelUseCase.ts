@@ -26,7 +26,9 @@ export class CreateHotelUseCase implements ICreateHotelUseCase {
 
     async createHotel(vendorId: string, hotelData: TCreateHotelDTO, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelDTO; message: string }> {
         const vendor = await this._userRepository.findUserById(vendorId);
-        if (!vendor?.isVerified) {
+        if (!vendor) throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+
+        if (!vendor.isVerified) {
             throw new AppError(AUTH_ERROR_MESSAGES.notVerified, HttpStatusCode.CONFLICT);
         }
 
