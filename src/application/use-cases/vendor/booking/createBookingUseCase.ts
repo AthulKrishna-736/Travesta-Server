@@ -3,11 +3,12 @@ import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
 import { TOKENS } from '../../../../constants/token';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/bookingRepo.interface';
-import { formatDateString } from '../../../../utils/helperFunctions';
-import { ICreateBookingUseCase, TCreateBookingData, TResponseBookingData } from '../../../../domain/interfaces/model/booking.interface';
+import { ICreateBookingUseCase } from '../../../../domain/interfaces/model/booking.interface';
 import { BOOKING_RES_MESSAGES } from '../../../../constants/resMessages';
 import { BOOKING_ERROR_MESSAGES } from '../../../../constants/errorMessages';
 import { ClientSession } from 'mongoose';
+import { TCreateBookingDTO, TResponseBookingDTO } from '../../../../interfaceAdapters/dtos/booking.dto';
+import { ResponseMapper } from '../../../../utils/responseMapper';
 
 @injectable()
 export class CreateBookingUseCase implements ICreateBookingUseCase {
@@ -15,7 +16,7 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
     ) { }
 
-    async createBooking(data: TCreateBookingData, session: ClientSession): Promise<{ booking: TResponseBookingData; message: string }> {
+    async createBooking(data: TCreateBookingDTO, session: ClientSession): Promise<{ booking: TResponseBookingDTO; message: string }> {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         if (new Date(data.checkIn) < today) {
@@ -31,14 +32,10 @@ export class CreateBookingUseCase implements ICreateBookingUseCase {
             throw new AppError(BOOKING_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
-        const mappedBook: TResponseBookingData = {
-            ...created,
-            checkIn: formatDateString(created.checkIn.toString()),
-            checkOut: formatDateString(created.checkOut.toString()),
-        };
+        const mappedBooking = ResponseMapper.mapBookingResponseToDTO(created);
 
         return {
-            booking: mappedBook,
+            booking: mappedBooking,
             message: BOOKING_RES_MESSAGES.create,
         };
     }

@@ -1,14 +1,8 @@
 import { IOffer, TDiscountType } from "../domain/interfaces/model/offer.interface";
 
-export function formatDateString(dateStr: string): string {
-    const date = new Date(dateStr);
-    const yyyy = date.getFullYear();
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const dd = String(date.getDate()).padStart(2, '0');
-    const hh = String(date.getHours()).padStart(2, '0');
-    const min = String(date.getMinutes()).padStart(2, '0');
-
-    return `${yyyy}-${mm}-${dd} ${hh}:${min}`;
+export function formatDateString(dateValue: string | Date): string {
+    const date = new Date(dateValue);
+    return date.toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })
 }
 
 const DYNAMIC_PRICE = [

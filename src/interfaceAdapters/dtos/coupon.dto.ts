@@ -36,8 +36,8 @@ export type TResponseCouponDTO = {
     value: number;
     minPrice: number;
     maxPrice: number;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
     count: number;
     isBlocked: boolean;
     createdAt: Date;

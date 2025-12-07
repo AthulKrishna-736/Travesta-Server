@@ -30,8 +30,8 @@ export type TResponseOfferDTO = {
     roomType: TRoomType;
     discountType: TDiscountType;
     discountValue: number;
-    startDate: Date;
-    expiryDate: Date;
+    startDate: string;
+    expiryDate: string;
     isBlocked: boolean;
     createdAt: Date;
     updatedAt: Date;

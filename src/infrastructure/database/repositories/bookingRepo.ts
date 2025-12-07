@@ -1,11 +1,11 @@
 import { injectable } from 'tsyringe';
 import { BaseRepository } from './baseRepo';
 import { bookingModel, TBookingDocument } from '../models/bookingModel';
-import { IBooking, TCreateBookingData } from '../../../domain/interfaces/model/booking.interface';
+import { IBooking, TBookingPopulated, TCreateBookingData } from '../../../domain/interfaces/model/booking.interface';
 import { IBookingRepository } from '../../../domain/interfaces/repositories/bookingRepo.interface';
 import { hotelModel } from '../models/hotelModel';
 import { roomModel } from '../models/roomModel';
-import mongoose, { ClientSession, PipelineStage, Types } from 'mongoose';
+import mongoose, { ClientSession, PipelineStage, QueryOptions, Types } from 'mongoose';
 import { userModel } from '../models/userModels';
 
 @injectable()
@@ -52,32 +52,34 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return booking.toObject();
     }
 
-    async findBookingsByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: IBooking[]; total: number }> {
+    async findBookingsByUser(
+        userId: string,
+        page: number,
+        limit: number,
+        search?: string,
+        sort?: string
+    ): Promise<{ bookings: TBookingPopulated[]; total: number }> {
         const skip = (page - 1) * limit;
 
-        const filter: any = { userId };
+        const filter: QueryOptions = {};
 
-        // ✅ search (match hotel name OR city OR state)
         if (search) {
             const searchRegex = new RegExp(search, "i");
             filter.$or = [
-                { "hotelId.name": searchRegex },
-                { "hotelId.city": searchRegex },
-                { "hotelId.state": searchRegex },
+                { name: searchRegex },
             ];
         }
 
-        // ✅ sort mapping
-        let sortQuery: Record<string, 1 | -1> = { createdAt: -1 }; // default recent
+        let sortQuery: Record<string, 1 | -1> = { createdAt: -1 };
         switch (sort) {
             case "recent":
                 sortQuery = { createdAt: -1 };
                 break;
             case "name_asc":
-                sortQuery = { "roomId.name": 1 };
+                sortQuery = { "room.name": 1 };
                 break;
             case "name_desc":
-                sortQuery = { "roomId.name": -1 };
+                sortQuery = { "room.name": -1 };
                 break;
             case "price_asc":
                 sortQuery = { totalPrice: 1 };
@@ -89,16 +91,74 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
                 sortQuery = { createdAt: -1 };
         }
 
-        const total = await this.model.countDocuments(filter);
+        const pipeline: PipelineStage[] = [
+            {
+                $match: {
+                    $expr: {
+                        $eq: [new Types.ObjectId(userId), '$userId']
+                    }
+                }
+            },
+            {
+                $lookup: {
+                    from: 'rooms',
+                    foreignField: '_id',
+                    localField: 'roomId',
+                    pipeline: [
+                        {
+                            $match: { ...filter }
+                        },
+                        {
+                            $project: {
+                                name: 1,
+                                basePrice: 1,
+                                roomType: 1,
+                            }
+                        }
+                    ],
+                    as: 'room'
+                }
+            },
+            { $unwind: '$room' },
+            {
+                $lookup: {
+                    from: 'hotels',
+                    foreignField: '_id',
+                    localField: 'hotelId',
+                    pipeline: [
+                        {
+                            $project: {
+                                name: 1,
+                                city: 1,
+                                state: 1,
+                                images: 1,
+                                geoLocation: 1,
+                            }
+                        }
+                    ],
+                    as: 'hotel'
+                }
+            },
+            { $unwind: '$hotel' },
 
-        const bookings = await this.model
-            .find(filter)
-            .sort(sortQuery)
-            .skip(skip)
-            .limit(limit)
-            .populate({ path: "roomId", select: "name basePrice" })
-            .populate({ path: "hotelId", select: "name state city images" })
-            .lean<IBooking[]>();
+            {
+                $facet: {
+                    totalBookings: [
+                        { $count: 'total' }
+                    ],
+                    data: [
+                        { $sort: sortQuery },
+                        { $skip: skip },
+                        { $limit: limit },
+                    ]
+                }
+            }
+        ]
+
+        const result = await this.model.aggregate(pipeline);
+
+        const bookings = result[0].data;
+        const total = result[0].totalBookings[0]?.total ?? 0;
 
         return { bookings, total };
     }
@@ -110,7 +170,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         const hotelIds = vendorHotels.map(h => h._id);
 
         if (!hotelIds.length) return { bookings: [], total: 0 };
-        const filter: any = { hotelId: { $in: hotelIds } };
+        const filter: QueryOptions = { hotelId: { $in: hotelIds } };
 
         if (hotelId) {
             filter.hotelId = hotelId;
@@ -221,7 +281,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
     }
 
     async getVendorAnalyticsSummary(vendorId: string, startDate?: string, endDate?: string): Promise<{ totalRevenue: number; totalBookings: number; averageBookingValue: number; activeHotels: number; }> {
-        const dateFilter: any = {};
+        const dateFilter: QueryOptions = {};
         if (startDate && endDate) {
             const start = new Date(startDate);
             const end = new Date(endDate);
@@ -279,7 +339,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
     }
 
     async getVendorTopHotels(vendorId: string, limit: number = 5, startDate?: string, endDate?: string): Promise<Array<{ hotelId: string; hotelName: string; revenue: number; bookings: number; }>> {
-        const dateFilter: any = {};
+        const dateFilter: QueryOptions = {};
         if (startDate && endDate) {
             const start = new Date(startDate);
             const end = new Date(endDate);
@@ -393,7 +453,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
     }
 
     async getVendorBookingStatus(vendorId: string, startDate?: string, endDate?: string): Promise<Array<{ status: string; count: number; }>> {
-        const dateFilter: any = {};
+        const dateFilter: QueryOptions = {};
         if (startDate && endDate) {
             const start = new Date(startDate);
             const end = new Date(endDate);
@@ -432,11 +492,6 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         ];
 
         return await this.model.aggregate(pipeline);
-    }
-
-
-    async findCustomRoomDates(roomId: string, limit: number): Promise<any> {
-        // const 
     }
 
     async getBookedRoomsCount(roomId: string, checkIn: Date, checkOut: Date): Promise<number> {

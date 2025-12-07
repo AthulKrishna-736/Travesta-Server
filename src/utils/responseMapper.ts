@@ -17,6 +17,9 @@ import { ICoupon } from "../domain/interfaces/model/coupon.interface";
 import { TResponseCouponDTO } from "../interfaceAdapters/dtos/coupon.dto";
 import { IOffer } from "../domain/interfaces/model/offer.interface";
 import { TResponseOfferDTO } from "../interfaceAdapters/dtos/offer.dto";
+import { IBooking, TBookingPopulated } from "../domain/interfaces/model/booking.interface";
+import { TResponseBookingDTO } from "../interfaceAdapters/dtos/booking.dto";
+import { formatDateString } from "./helperFunctions";
 
 export class ResponseMapper {
     static mapSubscriptionToResponseDTO(plan: ISubscription): TResponseSubscriptionDTO {
@@ -159,8 +162,8 @@ export class ResponseMapper {
             minPrice: coupon.minPrice,
             maxPrice: coupon.maxPrice,
             count: coupon.count,
-            startDate: coupon.startDate,
-            endDate: coupon.endDate,
+            startDate: formatDateString(coupon.startDate),
+            endDate: formatDateString(coupon.endDate),
             isBlocked: coupon.isBlocked,
             createdAt: coupon.createdAt,
             updatedAt: coupon.updatedAt,
@@ -176,11 +179,32 @@ export class ResponseMapper {
             roomType: offer.roomType,
             discountType: offer.discountType,
             discountValue: offer.discountValue,
-            startDate: offer.startDate,
-            expiryDate: offer.expiryDate,
+            startDate: formatDateString(offer.startDate),
+            expiryDate: formatDateString(offer.expiryDate),
             isBlocked: offer.isBlocked,
-            createdAt: offer.createdAt!,
-            updatedAt: offer.updatedAt!,
+            createdAt: offer.createdAt,
+            updatedAt: offer.updatedAt,
         };
+    }
+
+    static mapBookingResponseToDTO(booking: IBooking & { hotel?: TBookingPopulated['hotel'], room?: TBookingPopulated['room'] }): TResponseBookingDTO {
+        return {
+            id: booking._id!.toString(),
+            userId: booking.userId,
+            hotelId: booking.hotelId.toString(),
+            roomId: booking.roomId.toString(),
+            hotel: booking.hotel,
+            room: booking.room,
+            checkIn: formatDateString(booking.checkIn),
+            checkOut: formatDateString(booking.checkIn),
+            guests: booking.guests,
+            totalPrice: booking.totalPrice,
+            roomsCount: booking.roomsCount,
+            couponId: booking.couponId?.toString(),
+            status: booking.status,
+            payment: booking.payment,
+            createdAt: booking.checkIn,
+            updatedAt: booking.updatedAt,
+        }
     }
 }

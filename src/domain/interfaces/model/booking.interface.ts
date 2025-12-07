@@ -1,4 +1,7 @@
 import { ClientSession, Types } from "mongoose";
+import { IHotel } from "./hotel.interface";
+import { IRoom } from "./room.interface";
+import { TCreateBookingDTO, TResponseBookingDTO } from "../../../interfaceAdapters/dtos/booking.dto";
 
 export type TStatus = 'confirmed' | 'cancelled' | 'pending';
 export type TPaymentStatus = 'pending' | 'success' | 'failed' | 'refunded';
@@ -13,7 +16,7 @@ export interface IBooking {
     checkOut: Date;
     guests: number;
     totalPrice: number;
-    roomsCount?: number;
+    roomsCount: number;
     couponId?: string | Types.ObjectId;
     status: TStatus;
     payment: TPaymentStatus;
@@ -26,10 +29,16 @@ export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt
 export type TUpdateBookingData = Partial<Omit<IBooking, '_id' | 'userId' | 'hotelId' | 'roomId' | 'createdAt' | 'updatedAt'>>;
 export type TResponseBookingData = Omit<IBooking, 'checkIn' | 'checkOut'> & { checkIn: string, checkOut: string };
 
+export type TBookingPopulated = IBooking & {
+    hotel: Pick<IHotel, "_id" | "name" | "state" | "city" | "images" | 'geoLocation'>;
+    room: Pick<IRoom, "_id" | "name" | "basePrice" | "roomType">;
+};
+
+
 
 //booking use case
 export interface ICreateBookingUseCase {
-    createBooking(data: TCreateBookingData, session: ClientSession): Promise<{ booking: TResponseBookingData; message: string }>;
+    createBooking(data: TCreateBookingDTO, session: ClientSession): Promise<{ booking: TResponseBookingDTO; message: string }>;
 }
 
 export interface ICancelBookingUseCase {
@@ -37,20 +46,16 @@ export interface ICancelBookingUseCase {
 }
 
 export interface IGetBookingsByUserUseCase {
-    getBookingByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: TResponseBookingData[], total: number }>
+    getBookingByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: TResponseBookingDTO[], total: number, message: string }>
 }
 
 export interface IGetBookingsByHotelUseCase {
-    getBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingData[], total: number }>
+    getBookingsByHotel(hotelId: string, page: number, limit: number): Promise<{ bookings: TResponseBookingDTO[], total: number, message: string }>
 }
 
 
 export interface IGetBookingsToVendorUseCase {
-    getBookingsToVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: TResponseBookingData[], total: number }>
-}
-
-export interface IGetCustomRoomDatesUseCase {
-    getCustomRoomDates(roomId: string, limit: number, checkIn: string, checkOut: string): Promise<{ message: string, roomDates: any }>;
+    getBookingsToVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: TResponseBookingDTO[], total: number, message: string }>
 }
 
 export interface IGetVendorHotelAnalyticsUseCase {
