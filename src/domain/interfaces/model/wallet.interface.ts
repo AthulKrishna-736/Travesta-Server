@@ -1,16 +1,21 @@
 import { Types } from "mongoose";
 import { TCreateBookingData } from "./booking.interface";
+import { TResponseWalletDTO } from "../../../interfaceAdapters/dtos/wallet.dto";
+import { TResponseTransactionDTO } from "../../../interfaceAdapters/dtos/transactions.dto";
+
+export type TTransactionType = 'credit' | 'debit';
+export type TRelatedType = 'Booking' | 'Subscription';
 
 //transaction model
 export interface ITransactions {
     _id?: string;
     walletId: Types.ObjectId;
-    type: 'credit' | 'debit';
+    type: TTransactionType;
     amount: number;
     description: string;
-    transactionId?: string;
+    transactionId: string;
     relatedEntityId?: Types.ObjectId;
-    relatedEntityType?: 'Booking' | 'Subscription';
+    relatedEntityType?: TRelatedType;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -34,26 +39,26 @@ export type TResponseTransactions = ITransactions;
 
 //wallet use case
 export interface ICreateWalletUseCase {
-    createUserWallet(userId: string): Promise<{ wallet: TResponseWalletData, message: string }>;
+    createUserWallet(userId: string): Promise<{ wallet: TResponseWalletDTO, message: string }>;
 }
 
 export interface IGetWalletUseCase {
-    getUserWallet(userId: string): Promise<{ wallet: TResponseWalletData | null, message: string }>;
+    getUserWallet(userId: string): Promise<{ wallet: TResponseWalletDTO | null, message: string }>;
 }
 
 //transaction usecase
 export interface IPlansTransactionUseCase {
-    walletTransaction(userId: string, planId: string, amount: number): Promise<{ transaction: TResponseTransactions, message: string }>
+    walletTransaction(userId: string, planId: string, amount: number): Promise<{ transaction: TResponseTransactionDTO, message: string }>
 }
 
 export interface IBookingTransactionUseCase {
-    bookingTransaction(vendorId: string, bookingData: TCreateBookingData, method: 'online' | 'wallet'): Promise<{ transaction: TResponseTransactions, message: string }>
+    bookingTransaction(vendorId: string, bookingData: TCreateBookingData, method: 'online' | 'wallet'): Promise<{ message: string }>
 }
 
 export interface IAddMoneyToWalletUseCase {
-    addMoneyToWallet(userId: string, amount: number): Promise<{ transaction: TResponseTransactions, message: string }>
+    addMoneyToWallet(userId: string, amount: number): Promise<{ transaction: TResponseTransactionDTO, message: string }>
 }
 
 export interface IGetTransactionsUseCase {
-    getTransactions(userId: string, page: number, limit: number): Promise<{ transactions: TResponseTransactions[], total: number, message: string }>
+    getTransactions(userId: string, page: number, limit: number): Promise<{ transactions: TResponseTransactionDTO[], total: number, message: string }>
 }

@@ -25,6 +25,8 @@ const transactionSchema = new Schema<TTransactionDoc>({
     },
     transactionId: {
         type: String,
+        unique: true,
+        required: true,
     },
     relatedEntityId: {
         type: Types.ObjectId,

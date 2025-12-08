@@ -4,54 +4,28 @@ import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
-import { ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase } from '../../domain/interfaces/model/booking.interface';
+import { IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, ICancelBookingUseCase, IGetBookingsToVendorUseCase, IGetVendorHotelAnalyticsUseCase } from '../../domain/interfaces/model/booking.interface';
 import { AppError } from '../../utils/appError';
 import { Pagination } from '../../shared/types/common.types';
 import { BOOKING_RES_MESSAGES } from '../../constants/resMessages';
+import { AUTH_ERROR_MESSAGES, BOOKING_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from '../../constants/errorMessages';
+import { IBookingController } from '../../domain/interfaces/controllers/bookingController.interface';
 
 @injectable()
-export class BookingController {
+export class BookingController implements IBookingController {
     constructor(
-        @inject(TOKENS.CreateBookingUseCase) private _createBookingUseCase: ICreateBookingUseCase,
         @inject(TOKENS.GetBookingsByHotelUseCase) private _getByHotelUseCase: IGetBookingsByHotelUseCase,
         @inject(TOKENS.GetBookingsByUserUseCase) private _getByUserUseCase: IGetBookingsByUserUseCase,
         @inject(TOKENS.CancelRoomUseCase) private _cancelBookingUseCase: ICancelBookingUseCase,
         @inject(TOKENS.GetBookingsToVendorUseCase) private _getBookingsToVendorUseCase: IGetBookingsToVendorUseCase,
+        @inject(TOKENS.GetVendorHotelAnalyticsUseCase) private _getVendorHotelAnalyticsUseCase: IGetVendorHotelAnalyticsUseCase,
     ) { }
-
-    async createBooking(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const data = {
-                ...req.body,
-                userId: req.user?.userId as string,
-            };
-
-            if (!data.userId || !data.hotelId || !data.roomId || !data.checkIn || !data.checkOut || !data.totalPrice) {
-                throw new AppError('Missing booking fields', HttpStatusCode.BAD_REQUEST);
-            }
-            const checkInDate = new Date(data.checkIn);
-            const checkOutDate = new Date(data.checkOut);
-
-            if (isNaN(checkInDate.getTime()) || isNaN(checkOutDate.getTime())) {
-                throw new AppError("Invalid check-in or check-out date format", HttpStatusCode.BAD_REQUEST);
-            }
-
-            if (checkOutDate <= checkInDate) {
-                throw new AppError("Check-out date must be after check-in date", HttpStatusCode.BAD_REQUEST);
-            }
-
-            const { booking, message } = await this._createBookingUseCase.createBooking(data);
-            ResponseHandler.success(res, message, booking, HttpStatusCode.CREATED);
-        } catch (error) {
-            next(error);
-        }
-    }
 
     async getBookingsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const hotelId = req.params.hotelId;
             if (!hotelId) {
-                throw new AppError('hotelId is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
             const page = Number(req.query.page);
             const limit = Number(req.query.limit);
@@ -87,7 +61,7 @@ export class BookingController {
             const userId = req.user?.userId;
 
             if (!bookingId) {
-                throw new AppError('Booking id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(BOOKING_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
             const { message } = await this._cancelBookingUseCase.cancelBooking(bookingId, userId as string);
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
@@ -101,16 +75,35 @@ export class BookingController {
             const vendorId = req.user?.userId;
             const page = Number(req.query.page);
             const limit = Number(req.query.limit);
+            const hotelId = req.query.hotelId as string;
+            const startDate = req.query.startDate as string;
+            const endDate = req.query.endDate as string;
 
             if (!vendorId) {
-                throw new AppError('Vendor id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { bookings, total } = await this._getBookingsToVendorUseCase.getBookingsToVendor(vendorId, page, limit)
+            const { bookings, total } = await this._getBookingsToVendorUseCase.getBookingsToVendor(vendorId, page, limit, hotelId, startDate, endDate);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, BOOKING_RES_MESSAGES.bookingByUsers, bookings, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);
+        }
+    }
+
+    async getVendorHotelAnalytics(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const vendorId = req.user?.userId;
+            const startDate = req.query.startDate as string;
+            const endDate = req.query.endDate as string;
+            if (!vendorId) {
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { message, analytics } = await this._getVendorHotelAnalyticsUseCase.getVendorHotelAnalytics(vendorId, startDate, endDate)
+            ResponseHandler.success(res, message, analytics, HttpStatusCode.OK);
+        } catch (error) {
+            next(error)
         }
     }
 }

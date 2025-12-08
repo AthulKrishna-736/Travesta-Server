@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IChatRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IChatRepository } from "../../../domain/interfaces/repositories/chatRepo.interface";
 import { ISendMessageUseCase, TCreateChatMessage, TResponseChatMessage } from "../../../domain/interfaces/model/chat.interface";
 
 @injectable()

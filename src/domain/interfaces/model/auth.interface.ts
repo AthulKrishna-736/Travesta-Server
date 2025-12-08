@@ -1,22 +1,21 @@
+import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto"
 import { TRole } from "../../../shared/types/client.types"
 import { TOtpData } from "../services/authService.interface"
-import { TResponseUserData, TUserRegistrationInput } from "./user.interface"
-
 
 export interface ILoginUseCase {
-    login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string, refreshToken: string, user: TResponseUserData }>
+    login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string, refreshToken: string, user: TResponseUserDTO }>
 }
 
 export interface IRegisterUseCase {
-    register(userData: TUserRegistrationInput): Promise<{ userId: string, message: string }>
+    register(userData: TCreateUserDTO): Promise<{ userId: string, message: string }>
 }
 
 export interface IConfrimRegisterUseCase {
-    confirmRegister(userData: TUserRegistrationInput): Promise<TResponseUserData>
+    confirmRegister(userData: TCreateUserDTO): Promise<TResponseUserDTO>
 }
 
 export interface IGoogleLoginUseCase {
-    loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string, refreshToken: string, user: TResponseUserData }>
+    loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string, refreshToken: string, user: TResponseUserDTO }>
 }
 
 export interface IForgotPassUseCase {

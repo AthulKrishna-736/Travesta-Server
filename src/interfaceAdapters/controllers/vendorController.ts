@@ -6,10 +6,12 @@ import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { IGetVendorUseCase, IUpdateKycUseCase, IUpdateUserUseCase } from "../../domain/interfaces/model/usecases.interface";
-import { UpdateUserDTO } from "../dtos/user.dto";
+import { TUpdateUserDTO } from "../dtos/user.dto";
+import { AUTH_ERROR_MESSAGES } from "../../constants/errorMessages";
+import { IVendorController } from "../../domain/interfaces/controllers/vendorController.interface";
 
 @injectable()
-export class VendorController {
+export class VendorController implements IVendorController {
     constructor(
         @inject(TOKENS.UpdateUserUseCase) private _updateUserUseCase: IUpdateUserUseCase,
         @inject(TOKENS.UpdateKycUseCase) private _updateKycUseCase: IUpdateKycUseCase,
@@ -20,13 +22,12 @@ export class VendorController {
         try {
             const userId = req.user?.userId;
             if (!userId) {
-                throw new AppError("User id is missing", HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const userData: UpdateUserDTO = req.body;
+            const userData: TUpdateUserDTO = req.body;
 
             const { user, message } = await this._updateUserUseCase.updateUser(userId, userData, req.file);
-
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -37,34 +38,33 @@ export class VendorController {
         try {
             const userId = req.user?.userId;
             if (!userId) {
-                throw new AppError("User ID is missing", HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const files = req.files as any;
 
             if (!files || !files.front || !files.back) {
-                throw new AppError("Both front and back KYC documents are required", HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.kycMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const frontFile = files.front[0];
             const backFile = files.back[0];
 
             const { message, vendor } = await this._updateKycUseCase.updateKyc(userId, frontFile, backFile);
-
             ResponseHandler.success(res, message, vendor, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }
     }
 
-    async getVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+    async getVendorProfile(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
             if (!userId) {
-                throw new AppError('userid missing in req body', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
-            const { message, user } = await this._getVendorUseCase.getUser(userId)
 
+            const { message, user } = await this._getVendorUseCase.getVendor(userId)
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             next(error);

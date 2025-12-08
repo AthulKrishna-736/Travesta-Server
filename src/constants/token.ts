@@ -1,5 +1,21 @@
 
 export const TOKENS = {
+  //controllers
+  AuthController: 'AuthController',
+  UserController: 'UserController',
+  VendorController: 'VendorController',
+  AdminController: 'AdminController',
+  HotelController: 'HotelController',
+  RoomController: 'RoomController',
+  AmenityController: 'AmenityController',
+  ChatController: 'ChatController',
+  WalletController: 'WalletController',
+  BookingController: 'BookingController',
+  SubscriptionController: 'SubscriptionController',
+  RatingController: 'RatingController',
+  CouponController: 'CouponController',
+  OfferController: 'OfferController',
+
   // Repositories
   UserRepository: 'UserRepository',
   HotelRepository: 'HotelRepository',
@@ -10,6 +26,10 @@ export const TOKENS = {
   ChatRepository: 'ChatRepository',
   WalletRepository: 'WalletRepository',
   TransactionRepository: 'TransactionRepository',
+  SubscriptionHistoryRepository: 'SubscriptionHistoryRepository',
+  RatingRepository: 'RatingRepository',
+  CouponRepository: 'CouponRepository',
+  OfferRepository: 'OfferRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -19,7 +39,7 @@ export const TOKENS = {
   SocketService: 'SocketService',
   StripeService: 'StripeService',
 
-  // Use Cases
+  //auth Use Cases
   LoginUseCase: 'LoginUseCase',
   RegisterUseCase: 'RegisterUseCase',
   ConfirmRegisterUseCase: 'ConfirmRegisterUseCase',
@@ -43,27 +63,35 @@ export const TOKENS = {
   //vendor UseCases
   UpdateKycUseCase: 'UpdateKycUseCase',
   GetVendorUseCase: 'GetVendorUseCase',
+
+  //hotel UseCases
   CreateHotelUseCase: 'CreteHotelUseCase',
   UpdateHotelUseCase: 'UpdateHotelUseCase',
   GetHotelByIdUseCase: 'GetHotelByIdUseCase',
   GetHotelsByVendorUseCase: 'GetHotelsByVendorUseCase',
   GetAllHotelsUseCase: 'GetAllHotelsUseCase',
+  GetHotelAnalyticsUseCase: 'GetHotelAnalyticsUseCase',
+  GetHotelDetailsWithRoomUseCase: 'GetHotelDetailWithRoomUseCase',
+  GetTrendingHotelsUseCase: 'GetTrendingHotelsUseCase',
+
+  //room UseCases
   CreateRoomUseCase: 'CreateRoomUseCase',
   UpdateRoomUseCase: 'UpdateRoomUseCase',
   GetRoomByIdUseCase: 'GetRoomByIdUseCase',
   GetRoomsByHotelUseCase: 'GetRoomsByHotelUseCase',
-  GetAvailableRoomsUseCase: 'GetAvailableRoomsUseCase',
   GetAllRoomsUseCase: 'GetAllRoomsUseCase',
 
-  //booking
+  //booking UseCase
   CreateBookingUseCase: 'CreateBookingUseCase',
   GetBookingsByHotelUseCase: 'GetBookingByHotelUseCase',
   GetBookingsByUserUseCase: 'GetBookingsByUserUseCase',
   CheckRoomAvlUseCase: 'CheckRoomAvlUseCase',
   CancelRoomUseCase: 'CancelRoomUseCase',
   GetBookingsToVendorUseCase: 'GetBookingsToVendorUseCase',
+  GetVendorHotelAnalyticsUseCase: 'GetVendorHotelAnalyticsUseCase',
+  GetAdminAnalyticsUseCase: 'GetAdminAnalyticsUseCase',
 
-  //amenities UseCase
+  //amenities UseCases
   CreateAmenityUseCase: 'CreateAmenityUseCase',
   UpdateAmenityUseCase: 'UpdateAmenityUseCase',
   GetAmenityByIdUseCase: 'GetAmenityByIdUseCase',
@@ -72,14 +100,18 @@ export const TOKENS = {
   GetActiveAmenitiesUseCase: 'GetActiveAmenitiesUseCase',
   FindUsedActiveAmenitiesUseCase: 'FindUsedActiveAmenitiesUseCase',
 
-  //subscription UseCase
+  //subscription UseCases
   CreateSubscriptionUseCase: 'CreateSubscriptionUseCase',
   UpdateSubscriptionUseCase: 'UpdateSubscriptionUseCase',
   GetActiveSubscriptionsUseCase: 'GetActiveSubscriptionsUseCase',
   GetAllSubscriptionsUseCase: 'GetAllSubscriptionsUseCase',
   BlockUnblockSubscriptionUseCase: 'BlockUnblockSubscriptionUseCase',
+  SubscribePlanUseCase: 'SubscribePlanUseCase',
+  GetAllPlanHistoryUseCase: 'GetAllPlanHistoryUseCase',
+  GetUserActivePlanUseCase: 'GetUserActivePlanUseCase',
+  CancelSubscriptionUseCase: 'CancelSubscriptionUseCase',
 
-  //chat UseCase
+  //chat UseCases
   GetChatMessagesUseCase: 'GetChatMessagesUseCase',
   SendMessageUseCase: 'SendMessageUseCase',
   GetChattedUsersUseCase: 'GetChattedUsersUseCase',
@@ -87,17 +119,36 @@ export const TOKENS = {
   GetVendorsChatWithUserUseCase: 'GetVendorsChatWithUserUseCase',
   GetVendorsChatWithAdminUseCase: 'GetVendorsChatWithAdminUseCase',
   GetUserUnreadMsgUseCase: 'GetUserUnreadMsgUseCase',
+  GetChatAccessUseCase: 'GetChatAccessUseCase',
 
-  //wallet UseCase
+  //wallet UseCases
   CreateWalletUseCase: 'CreateWalletUseCase',
   GetWalletUseCase: 'GetWalletUseCase',
   AddWalletTransactionUseCase: 'AddWalletTransactionUseCase',
   TransferUsersAmountUseCase: 'TransferUsersAmountUseCase',
   AddVendorTransactionUseCase: 'AddVendorTransactionUseCase',
 
-  //transaction UseCase
+  //transaction UseCases
   BookingTransactionUseCase: 'BookingTransactionUseCase',
   AddMoneyToWalletUseCase: 'AddMoneyToWalletUseCase',
   GetTransactionsUseCase: 'GetTransactionsUseCase',
 
+  //rating UseCases
+  CreateRatingUseCase: 'CreateRatingUseCase',
+  UpdateRatingUseCase: 'UpdateRatingUseCase',
+  GetRatingsUseCase: 'GetRatingsUseCase',
+
+  //coupon UseCases
+  CreateCouponUseCase: 'CreateCouponUseCase',
+  UpdateCouponUseCase: 'UpdateCouponUseCase',
+  GetVendorCouponsUseCase: 'GetVendorCouponsUseCase',
+  GetUserCouponsUseCase: 'GetUserCouponsUseCase',
+  ToggleCouponStatusUseCase: 'ToggleCouponStatusUseCase',
+
+  //offer UseCases
+  CreateOfferUseCase: 'CreateOfferUseCase',
+  UpdateOfferUseCase: 'UpdateOfferUseCase',
+  GetVendorOffersUseCase: 'GetVendorOffersUseCase',
+  DetectOfferForRoomUseCase: 'DetectOfferForRoomUseCase',
+  ToggleOfferStatusUseCase: 'ToggleOfferStatusUseCase',
 };

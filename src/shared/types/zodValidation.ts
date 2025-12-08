@@ -92,13 +92,14 @@ export const createHotelSchema = z.object({
     })
         .min(3, "Hotel name must be at least 3 characters")
         .max(100, "Hotel name must be less than 100 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Hotel name contains invalid characters (only letters, numbers, spaces, -, &, , allowed)"),
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Hotel name contains invalid characters (only letters, numbers, spaces, -, &, , allowed)"),
 
     description: z.string({
         required_error: "Description is required",
         invalid_type_error: "Description must be a string",
     })
-        .min(10, "Description must be at least 10 characters"),
+        .min(10, "Description must be at least 10 characters")
+        .max(3000, 'Description must be less than 3000 characters'),
 
     amenities: z.preprocess(
         (val) => (typeof val === "string" ? JSON.parse(val) : val),
@@ -124,7 +125,9 @@ export const createHotelSchema = z.object({
     address: z.string({
         required_error: "Address is required",
         invalid_type_error: "Address must be a string",
-    }).min(5, "Address must be at least 5 characters"),
+    })
+        .min(5, "Address must be at least 5 characters")
+        .max(100, 'Address must be less than 100 characters'),
 
     geoLocation: z.preprocess(
         (val) => (typeof val === "string" ? JSON.parse(val) : val),
@@ -146,12 +149,12 @@ export const updateHotelSchema = z.object({
     name: z.string()
         .min(3, "Hotel name must be at least 3 characters")
         .max(100, "Hotel name must be less than 100 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Hotel name contains invalid characters")
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Hotel name contains invalid characters")
         .optional(),
 
     description: z.string()
         .min(10, "Description must be at least 10 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Description contains invalid characters")
+        .max(3000, 'Description must be less than 3000 characters')
         .optional(),
 
     rating: z.preprocess(
@@ -159,12 +162,6 @@ export const updateHotelSchema = z.object({
         z.number()
             .min(0, "Rating must be at least 0")
             .max(5, "Rating cannot exceed 5")
-    ).optional(),
-
-    services: z.preprocess(
-        (val) => typeof val === "string" ? JSON.parse(val) : val,
-        z.array(z.string().min(1, "Service must be a non-empty string"))
-            .min(1, "At least one service is required")
     ).optional(),
 
     amenities: z.preprocess(
@@ -184,13 +181,14 @@ export const updateHotelSchema = z.object({
 
     address: z.string()
         .min(5, "Address must be at least 5 characters")
+        .max(100, 'Address must be less 100 characters')
         .optional(),
 
     geoLocation: z.preprocess(
         (val) => typeof val === "string" ? JSON.parse(val) : val,
         z.tuple([
-            z.number({ invalid_type_error: "Latitude must be a number" }),
-            z.number({ invalid_type_error: "Longitude must be a number" }),
+            z.coerce.number({ invalid_type_error: "Latitude must be a number" }),
+            z.coerce.number({ invalid_type_error: "Longitude must be a number" }),
         ])
     ).optional(),
 });
@@ -213,7 +211,7 @@ export const subscriptionSchema = z.object({
     type: z.enum(['basic', 'medium', 'vip'], {
         required_error: 'type is required',
         invalid_type_error: 'invalid type should be specified ones'
-    }),
+    }).optional(),
 
     price: z.number({
         required_error: 'price is required',
@@ -283,7 +281,7 @@ export const updateRoomSchema = z.object({
     })
         .min(3, "Room name must be at least 3 characters")
         .max(50, "Room name must be less than 50 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Room name contains invalid characters")
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Room name contains invalid characters")
         .optional(),
 
     roomType: z.string({
@@ -302,7 +300,7 @@ export const updateRoomSchema = z.object({
     })
         .min(3, "Bed type must be at least 3 characters")
         .max(50, "Bed type must be less than 50 characters")
-        .regex(/^[a-zA-Z0-9\s\-\&\,]+$/, "Bed type contains invalid characters")
+        .regex(/^[a-zA-Z0-9\s\-&,]+$/, "Bed type contains invalid characters")
         .optional(),
 
     guest: z.preprocess(
@@ -327,4 +325,113 @@ export const updateRoomSchema = z.object({
         (val) => (typeof val === "string" ? JSON.parse(val) : val),
         z.array(z.string()).optional()
     ),
+});
+
+
+//coupon schema
+export const createCouponSchema = z.object({
+    name: z.string()
+        .min(3, "Coupon name must be at least 3 characters")
+        .max(50, "Coupon name must be less than 50 characters"),
+
+    code: z.string()
+        .min(3, "Coupon code must be at least 3 characters")
+        .max(20, "Coupon code must be less than 20 characters")
+        .regex(/^[A-Z0-9\-]+$/, "Coupon code can only contain uppercase letters, numbers, and hyphens"),
+
+    type: z.enum(["flat", "percent"], {
+        required_error: "Coupon type is required"
+    }),
+
+    value: z.number().min(1, "Discount value must be at least 1"),
+
+    minPrice: z.number().min(0, "Minimum price must be 0 or greater"),
+
+    maxPrice: z.number().min(0, "Maximum price must be 0 or greater"),
+
+    startDate: z.string().refine((d) => !isNaN(Date.parse(d)), "Invalid start date"),
+
+    endDate: z.string().refine((d) => !isNaN(Date.parse(d)), "Invalid end date"),
+});
+
+export const updateCouponSchema = z.object({
+    name: z.string()
+        .min(3, "Coupon name must be at least 3 characters")
+        .max(50, "Coupon name must be less than 50 characters")
+        .optional(),
+
+    code: z.string()
+        .min(3)
+        .max(20)
+        .regex(/^[A-Z0-9\-]+$/)
+        .optional(),
+
+    type: z.enum(["flat", "percent"]).optional(),
+
+    value: z.number().min(1).optional(),
+
+    minPrice: z.number().min(0).optional(),
+
+    maxPrice: z.number().min(0).optional(),
+
+    startDate: z.string().refine((d) => !isNaN(Date.parse(d)), "Invalid date").optional(),
+
+    endDate: z.string().refine((d) => !isNaN(Date.parse(d)), "Invalid date").optional(),
+
+    isBlocked: z.boolean().optional()
+});
+
+
+//offers
+export const createOfferSchema = z.object({
+    name: z.string()
+        .min(3, "Offer name must be at least 3 characters")
+        .max(50, "Offer name must be less than 50 characters"),
+
+    hotelId: z.string().optional(),
+
+    roomType: z.enum(["AC", "Non-AC", "Deluxe", "Suite", "Standard"], {
+        required_error: "Room type is required"
+    }),
+
+    discountType: z.enum(["flat", "percent"], {
+        required_error: "Discount type is required"
+    }),
+
+    discountValue: z.number()
+        .min(1, "Discount value must be at least 1"),
+
+    startDate: z.string()
+        .refine((d) => !isNaN(Date.parse(d)), "Invalid start date"),
+
+    expiryDate: z.string()
+        .refine((d) => !isNaN(Date.parse(d)), "Invalid expiry date"),
+});
+
+
+export const updateOfferSchema = z.object({
+    name: z.string()
+        .min(3, "Offer name must be at least 3 characters")
+        .max(50, "Offer name must be less than 50 characters")
+        .optional(),
+
+    hotelId: z.string().nullable().optional(),
+
+    roomType: z.enum(["AC", "Non-AC", "Deluxe", "Suite", "Standard"]).optional(),
+
+    discountType: z.enum(["flat", "percent"]).optional(),
+
+    discountValue: z.number()
+        .min(1, "Discount value must be at least 1")
+        .optional(),
+
+    startDate: z.string()
+        .refine((d) => !isNaN(Date.parse(d)), "Invalid start date")
+        .optional(),
+
+    expiryDate: z.string()
+        .refine((d) => !isNaN(Date.parse(d)), "Invalid expiry date")
+        .optional(),
+
+    isBlocked: z.boolean().optional(),
 });

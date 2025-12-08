@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { IChatRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IChatRepository } from "../../../domain/interfaces/repositories/chatRepo.interface";
 import { TOKENS } from "../../../constants/token";
 import { IGetVendorsChatWithAdminUseCase } from "../../../domain/interfaces/model/chat.interface";
 import { CHAT_RES_MESSAGES } from "../../../constants/resMessages";

@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { BedType, IRoom } from "../../../domain/interfaces/model/room.interface";
+import { IRoom } from "../../../domain/interfaces/model/room.interface";
 
 export type TRoomDocument = IRoom & Document;
 
@@ -17,7 +17,7 @@ const roomSchema: Schema = new Schema<TRoomDocument>(
         },
         roomType: {
             type: String,
-            enum: ["AC", "Non-AC", "Deluxe", "Suite", "Standard", "Penthouse"],
+            enum: ["AC", "Non-AC", "Deluxe", "Suite", "Standard"],
             required: true,
         },
         roomCount: {
@@ -26,7 +26,7 @@ const roomSchema: Schema = new Schema<TRoomDocument>(
         },
         bedType: {
             type: String,
-            enum: Object.values(BedType),
+            enum: ['King', 'Queen', 'Double', 'Single', 'TwinDouble', 'TwinQueen'],
             required: true,
         },
         guest: {

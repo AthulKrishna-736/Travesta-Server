@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { TOKENS } from "../../../constants/token";
 import { v4 as uuidv4 } from 'uuid';
 import { TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
@@ -8,6 +8,8 @@ import { AppError } from "../../../utils/appError";
 import { IRegisterUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import logger from "../../../utils/logger";
+import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 
 
 @injectable()
@@ -21,7 +23,7 @@ export class RegisterUseCase implements IRegisterUseCase {
         const existingUser = await this._userRepository.findUser(userData.email as string)
 
         if (existingUser) {
-            throw new AppError('User already exists', HttpStatusCode.BAD_REQUEST)
+            throw new AppError(AUTH_ERROR_MESSAGES.userExist, HttpStatusCode.BAD_REQUEST)
         }
 
         const otp = this._authService.generateOtp();
@@ -42,7 +44,7 @@ export class RegisterUseCase implements IRegisterUseCase {
 
         return {
             userId: tempUserId,
-            message: 'OTP sent to email. Please verify to complete registration.',
+            message: AUTH_RES_MESSAGES.otp,
         }
     }
 }

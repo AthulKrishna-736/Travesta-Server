@@ -44,3 +44,7 @@ export interface IMarkMsgAsReadUseCase {
 export interface IGetUserUnreadMsgUseCase {
   getUnreadMsg(userId: string): Promise<{ message: string, users: { id: string, count: number }[] }>
 }
+
+export interface IGetChatAccessUseCase {
+  getChatAccess(userId: string): Promise<{ message: string }>;
+}

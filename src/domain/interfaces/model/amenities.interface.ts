@@ -1,14 +1,16 @@
-import { TSortOptions } from "../../../shared/types/client.types"
+import { TCreateAmenityDTO, TResponseAmenityDTO, TUpdateAmenityDTO } from "../../../interfaceAdapters/dtos/amenity.dto";
+
+export type TAmenityType = 'hotel' | 'room';
 
 //amenity model
 export interface IAmenities {
-    _id: string
-    name: string
-    type: 'hotel' | 'room'
-    description: string
-    isActive: boolean
-    createdAt: Date
-    updatedAt: Date
+    _id: string;
+    name: string;
+    type: TAmenityType;
+    description: string;
+    isActive: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 //amenity types
@@ -18,29 +20,29 @@ export type TResponseAmenityData = Omit<IAmenities, ''>
 
 // amenity use cases
 export interface ICreateAmenityUseCase {
-    createAmenity(data: TCreateAmenityData): Promise<{ amenity: TResponseAmenityData, message: string }>
+    createAmenity(data: TCreateAmenityDTO): Promise<{ amenity: TResponseAmenityDTO, message: string }>
 }
 
 export interface IUpdateAmenityUseCase {
-    updateAmenity(amenityId: string, data: TUpdateAmenityData): Promise<{ amenity: TResponseAmenityData, message: string }>
+    updateAmenity(amenityId: string, data: TUpdateAmenityDTO): Promise<{ amenity: TResponseAmenityDTO, message: string }>
 }
 
 export interface IGetAmenityByIdUseCase {
-    getAmenityById(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }>
+    getAmenityById(amenityId: string): Promise<{ amenity: TResponseAmenityDTO, message: string }>
 }
 
 export interface IGetAllAmenitiesUseCase {
-    getAllAmenitiesUseCase(page: number, limit: number, type: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }>
+    getAllAmenitiesUseCase(page: number, limit: number, type: string, search?: string, sortField?: string, sortOrder?: string): Promise<{ amenities: TResponseAmenityDTO[], message: string, total: number }>
 }
 
 export interface IBlockUnblockAmenityUseCase {
-    blockUnblockAmenityUseCase(amenityId: string): Promise<{ amenity: TResponseAmenityData, message: string }>
+    blockUnblockAmenityUseCase(amenityId: string): Promise<{ amenity: TResponseAmenityDTO, message: string }>
 }
 
 export interface IGetActiveAmenitiesUseCase {
-    getActiveAmenities(): Promise<{ amenities: TResponseAmenityData[], message: string, total: number }>
+    getActiveAmenities(): Promise<{ amenities: TResponseAmenityDTO[], message: string, total: number }>
 }
 
 export interface IFindUsedActiveAmenitiesUseCase {
-    findUsedActiveAmenities(): Promise<{ amenities: IAmenities[], message: string, total: number }>;
+    findUsedActiveAmenities(): Promise<{ amenities: TResponseAmenityDTO[], message: string, total: number }>;
 }

@@ -1,5 +1,5 @@
 import { TCreateSubscriptionData, ISubscription, TUpdateSubscriptionData } from "../../../domain/interfaces/model/subscription.interface";
-import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { TSubscription } from "../../../shared/types/client.types";
 import { subscriptionModel, TSubscriptionDocument } from "../models/subscriptionModel";
 import { BaseRepository } from "./baseRepo";
@@ -40,5 +40,15 @@ export class SusbcriptionRepository extends BaseRepository<TSubscriptionDocument
         const plans = await this.find({ isActive: true });
         const mappedPlans = plans.map(p => p.toObject());
         return mappedPlans;
+    }
+
+    async findDuplicatePlan(planName: string): Promise<boolean> {
+        const plans = await this.model.countDocuments({ name: { $regex: `^${planName}$`, $options: 'i' } }).exec();
+        return plans > 0 ? true : false;
+    }
+
+    async changePlanStatus(amenityId: string, status: boolean): Promise<ISubscription | null> {
+        const plan = await this.update(amenityId, { isActive: status });
+        return plan;
     }
 }

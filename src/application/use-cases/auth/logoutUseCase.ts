@@ -7,10 +7,12 @@ import { IRedisService } from "../../../domain/interfaces/services/redisService.
 import logger from "../../../utils/logger";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { ILogoutUseCases } from "../../../domain/interfaces/model/auth.interface";
 
 
 @injectable()
-export class LogoutUseCase {
+export class LogoutUseCase implements ILogoutUseCases {
     constructor(
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
@@ -21,21 +23,22 @@ export class LogoutUseCase {
         try {
             const decoded = this._authService.verifyAccessToken(accessToken);
             if (!decoded || !decoded.userId) {
-                throw new AppError('User id is missing in accessToken', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.invalidToken, HttpStatusCode.BAD_REQUEST);
             }
             userId = decoded.userId;
         } catch (error) {
             logger.error(`error in logout: ${error}`);
             const decoded = this._authService.verifyRefreshToken(refreshToken)
             if (!decoded || !decoded.userId) {
-                throw new AppError('User id is missing in refreshToken', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.invalidToken, HttpStatusCode.BAD_REQUEST);
             }
             userId = decoded.userId;
         }
 
-        await this._redisService.deleteRefreshToken(userId)
-
-        await this._redisService.blacklistAccessToken(accessToken, jwtConfig.accessToken.maxAge / 1000)
+        await Promise.all([
+            this._redisService.deleteRefreshToken(userId),
+            this._redisService.blacklistAccessToken(accessToken, jwtConfig.accessToken.maxAge / 1000)
+        ])
 
         return { message: AUTH_RES_MESSAGES.logout }
     }

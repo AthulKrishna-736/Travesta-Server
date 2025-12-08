@@ -1,57 +1,56 @@
 import { inject, injectable } from "tsyringe";
 import { ICreateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
-import { IHotelRepository, IUserRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
-import { TCreateHotelData, TResponseHotelData } from "../../../../domain/interfaces/model/hotel.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import { HotelLookupBase } from "../../base/hotelLookup.base";
 import { AwsImageUploader } from "../../base/imageUploader";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
+import { IUserRepository } from "../../../../domain/interfaces/repositories/userRepo.interface";
+import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TCreateHotelDTO, TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
 
 
 @injectable()
-export class CreateHotelUseCase extends HotelLookupBase implements ICreateHotelUseCase {
+export class CreateHotelUseCase implements ICreateHotelUseCase {
     private _imageUploader;
     constructor(
-        @inject(TOKENS.HotelRepository) _hotelRepository: IHotelRepository,
+        @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
-        @inject(TOKENS.UserRepository) private _userRepo: IUserRepository,
+        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
     ) {
-        super(_hotelRepository);
         this._imageUploader = new AwsImageUploader(_awsS3Service);
     }
 
-    async createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }> {
-        const vendor = await this._userRepo.findUserById(hotelData.vendorId as string);
-        if (!vendor?.isVerified) {
-            throw new AppError('Vendor is not verified. Please upload docs and verify!', HttpStatusCode.CONFLICT);
+    async createHotel(vendorId: string, hotelData: TCreateHotelDTO, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelDTO; message: string }> {
+        const vendor = await this._userRepository.findUserById(vendorId);
+        if (!vendor) throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+
+        if (!vendor.isVerified) {
+            throw new AppError(AUTH_ERROR_MESSAGES.notVerified, HttpStatusCode.CONFLICT);
         }
 
-        const existingHotels = await this.getHotelEntityByVendorId(hotelData.vendorId as string, 1, 100);
-        const isDuplicate = existingHotels?.some(hotel => hotel.name === hotelData.name);
-
+        const isDuplicate = await this._hotelRepository.findDuplicateHotels(hotelData.name.trim());
         if (isDuplicate) {
-            throw new AppError("Hotel with the same name already exists for this vendor.", HttpStatusCode.BAD_REQUEST);
+            throw new AppError(HOTEL_ERROR_MESSAGES.nameError, HttpStatusCode.CONFLICT);
         }
 
-        let uploadedImageKeys;
-
+        let uploadedImageKeys: string[] = [];
         if (files) {
-            uploadedImageKeys = await this._imageUploader.uploadHotelImages(hotelData.vendorId as string, files);
+            uploadedImageKeys = await this._imageUploader.uploadHotelImages(vendorId, files);
         }
 
-        const newHotel = await this._hotelRepository.createHotel({
+        const finalHotelData: TCreateHotelDTO & { vendorId: string } = {
             ...hotelData,
-            amenities: hotelData.amenities,
-            tags: hotelData.tags,
-            images: uploadedImageKeys as string[],
-        });
+            vendorId,
+            images: uploadedImageKeys,
+        }
+        const newHotel = await this._hotelRepository.createHotel(finalHotelData);
 
         if (!newHotel) {
-            throw new AppError("Failed to create hotel", HttpStatusCode.INTERNAL_SERVER_ERROR);
+            throw new AppError(HOTEL_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
         const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(newHotel);

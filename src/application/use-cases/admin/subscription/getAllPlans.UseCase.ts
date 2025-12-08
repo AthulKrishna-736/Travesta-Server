@@ -1,23 +1,27 @@
 import { inject, injectable } from "tsyringe";
-import { IGetAllPlansUseCase, TResponseSubscriptionData } from "../../../../domain/interfaces/model/subscription.interface";
+import { IGetAllPlansUseCase } from "../../../../domain/interfaces/model/subscription.interface";
 import { TOKENS } from "../../../../constants/token";
-import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
-import { SubscriptionLookupBase } from "../../base/subscription.base";
+import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
+import { TResponseSubscriptionDTO } from "../../../../interfaceAdapters/dtos/subscription.dto";
+import { ResponseMapper } from "../../../../utils/responseMapper";
+import { AppError } from "../../../../utils/appError";
+import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 
 
 @injectable()
-export class GetAllPlansUseCase extends SubscriptionLookupBase implements IGetAllPlansUseCase {
+export class GetAllPlansUseCase implements IGetAllPlansUseCase {
     constructor(
-        @inject(TOKENS.SubscriptionRepository) _subscriptionRepository: ISubscriptionRepository,
-    ) {
-        super(_subscriptionRepository);
-    }
+        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepository: ISubscriptionRepository,
+    ) { }
 
-    async getAllPlans(): Promise<{ plans: TResponseSubscriptionData[]; message: string; }> {
-        const planEntities = await this.getAllSubscriptionOrThrow();
+    async getAllPlans(): Promise<{ plans: TResponseSubscriptionDTO[]; message: string; }> {
+        const plans = await this._subscriptionRepository.findAllPlans();
+        if (!plans) {
+            throw new AppError('No subscription plans found', HttpStatusCode.NOT_FOUND);
+        }
 
-        const mappedPlans = planEntities.map(p => p.toObject());
+        const mappedPlans = plans.map(p => ResponseMapper.mapSubscriptionToResponseDTO(p));
 
         return {
             plans: mappedPlans,

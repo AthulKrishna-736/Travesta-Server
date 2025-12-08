@@ -10,7 +10,7 @@ export const errorHandler = (
     _next: NextFunction
 ): void => {
     logger.error('Error Message:', { message: err.message });
-    logger.error('Error Stack: ', { stack: err.stack });
+    console.log('Error stack: ', err.stack);
 
     const status = err instanceof AppError ? err.statusCode : HttpStatusCode.INTERNAL_SERVER_ERROR;
     const message = err.message || 'Something went wrong';

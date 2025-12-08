@@ -1,39 +1,45 @@
 import { inject, injectable } from "tsyringe";
-import { SubscriptionLookupBase } from "../../base/subscription.base";
-import { IBlockUnblockPlanUseCase, TResponseSubscriptionData } from "../../../../domain/interfaces/model/subscription.interface";
+import { IBlockUnblockPlanUseCase } from "../../../../domain/interfaces/model/subscription.interface";
 import { TOKENS } from "../../../../constants/token";
-import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/repository.interface";
+import { ISubscriptionRepository } from "../../../../domain/interfaces/repositories/subscriptionRepo.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { PLAN_RES_MESSAGES } from "../../../../constants/resMessages";
+import { SUBSCRIPTION_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TResponseSubscriptionDTO } from "../../../../interfaceAdapters/dtos/subscription.dto";
+import { ResponseMapper } from "../../../../utils/responseMapper";
 
 
 @injectable()
-export class BlockUnblockPlanUseCase extends SubscriptionLookupBase implements IBlockUnblockPlanUseCase {
+export class BlockUnblockPlanUseCase implements IBlockUnblockPlanUseCase {
     constructor(
-        @inject(TOKENS.SubscriptionRepository) _subscriptionRepository: ISubscriptionRepository,
-    ) {
-        super(_subscriptionRepository);
-    }
+        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepository: ISubscriptionRepository,
+    ) { }
 
-    async blockUnblockPlan(id: string): Promise<{ plan: TResponseSubscriptionData; message: string; }> {
-        const planEntity = await this.getSubscriptionByIdOrThrow(id);
-
-        if (planEntity.isActive) {
-            planEntity.block();
-        } else {
-            planEntity.unblock();
+    async blockUnblockPlan(id: string): Promise<{ plan: TResponseSubscriptionDTO; message: string; }> {
+        const plan = await this._subscriptionRepository.findPlanById(id);
+        if (!plan) {
+            throw new AppError('subscription plan not found', HttpStatusCode.NOT_FOUND);
         }
 
-        const updatedData = await this._subscriptionRepository.updatePlan(planEntity.id, planEntity.getPersistablestate());
+
+        let updatedData;
+
+        if (plan.isActive) {
+            updatedData = await this._subscriptionRepository.changePlanStatus(plan._id as string, !plan.isActive);
+        } else {
+            updatedData = await this._subscriptionRepository.changePlanStatus(plan._id as string, !plan.isActive);
+        }
 
         if (!updatedData) {
-            throw new AppError('Error while block/unblock operation', HttpStatusCode.INTERNAL_SERVER_ERROR);
+            throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.blockError, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+        const mappedPlan = ResponseMapper.mapSubscriptionToResponseDTO(updatedData);
+
         return {
-            plan: planEntity.toObject(),
-            message: `Subscription plan ${planEntity.isActive ? PLAN_RES_MESSAGES.unblock : PLAN_RES_MESSAGES.block}`,
+            plan: mappedPlan,
+            message: `Subscription plan ${updatedData.isActive ? PLAN_RES_MESSAGES.unblock : PLAN_RES_MESSAGES.block}`,
         }
     }
 }

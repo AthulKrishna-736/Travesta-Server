@@ -1,31 +1,54 @@
-import { Types } from "mongoose";
+import { TIdProof } from "../../domain/interfaces/model/hotel.interface";
 
 //hotel
 export type TCreateHotelDTO = {
-    vendorId: string | Types.ObjectId;
     name: string;
     description: string;
     images: string[];
-    rating?: number;
     amenities: string[];
     tags: string[];
     state: string;
     city: string;
     address: string;
-    geoLocation: [number, number];
+    geoLocation: {
+        type: string,
+        coordinates: [number, number]
+    };
+    propertyRules: {
+        checkInTime: string;
+        checkOutTime: string;
+        minGuestAge: number;
+        petsAllowed: boolean;
+        breakfastFee?: number;
+        outsideFoodAllowed: boolean;
+        idProofAccepted: TIdProof[];
+        specialNotes?: string;
+    };
 }
 
 export type TUpdateHotelDTO = {
     name?: string;
     description?: string;
     images?: string[];
-    rating?: number;
     amenities?: string[];
     tags?: string[];
     state?: string;
     city?: string;
     address?: string;
-    geoLocation?: [number, number];
+    geoLocation?: {
+        type?: string,
+        coordinates?: [number, number];
+    };
+    propertyRules?: {
+        checkInTime?: string;
+        checkOutTime?: string;
+        minGuestAge?: number;
+        petsAllowed?: boolean;
+        breakfastFee?: number;
+        outsideFoodAllowed?: boolean;
+        idProofAccepted?: TIdProof[];
+        specialNotes?: string;
+    };
 }
 
 export type TResponseHotelDTO = {
@@ -34,20 +57,27 @@ export type TResponseHotelDTO = {
     name: string;
     description: string;
     images: string[];
-    rating: number;
     amenities: string[];
     tags: string[];
     state: string;
     city: string;
+    rating?: object
     address: string;
-    geoLocation: [number, number];
+    geoLocation: {
+        type: string,
+        coordinates: [number, number]
+    };
+    propertyRules: {
+        checkInTime: string;
+        checkOutTime: string;
+        minGuestAge: number;
+        petsAllowed: boolean;
+        breakfastFee?: number;
+        outsideFoodAllowed: boolean;
+        idProofAccepted: TIdProof[];
+        specialNotes?: string;
+    };
     isBlocked: boolean;
-    startingPrice?: number | null;
-    cheapestRoom?: {
-        _id: string;
-        name: string;
-        basePrice: number;
-    } | null;
     createdAt: Date;
     updatedAt: Date;
 }

@@ -7,12 +7,16 @@ import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from '../../domain/interfaces/model/wallet.interface';
 import { IStripeService } from '../../domain/interfaces/services/stripeService.interface';
-import { TCreateBookingData } from '../../domain/interfaces/model/booking.interface';
 import { WALLET_RES_MESSAGES } from '../../constants/resMessages';
 import { Pagination } from '../../shared/types/common.types';
+import { AUTH_ERROR_MESSAGES } from '../../constants/errorMessages';
+import { IWalletController } from '../../domain/interfaces/controllers/walletController.interface';
+import { ISubscribePlanUseCase } from '../../domain/interfaces/model/subscription.interface';
+import { TCreateBookingDTO } from '../dtos/booking.dto';
+import { nanoid } from 'nanoid';
 
 @injectable()
-export class WalletController {
+export class WalletController implements IWalletController {
     constructor(
         @inject(TOKENS.CreateWalletUseCase) private _createWalletUseCase: ICreateWalletUseCase,
         @inject(TOKENS.GetWalletUseCase) private _getWalletUseCase: IGetWalletUseCase,
@@ -20,12 +24,13 @@ export class WalletController {
         @inject(TOKENS.BookingTransactionUseCase) private _bookingConfirmUseCase: IBookingTransactionUseCase,
         @inject(TOKENS.AddMoneyToWalletUseCase) private _addMoneyToWalletUseCase: IAddMoneyToWalletUseCase,
         @inject(TOKENS.GetTransactionsUseCase) private _getTransactionUseCase: IGetTransactionsUseCase,
+        @inject(TOKENS.SubscribePlanUseCase) private _subscribePlanUseCase: ISubscribePlanUseCase,
     ) { }
 
     async createWallet(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
-            if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
+            if (!userId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
 
             const { wallet, message } = await this._createWalletUseCase.createUserWallet(userId);
             ResponseHandler.success(res, message, wallet, HttpStatusCode.CREATED);
@@ -37,7 +42,7 @@ export class WalletController {
     async getWallet(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
-            if (!userId) throw new AppError("Missing userId", HttpStatusCode.BAD_REQUEST);
+            if (!userId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
 
             const { wallet, message } = await this._getWalletUseCase.getUserWallet(userId);
             ResponseHandler.success(res, message, wallet, HttpStatusCode.OK);
@@ -52,7 +57,7 @@ export class WalletController {
             const { amount } = req.body;
 
             if (!userId || !amount) {
-                throw new AppError("User ID and amount are required", HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.invalidData, HttpStatusCode.BAD_REQUEST);
             }
 
             const result = await this._stripeServiceUseCase.createPaymentIntent(userId, amount);
@@ -67,11 +72,12 @@ export class WalletController {
             const userId = req.user?.userId;
             const { vendorId } = req.params;
             const { method } = req.query as { method: 'wallet' | 'online' };
+
             if (!vendorId || !method || !userId) {
                 throw new AppError('User, Vendor id or method is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { hotelId, roomId, checkIn, checkOut, guests, totalPrice } = req.body;
+            const { hotelId, roomId, checkIn, checkOut, guests, totalPrice, roomsCount, couponId } = req.body;
 
             if (!hotelId || !roomId || !checkIn || !checkOut || !guests || !totalPrice) {
                 throw new AppError('booking confirmation fields is missing', HttpStatusCode.BAD_REQUEST);
@@ -88,17 +94,22 @@ export class WalletController {
                 throw new AppError("Check-out date must be after check-in date", HttpStatusCode.BAD_REQUEST);
             }
 
-            const bookingData: TCreateBookingData = {
+            const bookingId = `BCK-${nanoid(10)}`;
+
+            const bookingData: TCreateBookingDTO = {
                 userId,
                 hotelId,
                 roomId,
                 checkIn: checkInDate,
                 checkOut: checkOutDate,
+                roomsCount,
+                couponId,
                 guests,
                 totalPrice,
+                bookingId,
             };
-            const { transaction, message } = await this._bookingConfirmUseCase.bookingTransaction(vendorId, bookingData, method)
-            ResponseHandler.success(res, message, transaction, HttpStatusCode.OK);
+            const { message } = await this._bookingConfirmUseCase.bookingTransaction(vendorId, bookingData, method)
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }
@@ -133,12 +144,27 @@ export class WalletController {
             const userId = req.user?.userId;
             const page = parseInt(req.query.page as string);
             const limit = parseInt(req.query.limit as string);
+
             if (!userId) {
-                throw new AppError('User id is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
+
             const { transactions, total, message } = await this._getTransactionUseCase.getTransactions(userId, page, limit);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
             ResponseHandler.success(res, message, transactions, HttpStatusCode.OK, meta);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async subscriptionConfirmTransaction(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const userId = req.user?.userId;
+            const planId = req.params.planId;
+            const { method } = req.query as { method: 'wallet' | 'online' };
+
+            const { message } = await this._subscribePlanUseCase.subscribePlan(userId!, planId, method);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

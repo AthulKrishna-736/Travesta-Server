@@ -1,60 +1,102 @@
 import { Types } from "mongoose"
+import { TCreateHotelDTO, TResponseHotelDTO, TUpdateHotelDTO } from "../../../interfaceAdapters/dtos/hotel.dto"
+import { TResponseRoomDTO } from "../../../interfaceAdapters/dtos/room.dto";
 
+export type TIdProof = 'Aadhaar' | 'Passport' | 'DrivingLicense' | 'PAN';
+
+//hotel model
 export interface IHotel {
     _id?: string
     vendorId: string | Types.ObjectId
     name: string
     description: string
     images: string[]
-    rating: number
     amenities: string[]
     tags: string[]
     state: string
     city: string
     address: string
-    geoLocation: [number, number]
     isBlocked: boolean
+    geoLocation: {
+        type: string,
+        coordinates: [number, number],
+    }
+    propertyRules: {
+        checkInTime: string,
+        checkOutTime: string,
+        minGuestAge: number,
+        petsAllowed: boolean,
+        breakfastFee?: number,
+        outsideFoodAllowed: boolean,
+        idProofAccepted: TIdProof[],
+        specialNotes?: string,
+    }
     createdAt: Date
     updatedAt: Date
 }
 
 //hotel types
-export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'rating'>;
-export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt'>>;
-export type TResponseHotelData = Omit<IHotel, ''>;
+export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked'>;
+export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'geoLocation' | 'propertyRules'>> & {
+    geoLocation?: Partial<IHotel['geoLocation']>;
+    propertyRules?: Partial<IHotel['propertyRules']>;
+};
+
 
 //hotel use cases
 export interface ICreateHotelUseCase {
-    createHotel(hotelData: TCreateHotelData, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
+    createHotel(vendorId: string, hotelData: TCreateHotelDTO, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelDTO; message: string }>;
 }
 
 export interface IUpdateHotelUseCase {
-    updateHotel(hotelId: string, updateData: TUpdateHotelData, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelData; message: string }>;
+    updateHotel(hotelId: string, updateData: TUpdateHotelDTO, files?: Express.Multer.File[]): Promise<{ hotel: TResponseHotelDTO; message: string }>;
 }
 
 export interface IGetHotelByIdUseCase {
-    getHotel(hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
+    getHotel(hotelId: string): Promise<{ hotel: TResponseHotelDTO, message: string }>
 }
 
 export interface IGetVendorHotelsUseCase {
-    getVendorHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelData[], total: number, message: string }>
-    getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelData, message: string }>
+    getVendorHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelDTO[], total: number, message: string }>
+    getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelDTO, message: string }>
 }
 
 export interface IGetAllHotelsUseCase {
     getAllHotel(
         page: number,
         limit: number,
-        filters: {
-            search?: string;
-            amenities?: string[];
-            roomType?: string[];
-            checkIn?: string;
-            checkOut?: string;
-            guests?: number;
-            minPrice?: number;
-            maxPrice?: number;
-            sort?: string;
-        }
-    ): Promise<{ hotels: TResponseHotelData[]; total: number; message: string }>
+        checkIn: string,
+        checkOut: string,
+        rooms: number,
+        adults: number,
+        children: number,
+        geoLocation: { long: number, lat: number },
+        search?: string,
+        amenities?: string[],
+        roomType?: string[],
+        minPrice?: number,
+        maxPrice?: number,
+        rating?: number,
+        sort?: string,
+    ): Promise<{ hotels: (TResponseHotelDTO & { room: TResponseRoomDTO })[]; total: number; message: string }>
+}
+
+export interface IGetHotelAnalyticsUseCase {
+    getHotelAnalytics(hotelId: string, period: 'week' | 'month' | 'year'): Promise<{ hotel: any, message: string }>;
+}
+
+export interface IGetHotelDetailWithRoomUseCase {
+    getHotelDetailWithRoom(
+        hotelId: string,
+        roomId: string,
+        checkIn: string,
+        checkOut: string,
+        rooms: number,
+        adults: number,
+        children: number
+    ): Promise<{ hotel: TResponseHotelDTO, room: TResponseRoomDTO, otherRooms: TResponseRoomDTO[], message: string }>
+}
+
+export interface IGetTrendingHotelsUseCase {
+    trendingHotels(checkIn: string, checkOut: string): Promise<any>;
 }

@@ -22,10 +22,6 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
         type: [String],
         default: [],
     },
-    rating: {
-        type: Number,
-        default: 0,
-    },
     amenities: [{
         type: Schema.Types.ObjectId,
         ref: "Amenities",
@@ -47,13 +43,58 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
         required: true,
     },
     geoLocation: {
-        type: [Number],
-        required: true,
+        type: {
+            type: String,
+            enum: ["Point"],
+            required: true,
+            default: "Point"
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
     },
     isBlocked: {
         type: Boolean,
         default: false,
     },
+    propertyRules: {
+        checkInTime: {
+            type: String,
+            default: '14:00',
+        },
+        checkOutTime: {
+            type: String,
+            default: '12:00',
+        },
+        minGuestAge: {
+            type: Number,
+            default: 18,
+        },
+        petsAllowed: {
+            type: Boolean,
+            default: false,
+        },
+        breakfastFee: {
+            type: Number,
+            min: 0,
+        },
+        outsideFoodAllowed: {
+            type: Boolean,
+            default: false,
+        },
+        idProofAccepted: {
+            type: [String],
+            enum: ['Aadhaar', 'Passport', 'DrivingLicense', 'PAN'],
+            required: true,
+        },
+        specialNotes: {
+            type: String,
+        }
+    }
 }, { timestamps: true });
+
+hotelSchema.index({ geoLocation: "2dsphere" });
+hotelSchema.index({ name: 1 });
 
 export const hotelModel = mongoose.model<THotelDocument>("Hotel", hotelSchema);

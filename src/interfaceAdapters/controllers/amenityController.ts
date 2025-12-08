@@ -8,6 +8,7 @@ import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { TCreateAmenityDTO, TUpdateAmenityDTO } from "../dtos/amenity.dto";
 import { Pagination } from "../../shared/types/common.types";
 import { AppError } from "../../utils/appError";
+import { AMENITIES_ERROR_MESSAGES } from "../../constants/errorMessages";
 
 
 @injectable()
@@ -24,8 +25,14 @@ export class AmenityController {
 
     async createAmenity(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const data: TCreateAmenityDTO = req.body;
-            const { amenity, message } = await this._createAmenityUseCase.createAmenity(data);
+            const { name, type, description } = req.body;
+            const amenityData: TCreateAmenityDTO = {
+                name,
+                type,
+                description
+            };
+
+            const { amenity, message } = await this._createAmenityUseCase.createAmenity(amenityData);
             ResponseHandler.success(res, message, amenity, HttpStatusCode.CREATED);
         } catch (error) {
             next(error);
@@ -36,7 +43,7 @@ export class AmenityController {
         try {
             const { amenityId } = req.params;
             if (!amenityId) {
-                throw new AppError('Amenityid is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AMENITIES_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const data: TUpdateAmenityDTO = req.body;
@@ -51,7 +58,7 @@ export class AmenityController {
         try {
             const { amenityId } = req.params;
             if (!amenityId) {
-                throw new AppError('Amenityid is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AMENITIES_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { amenity, message } = await this._blockUnblockAmenityUseCase.blockUnblockAmenityUseCase(amenityId);

@@ -4,11 +4,13 @@ import { NextFunction, Response } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
-import { IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatAccessUseCase, IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../utils/appError";
+import { AUTH_ERROR_MESSAGES, CHAT_ERROR_MESSAGES } from "../../constants/errorMessages";
+import { IChatController } from "../../domain/interfaces/controllers/chatController.interface";
 
 @injectable()
-export class ChatController {
+export class ChatController implements IChatController {
     constructor(
         @inject(TOKENS.GetChatMessagesUseCase) private _getChatMessagesUseCase: IGetChatMessagesUseCase,
         @inject(TOKENS.SendMessageUseCase) private _sendMessageUseCase: ISendMessageUseCase,
@@ -16,6 +18,7 @@ export class ChatController {
         @inject(TOKENS.GetVendorsChatWithUserUseCase) private _getVendorsChatUserUseCase: IGetVendorsChatWithUserUseCase,
         @inject(TOKENS.GetVendorsChatWithAdminUseCase) private _getVendorsChatAdminUseCase: IGetVendorsChatWithAdminUseCase,
         @inject(TOKENS.GetUserUnreadMsgUseCase) private _getUserUnreadMsgUseCase: IGetUserUnreadMsgUseCase,
+        @inject(TOKENS.GetChatAccessUseCase) private _getChatAccessUseCase: IGetChatAccessUseCase,
     ) { }
 
     async getChatMessages(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -24,7 +27,7 @@ export class ChatController {
             const targetUserId = req.params.userId;
 
             if (!currentUserId || !targetUserId) {
-                throw new AppError('Curr or target user id missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(CHAT_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { chat, message } = await this._getChatMessagesUseCase.getChatMessage(currentUserId, targetUserId);
@@ -100,11 +103,25 @@ export class ChatController {
         try {
             const userId = req.user?.userId;
             if (!userId) {
-                throw new AppError('Userid is missing', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { message, users } = await this._getUserUnreadMsgUseCase.getUnreadMsg(userId);
             ResponseHandler.success(res, message, users, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async getchatAccess(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const userId = req.user?.userId;
+            if (!userId) {
+                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { message } = await this._getChatAccessUseCase.getChatAccess(userId);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

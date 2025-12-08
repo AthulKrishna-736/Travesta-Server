@@ -1,8 +1,10 @@
 import { injectable } from 'tsyringe';
 import { BaseRepository } from './baseRepo';
 import { TWalletDocument, walletModel } from '../models/walletModel';
-import { IWalletRepository } from '../../../domain/interfaces/repositories/repository.interface';
+import { IWalletRepository } from '../../../domain/interfaces/repositories/walletRepo.interface';
 import { TCreateWalletData } from '../../../domain/interfaces/model/wallet.interface';
+import { ClientSession } from 'mongoose';
+import { userModel } from '../models/userModels';
 
 @injectable()
 export class WalletRepository extends BaseRepository<TWalletDocument> implements IWalletRepository {
@@ -25,11 +27,19 @@ export class WalletRepository extends BaseRepository<TWalletDocument> implements
         return wallet;
     }
 
-    async updateBalance(userId: string, amount: number): Promise<TWalletDocument | null> {
+    async findAdminWallet(): Promise<TWalletDocument | null> {
+        const adminUser = await userModel.findOne({ role: "admin" });
+        if (!adminUser) return null;
+
+        const wallet = await this.model.findOne({ userId: adminUser._id });
+        return wallet;
+    }
+
+    async updateBalance(userId: string, amount: number, session?: ClientSession): Promise<TWalletDocument | null> {
         const wallet = await this.model.findOneAndUpdate(
             { userId },
             { $inc: { balance: amount } },
-            { new: true },
+            { new: true, session },
         );
         return wallet;
     }

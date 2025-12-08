@@ -1,10 +1,11 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { TOKENS } from "../../../constants/token";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IResetPassUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 
 
 @injectable()
@@ -16,19 +17,19 @@ export class ResetPassUseCase implements IResetPassUseCase {
 
     async resetPass(email: string, password: string): Promise<void> {
         if (!email) {
-            throw new AppError('Email is missing', HttpStatusCode.BAD_REQUEST);
+            throw new AppError(AUTH_ERROR_MESSAGES.emailError, HttpStatusCode.BAD_REQUEST);
         }
 
         const user = await this._userRepository.findUser(email);
 
         if (!user || !user._id) {
-            throw new AppError('User not found', HttpStatusCode.BAD_REQUEST)
+            throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND)
         }
 
         const isMatch = await this._authService.comparePassword(password, user.password)
 
         if (isMatch) {
-            throw new AppError('New password must be different from the old password.', HttpStatusCode.CONFLICT);
+            throw new AppError(AUTH_ERROR_MESSAGES.passError, HttpStatusCode.CONFLICT);
         }
 
         const hashPass = await this._authService.hashPassword(password)

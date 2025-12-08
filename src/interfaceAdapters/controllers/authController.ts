@@ -7,12 +7,14 @@ import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
 import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
-import { CreateUserDTO } from "../dtos/user.dto";
+import { TCreateUserDTO } from "../dtos/user.dto";
 import { AUTH_RES_MESSAGES } from "../../constants/resMessages";
+import { AUTH_ERROR_MESSAGES } from "../../constants/errorMessages";
+import { IAuthController } from "../../domain/interfaces/controllers/authController.interface";
 
 
 @injectable()
-export class AuthController {
+export class AuthController implements IAuthController {
     constructor(
         @inject(TOKENS.LoginUseCase) private _loginUseCase: ILoginUseCase,
         @inject(TOKENS.RegisterUseCase) private _registerUseCase: IRegisterUseCase,
@@ -26,7 +28,16 @@ export class AuthController {
 
     async register(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const userData: CreateUserDTO = req.body
+            const { firstName, lastName, email, phone, password, role } = req.body
+            const userData: TCreateUserDTO = {
+                firstName,
+                lastName,
+                email,
+                password,
+                phone,
+                role,
+            }
+
             const newUser = await this._registerUseCase.register(userData)
             ResponseHandler.success(res, AUTH_RES_MESSAGES.register, newUser, HttpStatusCode.OK)
         } catch (error) {
@@ -38,7 +49,7 @@ export class AuthController {
         try {
             const { userId, purpose } = req.body;
             if (!userId || !purpose) {
-                throw new AppError('Userid and purpose are required', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.resendOtp, HttpStatusCode.BAD_REQUEST);
             }
             const { message } = await this._resendOtpUseCase.resendOtp(userId, purpose);
             ResponseHandler.success(res, message, null, HttpStatusCode.OK)
@@ -49,9 +60,9 @@ export class AuthController {
 
     async login(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const { email, password, role } = req.body
+            const { email, password, role } = req.body;
             if (!email || !password || !role) {
-                throw new AppError('Email password and role are required', HttpStatusCode.BAD_REQUEST)
+                throw new AppError(AUTH_ERROR_MESSAGES.login, HttpStatusCode.BAD_REQUEST)
             }
             const { accessToken, refreshToken, user } = await this._loginUseCase.login(email, password, role);
 
@@ -69,7 +80,7 @@ export class AuthController {
             const { credential, role } = req.body;
 
             if (!credential || !role) {
-                throw new AppError('Google token and role are required', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.loginGoogle, HttpStatusCode.BAD_REQUEST);
             }
 
             const { accessToken, refreshToken, user } = await this._googleLoginUseCase.loginGoogle(credential, role);
@@ -87,7 +98,7 @@ export class AuthController {
         try {
             const { email, role } = req.body
             if (!email || !role) {
-                throw new AppError('Email and role missing in body', HttpStatusCode.BAD_REQUEST)
+                throw new AppError(AUTH_ERROR_MESSAGES.forgotPass, HttpStatusCode.BAD_REQUEST)
             }
 
             const { message, userId } = await this._forgotPassUseCase.forgotPass(email, role)
@@ -101,7 +112,7 @@ export class AuthController {
         try {
             const { email, password } = req.body
             if (!email || !password) {
-                throw new AppError('User email or password are required.', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.updatePass, HttpStatusCode.BAD_REQUEST);
             }
 
             await this._resetPassUseCase.resetPass(email, password)
@@ -117,7 +128,7 @@ export class AuthController {
 
             const { data, isOtpVerified } = await this._verifyOtpUseCase.verifyOtp(userId, otp, purpose)
             if (!isOtpVerified) {
-                throw new AppError('Otp verification failed or session expired', HttpStatusCode.BAD_REQUEST)
+                throw new AppError(AUTH_ERROR_MESSAGES.verifyError, HttpStatusCode.BAD_REQUEST)
             }
 
             ResponseHandler.success(res, AUTH_RES_MESSAGES.verifyOtp, data, HttpStatusCode.OK)
@@ -132,7 +143,7 @@ export class AuthController {
             const refreshToken = req.cookies['refresh_token'];
 
             if (!accessToken || !refreshToken) {
-                throw new AppError('Access or Refresh token missing in cookies', HttpStatusCode.BAD_REQUEST);
+                throw new AppError(AUTH_ERROR_MESSAGES.jwtMissing, HttpStatusCode.BAD_REQUEST);
             }
 
             const { message } = await this._logoutOtpUseCase.logout(accessToken, refreshToken);

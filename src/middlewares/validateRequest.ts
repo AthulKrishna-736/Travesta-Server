@@ -7,7 +7,6 @@ import fs from 'fs/promises';
 export const validateRequest = (schema: ZodSchema<any>) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            console.log('zod req body: ', req.body);
             schema.parse(req.body);
             next();
         } catch (error: any) {
@@ -18,7 +17,7 @@ export const validateRequest = (schema: ZodSchema<any>) => {
                 if (Array.isArray(req.files)) {
                     await Promise.all(
                         req.files.map((file: Express.Multer.File) =>
-                            fs.unlink(file.path).catch((err) => { console.log('err delete files: ', err) })
+                            fs.unlink(file.path).catch((err) => { console.error('err delete files: ', err) })
                         )
                     );
                 }

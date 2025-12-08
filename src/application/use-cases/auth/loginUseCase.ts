@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
 import { TOKENS } from "../../../constants/token";
-import { TResponseUserData } from "../../../domain/interfaces/model/user.interface";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { ILoginUseCase } from "../../../domain/interfaces/model/auth.interface";
@@ -10,67 +9,60 @@ import { IRedisService } from "../../../domain/interfaces/services/redisService.
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { TRole } from "../../../shared/types/client.types";
 import { awsS3Timer, jwtConfig } from "../../../infrastructure/config/jwtConfig";
-import { UserLookupBase } from "../base/userLookup.base";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 
 
 @injectable()
-export class LoginUseCase extends UserLookupBase implements ILoginUseCase {
+export class LoginUseCase implements ILoginUseCase {
     constructor(
-        @inject(TOKENS.UserRepository) _userRepository: IUserRepository,
+        @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
-    ) {
-        super(_userRepository)
-    }
+    ) { }
 
-    async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserData }> {
-        const userEntity = await this.getUserEntityByEmail(email);
-
-        if (userEntity.role !== expectedRole) {
-            throw new AppError(`Unauthorized: Invalid role for this login`, HttpStatusCode.UNAUTHORIZED);
+    async login(email: string, password: string, expectedRole: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserDTO }> {
+        const user = await this._userRepository.findUser(email);
+        if (!user || !user._id) {
+            throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
-        if (userEntity.isBlocked) {
-            throw new AppError(`${userEntity.role} is blocked`, HttpStatusCode.UNAUTHORIZED);
+        if (user.role !== expectedRole) {
+            throw new AppError(AUTH_ERROR_MESSAGES.invalidRole, HttpStatusCode.UNAUTHORIZED);
         }
 
-        const isValidPass = await this._authService.comparePassword(password, userEntity.password);
+        if (user.isBlocked) {
+            throw new AppError(AUTH_ERROR_MESSAGES.blocked, HttpStatusCode.UNAUTHORIZED);
+        }
+
+        const isValidPass = await this._authService.comparePassword(password, user.password);
         if (!isValidPass) {
-            throw new AppError("Invalid credentials", HttpStatusCode.BAD_REQUEST);
+            throw new AppError(AUTH_ERROR_MESSAGES.invalidData, HttpStatusCode.BAD_REQUEST);
         }
 
-        const accessToken = this._authService.generateAccessToken(userEntity.id!, userEntity.role, userEntity.email);
-        const refreshToken = this._authService.generateRefreshToken(userEntity.id!, userEntity.role, userEntity.email);
+        const accessToken = this._authService.generateAccessToken(user._id, user.role, user.email);
+        const refreshToken = this._authService.generateRefreshToken(user._id, user.role, user.email);
 
-        let imageUrl = await this._redisService.getRedisSignedUrl(userEntity.id!, 'profile');
-        if (!imageUrl && userEntity.profileImage) {
-            imageUrl = await this._awsS3Service.getFileUrlFromAws(userEntity.profileImage!, awsS3Timer.expiresAt);
-            await this._redisService.storeRedisSignedUrl(userEntity.id!, imageUrl, awsS3Timer.expiresAt);
+        if(user.profileImage){
+            user.profileImage = await this._awsS3Service.getFileUrlFromAws(user.profileImage, awsS3Timer.expiresAt);
         }
 
-        let kycDocs: string[] = [];
-        const kycDocsFromRedis = await this._redisService.getRedisSignedUrl(userEntity.id!, 'kycDocs');
-
-        if (!kycDocsFromRedis && userEntity.kycDocuments?.length) {
-            kycDocs = await Promise.all(userEntity.kycDocuments.map(async (key) => await this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)));
-            await this._redisService.storeKycDocs(userEntity.id!, kycDocs, awsS3Timer.expiresAt)
+        if(user.kycDocuments && user.kycDocuments.length > 0){
+            user.kycDocuments = await Promise.all(
+                user.kycDocuments.map((key)=> this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
+            )
         }
 
-        userEntity.updateProfile({
-            profileImage: imageUrl as string,
-            kycDocuments: kycDocs.length > 0 ? kycDocs : kycDocsFromRedis as string[],
-        });
+        await this._redisService.storeRefreshToken(user._id, refreshToken, jwtConfig.refreshToken.maxAge / 1000);
 
-        await this._redisService.storeRefreshToken(userEntity.id!, refreshToken, jwtConfig.refreshToken.maxAge / 1000);
-
-        const mapUser = ResponseMapper.mapUserToResponseDTO(userEntity.toObject())
+        const mappedUser = ResponseMapper.mapUserToResponseDTO(user)
 
         return {
             accessToken,
             refreshToken,
-            user: mapUser
+            user: mappedUser
         };
     }
 

@@ -5,6 +5,7 @@ import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
 import { IAuthService, TOtpData } from "../../../domain/interfaces/services/authService.interface";
 import { TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
+import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 
 
 @injectable()
@@ -17,7 +18,7 @@ export class VerifyOtpUseCase implements IVerifyOtpUseCase {
     async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ isOtpVerified: boolean, data: TOtpData }> {
         const data = await this._authService.verifyOtp(userId, otp, purpose)
         if (!data) {
-            throw new AppError('Invalid or expired Otp', HttpStatusCode.BAD_REQUEST)
+            throw new AppError(AUTH_ERROR_MESSAGES.otpError, HttpStatusCode.BAD_REQUEST)
         }
 
         if (purpose == 'signup') {

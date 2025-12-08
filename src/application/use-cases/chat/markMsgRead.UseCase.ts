@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
-import { IChatRepository, IUserRepository } from "../../../domain/interfaces/repositories/repository.interface";
+import { IUserRepository } from "../../../domain/interfaces/repositories/userRepo.interface";
+import { IChatRepository } from "../../../domain/interfaces/repositories/chatRepo.interface";
 import { IMarkMsgAsReadUseCase } from "../../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";

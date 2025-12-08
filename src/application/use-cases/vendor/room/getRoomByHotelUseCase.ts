@@ -1,76 +1,68 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { TResponseRoomData } from "../../../../domain/interfaces/model/room.interface";
-import { IRoomRepository } from "../../../../domain/interfaces/repositories/repository.interface";
-import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
+import { IRoomRepository } from "../../../../domain/interfaces/repositories/roomRepo.interface";
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IGetRoomsByHotelUseCase } from "../../../../domain/interfaces/model/room.interface";
-import { RoomLookupBase } from "../../base/room.base";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { HOTEL_ERROR_MESSAGES, ROOM_ERROR_MESSAGES } from "../../../../constants/errorMessages";
+import { TResponseRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
+import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
+import { calculateDynamicPricing, calculateGSTPrice, getPropertyTime } from "../../../../utils/helperFunctions";
+import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
 
 @injectable()
-export class GetRoomsByHotelUseCase extends RoomLookupBase implements IGetRoomsByHotelUseCase {
+export class GetRoomsByHotelUseCase implements IGetRoomsByHotelUseCase {
     constructor(
-        @inject(TOKENS.RoomRepository) _roomRepository: IRoomRepository,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
+        @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
+        @inject(TOKENS.RoomRepository) private _roomRepository: IRoomRepository,
+        @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service
-    ) {
-        super(_roomRepository);
-    }
+    ) { }
 
-    async getRoomsByHotel(hotelId: string): Promise<TResponseRoomData[]> {
-        if (!hotelId) {
-            throw new AppError("Hotel ID is required", HttpStatusCode.BAD_REQUEST);
+    async getRoomsByHotel(hotelId: string, checkIn: string, checkOut: string, roomCount: number, adults: number, children: number): Promise<TResponseRoomDTO[]> {
+        const hotel = await this._hotelRepository.findHotelById(hotelId);
+        if (!hotel) throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+
+        const rooms = await this._roomRepository.findRoomsByHotel(hotelId);
+
+        if (!rooms || rooms.length === 0) {
+            throw new AppError(ROOM_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
-        const roomEntities = await this.getRoomsEntityByHotelId(hotelId);
-
         const roomsWithSignedImages = await Promise.all(
-            roomEntities.map(async (roomEntity) => {
-                const roomIdStr = roomEntity.id!;
-                const roomImages = roomEntity.images;
+            rooms.map(async (r) => {
+                const { checkInDate, checkOutDate } = getPropertyTime(checkIn, checkOut, hotel.propertyRules.checkInTime, hotel.propertyRules.checkOutTime);
 
-                let signedRoomUrls = await this._redisService.getRoomImageUrls(roomIdStr);
-                if (!signedRoomUrls) {
-                    signedRoomUrls = await Promise.all(
-                        roomImages.map((key) =>
-                            this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
-                        )
-                    );
-                    await this._redisService.storeRoomImageUrls(roomIdStr, signedRoomUrls, awsS3Timer.expiresAt);
+                const isAvailable = await this._bookingRepository.isRoomAvailable(r._id!.toString(), roomCount, checkInDate, checkOutDate);
+                if (!isAvailable) {
+                    return null;
                 }
 
-                const hotelObj = roomEntity.hotelId as any;
-                const hotelIdStr = hotelObj._id?.toString();
+                if (!r.images || r.images.length <= 0) throw new AppError(ROOM_ERROR_MESSAGES.noImagesfound, HttpStatusCode.NOT_FOUND);
 
-                let signedHotelUrls = await this._redisService.getHotelImageUrls(hotelIdStr);
-                if (!signedHotelUrls) {
-                    signedHotelUrls = await Promise.all(
-                        (hotelObj.images || []).map((key: string) =>
-                            this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)
-                        )
-                    );
-                    await this._redisService.storeHotelImageUrls(hotelIdStr, signedHotelUrls, awsS3Timer.expiresAt);
-                }
+                const signedRoomImages = await Promise.all(r.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)));
+                const bookedRooms = await this._bookingRepository.getBookedRoomsCount(r._id as string, checkInDate, checkOutDate);
 
-                const hotelWithSignedImages = {
-                    ...hotelObj,
-                    images: signedHotelUrls,
+                const dynamicPrice = calculateDynamicPricing(r.basePrice, r.roomCount, bookedRooms);
+                const gstPrice = calculateGSTPrice(r.basePrice);
+                const totalBasePrice = dynamicPrice * roomCount;
+                const totalGstPrice = gstPrice * roomCount;
+
+                return {
+                    ...r,
+                    basePrice: totalBasePrice,
+                    gstPrice: totalGstPrice,
+                    images: signedRoomImages,
                 };
-
-                const finalRoomObj = {
-                    ...roomEntity.toObject(),
-                    images: signedRoomUrls,
-                    hotelId: hotelWithSignedImages,
-                };
-
-                return finalRoomObj;
             })
         );
 
-        return roomsWithSignedImages;
+        const availableRooms = roomsWithSignedImages.filter(r => r !== null);
+        const mappedRooms = availableRooms.map(r => ResponseMapper.mapRoomToResponseDTO(r));
+
+        return mappedRooms;
     }
 }
