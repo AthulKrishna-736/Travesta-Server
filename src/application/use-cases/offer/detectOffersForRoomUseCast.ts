@@ -18,7 +18,7 @@ export class DetectOfferForRoomUseCase implements IDetectOfferForRoomUseCase {
         const date = input.date ? new Date(input.date) : new Date();
         const hotelId = input.hotelId ?? null;
 
-        const offers = await this._offerRepository.findApplicableOffers(input.vendorId, input.roomType, date, hotelId);
+        const offers = await this._offerRepository.findApplicableOffers(input.roomType, date, hotelId);
 
         if (!offers || offers.length == 0) {
             throw new AppError('No offer found', HttpStatusCode.NOT_FOUND);
