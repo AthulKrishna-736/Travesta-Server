@@ -45,6 +45,7 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
         roomType?: string[],
         minPrice?: number,
         maxPrice?: number,
+        rating?: number,
         sort?: string,
     ): Promise<{ hotels: (TResponseHotelDTO & { room: TResponseRoomDTO })[]; total: number; message: string }> {
 
@@ -71,6 +72,7 @@ export class GetAllHotelsUseCase implements IGetAllHotelsUseCase {
             roomType,
             minPrice,
             maxPrice,
+            rating,
             sort
         );
 

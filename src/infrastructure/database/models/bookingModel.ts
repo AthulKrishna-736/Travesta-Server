@@ -47,6 +47,11 @@ const bookingSchema: Schema = new Schema<TBookingDocument>(
             ref: 'Coupon',
             default: null
         },
+        bookingId: {
+            type: String,
+            unique: true,
+            required: true,
+        },
         status: {
             type: String,
             enum: ['confirmed', 'cancelled', 'pending'],

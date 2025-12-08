@@ -10,6 +10,7 @@ import { ITransactionRepository } from "../../../../domain/interfaces/repositori
 import { TCreateTransaction } from "../../../../domain/interfaces/model/wallet.interface";
 import { AUTH_ERROR_MESSAGES, BOOKING_ERROR_MESSAGES, TRANSACTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import mongoose from "mongoose";
+import { nanoid } from "nanoid";
 
 @injectable()
 export class CancelBookingUseCase implements ICancelBookingUseCase {
@@ -63,7 +64,8 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
       walletId: new mongoose.Types.ObjectId(vendorWallet._id!),
       type: "debit",
       amount: refundAmount,
-      description: `Refund for booking cancellation (${bookingId})`,
+      description: `Refund for booking cancellation (${booking.bookingId})`,
+      transactionId: `TRN-${nanoid(10)}`,
       relatedEntityId: new mongoose.Types.ObjectId(booking._id!),
       relatedEntityType: "Booking",
     };
@@ -82,7 +84,8 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
       walletId: new mongoose.Types.ObjectId(userWallet._id),
       type: "credit",
       amount: refundAmount,
-      description: `Refund for booking cancellation (${bookingId})`,
+      transactionId: `TRN-${nanoid(10)}`,
+      description: `Refund for booking cancellation (${booking.bookingId})`,
       relatedEntityId: new mongoose.Types.ObjectId(booking._id!),
       relatedEntityType: 'Booking',
     };

@@ -13,7 +13,7 @@ export interface ITransactions {
     type: TTransactionType;
     amount: number;
     description: string;
-    transactionId?: string;
+    transactionId: string;
     relatedEntityId?: Types.ObjectId;
     relatedEntityType?: TRelatedType;
     createdAt: Date;

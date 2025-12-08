@@ -73,6 +73,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         roomType?: string[],
         minPrice?: number,
         maxPrice?: number,
+        rating?: number,
         sort?: string,
     ): Promise<{ hotels: Array<IHotel & { rooms: IRoom[], bookings: { _id: string, bookedRooms: number }[] }>, total: number }> {
         const skip = (page - 1) * limit;
@@ -187,7 +188,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
                         }, {
                             $group: {
                                 _id: '$roomId',
-                                bookedRooms: { $sum: 1 },
+                                bookedRooms: { $sum: '$roomsCount' }, 
                             }
                         },
                     ],
@@ -219,6 +220,55 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
                     $expr: { $gt: [{ $size: '$rooms' }, 0] }
                 }
             },
+
+            //lookup ratings
+            {
+                $lookup: {
+                    from: "ratings",
+                    let: { hotelId: "$_id" },
+                    pipeline: [
+                        { $match: { $expr: { $eq: ["$hotelId", "$$hotelId"] } } },
+                        {
+                            $group: {
+                                _id: "$hotelId",
+                                averageRating: {
+                                    $avg: {
+                                        $avg: [
+                                            "$hospitality",
+                                            "$cleanliness",
+                                            "$facilities",
+                                            "$room",
+                                            "$moneyValue"
+                                        ]
+                                    }
+                                },
+                                totalRatings: { $sum: 1 }
+                            }
+                        }
+                    ],
+                    as: "ratingInfo"
+                }
+            },
+            {
+                $unwind: {
+                    path: "$ratingInfo",
+                    preserveNullAndEmptyArrays: true
+                }
+            },
+
+            ...(rating !== undefined ? [{
+                $match: {
+                    $expr: { $gte: [{ $ifNull: ["$ratingInfo.averageRating", 0] }, rating] }
+                }
+            }] : []),
+
+            {
+                $addFields: {
+                    averageRating: { $ifNull: ["$ratingInfo.averageRating", 0] },
+                    totalRatings: { $ifNull: ["$ratingInfo.totalRatings", 0] }
+                }
+            },
+
             {
                 $sort:
                     sort === "name_asc" ? { name: 1 } :

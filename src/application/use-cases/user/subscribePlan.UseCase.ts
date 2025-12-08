@@ -10,6 +10,7 @@ import { ISubscriptionHistoryRepository } from "../../../domain/interfaces/repos
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AUTH_ERROR_MESSAGES, SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { nanoid } from "nanoid";
 
 @injectable()
 export class SubscribePlanUseCase implements ISubscribePlanUseCase {
@@ -75,7 +76,7 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 description: `Payment for subscription ${plan.name}`,
                 relatedEntityId: plan._id as Types.ObjectId,
                 relatedEntityType: "Subscription",
-                transactionId: new mongoose.Types.ObjectId().toString(),
+                transactionId: `TRN-${nanoid(10)}`,
             }, session);
 
             await this._walletRepository.updateBalance(adminWallet.userId.toString(), plan.price, session);
@@ -87,7 +88,7 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 description: `Received payment from ${user.firstName} ${user.lastName} for subscription ${plan.name}`,
                 relatedEntityId: plan._id as Types.ObjectId,
                 relatedEntityType: "Subscription",
-                transactionId: new mongoose.Types.ObjectId().toString(),
+                transactionId: `TRN-${nanoid(10)}`,
             }, session);
 
             await session.commitTransaction();

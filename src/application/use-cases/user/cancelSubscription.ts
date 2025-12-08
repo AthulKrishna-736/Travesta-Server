@@ -9,6 +9,7 @@ import { ISubscriptionHistoryRepository } from "../../../domain/interfaces/repos
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES, AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { nanoid } from "nanoid";
 
 @injectable()
 export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
@@ -54,7 +55,7 @@ export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
                     description: `Refund for subscription cancellation`,
                     relatedEntityId: new mongoose.Types.ObjectId(activeSubscription.subscriptionId),
                     relatedEntityType: "Subscription",
-                    transactionId: new mongoose.Types.ObjectId().toString(),
+                    transactionId: `TRN-${nanoid(10)}`,
                 }, session);
 
                 await this._transactionRepository.createTransaction({
@@ -64,7 +65,7 @@ export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
                     description: `Refunded user ${user.firstName} ${user.lastName} for subscription cancellation`,
                     relatedEntityId: new mongoose.Types.ObjectId(activeSubscription.subscriptionId),
                     relatedEntityType: "Subscription",
-                    transactionId: new mongoose.Types.ObjectId().toString(),
+                    transactionId: `TRN-${nanoid(10)}`,
                 }, session);
             }
 

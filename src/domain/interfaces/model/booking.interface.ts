@@ -19,6 +19,7 @@ export interface IBooking {
     roomsCount: number;
     couponId?: string | Types.ObjectId;
     status: TStatus;
+    bookingId: string;
     payment: TPaymentStatus;
     createdAt: Date;
     updatedAt: Date;
@@ -68,4 +69,8 @@ export interface IGetVendorHotelAnalyticsUseCase {
             bookingStatus: Array<{ name: string; value: number; color: string }>;
         };
     }>
+}
+
+export interface IGetAdminAnalyticsUseCase {
+    getAnalytics(startDate?: string, endDate?: string): Promise<{ data: any, message: string }>
 }

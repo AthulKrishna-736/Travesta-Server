@@ -10,6 +10,7 @@ import { WALLET_RES_MESSAGES } from "../../../../constants/resMessages";
 import { TRANSACTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TResponseTransactionDTO } from "../../../../interfaceAdapters/dtos/transactions.dto";
 import { ResponseMapper } from "../../../../utils/responseMapper";
+import { nanoid } from "nanoid";
 
 @injectable()
 export class AddMoneyToWalletUseCase implements IAddMoneyToWalletUseCase {
@@ -24,11 +25,14 @@ export class AddMoneyToWalletUseCase implements IAddMoneyToWalletUseCase {
             throw new AppError(WALLET_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
+        const transactionId = `TRN-${nanoid(10)}`
+
         const transactionData: TCreateTransaction = {
             walletId: new mongoose.Types.ObjectId(wallet._id),
             type: 'credit',
             amount,
             description: `Wallet credited via Stripe payment`,
+            transactionId,
         }
 
         const transaction = await this._transactionRepository.createTransaction(transactionData);

@@ -187,7 +187,7 @@ export class ResponseMapper {
         };
     }
 
-    static mapBookingResponseToDTO(booking: IBooking & { hotel?: TBookingPopulated['hotel'], room?: TBookingPopulated['room'] }): TResponseBookingDTO {
+    static mapBookingResponseToDTO(booking: IBooking & { hotel?: TBookingPopulated['hotel'], room?: TBookingPopulated['room'], user?: Partial<IUser> }): TResponseBookingDTO {
         return {
             id: booking._id!.toString(),
             userId: booking.userId,
@@ -195,6 +195,7 @@ export class ResponseMapper {
             roomId: booking.roomId.toString(),
             hotel: booking.hotel,
             room: booking.room,
+            user: booking.user,
             checkIn: formatDateString(booking.checkIn),
             checkOut: formatDateString(booking.checkIn),
             guests: booking.guests,
@@ -203,6 +204,7 @@ export class ResponseMapper {
             couponId: booking.couponId?.toString(),
             status: booking.status,
             payment: booking.payment,
+            bookingId: booking.bookingId,
             createdAt: booking.checkIn,
             updatedAt: booking.updatedAt,
         }

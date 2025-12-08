@@ -69,7 +69,7 @@ import { GetChattedUsersUseCase } from "../../application/use-cases/chat/getChat
 import { MarkMsgAsReadUseCase } from "../../application/use-cases/chat/markMsgRead.UseCase";
 import { GetVendorsChatWithUserUseCase } from "../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
 import { GetVendorsChatWithAdmiinUseCase } from "../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
-import { ICancelBookingUseCase, ICreateBookingUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase, IGetCustomRoomDatesUseCase, IGetVendorHotelAnalyticsUseCase } from "../../domain/interfaces/model/booking.interface";
+import { ICancelBookingUseCase, ICreateBookingUseCase, IGetAdminAnalyticsUseCase, IGetBookingsByHotelUseCase, IGetBookingsByUserUseCase, IGetBookingsToVendorUseCase, IGetVendorHotelAnalyticsUseCase } from "../../domain/interfaces/model/booking.interface";
 import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from "../../domain/interfaces/model/wallet.interface";
 import { GetWalletUseCase } from "../../application/use-cases/user/wallet/getWallet.UseCase";
 import { CreateWalletUseCase } from "../../application/use-cases/user/wallet/createWallet.UseCase";
@@ -114,7 +114,6 @@ import { IAmenityController } from "../../domain/interfaces/controllers/amenityC
 import { AmenityController } from "../../interfaceAdapters/controllers/amenityController";
 import { SubscriptionController } from "../../interfaceAdapters/controllers/subscriptionController";
 import { GetChatAccessUseCase } from "../../application/use-cases/chat/getChatAccess.UseCase";
-import { GetCustomRoomDatesUseCase } from "../../application/use-cases/vendor/room/getCustomRoomDatesUseCase";
 import { GetHotelAnalyticsUseCase } from "../../application/use-cases/vendor/hotel/getHotelAnalyticsUseCase";
 import { SubscriptionHistoryRepository } from "../database/repositories/planHistoryRepo";
 import { SubscribePlanUseCase } from "../../application/use-cases/user/subscribePlan.UseCase";
@@ -152,6 +151,7 @@ import { ToggleOfferStatusUseCase } from "../../application/use-cases/offer/togg
 import { IOfferController } from "../../domain/interfaces/controllers/offerController.interface";
 import { OfferController } from "../../interfaceAdapters/controllers/offerController";
 import { GetTrendingHotelsUseCase } from "../../application/use-cases/vendor/hotel/getTrendingHotelsUseCase";
+import { GetAdminAnalyticsUseCase } from "../../application/use-cases/vendor/getAdminAnalyticsUseCase";
 
 
 //repository
@@ -347,6 +347,10 @@ container.register<IUpdateVendorReqUseCase>(TOKENS.UpdateVendorReqUseCase, {
   useClass: UpdateVendorReq,
 })
 
+container.register<IGetAdminAnalyticsUseCase>(TOKENS.GetAdminAnalyticsUseCase, {
+  useClass: GetAdminAnalyticsUseCase,
+})
+
 
 //user UseCases
 container.register<IUpdateUserUseCase>(TOKENS.UpdateUserUseCase, {
@@ -420,10 +424,6 @@ container.register<IGetRoomsByHotelUseCase>(TOKENS.GetRoomsByHotelUseCase, {
 
 container.register<IGetAllRoomsUseCase>(TOKENS.GetAllRoomsUseCase, {
   useClass: GetAllRoomsUseCase,
-})
-
-container.register<IGetCustomRoomDatesUseCase>(TOKENS.GetCustomRoomDatesUseCase, {
-  useClass: GetCustomRoomDatesUseCase,
 })
 
 

@@ -197,6 +197,7 @@ export class HotelController implements IHotelController {
             const MAX_PRICE = req.query.maxPrice ? Number(req.query.maxPrice) : Infinity;
             const AMENITIES = req.query.amenities ? (req.query.amenities as string).split(",") : undefined;
             const ROOM_TYPE = req.query.roomType ? (req.query.roomType as string).split(",") : undefined;
+            const RATING = Number(req.query.rating) || 0;
             const SORT = req.query.sort as string;
 
             const GEO_LOCATION = {
@@ -218,6 +219,7 @@ export class HotelController implements IHotelController {
                 ROOM_TYPE,
                 MIN_PRICE,
                 MAX_PRICE,
+                RATING,
                 SORT,
             );
             const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) };

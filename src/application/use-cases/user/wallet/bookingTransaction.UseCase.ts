@@ -6,8 +6,10 @@ import { IWalletRepository } from '../../../../domain/interfaces/repositories/wa
 import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
 import { IBookingTransactionUseCase, TCreateTransaction } from '../../../../domain/interfaces/model/wallet.interface';
-import { IBooking, ICreateBookingUseCase, TCreateBookingData } from '../../../../domain/interfaces/model/booking.interface';
+import { ICreateBookingUseCase } from '../../../../domain/interfaces/model/booking.interface';
 import { WALLET_ERROR_MESSAGES } from '../../../../constants/errorMessages';
+import { TCreateBookingDTO } from '../../../../interfaceAdapters/dtos/booking.dto';
+import { nanoid } from 'nanoid';
 
 
 @injectable()
@@ -18,7 +20,7 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
     ) { }
 
-    async bookingTransaction(vendorId: string, bookingData: TCreateBookingData, method: 'online' | 'wallet'): Promise<{ message: string }> {
+    async bookingTransaction(vendorId: string, bookingData: TCreateBookingDTO, method: 'online' | 'wallet'): Promise<{ message: string }> {
         const [userWallet, vendorWallet] = await Promise.all([
             this._walletRepository.findUserWallet(bookingData.userId.toString()),
             this._walletRepository.findUserWallet(vendorId.toString()),
@@ -34,7 +36,7 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
         session.startTransaction();
 
         try {
-            const finalBookingData: Omit<IBooking, 'createdAt' | 'updatedAt'> = {
+            const finalBookingData: TCreateBookingDTO = {
                 ...bookingData,
                 status: 'confirmed',
                 payment: 'success',
@@ -42,9 +44,9 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
 
             const { booking } = await this._bookingUsecase.createBooking(finalBookingData, session);
 
-            const relatedEntityId = new mongoose.Types.ObjectId(booking._id);
-            const description = `Payment for booking #${booking._id}`;
-            const transactionId = '';
+            const relatedEntityId = new mongoose.Types.ObjectId(booking.id);
+            const description = `Payment for booking ${booking.bookingId}`;
+            const transactionId = `TRN-${nanoid(10)}`
 
             // Debit user
             const debitTransaction: TCreateTransaction = {

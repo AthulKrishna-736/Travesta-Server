@@ -7,12 +7,13 @@ import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from '../../domain/interfaces/model/wallet.interface';
 import { IStripeService } from '../../domain/interfaces/services/stripeService.interface';
-import { TCreateBookingData } from '../../domain/interfaces/model/booking.interface';
 import { WALLET_RES_MESSAGES } from '../../constants/resMessages';
 import { Pagination } from '../../shared/types/common.types';
 import { AUTH_ERROR_MESSAGES } from '../../constants/errorMessages';
 import { IWalletController } from '../../domain/interfaces/controllers/walletController.interface';
 import { ISubscribePlanUseCase } from '../../domain/interfaces/model/subscription.interface';
+import { TCreateBookingDTO } from '../dtos/booking.dto';
+import { nanoid } from 'nanoid';
 
 @injectable()
 export class WalletController implements IWalletController {
@@ -93,7 +94,9 @@ export class WalletController implements IWalletController {
                 throw new AppError("Check-out date must be after check-in date", HttpStatusCode.BAD_REQUEST);
             }
 
-            const bookingData: TCreateBookingData = {
+            const bookingId = `BCK-${nanoid(10)}`;
+
+            const bookingData: TCreateBookingDTO = {
                 userId,
                 hotelId,
                 roomId,
@@ -103,6 +106,7 @@ export class WalletController implements IWalletController {
                 couponId,
                 guests,
                 totalPrice,
+                bookingId,
             };
             const { message } = await this._bookingConfirmUseCase.bookingTransaction(vendorId, bookingData, method)
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);

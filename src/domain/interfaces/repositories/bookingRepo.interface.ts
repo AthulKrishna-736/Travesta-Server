@@ -1,7 +1,5 @@
 import { ClientSession } from "mongoose";
 import { IBooking, TBookingPopulated, TCreateBookingData } from "../model/booking.interface";
-import { IHotel } from "../model/hotel.interface";
-import { IRoom } from "../model/room.interface";
 
 export interface IBookingRepository {
     createBooking(data: Partial<IBooking>, session?: ClientSession): Promise<IBooking>;
@@ -30,4 +28,11 @@ export interface IBookingRepository {
     getVendorTopHotels(vendorId: string, limit?: number, startDate?: string, endDate?: string): Promise<Array<{ hotelId: string; hotelName: string; revenue: number; bookings: number; }>>;
     getVendorMonthlyRevenue(vendorId: string, startDate?: string, endDate?: string): Promise<Array<{ month: string; revenue: number; bookings: number; }>>;
     getVendorBookingStatus(vendorId: string, startDate?: string, endDate?: string): Promise<Array<{ status: string; count: number; }>>;
+    getTotalVendorBookings(startDate?: string, endDate?: string): Promise<number>;
+    getTotalVendorRevenue(startDate?: string, endDate?: string): Promise<any>;
+    getBookingsChart(interval: "day" | "month", startDate?: string, endDate?: string): Promise<any>;
+    getTopHotels(limit?: number, startDate?: string, endDate?: string): Promise<any>;
+    getTopVendors(limit?: number, startDate?: string, endDate?: string): Promise<any>;
+    getCounts(): Promise<any>
+    getTopRevenueDays(limit?: number, startDate?: string, endDate?: string): Promise<any>
 }

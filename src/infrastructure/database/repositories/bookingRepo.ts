@@ -32,25 +32,38 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return booking.toObject();
     };
 
-    async createBookingIfAvailable(roomId: string, bookingData: TCreateBookingData, session: ClientSession): Promise<IBooking | null> {
+    async createBookingIfAvailable(roomId: string, bookingData: TCreateBookingData, session: mongoose.ClientSession): Promise<IBooking | null> {
 
         const room = await roomModel.findById(roomId).session(session);
         if (!room) throw new Error('Room not found');
 
-        const bookedCount = await bookingModel.countDocuments({
-            roomId,
-            status: { $ne: 'cancelled' },
-            checkIn: { $lt: bookingData.checkOut },
-            checkOut: { $gt: bookingData.checkIn }
-        }).session(session);
+        const bookedAggregation = await bookingModel.aggregate([
+            {
+                $match: {
+                    roomId: new mongoose.Types.ObjectId(roomId),
+                    status: { $ne: 'cancelled' },
+                    checkIn: { $lt: bookingData.checkOut },
+                    checkOut: { $gt: bookingData.checkIn }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalBookedRooms: { $sum: "$roomsCount" }
+                }
+            }
+        ]).session(session);
 
-        if (bookedCount >= room.roomCount) {
+        const bookedRooms = bookedAggregation[0]?.totalBookedRooms || 0;
+
+        if (bookedRooms + bookingData.roomsCount > room.roomCount) {
             return null;
         }
 
         const [booking] = await bookingModel.create([bookingData], { session });
         return booking.toObject();
     }
+
 
     async findBookingsByUser(
         userId: string,
@@ -163,37 +176,128 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return { bookings, total };
     }
 
+    async findBookingsByVendor(
+        vendorId: string,
+        page: number,
+        limit: number,
+        hotelId?: string,
+        startDate?: string,
+        endDate?: string
+    ): Promise<{ bookings: any[]; total: number }> {
 
-    async findBookingsByVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: IBooking[]; total: number }> {
         const skip = (page - 1) * limit;
-        const vendorHotels = await hotelModel.find({ vendorId }, { _id: 1 }).lean();
-        const hotelIds = vendorHotels.map(h => h._id);
+
+        const matchStage: QueryOptions = {};
+
+        // 1) Match only vendor hotels
+        const vendorHotelIds = await hotelModel.find({ vendorId }, { _id: 1 }).lean();
+        const hotelIds = vendorHotelIds.map(h => h._id);
 
         if (!hotelIds.length) return { bookings: [], total: 0 };
-        const filter: QueryOptions = { hotelId: { $in: hotelIds } };
 
+        matchStage.hotelId = { $in: hotelIds };
+
+        // 2) Filter for specific hotel
         if (hotelId) {
-            filter.hotelId = hotelId;
+            matchStage.hotelId = new Types.ObjectId(hotelId);
         }
 
+        // 3) Date Range Filter
         if (startDate && endDate) {
             const start = new Date(startDate);
             const end = new Date(endDate);
-            filter.$or = [
+
+            matchStage.$or = [
                 { checkIn: { $gte: start, $lte: end } },
                 { checkOut: { $gte: start, $lte: end } }
             ];
         }
 
-        const total = await this.model.countDocuments(filter);
-        const bookings = await this.model.find(filter)
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit)
-            .populate({ path: 'roomId', select: '_id name basePrice' })
-            .populate({ path: 'hotelId', select: '_id name vendorId' })
-            .populate({ path: 'userId', select: 'firstName lastName email phone' })
-            .lean<IBooking[]>();
+        const pipeline: PipelineStage[] = [
+            { $match: matchStage },
+
+            // Populate room
+            {
+                $lookup: {
+                    from: "rooms",
+                    localField: "roomId",
+                    foreignField: "_id",
+                    pipeline: [
+                        {
+                            $project: {
+                                _id: 1,
+                                name: 1,
+                                basePrice: 1,
+                                roomType: 1
+                            }
+                        }
+                    ],
+                    as: "room"
+                }
+            },
+            { $unwind: "$room" },
+
+            // Populate hotel
+            {
+                $lookup: {
+                    from: "hotels",
+                    localField: "hotelId",
+                    foreignField: "_id",
+                    pipeline: [
+                        {
+                            $project: {
+                                _id: 1,
+                                name: 1,
+                                city: 1,
+                                state: 1,
+                                vendorId: 1,
+                                images: 1
+                            }
+                        }
+                    ],
+                    as: "hotel"
+                }
+            },
+            { $unwind: "$hotel" },
+
+            // Populate user
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "userId",
+                    foreignField: "_id",
+                    pipeline: [
+                        {
+                            $project: {
+                                firstName: 1,
+                                lastName: 1,
+                                email: 1,
+                                phone: 1,
+                            }
+                        }
+                    ],
+                    as: "user"
+                }
+            },
+            { $unwind: "$user" },
+
+            // Pagination + Total Count
+            {
+                $facet: {
+                    total: [{ $count: "value" }],
+                    data: [
+                        { $sort: { createdAt: -1 } },
+                        { $skip: skip },
+                        { $limit: limit }
+                    ]
+                }
+            }
+        ];
+
+        const result = await bookingModel.aggregate(pipeline);
+
+        const total = result[0]?.total[0]?.value ?? 0;
+        const bookings = result[0]?.data ?? [];
 
         return { bookings, total };
     }
@@ -224,24 +328,42 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return result.length > 0 && result[0].total > 0;
     }
 
-    async isRoomAvailable(roomId: string, rooms: number, checkIn: Date, checkOut: Date, session?: ClientSession): Promise<boolean> {
+    async isRoomAvailable(
+        roomId: string,
+        rooms: number,
+        checkIn: Date,
+        checkOut: Date,
+        session?: mongoose.ClientSession
+    ): Promise<boolean> {
         const query = roomModel.findById(roomId);
         if (session) query.session(session);
 
         const room = await query;
         if (!room) throw new Error("Room not found");
 
-        const bookingQuery = bookingModel.countDocuments({
-            roomId,
-            status: { $ne: "cancelled" },
-            checkIn: { $lt: checkOut },
-            checkOut: { $gt: checkIn },
-        });
+        const bookedAggregation = bookingModel.aggregate([
+            {
+                $match: {
+                    roomId: new mongoose.Types.ObjectId(roomId),
+                    status: { $ne: "cancelled" },
+                    checkIn: { $lt: checkOut },
+                    checkOut: { $gt: checkIn },
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalBookedRooms: { $sum: "$roomsCount" }
+                }
+            }
+        ]);
 
-        if (session) bookingQuery.session(session);
+        if (session) bookedAggregation.session(session);
 
-        const bookedCount = await bookingQuery;
-        const availableRooms = room.roomCount - bookedCount;
+        const bookedResult = await bookedAggregation.exec();
+        const bookedRooms = bookedResult[0]?.totalBookedRooms || 0;
+
+        const availableRooms = room.roomCount - bookedRooms;
         return availableRooms >= rooms;
     }
 
@@ -495,15 +617,26 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
     }
 
     async getBookedRoomsCount(roomId: string, checkIn: Date, checkOut: Date): Promise<number> {
-        const count = await bookingModel.countDocuments({
-            roomId: roomId,
-            status: 'confirmed',
-            checkIn: { $lt: checkOut },
-            checkOut: { $gt: checkIn }
-        });
+        const aggregation = await bookingModel.aggregate([
+            {
+                $match: {
+                    roomId: new mongoose.Types.ObjectId(roomId),
+                    status: 'confirmed',
+                    checkIn: { $lt: checkOut },
+                    checkOut: { $gt: checkIn }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    totalBookedRooms: { $sum: "$roomsCount" }
+                }
+            }
+        ]);
 
-        return count;
+        return aggregation[0]?.totalBookedRooms || 0;
     }
+
 
     async getTotalRevenue(hotelId: string, period: 'week' | 'month' | 'year'): Promise<number> {
         const match = this._getDateMatch(period, hotelId);
@@ -546,6 +679,198 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
                 }
             },
             { $sort: { "_id": 1 } }
+        ]);
+    }
+
+    //admin analytics
+    private buildDateFilter(startDate?: string, endDate?: string) {
+        if (!startDate || !endDate) return {};
+
+        return {
+            createdAt: {
+                $gte: new Date(startDate),
+                $lte: new Date(endDate)
+            }
+        };
+    }
+
+    async getTotalVendorBookings(startDate?: string, endDate?: string): Promise<number> {
+        const filter = this.buildDateFilter(startDate, endDate);
+
+        return bookingModel.countDocuments(filter);
+    }
+
+    async getTotalVendorRevenue(startDate?: string, endDate?: string): Promise<any> {
+        const filter = this.buildDateFilter(startDate, endDate);
+
+        const result = await bookingModel.aggregate([
+            { $match: { payment: "success", ...filter } },
+            { $group: { _id: null, totalRevenue: { $sum: "$totalPrice" } } }
+        ]);
+
+        return result[0]?.totalRevenue ?? 0;
+    }
+
+    async getBookingsChart(interval: "day" | "month", startDate?: string, endDate?: string): Promise<any> {
+        const filter = this.buildDateFilter(startDate, endDate);
+
+        return bookingModel.aggregate([
+            { $match: filter },
+            {
+                $group: {
+                    _id: interval === "day"
+                        ? { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } }
+                        : { $dateToString: { format: "%Y-%m", date: "$createdAt" } },
+                    count: { $sum: 1 }
+                }
+            },
+            { $sort: { _id: 1 } }
+        ]);
+    }
+
+    async getTopHotels(limit = 5, startDate?: string, endDate?: string): Promise<any> {
+        const filter = this.buildDateFilter(startDate, endDate);
+
+        return bookingModel.aggregate([
+            { $match: filter },
+
+            {
+                $group: {
+                    _id: "$hotelId",
+                    totalBookings: { $sum: 1 },
+                    revenue: { $sum: "$totalPrice" }
+                }
+            },
+            { $sort: { totalBookings: -1 } },
+            { $limit: limit },
+
+            // hotel data
+            {
+                $lookup: {
+                    from: "hotels",
+                    localField: "_id",
+                    foreignField: "_id",
+                    as: "hotel"
+                }
+            },
+            { $unwind: "$hotel" },
+
+            // add average rating
+            {
+                $lookup: {
+                    from: "ratings",
+                    localField: "_id",
+                    foreignField: "hotelId",
+                    as: "ratings"
+                }
+            },
+            {
+                $addFields: {
+                    avgRating: { $avg: "$ratings.room" }
+                }
+            },
+
+            {
+                $project: {
+                    _id: 1,
+                    totalBookings: 1,
+                    revenue: 1,
+                    avgRating: 1,
+                    hotel: {
+                        name: 1,
+                        city: 1,
+                        images: 1,
+                        vendorId: 1,
+                    }
+                }
+            }
+        ]);
+    }
+
+    async getTopVendors(limit = 5, startDate?: string, endDate?: string): Promise<any> {
+        const filter = this.buildDateFilter(startDate, endDate);
+
+        return bookingModel.aggregate([
+            { $match: filter },
+
+            // Join hotel → vendor
+            {
+                $lookup: {
+                    from: "hotels",
+                    localField: "hotelId",
+                    foreignField: "_id",
+                    as: "hotel"
+                }
+            },
+            { $unwind: "$hotel" },
+
+            // Aggregate by vendor
+            {
+                $group: {
+                    _id: "$hotel.vendorId",
+                    totalBookings: { $sum: 1 },
+                    revenue: { $sum: "$totalPrice" },
+                    hotelCount: { $addToSet: "$hotelId" }
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    totalBookings: 1,
+                    revenue: 1,
+                    hotelCount: { $size: "$hotelCount" }
+                }
+            },
+            { $sort: { totalBookings: -1 } },
+            { $limit: limit },
+
+            // join vendor data
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "_id",
+                    foreignField: "_id",
+                    as: "vendor"
+                }
+            },
+            { $unwind: "$vendor" },
+
+            {
+                $project: {
+                    vendor: {
+                        firstName: 1,
+                        lastName: 1,
+                        email: 1,
+                    },
+                    totalBookings: 1,
+                    hotelCount: 1,
+                    revenue: 1,
+                }
+            }
+        ]);
+    }
+
+    async getCounts(): Promise<any> {
+        return {
+            totalHotels: await hotelModel.countDocuments(),
+            totalRooms: await roomModel.countDocuments(),
+            totalBookings: await bookingModel.countDocuments(),
+        };
+    }
+
+    async getTopRevenueDays(limit = 5, startDate?: string, endDate?: string): Promise<any> {
+        const filter = this.buildDateFilter(startDate, endDate);
+
+        return bookingModel.aggregate([
+            { $match: { payment: "success", ...filter } },
+            {
+                $group: {
+                    _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+                    revenue: { $sum: "$totalPrice" }
+                }
+            },
+            { $sort: { revenue: -1 } },
+            { $limit: limit }
         ]);
     }
 }

@@ -10,6 +10,7 @@ import { AppError } from "../../utils/appError";
 import { ADMIN_RES_MESSAGES } from "../../constants/resMessages";
 import { AUTH_ERROR_MESSAGES } from "../../constants/errorMessages";
 import { IAdminController } from "../../domain/interfaces/controllers/adminController.interface";
+import { IGetAdminAnalyticsUseCase } from "../../domain/interfaces/model/booking.interface";
 
 @injectable()
 export class AdminController implements IAdminController {
@@ -18,6 +19,7 @@ export class AdminController implements IAdminController {
         @inject(TOKENS.GetAllUsersUseCase) private _getAllUsersUsecase: IGetAllUsersUseCase,
         @inject(TOKENS.GetAllVendorReqUseCase) private _getAllVendorReqUseCase: IGetAllVendorReqUseCase,
         @inject(TOKENS.UpdateVendorReqUseCase) private _updateVendorReqUseCase: IUpdateVendorReqUseCase,
+        @inject(TOKENS.GetAdminAnalyticsUseCase) private _getAdminAnalyticsUseCase: IGetAdminAnalyticsUseCase,
     ) { }
 
     async blockOrUnblockUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -78,6 +80,15 @@ export class AdminController implements IAdminController {
 
             const { message } = await this._updateVendorReqUseCase.updateVendorReq(vendorId, isVerified, reason)
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async getAdminAnalytics(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { data, message } = await this._getAdminAnalyticsUseCase.getAnalytics();
+            ResponseHandler.success(res, message, data, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

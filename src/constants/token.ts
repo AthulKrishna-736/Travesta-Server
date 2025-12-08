@@ -80,7 +80,6 @@ export const TOKENS = {
   GetRoomByIdUseCase: 'GetRoomByIdUseCase',
   GetRoomsByHotelUseCase: 'GetRoomsByHotelUseCase',
   GetAllRoomsUseCase: 'GetAllRoomsUseCase',
-  GetCustomRoomDatesUseCase: 'GetCustomRoomDatesUseCase',
 
   //booking UseCase
   CreateBookingUseCase: 'CreateBookingUseCase',
@@ -90,6 +89,7 @@ export const TOKENS = {
   CancelRoomUseCase: 'CancelRoomUseCase',
   GetBookingsToVendorUseCase: 'GetBookingsToVendorUseCase',
   GetVendorHotelAnalyticsUseCase: 'GetVendorHotelAnalyticsUseCase',
+  GetAdminAnalyticsUseCase: 'GetAdminAnalyticsUseCase',
 
   //amenities UseCases
   CreateAmenityUseCase: 'CreateAmenityUseCase',

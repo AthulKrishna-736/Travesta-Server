@@ -121,4 +121,35 @@ export class RatingRepository extends BaseRepository<TRatingDocument> implements
         };
     }
 
+    private buildDateFilter(startDate?: string, endDate?: string) {
+        if (!startDate || !endDate) return {};
+
+        return {
+            createdAt: {
+                $gte: new Date(startDate),
+                $lte: new Date(endDate)
+            }
+        };
+    }
+
+    async getAverageRating(startDate?: string, endDate?: string): Promise<any> {
+        const filter = this.buildDateFilter(startDate, endDate);
+
+        const result = await ratingModel.aggregate([
+            { $match: filter },
+            {
+                $group: {
+                    _id: null,
+                    avgHospitality: { $avg: "$hospitality" },
+                    avgCleanliness: { $avg: "$cleanliness" },
+                    avgFacilities: { $avg: "$facilities" },
+                    avgRoom: { $avg: "$room" },
+                    avgValue: { $avg: "$moneyValue" },
+                }
+            }
+        ]);
+
+        return result[0] ?? null;
+    }
+
 } 

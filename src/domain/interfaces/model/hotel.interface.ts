@@ -76,6 +76,7 @@ export interface IGetAllHotelsUseCase {
         roomType?: string[],
         minPrice?: number,
         maxPrice?: number,
+        rating?: number,
         sort?: string,
     ): Promise<{ hotels: (TResponseHotelDTO & { room: TResponseRoomDTO })[]; total: number; message: string }>
 }

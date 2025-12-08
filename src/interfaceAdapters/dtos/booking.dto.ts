@@ -1,15 +1,19 @@
 import { TBookingPopulated, TPaymentStatus, TStatus } from "../../domain/interfaces/model/booking.interface"
+import { IUser } from "../../domain/interfaces/model/user.interface";
 
 export type TCreateBookingDTO = {
-    userId: string
-    hotelId: string
-    roomId: string
-    checkIn: Date
-    checkOut: Date
-    guests: number
-    totalPrice: number
-    roomsCount: number
-    couponId?: string
+    userId: string;
+    hotelId: string;
+    roomId: string;
+    checkIn: Date;
+    checkOut: Date;
+    guests: number;
+    totalPrice: number;
+    roomsCount: number;
+    couponId?: string;
+    bookingId: string;
+    status?: TStatus;
+    payment?: TPaymentStatus;
 }
 
 export type TResponseBookingDTO = {
@@ -19,6 +23,7 @@ export type TResponseBookingDTO = {
     roomId: string;
     hotel?: TBookingPopulated['hotel'];
     room?: TBookingPopulated['room'];
+    user?: Partial<IUser>;
     checkIn: string;
     checkOut: string;
     guests: number;
@@ -26,6 +31,7 @@ export type TResponseBookingDTO = {
     roomsCount: number;
     couponId?: string;
     status: TStatus;
+    bookingId: string;
     payment: TPaymentStatus;
     createdAt: Date;
     updatedAt: Date;
