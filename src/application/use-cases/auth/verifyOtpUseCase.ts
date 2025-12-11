@@ -6,6 +6,7 @@ import { AppError } from "../../../utils/appError";
 import { IAuthService, TOtpData } from "../../../domain/interfaces/services/authService.interface";
 import { TUserRegistrationInput } from "../../../domain/interfaces/model/user.interface";
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
 
 
 @injectable()
@@ -15,7 +16,7 @@ export class VerifyOtpUseCase implements IVerifyOtpUseCase {
         @inject(TOKENS.ConfirmRegisterUseCase) private _registerUseCase: IConfrimRegisterUseCase,
     ) { }
 
-    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ isOtpVerified: boolean, data: TOtpData }> {
+    async verifyOtp(userId: string, otp: string, purpose: "signup" | "reset"): Promise<{ message: string, data: TOtpData }> {
         const data = await this._authService.verifyOtp(userId, otp, purpose)
         if (!data) {
             throw new AppError(AUTH_ERROR_MESSAGES.otpError, HttpStatusCode.BAD_REQUEST)
@@ -23,14 +24,13 @@ export class VerifyOtpUseCase implements IVerifyOtpUseCase {
 
         if (purpose == 'signup') {
             const user = await this._registerUseCase.confirmRegister(data as TUserRegistrationInput)
-            return {
-                isOtpVerified: true,
-                data: user,
+            if (!user) {
+                throw new AppError(AUTH_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
             }
         }
 
         return {
-            isOtpVerified: true,
+            message: AUTH_RES_MESSAGES.verifyOtp,
             data,
         }
     }

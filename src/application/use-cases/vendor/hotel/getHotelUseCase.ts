@@ -3,7 +3,6 @@ import { IHotelRepository } from "../../../../domain/interfaces/repositories/hot
 import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IGetHotelByIdUseCase } from "../../../../domain/interfaces/model/hotel.interface";
-import { IRedisService } from "../../../../domain/interfaces/services/redisService.interface";
 import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
@@ -17,7 +16,6 @@ import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 export class GetHotelByIdUseCase implements IGetHotelByIdUseCase {
     constructor(
         @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
-        @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 

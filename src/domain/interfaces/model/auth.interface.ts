@@ -31,7 +31,7 @@ export interface IResendOtpUseCase {
 }
 
 export interface IVerifyOtpUseCase {
-    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<{ isOtpVerified: boolean, data: TOtpData }>
+    verifyOtp(userId: string, otp: string, purpose: 'signup' | 'reset'): Promise<{ message: string, data: TOtpData }>
 }
 
 export interface ILogoutUseCases {

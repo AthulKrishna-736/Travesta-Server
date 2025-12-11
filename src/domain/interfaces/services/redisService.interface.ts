@@ -9,13 +9,13 @@ export interface IJwtService {
 }
 
 export interface IOtpService {
-    storeOtp(userId: string, otp: string, data: TOtpData, purpose: 'signup' | 'reset', expiresAt: number): Promise<void>
+    storeOtp(userId: string, otp: string, data: TOtpData, purpose: 'signup' | 'reset'): Promise<void>
     getOtp(userId: string, purpose: 'signup' | 'reset'): Promise<{ otp: string, data: TOtpData, expiresAt: number } | null>
-    deleteOtp(userId: string, purpose: 'signup' | 'reset'): Promise<void>
+    deleteOtp(userId: string, purpose: 'signup' | 'reset'): Promise<number>
     increaseRequestCount(key: string, windowSeconds: number): Promise<number>
     get<T>(key: string): Promise<T | null>
     set(key: string, value: TOtpData, ttl: number): Promise<void>
-    del(key: string): Promise<void>
+    del(key: string): Promise<number>
 }
 
 

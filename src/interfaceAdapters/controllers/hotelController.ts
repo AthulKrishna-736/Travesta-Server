@@ -172,7 +172,7 @@ export class HotelController implements IHotelController {
 
             if (!HOTEL_ID) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            }
+            }   
 
             const { message, hotel } = await this._getHotelByIdUseCase.getHotel(HOTEL_ID);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
@@ -255,7 +255,9 @@ export class HotelController implements IHotelController {
 
             if (!VENDOR_ID) {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            } else if (!hotelId) {
+            }
+
+            if (!hotelId) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_GATEWAY);
             }
 

@@ -126,12 +126,16 @@ export class AuthController implements IAuthController {
         try {
             const { userId, otp, purpose } = req.body;
 
-            const { data, isOtpVerified } = await this._verifyOtpUseCase.verifyOtp(userId, otp, purpose)
-            if (!isOtpVerified) {
-                throw new AppError(AUTH_ERROR_MESSAGES.verifyError, HttpStatusCode.BAD_REQUEST)
+            if (!userId) {
+                throw new AppError('User id missing. Please try again', HttpStatusCode.BAD_REQUEST)
             }
 
-            ResponseHandler.success(res, AUTH_RES_MESSAGES.verifyOtp, data, HttpStatusCode.OK)
+            if (!otp) {
+                throw new AppError('OTP is missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { data, message } = await this._verifyOtpUseCase.verifyOtp(userId, otp, purpose)
+            ResponseHandler.success(res, message, data, HttpStatusCode.OK)
         } catch (error) {
             next(error);
         }

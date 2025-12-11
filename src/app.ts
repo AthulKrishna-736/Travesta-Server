@@ -45,7 +45,7 @@ export class App {
     this.app.use(cookieparser())
     this.app.use(helmet())
     this.app.use(cors({
-      origin: '*',
+      origin: env.CLIENT_URL,
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
       allowedHeaders: ['Content-Type', 'Authorization']

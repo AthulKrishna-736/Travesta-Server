@@ -30,9 +30,10 @@ export class ForgotPassUseCase implements IForgotPassUseCase {
         const otp = this._authService.generateOtp();
         const tempUserId = `temp:reset:${uuidv4()}`;
 
-        await this._authService.storeOtp(tempUserId, otp, { email: user.email }, 'reset');
-
-        await this._authService.sendOtpOnEmail(user.email, otp);
+        await Promise.all([
+            this._authService.storeOtp(tempUserId, otp, { email: user.email }, 'reset'),
+            this._authService.sendOtpOnEmail(user.email, otp)
+        ])
 
         return {
             userId: tempUserId,

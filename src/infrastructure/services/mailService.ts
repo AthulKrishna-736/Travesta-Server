@@ -14,7 +14,8 @@ export class MailService implements IMailService {
             auth: {
                 user: env.EMAIL,
                 pass: env.EMAIL_PASS,
-            }
+            },
+            debug: true,
         });
     }
 

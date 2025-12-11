@@ -2,45 +2,44 @@ import { injectable } from "tsyringe";
 import { IRedisService } from "../../domain/interfaces/services/redisService.interface";
 import { redisClient } from "../config/redis";
 import { TOtpData } from "../../domain/interfaces/services/authService.interface";
+import { otpTimer } from "../config/jwtConfig";
 
 @injectable()
 export class RedisService implements IRedisService {
     private redisClient = redisClient
 
-    getKey(userId: string, purpose: string): string {
-        return `otp:${userId}:${purpose}`
-    }
-
+    //redis operations
     async get<T>(key: string): Promise<T | null> {
         const raw = await this.redisClient.get(key);
         if (!raw) return null;
         return JSON.parse(raw) as T;
     }
 
-    async set<T>(key: string, value: T, ttl: number): Promise<void> {
-        await this.redisClient.set(key, JSON.stringify(value), {
-            EX: ttl,
-        });
+    async set<T>(key: string, value: T, ttl?: number): Promise<void> {
+        if (ttl) {
+            await this.redisClient.set(key, JSON.stringify(value), { EX: ttl })
+        } else {
+            await this.redisClient.set(key, JSON.stringify(value));
+        }
     }
 
-    async del(key: string): Promise<void> {
-        await this.redisClient.del(key);
+    async del(key: string): Promise<number> {
+        const result = await this.redisClient.del(key);
+        return result;
     }
 
     //otp section
-    async storeOtp(userId: string, otp: string, data: TOtpData, purpose: "signup" | "reset", expiresAt: number): Promise<void> {
-        const key = this.getKey(userId, purpose);
+    async storeOtp(userId: string, otp: string, data: TOtpData): Promise<void> {
         const payload = {
             otp,
             data,
-            expiryTime: new Date().getTime(),
+            expiresAt: new Date(Date.now() + 1 * 60 * 1000).getTime(),
         }
-        await this.set(key, payload, expiresAt)
+        await this.set(userId, payload, otpTimer.expiresAt * 3);
     }
 
-    async getOtp(userId: string, purpose: "signup" | "reset"): Promise<{ otp: string, data: TOtpData, expiresAt: number } | null> {
-        const key = this.getKey(userId, purpose);
-        const raw = await this.get(key)
+    async getOtp(userId: string): Promise<{ otp: string, data: TOtpData, expiresAt: number } | null> {
+        const raw = await this.get(userId)
 
         if (!raw) return null
         const jsonRaws = JSON.stringify(raw)
@@ -48,9 +47,9 @@ export class RedisService implements IRedisService {
         return parsed
     }
 
-    async deleteOtp(userId: string, purpose: "signup" | "reset"): Promise<void> {
-        const key = this.getKey(userId, purpose);
-        await this.del(key)
+    async deleteOtp(userId: string): Promise<number> {
+        const result = await this.del(userId);
+        return result;
     }
 
     async increaseRequestCount(key: string, windowSeconds: number): Promise<number> {
@@ -62,7 +61,7 @@ export class RedisService implements IRedisService {
         return count as unknown as number;
     }
 
-    //tokens
+    //tokens section
     async storeRefreshToken(userId: string, refreshToken: string, expiresAt: number): Promise<void> {
         const key = `refresh:${userId}`
         await this.set(key, refreshToken, expiresAt);
