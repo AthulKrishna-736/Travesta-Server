@@ -53,7 +53,7 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
     }
 
     async subscribeUser(userId: string, data: Pick<IUser, "subscription">, session?: ClientSession): Promise<IUser | null> {
-        const user = await this.model.findByIdAndUpdate(userId, data, { new: true, session });
+        const user = await this.model.findByIdAndUpdate(userId, data, { new: true, ...(session && { session }) });
         return user ? user.toObject() : null;
     }
 

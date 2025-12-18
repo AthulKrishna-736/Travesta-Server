@@ -197,7 +197,7 @@ export class ResponseMapper {
             room: booking.room,
             user: booking.user,
             checkIn: formatDateString(booking.checkIn),
-            checkOut: formatDateString(booking.checkIn),
+            checkOut: formatDateString(booking.checkOut),
             guests: booking.guests,
             totalPrice: booking.totalPrice,
             roomsCount: booking.roomsCount,

@@ -14,12 +14,14 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.interface";
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
+import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
 
 
 @injectable()
 export class GoogleLoginUseCase implements IGoogleLoginUseCase {
     constructor(
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
+        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepository: ISubscriptionRepository,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
@@ -66,9 +68,16 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
             }
 
             user = await this._userRepository.createUser(newUser)
-            await this._createWallet.createUserWallet(user?._id as string);
-        }
+            const plan = await this._subscriptionRepository.findPlanByType('basic');
+            if (!plan) {
+                throw new AppError('No plan found', HttpStatusCode.NOT_FOUND);
+            }
 
+            await Promise.all([
+                this._createWallet.createUserWallet(user?._id as string),
+                this._userRepository.subscribeUser(user?._id as string, { subscription: plan._id })
+            ])
+        }
 
         const userByEmail = await this._userRepository.findUser(user?.email!)
         if (!userByEmail || !userByEmail._id) {

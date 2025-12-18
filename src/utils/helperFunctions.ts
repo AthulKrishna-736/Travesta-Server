@@ -1,8 +1,17 @@
 import { IOffer, TDiscountType } from "../domain/interfaces/model/offer.interface";
 
-export function formatDateString(dateValue: string | Date): string {
+export const formatDateString = (dateValue: string | Date): string => {
     const date = new Date(dateValue);
-    return date.toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })
+
+    return date.toLocaleString("en-IN", {
+        timeZone: "Asia/Kolkata",
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+    });
 }
 
 const DYNAMIC_PRICE = [
@@ -54,7 +63,7 @@ export const getPropertyTime = (checkIn: string, checkOut: string, hotelCheckInT
     }
 }
 
-export function applyOfferToPrice(basePrice: number, offer: Partial<IOffer> & { discountType?: TDiscountType, discountValue?: number }): number {
+export const applyOfferToPrice = (basePrice: number, offer: Partial<IOffer> & { discountType?: TDiscountType, discountValue?: number }): number => {
     if (!offer || !offer.discountType || offer.discountValue == null) return basePrice;
 
     let final = basePrice;
@@ -69,7 +78,7 @@ export function applyOfferToPrice(basePrice: number, offer: Partial<IOffer> & { 
     return Math.round(final * 100) / 100;
 }
 
-export function pickBestOfferForPrice(basePrice: number, offers: (IOffer | null | undefined)[]) {
+export const pickBestOfferForPrice = (basePrice: number, offers: (IOffer | null | undefined)[]) => {
     let bestOffer = null;
     let bestPrice = basePrice;
 

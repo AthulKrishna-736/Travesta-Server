@@ -1,13 +1,13 @@
 import { inject, injectable } from "tsyringe";
-import { TOKENS } from "../../../../constants/token";
-import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/amenitiesRepo.interface";
-import { ICreateAmenityUseCase } from "../../../../domain/interfaces/model/amenities.interface";
-import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
-import { AMENITIES_ERROR_MESSAGES } from "../../../../constants/errorMessages";
-import { TCreateAmenityDTO, TResponseAmenityDTO } from "../../../../interfaceAdapters/dtos/amenity.dto";
-import { ResponseMapper } from "../../../../utils/responseMapper";
+import { TOKENS } from "../../../constants/token";
+import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/amenitiesRepo.interface";
+import { ICreateAmenityUseCase } from "../../../domain/interfaces/model/amenities.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
+import { AMENITIES_RES_MESSAGES } from "../../../constants/resMessages";
+import { AMENITIES_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { TCreateAmenityDTO, TResponseAmenityDTO } from "../../../interfaceAdapters/dtos/amenity.dto";
+import { ResponseMapper } from "../../../utils/responseMapper";
 
 
 @injectable()

@@ -23,7 +23,7 @@ export type TResponseRating = IRating;
 
 
 export interface ICreateRatingUseCase {
-    createRating(create: TCreateRatingDTO): Promise<{ rating: TResponseRatingDTO, message: string }>;
+    createRating(bookingId: string, create: TCreateRatingDTO, files?: Express.Multer.File[]): Promise<{ rating: TResponseRatingDTO, message: string }>;
 }
 
 export interface IUpdateRatingUseCase {

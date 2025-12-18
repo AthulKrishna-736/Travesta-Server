@@ -1,13 +1,13 @@
 import { inject, injectable } from "tsyringe";
-import { IGetAllAmenitiesUseCase } from "../../../../domain/interfaces/model/amenities.interface";
-import { TOKENS } from "../../../../constants/token";
-import { IAmenitiesRepository } from "../../../../domain/interfaces/repositories/amenitiesRepo.interface";
-import { AMENITIES_RES_MESSAGES } from "../../../../constants/resMessages";
-import { TResponseAmenityDTO } from "../../../../interfaceAdapters/dtos/amenity.dto";
-import { ResponseMapper } from "../../../../utils/responseMapper";
-import { AppError } from "../../../../utils/appError";
-import { AMENITIES_ERROR_MESSAGES } from "../../../../constants/errorMessages";
-import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
+import { IGetAllAmenitiesUseCase } from "../../../domain/interfaces/model/amenities.interface";
+import { TOKENS } from "../../../constants/token";
+import { IAmenitiesRepository } from "../../../domain/interfaces/repositories/amenitiesRepo.interface";
+import { AMENITIES_RES_MESSAGES } from "../../../constants/resMessages";
+import { TResponseAmenityDTO } from "../../../interfaceAdapters/dtos/amenity.dto";
+import { ResponseMapper } from "../../../utils/responseMapper";
+import { AppError } from "../../../utils/appError";
+import { AMENITIES_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
 @injectable()
 export class GetAllAmenitiesUseCase implements IGetAllAmenitiesUseCase {

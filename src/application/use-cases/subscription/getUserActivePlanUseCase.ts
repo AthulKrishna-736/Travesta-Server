@@ -1,9 +1,9 @@
 import { inject, injectable } from "tsyringe";
-import { TOKENS } from "../../../../constants/token";
-import { ISubscriptionHistoryRepository } from "../../../../domain/interfaces/repositories/subscriptionRepo.interface";
-import { AppError } from "../../../../utils/appError";
-import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import { IGetUserActivePlanUseCase, IUserSubscriptionHistory } from "../../../../domain/interfaces/model/subscription.interface";
+import { TOKENS } from "../../../constants/token";
+import { ISubscriptionHistoryRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
+import { IGetUserActivePlanUseCase, IUserSubscriptionHistory } from "../../../domain/interfaces/model/subscription.interface";
 
 
 @injectable()

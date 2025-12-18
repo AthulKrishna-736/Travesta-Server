@@ -108,8 +108,8 @@ export class userRoutes extends BaseRouter {
 
         //rating
         this.router.route('/rating')
-            .post(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._ratingController.createRating(req, res, next))
-            .put(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._ratingController.updateRating(req, res, next))
+            .post(authMiddleware, authorizeRoles('user'), checkUserBlock, upload.array('images', 3), (req: CustomRequest, res, next) => this._ratingController.createRating(req, res, next))
+            .put(authMiddleware, authorizeRoles('user'), checkUserBlock, upload.array('images', 3), (req: CustomRequest, res, next) => this._ratingController.updateRating(req, res, next))
 
         //coupons
         this.router

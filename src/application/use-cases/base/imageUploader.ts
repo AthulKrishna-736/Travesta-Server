@@ -95,4 +95,25 @@ export class AwsImageUploader {
             throw new AppError('Error while deleting image from aws', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
     }
+
+    async uploadHotelRatingImages(userId: string, files: Express.Multer.File[]): Promise<string[]> {
+        return await Promise.all(
+            files.map(async (f, index) => {
+                const s3Key = `hotels/reviews/${userId}_${Date.now()}_${index}${path.extname(f.originalname)}`;
+
+                try {
+                    await this._awsS3Service.uploadFileToAws(s3Key, f.path);
+                    return s3Key;
+                } catch (error) {
+                    throw new AppError('Error while uploading review images', HttpStatusCode.INTERNAL_SERVER_ERROR);
+                } finally {
+                    fs.unlink(f.path, (err) => {
+                        if (err) {
+                            console.error(`Error deleting temp file: ${f.path}`, err);
+                        }
+                    });
+                }
+            })
+        );
+    }
 }

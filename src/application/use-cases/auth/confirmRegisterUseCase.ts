@@ -8,12 +8,14 @@ import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.in
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 import { ResponseMapper } from "../../../utils/responseMapper";
+import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
 
 @injectable()
 export class ConfirmRegisterUseCase implements IConfrimRegisterUseCase {
     constructor(
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
+        @inject(TOKENS.SubscriptionRepository) private _subscriptionRepository: ISubscriptionRepository,
     ) { }
 
     async confirmRegister(userData: TCreateUserDTO): Promise<TResponseUserDTO> {
@@ -23,11 +25,19 @@ export class ConfirmRegisterUseCase implements IConfrimRegisterUseCase {
         }
 
         const user = await this._userRepository.createUser(userData)
-        if (!user) {
+        if (!user || !user._id) {
             throw new AppError(AUTH_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
-        await this._createWallet.createUserWallet(user._id as string)
+        const plan = await this._subscriptionRepository.findPlanByType('basic');
+        if (!plan) {
+            throw new AppError('Plan not found', HttpStatusCode.NOT_FOUND)
+        }
+
+        await Promise.all([
+            this._createWallet.createUserWallet(user._id),
+            this._userRepository.subscribeUser(user._id, { subscription: plan._id })
+        ])
 
         const mappedUser = ResponseMapper.mapUserToResponseDTO(user);
         return mappedUser;

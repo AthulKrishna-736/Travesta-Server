@@ -28,7 +28,12 @@ export class RatingController implements IRatingController {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { hotelId, hospitality, cleanliness, facilities, room, moneyValue, review } = req.body;
+            const { hotelId, bookingId, hospitality, cleanliness, facilities, room, moneyValue, review } = req.body;
+
+            if (!hotelId || !bookingId) {
+                throw new AppError('Hotel id or booking id missing', HttpStatusCode.BAD_REQUEST);
+            }
+
 
             const ratingData: TCreateRatingDTO = {
                 hotelId,
@@ -42,7 +47,7 @@ export class RatingController implements IRatingController {
                 images: []
             };
 
-            const { rating, message } = await this._createRatingUseCase.createRating(ratingData);
+            const { rating, message } = await this._createRatingUseCase.createRating(bookingId, ratingData, FILES);
             ResponseHandler.success(res, message, rating, HttpStatusCode.CREATED);
 
         } catch (error) {
