@@ -402,6 +402,24 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         ).exec();
     }
 
+    async findBookingsForPlatformFee(): Promise<IBooking[]> {
+        return this.model.find({
+            platFormSettled: false,
+            status: "confirmed",
+            payment: "success",
+            checkOut: { $lt: new Date() },
+        }).populate("hotelId")
+            .exec();
+    }
+
+    async markBookingSettled(bookingId: string, session?: ClientSession): Promise<void> {
+        await this.model.updateOne(
+            { _id: bookingId },
+            { $set: { platFormSettled: true } },
+            { session }
+        );
+    }
+
     async getVendorAnalyticsSummary(vendorId: string, startDate?: string, endDate?: string): Promise<{ totalRevenue: number; totalBookings: number; averageBookingValue: number; activeHotels: number; }> {
         const dateFilter: QueryOptions = {};
         if (startDate && endDate) {

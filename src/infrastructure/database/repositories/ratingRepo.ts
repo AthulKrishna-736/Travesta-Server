@@ -54,6 +54,10 @@ export class RatingRepository extends BaseRepository<TRatingDocument> implements
         return { ratings, total };
     }
 
+    async getHotelRateImages(hotelId: string): Promise<IRating[] | null> {
+        const ratings = await this.model.find({ hotelId }).sort({ createdAt: -1 }).exec()
+        return ratings;
+    }
 
     async findUserDuplicateHotelRatings(userId: string, hotelId: string): Promise<IRating | null> {
         const rating = await this.model.findOne({ userId, hotelId }).exec();

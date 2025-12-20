@@ -15,6 +15,8 @@ export interface IBookingRepository {
     isRoomAvailable(roomId: string, rooms: number, checkIn: Date, checkOut: Date, session?: ClientSession): Promise<boolean>;
     findByid(bookingId: string): Promise<IBooking | null>;
     save(booking: IBooking): Promise<void>;
+    findBookingsForPlatformFee(): Promise<IBooking[]>;
+    markBookingSettled(bookingId: string, session?: ClientSession): Promise<void>;
     hasActiveBooking(userId: string): Promise<boolean>
     confirmBookingPayment(bookingId: string): Promise<void>;
     findBookingsByVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: IBooking[]; total: number }>;

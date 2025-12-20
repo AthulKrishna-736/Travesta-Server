@@ -19,6 +19,7 @@ import { ISubscriptionController } from "../../domain/interfaces/controllers/sub
 import { IRoomController } from "../../domain/interfaces/controllers/roomController.interface";
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
+import { INotificationController } from "../../domain/interfaces/controllers/notificationController.interface";
 
 @injectable()
 export class userRoutes extends BaseRouter {
@@ -34,6 +35,7 @@ export class userRoutes extends BaseRouter {
         @inject(TOKENS.SubscriptionController) private _subscriptionController: ISubscriptionController,
         @inject(TOKENS.RatingController) private _ratingController: IRatingController,
         @inject(TOKENS.CouponController) private _couponController: ICouponController,
+        @inject(TOKENS.NotificationController) private _notificationController: INotificationController,
     ) {
         super();
         this.initializeRoutes();
@@ -73,6 +75,7 @@ export class userRoutes extends BaseRouter {
             .get('/chat/vendors', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getVendorsChatWithUser(req, res, next))
             .get('/chat/unread', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getUnreadMsg(req, res, next))
             .get('/chat/:userId/messages', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getChatMessages(req, res, next))
+            .post('/chat/:receiverId/read', authMiddleware, authorizeRoles('user', 'admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.readMessage(req, res, next))
 
         // booking
         this.router.route('/bookings')
@@ -114,5 +117,12 @@ export class userRoutes extends BaseRouter {
         //coupons
         this.router
             .get('/coupons/:vendorId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.getUserCoupons(req, res, next))
+
+        //Notification
+        this.router
+            .get('/notification', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getUserNotification(req, res, next))
+            .get('/notification/unread', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getUnreadNotificationCount(req, res, next))
+            .put('/notification', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markAllNotification(req, res, next))
+            .patch('/notification/:notificationId', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markNotification(req, res, next))
     }
 }

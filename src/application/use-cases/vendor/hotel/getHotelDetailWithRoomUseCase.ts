@@ -15,6 +15,7 @@ import { awsS3Timer } from "../../../../infrastructure/config/jwtConfig";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { calculateDynamicPricing, calculateGSTPrice, getPropertyTime, pickBestOfferForPrice } from "../../../../utils/helperFunctions";
 import { IOfferRepository } from "../../../../domain/interfaces/repositories/offerRepo.interface";
+import { IRatingRepository } from "../../../../domain/interfaces/repositories/ratingRepo.interface";
 
 
 @injectable()
@@ -22,6 +23,7 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
     constructor(
         @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.RoomRepository) private _roomRepository: IRoomRepository,
+        @inject(TOKENS.RatingRepository) private _ratingRepository: IRatingRepository,
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
         @inject(TOKENS.OfferRepository) private _offerRepository: IOfferRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
@@ -45,6 +47,7 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
 
         const otherRooms = await this._roomRepository.findOtherRoomsByHotel(hotelId, roomId);
 
+        const ratings = await this._ratingRepository.getHotelRateImages(hotelId)
 
         const { checkInDate, checkOutDate } = getPropertyTime(checkIn, checkOut, hotel.propertyRules.checkInTime, hotel.propertyRules.checkOutTime)
 
@@ -149,8 +152,23 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
             })
         );
 
+        let signRatingImages;
+        if (ratings && ratings.length > 0) {
+            signRatingImages = await Promise.all(
+                ratings.map(async (r) => {
+                    if (r.images && r.images.length > 0) {
+                        r.images = await Promise.all(
+                            r.images.map((i) => this._awsS3Service.getFileUrlFromAws(i, awsS3Timer.expiresAt))
+                        )
+                    }
+                    return r;
+                })
+            )
+        }
+
 
         const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel);
+        (mappedHotel as any).ratings = signRatingImages ? signRatingImages.map(ResponseMapper.mapRatingToResponseDTO) : [];
 
         return {
             hotel: mappedHotel,

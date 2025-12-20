@@ -11,6 +11,7 @@ import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AUTH_ERROR_MESSAGES, SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { nanoid } from "nanoid";
+import { INotificationRepository } from "../../../domain/interfaces/repositories/notificationRepo.interface";
 
 @injectable()
 export class SubscribePlanUseCase implements ISubscribePlanUseCase {
@@ -20,6 +21,7 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
         @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
         @inject(TOKENS.SubscriptionHistoryRepository) private _historyRepository: ISubscriptionHistoryRepository,
+        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
     ) { }
 
     async subscribePlan(userId: string, planId: string, method: "wallet" | "online"): Promise<{ message: string }> {
@@ -90,6 +92,24 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 relatedEntityType: "Subscription",
                 transactionId: `TRN-${nanoid(10)}`,
             }, session);
+
+            await this._notificationRepository.createNotification(
+                {
+                    userId: userWallet.userId.toString(),
+                    title: "Subscription Activated",
+                    message: `You have successfully subscribed to the ${plan.name} plan. Valid until ${validUntil.toDateString()}.`,
+                },
+                session
+            );
+
+            await this._notificationRepository.createNotification(
+                {
+                    userId: adminWallet.userId.toString(),
+                    title: "New Subscription",
+                    message: `${user.firstName} ${user.lastName} subscribed to the ${plan.name} plan for ₹${plan.price}.`,
+                },
+                session
+            );
 
             await session.commitTransaction();
 

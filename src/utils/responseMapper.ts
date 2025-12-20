@@ -20,6 +20,8 @@ import { TResponseOfferDTO } from "../interfaceAdapters/dtos/offer.dto";
 import { IBooking, TBookingPopulated } from "../domain/interfaces/model/booking.interface";
 import { TResponseBookingDTO } from "../interfaceAdapters/dtos/booking.dto";
 import { formatDateString } from "./helperFunctions";
+import { INotification } from "../domain/interfaces/model/notification.interface";
+import { TResponseNotificationDTO } from "../interfaceAdapters/dtos/notification.dto";
 
 export class ResponseMapper {
     static mapSubscriptionToResponseDTO(plan: ISubscription): TResponseSubscriptionDTO {
@@ -207,6 +209,18 @@ export class ResponseMapper {
             bookingId: booking.bookingId,
             createdAt: booking.checkIn,
             updatedAt: booking.updatedAt,
+        }
+    }
+
+    static mapNotificationResponseDTO(notification: INotification): TResponseNotificationDTO {
+        return {
+            id: notification._id!.toString(),
+            userId: notification.userId.toString(),
+            title: notification.title,
+            message: notification.message,
+            isRead: notification.isRead,
+            createdAt: notification.createdAt,
+            updatedAt: notification.updatedAt,
         }
     }
 }

@@ -15,6 +15,7 @@ import { RatingRepository } from "../database/repositories/ratingRepo";
 import { SubscriptionHistoryRepository } from "../database/repositories/planHistoryRepo";
 import { CouponRepository } from "../database/repositories/couponRepo";
 import { OfferRepository } from "../database/repositories/offerRepo";
+import { NotificationRepository } from "../database/repositories/notificationRepo";
 
 import { IUserRepository } from "../../domain/interfaces/repositories/userRepo.interface";
 import { IHotelRepository } from "../../domain/interfaces/repositories/hotelRepo.interface";
@@ -28,6 +29,7 @@ import { ITransactionRepository } from "../../domain/interfaces/repositories/tra
 import { IRatingRepository } from "../../domain/interfaces/repositories/ratingRepo.interface";
 import { ICouponRepository } from "../../domain/interfaces/repositories/couponRepo.interface";
 import { IOfferRepository } from "../../domain/interfaces/repositories/offerRepo.interface";
+import { INotificationRepository } from "../../domain/interfaces/repositories/notificationRepo.interface";
 
 // Services Imports
 import { AuthService } from "../services/authService";
@@ -249,6 +251,22 @@ import {
 } from "../../domain/interfaces/model/offer.interface";
 
 
+// Notification UseCase Imports
+import { CreateNotificationUseCase } from "../../application/use-cases/notification/createNotificationUseCase";
+import { GetUserNotificationsUseCase } from "../../application/use-cases/notification/getUserNotificationUseCase";
+import { GetUnreadNotificationCountUseCase } from "../../application/use-cases/notification/getUnreadNotificationUseCase";
+import { MarkAllNotificationsReadUseCase } from "../../application/use-cases/notification/markAllReadNotificationUseCase";
+import { MarkNotificationReadUseCase } from "../../application/use-cases/notification/markReadNotificationUseCase";
+
+import {
+  ICreateNotificationUseCase,
+  IGetUnreadNotificationCountUseCase,
+  IGetUserNotificationsUseCase,
+  IMarkAllNotificationsReadUseCase,
+  IMarkNotificationReadUseCase
+} from "../../domain/interfaces/model/notification.interface";
+
+
 // Admin UseCase Imports
 import { BlockUnblockUser } from "../../application/use-cases/admin/blockUser";
 import { GetAllUsers } from "../../application/use-cases/admin/getAllUsers";
@@ -294,6 +312,7 @@ import { RatingController } from "../../interfaceAdapters/controllers/ratingCont
 import { CouponController } from "../../interfaceAdapters/controllers/couponController";
 import { OfferController } from "../../interfaceAdapters/controllers/offerController";
 import { SubscriptionController } from "../../interfaceAdapters/controllers/subscriptionController";
+import { NotificationController } from "../../interfaceAdapters/controllers/notificationController";
 
 import { IAuthController } from "../../domain/interfaces/controllers/authController.interface";
 import { IUserController } from "../../domain/interfaces/controllers/userController.interface";
@@ -308,7 +327,7 @@ import { IAmenityController } from "../../domain/interfaces/controllers/amenityC
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
 import { IOfferController } from "../../domain/interfaces/controllers/offerController.interface";
-
+import { INotificationController } from "../../domain/interfaces/controllers/notificationController.interface";
 
 // repository
 container.register<IUserRepository>(TOKENS.UserRepository, {
@@ -361,6 +380,10 @@ container.register<ICouponRepository>(TOKENS.CouponRepository, {
 
 container.register<IOfferRepository>(TOKENS.OfferRepository, {
   useClass: OfferRepository,
+})
+
+container.register<INotificationRepository>(TOKENS.NotificationRepository, {
+  useClass: NotificationRepository,
 })
 
 
@@ -419,6 +442,10 @@ container.register<ICouponController>(TOKENS.CouponController, {
 
 container.register<IOfferController>(TOKENS.OfferController, {
   useClass: OfferController,
+})
+
+container.register<INotificationController>(TOKENS.NotificationController, {
+  useClass: NotificationController,
 })
 
 
@@ -788,4 +815,26 @@ container.register<IDetectOfferForRoomUseCase>(TOKENS.DetectOfferForRoomUseCase,
 
 container.register<IToggleOfferStatusUseCase>(TOKENS.ToggleOfferStatusUseCase, {
   useClass: ToggleOfferStatusUseCase,
+})
+
+
+// Notification
+container.register<ICreateNotificationUseCase>(TOKENS.CreateNotificationUseCase, {
+  useClass: CreateNotificationUseCase,
+})
+
+container.register<IGetUserNotificationsUseCase>(TOKENS.GetUserNotificationsUseCase, {
+  useClass: GetUserNotificationsUseCase,
+})
+
+container.register<IGetUnreadNotificationCountUseCase>(TOKENS.GetUnreadNotificationCountUseCase, {
+  useClass: GetUnreadNotificationCountUseCase,
+})
+
+container.register<IMarkAllNotificationsReadUseCase>(TOKENS.MarkAllNotificationsReadUseCase, {
+  useClass: MarkAllNotificationsReadUseCase,
+})
+
+container.register<IMarkNotificationReadUseCase>(TOKENS.MarkNotificationReadUseCase, {
+  useClass: MarkNotificationReadUseCase,
 })

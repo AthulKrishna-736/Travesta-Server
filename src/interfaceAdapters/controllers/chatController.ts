@@ -4,7 +4,7 @@ import { NextFunction, Response } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
-import { IGetChatAccessUseCase, IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatAccessUseCase, IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../utils/appError";
 import { AUTH_ERROR_MESSAGES, CHAT_ERROR_MESSAGES } from "../../constants/errorMessages";
 import { IChatController } from "../../domain/interfaces/controllers/chatController.interface";
@@ -19,6 +19,7 @@ export class ChatController implements IChatController {
         @inject(TOKENS.GetVendorsChatWithAdminUseCase) private _getVendorsChatAdminUseCase: IGetVendorsChatWithAdminUseCase,
         @inject(TOKENS.GetUserUnreadMsgUseCase) private _getUserUnreadMsgUseCase: IGetUserUnreadMsgUseCase,
         @inject(TOKENS.GetChatAccessUseCase) private _getChatAccessUseCase: IGetChatAccessUseCase,
+        @inject(TOKENS.MarkMsgAsReadUseCase) private _markMessageRead: IMarkMsgAsReadUseCase,
     ) { }
 
     async getChatMessages(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -110,6 +111,21 @@ export class ChatController implements IChatController {
             ResponseHandler.success(res, message, users, HttpStatusCode.OK);
         } catch (error) {
             next(error);
+        }
+    }
+
+    async readMessage(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const user = req.user?.userId;
+            const { receiverId } = req.params;
+            if (!user || !receiverId) {
+                throw new AppError('Sender or receiver id missing', HttpStatusCode.BAD_REQUEST);
+            }
+
+            await this._markMessageRead.markMsgAsRead(user, receiverId)
+            ResponseHandler.success(res, 'Successfully Read message', HttpStatusCode.OK);
+        } catch (error) {
+
         }
     }
 

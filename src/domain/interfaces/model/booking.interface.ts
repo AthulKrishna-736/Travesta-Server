@@ -21,14 +21,15 @@ export interface IBooking {
     status: TStatus;
     bookingId: string;
     payment: TPaymentStatus;
+    platFormSettled: boolean;
     createdAt: Date;
     updatedAt: Date;
 }
 
 //booking types
-export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt' | 'status' | 'payment'>;
-export type TUpdateBookingData = Partial<Omit<IBooking, '_id' | 'userId' | 'hotelId' | 'roomId' | 'createdAt' | 'updatedAt'>>;
-export type TResponseBookingData = Omit<IBooking, 'checkIn' | 'checkOut'> & { checkIn: string, checkOut: string };
+export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt' | 'status' | 'payment' | 'platFormSettled'>;
+export type TUpdateBookingData = Partial<Omit<IBooking, '_id' | 'userId' | 'hotelId' | 'roomId' | 'createdAt' | 'updatedAt' | 'platFormSettled'>>;
+export type TResponseBookingData = Omit<IBooking, 'checkIn' | 'checkOut' | 'platFormSettled'> & { checkIn: string, checkOut: string };
 
 export type TBookingPopulated = IBooking & {
     hotel: Pick<IHotel, "_id" | "name" | "state" | "city" | "images" | 'geoLocation'>;

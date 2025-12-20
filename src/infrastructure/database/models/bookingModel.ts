@@ -62,6 +62,11 @@ const bookingSchema: Schema = new Schema<TBookingDocument>(
             enum: ['pending', 'success', 'failed', 'refunded'],
             default: 'pending',
         },
+        platFormSettled: {
+            type: Boolean,
+            default: false,
+            index: true,
+        }
     },
     { timestamps: true }
 );

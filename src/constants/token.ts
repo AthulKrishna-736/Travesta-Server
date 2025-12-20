@@ -15,6 +15,7 @@ export const TOKENS = {
   RatingController: 'RatingController',
   CouponController: 'CouponController',
   OfferController: 'OfferController',
+  NotificationController: 'NotificationController',
 
   // Repositories
   UserRepository: 'UserRepository',
@@ -30,6 +31,7 @@ export const TOKENS = {
   RatingRepository: 'RatingRepository',
   CouponRepository: 'CouponRepository',
   OfferRepository: 'OfferRepository',
+  NotificationRepository: 'NotificationRepository',
 
   // Services
   AuthService: 'AuthService',
@@ -151,4 +153,11 @@ export const TOKENS = {
   GetVendorOffersUseCase: 'GetVendorOffersUseCase',
   DetectOfferForRoomUseCase: 'DetectOfferForRoomUseCase',
   ToggleOfferStatusUseCase: 'ToggleOfferStatusUseCase',
+
+  //notification UseCases
+  CreateNotificationUseCase: 'CreateNotificationUseCase',
+  GetUserNotificationsUseCase: 'GetUserNotificationsUseCase',
+  GetUnreadNotificationCountUseCase: 'GetUnreadNotificationCountUseCase',
+  MarkNotificationReadUseCase: 'MarkNotificationReadUseCase',
+  MarkAllNotificationsReadUseCase: 'MarkAllNotificationsReadUseCase',
 };

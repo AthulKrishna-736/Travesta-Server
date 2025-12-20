@@ -10,6 +10,7 @@ import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES, AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { nanoid } from "nanoid";
+import { INotificationRepository } from "../../../domain/interfaces/repositories/notificationRepo.interface";
 
 @injectable()
 export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
@@ -18,6 +19,7 @@ export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
         @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
         @inject(TOKENS.SubscriptionHistoryRepository) private _historyRepository: ISubscriptionHistoryRepository,
+        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
     ) { }
 
     async cancelSubscription(userId: string): Promise<{ message: string }> {
@@ -74,6 +76,28 @@ export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
 
             // Remove subscription from user (optional)
             await this._userRepository.subscribeUser(userId, { subscription: null }, session);
+
+            await this._notificationRepository.createNotification(
+                {
+                    userId: userId,
+                    title: "Subscription Cancelled",
+                    message: refundAmount > 0
+                        ? `Your subscription has been cancelled and ₹${refundAmount} has been refunded to your wallet.`
+                        : `Your subscription has been cancelled successfully.`,
+                },
+                session
+            );
+
+            await this._notificationRepository.createNotification(
+                {
+                    userId: adminWallet.userId.toString(),
+                    title: "Subscription Cancelled",
+                    message: `Subscription cancelled by ${user.firstName} ${user.lastName}. Refund amount: ₹${refundAmount}.`,
+                },
+                session
+            );
+
+
 
             await session.commitTransaction();
 

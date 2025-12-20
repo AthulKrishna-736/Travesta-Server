@@ -11,6 +11,7 @@ import { TCreateTransaction } from "../../../../domain/interfaces/model/wallet.i
 import { AUTH_ERROR_MESSAGES, BOOKING_ERROR_MESSAGES, TRANSACTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import mongoose from "mongoose";
 import { nanoid } from "nanoid";
+import { INotificationRepository } from "../../../../domain/interfaces/repositories/notificationRepo.interface";
 
 @injectable()
 export class CancelBookingUseCase implements ICancelBookingUseCase {
@@ -18,6 +19,7 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
     @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
     @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
     @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
+    @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
   ) { }
 
   async cancelBooking(bookingId: string, userId: string): Promise<{ message: string }> {
@@ -100,6 +102,18 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
     booking.status = "cancelled";
     booking.payment = "refunded";
     await this._bookingRepository.save(booking);
+
+    await this._notificationRepository.createNotification({
+      userId: booking.userId.toString(),
+      title: "Booking Cancelled",
+      message: `Your booking (${booking.bookingId}) has been cancelled. ₹${refundAmount} has been refunded to your wallet.`,
+    });
+
+    await this._notificationRepository.createNotification({
+      userId: vendorId.toString(),
+      title: "Booking Cancelled",
+      message: `Booking (${booking.bookingId}) was cancelled by the user. Refund amount: ₹${refundAmount}.`,
+    });
 
     return { message: BOOKING_RES_MESSAGES.cancel };
   }

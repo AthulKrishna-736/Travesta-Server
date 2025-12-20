@@ -9,4 +9,5 @@ export interface IChatController {
     getVendorsChatWithAdmin(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getUnreadMsg(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getchatAccess(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
+    readMessage(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
 }

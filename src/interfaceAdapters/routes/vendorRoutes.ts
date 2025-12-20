@@ -86,7 +86,7 @@ export class vendorRoutes extends BaseRouter {
 
         //chat
         this.router
-            .get('/chat/vendors', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getVendorsChatWithUser(req, res, next))
+            .get('/chat/vendors', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getChattedUsers(req, res, next))
             .get('/chat/unread', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getUnreadMsg(req, res, next))
             .get('/chat/:userId/messages', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getChatMessages(req, res, next));
 
