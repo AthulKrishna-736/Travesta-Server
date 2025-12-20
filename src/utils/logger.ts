@@ -1,9 +1,9 @@
 import fs from 'fs';
 import { Writable } from 'stream';
 import winston from 'winston';
+import { env } from '../infrastructure/config/env';
 
 const LOG_DIR = 'logs';
-const MAX_LINES = 10000;
 
 if (!fs.existsSync(LOG_DIR)) {
     fs.mkdirSync(LOG_DIR);
@@ -15,7 +15,7 @@ const lineCounts: Record<string, number> = {
 };
 
 function wrapLogFileIfNeeded(filePath: string) {
-    if (lineCounts[filePath] >= MAX_LINES) {
+    if (lineCounts[filePath] >= env.MAX_LINES) {
         fs.truncateSync(filePath, 0);
         lineCounts[filePath] = 0;
     }

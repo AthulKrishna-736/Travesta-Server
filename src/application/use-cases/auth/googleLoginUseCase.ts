@@ -49,13 +49,6 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
         const email = payload.email;
 
         let user = await this._userRepository.findUser(email);
-        if (!user) {
-            throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
-        }
-
-        if (user.role !== role) {
-            throw new AppError(AUTH_ERROR_MESSAGES.invalidRole, HttpStatusCode.FORBIDDEN)
-        }
 
         if (!user) {
             const newUser: TCreateUserDTO = {
@@ -77,6 +70,20 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
                 this._createWallet.createUserWallet(user?._id as string),
                 this._userRepository.subscribeUser(user?._id as string, { subscription: plan._id })
             ])
+        }
+
+        if (user?.role !== role) {
+            throw new AppError(
+                AUTH_ERROR_MESSAGES.invalidRole,
+                HttpStatusCode.FORBIDDEN
+            );
+        }
+
+        if (user?.isBlocked) {
+            throw new AppError(
+                AUTH_ERROR_MESSAGES.blocked,
+                HttpStatusCode.FORBIDDEN
+            );
         }
 
         const userByEmail = await this._userRepository.findUser(user?.email!)
