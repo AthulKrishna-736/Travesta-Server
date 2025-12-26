@@ -3,7 +3,7 @@ import { IUser, TUpdateUserData, TUserRegistrationInput } from "../../../domain/
 import { TUserDocument, userModel } from "../models/userModels";
 import { BaseRepository } from "./baseRepo";
 import { injectable } from "tsyringe";
-import { ClientSession } from "mongoose";
+import { ClientSession, QueryOptions } from "mongoose";
 
 @injectable()
 export class UserRepository extends BaseRepository<TUserDocument> implements IUserRepository {
@@ -34,7 +34,7 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
     async findAllUser(page: number, limit: number, role: string, search?: string, sortField: string = 'firstName', sortOrder: string = 'ascending'): Promise<{ users: IUser[] | null, total: number }> {
         const skip = (page - 1) * limit;
         const sortDirection = sortOrder == 'descending' ? -1 : 1;
-        const filter: any = {
+        const filter: QueryOptions = {
             role
         }
         if (search) {
@@ -50,6 +50,35 @@ export class UserRepository extends BaseRepository<TUserDocument> implements IUs
         const user = await result.skip(skip).limit(limit).sort({ [sortField]: sortDirection }).lean<IUser[]>();
 
         return { users: user, total }
+    }
+
+    async findRequestedVendors(page: number, limit: number, sortField: string = 'createdAt', sortOrder: string = 'descending', search?: string,): Promise<{ users: IUser[]; total: number }> {
+        const skip = (page - 1) * limit;
+        const sortDirection = sortOrder === 'descending' ? -1 : 1;
+
+        const filter: QueryOptions = {
+            role: 'vendor',
+            kycDocuments: { $exists: true, $ne: [] }
+        };
+
+        if (search) {
+            const searchRegex = new RegExp('^' + search, 'i');
+            filter.$or = [
+                { firstName: searchRegex },
+                { email: searchRegex }
+            ];
+        }
+
+        const users = await this.model
+            .find(filter)
+            .sort({ [sortField]: sortDirection })
+            .skip(skip)
+            .limit(limit)
+            .lean<IUser[]>();
+
+        const total = await this.model.countDocuments(filter);
+
+        return { users, total };
     }
 
     async subscribeUser(userId: string, data: Pick<IUser, "subscription">, session?: ClientSession): Promise<IUser | null> {

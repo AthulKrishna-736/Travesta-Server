@@ -3,7 +3,7 @@ import { BaseRepository } from './baseRepo';
 import { IUserSubscriptionHistory } from '../../../domain/interfaces/model/subscription.interface';
 import { TUserSubscriptionHistoryDocument, userSubscriptionHistoryModel } from '../models/planHistoryModel';
 import { ISubscriptionHistoryRepository } from '../../../domain/interfaces/repositories/subscriptionRepo.interface';
-import { ClientSession } from 'mongoose';
+import { ClientSession, PipelineStage, QueryOptions } from 'mongoose';
 
 @injectable()
 export class SubscriptionHistoryRepository extends BaseRepository<TUserSubscriptionHistoryDocument> implements ISubscriptionHistoryRepository {
@@ -54,56 +54,84 @@ export class SubscriptionHistoryRepository extends BaseRepository<TUserSubscript
 
     async findAllPlanHistory(page: number, limit: number, type?: string): Promise<{ history: IUserSubscriptionHistory[]; total: number }> {
         const skip = (page - 1) * limit;
-        const filter: any = {};
 
-        if (type) {
-            filter['subscription.type'] = type;
-        }
+        const pipeline: PipelineStage[] = [
+            {
+                $lookup: {
+                    from: 'subscriptions',
+                    let: { subId: '$subscriptionId', planType: type },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $eq: ['$_id', '$$subId'] },
+                                        ...(type && type !== 'all' ? [{ $eq: ['$type', '$$planType'] }] : [])
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            $project: { _id: 1, name: 1, type: 1, price: 1, duration: 1 }
+                        }
+                    ],
+                    as: 'subscription'
+                }
+            },
 
-        const pipeline: any[] = [
+            { $unwind: '$subscription' },
+
             {
                 $lookup: {
                     from: 'users',
                     localField: 'userId',
                     foreignField: '_id',
-                    as: 'user',
-                },
+                    pipeline: [
+                        {
+                            $project: { _id: 1, firstName: 1, lastName: 1, email: 1 }
+                        }
+                    ],
+                    as: 'user'
+                }
             },
+
+            { $unwind: '$user' },
+
             {
-                $unwind: '$user',
+                $facet: {
+                    data: [
+                        { $sort: { subscribedAt: -1 } },
+                        { $skip: skip },
+                        { $limit: limit },
+                        {
+                            $project: {
+                                _id: 1,
+                                subscribedAt: 1,
+                                validFrom: 1,
+                                validUntil: 1,
+                                isActive: 1,
+                                paymentAmount: 1,
+                                subscription: 1,
+                                user: 1
+                            }
+                        }
+                    ],
+                    total: [{ $count: 'count' }]
+                }
             },
+
             {
-                $lookup: {
-                    from: 'subscriptions',
-                    localField: 'subscriptionId',
-                    foreignField: '_id',
-                    as: 'subscription',
-                },
-            },
-            {
-                $unwind: '$subscription',
-            },
-            { $match: { 'subscription.type': type } }
+                $addFields: {
+                    total: { $ifNull: [{ $arrayElemAt: ['$total.count', 0] }, 0] }
+                }
+            }
         ];
 
-
-
-        const totalPipeline = [...pipeline, { $count: 'total' }];
-        const totalResult = await this.model.aggregate(totalPipeline);
-        const total = totalResult[0]?.total || 0;
-
-        pipeline.push(
-            { $sort: { createdAt: -1 } },
-            { $skip: skip },
-            { $limit: limit }
-        );
-
-        const histories = await this.model.aggregate(pipeline);
+        const result = await this.model.aggregate(pipeline);
 
         return {
-            history: histories,
-            total,
+            history: result[0].data,
+            total: result[0].total,
         };
     }
-
 }

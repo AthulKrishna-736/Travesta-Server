@@ -8,10 +8,11 @@ import { env } from "../config/env";
 import logger from "../../utils/logger";
 import { TOKENS } from "../../constants/token";
 import { IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { ISocketService } from "../../domain/interfaces/model/admin.interface";
 
 
 @injectable()
-export class SocketService {
+export class SocketService implements ISocketService {
     constructor(private io: SocketIOServer) {
         this.registerMiddleware();
         this.trackEngineErrors();

@@ -1,91 +1,99 @@
 import mongoose from "mongoose";
 import cron from "node-cron";
 import { nanoid } from "nanoid";
+import { injectable, inject } from "tsyringe";
 import { BookingRepository } from "../infrastructure/database/repositories/bookingRepo";
-import { WalletRepository } from "../infrastructure/database/repositories/wallet.Repo";
+import { WalletRepository } from "../infrastructure/database/repositories/walletRepo";
 import { NotificationRepository } from "../infrastructure/database/repositories/notificationRepo";
 import { transactionModel } from "../infrastructure/database/models/transactionModel";
+import { TOKENS } from "../constants/token";
+import { IPlatformFeeService } from "../domain/interfaces/model/admin.interface";
 
-export const settlePlatformFeeCron = async () => {
-    const session = await mongoose.startSession();
-    session.startTransaction();
+@injectable()
+export class PlatformFeeService implements IPlatformFeeService {
+    constructor(
+        @inject(TOKENS.BookingRepository) private bookingRepo: BookingRepository,
+        @inject(TOKENS.WalletRepository) private walletRepo: WalletRepository,
+        @inject(TOKENS.NotificationRepository) private notificationRepo: NotificationRepository
+    ) { }
 
-    try {
-        const bookingRepo = new BookingRepository();
-        const walletRepo = new WalletRepository();
-        const notificationRepo = new NotificationRepository();
+    public async settlePlatformFee() {
+        const session = await mongoose.startSession();
+        session.startTransaction();
 
-        // Fetch bookings that are not yet settled
-        const bookings = await bookingRepo.findBookingsForPlatformFee();
-        if (!bookings.length) {
+        try {
+            const bookings = await this.bookingRepo.findBookingsForPlatformFee();
+            if (!bookings.length) {
+                await session.commitTransaction();
+                return;
+            }
+
+            const adminWallet = await this.walletRepo.findAdminWallet();
+            if (!adminWallet) throw new Error("Admin wallet not found");
+
+            for (const booking of bookings) {
+                const vendorId = (booking.hotelId as any).vendorId;
+                const vendorWallet = await this.walletRepo.findUserWallet(vendorId);
+                if (!vendorWallet) continue;
+
+                const platformFee = booking.totalPrice * 0.1;
+                if (platformFee <= 0) continue;
+
+                await this.walletRepo.updateBalance(vendorWallet._id!, -platformFee, session);
+                await this.walletRepo.updateBalance(adminWallet._id!, platformFee, session);
+
+                await transactionModel.insertMany([
+                    {
+                        walletId: vendorWallet._id,
+                        type: "debit",
+                        amount: platformFee,
+                        description: `Platform fee for booking ${booking.bookingId}`,
+                        transactionId: `TRN-${nanoid(10)}`,
+                        relatedEntityId: booking._id,
+                        relatedEntityType: "Booking",
+                    },
+                    {
+                        walletId: adminWallet._id,
+                        type: "credit",
+                        amount: platformFee,
+                        description: `Platform commission from booking ${booking.bookingId}`,
+                        transactionId: `TRN-${nanoid(10)}`,
+                        relatedEntityId: booking._id,
+                        relatedEntityType: "Booking",
+                    },
+                ], { session });
+
+                await this.bookingRepo.markBookingSettled(booking._id!, session);
+
+                await this.notificationRepo.createNotification({
+                    userId: adminWallet.userId.toString(),
+                    title: "Platform Fee Settled",
+                    message: `₹${platformFee} has been collected as platform fee from booking ${booking.bookingId}.`,
+                }, session);
+
+                await this.notificationRepo.createNotification({
+                    userId: vendorWallet.userId.toString(),
+                    title: "Platform Fee Deducted",
+                    message: `₹${platformFee} has been deducted as platform fee from your booking ${booking.bookingId}.`,
+                }, session);
+            }
+
             await session.commitTransaction();
-            return;
+            console.log("Platform fee cron completed successfully");
+        } catch (err) {
+            await session.abortTransaction();
+            console.error("Platform fee cron failed", err);
+        } finally {
+            session.endSession();
         }
-
-        const adminWallet = await walletRepo.findAdminWallet();
-        if (!adminWallet) throw new Error("Admin wallet not found");
-
-        for (const booking of bookings) {
-            const vendorId = (booking.hotelId as any).vendorId;
-            const vendorWallet = await walletRepo.findUserWallet(vendorId);
-            if (!vendorWallet) continue;
-
-            const platformFee = booking.totalPrice * 0.1;
-            if (platformFee <= 0) continue;
-
-            await walletRepo.updateBalanceByWalletId(vendorWallet._id!, -platformFee);
-            await walletRepo.updateBalanceByWalletId(adminWallet._id!, platformFee);
-
-            await transactionModel.insertMany([
-                {
-                    walletId: vendorWallet._id,
-                    type: "debit",
-                    amount: platformFee,
-                    description: `Platform fee for booking ${booking.bookingId}`,
-                    transactionId: `TRN-${nanoid(10)}`,
-                    relatedEntityId: booking._id,
-                    relatedEntityType: "Booking",
-                },
-                {
-                    walletId: adminWallet._id,
-                    type: "credit",
-                    amount: platformFee,
-                    description: `Platform commission from booking ${booking.bookingId}`,
-                    transactionId: `TRN-${nanoid(10)}`,
-                    relatedEntityId: booking._id,
-                    relatedEntityType: "Booking",
-                },
-            ], { session });
-
-            // Mark booking as settled
-            await bookingRepo.markBookingSettled(booking._id!, session);
-
-            await notificationRepo.createNotification({
-                userId: adminWallet.userId.toString(),
-                title: "Platform Fee Settled",
-                message: `₹${platformFee} has been collected as platform fee from booking ${booking.bookingId}.`,
-            }, session);
-
-            await notificationRepo.createNotification({
-                userId: vendorWallet.userId.toString(),
-                title: "Platform Fee Deducted",
-                message: `₹${platformFee} has been deducted as platform fee from your booking ${booking.bookingId}.`,
-            }, session);
-        }
-
-        await session.commitTransaction();
-        console.log("Platform fee cron completed successfully");
-    } catch (err) {
-        await session.abortTransaction();
-        console.error("Platform fee cron failed", err);
-    } finally {
-        session.endSession();
     }
-};
 
-cron.schedule("0 0 * * *", async () => {
-    console.log("Running platform fee cron job...");
-    await settlePlatformFeeCron();
-}, {
-    timezone: "Asia/Kolkata"
-});
+    public scheduleCron() {
+        cron.schedule("0 0 * * *", async () => {
+            console.log("Running platform fee cron job...");
+            await this.settlePlatformFee();
+        }, {
+            timezone: "Asia/Kolkata",
+        });
+    }
+}

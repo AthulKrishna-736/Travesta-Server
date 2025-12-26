@@ -17,7 +17,7 @@ export class GetAllVendorReq implements IGetAllVendorReqUseCase {
     ) { }
 
     async getAllVendorReq(page: number, limit: number, search?: string, sortField?: string, sortOrder?: string): Promise<{ vendors: TResponseUserDTO[]; total: number }> {
-        const { users, total } = await this._userRepository.findAllUser(page, limit, 'vendor', search, sortField, sortOrder);
+        const { users, total } = await this._userRepository.findRequestedVendors(page, limit, sortField, sortOrder, search);
         if (!users || users.length == 0) {
             throw new AppError('No Vendors Found', HttpStatusCode.NOT_FOUND);
         }

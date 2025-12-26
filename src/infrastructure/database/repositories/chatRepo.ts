@@ -60,10 +60,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
         const searchRegex = search ? new RegExp(search, 'i') : null;
 
         return this.model.aggregate([
-
-            /**
-             * 1. Only messages where vendor is involved
-             */
             {
                 $match: {
                     $or: [
@@ -73,9 +69,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 }
             },
 
-            /**
-             * 2. Identify the OTHER participant
-             */
             {
                 $addFields: {
                     otherUserId: {
@@ -95,25 +88,16 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 }
             },
 
-            /**
-             * 3. Keep only user / admin
-             */
             {
                 $match: {
                     otherUserRole: { $in: ['user', 'admin'] }
                 }
             },
 
-            /**
-             * 4. Latest messages first
-             */
             {
                 $sort: { createdAt: -1 }
             },
 
-            /**
-             * 5. One entry per user (latest message)
-             */
             {
                 $group: {
                     _id: '$otherUserId',
@@ -123,9 +107,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 }
             },
 
-            /**
-             * 6. Join user collection
-             */
             {
                 $lookup: {
                     from: 'users',
@@ -148,18 +129,12 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
             },
             { $unwind: '$user' },
 
-            /**
-             * 7. Optional name search
-             */
             ...(searchRegex ? [{
                 $match: {
                     'user.firstName': searchRegex
                 }
             }] : []),
 
-            /**
-             * 8. Final response shape
-             */
             {
                 $project: {
                     _id: 0,
@@ -171,9 +146,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 }
             },
 
-            /**
-             * 9. Sort by most recent activity
-             */
             {
                 $sort: { lastMessageTime: -1 }
             }
@@ -182,12 +154,7 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
 
 
     async getVendorsWhoChattedWithAdmin(adminId: string, search?: string): Promise<{ id: string; firstName: string; role: string; }[]> {
-
-        const matchUserFilter: QueryOptions = {};
-        if (search) {
-            const searchRegex = search ? new RegExp('^' + search, 'i') : '';
-            matchUserFilter["userDetails.firstName"] = searchRegex;
-        }
+        const searchMatch = search ? { firstName: new RegExp('^' + search, 'i') } : {};
 
         const vendors = await this.model.aggregate([
             {
@@ -195,49 +162,75 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                     $or: [{ fromId: adminId }, { toId: adminId }]
                 }
             },
+
             {
                 $project: {
-                    adminId: {
+                    vendorId: {
                         $cond: [
-                            { $eq: ["$fromId", adminId] },
-                            "$toId",
-                            "$fromId"
+                            { $eq: ['$fromId', adminId] },
+                            '$toId',
+                            '$fromId'
                         ]
                     }
                 }
             },
+
             {
                 $group: {
-                    _id: "$adminId"
+                    _id: '$vendorId'
                 }
             },
+
             {
                 $addFields: {
-                    objectUserId: { $toObjectId: "$_id" }
+                    vendorObjectId: { $toObjectId: '$_id' }
                 }
             },
+
             {
                 $lookup: {
-                    from: "users",
-                    localField: "objectUserId",
-                    foreignField: "_id",
-                    as: "userDetails"
+                    from: 'users',
+                    let: { vendorId: '$vendorObjectId' },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $eq: ['$_id', '$$vendorId'] },
+                                        { $eq: ['$role', 'vendor'] },
+                                        { $eq: ['$isVerified', true] }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            $project: {
+                                _id: 1,
+                                firstName: 1,
+                                role: 1
+                            }
+                        }
+                    ],
+                    as: 'userDetails'
                 }
             },
+
+            { $unwind: '$userDetails' },
+
             {
-                $unwind: "$userDetails"
+                $match: {
+                    ...(search ? { 'userDetails.firstName': searchMatch.firstName } : {})
+                }
             },
-            {
-                $match: matchUserFilter
-            },
+
             {
                 $project: {
-                    id: "$userDetails._id",
-                    firstName: "$userDetails.firstName",
-                    role: "$userDetails.role",
+                    id: '$userDetails._id',
+                    firstName: '$userDetails.firstName',
+                    role: '$userDetails.role'
                 }
             }
-        ])
+        ]);
 
         return vendors;
     }
@@ -249,9 +242,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
         const searchRegex = search ? new RegExp(search, 'i') : null;
 
         const vendors = await this.model.aggregate([
-            /**
-             * STEP 1: Find chat-eligible bookings for user
-             */
             {
                 $lookup: {
                     from: 'bookings',
@@ -282,9 +272,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
 
             { $unwind: '$validBookings' },
 
-            /**
-             * STEP 2: Join hotel → vendorId
-             */
             {
                 $lookup: {
                     from: 'hotels',
@@ -295,9 +282,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
             },
             { $unwind: '$hotel' },
 
-            /**
-             * STEP 3: Join USERS collection (vendor details)
-             */
             {
                 $lookup: {
                     from: 'users',
@@ -308,9 +292,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
             },
             { $unwind: '$vendor' },
 
-            /**
-             * STEP 4: Filter only vendor role
-             */
             {
                 $match: {
                     'vendor.role': 'vendor',
@@ -320,9 +301,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 },
             },
 
-            /**
-             * STEP 5: Get last chat message (if exists)
-             */
             {
                 $lookup: {
                     from: 'chatmessages',
@@ -357,18 +335,12 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 },
             },
 
-            /**
-             * STEP 6: Flatten last message
-             */
             {
                 $addFields: {
                     lastMessage: { $arrayElemAt: ['$lastMessage', 0] },
                 },
             },
 
-            /**
-             * STEP 7: Group by vendor (avoid duplicates)
-             */
             {
                 $group: {
                     _id: '$vendor._id',
@@ -379,9 +351,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 },
             },
 
-            /**
-             * STEP 8: Final response shape
-             */
             {
                 $project: {
                     _id: 0,
@@ -393,9 +362,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 },
             },
 
-            /**
-             * STEP 9: Sort chats
-             */
             {
                 $sort: {
                     lastMessageTime: -1,

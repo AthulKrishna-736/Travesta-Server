@@ -30,18 +30,26 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
         session.startTransaction();
 
         try {
+            //find user
             const user = await this._userRepository.findUserById(userId);
             if (!user) throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
+            //find plan
             const plan = await this._subscriptionRepository.findPlanById(planId);
-            if (!plan) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
+            if (!plan) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
             if (!plan.isActive) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.notActive, HttpStatusCode.CONFLICT);
 
+            //find active user plan
+            const activeHistory = await this._historyRepository.findActiveByUserId(user._id as string);
+            if (activeHistory && activeHistory.subscriptionId.toString() === plan._id.toString()) throw new AppError(`You have already subscribed to the ${plan.name} plan`, HttpStatusCode.CONFLICT);
+
+            //create validity date
             const validFrom = new Date();
             const validUntil = new Date(validFrom);
             validUntil.setDate(validFrom.getDate() + plan.duration);
 
+            //find both wallets
             const userWallet = await this._walletRepository.findUserWallet(user._id as string);
             const adminWallet = await this._walletRepository.findAdminWallet();
             if (!userWallet) throw new AppError(WALLET_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
@@ -54,8 +62,10 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 await this._walletRepository.updateBalance(userId, -plan.price, session);
             }
 
+            //deactivate active plan by user
             await this._historyRepository.deactivateActiveByUserId(user._id as string, session);
 
+            //update plan history
             const planHistory = await this._historyRepository.createHistory({
                 userId: user._id,
                 subscriptionId: plan._id as Types.ObjectId,
@@ -65,12 +75,13 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 isActive: true,
                 paymentAmount: plan.price,
             }, session);
-
             if (!planHistory) throw new AppError('Failed to create Subscription history', HttpStatusCode.INTERNAL_SERVER_ERROR);
 
+            //update user
             const updatedUser = await this._userRepository.subscribeUser(user._id as string, { subscription: planHistory._id }, session);
             if (!updatedUser) throw new AppError(SUBSCRIPTION_ERROR_MESSAGES.createFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
 
+            //transaction details
             await this._transactionRepository.createTransaction({
                 walletId: new mongoose.Types.ObjectId(userWallet._id),
                 type: "debit",
@@ -93,6 +104,8 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 transactionId: `TRN-${nanoid(10)}`,
             }, session);
 
+
+            //notify user and vendor
             await this._notificationRepository.createNotification(
                 {
                     userId: userWallet.userId.toString(),
