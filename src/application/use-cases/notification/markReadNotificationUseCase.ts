@@ -7,19 +7,14 @@ import { IMarkNotificationReadUseCase } from "../../../domain/interfaces/model/n
 
 @injectable()
 export class MarkNotificationReadUseCase implements IMarkNotificationReadUseCase {
-
     constructor(
         @inject(TOKENS.NotificationRepository) private readonly _notificationRepository: INotificationRepository
     ) { }
 
     async markReadNotification(notificationId: string): Promise<{ message: string }> {
         const updated = await this._notificationRepository.markAsRead(notificationId);
-
         if (!updated) {
-            throw new AppError(
-                "Notification not found",
-                HttpStatusCode.NOT_FOUND
-            );
+            throw new AppError("Notification not found", HttpStatusCode.NOT_FOUND);
         }
 
         return { message: "Notification marked as read" };

@@ -17,7 +17,7 @@ export class GetUserNotificationsUseCase implements IGetUserNotificationsUseCase
     async getUserNotifications(userId: string): Promise<{ notifications: TResponseNotificationDTO[], message: string }> {
         const notifications = await this._notificationRepository.findUserNotifications(userId);
         if (!notifications || notifications.length === 0) {
-            throw new AppError("Failed to create notification", HttpStatusCode.INTERNAL_SERVER_ERROR);
+            throw new AppError("No notifications found for this user", HttpStatusCode.NOT_FOUND);
         }
 
         const mappedNotification = notifications.map(ResponseMapper.mapNotificationResponseDTO);

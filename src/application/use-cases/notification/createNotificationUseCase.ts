@@ -10,7 +10,6 @@ import { ClientSession } from "mongoose";
 
 @injectable()
 export class CreateNotificationUseCase implements ICreateNotificationUseCase {
-
     constructor(
         @inject(TOKENS.NotificationRepository) private readonly _notificationRepository: INotificationRepository
     ) { }

@@ -15,6 +15,7 @@ import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.in
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
+import { INotificationRepository } from "../../../domain/interfaces/repositories/notificationRepo.interface";
 
 
 @injectable()
@@ -25,12 +26,14 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
+        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
     ) { }
+
     async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserDTO; }> {
         const client = new OAuth2Client(env.GOOGLE_ID);
 
+        //getting data form payload
         let payload: TokenPayload | undefined;
-
         try {
             const ticket = await client.verifyIdToken({
                 idToken: googleToken,
@@ -46,8 +49,8 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
             throw new AppError(AUTH_ERROR_MESSAGES.googleError, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+        //check user exist
         const email = payload.email;
-
         let user = await this._userRepository.findUser(email);
 
         if (!user) {
@@ -61,31 +64,33 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
             }
 
             user = await this._userRepository.createUser(newUser)
+
             const plan = await this._subscriptionRepository.findPlanByType('basic');
             if (!plan) {
                 throw new AppError('No plan found', HttpStatusCode.NOT_FOUND);
             }
 
+            //create wallet, basic plan, welcome notification
             await Promise.all([
                 this._createWallet.createUserWallet(user?._id as string),
-                this._userRepository.subscribeUser(user?._id as string, { subscription: plan._id })
+                this._userRepository.subscribeUser(user?._id as string, { subscription: plan._id }),
+                this._notificationRepository.createNotification({
+                    userId: user?._id as string,
+                    title: "Welcome to Travesta Hotel Booking!",
+                    message: `Hi ${user?.firstName}, welcome to Travesta! We're thrilled to have you onboard. Start exploring and enjoy seamless hotel bookings with us.`,
+                })
             ])
         }
 
         if (user?.role !== role) {
-            throw new AppError(
-                AUTH_ERROR_MESSAGES.invalidRole,
-                HttpStatusCode.FORBIDDEN
-            );
+            throw new AppError(AUTH_ERROR_MESSAGES.invalidRole, HttpStatusCode.FORBIDDEN);
         }
 
         if (user?.isBlocked) {
-            throw new AppError(
-                AUTH_ERROR_MESSAGES.blocked,
-                HttpStatusCode.FORBIDDEN
-            );
+            throw new AppError(AUTH_ERROR_MESSAGES.blocked, HttpStatusCode.FORBIDDEN);
         }
 
+        //finding user and updating google user
         const userByEmail = await this._userRepository.findUser(user?.email!)
         if (!userByEmail || !userByEmail._id) {
             throw new AppError(AUTH_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
@@ -101,13 +106,14 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
             throw new AppError(AUTH_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
+        //user block check
         if (updatedUser.isBlocked) {
             throw new AppError(AUTH_ERROR_MESSAGES.blocked, HttpStatusCode.FORBIDDEN);
         }
 
+        //assigning tokens for user
         const accessToken = this._authService.generateAccessToken(updatedUser._id, updatedUser.role, updatedUser.email);
         const refreshToken = this._authService.generateRefreshToken(updatedUser._id, updatedUser.role, updatedUser.email);
-
         await this._redisService.storeRefreshToken(updatedUser._id, refreshToken, jwtConfig.refreshToken.maxAge / 1000);
 
         const mappedUser = ResponseMapper.mapUserToResponseDTO(updatedUser)

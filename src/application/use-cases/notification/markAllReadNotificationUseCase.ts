@@ -5,7 +5,6 @@ import { IMarkAllNotificationsReadUseCase } from "../../../domain/interfaces/mod
 
 @injectable()
 export class MarkAllNotificationsReadUseCase implements IMarkAllNotificationsReadUseCase {
-
     constructor(
         @inject(TOKENS.NotificationRepository) private readonly _notificationRepository: INotificationRepository
     ) { }
