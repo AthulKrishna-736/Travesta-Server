@@ -41,7 +41,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
 
     async findHotelsByVendor(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: IHotel[] | null, total: number }> {
         const skip = (page - 1) * limit;
-        const filter: any = { vendorId };
+        const filter: QueryOptions = { vendorId };
         if (search) {
             const searchRegex = new RegExp('^' + search, 'i')
             filter.$or = [

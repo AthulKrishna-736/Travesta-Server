@@ -8,20 +8,15 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 import { TCreateRatingDTO, TResponseRatingDTO } from "../../../interfaceAdapters/dtos/rating.dto";
 import { IBookingRepository } from "../../../domain/interfaces/repositories/bookingRepo.interface";
 import { BOOKING_ERROR_MESSAGES } from "../../../constants/errorMessages";
-import { AwsImageUploader } from "../base/imageUploader";
-import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
+import { IAwsImageUploader } from "../../../domain/interfaces/model/admin.interface";
 
 @injectable()
 export class CreateRatingUseCase implements ICreateRatingUseCase {
-    private _imageUploader: AwsImageUploader;
-
     constructor(
         @inject(TOKENS.RatingRepository) private _ratingRepository: IRatingRepository,
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
-        @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
-    ) {
-        this._imageUploader = new AwsImageUploader(_awsS3Service);
-    }
+        @inject(TOKENS.AwsImageUploader) private _awsImageUploader: IAwsImageUploader,
+    ) { }
 
     async createRating(bookingId: string, createData: TCreateRatingDTO, files?: Express.Multer.File[]): Promise<{ rating: TResponseRatingDTO, message: string }> {
         const booking = await this._bookingRepository.findByid(bookingId);
@@ -52,7 +47,7 @@ export class CreateRatingUseCase implements ICreateRatingUseCase {
         let imageUrls: string[] = [];
 
         if (files && files.length > 0) {
-            imageUrls = await this._imageUploader.uploadHotelRatingImages(createData.userId, files)
+            imageUrls = await this._awsImageUploader.uploadHotelRatingImages(createData.userId, files)
         }
 
         //final object including images

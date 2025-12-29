@@ -15,7 +15,7 @@ export class CreateNotificationUseCase implements ICreateNotificationUseCase {
     ) { }
 
     async createNotification(data: TCreateNotificationDTO, session?: ClientSession): Promise<{ message: string, notification: TResponseNotificationDTO }> {
-        const notification = await this._notificationRepository.createNotification(data);
+        const notification = await this._notificationRepository.createNotification(data, session);
 
         if (!notification) {
             throw new AppError("Failed to create notification", HttpStatusCode.INTERNAL_SERVER_ERROR);

@@ -3,10 +3,15 @@ import path from 'path';
 import fs from 'fs';
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AppError } from "../../../utils/appError";
+import { IAwsImageUploader } from "../../../domain/interfaces/model/admin.interface";
+import { inject, injectable } from "tsyringe";
+import { TOKENS } from "../../../constants/token";
 
-export class AwsImageUploader {
-    constructor(protected _awsS3Service: IAwsS3Service) { }
-
+@injectable()
+export class AwsImageUploader implements IAwsImageUploader {
+    constructor(
+        @inject(TOKENS.AwsS3Service) protected _awsS3Service: IAwsS3Service
+    ) { }
     async uploadRoomImages(vendorId: string, images: Express.Multer.File[]): Promise<string[]> {
         return await Promise.all(images.map(async (i, index) => {
             const s3Key = `room/${vendorId}_${Date.now()}_${index}${path.extname(i.originalname)}`;

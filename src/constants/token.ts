@@ -40,6 +40,10 @@ export const TOKENS = {
   AwsS3Service: 'AwsS3Service',
   SocketService: 'SocketService',
   StripeService: 'StripeService',
+  PlatformFeeService: 'PlatformFeeService',
+
+  // Helpers
+  AwsImageUploader: 'AwsImageUploader',
 
   //auth Use Cases
   LoginUseCase: 'LoginUseCase',

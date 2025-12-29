@@ -25,7 +25,7 @@ export class CouponController implements ICouponController {
         try {
             const vendorId = req.user?.userId;
             if (!vendorId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            const { name, code, type, value, minPrice, maxPrice, startDate, endDate } = req.body;
+            const { type, value, maxPrice } = req.body;
 
             if (type === "percent") {
                 if (value > 50) {

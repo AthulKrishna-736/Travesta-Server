@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 import cron from "node-cron";
 import { nanoid } from "nanoid";
 import { injectable, inject } from "tsyringe";
-import { BookingRepository } from "../infrastructure/database/repositories/bookingRepo";
-import { WalletRepository } from "../infrastructure/database/repositories/walletRepo";
-import { NotificationRepository } from "../infrastructure/database/repositories/notificationRepo";
-import { transactionModel } from "../infrastructure/database/models/transactionModel";
-import { TOKENS } from "../constants/token";
-import { IPlatformFeeService } from "../domain/interfaces/model/admin.interface";
+import { BookingRepository } from "../database/repositories/bookingRepo";
+import { WalletRepository } from "../database/repositories/walletRepo";
+import { NotificationRepository } from "../database/repositories/notificationRepo";
+import { transactionModel } from "../database/models/transactionModel";
+import { TOKENS } from "../../constants/token";
+import { IPlatformFeeService } from "../../domain/interfaces/model/admin.interface";
 
 @injectable()
 export class PlatformFeeService implements IPlatformFeeService {
@@ -17,7 +17,7 @@ export class PlatformFeeService implements IPlatformFeeService {
         @inject(TOKENS.NotificationRepository) private notificationRepo: NotificationRepository
     ) { }
 
-    public async settlePlatformFee() {
+    async settlePlatformFee() {
         const session = await mongoose.startSession();
         session.startTransaction();
 
@@ -92,8 +92,6 @@ export class PlatformFeeService implements IPlatformFeeService {
         cron.schedule("0 0 * * *", async () => {
             console.log("Running platform fee cron job...");
             await this.settlePlatformFee();
-        }, {
-            timezone: "Asia/Kolkata",
-        });
+        }, { timezone: "Asia/Kolkata", });
     }
 }

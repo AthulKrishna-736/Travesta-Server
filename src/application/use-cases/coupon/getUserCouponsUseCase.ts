@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { ICouponRepository } from "../../../domain/interfaces/repositories/couponRepo.interface";
-import { ICoupon, IGetUserCouponsUseCase } from "../../../domain/interfaces/model/coupon.interface";
+import { IGetUserCouponsUseCase } from "../../../domain/interfaces/model/coupon.interface";
 import { TResponseCouponDTO } from "../../../interfaceAdapters/dtos/coupon.dto";
 import { ResponseMapper } from "../../../utils/responseMapper";
 

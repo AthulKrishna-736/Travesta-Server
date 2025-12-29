@@ -3,7 +3,6 @@ import { BaseRepository } from "./baseRepo";
 import { roomModel, TRoomDocument } from "../models/roomModel";
 import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfaces/model/room.interface";
 import { IRoomRepository } from "../../../domain/interfaces/repositories/roomRepo.interface";
-import { hotelModel } from "../models/hotelModel";
 import { bookingModel } from "../models/bookingModel";
 import mongoose, { Types, PipelineStage, QueryOptions } from "mongoose";
 

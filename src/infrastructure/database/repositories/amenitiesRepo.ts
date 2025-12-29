@@ -5,6 +5,7 @@ import { BaseRepository } from "./baseRepo";
 import { IAmenities, TCreateAmenityData, TUpdateAmenityData } from "../../../domain/interfaces/model/amenities.interface";
 import { hotelModel } from "../models/hotelModel";
 import { roomModel } from "../models/roomModel";
+import { QueryOptions } from "mongoose";
 
 @injectable()
 export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> implements IAmenitiesRepository {
@@ -30,7 +31,7 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
     async findAllAmenities(page: number, limit: number, type: string = 'hotel', search?: string, sortField: string = 'name', sortOrder: string = 'ascending'): Promise<{ amenities: IAmenities[] | null, total: number }> {
         const skip = (page - 1) * limit;
         const order = sortOrder == 'descending' ? -1 : 1;
-        const filter: any = { type }
+        const filter: QueryOptions = { type }
         if (search) {
             const searchRegex = new RegExp(search, 'i')
             filter.$or = [

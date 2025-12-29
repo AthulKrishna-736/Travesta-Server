@@ -3,7 +3,7 @@ import { BaseRepository } from './baseRepo';
 import { IUserSubscriptionHistory } from '../../../domain/interfaces/model/subscription.interface';
 import { TUserSubscriptionHistoryDocument, userSubscriptionHistoryModel } from '../models/planHistoryModel';
 import { ISubscriptionHistoryRepository } from '../../../domain/interfaces/repositories/subscriptionRepo.interface';
-import { ClientSession, PipelineStage, QueryOptions } from 'mongoose';
+import { ClientSession, PipelineStage } from 'mongoose';
 
 @injectable()
 export class SubscriptionHistoryRepository extends BaseRepository<TUserSubscriptionHistoryDocument> implements ISubscriptionHistoryRepository {

@@ -10,3 +10,12 @@ export interface IPlatformFeeService {
 export interface ISocketService {
     totalClients: number;
 }
+
+export interface IAwsImageUploader {
+    uploadRoomImages(vendorId: string, images: Express.Multer.File[]): Promise<string[]>;
+    uploadHotelImages(vendorId: string, images: Express.Multer.File[]): Promise<string[]>;
+    deleteImagesFromAws(images: string[] | undefined, dbImageObject: string[]): Promise<boolean>;
+    uploadProfileImage(id: string, file: Express.Multer.File): Promise<string>;
+    deleteProfileImage(imageUrl: string): Promise<boolean>;
+    uploadHotelRatingImages(userId: string, files: Express.Multer.File[]): Promise<string[]>;
+}

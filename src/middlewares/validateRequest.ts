@@ -24,7 +24,7 @@ export const validateRequest = (schema: ZodSchema<any>) => {
                 const formatted = error.flatten()
                 res.status(HttpStatusCode.BAD_REQUEST).json({
                     success: false,
-                    message: 'Validation error',
+                    message: 'Invalid request data',
                     error: formatted.fieldErrors,
                 });
                 return

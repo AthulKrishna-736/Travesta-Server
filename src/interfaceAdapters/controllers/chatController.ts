@@ -40,24 +40,28 @@ export class ChatController implements IChatController {
     }
 
     async sendMessage(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
-        const { toId, toRole, message } = req.body;
-        const fromId = req.user?.userId;
-        const fromRole = req.user?.role;
+        try {
+            const { toId, toRole, message } = req.body;
+            const fromId = req.user?.userId;
+            const fromRole = req.user?.role;
 
-        if (!fromId || !fromRole) {
-            throw new AppError('no fromid and from role or user', HttpStatusCode.BAD_REQUEST);
+            if (!fromId || !fromRole) {
+                throw new AppError('no fromid and from role or user', HttpStatusCode.BAD_REQUEST);
+            }
+
+            const payload = {
+                fromId,
+                fromRole,
+                toId,
+                toRole,
+                message,
+            }
+
+            await this._sendMessageUseCase.sendMessage(payload);
+            ResponseHandler.success(res, 'Message sent', null, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
         }
-
-        const payload = {
-            fromId,
-            fromRole,
-            toId,
-            toRole,
-            message,
-        }
-
-        await this._sendMessageUseCase.sendMessage(payload);
-        ResponseHandler.success(res, 'Message sent', null, HttpStatusCode.OK);
     }
 
     async getChattedUsers(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
@@ -125,7 +129,7 @@ export class ChatController implements IChatController {
             await this._markMessageRead.markMsgAsRead(user, receiverId)
             ResponseHandler.success(res, 'Successfully Read message', HttpStatusCode.OK);
         } catch (error) {
-
+            next(error);
         }
     }
 

@@ -3,7 +3,6 @@ import { BaseRepository } from "./baseRepo";
 import { IChatMessage, TCreateChatMessage } from "../../../domain/interfaces/model/chat.interface";
 import { chatMessageModel, TChatMessageDocument } from "../models/chatModel";
 import { IChatRepository } from "../../../domain/interfaces/repositories/chatRepo.interface";
-import { QueryOptions } from "mongoose";
 
 @injectable()
 export class ChatRepository extends BaseRepository<TChatMessageDocument> implements IChatRepository {

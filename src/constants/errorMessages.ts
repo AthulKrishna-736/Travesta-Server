@@ -59,7 +59,7 @@ export const AMENITIES_ERROR_MESSAGES = {
 
 export const BOOKING_ERROR_MESSAGES = {
     IdMissing: 'Booking id is missing',
-    createFail: 'Failed to create booking',
+    createFail: 'Room unavailable. Please choose another date',
     updateFail: 'Failed to update booking',
     notFound: 'No bookings found',
     invalidData: 'Missing booking fields',

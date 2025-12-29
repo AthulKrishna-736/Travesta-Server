@@ -41,7 +41,7 @@ export class OfferRepository extends BaseRepository<TOfferDocument> implements I
     }
 
     async findApplicableOffers(roomType: string, date: Date = new Date(), hotelId: string | null = null): Promise<IOffer[]> {
-        const query: any = {
+        const query: QueryOptions = {
             roomType,
             isBlocked: false,
             startDate: { $lte: date },

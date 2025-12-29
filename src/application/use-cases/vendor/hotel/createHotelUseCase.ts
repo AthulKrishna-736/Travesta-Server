@@ -1,28 +1,24 @@
 import { inject, injectable } from "tsyringe";
 import { ICreateHotelUseCase } from "../../../../domain/interfaces/model/hotel.interface";
 import { IHotelRepository } from "../../../../domain/interfaces/repositories/hotelRepo.interface";
-import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import { AwsImageUploader } from "../../base/imageUploader";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { HOTEL_RES_MESSAGES } from "../../../../constants/resMessages";
 import { IUserRepository } from "../../../../domain/interfaces/repositories/userRepo.interface";
 import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TCreateHotelDTO, TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
+import { IAwsImageUploader } from "../../../../domain/interfaces/model/admin.interface";
 
 
 @injectable()
 export class CreateHotelUseCase implements ICreateHotelUseCase {
-    private _imageUploader;
     constructor(
         @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
-        @inject(TOKENS.AwsS3Service) _awsS3Service: IAwsS3Service,
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
-    ) {
-        this._imageUploader = new AwsImageUploader(_awsS3Service);
-    }
+        @inject(TOKENS.AwsImageUploader) private _awsImageUploader: IAwsImageUploader,
+    ) { }
 
     async createHotel(vendorId: string, hotelData: TCreateHotelDTO, files: Express.Multer.File[]): Promise<{ hotel: TResponseHotelDTO; message: string }> {
         const vendor = await this._userRepository.findUserById(vendorId);
@@ -39,7 +35,7 @@ export class CreateHotelUseCase implements ICreateHotelUseCase {
 
         let uploadedImageKeys: string[] = [];
         if (files) {
-            uploadedImageKeys = await this._imageUploader.uploadHotelImages(vendorId, files);
+            uploadedImageKeys = await this._awsImageUploader.uploadHotelImages(vendorId, files);
         }
 
         const finalHotelData: TCreateHotelDTO & { vendorId: string } = {

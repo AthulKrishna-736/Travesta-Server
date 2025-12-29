@@ -20,6 +20,9 @@ import { App } from './app';
 import { env } from './infrastructure/config/env';
 import { connectDB } from './infrastructure/config/db';
 import { connectRedis } from './infrastructure/config/redis';
+import { TOKENS } from './constants/token';
+import { container } from 'tsyringe';
+import { IPlatformFeeService } from './domain/interfaces/model/admin.interface';
 
 const app = new App()
 
@@ -27,6 +30,10 @@ const startServer = async () => {
     try {
         await connectDB()
         await connectRedis()
+
+        const platformFeeService = container.resolve<IPlatformFeeService>(TOKENS.PlatformFeeService);
+        platformFeeService.scheduleCron();
+
         app.listen(env.PORT)
     } catch (error) {
         console.error('Server failed to start:', error)

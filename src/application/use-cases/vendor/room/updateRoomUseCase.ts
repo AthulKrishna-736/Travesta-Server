@@ -1,26 +1,21 @@
 import { inject, injectable } from "tsyringe";
 import { IRoomRepository } from "../../../../domain/interfaces/repositories/roomRepo.interface";
-import { IAwsS3Service } from "../../../../domain/interfaces/services/awsS3Service.interface";
 import { TOKENS } from "../../../../constants/token";
 import { IUpdateRoomUseCase } from "../../../../domain/interfaces/model/room.interface";
 import { AppError } from "../../../../utils/appError";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
-import { AwsImageUploader } from "../../base/imageUploader";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { ROOM_RES_MESSAGES } from "../../../../constants/resMessages";
 import { ROOM_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { TResponseRoomDTO, TUpdateRoomDTO } from "../../../../interfaceAdapters/dtos/room.dto";
+import { IAwsImageUploader } from "../../../../domain/interfaces/model/admin.interface";
 
 @injectable()
 export class UpdateRoomUseCase implements IUpdateRoomUseCase {
-    private _imageUploader: AwsImageUploader;
-
     constructor(
         @inject(TOKENS.RoomRepository) private _roomRepository: IRoomRepository,
-        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
-    ) {
-        this._imageUploader = new AwsImageUploader(awsS3Service);
-    }
+        @inject(TOKENS.AwsImageUploader) private _awsImageUploader: IAwsImageUploader,
+    ) { }
 
     async updateRoom(roomId: string, updateData: TUpdateRoomDTO, files?: Express.Multer.File[]): Promise<{ room: TResponseRoomDTO, message: string }> {
         const room = await this._roomRepository.findRoomById(roomId);
@@ -45,13 +40,13 @@ export class UpdateRoomUseCase implements IUpdateRoomUseCase {
         }
 
         if (updateData.images) {
-            await this._imageUploader.deleteImagesFromAws(updateData.images, room.images);
+            await this._awsImageUploader.deleteImagesFromAws(updateData.images, room.images);
         }
 
         let uploadedImageKeys: string[] = [];
 
         if (files && files.length > 0) {
-            uploadedImageKeys = await this._imageUploader.uploadRoomImages(activeHotelId, files);
+            uploadedImageKeys = await this._awsImageUploader.uploadRoomImages(activeHotelId, files);
         }
 
         let keptImages: string[] = [];

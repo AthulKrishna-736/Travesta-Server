@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { AppError } from "../../../utils/appError";
@@ -14,6 +12,7 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
 import { TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
+import { IAwsImageUploader } from '../../../domain/interfaces/model/admin.interface';
 
 @injectable()
 export class UpdateUser implements IUpdateUserUseCase {
@@ -21,6 +20,7 @@ export class UpdateUser implements IUpdateUserUseCase {
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
         @inject(TOKENS.AuthService) private _authService: IAuthService,
+        @inject(TOKENS.AwsImageUploader) private _awsImageUploader: IAwsImageUploader,
     ) { }
 
     async updateUser(userId: string, userData: TUpdateUserData, file?: Express.Multer.File): Promise<{ user: TResponseUserDTO, message: string }> {
@@ -30,18 +30,7 @@ export class UpdateUser implements IUpdateUserUseCase {
         }
 
         if (file) {
-            const filePath = file.path;
-            const fileExtension = path.extname(filePath);
-            const s3Key = `users/profile_${userId}${fileExtension}`;
-
-            await this._awsS3Service.uploadFileToAws(s3Key, filePath);
-            userData.profileImage = s3Key;
-
-            fs.unlink(filePath, (err) => {
-                if (err) {
-                    console.error(`Error deleting file: ${err}`);
-                } 
-            });
+            userData.profileImage = await this._awsImageUploader.uploadProfileImage(userId, file);
         }
 
         if (userData.password) {

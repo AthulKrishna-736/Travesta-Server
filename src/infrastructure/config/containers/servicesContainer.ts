@@ -7,13 +7,14 @@ import { RedisService } from "../../services/redisService"
 import { AwsS3Service } from "../../services/awsS3Service";
 import { SocketService } from "../../services/socketService";
 import { StripeService } from "../../services/stripeService";
+import { PlatformFeeService } from "../../services/platFormFeeService";
 
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { IMailService } from "../../../domain/interfaces/services/mailService.interface";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 
-import { ISocketService } from "../../../domain/interfaces/model/admin.interface";
+import { IPlatformFeeService, ISocketService } from "../../../domain/interfaces/model/admin.interface";
 import { IStripeService } from "../../../domain/interfaces/services/stripeService.interface";
 
 
@@ -39,4 +40,8 @@ container.register<ISocketService>(TOKENS.SocketService, {
 
 container.register<IStripeService>(TOKENS.StripeService, {
     useClass: StripeService,
+})
+
+container.register<IPlatformFeeService>(TOKENS.PlatformFeeService, {
+    useClass: PlatformFeeService,
 })

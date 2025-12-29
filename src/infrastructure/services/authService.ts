@@ -8,7 +8,6 @@ import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { jwtConfig, otpTimer } from "../config/jwtConfig";
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../constants/token";
-import { RedisService } from "./redisService";
 import { TRole } from "../../shared/types/client.types";
 import { IMailService } from "../../domain/interfaces/services/mailService.interface";
 import { IRedisService } from "../../domain/interfaces/services/redisService.interface";

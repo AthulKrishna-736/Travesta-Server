@@ -1,29 +1,25 @@
 import { inject, injectable } from 'tsyringe';
 import { ICreateRoomUseCase } from '../../../../domain/interfaces/model/room.interface';
 import { IRoomRepository } from '../../../../domain/interfaces/repositories/roomRepo.interface';
-import { IAwsS3Service } from '../../../../domain/interfaces/services/awsS3Service.interface';
 import { TOKENS } from '../../../../constants/token';
 import { AppError } from '../../../../utils/appError';
 import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
-import { AwsImageUploader } from '../../base/imageUploader';
 import { ResponseMapper } from '../../../../utils/responseMapper';
 import { ROOM_RES_MESSAGES } from '../../../../constants/resMessages';
 import { HOTEL_ERROR_MESSAGES, ROOM_ERROR_MESSAGES } from '../../../../constants/errorMessages';
 import { TCreateRoomDTO, TResponseRoomDTO } from '../../../../interfaceAdapters/dtos/room.dto';
+import { IAwsImageUploader } from '../../../../domain/interfaces/model/admin.interface';
 
 @injectable()
 export class CreateRoomUseCase implements ICreateRoomUseCase {
-    protected _imageUploader: AwsImageUploader;
 
     constructor(
         @inject(TOKENS.RoomRepository) protected _roomRepository: IRoomRepository,
-        @inject(TOKENS.AwsS3Service) awsS3Service: IAwsS3Service,
-    ) {
-        this._imageUploader = new AwsImageUploader(awsS3Service);
-    }
+        @inject(TOKENS.AwsImageUploader) private _awsImageUploader: IAwsImageUploader,
+    ) { }
 
     protected async uploadRoomImages(hotelId: string, files: Express.Multer.File[]): Promise<string[]> {
-        return this._imageUploader.uploadRoomImages(hotelId, files);
+        return this._awsImageUploader.uploadRoomImages(hotelId, files);
     }
 
     async createRoom(roomData: TCreateRoomDTO, files: Express.Multer.File[]): Promise<{ room: TResponseRoomDTO, message: string }> {

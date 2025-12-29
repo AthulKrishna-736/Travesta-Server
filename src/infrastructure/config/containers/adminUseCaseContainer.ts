@@ -1,4 +1,3 @@
-// Admin UseCase Imports
 import { container } from "tsyringe";
 import { BlockUnblockUser } from "../../../application/use-cases/admin/blockUser";
 import { GetAllUsers } from "../../../application/use-cases/admin/getAllUsers";
@@ -22,6 +21,8 @@ import {
 } from "../../../domain/interfaces/model/usecases.interface";
 import { TOKENS } from "../../../constants/token";
 import { IGetAdminAnalyticsUseCase } from "../../../domain/interfaces/model/booking.interface";
+import { IAwsImageUploader } from "../../../domain/interfaces/model/admin.interface";
+import { AwsImageUploader } from "../../../application/use-cases/common/imageUploader";
 
 
 container.register<IBlockUnblockUser>(TOKENS.BlockUserUseCase, {
@@ -58,4 +59,8 @@ container.register<IUpdateKycUseCase>(TOKENS.UpdateKycUseCase, {
 
 container.register<IGetVendorUseCase>(TOKENS.GetVendorUseCase, {
     useClass: GetVendorProfileUseCase,
+})
+
+container.register<IAwsImageUploader>(TOKENS.AwsImageUploader, {
+    useClass: AwsImageUploader,
 })
