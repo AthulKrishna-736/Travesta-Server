@@ -7,6 +7,8 @@ import { AppError } from "../../../../utils/appError";
 import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IGetTrendingHotelsUseCase } from "../../../../domain/interfaces/model/hotel.interface";
+import { ResponseMapper } from "../../../../utils/responseMapper";
+import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
 
 @injectable()
 export class GetTrendingHotelsUseCase implements IGetTrendingHotelsUseCase {
@@ -15,7 +17,7 @@ export class GetTrendingHotelsUseCase implements IGetTrendingHotelsUseCase {
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
-    async trendingHotels(checkIn: string, checkOut: string): Promise<any> {
+    async trendingHotels(checkIn: string, checkOut: string): Promise<{ hotels: TResponseHotelDTO[], message: string }> {
 
         const checkInDate = new Date(checkIn);
         const checkOutDate = new Date(checkOut);

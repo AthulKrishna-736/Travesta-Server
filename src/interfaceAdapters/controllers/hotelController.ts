@@ -168,13 +168,29 @@ export class HotelController implements IHotelController {
 
     async getHotelById(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const HOTEL_ID = req.params.hotelId;
+            const { hotelId } = req.params;
 
-            if (!HOTEL_ID) {
+            if (!hotelId) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            }   
+            }
 
-            const { message, hotel } = await this._getHotelByIdUseCase.getHotel(HOTEL_ID);
+            const { message, hotel } = await this._getHotelByIdUseCase.getHotelById(hotelId);
+            ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+
+    async getHotelBySlug(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { hotelSlug } = req.params;
+
+            if (!hotelSlug) {
+                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            }
+
+            const { message, hotel } = await this._getHotelByIdUseCase.getHotelBySlug(hotelSlug);
             ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -286,7 +302,7 @@ export class HotelController implements IHotelController {
 
     async getHotelDetailsWithRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const { hotelId, roomId } = req.params;
+            const { hotelSlug, roomSlug } = req.params;
 
             const CHECK_IN = req.query.checkIn as string;
             const CHECK_OUT = req.query.checkOut as string;
@@ -294,11 +310,11 @@ export class HotelController implements IHotelController {
             const ADULTS = Number(req.query.adults || 1);
             const CHILDREN = Number(req.query.children || 0);
 
-            if (!hotelId || !roomId) {
+            if (!hotelSlug || !roomSlug) {
                 throw new AppError('Hotel id or room id is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { hotel, room, otherRooms, message } = await this._getHotelDetailsWithRoom.getHotelDetailWithRoom(hotelId, roomId, CHECK_IN, CHECK_OUT, ROOMS, ADULTS, CHILDREN)
+            const { hotel, room, otherRooms, message } = await this._getHotelDetailsWithRoom.getHotelDetailWithRoom(hotelSlug, roomSlug, CHECK_IN, CHECK_OUT, ROOMS, ADULTS, CHILDREN);
             ResponseHandler.success(res, message, { hotel, room, otherRooms }, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -320,5 +336,4 @@ export class HotelController implements IHotelController {
             next(error);
         }
     }
-
 }

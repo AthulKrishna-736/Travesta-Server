@@ -55,6 +55,7 @@ export type TResponseHotelDTO = {
     id: string;
     vendorId: string;
     name: string;
+    slug: string;
     description: string;
     images: string[];
     amenities: string[];

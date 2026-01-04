@@ -34,7 +34,6 @@ export class RatingController implements IRatingController {
                 throw new AppError('Hotel id or booking id missing', HttpStatusCode.BAD_REQUEST);
             }
 
-
             const ratingData: TCreateRatingDTO = {
                 hotelId,
                 userId,
@@ -105,15 +104,15 @@ export class RatingController implements IRatingController {
 
     async getHotelRatings(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const { hotelId } = req.params;
+            const { hotelSlug } = req.params;
             const PAGE = Number(req.query.page) || 1;
             const LIMIT = Number(req.query.limit) || 5;
 
-            if (!hotelId) {
+            if (!hotelSlug) {
                 throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.NOT_FOUND);
             }
 
-            const { ratings, total, message } = await this._getRatingsUseCase.getHotelRatings(hotelId, PAGE, LIMIT);
+            const { ratings, total, message } = await this._getRatingsUseCase.getHotelRatings(hotelSlug, PAGE, LIMIT);
             const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) }
             ResponseHandler.success(res, message, ratings, HttpStatusCode.OK, meta);
         } catch (error) {

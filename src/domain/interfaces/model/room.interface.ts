@@ -5,6 +5,7 @@ export interface IRoom {
     _id?: string;
     hotelId: string | Types.ObjectId;
     name: string;
+    slug: string;
     roomType: TRoomType;
     roomCount: number;
     bedType: TBedType;
@@ -32,8 +33,8 @@ export const BED_TYPE_CAPACITY: Record<TBedType, number> = {
 };
 
 //room types
-export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'createdAt' | 'updatedAt'>;
-export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'isAvailable' | 'createdAt' | 'updatedAt'>>;
+export type TCreateRoomData = Omit<IRoom, '_id' | 'isAvailable' | 'createdAt' | 'updatedAt' | 'slug'>;
+export type TUpdateRoomData = Partial<Omit<IRoom, '_id' | 'isAvailable' | 'slug' | 'createdAt' | 'updatedAt'>>;
 export type TResponseRoomData = Omit<IRoom, ''>;
 
 //room use cases
@@ -47,6 +48,7 @@ export interface IUpdateRoomUseCase {
 
 export interface IGetRoomByIdUseCase {
     getRoomById(roomId: string): Promise<TResponseRoomDTO>;
+    getRoomBySlug(hotelSlug: string, roomSlug: string): Promise<TResponseRoomDTO>;
 }
 
 export interface IGetRoomsByHotelUseCase {

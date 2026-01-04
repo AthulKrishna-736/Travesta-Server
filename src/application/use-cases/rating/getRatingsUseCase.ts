@@ -6,11 +6,16 @@ import { ResponseMapper } from "../../../utils/responseMapper";
 import { TResponseRatingDTO } from "../../../interfaceAdapters/dtos/rating.dto";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
 import { awsS3Timer } from "../../../infrastructure/config/jwtConfig";
+import { IHotelRepository } from "../../../domain/interfaces/repositories/hotelRepo.interface";
+import { AppError } from "../../../utils/appError";
+import { HOTEL_ERROR_MESSAGES } from "../../../constants/errorMessages";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
 @injectable()
 export class GetRatingUseCase implements IGetRatingUseCase {
     constructor(
         @inject(TOKENS.RatingRepository) private _ratingRepository: IRatingRepository,
+        @inject(TOKENS.HotelRepository) private _hotelRepository: IHotelRepository,
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
@@ -51,8 +56,11 @@ export class GetRatingUseCase implements IGetRatingUseCase {
         };
     }
 
-    async getHotelRatings(hotelId: string, page: number, limit: number): Promise<{ ratings: TResponseRatingDTO[]; total: number; message: string; }> {
-        const { ratings, total } = await this._ratingRepository.getHotelRatings(hotelId, page, limit);
+    async getHotelRatings(hotelSlug: string, page: number, limit: number): Promise<{ ratings: TResponseRatingDTO[]; total: number; message: string; }> {
+        const hotel = await this._hotelRepository.findHotelBySlug(hotelSlug);
+        if (!hotel || !hotel._id) throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+
+        const { ratings, total } = await this._ratingRepository.getHotelRatings(hotel._id, page, limit);
         if (!ratings || total === 0) {
             return { ratings: [], total: 0, message: 'No ratings found' };
         }

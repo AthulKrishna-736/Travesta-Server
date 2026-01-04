@@ -6,21 +6,22 @@ export type TIdProof = 'Aadhaar' | 'Passport' | 'DrivingLicense' | 'PAN';
 
 //hotel model
 export interface IHotel {
-    _id?: string
-    vendorId: string | Types.ObjectId
-    name: string
-    description: string
-    images: string[]
-    amenities: string[]
-    tags: string[]
-    state: string
-    city: string
-    address: string
-    isBlocked: boolean
+    _id?: string;
+    vendorId: string | Types.ObjectId;
+    name: string;
+    slug: string;
+    description: string;
+    images: string[];
+    amenities: string[];
+    tags: string[];
+    state: string;
+    city: string;
+    address: string;
+    isBlocked: boolean;
     geoLocation: {
         type: string,
         coordinates: [number, number],
-    }
+    };
     propertyRules: {
         checkInTime: string,
         checkOutTime: string,
@@ -30,14 +31,14 @@ export interface IHotel {
         outsideFoodAllowed: boolean,
         idProofAccepted: TIdProof[],
         specialNotes?: string,
-    }
-    createdAt: Date
-    updatedAt: Date
+    };
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 //hotel types
-export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked'>;
-export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'geoLocation' | 'propertyRules'>> & {
+export type TCreateHotelData = Omit<IHotel, '_id' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'slug'>;
+export type TUpdateHotelData = Partial<Omit<IHotel, '_id' | 'vendorId' | 'createdAt' | 'updatedAt' | 'isBlocked' | 'geoLocation' | 'slug' | 'propertyRules'>> & {
     geoLocation?: Partial<IHotel['geoLocation']>;
     propertyRules?: Partial<IHotel['propertyRules']>;
 };
@@ -53,7 +54,8 @@ export interface IUpdateHotelUseCase {
 }
 
 export interface IGetHotelByIdUseCase {
-    getHotel(hotelId: string): Promise<{ hotel: TResponseHotelDTO, message: string }>
+    getHotelById(hotelId: string): Promise<{ hotel: TResponseHotelDTO, message: string }>;
+    getHotelBySlug(hotelSlug: string): Promise<{ hotel: TResponseHotelDTO, message: string }>
 }
 
 export interface IGetVendorHotelsUseCase {
@@ -87,8 +89,8 @@ export interface IGetHotelAnalyticsUseCase {
 
 export interface IGetHotelDetailWithRoomUseCase {
     getHotelDetailWithRoom(
-        hotelId: string,
-        roomId: string,
+        hotelSlug: string,
+        roomSlug: string,
         checkIn: string,
         checkOut: string,
         rooms: number,

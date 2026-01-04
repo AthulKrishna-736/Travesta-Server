@@ -85,12 +85,26 @@ export class RoomController implements IRoomController {
 
     async getRoomById(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const ROOM_ID = req.params.roomId;
-            if (!ROOM_ID) {
+            const { roomId } = req.params;
+            if (!roomId) {
                 throw new AppError(ROOM_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const room = await this._getRoomByIdUseCase.getRoomById(ROOM_ID);
+            const room = await this._getRoomByIdUseCase.getRoomById(roomId);
+            ResponseHandler.success(res, ROOM_RES_MESSAGES.getRoom, room, HttpStatusCode.OK);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async getRoomBySlug(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { hotelSlug, roomSlug } = req.params;
+            if (!roomSlug || !hotelSlug) {
+                throw new AppError(ROOM_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            }
+
+            const room = await this._getRoomByIdUseCase.getRoomBySlug(hotelSlug, roomSlug);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getRoom, room, HttpStatusCode.OK);
         } catch (error) {
             next(error);
