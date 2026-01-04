@@ -30,8 +30,9 @@ jobs:
           script: |
             set -e
             cd /var/www/Travesta-Server
-            git pull origin main
-            npm install           # now includes typescript
-            rm -rf dist           # clean previous builds
-            npm run build
-            pm2 reload travesta-server   # graceful reload without downtime
+              git fetch origin
+              git reset --hard origin/main
+              npm ci
+              rm -rf dist
+              npm run build
+              pm2 reload travesta-server
