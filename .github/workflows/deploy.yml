@@ -30,9 +30,9 @@ jobs:
           script: |
             set -e
             cd /var/www/Travesta-Server
-              git fetch origin
-              git reset --hard origin/main
-              npm ci
-              rm -rf dist
-              npm run build
-              pm2 reload travesta-server
+            git pull origin main
+            npm install
+            rm -rf dist
+            npm run build
+            pm2 reload travesta-server
+
