@@ -62,12 +62,12 @@ export class userRoutes extends BaseRouter {
         this.router
             .get('/hotels', (req: CustomRequest, res, next) => this._hotelController.getAllHotelsToUser(req, res, next))
             .get('/hotels/trending', (req: CustomRequest, res, next) => this._hotelController.getTrendingHotels(req, res, next))
-            .get('/hotels/:hotelId', (req: CustomRequest, res, next) => this._hotelController.getHotelById(req, res, next))
-            .get('/hotel/:hotelId/details/:roomId', (req: CustomRequest, res, next) => this._hotelController.getHotelDetailsWithRoom(req, res, next))
+            .get('/hotels/:hotelSlug', (req: CustomRequest, res, next) => this._hotelController.getHotelBySlug(req, res, next))
+            .get('/hotel/:hotelSlug/details/:roomSlug', (req: CustomRequest, res, next) => this._hotelController.getHotelDetailsWithRoom(req, res, next))
 
         //rooms
         this.router
-            .get('/room/:roomId', (req: CustomRequest, res, next) => this._roomController.getRoomById(req, res, next))
+            .get('/room/:hotelSlug/:roomSlug', (req: CustomRequest, res, next) => this._roomController.getRoomBySlug(req, res, next))
 
         //chat
         this.router

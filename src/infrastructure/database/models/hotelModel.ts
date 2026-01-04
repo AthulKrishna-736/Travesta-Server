@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { IHotel } from "../../../domain/interfaces/model/hotel.interface";
+import slugify from "slugify";
 
 export type THotelDocument = IHotel & Document;
 
@@ -13,6 +14,10 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
         type: String,
         required: true,
         trim: true,
+    },
+    slug: {
+        type: String,
+        required: true,
     },
     description: {
         type: String,
@@ -96,5 +101,29 @@ const hotelSchema: Schema = new Schema<THotelDocument>({
 
 hotelSchema.index({ geoLocation: "2dsphere" });
 hotelSchema.index({ name: 1 });
+hotelSchema.index({ slug: 1 }, { unique: true });
+
+hotelSchema.pre<THotelDocument>("validate", async function (next) {
+    if (!this.isNew) return next();
+    if (this.slug) return next();
+    if (!this.name || !this.city) return next();
+
+    const baseSlug = slugify(`${this.name}-${this.city}`, { lower: true, strict: true });
+
+    const regex = new RegExp(`^${baseSlug}(?:-(\\d+))?$`);
+
+    const existingSlugs = await mongoose.models.Hotel.find({ slug: regex }).select("slug").lean();
+
+    let maxCounter = 0;
+
+    for (const doc of existingSlugs) {
+        const match = doc.slug.match(/-(\d+)$/);
+        if (match) maxCounter = Math.max(maxCounter, Number(match[1]));
+    }
+
+    this.slug = maxCounter === 0 ? baseSlug : `${baseSlug}-${maxCounter + 1}`;
+
+    next();
+});
 
 export const hotelModel = mongoose.model<THotelDocument>("Hotel", hotelSchema);

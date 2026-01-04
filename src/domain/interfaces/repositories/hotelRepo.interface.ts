@@ -4,6 +4,7 @@ import { IRoom } from "../model/room.interface";
 export interface IHotelRepository {
     createHotel(data: TCreateHotelData): Promise<IHotel | null>;
     findHotelById(hotelId: string): Promise<IHotel | null>;
+    findHotelBySlug(slug: string): Promise<IHotel | null>;
     updateHotel(hotelId: string, data: TUpdateHotelData): Promise<IHotel | null>;
     findDuplicateHotels(hotelName: string): Promise<boolean>;
     findHotelByVendor(vendorId: string, hotelId: string): Promise<IHotel | null>

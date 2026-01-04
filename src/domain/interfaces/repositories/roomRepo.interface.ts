@@ -3,6 +3,7 @@ import { IRoom, TCreateRoomData, TUpdateRoomData } from "../model/room.interface
 export interface IRoomRepository {
     createRoom(data: TCreateRoomData): Promise<IRoom | null>;
     findRoomById(roomId: string): Promise<IRoom | null>;
+    findRoomBySlug(hotelId: string, slug: string): Promise<IRoom | null>;
     updateRoom(roomId: string, data: TUpdateRoomData): Promise<IRoom | null>;
     deleteRoom(roomId: string): Promise<boolean>;
     findDuplicateRooms(roomName: string, hotelId: string): Promise<boolean>;

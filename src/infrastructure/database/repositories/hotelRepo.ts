@@ -24,6 +24,14 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
         return hotel?.toObject() || null;
     }
 
+    async findHotelBySlug(slug: string): Promise<IHotel | null> {
+        const hotel = await this.model
+            .findOne({ slug })
+            .populate("amenities", "_id name");
+
+        return hotel ? hotel.toObject() : null;
+    }
+
     async updateHotel(hotelId: string, data: TUpdateHotelData): Promise<IHotel | null> {
         const hotel = await this.update(hotelId, data);
         return hotel?.toObject() || null;
@@ -188,7 +196,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
                         }, {
                             $group: {
                                 _id: '$roomId',
-                                bookedRooms: { $sum: '$roomsCount' }, 
+                                bookedRooms: { $sum: '$roomsCount' },
                             }
                         },
                     ],
@@ -361,6 +369,7 @@ export class HotelRepository extends BaseRepository<THotelDocument> implements I
                 $project: {
                     _id: "$hotel._id",
                     name: "$hotel.name",
+                    slug: "$hotel.slug",
                     images: "$hotel.images",
                     city: "$hotel.city",
                     state: "$hotel.state",

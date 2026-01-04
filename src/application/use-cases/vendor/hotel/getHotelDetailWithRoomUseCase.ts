@@ -30,8 +30,8 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
     ) { }
 
     async getHotelDetailWithRoom(
-        hotelId: string,
-        roomId: string,
+        hotelSlug: string,
+        roomSlug: string,
         checkIn: string,
         checkOut: string,
         rooms: number,
@@ -39,19 +39,19 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
         children: number
     ): Promise<{ hotel: TResponseHotelDTO, room: TResponseRoomDTO, otherRooms: TResponseRoomDTO[], message: string }> {
 
-        const hotel = await this._hotelRepository.findHotelById(hotelId);
-        if (!hotel) throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        const hotel = await this._hotelRepository.findHotelBySlug(hotelSlug);
+        if (!hotel || !hotel._id) throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
-        const room = await this._roomRepository.findRoomById(roomId);
-        if (!room) throw new AppError(ROOM_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+        const room = await this._roomRepository.findRoomBySlug(hotel._id, roomSlug);
+        if (!room || !room._id) throw new AppError(ROOM_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
-        const otherRooms = await this._roomRepository.findOtherRoomsByHotel(hotelId, roomId);
+        const otherRooms = await this._roomRepository.findOtherRoomsByHotel(hotel._id, room._id);
 
-        const ratings = await this._ratingRepository.getHotelRateImages(hotelId)
+        const ratings = await this._ratingRepository.getHotelRateImages(hotel._id);
 
         const { checkInDate, checkOutDate } = getPropertyTime(checkIn, checkOut, hotel.propertyRules.checkInTime, hotel.propertyRules.checkOutTime)
 
-        const isRoomAvailable = await this._bookingRepository.isRoomAvailable(roomId, rooms, checkInDate, checkOutDate)
+        const isRoomAvailable = await this._bookingRepository.isRoomAvailable(room._id, rooms, checkInDate, checkOutDate)
         if (!isRoomAvailable) throw new AppError(ROOM_ERROR_MESSAGES.notAvailable, HttpStatusCode.NOT_FOUND);
 
         const guests = adults + children;
@@ -79,7 +79,7 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
         }
 
 
-        const bookedRoomsCount = await this._bookingRepository.getBookedRoomsCount(roomId, checkInDate, checkOutDate);
+        const bookedRoomsCount = await this._bookingRepository.getBookedRoomsCount(room._id, checkInDate, checkOutDate);
         const dynamicPrice = calculateDynamicPricing(room.basePrice, room.roomCount, bookedRoomsCount);
         const gstPrice = calculateGSTPrice(dynamicPrice) * rooms;
 
@@ -128,7 +128,7 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
                 const dyn = calculateDynamicPricing(r.basePrice, r.roomCount, bookedCount);
                 const gst = calculateGSTPrice(dyn);
 
-                const offers = await this._offerRepository.findApplicableOffers(r.roomType, checkInDate, hotelId);
+                const offers = await this._offerRepository.findApplicableOffers(r.roomType, checkInDate, hotel._id!);
                 const otherTotalPrice = dyn;
                 const { offer: otherBestOffer, finalPrice: otherDiscountedPrice } = pickBestOfferForPrice(otherTotalPrice, offers);
 

@@ -29,6 +29,7 @@ export type TResponseRoomDTO = {
     id: string;
     hotelId: string | Object;
     name: string;
+    slug: string;
     roomCount: number;
     roomType: TRoomType;
     guest: number;

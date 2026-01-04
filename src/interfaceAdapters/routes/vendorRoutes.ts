@@ -96,7 +96,7 @@ export class vendorRoutes extends BaseRouter {
             .get('/analytics', authMiddleware, authorizeRoles('vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getVendorHotelAnalytics(req, res, next))
 
         this.router
-            .get('/ratings/:hotelId', (req: CustomRequest, res, next) => this._ratingController.getHotelRatings(req, res, next))
+            .get('/ratings/:hotelSlug', (req: CustomRequest, res, next) => this._ratingController.getHotelRatings(req, res, next))
 
         //coupons
         this.router.route('/coupon')
