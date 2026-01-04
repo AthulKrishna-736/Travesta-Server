@@ -12,13 +12,13 @@ export class NotificationRepository extends BaseRepository<TNotificationDocument
         super(notificationModel);
     }
 
-    async createNotification(data: Pick<INotification, 'title' | 'message' | 'userId'>, session?: ClientSession): Promise<TNotificationDocument | null> {
+    async createNotification(data: Pick<INotification, 'title' | 'message' | 'userId'>, session?: ClientSession): Promise<INotification | null> {
         const options = session ? { session } : undefined;
         const notification = await this.model.create([data], options);
         return notification[0] ?? null;
     }
 
-    async findUserNotifications(userId: string): Promise<TNotificationDocument[]> {
+    async findUserNotifications(userId: string): Promise<INotification[]> {
         const result = await this.model
             .find({ userId })
             .sort({ createdAt: -1 })
@@ -27,7 +27,7 @@ export class NotificationRepository extends BaseRepository<TNotificationDocument
         return result;
     }
 
-    async markAsRead(notificationId: string): Promise<TNotificationDocument | null> {
+    async markAsRead(notificationId: string): Promise<INotification | null> {
         const result = await this.model.findByIdAndUpdate(
             notificationId,
             { isRead: true },

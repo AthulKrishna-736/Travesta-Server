@@ -11,7 +11,7 @@ export class CouponRepository extends BaseRepository<TCouponDocument> implements
         super(couponModel);
     }
 
-    async createCoupon(data: Partial<ICoupon>): Promise<ICoupon | null> {
+    async createCoupon(data: Partial<Omit<ICoupon, '_id'>>): Promise<ICoupon | null> {
         const coupon = await this.create(data);
         return coupon.toObject();
     }

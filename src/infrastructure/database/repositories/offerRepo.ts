@@ -11,7 +11,7 @@ export class OfferRepository extends BaseRepository<TOfferDocument> implements I
         super(offerModel);
     }
 
-    async createOffer(data: Partial<IOffer>): Promise<IOffer | null> {
+    async createOffer(data: Partial<Omit<IOffer, '_id'>>): Promise<IOffer | null> {
         const doc = await this.create(data);
         return doc?.toObject() || null;
     }

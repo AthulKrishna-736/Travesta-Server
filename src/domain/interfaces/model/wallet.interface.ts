@@ -34,7 +34,7 @@ export type TCreateWalletData = Omit<IWallet, '_id' | 'createdAt' | 'updatedAt'>
 export type TResponseWalletData = IWallet;
 
 //transaction types
-export type TCreateTransaction = Omit<ITransactions, 'createdAt' | 'updatedAt'>;
+export type TCreateTransaction = Omit<ITransactions, '_id' | 'createdAt' | 'updatedAt'>;
 export type TResponseTransactions = ITransactions;
 
 //wallet use case
