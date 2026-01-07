@@ -52,6 +52,7 @@ export const TOKENS = {
   ConfirmRegisterUseCase: 'ConfirmRegisterUseCase',
   GoogleLoginUseCase: 'GoogleLoginUseCase',
   ForgotPassUseCase: 'ForgotPassUseCase',
+  ChangePasswordUseCase: 'ChangePasswordUseCase',
   ResetPassUseCase: 'ResetPassUseCase',
   ResendOtpUseCase: 'ResendOtpUseCase',
   VerifyOtpUseCase: 'VerifyOtpUseCase',

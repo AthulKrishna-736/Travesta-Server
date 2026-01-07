@@ -8,6 +8,7 @@ export interface IAuthController {
     loginGoogle(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     forgotPassword(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     updatePassword(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
+    changePassword(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     verifyOTP(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     logout(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
 }

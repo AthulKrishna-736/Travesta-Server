@@ -58,6 +58,9 @@ export class userRoutes extends BaseRouter {
             .put(authMiddleware, authorizeRoles('user'), checkUserBlock, upload.single('image'), validateRequest(updateUserSchema), (req: CustomRequest, res, next) => this._userController.updateProfile(req, res, next))
             .get(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._userController.getProfile(req, res, next));
 
+        this.router
+            .patch('/password', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._authController.changePassword(req, res, next))
+
         //hotels
         this.router
             .get('/hotels', (req: CustomRequest, res, next) => this._hotelController.getAllHotelsToUser(req, res, next))
