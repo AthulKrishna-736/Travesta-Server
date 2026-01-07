@@ -10,7 +10,7 @@ export interface IAuthService {
     generateRefreshToken(userId: string, role: TRole, email: string): string
     verifyAccessToken(token: string): { userId: string, role: TRole, email: string } | null
     verifyRefreshToken(token: string): { userId: string, role: TRole, email: string } | null
-    refreshAccessToken(token: string): Promise<string>
+    refreshAccessToken(payload: { userId: string; role: TRole; email: string }): Promise<string>
     generateOtp(length?: number): string
     sendOtpOnEmail(email: string, otp: string): Promise<{ message: string, otpExpireAt: string }>
     storeOtp(userId: string, otp: string, data: TOtpData, purpose: 'signup' | 'reset'): Promise<void>

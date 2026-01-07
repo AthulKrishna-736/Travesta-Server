@@ -77,9 +77,6 @@ export class vendorRoutes extends BaseRouter {
             .get(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req, res, next) => this._roomController.getAllRooms(req, res, next))
             .post(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(createRoomSchema), (req, res, next) => this._roomController.createRoom(req, res, next))
 
-        this.router
-            .get('/hotels/:hotelId/rooms', authMiddleware, authorizeRoles('admin', 'vendor', 'user'), checkUserBlock, (req, res, next) => this._roomController.getRoomsByHotel(req, res, next))
-
         //amenities
         this.router
             .get('/amenities', authMiddleware, authorizeRoles("vendor"), (req: CustomRequest, res, next) => this._amenityController.getAllActiveAmenities(req, res, next));

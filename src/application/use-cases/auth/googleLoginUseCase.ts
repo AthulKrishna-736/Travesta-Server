@@ -15,7 +15,8 @@ import { ICreateWalletUseCase } from "../../../domain/interfaces/model/wallet.in
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
-import { INotificationRepository } from "../../../domain/interfaces/repositories/notificationRepo.interface";
+import { INotificationService } from "../../../domain/interfaces/services/notificationService.interface";
+import logger from "../../../utils/logger";
 
 
 @injectable()
@@ -26,7 +27,7 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
         @inject(TOKENS.AuthService) private _authService: IAuthService,
         @inject(TOKENS.RedisService) private _redisService: IRedisService,
         @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
-        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
+        @inject(TOKENS.NotificationService) private _notificationService: INotificationService,
     ) { }
 
     async loginGoogle(googleToken: string, role: TRole): Promise<{ accessToken: string; refreshToken: string; user: TResponseUserDTO; }> {
@@ -42,6 +43,7 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
 
             payload = ticket.getPayload();
         } catch (error) {
+            logger.error(`Google Ticket Verification Error: ${error}`)
             throw new AppError(AUTH_ERROR_MESSAGES.invalidGoogle, HttpStatusCode.UNAUTHORIZED);
         }
 
@@ -74,7 +76,7 @@ export class GoogleLoginUseCase implements IGoogleLoginUseCase {
             await Promise.all([
                 this._createWallet.createUserWallet(user?._id as string),
                 this._userRepository.subscribeUser(user?._id as string, { subscription: plan._id }),
-                this._notificationRepository.createNotification({
+                this._notificationService.createAndPushNotification({
                     userId: user?._id as string,
                     title: "Welcome to Travesta Hotel Booking!",
                     message: `Hi ${user?.firstName}, welcome to Travesta! We're thrilled to have you onboard. Start exploring and enjoy seamless hotel bookings with us.`,

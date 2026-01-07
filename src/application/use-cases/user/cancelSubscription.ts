@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { nanoid } from "nanoid";
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { ICancelSubscriptionUseCase } from "../../../domain/interfaces/model/subscription.interface";
@@ -9,8 +10,7 @@ import { ISubscriptionHistoryRepository } from "../../../domain/interfaces/repos
 import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES, AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
-import { nanoid } from "nanoid";
-import { INotificationRepository } from "../../../domain/interfaces/repositories/notificationRepo.interface";
+import { INotificationService } from "../../../domain/interfaces/services/notificationService.interface";
 
 @injectable()
 export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
@@ -19,7 +19,7 @@ export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
         @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
         @inject(TOKENS.SubscriptionHistoryRepository) private _historyRepository: ISubscriptionHistoryRepository,
-        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
+        @inject(TOKENS.NotificationService) private _notificationService: INotificationService,
     ) { }
 
     async cancelSubscription(userId: string): Promise<{ message: string }> {
@@ -77,7 +77,7 @@ export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
             // Remove subscription from user (optional)
             await this._userRepository.subscribeUser(userId, { subscription: null }, session);
 
-            await this._notificationRepository.createNotification(
+            await this._notificationService.createAndPushNotification(
                 {
                     userId: userId,
                     title: "Subscription Cancelled",
@@ -88,7 +88,7 @@ export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
                 session
             );
 
-            await this._notificationRepository.createNotification(
+            await this._notificationService.createAndPushNotification(
                 {
                     userId: adminWallet.userId.toString(),
                     title: "Subscription Cancelled",
@@ -96,8 +96,6 @@ export class CancelSubscriptionUseCase implements ICancelSubscriptionUseCase {
                 },
                 session
             );
-
-
 
             await session.commitTransaction();
 

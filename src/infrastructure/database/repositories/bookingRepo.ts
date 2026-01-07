@@ -65,13 +65,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
     }
 
 
-    async findBookingsByUser(
-        userId: string,
-        page: number,
-        limit: number,
-        search?: string,
-        sort?: string
-    ): Promise<{ bookings: TBookingPopulated[]; total: number }> {
+    async findBookingsByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: TBookingPopulated[]; total: number }> {
         const skip = (page - 1) * limit;
 
         const filter: QueryOptions = {};
@@ -153,7 +147,30 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
                 }
             },
             { $unwind: '$hotel' },
-
+            {
+                $lookup: {
+                    from: 'coupons',
+                    localField: 'couponId',
+                    foreignField: '_id',
+                    pipeline: [
+                        {
+                            $project: {
+                                _id: 1,
+                                name: 1,
+                                type: 1,
+                                value: 1
+                            }
+                        }
+                    ],
+                    as: 'coupon'
+                }
+            },
+            {
+                $unwind: {
+                    path: '$coupon',
+                    preserveNullAndEmptyArrays: true
+                }
+            },
             {
                 $facet: {
                     totalBookings: [
@@ -176,15 +193,7 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
         return { bookings, total };
     }
 
-    async findBookingsByVendor(
-        vendorId: string,
-        page: number,
-        limit: number,
-        hotelId?: string,
-        startDate?: string,
-        endDate?: string
-    ): Promise<{ bookings: any[]; total: number }> {
-
+    async findBookingsByVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string): Promise<{ bookings: any[]; total: number }> {
         const skip = (page - 1) * limit;
 
         const matchStage: QueryOptions = {};
@@ -280,6 +289,32 @@ export class BookingRepository extends BaseRepository<TBookingDocument> implemen
                 }
             },
             { $unwind: "$user" },
+
+            // Populate coupon
+            {
+                $lookup: {
+                    from: "coupons",
+                    localField: "couponId",
+                    foreignField: "_id",
+                    pipeline: [
+                        {
+                            $project: {
+                                _id: 1,
+                                name: 1,
+                                type: 1,
+                                value: 1
+                            }
+                        }
+                    ],
+                    as: "coupon"
+                }
+            },
+            {
+                $unwind: {
+                    path: "$coupon",
+                    preserveNullAndEmptyArrays: true
+                }
+            },
 
             // Pagination + Total Count
             {

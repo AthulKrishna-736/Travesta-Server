@@ -11,7 +11,7 @@ import { AppError } from "../../../utils/appError";
 import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 import { AUTH_ERROR_MESSAGES, SUBSCRIPTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { nanoid } from "nanoid";
-import { INotificationRepository } from "../../../domain/interfaces/repositories/notificationRepo.interface";
+import { INotificationService } from "../../../domain/interfaces/services/notificationService.interface";
 
 @injectable()
 export class SubscribePlanUseCase implements ISubscribePlanUseCase {
@@ -21,7 +21,7 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
         @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
         @inject(TOKENS.SubscriptionHistoryRepository) private _historyRepository: ISubscriptionHistoryRepository,
-        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
+        @inject(TOKENS.NotificationService) private _notificationService: INotificationService,
     ) { }
 
     async subscribePlan(userId: string, planId: string, method: "wallet" | "online"): Promise<{ message: string }> {
@@ -104,9 +104,8 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 transactionId: `TRN-${nanoid(10)}`,
             }, session);
 
-
             //notify user and vendor
-            await this._notificationRepository.createNotification(
+            await this._notificationService.createAndPushNotification(
                 {
                     userId: userWallet.userId.toString(),
                     title: "Subscription Activated",
@@ -115,7 +114,7 @@ export class SubscribePlanUseCase implements ISubscribePlanUseCase {
                 session
             );
 
-            await this._notificationRepository.createNotification(
+            await this._notificationService.createAndPushNotification(
                 {
                     userId: adminWallet.userId.toString(),
                     title: "New Subscription",

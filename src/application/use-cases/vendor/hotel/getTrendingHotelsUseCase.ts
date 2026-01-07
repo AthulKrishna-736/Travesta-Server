@@ -7,7 +7,6 @@ import { AppError } from "../../../../utils/appError";
 import { HOTEL_ERROR_MESSAGES } from "../../../../constants/errorMessages";
 import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { IGetTrendingHotelsUseCase } from "../../../../domain/interfaces/model/hotel.interface";
-import { ResponseMapper } from "../../../../utils/responseMapper";
 import { TResponseHotelDTO } from "../../../../interfaceAdapters/dtos/hotel.dto";
 
 @injectable()

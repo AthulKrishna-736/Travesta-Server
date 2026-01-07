@@ -13,6 +13,7 @@ export default defineConfig([
       parserOptions: {
         sourceType: "module",
         project: "./tsconfig.json",
+        tsconfigRootDir: import.meta.dirname,
       },
       globals: {
         ...globals.node,
@@ -23,30 +24,35 @@ export default defineConfig([
       "unused-imports": unusedImports,
     },
     rules: {
-      // Base recommended rules
       ...js.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
 
-      // Disable built-in no-unused-vars (conflicts with unused-imports)
       "@typescript-eslint/no-unused-vars": "off",
       "no-unused-vars": "off",
 
-      // Unused imports and vars
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [
         "warn",
         {
           vars: "all",
-          varsIgnorePattern: "^_", // Ignore vars starting with "_"
+          varsIgnorePattern: "^_",
           args: "after-used",
           argsIgnorePattern: "^_",
         },
       ],
 
-      // Optional but helpful backend rules
-      "no-console": "off", // You often use console in backend
-      "no-undef": "off", // Handled by TypeScript
+      "no-console": "off",
+      "no-undef": "off",
       "prefer-const": "warn",
+    },
+  },
+
+  {
+    files: ["eslint.config.js", "*.config.js"],
+    languageOptions: {
+      parserOptions: {
+        project: null,
+      },
     },
   },
 ]);

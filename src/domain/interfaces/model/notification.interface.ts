@@ -26,7 +26,3 @@ export interface IMarkNotificationReadUseCase {
 export interface IMarkAllNotificationsReadUseCase {
     markAllReadNotification(userId: string): Promise<{ message: string }>;
 }
-
-export interface IGetUnreadNotificationCountUseCase {
-    getUnreadNotification(userId: string): Promise<{ unreadCount: number }>;
-}

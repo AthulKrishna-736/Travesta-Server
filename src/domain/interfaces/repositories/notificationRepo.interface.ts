@@ -6,5 +6,4 @@ export interface INotificationRepository {
     findUserNotifications(userId: string): Promise<INotification[] | null>;
     markAsRead(notificationId: string): Promise<INotification | null>;
     markAllAsRead(userId: string): Promise<void>;
-    getUnreadCount(userId: string): Promise<number>;
 }

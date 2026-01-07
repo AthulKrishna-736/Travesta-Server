@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { INotification } from '../../../domain/interfaces/model/notification.interface';
+import { Response } from 'express';
 
 export type TNotificationDocument = INotification & Document;
 
@@ -31,3 +32,5 @@ const notificationSchema = new Schema<TNotificationDocument>(
 );
 
 export const notificationModel = mongoose.model<TNotificationDocument>('Notification', notificationSchema);
+
+export const notificationClients = new Map<string, Response>();

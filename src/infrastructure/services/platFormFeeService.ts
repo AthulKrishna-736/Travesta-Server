@@ -2,19 +2,19 @@ import mongoose from "mongoose";
 import cron from "node-cron";
 import { nanoid } from "nanoid";
 import { injectable, inject } from "tsyringe";
-import { BookingRepository } from "../database/repositories/bookingRepo";
-import { WalletRepository } from "../database/repositories/walletRepo";
-import { NotificationRepository } from "../database/repositories/notificationRepo";
 import { transactionModel } from "../database/models/transactionModel";
 import { TOKENS } from "../../constants/token";
 import { IPlatformFeeService } from "../../domain/interfaces/model/admin.interface";
+import { INotificationService } from "../../domain/interfaces/services/notificationService.interface";
+import { IBookingRepository } from "../../domain/interfaces/repositories/bookingRepo.interface";
+import { IWalletRepository } from "../../domain/interfaces/repositories/walletRepo.interface";
 
 @injectable()
 export class PlatformFeeService implements IPlatformFeeService {
     constructor(
-        @inject(TOKENS.BookingRepository) private bookingRepo: BookingRepository,
-        @inject(TOKENS.WalletRepository) private walletRepo: WalletRepository,
-        @inject(TOKENS.NotificationRepository) private notificationRepo: NotificationRepository
+        @inject(TOKENS.BookingRepository) private bookingRepo: IBookingRepository,
+        @inject(TOKENS.WalletRepository) private walletRepo: IWalletRepository,
+        @inject(TOKENS.NotificationService) private notificationRepo: INotificationService,
     ) { }
 
     async settlePlatformFee() {
@@ -65,13 +65,13 @@ export class PlatformFeeService implements IPlatformFeeService {
 
                 await this.bookingRepo.markBookingSettled(booking._id!, session);
 
-                await this.notificationRepo.createNotification({
+                await this.notificationRepo.createAndPushNotification({
                     userId: adminWallet.userId.toString(),
                     title: "Platform Fee Settled",
                     message: `₹${platformFee} has been collected as platform fee from booking ${booking.bookingId}.`,
                 }, session);
 
-                await this.notificationRepo.createNotification({
+                await this.notificationRepo.createAndPushNotification({
                     userId: vendorWallet.userId.toString(),
                     title: "Platform Fee Deducted",
                     message: `₹${platformFee} has been deducted as platform fee from your booking ${booking.bookingId}.`,

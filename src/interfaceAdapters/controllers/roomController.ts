@@ -5,11 +5,11 @@ import { CustomRequest } from '../../utils/customRequest';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
 import { ResponseHandler } from '../../middlewares/responseHandler';
-import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetRoomsByHotelUseCase, IGetAllRoomsUseCase, } from '../../domain/interfaces/model/room.interface';
+import { ICreateRoomUseCase, IUpdateRoomUseCase, IGetRoomByIdUseCase, IGetAllRoomsUseCase, } from '../../domain/interfaces/model/room.interface';
 import { TCreateRoomDTO, TUpdateRoomDTO } from '../dtos/room.dto';
 import { Pagination } from '../../shared/types/common.types';
 import { ROOM_RES_MESSAGES } from '../../constants/resMessages';
-import { AUTH_ERROR_MESSAGES, HOTEL_ERROR_MESSAGES, ROOM_ERROR_MESSAGES } from '../../constants/errorMessages';
+import { AUTH_ERROR_MESSAGES, ROOM_ERROR_MESSAGES } from '../../constants/errorMessages';
 import { IRoomController } from '../../domain/interfaces/controllers/roomController.interface';
 
 
@@ -19,7 +19,6 @@ export class RoomController implements IRoomController {
         @inject(TOKENS.CreateRoomUseCase) private _createRoomUseCase: ICreateRoomUseCase,
         @inject(TOKENS.UpdateRoomUseCase) private _updateRoomUseCase: IUpdateRoomUseCase,
         @inject(TOKENS.GetRoomByIdUseCase) private _getRoomByIdUseCase: IGetRoomByIdUseCase,
-        @inject(TOKENS.GetRoomsByHotelUseCase) private _getRoomsByHotelUseCase: IGetRoomsByHotelUseCase,
         @inject(TOKENS.GetAllRoomsUseCase) private _getAllRoomsUseCase: IGetAllRoomsUseCase,
     ) { }
 
@@ -106,30 +105,6 @@ export class RoomController implements IRoomController {
 
             const room = await this._getRoomByIdUseCase.getRoomBySlug(hotelSlug, roomSlug);
             ResponseHandler.success(res, ROOM_RES_MESSAGES.getRoom, room, HttpStatusCode.OK);
-        } catch (error) {
-            next(error);
-        }
-    }
-
-    async getRoomsByHotel(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const HOTEL_ID = req.params.hotelId;
-            const CHECK_IN = req.query.checkIn as string;
-            const CHECK_OUT = req.query.checkOut as string;
-            const ROOM_COUNT = Number(req.query.rooms) || 1;
-            const ADULTS = Number(req.query.adults) || 1;
-            const CHILDREN = Number(req.query.children) || 0;
-
-            if (!HOTEL_ID) {
-                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            }
-
-            if (!CHECK_IN || !CHECK_OUT) {
-                throw new AppError('CheckIn or CheckOut Date missing', HttpStatusCode.BAD_REQUEST);
-            }
-
-            const rooms = await this._getRoomsByHotelUseCase.getRoomsByHotel(HOTEL_ID, CHECK_IN, CHECK_OUT, ROOM_COUNT, ADULTS, CHILDREN);
-            ResponseHandler.success(res, ROOM_RES_MESSAGES.getAll, rooms, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }
