@@ -9,7 +9,7 @@ import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
-import { INotificationRepository } from "../../../domain/interfaces/repositories/notificationRepo.interface";
+import { INotificationService } from "../../../domain/interfaces/services/notificationService.interface";
 
 @injectable()
 export class ConfirmRegisterUseCase implements IConfrimRegisterUseCase {
@@ -17,7 +17,7 @@ export class ConfirmRegisterUseCase implements IConfrimRegisterUseCase {
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
         @inject(TOKENS.CreateWalletUseCase) private _createWallet: ICreateWalletUseCase,
         @inject(TOKENS.SubscriptionRepository) private _subscriptionRepository: ISubscriptionRepository,
-        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
+        @inject(TOKENS.NotificationService) private _notificationService: INotificationService,
     ) { }
 
     async confirmRegister(userData: TCreateUserDTO): Promise<TResponseUserDTO> {
@@ -39,7 +39,7 @@ export class ConfirmRegisterUseCase implements IConfrimRegisterUseCase {
         await Promise.all([
             this._createWallet.createUserWallet(user._id),
             this._userRepository.subscribeUser(user._id, { subscription: plan._id }),
-            this._notificationRepository.createNotification({
+            this._notificationService.createAndPushNotification({
                 userId: user._id.toString(),
                 title: "Welcome to Travesta Hotel Booking!",
                 message: `Hi ${user.firstName}, welcome to Travesta! We're thrilled to have you onboard. Start exploring and enjoy seamless hotel bookings with us.`,

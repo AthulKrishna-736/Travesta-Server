@@ -40,6 +40,7 @@ export const TOKENS = {
   AwsS3Service: 'AwsS3Service',
   SocketService: 'SocketService',
   StripeService: 'StripeService',
+  NotificationService: 'NotificationService',
   PlatformFeeService: 'PlatformFeeService',
 
   // Helpers
@@ -51,6 +52,7 @@ export const TOKENS = {
   ConfirmRegisterUseCase: 'ConfirmRegisterUseCase',
   GoogleLoginUseCase: 'GoogleLoginUseCase',
   ForgotPassUseCase: 'ForgotPassUseCase',
+  ChangePasswordUseCase: 'ChangePasswordUseCase',
   ResetPassUseCase: 'ResetPassUseCase',
   ResendOtpUseCase: 'ResendOtpUseCase',
   VerifyOtpUseCase: 'VerifyOtpUseCase',
@@ -84,7 +86,6 @@ export const TOKENS = {
   CreateRoomUseCase: 'CreateRoomUseCase',
   UpdateRoomUseCase: 'UpdateRoomUseCase',
   GetRoomByIdUseCase: 'GetRoomByIdUseCase',
-  GetRoomsByHotelUseCase: 'GetRoomsByHotelUseCase',
   GetAllRoomsUseCase: 'GetAllRoomsUseCase',
 
   //booking UseCase
@@ -161,7 +162,6 @@ export const TOKENS = {
   //notification UseCases
   CreateNotificationUseCase: 'CreateNotificationUseCase',
   GetUserNotificationsUseCase: 'GetUserNotificationsUseCase',
-  GetUnreadNotificationCountUseCase: 'GetUnreadNotificationCountUseCase',
   MarkNotificationReadUseCase: 'MarkNotificationReadUseCase',
   MarkAllNotificationsReadUseCase: 'MarkAllNotificationsReadUseCase',
 };

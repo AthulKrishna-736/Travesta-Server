@@ -16,6 +16,8 @@ import { IRedisService } from "../../../domain/interfaces/services/redisService.
 
 import { IPlatformFeeService, ISocketService } from "../../../domain/interfaces/model/admin.interface";
 import { IStripeService } from "../../../domain/interfaces/services/stripeService.interface";
+import { INotificationService } from "../../../domain/interfaces/services/notificationService.interface";
+import { NotificationService } from "../../services/notificationService";
 
 
 container.register<IAuthService>(TOKENS.AuthService, {
@@ -44,4 +46,8 @@ container.register<IStripeService>(TOKENS.StripeService, {
 
 container.register<IPlatformFeeService>(TOKENS.PlatformFeeService, {
     useClass: PlatformFeeService,
+})
+
+container.register<INotificationService>(TOKENS.NotificationService, {
+    useClass: NotificationService,
 })

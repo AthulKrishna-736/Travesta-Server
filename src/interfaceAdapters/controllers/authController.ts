@@ -6,7 +6,7 @@ import { ResponseHandler } from "../../middlewares/responseHandler";
 import { TOKENS } from "../../constants/token";
 import { CustomRequest } from "../../utils/customRequest";
 import { setAccessCookie, setRefreshCookie } from "../../utils/setCookies";
-import { IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
+import { IChangePasswordUseCase, IForgotPassUseCase, IGoogleLoginUseCase, ILoginUseCase, ILogoutUseCases, IRegisterUseCase, IResendOtpUseCase, IResetPassUseCase, IVerifyOtpUseCase } from "../../domain/interfaces/model/auth.interface";
 import { TCreateUserDTO } from "../dtos/user.dto";
 import { AUTH_RES_MESSAGES } from "../../constants/resMessages";
 import { AUTH_ERROR_MESSAGES } from "../../constants/errorMessages";
@@ -20,6 +20,7 @@ export class AuthController implements IAuthController {
         @inject(TOKENS.RegisterUseCase) private _registerUseCase: IRegisterUseCase,
         @inject(TOKENS.GoogleLoginUseCase) private _googleLoginUseCase: IGoogleLoginUseCase,
         @inject(TOKENS.ForgotPassUseCase) private _forgotPassUseCase: IForgotPassUseCase,
+        @inject(TOKENS.ChangePasswordUseCase) private _changePasswordUseCase: IChangePasswordUseCase,
         @inject(TOKENS.ResetPassUseCase) private _resetPassUseCase: IResetPassUseCase,
         @inject(TOKENS.ResendOtpUseCase) private _resendOtpUseCase: IResendOtpUseCase,
         @inject(TOKENS.VerifyOtpUseCase) private _verifyOtpUseCase: IVerifyOtpUseCase,
@@ -117,6 +118,20 @@ export class AuthController implements IAuthController {
 
             await this._resetPassUseCase.resetPass(email, password)
             ResponseHandler.success(res, AUTH_RES_MESSAGES.resetPass, null, HttpStatusCode.OK)
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async changePassword(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const userId = req.user?.userId;
+            if (!userId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+
+            const { oldPassword, newPassword } = req.body;
+
+            const { user, message } = await this._changePasswordUseCase.changePassword(userId, oldPassword, newPassword);
+            ResponseHandler.success(res, message, user, HttpStatusCode.OK)
         } catch (error) {
             next(error);
         }

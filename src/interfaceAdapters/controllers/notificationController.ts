@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { INotificationController } from "../../domain/interfaces/controllers/notificationController.interface";
 import { TOKENS } from "../../constants/token";
-import { ICreateNotificationUseCase, IGetUnreadNotificationCountUseCase, IGetUserNotificationsUseCase, IMarkAllNotificationsReadUseCase, IMarkNotificationReadUseCase } from "../../domain/interfaces/model/notification.interface";
+import { ICreateNotificationUseCase, IGetUserNotificationsUseCase, IMarkAllNotificationsReadUseCase, IMarkNotificationReadUseCase } from "../../domain/interfaces/model/notification.interface";
 import { Response, NextFunction } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { AppError } from "../../utils/appError";
@@ -9,13 +9,13 @@ import { AUTH_ERROR_MESSAGES } from "../../constants/errorMessages";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
 import { TCreateNotificationDTO } from "../dtos/notification.dto";
 import { ResponseHandler } from "../../middlewares/responseHandler";
+import { notificationClients } from "../../infrastructure/database/models/notificationModel";
 
 @injectable()
 export class NotificationController implements INotificationController {
     constructor(
         @inject(TOKENS.CreateNotificationUseCase) private _createNotificationUseCase: ICreateNotificationUseCase,
         @inject(TOKENS.GetUserNotificationsUseCase) private _getUserNotificationUseCase: IGetUserNotificationsUseCase,
-        @inject(TOKENS.GetUnreadNotificationCountUseCase) private _gertUnreadNotificationUseCase: IGetUnreadNotificationCountUseCase,
         @inject(TOKENS.MarkAllNotificationsReadUseCase) private _markAllNotificationUseCase: IMarkAllNotificationsReadUseCase,
         @inject(TOKENS.MarkNotificationReadUseCase) private _markNotificationUseCase: IMarkNotificationReadUseCase,
     ) { }
@@ -49,15 +49,26 @@ export class NotificationController implements INotificationController {
         }
     }
 
-    async getUnreadNotificationCount(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+    async getLiveNotification(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const userId = req.user?.userId
-            if (!userId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
+            const userId = req.user?.userId;
+            if (!userId) return;
 
-            const { unreadCount } = await this._gertUnreadNotificationUseCase.getUnreadNotification(userId);
-            ResponseHandler.success(res, 'Fetched UnreadCount', unreadCount, HttpStatusCode.OK);
+            res.setHeader('Content-Type', 'text/event-stream');
+            res.setHeader('Cache-Control', 'no-cache');
+            res.setHeader('Connection', 'keep-alive');
+
+            notificationClients.set(userId.toString(), res);
+
+            const heartbeat = setInterval(() => { res.write(": ping\n\n"); }, 5000);
+
+            req.on("close", () => {
+                clearInterval(heartbeat);
+                notificationClients.delete(userId.toString());
+                res.end();
+            });
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 

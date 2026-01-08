@@ -10,8 +10,8 @@ import { ICreateBookingUseCase } from '../../../../domain/interfaces/model/booki
 import { WALLET_ERROR_MESSAGES } from '../../../../constants/errorMessages';
 import { TCreateBookingDTO } from '../../../../interfaceAdapters/dtos/booking.dto';
 import { nanoid } from 'nanoid';
-import { INotificationRepository } from '../../../../domain/interfaces/repositories/notificationRepo.interface';
 import { IChatRepository } from '../../../../domain/interfaces/repositories/chatRepo.interface';
+import { INotificationService } from '../../../../domain/interfaces/services/notificationService.interface';
 
 
 @injectable()
@@ -20,8 +20,8 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
         @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
         @inject(TOKENS.CreateBookingUseCase) private _bookingUsecase: ICreateBookingUseCase,
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
-        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
         @inject(TOKENS.ChatRepository) private _chatRepository: IChatRepository,
+        @inject(TOKENS.NotificationService) private _notificationService: INotificationService,
     ) { }
 
     async bookingTransaction(vendorId: string, bookingData: TCreateBookingDTO, method: 'online' | 'wallet'): Promise<{ message: string }> {
@@ -84,7 +84,7 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
             await this._transactionRepository.createTransaction(debitTransaction, session);
             await this._transactionRepository.createTransaction(creditTransaction, session);
 
-            await this._notificationRepository.createNotification(
+            await this._notificationService.createAndPushNotification(
                 {
                     userId: bookingData.userId.toString(),
                     title: "Booking Confirmed",
@@ -93,7 +93,7 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
                 session
             );
 
-            await this._notificationRepository.createNotification(
+            await this._notificationService.createAndPushNotification(
                 {
                     userId: vendorId.toString(),
                     title: "New Booking Received",

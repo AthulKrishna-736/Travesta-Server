@@ -43,13 +43,4 @@ export class NotificationRepository extends BaseRepository<TNotificationDocument
             { isRead: true }
         );
     }
-
-    async getUnreadCount(userId: string): Promise<number> {
-        const result = await this.model.countDocuments({
-            userId,
-            isRead: false
-        });
-
-        return result;
-    }
 }

@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+import { nanoid } from "nanoid";
 import { inject, injectable } from "tsyringe";
 import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
 import { TOKENS } from "../../../../constants/token";
@@ -9,9 +11,8 @@ import { IWalletRepository } from "../../../../domain/interfaces/repositories/wa
 import { ITransactionRepository } from "../../../../domain/interfaces/repositories/transactionRepo.interface";
 import { TCreateTransaction } from "../../../../domain/interfaces/model/wallet.interface";
 import { AUTH_ERROR_MESSAGES, BOOKING_ERROR_MESSAGES, TRANSACTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../../constants/errorMessages";
-import mongoose from "mongoose";
-import { nanoid } from "nanoid";
-import { INotificationRepository } from "../../../../domain/interfaces/repositories/notificationRepo.interface";
+import { INotificationService } from "../../../../domain/interfaces/services/notificationService.interface";
+
 
 @injectable()
 export class CancelBookingUseCase implements ICancelBookingUseCase {
@@ -19,7 +20,7 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
     @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository,
     @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
     @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
-    @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
+    @inject(TOKENS.NotificationService) private _notificationService: INotificationService,
   ) { }
 
   async cancelBooking(bookingId: string, userId: string): Promise<{ message: string }> {
@@ -103,13 +104,13 @@ export class CancelBookingUseCase implements ICancelBookingUseCase {
     booking.payment = "refunded";
     await this._bookingRepository.save(booking);
 
-    await this._notificationRepository.createNotification({
+    await this._notificationService.createAndPushNotification({
       userId: booking.userId.toString(),
       title: "Booking Cancelled",
       message: `Your booking (${booking.bookingId}) has been cancelled. ₹${refundAmount} has been refunded to your wallet.`,
     });
 
-    await this._notificationRepository.createNotification({
+    await this._notificationService.createAndPushNotification({
       userId: vendorId.toString(),
       title: "Booking Cancelled",
       message: `Booking (${booking.bookingId}) was cancelled by the user. Refund amount: ₹${refundAmount}.`,

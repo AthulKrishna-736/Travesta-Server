@@ -2,7 +2,6 @@ import { CreateHotelUseCase } from "../../../application/use-cases/vendor/hotel/
 import { UpdateHotelUseCase } from "../../../application/use-cases/vendor/hotel/updateHotelUseCase";
 import { GetHotelByIdUseCase } from "../../../application/use-cases/vendor/hotel/getHotelUseCase";
 import { GetAllHotelsUseCase } from "../../../application/use-cases/vendor/hotel/getAllHotelsUseCase";
-import { GetRoomsByHotelUseCase } from "../../../application/use-cases/vendor/room/getRoomByHotelUseCase";
 import { GetBookingsByHotelUseCase } from "../../../application/use-cases/vendor/booking/getBookingHotelUseCase";
 import { GetVendorHotelsUseCase } from "../../../application/use-cases/vendor/hotel/getHotelsByVendorUseCase";
 import { GetHotelAnalyticsUseCase } from "../../../application/use-cases/vendor/hotel/getHotelAnalyticsUseCase";
@@ -23,7 +22,6 @@ import {
 import { TOKENS } from "../../../constants/token";
 import { container } from "tsyringe";
 import { IGetBookingsByHotelUseCase, IGetVendorHotelAnalyticsUseCase } from "../../../domain/interfaces/model/booking.interface";
-import { IGetRoomsByHotelUseCase } from "../../../domain/interfaces/model/room.interface";
 
 
 container.register<ICreateHotelUseCase>(TOKENS.CreateHotelUseCase, {
@@ -60,10 +58,6 @@ container.register<IGetTrendingHotelsUseCase>(TOKENS.GetTrendingHotelsUseCase, {
 
 container.register<IGetBookingsByHotelUseCase>(TOKENS.GetBookingsByHotelUseCase, {
     useClass: GetBookingsByHotelUseCase,
-})
-
-container.register<IGetRoomsByHotelUseCase>(TOKENS.GetRoomsByHotelUseCase, {
-    useClass: GetRoomsByHotelUseCase,
 })
 
 container.register<IGetVendorHotelAnalyticsUseCase>(TOKENS.GetVendorHotelAnalyticsUseCase, {

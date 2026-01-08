@@ -22,6 +22,10 @@ export interface IForgotPassUseCase {
     forgotPass(email: string, role: TRole): Promise<{ userId: string, message: string }>
 }
 
+export interface IChangePasswordUseCase {
+    changePassword(userId: string, oldPassword: string, newPassword: string): Promise<{ user: TResponseUserDTO, message: string }>
+}
+
 export interface IResetPassUseCase {
     resetPass(email: string, password: string): Promise<void>
 }

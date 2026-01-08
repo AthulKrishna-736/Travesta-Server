@@ -9,6 +9,7 @@ import { VerifyOtpUseCase } from "../../../application/use-cases/auth/verifyOtpU
 import { LogoutUseCase } from "../../../application/use-cases/auth/logoutUseCase";
 
 import {
+    IChangePasswordUseCase,
     IConfrimRegisterUseCase,
     IForgotPassUseCase,
     IGoogleLoginUseCase,
@@ -21,6 +22,7 @@ import {
 } from "../../../domain/interfaces/model/auth.interface";
 import { container } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
+import { ChangePasswordUseCase } from "../../../application/use-cases/auth/changePasswordUseCase";
 
 
 container.register<ILoginUseCase>(TOKENS.LoginUseCase, {
@@ -57,4 +59,8 @@ container.register<IVerifyOtpUseCase>(TOKENS.VerifyOtpUseCase, {
 
 container.register<ILogoutUseCases>(TOKENS.LogoutUseCase, {
     useClass: LogoutUseCase,
+})
+
+container.register<IChangePasswordUseCase>(TOKENS.ChangePasswordUseCase, {
+    useClass: ChangePasswordUseCase,
 })

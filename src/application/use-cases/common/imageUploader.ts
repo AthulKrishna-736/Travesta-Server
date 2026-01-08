@@ -6,6 +6,7 @@ import { AppError } from "../../../utils/appError";
 import { IAwsImageUploader } from "../../../domain/interfaces/model/admin.interface";
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
+import logger from "../../../utils/logger";
 
 @injectable()
 export class AwsImageUploader implements IAwsImageUploader {
@@ -20,6 +21,7 @@ export class AwsImageUploader implements IAwsImageUploader {
                 await this._awsS3Service.uploadFileToAws(s3Key, i.path)
                 return s3Key;
             } catch (error) {
+                logger.error(`Error Uploading Room Images: ${error}`);
                 throw new AppError("Error uploading room images", HttpStatusCode.INTERNAL_SERVER_ERROR);
             } finally {
                 fs.unlink(i.path, (err) => {
@@ -67,7 +69,8 @@ export class AwsImageUploader implements IAwsImageUploader {
                 try {
                     await this._awsS3Service.deleteFileFromAws(i);
                 } catch (error) {
-                    throw new AppError('AWS error while deleting images', HttpStatusCode.INTERNAL_SERVER_ERROR);
+                    logger.error(`Error deleting Images From AWS: ${error}`);
+                    throw new AppError('AWS error deleting images', HttpStatusCode.INTERNAL_SERVER_ERROR);
                 }
             })
         );
@@ -80,7 +83,8 @@ export class AwsImageUploader implements IAwsImageUploader {
             await this._awsS3Service.uploadFileToAws(s3Key, file.path);
             return s3Key;
         } catch (error) {
-            throw new AppError('error while uploading profile image', HttpStatusCode.INTERNAL_SERVER_ERROR);
+            logger.error(`Error uploading Profile-Image: ${error}`);
+            throw new AppError('Error uploading profile image', HttpStatusCode.INTERNAL_SERVER_ERROR);
         } finally {
             fs.unlink(file.path, (err) => {
                 if (err) {
@@ -97,7 +101,8 @@ export class AwsImageUploader implements IAwsImageUploader {
             await this._awsS3Service.deleteFileFromAws(deleteImage);
             return true
         } catch (error) {
-            throw new AppError('Error while deleting image from aws', HttpStatusCode.INTERNAL_SERVER_ERROR);
+            logger.error(`Error deleting Profile Image from AWS: ${error}`);
+            throw new AppError('Error deleting image from aws', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -110,7 +115,8 @@ export class AwsImageUploader implements IAwsImageUploader {
                     await this._awsS3Service.uploadFileToAws(s3Key, f.path);
                     return s3Key;
                 } catch (error) {
-                    throw new AppError('Error while uploading review images', HttpStatusCode.INTERNAL_SERVER_ERROR);
+                    logger.error(`Error uploading Review Images: ${error}`);
+                    throw new AppError('Error uploading review images', HttpStatusCode.INTERNAL_SERVER_ERROR);
                 } finally {
                     fs.unlink(f.path, (err) => {
                         if (err) {

@@ -23,6 +23,7 @@ export type TResponseBookingDTO = {
     roomId: string;
     hotel?: TBookingPopulated['hotel'];
     room?: TBookingPopulated['room'];
+    coupon?: TBookingPopulated['coupon'];
     user?: Partial<IUser>;
     checkIn: string;
     checkOut: string;

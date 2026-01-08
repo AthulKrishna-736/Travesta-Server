@@ -11,6 +11,7 @@ import { TOKENS } from "../../constants/token";
 import { TRole } from "../../shared/types/client.types";
 import { IMailService } from "../../domain/interfaces/services/mailService.interface";
 import { IRedisService } from "../../domain/interfaces/services/redisService.interface";
+import logger from "../../utils/logger";
 
 @injectable()
 export class AuthService implements IAuthService {
@@ -51,6 +52,7 @@ export class AuthService implements IAuthService {
             const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
         } catch (error) {
+            logger.error(`Access Token Error: ${error}`);
             throw new AppError(`Invalid or expired access token ${error}`, HttpStatusCode.UNAUTHORIZED);
         }
     }
@@ -60,17 +62,18 @@ export class AuthService implements IAuthService {
             const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as { userId: string, role: TRole, email: string }
             return decoded
         } catch (error) {
-            throw new AppError(`Invalid or expired refresh token ${error}`, HttpStatusCode.UNAUTHORIZED)
+            logger.error(`Refresh Token Error: ${error}`);
+            throw new AppError("Session expired. Please login again.", HttpStatusCode.UNAUTHORIZED);
         }
     }
 
-    async refreshAccessToken(token: string): Promise<string> {
-        const decoded = this.verifyRefreshToken(token)
+    async refreshAccessToken(payload: { userId: string; role: TRole; email: string }): Promise<string> {
+        const newAccessToken = this.generateAccessToken(
+            payload.userId,
+            payload.role,
+            payload.email
+        );
 
-        if (!decoded) {
-            throw new AppError('Invalid refresh token payload', HttpStatusCode.UNAUTHORIZED)
-        }
-        const newAccessToken = this.generateAccessToken(decoded.userId, decoded.role, decoded.email);
         return newAccessToken;
     }
 

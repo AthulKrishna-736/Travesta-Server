@@ -11,14 +11,14 @@ import { TRANSACTION_ERROR_MESSAGES, WALLET_ERROR_MESSAGES } from "../../../../c
 import { TResponseTransactionDTO } from "../../../../interfaceAdapters/dtos/transactions.dto";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 import { nanoid } from "nanoid";
-import { INotificationRepository } from "../../../../domain/interfaces/repositories/notificationRepo.interface";
+import { INotificationService } from "../../../../domain/interfaces/services/notificationService.interface";
 
 @injectable()
 export class AddMoneyToWalletUseCase implements IAddMoneyToWalletUseCase {
     constructor(
         @inject(TOKENS.WalletRepository) private _walletRepository: IWalletRepository,
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
-        @inject(TOKENS.NotificationRepository) private _notificationRepository: INotificationRepository,
+        @inject(TOKENS.NotificationService) private _notificationService: INotificationService
     ) { }
 
     async addMoneyToWallet(userId: string, amount: number): Promise<{ transaction: TResponseTransactionDTO; message: string; }> {
@@ -47,7 +47,7 @@ export class AddMoneyToWalletUseCase implements IAddMoneyToWalletUseCase {
             throw new AppError(WALLET_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
 
-        await this._notificationRepository.createNotification({
+        await this._notificationService.createAndPushNotification({
             userId,
             title: "Wallet Credited",
             message: `₹${amount} has been added to your wallet.`,

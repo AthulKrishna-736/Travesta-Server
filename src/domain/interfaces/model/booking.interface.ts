@@ -2,6 +2,7 @@ import { ClientSession, Types } from "mongoose";
 import { IHotel } from "./hotel.interface";
 import { IRoom } from "./room.interface";
 import { TCreateBookingDTO, TResponseBookingDTO } from "../../../interfaceAdapters/dtos/booking.dto";
+import { ICoupon } from "./coupon.interface";
 
 export type TStatus = 'confirmed' | 'cancelled' | 'pending';
 export type TPaymentStatus = 'pending' | 'success' | 'failed' | 'refunded';
@@ -34,8 +35,8 @@ export type TResponseBookingData = Omit<IBooking, 'checkIn' | 'checkOut' | 'plat
 export type TBookingPopulated = IBooking & {
     hotel: Pick<IHotel, "_id" | "name" | "state" | "city" | "images" | 'geoLocation'>;
     room: Pick<IRoom, "_id" | "name" | "basePrice" | "roomType">;
+    coupon: Pick<ICoupon, '_id' | 'name' | 'type' | 'value'>;
 };
-
 
 
 //booking use case

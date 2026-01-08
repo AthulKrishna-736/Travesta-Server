@@ -58,6 +58,9 @@ export class userRoutes extends BaseRouter {
             .put(authMiddleware, authorizeRoles('user'), checkUserBlock, upload.single('image'), validateRequest(updateUserSchema), (req: CustomRequest, res, next) => this._userController.updateProfile(req, res, next))
             .get(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._userController.getProfile(req, res, next));
 
+        this.router
+            .patch('/password', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._authController.changePassword(req, res, next))
+
         //hotels
         this.router
             .get('/hotels', (req: CustomRequest, res, next) => this._hotelController.getAllHotelsToUser(req, res, next))
@@ -67,7 +70,7 @@ export class userRoutes extends BaseRouter {
 
         //rooms
         this.router
-            .get('/room/:hotelSlug/:roomSlug', (req: CustomRequest, res, next) => this._roomController.getRoomBySlug(req, res, next))
+            .get('/room/:hotelSlug/:roomSlug', (req: CustomRequest, res, next) => this._roomController.getRoomBySlug(req, res, next));
 
         //chat
         this.router
@@ -79,10 +82,10 @@ export class userRoutes extends BaseRouter {
 
         // booking
         this.router.route('/bookings')
-            .get(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getBookingsByUser(req, res, next))
+            .get(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getBookingsByUser(req, res, next));
 
         this.router
-            .delete('/booking/:bookingId', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.cancelBooking(req, res, next))
+            .delete('/booking/:bookingId', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.cancelBooking(req, res, next));
 
         //amenities
         this.router.route('/amenities')
@@ -116,13 +119,13 @@ export class userRoutes extends BaseRouter {
 
         //coupons
         this.router
-            .get('/coupons/:vendorId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.getUserCoupons(req, res, next))
+            .get('/coupons/:vendorId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.getUserCoupons(req, res, next));
 
         //Notification
         this.router
-            .get('/notification', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getUserNotification(req, res, next))
-            .get('/notification/unread', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getUnreadNotificationCount(req, res, next))
-            .put('/notification', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markAllNotification(req, res, next))
-            .patch('/notification/:notificationId', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markNotification(req, res, next))
+            .get('/notifications', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getUserNotification(req, res, next))
+            .get('/notifications/events', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getLiveNotification(req, res, next))
+            .put('/notifications', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markAllNotification(req, res, next))
+            .patch('/notifications/:notificationId', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markNotification(req, res, next))
     }
 }
