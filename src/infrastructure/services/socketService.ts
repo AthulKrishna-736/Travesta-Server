@@ -24,30 +24,30 @@ export class SocketService implements ISocketService {
     }
 
     private registerMiddleware() {
-        this.io.use(async (socket: Socket, next) => {
+        this.io.use((socket: Socket, next) => {
             const cookieHeader = socket.handshake.headers.cookie;
-            if (!cookieHeader) {
-                return next(new AppError('Please authenticate to chat', HttpStatusCode.UNAUTHORIZED));
-            }
 
-            logger.info(`check cookie header: ${cookieHeader}`)
+            if (!cookieHeader) {
+                return next();
+            }
 
             const cookies = cookie.parse(cookieHeader);
             const accessToken = cookies['access_token'];
 
-            try {
-                const decode: any = jwt.verify(accessToken as string, env.JWT_ACCESS_SECRET);
-                socket.data.user = decode;
-                const userId = decode.userId;
-                if (!userId) {
-                    return next(new AppError('Invalid token payload', HttpStatusCode.UNAUTHORIZED));
-                }
-                next();
-            } catch (error: any) {
-                next(error);
+            if (!accessToken) {
+                return next();
             }
-        })
+
+            try {
+                const decoded: any = jwt.verify(accessToken, env.JWT_ACCESS_SECRET);
+                socket.data.user = decoded;
+            } catch {
+            }
+
+            next();
+        });
     }
+
 
     private trackEngineErrors() {
         this.io.engine.on('connection_error', (err) => {
@@ -62,14 +62,18 @@ export class SocketService implements ISocketService {
         this.io.on("connection", async (socket: Socket) => {
             const user = socket.data.user;
             if (!user) {
-                logger.warn("⚠️ Socket connected without user data");
+                logger.warn("Unauthenticated socket rejected post-connection");
+                socket.emit("booking_error", "Authentication required");
+                socket.disconnect();
                 return;
             }
+            
             const { userId, role } = user;
 
             const room = `${role}:${userId}`;
             socket.join(room);
-            logger.info(`✅ Socket connected: ${socket.id} (User: ${role}:${userId})`);
+
+            logger.info(`Socket connected: ${role}:${userId}`);
 
             socket.on("send_message", async ({ toId, toRole, message }) => {
                 const timestamp = new Date().toISOString();
@@ -87,6 +91,7 @@ export class SocketService implements ISocketService {
                     const newMsg = await chatUseCase.sendMessage(payload);
                     logger.info(`📤 [${role}:${userId}] → ${toRole}:${toId}: ${message}`);
                     this.io.to(`${toRole}:${toId}`).emit("receive_message", newMsg);
+                    socket.emit("receive_message", newMsg);
                 } catch (err) {
                     logger.error(`❌ Failed to save message: ${err}`);
                 }
