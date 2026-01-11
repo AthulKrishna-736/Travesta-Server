@@ -67,33 +67,33 @@ export class SocketService implements ISocketService {
                 socket.disconnect();
                 return;
             }
-            
+
             const { userId, role } = user;
 
             const room = `${role}:${userId}`;
             socket.join(room);
 
-            logger.info(`Socket connected: ${role}:${userId}`);
+            logger.info(`Socket connected: ${room}`);
 
             socket.on("send_message", async ({ toId, toRole, message }) => {
-                const timestamp = new Date().toISOString();
-                const payload = {
-                    fromId: userId,
-                    fromRole: role,
-                    toId,
-                    toRole,
-                    message,
-                    timestamp,
-                };
-
                 try {
-                    const chatUseCase = container.resolve<ISendMessageUseCase>(TOKENS.SendMessageUseCase);
-                    const newMsg = await chatUseCase.sendMessage(payload);
-                    logger.info(`📤 [${role}:${userId}] → ${toRole}:${toId}: ${message}`);
-                    this.io.to(`${toRole}:${toId}`).emit("receive_message", newMsg);
-                    socket.emit("receive_message", newMsg);
+                    const payload = {
+                        fromId: userId,
+                        fromRole: role,
+                        toId,
+                        toRole,
+                        message,
+                    };
+
+                    const savedMessage = await container
+                        .resolve<ISendMessageUseCase>(TOKENS.SendMessageUseCase)
+                        .sendMessage(payload);
+
+                    this.io.to(`${toRole}:${toId}`).emit("receive_message", savedMessage);
+
+                    logger.info(`📤 [${room}] → ${toRole}:${toId}: ${message}`);
                 } catch (err) {
-                    logger.error(`❌ Failed to save message: ${err}`);
+                    logger.error("❌ Message save failed:", err);
                 }
             });
 
@@ -103,7 +103,6 @@ export class SocketService implements ISocketService {
                     fromRole: role,
                 });
             });
-
 
             socket.on("read_message", async ({ senderId, receiverId, toRole }) => {
                 try {

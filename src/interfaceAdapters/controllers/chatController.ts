@@ -126,8 +126,8 @@ export class ChatController implements IChatController {
                 throw new AppError('Sender or receiver id missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            await this._markMessageRead.markMsgAsRead(user, receiverId)
-            ResponseHandler.success(res, 'Successfully Read message', HttpStatusCode.OK);
+            const { message } = await this._markMessageRead.markMsgAsRead(user, receiverId)
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

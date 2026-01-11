@@ -14,7 +14,7 @@ export class MarkMsgAsReadUseCase implements IMarkMsgAsReadUseCase {
         @inject(TOKENS.UserRepository) private _userRepository: IUserRepository,
     ) { }
 
-    async markMsgAsRead(senderId: string, receiverId: string): Promise<void> {
+    async markMsgAsRead(senderId: string, receiverId: string): Promise<{ message: string }> {
         const [senderExists, receiverExists] = await Promise.all([
             this._userRepository.findUserExist(senderId),
             this._userRepository.findUserExist(receiverId)
@@ -25,6 +25,10 @@ export class MarkMsgAsReadUseCase implements IMarkMsgAsReadUseCase {
         }
 
         await this._chatRepository.markConversationAsRead(senderId, receiverId);
+        
+        return {
+            message: 'Message Read Successfully',
+        }
     }
 
 }

@@ -45,10 +45,7 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
         return result;
     }
 
-    async getUsersWhoChattedWithVendor(
-        vendorId: string,
-        search?: string
-    ): Promise<{
+    async getUsersWhoChattedWithVendor(vendorId: string, search?: string): Promise<{
         id: string;
         firstName: string;
         role: string;
