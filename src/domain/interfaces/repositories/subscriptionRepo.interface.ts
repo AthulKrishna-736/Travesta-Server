@@ -1,5 +1,5 @@
 import { ClientSession } from "mongoose";
-import { TSubscription } from "../../../shared/types/client.types"
+import { TSubscription } from "../../../shared/types/common.types"
 import { ISubscription, IUserSubscriptionHistory, TCreateSubscriptionData, TUpdateSubscriptionData } from "../model/subscription.interface"
 
 export interface ISubscriptionRepository {

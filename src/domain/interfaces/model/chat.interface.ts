@@ -1,4 +1,4 @@
-import { TRole } from "../../../shared/types/client.types";
+import { TRole } from "../../../shared/types/common.types";
 
 //chat model
 export interface IChatMessage {

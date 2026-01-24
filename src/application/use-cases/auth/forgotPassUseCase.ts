@@ -6,7 +6,7 @@ import { AppError } from "../../../utils/appError";
 import { v4 as uuidv4 } from 'uuid';
 import { IForgotPassUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
-import { TRole } from "../../../shared/types/client.types";
+import { TRole } from "../../../shared/types/common.types";
 import { AUTH_RES_MESSAGES } from "../../../constants/resMessages";
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";
 

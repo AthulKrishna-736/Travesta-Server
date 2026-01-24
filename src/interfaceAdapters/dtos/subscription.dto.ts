@@ -1,4 +1,4 @@
-import { TSubscription } from "../../shared/types/client.types"
+import { TSubscription } from "../../shared/types/common.types"
 
 export type TCreateSubscriptionDTO = {
     name: string;

@@ -41,7 +41,8 @@ export class SocketService implements ISocketService {
             try {
                 const decoded: any = jwt.verify(accessToken, env.JWT_ACCESS_SECRET);
                 socket.data.user = decoded;
-            } catch {
+            } catch (error) {
+                logger.error(`Socket jwt verify error: `, error);
             }
 
             next();

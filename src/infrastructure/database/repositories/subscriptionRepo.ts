@@ -1,6 +1,6 @@
 import { TCreateSubscriptionData, ISubscription, TUpdateSubscriptionData } from "../../../domain/interfaces/model/subscription.interface";
 import { ISubscriptionRepository } from "../../../domain/interfaces/repositories/subscriptionRepo.interface";
-import { TSubscription } from "../../../shared/types/client.types";
+import { TSubscription } from "../../../shared/types/common.types";
 import { subscriptionModel, TSubscriptionDocument } from "../models/subscriptionModel";
 import { BaseRepository } from "./baseRepo";
 

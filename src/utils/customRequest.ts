@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { TRole } from '../shared/types/client.types';
+import { TRole } from '../shared/types/common.types';
 
 export interface CustomRequest extends Request {
     user?: {

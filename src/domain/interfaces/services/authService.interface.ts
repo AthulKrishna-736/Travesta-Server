@@ -1,4 +1,4 @@
-import { TRole } from "../../../shared/types/client.types"
+import { TRole } from "../../../shared/types/common.types"
 import { TUserRegistrationInput } from "../model/user.interface"
 
 export type TOtpData = TUserRegistrationInput | { email: string } | { [key: string]: any }

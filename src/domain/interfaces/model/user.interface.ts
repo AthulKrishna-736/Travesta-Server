@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { TRole } from "../../../shared/types/client.types";
+import { TRole } from "../../../shared/types/common.types";
 
 export interface IUser {
     _id?: string,
