@@ -56,9 +56,10 @@ const minGuestAge = z.number({
     .min(18, "Guest age must be at least 18")
     .max(100, "Guest age seems invalid");
 
-const booleanField = z.boolean({
-    invalid_type_error: "Must be a boolean",
-});
+const booleanField = z.preprocess(
+    (val) => val === "true" ? true : val === "false" ? false : val,
+    z.boolean({ invalid_type_error: "Must be a boolean" })
+);
 
 const notes = z.string({
     required_error: "Special notes is required",

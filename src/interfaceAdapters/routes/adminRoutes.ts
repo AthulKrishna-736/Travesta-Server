@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema, subscriptionSchema } from "../../shared/types/zodValidation";
 import { CustomRequest } from "../../utils/customRequest";
 import { authMiddleware } from "../../middlewares/auth";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
@@ -11,6 +10,8 @@ import { IAdminController } from "../../domain/interfaces/controllers/adminContr
 import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
 import { IChatController } from "../../domain/interfaces/controllers/chatController.interface";
 import { ISubscriptionController } from "../../domain/interfaces/controllers/subscriptionController.interface";
+import { loginSchema } from "../../shared/validations/authValidation.schema";
+import { subscriptionSchema } from "../../shared/validations/subscriptionValidation.schema";
 
 @injectable()
 export class adminRoutes extends BaseRouter {
