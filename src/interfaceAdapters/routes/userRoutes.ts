@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema, createUserSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, googleLoginSchema, updateUserSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
@@ -20,6 +19,7 @@ import { IRoomController } from "../../domain/interfaces/controllers/roomControl
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
 import { INotificationController } from "../../domain/interfaces/controllers/notificationController.interface";
+import { createUserSchema, forgotPassSchema, googleLoginSchema, loginSchema, resendOtpSchema, updatePassSchema, updateUserSchema, verifyOtp } from "../../shared/validations/authValidation.schema";
 
 @injectable()
 export class userRoutes extends BaseRouter {
