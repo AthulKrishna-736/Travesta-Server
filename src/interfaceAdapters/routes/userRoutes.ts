@@ -20,6 +20,7 @@ import { IRatingController } from "../../domain/interfaces/controllers/ratingCon
 import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
 import { INotificationController } from "../../domain/interfaces/controllers/notificationController.interface";
 import { createUserSchema, forgotPassSchema, googleLoginSchema, loginSchema, resendOtpSchema, updatePassSchema, updateUserSchema, verifyOtp } from "../../shared/validations/authValidation.schema";
+import { createWalletSchema, updateWalletSchema } from "../../shared/validations/walletValidation.schema";
 
 @injectable()
 export class userRoutes extends BaseRouter {
@@ -100,9 +101,9 @@ export class userRoutes extends BaseRouter {
 
         // wallet
         this.router.route('/wallet')
-            .post(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.createWallet(req, res, next))
+            .post(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, validateRequest(createWalletSchema), (req: CustomRequest, res, next) => this._walletController.createWallet(req, res, next))
             .get(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getWallet(req, res, next))
-            .put(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.AddMoneyTransaction(req, res, next))
+            .put(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, validateRequest(updateWalletSchema), (req: CustomRequest, res, next) => this._walletController.AddMoneyTransaction(req, res, next))
 
         this.router
             .post('/payment/online', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.createPaymentIntent(req, res, next))

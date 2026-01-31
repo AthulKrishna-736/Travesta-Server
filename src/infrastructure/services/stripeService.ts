@@ -3,9 +3,7 @@ import Stripe from 'stripe';
 import { env } from '../config/env';
 import { IStripeService } from '../../domain/interfaces/services/stripeService.interface';
 
-const stripe = new Stripe(env.STRIPE_SECRET, {
-    apiVersion: '2025-08-27.basil'
-});
+const stripe = new Stripe(env.STRIPE_SECRET);
 
 @injectable()
 export class StripeService implements IStripeService {

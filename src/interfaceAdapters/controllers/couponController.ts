@@ -25,24 +25,6 @@ export class CouponController implements ICouponController {
         try {
             const vendorId = req.user?.userId;
             if (!vendorId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            const { type, value, maxPrice } = req.body;
-
-            if (type === "percent") {
-                if (value > 50) {
-                    throw new AppError("Percent discount cannot exceed 50%", HttpStatusCode.BAD_REQUEST);
-                }
-            }
-
-            if (type === "flat") {
-                if (!maxPrice) {
-                    throw new AppError("Max price is required for flat discount", HttpStatusCode.BAD_REQUEST);
-                }
-
-                const maxAllowedFlat = maxPrice * 0.3;
-                if (value > maxAllowedFlat) {
-                    throw new AppError(`Flat discount cannot exceed 30% of max price (Max: ${maxAllowedFlat})`, HttpStatusCode.BAD_REQUEST);
-                }
-            }
 
             const data: TCreateCouponDTO = {
                 ...req.body,
