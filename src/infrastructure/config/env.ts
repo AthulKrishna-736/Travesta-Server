@@ -23,5 +23,6 @@ export const env = {
     AWS_SECRETACCESSKEY: process.env.AWS_SECRETACCESSKEY!,
     AWS_REGION: process.env.AWS_REGION!,
     STRIPE_SECRET: process.env.STRIPE_SECRET!,
+    STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET!,
     MAX_LINES: Number(process.env.MAX_LINES!),
 }

@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-import { NextFunction, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { TOKENS } from '../../constants/token';
 import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
@@ -14,6 +14,8 @@ import { IWalletController } from '../../domain/interfaces/controllers/walletCon
 import { ISubscribePlanUseCase } from '../../domain/interfaces/model/subscription.interface';
 import { TCreateBookingDTO } from '../dtos/booking.dto';
 import { nanoid } from 'nanoid';
+import { env } from '../../infrastructure/config/env';
+import Stripe from 'stripe';
 
 @injectable()
 export class WalletController implements IWalletController {
@@ -167,6 +169,86 @@ export class WalletController implements IWalletController {
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
+        }
+    }
+
+    async webhookHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
+        let event;
+
+        if (!env.STRIPE_WEBHOOK_SECRET) {
+            throw new AppError('Webhook secret missing', HttpStatusCode.BAD_REQUEST)
+        }
+
+        const signature = req.headers['stripe-signature'];
+
+        if (typeof signature !== 'string') {
+            throw new AppError('Invalid Stripe signature', HttpStatusCode.BAD_REQUEST);
+        }
+
+        try {
+            event = Stripe.webhooks.constructEvent(
+                req.body,
+                signature,
+                env.STRIPE_WEBHOOK_SECRET,
+            );
+
+        } catch (error) {
+            console.log(`⚠️ Webhook signature verification failed.`, error);
+            throw new AppError('Webhook verification failed', HttpStatusCode.BAD_GATEWAY);
+        }
+
+        try {
+            switch (event.type) {
+
+                case 'payment_intent.succeeded': {
+                    const pi = event.data.object as Stripe.PaymentIntent;
+
+                    // idempotency check (MANDATORY)
+                    if (await this._paymentRepo.isProcessed(pi.id)) {
+                        break;
+                    }
+
+                    switch (pi.metadata.purpose) {
+
+                        case 'wallet':
+                            await this._addMoneyToWalletUseCase.addMoneyToWallet(
+                                pi.metadata.userId,
+                                pi.amount / 100
+                            );
+                            break;
+
+                        case 'booking':
+                            await this._bookingConfirmUseCase.bookingTransaction(pi.metadata.userId,
+                                pi.metadata.refId // bookingId
+                            );
+                            break;
+
+                        case 'subscription':
+                            await this._subscribePlanUseCase.activateSubscription(
+                                pi.metadata.userId,
+                                pi.metadata.refId // planId
+                            );
+                            break;
+                    }
+
+                    await this._paymentRepo.markProcessed(pi.id);
+                    break;
+                }
+
+                case 'payment_intent.payment_failed': {
+                    console.log('❌ Payment failed:', event.data.object);
+                    break;
+                }
+
+                default:
+                    console.log(`Unhandled event type: ${event.type}`);
+            }
+
+            res.status(200).json({ received: true });
+
+        } catch (error) {
+            console.error('Webhook handler error:', error);
+            throw new AppError('Webhook processing failed', HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
     }
 }

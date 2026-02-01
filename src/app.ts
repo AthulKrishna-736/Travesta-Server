@@ -14,6 +14,7 @@ import { adminRoutes } from './interfaceAdapters/routes/adminRoutes';
 import { errorHandler } from './middlewares/errorHandler';
 import { container } from 'tsyringe';
 import { TOKENS } from './constants/token';
+import { WalletController } from './interfaceAdapters/controllers/walletController';
 
 export class App {
   public app: Application;
@@ -74,6 +75,7 @@ export class App {
     this.app.use('/api/users', container.resolve(userRoutes).getRouter())
     this.app.use('/api/vendor', container.resolve(vendorRoutes).getRouter())
     this.app.use('/api/admin', container.resolve(adminRoutes).getRouter())
+    this.app.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res, next) => container.resolve(WalletController).webhookHandler(req, res, next))
   }
 
   private setErrorHandling(): void {

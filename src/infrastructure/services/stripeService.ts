@@ -8,11 +8,15 @@ const stripe = new Stripe(env.STRIPE_SECRET);
 @injectable()
 export class StripeService implements IStripeService {
 
-    async createPaymentIntent(userId: string, amount: number): Promise<{ clientSecret: string }> {
+    async createPaymentIntent(userId: string, amount: number, purpose: 'wallet' | 'booking' | 'subscription', refId?: string): Promise<{ clientSecret: string }> {
         const paymentIntent = await stripe.paymentIntents.create({
             amount,
             currency: 'inr',
-            metadata: { userId },
+            metadata: {
+                purpose,
+                userId,
+                refId: refId ?? '',
+            },
             automatic_payment_methods: { enabled: true },
         });
 
