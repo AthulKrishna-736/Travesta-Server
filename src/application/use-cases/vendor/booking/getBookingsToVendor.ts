@@ -14,18 +14,16 @@ export class GetBookingsToVendorUseCase implements IGetBookingsToVendorUseCase {
         @inject(TOKENS.BookingRepository) private _bookingRepository: IBookingRepository
     ) { }
 
-    async getBookingsToVendor(
-        vendorId: string,
-        page: number,
-        limit: number,
-        hotelId?: string,
-        startDate?: string,
-        endDate?: string
+    async getBookingsToVendor(vendorId: string, page: number, limit: number, hotelId?: string, startDate?: string, endDate?: string
     ): Promise<{ bookings: TResponseBookingDTO[], total: number, message: string }> {
         const { bookings, total } = await this._bookingRepository.findBookingsByVendor(vendorId, page, limit, hotelId, startDate, endDate);
 
         if (!bookings || bookings.length == 0 || total == 0) {
-            throw new AppError(BOOKING_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+            return {
+                bookings: [],
+                total: 0,
+                message: 'No Bookings found',
+            }
         }
 
         const mappedBookings = bookings.map(ResponseMapper.mapBookingResponseToDTO);

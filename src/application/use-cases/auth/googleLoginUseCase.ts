@@ -6,7 +6,7 @@ import { AppError } from "../../../utils/appError";
 import { IGoogleLoginUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
-import { TRole } from "../../../shared/types/client.types";
+import { TRole } from "../../../shared/types/common.types";
 import { OAuth2Client, TokenPayload } from "google-auth-library";
 import { env } from "../../../infrastructure/config/env";
 import { jwtConfig } from "../../../infrastructure/config/jwtConfig";

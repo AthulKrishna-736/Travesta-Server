@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema, forgotPassSchema, updatePassSchema, verifyOtp, resendOtpSchema, createUserSchema, googleLoginSchema, updateUserSchema, createHotelSchema, createRoomSchema, updateRoomSchema, updateHotelSchema, createCouponSchema, updateCouponSchema, createOfferSchema, updateOfferSchema } from "../../shared/types/zodValidation";
 import { authMiddleware } from "../../middlewares/auth";
 import { CustomRequest } from "../../utils/customRequest";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
@@ -18,6 +17,11 @@ import { TOKENS } from "../../constants/token";
 import { IRatingController } from "../../domain/interfaces/controllers/ratingController.interface";
 import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
 import { IOfferController } from "../../domain/interfaces/controllers/offerController.interface";
+import { createUserSchema, forgotPassSchema, googleLoginSchema, loginSchema, resendOtpSchema, updatePassSchema, updateUserSchema, verifyOtp } from "../../shared/validations/authValidation.schema";
+import { createHotelSchema, updateHotelSchema } from "../../shared/validations/hotelValidation.schema";
+import { createRoomSchema, updateRoomSchema } from "../../shared/validations/roomValidation.schema";
+import { createCouponSchema, updateCouponSchema } from "../../shared/validations/couponValidation.schema";
+import { createOfferSchema, updateOfferSchema } from "../../shared/validations/offerValidation.schema";
 
 @injectable()
 export class vendorRoutes extends BaseRouter {

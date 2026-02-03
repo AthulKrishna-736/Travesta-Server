@@ -18,7 +18,11 @@ export class GetBookingsByHotelUseCase implements IGetBookingsByHotelUseCase {
         const { bookings, total } = await this._bookingRepository.findBookingsByHotel(hotelId, page, limit);
 
         if (!bookings || bookings.length == 0 || total == 0) {
-            throw new AppError(BOOKING_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+            return {
+                bookings: [],
+                total: 0,
+                message: 'User have no bookings',
+            }
         }
 
         const mappedBookings = bookings.map(ResponseMapper.mapBookingResponseToDTO);

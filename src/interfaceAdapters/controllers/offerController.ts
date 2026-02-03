@@ -28,14 +28,6 @@ export class OfferController implements IOfferController {
 
             const { name, discountType, discountValue, hotelId, roomType, startDate, expiryDate } = req.body;
 
-            if (discountType === "percent" && discountValue > 50) {
-                throw new AppError("Percent offer cannot exceed 50%", HttpStatusCode.BAD_REQUEST);
-            }
-
-            if (discountType === "flat" && discountValue > 5000) {
-                throw new AppError("Flat discount too high", HttpStatusCode.BAD_REQUEST);
-            }
-
             const data: TCreateOfferDTO = {
                 name,
                 vendorId,
@@ -58,12 +50,6 @@ export class OfferController implements IOfferController {
         try {
             const { offerId } = req.params;
             if (!offerId) throw new AppError("Offer id missing", HttpStatusCode.BAD_REQUEST);
-
-            const { discountType, discountValue } = req.body;
-
-            if (discountType === "percent" && discountValue > 50) {
-                throw new AppError("Percent offer cannot exceed 50%", HttpStatusCode.BAD_REQUEST);
-            }
 
             const data: TUpdateOfferDTO = { ...req.body };
 

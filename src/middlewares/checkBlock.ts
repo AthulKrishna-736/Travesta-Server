@@ -7,34 +7,25 @@ import { HttpStatusCode } from "../constants/HttpStatusCodes";
 import { IUserRepository } from "../domain/interfaces/repositories/userRepo.interface";
 
 
-export const checkUserBlock = async (req: CustomRequest, res: Response, next: NextFunction) => {
+export const checkUserBlock = async (req: CustomRequest, _res: Response, next: NextFunction) => {
     try {
         const data = req.user;
+
+        if (!data) {
+            throw new AppError('Unauthorized access. Please sign in.', HttpStatusCode.UNAUTHORIZED);
+        }
+
         const userRepo = container.resolve<IUserRepository>(TOKENS.UserRepository)
-
-        if (data?.role == 'user') {
-            const user = await userRepo.findUser(data.email!)
-            if (!user) {
-                throw new AppError('user not found', HttpStatusCode.UNAUTHORIZED);
-            }
-
-            if (user.isBlocked) {
-                throw new AppError('user is blocked', HttpStatusCode.UNAUTHORIZED)
-            }
-
+        const user = await userRepo.findUserById(data.userId);
+        if (!user) {
+            throw new AppError('Account not found', HttpStatusCode.NOT_FOUND);
         }
 
-        if (data?.role == 'vendor') {
-            const vendor = await userRepo.findUser(data.email!)
-            if (!vendor) {
-                throw new AppError('vendor not found', HttpStatusCode.UNAUTHORIZED)
-            }
-            if (vendor.isBlocked) {
-                throw new AppError('vendor is blocked', HttpStatusCode.UNAUTHORIZED)
-            }
+        if (user.isBlocked) {
+            throw new AppError('User is blocked', HttpStatusCode.FORBIDDEN);
         }
 
-        next()
+        next();
     } catch (error) {
         next(error)
     }

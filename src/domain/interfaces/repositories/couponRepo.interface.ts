@@ -8,4 +8,5 @@ export interface ICouponRepository {
     getVendorCoupons(vendorId: string, page: number, limit: number, search?: string): Promise<{ coupons: ICoupon[], total: number }>
     getUserAvailableCoupons(vendorId: string, date: Date, price: number): Promise<ICoupon[]>
     toggleCouponStatus(couponId: string): Promise<ICoupon | null>
+    validateCoupon(couponId: string, vendorId: string, total: number): Promise<ICoupon>
 }

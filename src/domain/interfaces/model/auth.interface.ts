@@ -1,5 +1,5 @@
 import { TCreateUserDTO, TResponseUserDTO } from "../../../interfaceAdapters/dtos/user.dto"
-import { TRole } from "../../../shared/types/client.types"
+import { TRole } from "../../../shared/types/common.types"
 import { TOtpData } from "../services/authService.interface"
 
 export interface ILoginUseCase {

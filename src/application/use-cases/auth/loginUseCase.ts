@@ -7,7 +7,7 @@ import { ILoginUseCase } from "../../../domain/interfaces/model/auth.interface";
 import { IAuthService } from "../../../domain/interfaces/services/authService.interface";
 import { IRedisService } from "../../../domain/interfaces/services/redisService.interface";
 import { IAwsS3Service } from "../../../domain/interfaces/services/awsS3Service.interface";
-import { TRole } from "../../../shared/types/client.types";
+import { TRole } from "../../../shared/types/common.types";
 import { awsS3Timer, jwtConfig } from "../../../infrastructure/config/jwtConfig";
 import { ResponseMapper } from "../../../utils/responseMapper";
 import { AUTH_ERROR_MESSAGES } from "../../../constants/errorMessages";

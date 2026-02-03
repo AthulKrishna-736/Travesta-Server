@@ -1,6 +1,6 @@
 import { Types } from "mongoose"
 import { TCreateSubscriptionDTO, TResponseSubscriptionDTO, TUpdateSubscriptionDTO } from "../../../interfaceAdapters/dtos/subscription.dto"
-import { TSubscription } from "../../../shared/types/client.types"
+import { TSubscription } from "../../../shared/types/common.types"
 
 //subscription model
 export interface ISubscription {

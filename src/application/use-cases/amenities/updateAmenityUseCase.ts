@@ -23,8 +23,14 @@ export class UpdateAmenityUseCase implements IUpdateAmenityUseCase {
             throw new AppError(AMENITIES_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
 
-        const updatedAmenity = await this._amenitiesRepository.updateAmenity(amenity._id, data);
+        if (data.name) {
+            const duplicate = await this._amenitiesRepository.findDuplicateAmenity(data.name, amenity.type, amenityId)
+            if (duplicate) {
+                throw new AppError(AMENITIES_ERROR_MESSAGES.alreadyExists, HttpStatusCode.CONFLICT)
+            }
+        }
 
+        const updatedAmenity = await this._amenitiesRepository.updateAmenity(amenity._id, data);
         if (!updatedAmenity) {
             throw new AppError(AMENITIES_ERROR_MESSAGES.updateFail, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }

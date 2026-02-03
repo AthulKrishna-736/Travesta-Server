@@ -12,8 +12,10 @@ import {
     IBookingTransactionUseCase,
     ICreateWalletUseCase,
     IGetTransactionsUseCase,
-    IGetWalletUseCase
+    IGetWalletUseCase,
+    IHandleStripeWebhookUseCase
 } from "../../../domain/interfaces/model/wallet.interface";
+import { HandleStripeWebhookUseCase } from "../../../application/use-cases/user/wallet/handleWebHook.UseCase";
 
 
 container.register<IGetWalletUseCase>(TOKENS.GetWalletUseCase, {
@@ -35,3 +37,7 @@ container.register<IAddMoneyToWalletUseCase>(TOKENS.AddMoneyToWalletUseCase, {
 container.register<IGetTransactionsUseCase>(TOKENS.GetTransactionsUseCase, {
     useClass: GetTransactionsUseCase,
 });
+
+container.register<IHandleStripeWebhookUseCase>(TOKENS.HandleStripeWebhookUseCase, {
+    useClass: HandleStripeWebhookUseCase,
+})

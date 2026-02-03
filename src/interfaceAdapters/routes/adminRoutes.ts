@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { BaseRouter } from "./baseRouter";
 import { validateRequest } from "../../middlewares/validateRequest";
-import { loginSchema, subscriptionSchema } from "../../shared/types/zodValidation";
 import { CustomRequest } from "../../utils/customRequest";
 import { authMiddleware } from "../../middlewares/auth";
 import { authorizeRoles } from "../../middlewares/roleMIddleware";
@@ -11,6 +10,9 @@ import { IAdminController } from "../../domain/interfaces/controllers/adminContr
 import { IAmenityController } from "../../domain/interfaces/controllers/amenityController.interface";
 import { IChatController } from "../../domain/interfaces/controllers/chatController.interface";
 import { ISubscriptionController } from "../../domain/interfaces/controllers/subscriptionController.interface";
+import { loginSchema } from "../../shared/validations/authValidation.schema";
+import { subscriptionSchema } from "../../shared/validations/subscriptionValidation.schema";
+import { createAmenitySchema, updateAmenitySchema } from "../../shared/validations/amenitiesValidation.schema";
 
 @injectable()
 export class adminRoutes extends BaseRouter {
@@ -40,11 +42,11 @@ export class adminRoutes extends BaseRouter {
 
         //amenities
         this.router.route('/amenities')
-            .post(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.createAmenity(req, res, next))
+            .post(authMiddleware, authorizeRoles('admin'), validateRequest(createAmenitySchema), (req: CustomRequest, res, next) => this._amenityController.createAmenity(req, res, next))
             .get(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.getAllAmenities(req, res, next));
 
         this.router.route('/amenities/:amenityId')
-            .put(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.updateAmenity(req, res, next))
+            .put(authMiddleware, authorizeRoles('admin'), validateRequest(updateAmenitySchema), (req: CustomRequest, res, next) => this._amenityController.updateAmenity(req, res, next))
             .patch(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.blockUnblockAmenity(req, res, next));
 
         //subscription

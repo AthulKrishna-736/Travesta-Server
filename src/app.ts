@@ -14,6 +14,7 @@ import { adminRoutes } from './interfaceAdapters/routes/adminRoutes';
 import { errorHandler } from './middlewares/errorHandler';
 import { container } from 'tsyringe';
 import { TOKENS } from './constants/token';
+import { WalletController } from './interfaceAdapters/controllers/walletController';
 
 export class App {
   public app: Application;
@@ -23,10 +24,11 @@ export class App {
   constructor() {
     this.app = express()
     this.server = http.createServer(this.app);
-    this.setSecurityMiddlewares()
-    this.setGlobalMiddlewares()
-    this.setRoutes()
-    this.setErrorHandling()
+    this.setSecurityMiddlewares();
+    this.setWebhookRoute();
+    this.setGlobalMiddlewares();
+    this.setRoutes();
+    this.setErrorHandling();
 
     this.io = new SocketIOServer(this.server, {
       cors: {
@@ -59,6 +61,10 @@ export class App {
     })
 
     this.app.use('/api', limiter)
+  }
+
+  private setWebhookRoute(): void {
+    this.app.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res, next) => container.resolve(WalletController).webhookHandler(req, res, next));
   }
 
   private setGlobalMiddlewares(): void {

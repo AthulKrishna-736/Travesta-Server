@@ -4,12 +4,12 @@ import { AppError } from "../utils/appError";
 import { HttpStatusCode } from "../constants/HttpStatusCodes";
 import fs from 'fs/promises';
 
-export const validateRequest = (schema: ZodSchema<any>) => {
+export const validateRequest = (schema: ZodSchema) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
             schema.parse(req.body);
             next();
-        } catch (error: any) {
+        } catch (error) {
             if (error instanceof ZodError) {
                 if (req.file) {
                     await fs.unlink(req.file.path).catch(() => { });

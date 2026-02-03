@@ -139,6 +139,7 @@ export const TOKENS = {
   BookingTransactionUseCase: 'BookingTransactionUseCase',
   AddMoneyToWalletUseCase: 'AddMoneyToWalletUseCase',
   GetTransactionsUseCase: 'GetTransactionsUseCase',
+  HandleStripeWebhookUseCase: 'HandleStripeWebhookUseCase',
 
   //rating UseCases
   CreateRatingUseCase: 'CreateRatingUseCase',

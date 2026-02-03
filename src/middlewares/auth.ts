@@ -19,7 +19,7 @@ export const authMiddleware = async (req: CustomRequest, res: Response, next: Ne
 
     try {
         if (!accessToken && !refreshToken) {
-            throw new AppError("Please sign in to continue.", HttpStatusCode.UNAUTHORIZED);
+            throw new AppError("Your session has expired. Please sign in again.", HttpStatusCode.UNAUTHORIZED);
         }
 
         // Access token decoding & verification
@@ -65,6 +65,6 @@ export const authMiddleware = async (req: CustomRequest, res: Response, next: Ne
         logger.error("Authentication failed", { error: error instanceof Error ? error.message : error });
         res.clearCookie("access_token");
         res.clearCookie("refresh_token");
-        next(error instanceof AppError ? error : new AppError("Authentication failed. Please sign in again.", HttpStatusCode.UNAUTHORIZED));
+        next(error instanceof AppError ? error : new AppError("Your session has expired. Please sign in again.", HttpStatusCode.UNAUTHORIZED));
     }
 };

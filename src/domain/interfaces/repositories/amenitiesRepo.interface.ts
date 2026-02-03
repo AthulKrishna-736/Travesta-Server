@@ -9,4 +9,5 @@ export interface IAmenitiesRepository {
     getActiveAmenities(): Promise<{ amenities: IAmenities[] | null, total: number }>
     findUsedActiveAmenities(): Promise<IAmenities[] | null>
     separateHotelAndRoomAmenities(amenityIds: string[]): Promise<{ hotelAmenities: IAmenities[], roomAmenities: IAmenities[] }>
+    findDuplicateAmenity(name: string, type: 'hotel' | 'room', excludeId?: string): Promise<IAmenities | null>
 }
