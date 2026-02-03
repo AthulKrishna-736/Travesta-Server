@@ -56,7 +56,10 @@ export const createUserSchema = z.object({
     email,
     password,
     phone,
-    role,
+    role: z.enum(["user", "vendor"], {
+        required_error: "Role is required",
+        invalid_type_error: "Invalid role value",
+    }),
     subscriptionType,
 })
 
@@ -131,7 +134,8 @@ export const forgotPassSchema = z.object({
 
 //updatepass
 export const updatePassSchema = z.object({
-    password,
+    oldPassword: password,
+    newPassword: password,
 })
 
 //google login 

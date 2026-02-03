@@ -5,7 +5,7 @@ export const subscriptionSchema = z.object({
         required_error: 'name is required',
         invalid_type_error: 'name must be string',
     })
-        .min(3, 'name must be at dleast 3 characters'),
+        .min(3, 'name must be at least 3 characters'),
 
     description: z.string({
         required_error: 'description is required',
@@ -31,3 +31,15 @@ export const subscriptionSchema = z.object({
     features: z.array(z.string({ invalid_type_error: 'features should be of string' }))
         .nonempty('features must have at least one item'),
 });
+
+
+export const subscribeUserSchema = z.object({
+    planId: z.string({
+        required_error: 'Plan Id is required',
+        invalid_type_error: 'Plan Id must be string',
+    }),
+    method: z.enum(['wallet'], {
+        invalid_type_error: 'Invalid payment method',
+        required_error: 'Payment method is required'
+    })
+})
