@@ -24,10 +24,11 @@ export class App {
   constructor() {
     this.app = express()
     this.server = http.createServer(this.app);
-    this.setSecurityMiddlewares()
-    this.setGlobalMiddlewares()
-    this.setRoutes()
-    this.setErrorHandling()
+    this.setSecurityMiddlewares();
+    this.setWebhookRoute();
+    this.setGlobalMiddlewares();
+    this.setRoutes();
+    this.setErrorHandling();
 
     this.io = new SocketIOServer(this.server, {
       cors: {
@@ -62,6 +63,10 @@ export class App {
     this.app.use('/api', limiter)
   }
 
+  private setWebhookRoute(): void {
+    this.app.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res, next) => container.resolve(WalletController).webhookHandler(req, res, next));
+  }
+
   private setGlobalMiddlewares(): void {
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true }))
@@ -75,7 +80,6 @@ export class App {
     this.app.use('/api/users', container.resolve(userRoutes).getRouter())
     this.app.use('/api/vendor', container.resolve(vendorRoutes).getRouter())
     this.app.use('/api/admin', container.resolve(adminRoutes).getRouter())
-    this.app.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res, next) => container.resolve(WalletController).webhookHandler(req, res, next))
   }
 
   private setErrorHandling(): void {
