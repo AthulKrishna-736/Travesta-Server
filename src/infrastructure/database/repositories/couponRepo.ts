@@ -4,6 +4,8 @@ import { ICoupon } from "../../../domain/interfaces/model/coupon.interface";
 import { couponModel, TCouponDocument } from "../models/couponModel";
 import { ICouponRepository } from "../../../domain/interfaces/repositories/couponRepo.interface";
 import { QueryOptions } from "mongoose";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
 @injectable()
 export class CouponRepository extends BaseRepository<TCouponDocument> implements ICouponRepository {
@@ -69,5 +71,24 @@ export class CouponRepository extends BaseRepository<TCouponDocument> implements
 
         return await coupon.save();
 
+    }
+
+    async validateCoupon(couponId: string, vendorId: string, total: number): Promise<ICoupon> {
+        const coupon = await this.model.findOne({
+            _id: couponId,
+            vendorId,
+            isBlocked: false,
+            startDate: { $lte: new Date() },
+            endDate: { $gte: new Date() },
+            minPrice: { $lte: total },
+            maxPrice: { $gte: total },
+            count: { $gt: 0 },
+        }).lean();
+
+        if (!coupon) {
+            throw new AppError('Invalid or expired coupon', HttpStatusCode.BAD_REQUEST);
+        }
+
+        return coupon;
     }
 }

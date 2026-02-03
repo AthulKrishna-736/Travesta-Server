@@ -12,6 +12,9 @@ import { TCreateBookingDTO } from '../../../../interfaceAdapters/dtos/booking.dt
 import { nanoid } from 'nanoid';
 import { IChatRepository } from '../../../../domain/interfaces/repositories/chatRepo.interface';
 import { INotificationService } from '../../../../domain/interfaces/services/notificationService.interface';
+import { IRoomRepository } from '../../../../domain/interfaces/repositories/roomRepo.interface';
+import { IOfferRepository } from '../../../../domain/interfaces/repositories/offerRepo.interface';
+import { ICouponRepository } from '../../../../domain/interfaces/repositories/couponRepo.interface';
 
 
 @injectable()
@@ -21,8 +24,60 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
         @inject(TOKENS.CreateBookingUseCase) private _bookingUsecase: ICreateBookingUseCase,
         @inject(TOKENS.TransactionRepository) private _transactionRepository: ITransactionRepository,
         @inject(TOKENS.ChatRepository) private _chatRepository: IChatRepository,
+        @inject(TOKENS.RoomRepository) private _roomRepository: IRoomRepository,
+        @inject(TOKENS.OfferRepository) private _offerRepository: IOfferRepository,
+        @inject(TOKENS.CouponRepository) private _couponRepository: ICouponRepository,
         @inject(TOKENS.NotificationService) private _notificationService: INotificationService,
     ) { }
+
+
+    private async calculateFinalPrice(booking: TCreateBookingDTO): Promise<{
+        baseAmount: number,
+        offerDiscount: number,
+        couponDiscount: number,
+        finalAmount: number
+    }> {
+
+        const nights = (booking.checkOut.getTime() - booking.checkIn.getTime()) / (1000 * 60 * 60 * 24);
+
+        if (nights <= 0) {
+            throw new AppError('Invalid stay duration', HttpStatusCode.BAD_REQUEST);
+        }
+
+        const { price, roomType, hotelId } = await this._roomRepository.getRoomPrice(booking.roomId);
+
+        let baseAmount = price * nights * booking.roomsCount;
+
+        let offerDiscount = 0;
+        const offers = await this._offerRepository.findApplicableOffers(
+            roomType,
+            new Date(),
+            hotelId
+        );
+
+        if (offers.length) {
+            const bestOffer = offers.reduce((best, curr) => curr.discountValue > best.discountValue ? curr : best);
+
+            offerDiscount = bestOffer.discountType === 'percent' ? (baseAmount * bestOffer.discountValue) / 100 : bestOffer.discountValue;
+        }
+
+        let amountAfterOffer = baseAmount - offerDiscount;
+
+        let couponDiscount = 0;
+        if (booking.couponId) {
+            const coupon = await this._couponRepository.validateCoupon(booking.couponId, booking.userId, amountAfterOffer);
+            couponDiscount = coupon.type === 'percent' ? (amountAfterOffer * coupon.value) / 100 : coupon.value;
+        }
+
+        const finalAmount = Math.max(amountAfterOffer - couponDiscount, 0);
+
+        return {
+            baseAmount,
+            offerDiscount,
+            couponDiscount,
+            finalAmount,
+        };
+    }
 
     async bookingTransaction(vendorId: string, bookingData: TCreateBookingDTO, method: 'online' | 'wallet'): Promise<{ message: string }> {
         const [userWallet, vendorWallet] = await Promise.all([
@@ -32,16 +87,21 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
         if (!userWallet || !vendorWallet) {
             throw new AppError(WALLET_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
         }
-        if (method === 'wallet' && userWallet.balance < bookingData.totalPrice) {
+
+        const price = await this.calculateFinalPrice(bookingData);
+
+        if (method === 'wallet' && userWallet.balance < price.finalAmount) {
             throw new AppError(WALLET_ERROR_MESSAGES.Insufficient, HttpStatusCode.BAD_REQUEST);
         }
 
+        // started transactions
         const session = await mongoose.startSession();
         session.startTransaction();
 
         try {
-            const finalBookingData: TCreateBookingDTO = {
+            const finalBookingData: TCreateBookingDTO & { totalPrice: number } = {
                 ...bookingData,
+                totalPrice: price.finalAmount,
                 status: 'confirmed',
                 payment: 'success',
             };

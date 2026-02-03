@@ -21,6 +21,11 @@ export const createAmenitySchema = z.object({
             /^[A-Za-z0-9\s,.'"-?!()&]+$/,
             "Description can contain letters, numbers, spaces, and basic punctuation"
         ),
+    type: z
+        .enum(["hotel", "room"], {
+            invalid_type_error: 'Invalid amenity type',
+            required_error: 'Amenity type is required',
+        }),
 });
 
 

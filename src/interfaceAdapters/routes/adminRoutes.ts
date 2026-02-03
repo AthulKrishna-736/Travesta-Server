@@ -47,7 +47,7 @@ export class adminRoutes extends BaseRouter {
 
         this.router.route('/amenities/:amenityId')
             .put(authMiddleware, authorizeRoles('admin'), validateRequest(updateAmenitySchema), (req: CustomRequest, res, next) => this._amenityController.updateAmenity(req, res, next))
-            .patch(authMiddleware, authorizeRoles('admin'), validateRequest(updateAmenitySchema), (req: CustomRequest, res, next) => this._amenityController.blockUnblockAmenity(req, res, next));
+            .patch(authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._amenityController.blockUnblockAmenity(req, res, next));
 
         //subscription
         this.router.route('/plans')

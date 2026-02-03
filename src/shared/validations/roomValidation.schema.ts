@@ -97,3 +97,60 @@ export const updateRoomSchema = z.object({
         z.array(z.string()).optional()
     ),
 });
+
+
+export const createBookingSchema = z.object({
+    vendorId: z
+        .string({
+            required_error: 'Vendor ID is required',
+            invalid_type_error: 'Invalid vendor ID'
+        }),
+    hotelId: z
+        .string({
+            required_error: 'Hotel ID is required',
+            invalid_type_error: 'Invalid hotel ID'
+        }),
+    roomId: z
+        .string({
+            required_error: 'Room ID is required',
+            invalid_type_error: 'Invalid room ID'
+        }),
+    checkIn: z
+        .string({ required_error: 'Check-in date is required' })
+        .datetime({ message: 'Invalid check-in date format' }),
+
+    checkOut: z
+        .string({ required_error: 'Check-out date is required' })
+        .datetime({ message: 'Invalid check-out date format' }),
+
+    guests: z
+        .number({ required_error: 'Guests count is required' })
+        .int('Guests must be an integer')
+        .min(1, 'At least 1 guest is required')
+        .max(10, 'Guests limit exceeded'),
+
+    roomsCount: z
+        .number({ required_error: 'Rooms count is required' })
+        .int('Rooms count must be an integer')
+        .min(1, 'Minimum 1 room required')
+        .max(5, 'Maximum 5 rooms allowed'),
+
+    couponId: z
+        .string({
+            invalid_type_error: 'Invalid Coupon Id'
+        })
+        .nullable()
+        .optional(),
+    method: z.
+        enum(['wallet', 'online'], {
+            required_error: 'Payment Method is required',
+            invalid_type_error: 'Invalid payment method'
+        }),
+})
+    .refine(
+        (data) => new Date(data.checkOut) > new Date(data.checkIn),
+        {
+            message: 'Check-out date must be after check-in date',
+            path: ['checkOut'],
+        }
+    )

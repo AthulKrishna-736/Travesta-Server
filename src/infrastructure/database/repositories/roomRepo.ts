@@ -5,6 +5,8 @@ import { IRoom, TCreateRoomData, TUpdateRoomData } from "../../../domain/interfa
 import { IRoomRepository } from "../../../domain/interfaces/repositories/roomRepo.interface";
 import { bookingModel } from "../models/bookingModel";
 import mongoose, { Types, PipelineStage, QueryOptions } from "mongoose";
+import { AppError } from "../../../utils/appError";
+import { HttpStatusCode } from "../../../constants/HttpStatusCodes";
 
 @injectable()
 export class RoomRepository extends BaseRepository<TRoomDocument> implements IRoomRepository {
@@ -68,6 +70,19 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
             .lean<IRoom[]>();
 
         return rooms;
+    }
+
+    async getRoomPrice(roomId: string): Promise<{ price: number; roomType: string; hotelId: string }> {
+        const room = await this.model.findById(roomId).lean();
+        if (!room) {
+            throw new AppError('Room not available', HttpStatusCode.BAD_REQUEST);
+        }
+
+        return {
+            price: room.basePrice,
+            roomType: room.roomType,
+            hotelId: room.hotelId.toString(),
+        };
     }
 
     async findOtherRoomsByHotel(hotelId: string, excludeRoomId: string): Promise<IRoom[]> {
