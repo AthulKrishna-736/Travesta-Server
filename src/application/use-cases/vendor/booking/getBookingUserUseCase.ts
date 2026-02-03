@@ -6,9 +6,7 @@ import { IAwsS3Service } from '../../../../domain/interfaces/services/awsS3Servi
 import { awsS3Timer } from '../../../../infrastructure/config/jwtConfig';
 import { TResponseBookingDTO } from '../../../../interfaceAdapters/dtos/booking.dto';
 import { ResponseMapper } from '../../../../utils/responseMapper';
-import { AppError } from '../../../../utils/appError';
-import { BOOKING_ERROR_MESSAGES } from '../../../../constants/errorMessages';
-import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
+
 
 @injectable()
 export class GetBookingsByUserUseCase implements IGetBookingsByUserUseCase {
@@ -17,26 +15,22 @@ export class GetBookingsByUserUseCase implements IGetBookingsByUserUseCase {
     @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
   ) { }
 
-  async getBookingByUser(
-    userId: string,
-    page: number,
-    limit: number,
-    search?: string,
-    sort?: string
-  ): Promise<{ bookings: TResponseBookingDTO[], total: number, message: string }> {
+  async getBookingByUser(userId: string, page: number, limit: number, search?: string, sort?: string): Promise<{ bookings: TResponseBookingDTO[], total: number, message: string }> {
     const { bookings, total } = await this._bookingRepository.findBookingsByUser(userId, page, limit, search, sort);
 
     if (!bookings || bookings.length == 0 || total == 0) {
-      throw new AppError(BOOKING_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
+      return {
+        bookings: [],
+        total: 0,
+        message: 'User have no bookings',
+      }
     }
 
     const enrichedBookings = await Promise.all(
       bookings.map(async (b) => {
 
         if (b.hotel.images && b.hotel.images.length > 0) {
-          b.hotel.images = await Promise.all(
-            b.hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
-          )
+          b.hotel.images = await Promise.all(b.hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)))
         }
 
         return b;

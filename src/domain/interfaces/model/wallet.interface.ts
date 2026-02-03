@@ -2,6 +2,7 @@ import { Types } from "mongoose";
 import { TCreateBookingData } from "./booking.interface";
 import { TResponseWalletDTO } from "../../../interfaceAdapters/dtos/wallet.dto";
 import { TResponseTransactionDTO } from "../../../interfaceAdapters/dtos/transactions.dto";
+import Stripe from "stripe";
 
 export type TTransactionType = 'credit' | 'debit';
 export type TRelatedType = 'Booking' | 'Subscription';
@@ -61,4 +62,8 @@ export interface IAddMoneyToWalletUseCase {
 
 export interface IGetTransactionsUseCase {
     getTransactions(userId: string, page: number, limit: number): Promise<{ transactions: TResponseTransactionDTO[], total: number, message: string }>
+}
+
+export interface IHandleStripeWebhookUseCase {
+    execute(event: Stripe.Event): Promise<void>
 }
