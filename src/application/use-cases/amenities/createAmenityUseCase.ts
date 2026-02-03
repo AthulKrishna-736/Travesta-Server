@@ -17,6 +17,12 @@ export class CreateAmenityUseCase implements ICreateAmenityUseCase {
     ) { }
 
     async createAmenity(data: TCreateAmenityDTO): Promise<{ amenity: TResponseAmenityDTO, message: string }> {
+        const duplicate = await this._amenitiesRepository.findDuplicateAmenity(data.name, data.type)
+
+        if (duplicate) {
+            throw new AppError(AMENITIES_ERROR_MESSAGES.alreadyExists, HttpStatusCode.CONFLICT)
+        }
+
         const amenity = await this._amenitiesRepository.createAmenity(data);
 
         if (!amenity) {

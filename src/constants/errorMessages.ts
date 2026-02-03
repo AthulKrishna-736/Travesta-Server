@@ -55,6 +55,7 @@ export const AMENITIES_ERROR_MESSAGES = {
     createFail: 'Failed to create amenity',
     updateFail: 'Failed to update amenity',
     notFound: 'No amenities found',
+    alreadyExists: 'Duplicate amenity name already exists'
 }
 
 export const BOOKING_ERROR_MESSAGES = {

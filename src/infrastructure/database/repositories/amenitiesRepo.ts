@@ -80,4 +80,19 @@ export class AmenitiesRepository extends BaseRepository<TAmenitiesDocument> impl
 
         return { hotelAmenities, roomAmenities };
     }
+
+    async findDuplicateAmenity(name: string, type: 'hotel' | 'room', excludeId?: string): Promise<IAmenities | null> {
+
+        const filter: QueryOptions = {
+            name: { $regex: `^${name.trim()}$`, $options: 'i' },
+            type,
+        }
+
+        if (excludeId) {
+            filter._id = { $ne: excludeId }
+        }
+
+        const amenity = await this.model.findOne(filter)
+        return amenity?.toObject() || null
+    }
 }
