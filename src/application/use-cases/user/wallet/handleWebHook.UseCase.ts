@@ -1,6 +1,5 @@
 import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../../constants/token";
-import { IStripeService } from "../../../../domain/interfaces/services/stripeService.interface";
 import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, IHandleStripeWebhookUseCase } from "../../../../domain/interfaces/model/wallet.interface";
 import { ISubscribePlanUseCase } from "../../../../domain/interfaces/model/subscription.interface";
 import Stripe from "stripe";

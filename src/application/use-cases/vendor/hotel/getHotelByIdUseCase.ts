@@ -19,27 +19,6 @@ export class GetHotelByIdUseCase implements IGetHotelByIdUseCase {
         @inject(TOKENS.AwsS3Service) private _awsS3Service: IAwsS3Service,
     ) { }
 
-    async getHotelBySlug(hotelSlug: string): Promise<{ hotel: TResponseHotelDTO; message: string }> {
-
-        const hotel = await this._hotelRepository.findHotelBySlug(hotelSlug);
-        if (!hotel) {
-            throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
-        }
-
-        if (!hotel.images || hotel.images.length <= 0) {
-            throw new AppError(HOTEL_ERROR_MESSAGES.noImagesfound, HttpStatusCode.NOT_FOUND);
-        }
-
-        const signedHotelImages = await Promise.all(
-            hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt))
-        );
-        hotel.images = signedHotelImages;
-
-        const customHotelMapping = ResponseMapper.mapHotelToResponseDTO(hotel);
-
-        return { hotel: customHotelMapping, message: HOTEL_RES_MESSAGES.getHotelById };
-    }
-
     async getHotelById(hotelId: string): Promise<{ hotel: TResponseHotelDTO; message: string }> {
 
         const hotel = await this._hotelRepository.findHotelById(hotelId);

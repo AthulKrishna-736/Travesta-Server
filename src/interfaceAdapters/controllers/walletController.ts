@@ -5,7 +5,7 @@ import { CustomRequest } from '../../utils/customRequest';
 import { ResponseHandler } from '../../middlewares/responseHandler';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
 import { AppError } from '../../utils/appError';
-import { IAddMoneyToWalletUseCase, IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from '../../domain/interfaces/model/wallet.interface';
+import { IBookingTransactionUseCase, ICreateWalletUseCase, IGetTransactionsUseCase, IGetWalletUseCase } from '../../domain/interfaces/model/wallet.interface';
 import { IStripeService } from '../../domain/interfaces/services/stripeService.interface';
 import { WALLET_RES_MESSAGES } from '../../constants/resMessages';
 import { Pagination } from '../../shared/types/common.types';
@@ -114,8 +114,8 @@ export class WalletController implements IWalletController {
     async getTransactions(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId = req.user?.userId;
-            const page = parseInt(req.query.page as string);
-            const limit = parseInt(req.query.limit as string);
+            const page = Number(req.query.page as string);
+            const limit = Number(req.query.limit as string);
 
             if (!userId) {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);

@@ -1,6 +1,6 @@
 import { CreateHotelUseCase } from "../../../application/use-cases/vendor/hotel/createHotelUseCase";
 import { UpdateHotelUseCase } from "../../../application/use-cases/vendor/hotel/updateHotelUseCase";
-import { GetHotelByIdUseCase } from "../../../application/use-cases/vendor/hotel/getHotelUseCase";
+import { GetHotelByIdUseCase } from "../../../application/use-cases/vendor/hotel/getHotelByIdUseCase";
 import { GetAllHotelsUseCase } from "../../../application/use-cases/vendor/hotel/getAllHotelsUseCase";
 import { GetBookingsByHotelUseCase } from "../../../application/use-cases/vendor/booking/getBookingHotelUseCase";
 import { GetVendorHotelsUseCase } from "../../../application/use-cases/vendor/hotel/getHotelsByVendorUseCase";

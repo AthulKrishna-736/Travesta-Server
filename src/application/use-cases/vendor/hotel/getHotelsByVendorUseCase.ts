@@ -48,27 +48,6 @@ export class GetVendorHotelsUseCase implements IGetVendorHotelsUseCase {
             message: HOTEL_RES_MESSAGES.getHotels,
         }
     }
-
-    async getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelDTO; message: string; }> {
-        const hotel = await this._hotelRepository.findHotelByVendor(vendorId, hotelId);
-        if (!hotel) {
-            throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
-        }
-
-        if (!hotel.images || hotel.images.length <= 0) {
-            throw new AppError(HOTEL_ERROR_MESSAGES.noImagesfound, HttpStatusCode.NOT_FOUND);
-        }
-
-        const signedHotelImages = await Promise.all(hotel.images.map(key => this._awsS3Service.getFileUrlFromAws(key, awsS3Timer.expiresAt)));
-        hotel.images = signedHotelImages;
-
-        const mappedHotel = ResponseMapper.mapHotelToResponseDTO(hotel);
-
-        return {
-            hotel: mappedHotel,
-            message: HOTEL_RES_MESSAGES.getHotels,
-        }
-    }
 }
 
 

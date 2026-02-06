@@ -31,7 +31,7 @@ export class NotificationController implements INotificationController {
                 message: req.body.message,
             }
             const { notification, message } = await this._createNotificationUseCase.createNotification(createNotification);
-            ResponseHandler.success(res, message, notification, HttpStatusCode.OK)
+            ResponseHandler.success(res, message, notification, HttpStatusCode.CREATED)
         } catch (error) {
             next(error)
         }
@@ -78,7 +78,7 @@ export class NotificationController implements INotificationController {
             if (!userId) throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
 
             const { message } = await this._markAllNotificationUseCase.markAllReadNotification(userId);
-            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, null, HttpStatusCode.NO_CONTENT);
         } catch (error) {
             next(error)
         }
@@ -90,7 +90,7 @@ export class NotificationController implements INotificationController {
             if (!notificationId) throw new AppError('Notification id missing', HttpStatusCode.BAD_REQUEST);
 
             const { message } = await this._markNotificationUseCase.markReadNotification(notificationId);
-            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
+            ResponseHandler.success(res, message, null, HttpStatusCode.NO_CONTENT);
         } catch (error) {
             next(error)
         }

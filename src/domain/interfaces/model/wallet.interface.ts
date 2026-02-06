@@ -1,8 +1,7 @@
 import { Types } from "mongoose";
-import { TCreateBookingData } from "./booking.interface";
+import Stripe from "stripe";
 import { TResponseWalletDTO } from "../../../interfaceAdapters/dtos/wallet.dto";
 import { TResponseTransactionDTO } from "../../../interfaceAdapters/dtos/transactions.dto";
-import Stripe from "stripe";
 import { TCreateBookingDTO } from "../../../interfaceAdapters/dtos/booking.dto";
 
 export type TTransactionType = 'credit' | 'debit';
