@@ -15,7 +15,6 @@ import { errorHandler } from './middlewares/errorHandler';
 import { container } from 'tsyringe';
 import { TOKENS } from './constants/token';
 import { WalletController } from './interfaceAdapters/controllers/walletController';
-import { validateContent } from './middlewares/validateContent';
 
 export class App {
   public app: Application;
@@ -71,7 +70,6 @@ export class App {
   private setGlobalMiddlewares(): void {
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true }))
-    this.app.use(validateContent)
 
     if (env.NODE_ENV === 'development') {
       logger.info(`Running in ${env.NODE_ENV} mode`)
