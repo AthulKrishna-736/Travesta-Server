@@ -55,12 +55,10 @@ export interface IUpdateHotelUseCase {
 
 export interface IGetHotelByIdUseCase {
     getHotelById(hotelId: string): Promise<{ hotel: TResponseHotelDTO, message: string }>;
-    getHotelBySlug(hotelSlug: string): Promise<{ hotel: TResponseHotelDTO, message: string }>
 }
 
 export interface IGetVendorHotelsUseCase {
     getVendorHotels(vendorId: string, page: number, limit: number, search?: string): Promise<{ hotels: TResponseHotelDTO[], total: number, message: string }>
-    getVendorHotel(vendorId: string, hotelId: string): Promise<{ hotel: TResponseHotelDTO, message: string }>
 }
 
 export interface IGetAllHotelsUseCase {
@@ -89,8 +87,8 @@ export interface IGetHotelAnalyticsUseCase {
 
 export interface IGetHotelDetailWithRoomUseCase {
     getHotelDetailWithRoom(
-        hotelSlug: string,
-        roomSlug: string,
+        hotelId: string,
+        roomId: string,
         checkIn: string,
         checkOut: string,
         rooms: number,

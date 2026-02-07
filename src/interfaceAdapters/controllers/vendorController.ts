@@ -41,7 +41,7 @@ export class VendorController implements IVendorController {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const files = req.files as any;
+            const files = req.files as { front: Express.Multer.File[], back: Express.Multer.File[] };
 
             if (!files || !files.front || !files.back) {
                 throw new AppError(AUTH_ERROR_MESSAGES.kycMissing, HttpStatusCode.BAD_REQUEST);

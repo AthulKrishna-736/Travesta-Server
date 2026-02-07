@@ -31,7 +31,7 @@ export class NotificationController implements INotificationController {
                 message: req.body.message,
             }
             const { notification, message } = await this._createNotificationUseCase.createNotification(createNotification);
-            ResponseHandler.success(res, message, notification, HttpStatusCode.OK)
+            ResponseHandler.success(res, message, notification, HttpStatusCode.CREATED)
         } catch (error) {
             next(error)
         }

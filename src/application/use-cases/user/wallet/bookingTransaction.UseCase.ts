@@ -46,7 +46,7 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
 
         const { price, roomType, hotelId } = await this._roomRepository.getRoomPrice(booking.roomId);
 
-        let baseAmount = price * nights * booking.roomsCount;
+        const baseAmount = price * nights * booking.roomsCount;
 
         let offerDiscount = 0;
         const offers = await this._offerRepository.findApplicableOffers(
@@ -61,7 +61,7 @@ export class BookingTransactionUseCase implements IBookingTransactionUseCase {
             offerDiscount = bestOffer.discountType === 'percent' ? (baseAmount * bestOffer.discountValue) / 100 : bestOffer.discountValue;
         }
 
-        let amountAfterOffer = baseAmount - offerDiscount;
+        const amountAfterOffer = baseAmount - offerDiscount;
 
         let couponDiscount = 0;
         if (booking.couponId) {

@@ -3,10 +3,7 @@ import { TOKENS } from '../../../../constants/token';
 import { IBookingRepository } from '../../../../domain/interfaces/repositories/bookingRepo.interface';
 import { IGetBookingsToVendorUseCase } from '../../../../domain/interfaces/model/booking.interface';
 import { TResponseBookingDTO } from '../../../../interfaceAdapters/dtos/booking.dto';
-import { BOOKING_ERROR_MESSAGES } from '../../../../constants/errorMessages';
-import { HttpStatusCode } from '../../../../constants/HttpStatusCodes';
 import { ResponseMapper } from '../../../../utils/responseMapper';
-import { AppError } from '../../../../utils/appError';
 
 @injectable()
 export class GetBookingsToVendorUseCase implements IGetBookingsToVendorUseCase {

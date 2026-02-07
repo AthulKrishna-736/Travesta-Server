@@ -48,7 +48,6 @@ export interface IUpdateRoomUseCase {
 
 export interface IGetRoomByIdUseCase {
     getRoomById(roomId: string): Promise<TResponseRoomDTO>;
-    getRoomBySlug(hotelSlug: string, roomSlug: string): Promise<TResponseRoomDTO>;
 }
 
 export interface IGetAvailableRoomsUseCase {

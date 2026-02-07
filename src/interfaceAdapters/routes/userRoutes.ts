@@ -20,7 +20,7 @@ import { IRatingController } from "../../domain/interfaces/controllers/ratingCon
 import { ICouponController } from "../../domain/interfaces/controllers/couponController.interface";
 import { INotificationController } from "../../domain/interfaces/controllers/notificationController.interface";
 import { createUserSchema, forgotPassSchema, googleLoginSchema, loginSchema, resendOtpSchema, updatePassSchema, updateUserSchema, verifyOtp } from "../../shared/validations/authValidation.schema";
-import { createPaymentIntentSchema, createWalletSchema, updateWalletSchema } from "../../shared/validations/walletValidation.schema";
+import { createPaymentIntentSchema, createWalletSchema } from "../../shared/validations/walletValidation.schema";
 import { subscribeUserSchema } from "../../shared/validations/subscriptionValidation.schema";
 import { createBookingSchema } from "../../shared/validations/roomValidation.schema";
 
@@ -47,14 +47,14 @@ export class userRoutes extends BaseRouter {
     protected initializeRoutes(): void {
         //authentication
         this.router
-            .post('/auth/signup', validateRequest(createUserSchema), (req: CustomRequest, res, next) => this._authController.register(req, res, next))
-            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res, next) => this._authController.login(req, res, next))
-            .post('/auth/google-login', validateRequest(googleLoginSchema), (req: CustomRequest, res, next) => this._authController.loginGoogle(req, res, next))
-            .post('/auth/verifyOtp', validateRequest(verifyOtp), (req: CustomRequest, res, next) => this._authController.verifyOTP(req, res, next))
-            .post('/auth/resendOtp', validateRequest(resendOtpSchema), (req: CustomRequest, res, next) => this._authController.resendOtp(req, res, next))
-            .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res, next) => this._authController.forgotPassword(req, res, next))
-            .patch('/auth/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res, next) => this._authController.updatePassword(req, res, next))
-            .post('/auth/logout', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._authController.logout(req, res, next))
+            .post('/signup', validateRequest(createUserSchema), (req: CustomRequest, res, next) => this._authController.register(req, res, next))
+            .post('/login', validateRequest(loginSchema), (req: CustomRequest, res, next) => this._authController.login(req, res, next))
+            .post('/google-login', validateRequest(googleLoginSchema), (req: CustomRequest, res, next) => this._authController.loginGoogle(req, res, next))
+            .post('/otp/verify', validateRequest(verifyOtp), (req: CustomRequest, res, next) => this._authController.verifyOTP(req, res, next))
+            .post('/otp/resend', validateRequest(resendOtpSchema), (req: CustomRequest, res, next) => this._authController.resendOtp(req, res, next))
+            .post('/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res, next) => this._authController.forgotPassword(req, res, next))
+            .patch('/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res, next) => this._authController.updatePassword(req, res, next))
+            .post('/logout', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._authController.logout(req, res, next))
 
         //profile
         this.router.route('/profile')
@@ -68,12 +68,12 @@ export class userRoutes extends BaseRouter {
         this.router
             .get('/hotels', (req: CustomRequest, res, next) => this._hotelController.getAllHotelsToUser(req, res, next))
             .get('/hotels/trending', (req: CustomRequest, res, next) => this._hotelController.getTrendingHotels(req, res, next))
-            .get('/hotels/:hotelSlug', (req: CustomRequest, res, next) => this._hotelController.getHotelBySlug(req, res, next))
-            .get('/hotel/:hotelSlug/details/:roomSlug', (req: CustomRequest, res, next) => this._hotelController.getHotelDetailsWithRoom(req, res, next))
+            .get('/hotels/:hotelId', (req: CustomRequest, res, next) => this._hotelController.getHotelById(req, res, next))
+            .get('/hotels/:hotelId/rooms/:roomId', (req: CustomRequest, res, next) => this._hotelController.getHotelDetailsWithRoom(req, res, next))
 
         //rooms
         this.router
-            .get('/room/:hotelSlug/:roomSlug', (req: CustomRequest, res, next) => this._roomController.getRoomBySlug(req, res, next));
+            .get('/rooms/:roomId', (req: CustomRequest, res, next) => this._roomController.getRoomById(req, res, next));
 
         //chat
         this.router
@@ -81,14 +81,15 @@ export class userRoutes extends BaseRouter {
             .get('/chat/vendors', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getVendorsChatWithUser(req, res, next))
             .get('/chat/unread', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getUnreadMsg(req, res, next))
             .get('/chat/:userId/messages', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.getChatMessages(req, res, next))
-            .post('/chat/:receiverId/read', authMiddleware, authorizeRoles('user', 'admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.readMessage(req, res, next))
+            .patch('/chat/messages/:messageId', authMiddleware, authorizeRoles('user', 'admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._chatController.readMessage(req, res, next))
 
         // booking
         this.router.route('/bookings')
-            .get(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getBookingsByUser(req, res, next));
+            .get(authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getBookingsByUser(req, res, next))
+            .post(authMiddleware, authorizeRoles('user'), checkUserBlock, validateRequest(createBookingSchema), (req: CustomRequest, res, next) => this._walletController.BookingConfirmTransaction(req, res, next));
 
         this.router
-            .delete('/booking/:bookingId', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.cancelBooking(req, res, next));
+            .delete('/bookings/:bookingId', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.cancelBooking(req, res, next));
 
         //amenities
         this.router.route('/amenities')
@@ -96,26 +97,27 @@ export class userRoutes extends BaseRouter {
 
         //subscription
         this.router
-            .get('/plans', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getActiveSubscriptions(req, res, next))
             .get('/plans/active', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getUserActivePlan(req, res, next))
-            .post('/plans/cancel', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.cancelUserSubscription(req, res, next))
 
+        this.router.route('/plans')
+            .get(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getActiveSubscriptions(req, res, next))
+            .patch(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.cancelUserSubscription(req, res, next))
 
         // wallet
-        this.router.route('/wallet')
+        this.router.route('/wallets')
             .post(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, validateRequest(createWalletSchema), (req: CustomRequest, res, next) => this._walletController.createWallet(req, res, next))
             .get(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getWallet(req, res, next))
 
         this.router
-            .post('/payment/online', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, validateRequest(createPaymentIntentSchema), (req: CustomRequest, res, next) => this._walletController.createPaymentIntent(req, res, next))
-            .post('/payment/booking', authMiddleware, authorizeRoles('user'), checkUserBlock, validateRequest(createBookingSchema),(req: CustomRequest, res, next) => this._walletController.BookingConfirmTransaction(req, res, next))
-            .post('/payment/subscribe', authMiddleware, authorizeRoles('user'), checkUserBlock, validateRequest(subscribeUserSchema), (req: CustomRequest, res, next) => this._walletController.subscriptionConfirmTransaction(req, res, next))
+            .post('/payments/intent', authMiddleware, authorizeRoles('user', 'vendor'), checkUserBlock, validateRequest(createPaymentIntentSchema), (req: CustomRequest, res, next) => this._walletController.createPaymentIntent(req, res, next))
+            .post('/payments/bookings', authMiddleware, authorizeRoles('user'), checkUserBlock, validateRequest(createBookingSchema), (req: CustomRequest, res, next) => this._walletController.BookingConfirmTransaction(req, res, next))
+            .post('/payments/subscriptions', authMiddleware, authorizeRoles('user'), checkUserBlock, validateRequest(subscribeUserSchema), (req: CustomRequest, res, next) => this._walletController.subscriptionConfirmTransaction(req, res, next))
 
         this.router
             .get('/transactions', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._walletController.getTransactions(req, res, next));
 
         //rating
-        this.router.route('/rating')
+        this.router.route('/ratings')
             .post(authMiddleware, authorizeRoles('user'), checkUserBlock, upload.array('images', 3), (req: CustomRequest, res, next) => this._ratingController.createRating(req, res, next))
             .put(authMiddleware, authorizeRoles('user'), checkUserBlock, upload.array('images', 3), (req: CustomRequest, res, next) => this._ratingController.updateRating(req, res, next))
 
@@ -124,10 +126,12 @@ export class userRoutes extends BaseRouter {
             .get('/coupons/:vendorId', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.getUserCoupons(req, res, next));
 
         //Notification
+        this.router.route('/notifications')
+            .get(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getUserNotification(req, res, next))
+            .put(authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markAllNotification(req, res, next))
+
         this.router
-            .get('/notifications', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getUserNotification(req, res, next))
             .get('/notifications/events', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.getLiveNotification(req, res, next))
-            .put('/notifications', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markAllNotification(req, res, next))
             .patch('/notifications/:notificationId', authMiddleware, authorizeRoles('user', 'vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._notificationController.markNotification(req, res, next))
     }
 }

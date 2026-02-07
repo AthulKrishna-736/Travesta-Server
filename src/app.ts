@@ -72,7 +72,7 @@ export class App {
     this.app.use(express.urlencoded({ extended: true }))
 
     if (env.NODE_ENV === 'development') {
-      logger.info('Running in development mode')
+      logger.info(`Running in ${env.NODE_ENV} mode`)
     }
   }
 

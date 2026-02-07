@@ -181,22 +181,6 @@ export class HotelController implements IHotelController {
         }
     }
 
-
-    async getHotelBySlug(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const { hotelSlug } = req.params;
-
-            if (!hotelSlug) {
-                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            }
-
-            const { message, hotel } = await this._getHotelByIdUseCase.getHotelBySlug(hotelSlug);
-            ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
-        } catch (error) {
-            next(error);
-        }
-    }
-
     async getAllHotelsToUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const PAGE = Number(req.query.page) || 1;
@@ -248,8 +232,8 @@ export class HotelController implements IHotelController {
     async getHotelsByVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const VENDOR_ID = req.user?.userId;
-            const PAGE = parseInt(req.query.page as string, 10);
-            const LIMIT = parseInt(req.query.limit as string, 10);
+            const PAGE = Number(req.query.page);
+            const LIMIT = Number(req.query.limit);
             const SEARCH = req.query.search as string;
 
             if (!VENDOR_ID) {
@@ -259,26 +243,6 @@ export class HotelController implements IHotelController {
             const { hotels, total, message } = await this._getHotelsByVendorUseCase.getVendorHotels(VENDOR_ID, PAGE, LIMIT, SEARCH);
             const meta: Pagination = { currentPage: PAGE, pageSize: LIMIT, totalData: total, totalPages: Math.ceil(total / LIMIT) };
             ResponseHandler.success(res, message, hotels, HttpStatusCode.OK, meta);
-        } catch (error) {
-            next(error);
-        }
-    }
-
-    async getHotelByVendor(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const VENDOR_ID = req.user?.userId;
-            const { hotelId } = req.params;
-
-            if (!VENDOR_ID) {
-                throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
-            }
-
-            if (!hotelId) {
-                throw new AppError(HOTEL_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_GATEWAY);
-            }
-
-            const { hotel, message } = await this._getHotelsByVendorUseCase.getVendorHotel(VENDOR_ID, hotelId);
-            ResponseHandler.success(res, message, hotel, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }
@@ -302,7 +266,7 @@ export class HotelController implements IHotelController {
 
     async getHotelDetailsWithRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const { hotelSlug, roomSlug } = req.params;
+            const { hotelId, roomId } = req.params;
 
             const CHECK_IN = req.query.checkIn as string;
             const CHECK_OUT = req.query.checkOut as string;
@@ -310,11 +274,11 @@ export class HotelController implements IHotelController {
             const ADULTS = Number(req.query.adults || 1);
             const CHILDREN = Number(req.query.children || 0);
 
-            if (!hotelSlug || !roomSlug) {
+            if (!hotelId || !roomId) {
                 throw new AppError('Hotel id or room id is missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { hotel, room, otherRooms, message } = await this._getHotelDetailsWithRoom.getHotelDetailWithRoom(hotelSlug, roomSlug, CHECK_IN, CHECK_OUT, ROOMS, ADULTS, CHILDREN);
+            const { hotel, room, otherRooms, message } = await this._getHotelDetailsWithRoom.getHotelDetailWithRoom(hotelId, roomId, CHECK_IN, CHECK_OUT, ROOMS, ADULTS, CHILDREN);
             ResponseHandler.success(res, message, { hotel, room, otherRooms }, HttpStatusCode.OK);
         } catch (error) {
             next(error);

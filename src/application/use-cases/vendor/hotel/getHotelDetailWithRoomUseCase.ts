@@ -30,8 +30,8 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
     ) { }
 
     async getHotelDetailWithRoom(
-        hotelSlug: string,
-        roomSlug: string,
+        hotelId: string,
+        roomId: string,
         checkIn: string,
         checkOut: string,
         rooms: number,
@@ -39,10 +39,10 @@ export class GetHotelDetailsWithRoomUseCase implements IGetHotelDetailWithRoomUs
         children: number
     ): Promise<{ hotel: TResponseHotelDTO, room: TResponseRoomDTO, otherRooms: TResponseRoomDTO[], message: string }> {
 
-        const hotel = await this._hotelRepository.findHotelBySlug(hotelSlug);
+        const hotel = await this._hotelRepository.findHotelById(hotelId);
         if (!hotel || !hotel._id) throw new AppError(HOTEL_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
-        const room = await this._roomRepository.findRoomBySlug(hotel._id, roomSlug);
+        const room = await this._roomRepository.findRoomById(roomId);
         if (!room || !room._id) throw new AppError(ROOM_ERROR_MESSAGES.notFound, HttpStatusCode.NOT_FOUND);
 
         const otherRooms = await this._roomRepository.findOtherRoomsByHotel(hotel._id, room._id);

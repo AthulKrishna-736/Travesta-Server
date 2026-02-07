@@ -3,9 +3,6 @@ import { TOKENS } from "../../../../constants/token";
 import { IBookingRepository } from "../../../../domain/interfaces/repositories/bookingRepo.interface";
 import { IGetBookingsByHotelUseCase } from "../../../../domain/interfaces/model/booking.interface";
 import { TResponseBookingDTO } from "../../../../interfaceAdapters/dtos/booking.dto";
-import { AppError } from "../../../../utils/appError";
-import { BOOKING_ERROR_MESSAGES } from "../../../../constants/errorMessages";
-import { HttpStatusCode } from "../../../../constants/HttpStatusCodes";
 import { ResponseMapper } from "../../../../utils/responseMapper";
 
 @injectable()

@@ -24,12 +24,12 @@ export class AdminController implements IAdminController {
 
     async blockOrUnblockUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
-            const { customerId } = req.params;
-            if (!customerId) {
+            const { userId } = req.params;
+            if (!userId) {
                 throw new AppError(AUTH_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
 
-            const { user, message } = await this._blockUnblockUserUseCase.blockUnblockUser(customerId);
+            const { user, message } = await this._blockUnblockUserUseCase.blockUnblockUser(userId);
             ResponseHandler.success(res, message, user, HttpStatusCode.OK);
         } catch (error) {
             next(error);
@@ -47,7 +47,6 @@ export class AdminController implements IAdminController {
 
             const { users, total } = await this._getAllUsersUsecase.getAllUsers(page, limit, role, search, sortField, sortOrder);
             const meta: Pagination = { currentPage: page, pageSize: limit, totalData: total, totalPages: Math.ceil(total / limit) }
-
             ResponseHandler.success(res, ADMIN_RES_MESSAGES.users, users, HttpStatusCode.OK, meta);
         } catch (error) {
             next(error);
@@ -85,7 +84,7 @@ export class AdminController implements IAdminController {
         }
     }
 
-    async getAdminAnalytics(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+    async getAdminAnalytics(_req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const { data, message } = await this._getAdminAnalyticsUseCase.getAnalytics();
             ResponseHandler.success(res, message, data, HttpStatusCode.OK);

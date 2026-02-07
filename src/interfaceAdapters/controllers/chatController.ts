@@ -121,12 +121,12 @@ export class ChatController implements IChatController {
     async readMessage(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const user = req.user?.userId;
-            const { receiverId } = req.params;
-            if (!user || !receiverId) {
+            const { messageId } = req.params;
+            if (!user || !messageId) {
                 throw new AppError('Sender or receiver id missing', HttpStatusCode.BAD_REQUEST);
             }
 
-            const { message } = await this._markMessageRead.markMsgAsRead(user, receiverId)
+            const { message } = await this._markMessageRead.markMsgAsRead(user, messageId)
             ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);

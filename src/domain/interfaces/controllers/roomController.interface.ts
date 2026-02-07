@@ -5,6 +5,5 @@ export interface IRoomController {
     createRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     updateRoom(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getRoomById(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
-    getRoomBySlug(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getAllRooms(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
 }

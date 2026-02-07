@@ -28,23 +28,6 @@ export class RoomRepository extends BaseRepository<TRoomDocument> implements IRo
         return room || null;
     }
 
-    async findRoomBySlug(hotelId: string, slug: string): Promise<IRoom | null> {
-        if (!mongoose.Types.ObjectId.isValid(hotelId)) {
-            return null;
-        }
-
-        const room = await this.model
-            .findOne({ hotelId: new mongoose.Types.ObjectId(hotelId), slug })
-            .populate({
-                path: "hotelId",
-                select: "name images rating city state address amenities tags",
-            })
-            .populate("amenities", "_id name")
-            .lean();
-
-        return room || null;
-    }
-
     async updateRoom(roomId: string, data: TUpdateRoomData): Promise<IRoom | null> {
         const room = await this.update(roomId, data);
         return room?.toObject() || null;

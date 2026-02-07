@@ -36,8 +36,7 @@ export const createPaymentIntentSchema = z.object({
             invalid_type_error: "Amount must be a number",
         })
         .int("Amount must be an integer")
-        .min(50, "Minimum amount is 50")
-        .max(2000, "Maximum amount is 2000"),
+        .min(50, "Minimum amount is 50"),
 
     purpose: z.enum(["wallet", "booking", "subscription"], {
         required_error: "Purpose is required",
@@ -49,4 +48,34 @@ export const createPaymentIntentSchema = z.object({
             invalid_type_error: "Ref Id must be a string",
         })
         .optional(),
+}).superRefine((data, ctx) => {
+    if (data.purpose === "wallet") {
+        if (data.amount > 2000) {
+            ctx.addIssue({
+                path: ["amount"],
+                message: "Maximum amount for wallet is 2000",
+                code: z.ZodIssueCode.custom,
+            });
+        }
+    }
+
+    if (data.purpose === "subscription") {
+        if (data.amount > 1000) {
+            ctx.addIssue({
+                path: ["amount"],
+                message: "Maximum amount for subscription is 1000",
+                code: z.ZodIssueCode.custom,
+            });
+        }
+    }
+
+    if (data.purpose === "booking") {
+        if (data.amount > 500000) {
+            ctx.addIssue({
+                path: ["amount"],
+                message: "Maximum amount for booking is 500000",
+                code: z.ZodIssueCode.custom,
+            });
+        }
+    }
 });

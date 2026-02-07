@@ -44,14 +44,14 @@ export class vendorRoutes extends BaseRouter {
     protected initializeRoutes(): void {
         //authentication
         this.router
-            .post('/auth/signup', validateRequest(createUserSchema), (req: CustomRequest, res, next) => this._authController.register(req, res, next))
-            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res, next) => this._authController.login(req, res, next))
-            .post('/auth/google-login', validateRequest(googleLoginSchema), (req: CustomRequest, res, next) => this._authController.loginGoogle(req, res, next))
-            .post('/auth/verifyOtp', validateRequest(verifyOtp), (req: CustomRequest, res, next) => this._authController.verifyOTP(req, res, next))
-            .post('/auth/resendOtp', validateRequest(resendOtpSchema), (req: CustomRequest, res, next) => this._authController.resendOtp(req, res, next))
-            .post('/auth/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res, next) => this._authController.forgotPassword(req, res, next))
-            .patch('/auth/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res, next) => this._authController.updatePassword(req, res, next))
-            .post('/auth/logout', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._authController.logout(req, res, next));
+            .post('/signup', validateRequest(createUserSchema), (req: CustomRequest, res, next) => this._authController.register(req, res, next))
+            .post('/login', validateRequest(loginSchema), (req: CustomRequest, res, next) => this._authController.login(req, res, next))
+            .post('/google-login', validateRequest(googleLoginSchema), (req: CustomRequest, res, next) => this._authController.loginGoogle(req, res, next))
+            .post('/otp/verify', validateRequest(verifyOtp), (req: CustomRequest, res, next) => this._authController.verifyOTP(req, res, next))
+            .post('/otp/resend', validateRequest(resendOtpSchema), (req: CustomRequest, res, next) => this._authController.resendOtp(req, res, next))
+            .post('/forgot-password', validateRequest(forgotPassSchema), (req: CustomRequest, res, next) => this._authController.forgotPassword(req, res, next))
+            .patch('/reset-password', validateRequest(updatePassSchema), (req: CustomRequest, res, next) => this._authController.updatePassword(req, res, next))
+            .post('/logout', authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._authController.logout(req, res, next));
 
         //profile
         this.router.route('/profile')
@@ -69,8 +69,7 @@ export class vendorRoutes extends BaseRouter {
             .post(authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, upload.array('imageFile'), validateRequest(createHotelSchema), (req: CustomRequest, res, next) => this._hotelController.createHotel(req, res, next))
 
         this.router
-            .get('/hotel/:hotelId/analytics', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelAnalytics(req, res, next))
-            .get('/hotel/:hotelId', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelByVendor(req, res, next))
+            .get('/hotels/:hotelId/analytics', authMiddleware, authorizeRoles('admin', 'vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._hotelController.getHotelAnalytics(req, res, next))
 
         //rooms
         this.router.route('/rooms/:roomId')
@@ -97,14 +96,14 @@ export class vendorRoutes extends BaseRouter {
             .get('/analytics', authMiddleware, authorizeRoles('vendor', 'admin'), checkUserBlock, (req: CustomRequest, res, next) => this._bookingController.getVendorHotelAnalytics(req, res, next))
 
         this.router
-            .get('/ratings/:hotelSlug', (req: CustomRequest, res, next) => this._ratingController.getHotelRatings(req, res, next))
+            .get('/ratings/:hotelId', (req: CustomRequest, res, next) => this._ratingController.getHotelRatings(req, res, next))
 
         //coupons
-        this.router.route('/coupon')
+        this.router.route('/coupons')
             .get(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.getVendorCoupons(req, res, next))
             .post(authMiddleware, authorizeRoles('vendor'), checkUserBlock, validateRequest(createCouponSchema), (req: CustomRequest, res, next) => this._couponController.createCoupon(req, res, next))
 
-        this.router.route('/coupon/:couponId')
+        this.router.route('/coupons/:couponId')
             .patch(authMiddleware, authorizeRoles('vendor'), checkUserBlock, (req: CustomRequest, res, next) => this._couponController.toggleCouponStatus(req, res, next))
             .put(authMiddleware, authorizeRoles('vendor'), checkUserBlock, validateRequest(updateCouponSchema), (req: CustomRequest, res, next) => this._couponController.updateCoupon(req, res, next))
 

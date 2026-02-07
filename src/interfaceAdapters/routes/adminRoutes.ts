@@ -30,15 +30,17 @@ export class adminRoutes extends BaseRouter {
     protected initializeRoutes(): void {
         //authentication
         this.router
-            .post('/auth/login', validateRequest(loginSchema), (req: CustomRequest, res, next) => this._authController.login(req, res, next))
-            .post('/auth/logout', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._authController.logout(req, res, next));
+            .post('/login', validateRequest(loginSchema), (req: CustomRequest, res, next) => this._authController.login(req, res, next))
+            .post('/logout', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._authController.logout(req, res, next));
 
         //customers
         this.router
-            .get('/customers', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._adminController.getAllUsers(req, res, next))
-            .patch('/customers/:customerId/status', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._adminController.blockOrUnblockUser(req, res, next))
-            .get('/vendors/requests', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._adminController.getVendorRequest(req, res, next))
-            .patch('/vendors/:vendorId/verify', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._adminController.updateVendorReq(req, res, next));
+            .get('/users', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._adminController.getAllUsers(req, res, next))
+            .patch('/users/:userId', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._adminController.blockOrUnblockUser(req, res, next));
+
+        this.router
+            .get('/vendors', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._adminController.getVendorRequest(req, res, next))
+            .patch('/vendors/:vendorId', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._adminController.updateVendorReq(req, res, next));
 
         //amenities
         this.router.route('/amenities')
@@ -64,7 +66,7 @@ export class adminRoutes extends BaseRouter {
         //chat
         this.router
             .get('/chat/vendors', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getVendorsChatWithAdmin(req, res, next))
-            .get('/chat/unread', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getUnreadMsg(req, res, next))
+            .get('/chat/unreads', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getUnreadMsg(req, res, next))
             .get('/chat/:userId/messages', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getChatMessages(req, res, next));
 
         this.router
