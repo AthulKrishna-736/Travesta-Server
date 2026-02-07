@@ -64,7 +64,7 @@ export class BookingController implements IBookingController {
                 throw new AppError(BOOKING_ERROR_MESSAGES.IdMissing, HttpStatusCode.BAD_REQUEST);
             }
             const { message } = await this._cancelBookingUseCase.cancelBooking(bookingId, userId as string);
-            ResponseHandler.success(res, message, null, HttpStatusCode.NO_CONTENT);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

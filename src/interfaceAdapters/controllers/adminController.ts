@@ -78,7 +78,7 @@ export class AdminController implements IAdminController {
             }
 
             const { message } = await this._updateVendorReqUseCase.updateVendorReq(vendorId, isVerified, reason)
-            ResponseHandler.success(res, message, null, HttpStatusCode.NO_CONTENT);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

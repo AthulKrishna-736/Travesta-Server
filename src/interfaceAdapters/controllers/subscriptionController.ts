@@ -122,7 +122,7 @@ export class SubscriptionController implements ISubscriptionController {
             }
 
             const { message } = await this._cancelSubscriptionUseCase.cancelSubscription(userId);
-            ResponseHandler.success(res, message, null, HttpStatusCode.NO_CONTENT);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

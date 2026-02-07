@@ -96,13 +96,12 @@ export class userRoutes extends BaseRouter {
             .get((req: CustomRequest, res, next) => this._amenityController.getUsedActiveAmenities(req, res, next));
 
         //subscription
-        this.router.route('/plans')
-            .get(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getActiveSubscriptions(req, res, next))
-            .patch(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.cancelUserSubscription(req, res, next))
-
         this.router
             .get('/plans/active', authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getUserActivePlan(req, res, next))
 
+        this.router.route('/plans')
+            .get(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.getActiveSubscriptions(req, res, next))
+            .patch(authMiddleware, authorizeRoles('user'), checkUserBlock, (req: CustomRequest, res, next) => this._subscriptionController.cancelUserSubscription(req, res, next))
 
         // wallet
         this.router.route('/wallets')

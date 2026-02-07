@@ -127,7 +127,7 @@ export class ChatController implements IChatController {
             }
 
             const { message } = await this._markMessageRead.markMsgAsRead(user, messageId)
-            ResponseHandler.success(res, message, null, HttpStatusCode.NO_CONTENT);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }

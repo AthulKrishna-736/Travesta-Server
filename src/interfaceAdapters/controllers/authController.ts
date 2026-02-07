@@ -117,7 +117,7 @@ export class AuthController implements IAuthController {
             }
 
             await this._resetPassUseCase.resetPass(email, password)
-            ResponseHandler.success(res, AUTH_RES_MESSAGES.resetPass, null, HttpStatusCode.NO_CONTENT)
+            ResponseHandler.success(res, AUTH_RES_MESSAGES.resetPass, null, HttpStatusCode.OK)
         } catch (error) {
             next(error);
         }
@@ -170,7 +170,7 @@ export class AuthController implements IAuthController {
             res.clearCookie('access_token', { httpOnly: true, secure: true, sameSite: 'strict' });
             res.clearCookie('refresh_token', { httpOnly: true, secure: true, sameSite: 'strict' });
 
-            ResponseHandler.success(res, message, null, HttpStatusCode.NO_CONTENT);
+            ResponseHandler.success(res, message, null, HttpStatusCode.OK);
         } catch (error) {
             next(error);
         }
