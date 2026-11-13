@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import { Transporter, createTransport } from 'nodemailer';
 import { env } from '../config/env';
 import { AppError } from '../../utils/appError';
 import { HttpStatusCode } from '../../constants/HttpStatusCodes';
@@ -7,9 +7,9 @@ import { IMailService } from '../../domain/interfaces/services/mailService.inter
 
 @injectable()
 export class MailService implements IMailService {
-    private transporter: nodemailer.Transporter;
+    private transporter: Transporter;
     constructor() {
-        this.transporter = nodemailer.createTransport({
+        this.transporter = createTransport({
             service: 'gmail',
             auth: {
                 user: env.EMAIL,

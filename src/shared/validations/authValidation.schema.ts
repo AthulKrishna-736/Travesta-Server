@@ -1,31 +1,39 @@
-import { z } from "zod"
 
-const firstName = z.string({
-    required_error: "First name is required",
-    invalid_type_error: "First name must be a string",
-})
+import { z } from "zod";
+
+// Reusable error handler for required string fields
+const requiredString = (field: string) =>
+    z.string({
+        error: (issue) =>
+            issue.input === undefined
+                ? `${field} is required`
+                : `${field} must be a string`,
+    });
+
+// Reusable error handler for optional string fields
+const optionalString = (field: string) =>
+    z.string({
+        error: `${field} must be a string`,
+    });
+
+// First name
+const firstName = requiredString("First name")
     .min(2, "First name must be at least 2 characters")
     .max(30, "First name cannot exceed 30 characters");
 
-const lastName = z.string({
-    required_error: "Last name is required",
-    invalid_type_error: "Last name must be a string",
-})
+// Last name
+const lastName = requiredString("Last name")
     .min(2, "Last name must be at least 2 characters")
     .max(30, "Last name cannot exceed 30 characters");
 
-const email = z.string({
-    required_error: "Email is required",
-    invalid_type_error: "Email must be a string",
-})
+// Email
+const email = requiredString("Email")
     .trim()
     .email("Invalid email address")
     .max(50, "Email cannot exceed 50 characters");
 
-const password = z.string({
-    required_error: "Password is required",
-    invalid_type_error: "Password must be a string",
-})
+// Password
+const password = requiredString("Password")
     .min(6, "Password must be at least 6 characters")
     .max(30, "Password cannot exceed 30 characters")
     .regex(/[A-Z]/, "Must include an uppercase letter")
@@ -33,23 +41,26 @@ const password = z.string({
     .regex(/\d/, "Must include a number")
     .regex(/[!@#$%^&*]/, "Must include a special character");
 
-const phone = z.string({
-    required_error: "Phone number is required",
-    invalid_type_error: "Phone number must be a string",
-}).regex(/^\d{10}$/, "Phone number must be exactly 10 digits");
+// Phone
+const phone = requiredString("Phone number")
+    .regex(/^\d{10}$/, "Phone number must be exactly 10 digits");
 
+// Roles
 const role = z.enum(["user", "vendor", "admin"], {
-    required_error: "Role is required",
-    invalid_type_error: "Invalid role value",
+    error: (issue) =>
+        issue.input === undefined
+            ? "Role is required"
+            : "Invalid role value",
 });
 
 const subscriptionType = z.enum(["basic", "medium", "vip"], {
-    required_error: "Subscription type is required",
-    invalid_type_error: "Invalid subscription type",
+    error: (issue) =>
+        issue.input === undefined
+            ? "Subscription type is required"
+            : "Invalid subscription type",
 });
 
-
-//createuser
+// Create user
 export const createUserSchema = z.object({
     firstName,
     lastName,
@@ -57,13 +68,15 @@ export const createUserSchema = z.object({
     password,
     phone,
     role: z.enum(["user", "vendor"], {
-        required_error: "Role is required",
-        invalid_type_error: "Invalid role value",
+        error: (issue) =>
+            issue.input === undefined
+                ? "Role is required"
+                : "Invalid role value",
     }),
     subscriptionType,
-})
+});
 
-//update user
+// Update user
 export const updateUserSchema = z.object({
     firstName: firstName.optional(),
     lastName: lastName.optional(),
@@ -71,78 +84,68 @@ export const updateUserSchema = z.object({
     password: password.optional(),
     phone: phone.optional(),
     subscriptionType: subscriptionType.optional(),
-    profileImage: z.string({
-        invalid_type_error: "Profile image must be a string",
-    })
+
+    profileImage: optionalString("Profile image")
         .url("Profile image must be a valid URL")
         .optional(),
 
-    verificationReason: z.string({
-        invalid_type_error: "Verification reason must be a string",
-    })
+    verificationReason: optionalString("Verification reason")
         .min(1, "Verification reason cannot be empty")
         .optional(),
 
     isVerified: z.boolean({
-        invalid_type_error: "isVerified must be a boolean",
+        error: "isVerified must be a boolean",
     }).optional(),
 
     isBlocked: z.boolean({
-        invalid_type_error: "isBlocked must be a boolean",
+        error: "isBlocked must be a boolean",
     }).optional(),
+
 }).refine(data => Object.keys(data).length > 0, {
     message: "At least one field must be provided for update",
 });
 
-
-//login user
+// Login user
 export const loginSchema = z.object({
     email,
-    password: z.string({
-        required_error: "Password is required",
-        invalid_type_error: "Password must be a string",
-    }).min(6, "Password must be at least 6 characters")
+    password: requiredString("Password")
+        .min(6, "Password must be at least 6 characters"),
 });
 
-//verifyotp
+// Verify OTP
 export const verifyOtp = z.object({
-    userId: z.string({
-        required_error: 'UserId is required',
-        invalid_type_error: 'UserId must be a string',
+    userId: requiredString("UserId"),
+
+    otp: requiredString("OTP")
+        .length(6, "OTP must be 6 digits"),
+
+    purpose: z.enum(["signup", "reset"], {
+        error: (issue) =>
+            issue.input === undefined
+                ? "Purpose is required"
+                : 'Purpose must be either "signup" or "reset"',
     }),
-    otp: z.string().length(6, 'OTP must be 6 digits'),
-    purpose: z.enum(['signup', 'reset'], {
-        required_error: 'Purpose is required',
-        invalid_type_error: 'Purpose must be either "signup" or "reset"',
-    })
 });
 
-//resentotp
+// Resend OTP
 export const resendOtpSchema = z.object({
-    userId: z.string({
-        required_error: 'UserId is required',
-        invalid_type_error: 'UserId must be a string',
-    }),
+    userId: requiredString("UserId"),
 });
 
-
-//forgotpass
+// Forgot password
 export const forgotPassSchema = z.object({
     email,
     role,
-})
+});
 
-//updatepass
+// Update password
 export const updatePassSchema = z.object({
     oldPassword: password,
     newPassword: password,
-})
+});
 
-//google login 
+// Google login
 export const googleLoginSchema = z.object({
-    credential: z.string({
-        required_error: 'Credentials is required',
-        invalid_type_error: 'Credential must be string'
-    }),
+    credential: requiredString("Credentials"),
     role,
-})
+});

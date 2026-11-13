@@ -1,20 +1,19 @@
+
 import z from "zod";
 
 export const createRoomSchema = z.object({
     hotelId: z.string({
-        required_error: "Hotel ID is required",
-        invalid_type_error: "Hotel ID must be a string",
+        error: "Hotel ID is required",
     }),
 
     name: z.string({
-        required_error: "Room name is required",
-        invalid_type_error: "Room name must be a string",
+        error: "Room name is required",
     })
         .min(3, "Room name must be at least 3 characters")
         .max(50, "Room name must be less than 50 characters"),
 
     roomType: z.string({
-        required_error: "Room type is required",
+        error: "Room type is required",
     }),
 
     roomCount: z.preprocess(
@@ -23,7 +22,7 @@ export const createRoomSchema = z.object({
     ),
 
     bedType: z.string({
-        required_error: "Bed type is required",
+        error: "Bed type is required",
     }),
 
     guest: z.preprocess(
@@ -44,11 +43,11 @@ export const createRoomSchema = z.object({
 
 export const updateRoomSchema = z.object({
     hotelId: z.string({
-        invalid_type_error: "Hotel ID must be a string",
+        error: "Hotel ID must be a string",
     }).optional(),
 
     name: z.string({
-        invalid_type_error: "Room name must be a string",
+        error: "Room name must be a string",
     })
         .min(3, "Room name must be at least 3 characters")
         .max(50, "Room name must be less than 50 characters")
@@ -56,7 +55,7 @@ export const updateRoomSchema = z.object({
         .optional(),
 
     roomType: z.string({
-        invalid_type_error: "Room type must be a string",
+        error: "Room type must be a string",
     }).optional(),
 
     roomCount: z.preprocess(
@@ -67,7 +66,7 @@ export const updateRoomSchema = z.object({
     ).optional(),
 
     bedType: z.string({
-        invalid_type_error: "Bed type must be a string",
+        error: "Bed type must be a string",
     })
         .min(3, "Bed type must be at least 3 characters")
         .max(50, "Bed type must be less than 50 characters")
@@ -98,59 +97,57 @@ export const updateRoomSchema = z.object({
     ),
 });
 
-
 export const createBookingSchema = z.object({
-    vendorId: z
-        .string({
-            required_error: 'Vendor ID is required',
-            invalid_type_error: 'Invalid vendor ID'
-        }),
-    hotelId: z
-        .string({
-            required_error: 'Hotel ID is required',
-            invalid_type_error: 'Invalid hotel ID'
-        }),
-    roomId: z
-        .string({
-            required_error: 'Room ID is required',
-            invalid_type_error: 'Invalid room ID'
-        }),
-    checkIn: z
-        .string({ required_error: 'Check-in date is required' })
-        .datetime({ message: 'Invalid check-in date format' }),
+    vendorId: z.string({
+        error: "Vendor ID is required",
+    }),
 
-    checkOut: z
-        .string({ required_error: 'Check-out date is required' })
-        .datetime({ message: 'Invalid check-out date format' }),
+    hotelId: z.string({
+        error: "Hotel ID is required",
+    }),
 
-    guests: z
-        .number({ required_error: 'Guests count is required' })
-        .int('Guests must be an integer')
-        .min(1, 'At least 1 guest is required')
-        .max(10, 'Guests limit exceeded'),
+    roomId: z.string({
+        error: "Room ID is required",
+    }),
 
-    roomsCount: z
-        .number({ required_error: 'Rooms count is required' })
-        .int('Rooms count must be an integer')
-        .min(1, 'Minimum 1 room required')
-        .max(5, 'Maximum 5 rooms allowed'),
+    checkIn: z.string({
+        error: "Check-in date is required",
+    }).datetime({
+        error: "Invalid check-in date format",
+    }),
 
-    couponId: z
-        .string({
-            invalid_type_error: 'Invalid Coupon Id'
-        })
-        .nullable()
-        .optional(),
-    method: z.
-        enum(['wallet', 'online'], {
-            required_error: 'Payment Method is required',
-            invalid_type_error: 'Invalid payment method'
-        }),
+    checkOut: z.string({
+        error: "Check-out date is required",
+    }).datetime({
+        error: "Invalid check-out date format",
+    }),
+
+    guests: z.number({
+        error: "Guests count is required",
+    })
+        .int("Guests must be an integer")
+        .min(1, "At least 1 guest is required")
+        .max(10, "Guests limit exceeded"),
+
+    roomsCount: z.number({
+        error: "Rooms count is required",
+    })
+        .int("Rooms count must be an integer")
+        .min(1, "Minimum 1 room required")
+        .max(5, "Maximum 5 rooms allowed"),
+
+    couponId: z.string({
+        error: "Invalid Coupon Id",
+    }).nullable().optional(),
+
+    method: z.enum(["wallet", "online"], {
+        error: "Invalid or missing payment method",
+    }),
 })
     .refine(
         (data) => new Date(data.checkOut) > new Date(data.checkIn),
         {
-            message: 'Check-out date must be after check-in date',
-            path: ['checkOut'],
+            message: "Check-out date must be after check-in date",
+            path: ["checkOut"],
         }
-    )
+    );
