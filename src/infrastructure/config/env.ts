@@ -25,4 +25,10 @@ export const env = {
     STRIPE_SECRET: process.env.STRIPE_SECRET!,
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET!,
     MAX_LINES: Number(process.env.MAX_LINES!),
+    SILO_ENDPOINT: process.env.SILO_ENDPOINT!,
+    SILO_ACCESS_KEY: process.env.SILO_ACCESS_KEY!,
+    SILO_SECRET_KEY: process.env.SILO_SECRET_KEY!,
+    SILO_BUCKET_NAME: process.env.SILO_BUCKET_NAME!,
+    SILO_REGION: process.env.SILO_REGION!,
+    STORAGE_PROVIDER:process.env.STORAGE_PROVIDER,
 }
