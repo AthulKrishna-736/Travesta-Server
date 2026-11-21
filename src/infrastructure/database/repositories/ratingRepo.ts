@@ -2,7 +2,7 @@ import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
 import { ratingModel, TRatingDocument, } from "../models/ratingModel";
 import { IRatingRepository } from "../../../domain/interfaces/repositories/ratingRepo.interface";
-import { TCreateRating, IRating, TUpdateRating } from "../../../domain/interfaces/model/rating.interface";
+import { TCreateRating, IRating, TUpdateRating, TAverageRating } from "../../../domain/interfaces/model/rating.interface";
 import mongoose from "mongoose";
 
 
@@ -136,24 +136,41 @@ export class RatingRepository extends BaseRepository<TRatingDocument> implements
         };
     }
 
-    async getAverageRating(startDate?: string, endDate?: string): Promise<any> {
+    async getAverageRating(startDate?: string, endDate?: string): Promise<TAverageRating> {
         const filter = this.buildDateFilter(startDate, endDate);
 
         const result = await ratingModel.aggregate([
-            { $match: filter },
             {
-                $group: {
-                    _id: null,
-                    avgHospitality: { $avg: "$hospitality" },
-                    avgCleanliness: { $avg: "$cleanliness" },
-                    avgFacilities: { $avg: "$facilities" },
-                    avgRoom: { $avg: "$room" },
-                    avgValue: { $avg: "$moneyValue" },
+                $match: filter
+            },
+            {
+                $facet: {
+                    data: [
+                        {
+                            $group: {
+                                _id: null,
+                                avgHospitality: { $avg: "$hospitality" },
+                                avgCleanliness: { $avg: "$cleanliness" },
+                                avgFacilities: { $avg: "$facilities" },
+                                avgRoom: { $avg: "$room" },
+                                avgValue: { $avg: "$moneyValue" }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    avgHospitality: { $ifNull: [{ $arrayElemAt: ["$data.avgHospitality", 0] }, 0] },
+                    avgCleanliness: { $ifNull: [{ $arrayElemAt: ["$data.avgCleanliness", 0] }, 0] },
+                    avgFacilities: { $ifNull: [{ $arrayElemAt: ["$data.avgFacilities", 0] }, 0] },
+                    avgRoom: { $ifNull: [{ $arrayElemAt: ["$data.avgRoom", 0] }, 0] },
+                    avgValue: { $ifNull: [{ $arrayElemAt: ["$data.avgValue", 0] }, 0] }
                 }
             }
         ]);
 
-        return result[0] ?? null;
+        return result[0];
     }
-
 } 

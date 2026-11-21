@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { TOKENS } from "../../../constants/token";
 import { IBookingRepository } from "../../../domain/interfaces/repositories/bookingRepo.interface";
 import { IRatingRepository } from "../../../domain/interfaces/repositories/ratingRepo.interface";
-import { IGetAdminAnalyticsUseCase } from "../../../domain/interfaces/model/booking.interface";
+import { IGetAdminAnalyticsUseCase, TAdminAnalytics } from "../../../domain/interfaces/model/booking.interface";
 
 @injectable()
 export class GetAdminAnalyticsUseCase implements IGetAdminAnalyticsUseCase {
@@ -11,7 +11,7 @@ export class GetAdminAnalyticsUseCase implements IGetAdminAnalyticsUseCase {
         @inject(TOKENS.RatingRepository) private _ratingRepository: IRatingRepository,
     ) { }
 
-    async getAnalytics(startDate?: string, endDate?: string): Promise<{ data: any, message: string }> {
+    async getAnalytics(startDate?: string, endDate?: string): Promise<{ data: TAdminAnalytics, message: string }> {
         const [
             counts,
             totalRevenue,

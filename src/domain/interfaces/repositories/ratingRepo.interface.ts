@@ -1,4 +1,4 @@
-import { IRating, TCreateRating, TUpdateRating } from "../model/rating.interface";
+import { IRating, TAverageRating, TCreateRating, TUpdateRating } from "../model/rating.interface";
 
 export interface IRatingRepository {
     createRating(create: TCreateRating): Promise<IRating>;
@@ -10,5 +10,5 @@ export interface IRatingRepository {
     getHotelRatings(hotelId: string, page: number, limit: number): Promise<{ ratings: IRating[] | null, total: number }>;
     findUserDuplicateHotelRatings(userId: string, hotelId: string): Promise<IRating | null>
     getHotelRatingSummary(hotelId: string): Promise<{ totalRatings: number; averageRating: number; averages: { hospitality: number; cleanliness: number; facilities: number; room: number; moneyValue: number; }; }>
-    getAverageRating(startDate?: string, endDate?: string): Promise<any>;
+    getAverageRating(startDate?: string, endDate?: string): Promise<TAverageRating>;
 }

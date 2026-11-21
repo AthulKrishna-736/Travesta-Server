@@ -18,6 +18,8 @@ import { IPlatformFeeService, ISocketService } from "../../../domain/interfaces/
 import { IStripeService } from "../../../domain/interfaces/services/stripeService.interface";
 import { INotificationService } from "../../../domain/interfaces/services/notificationService.interface";
 import { NotificationService } from "../../services/notificationService";
+import { env } from "../env";
+import { SiloS3Service } from "../../services/siloService";
 
 
 container.register<IAuthService>(TOKENS.AuthService, {
@@ -33,7 +35,9 @@ container.register<IRedisService>(TOKENS.RedisService, {
 })
 
 container.register<IAwsS3Service>(TOKENS.AwsS3Service, {
-    useClass: AwsS3Service,
+    useClass: env.STORAGE_PROVIDER === "local"
+        ? SiloS3Service
+        : AwsS3Service,
 })
 
 container.register<ISocketService>(TOKENS.SocketService, {

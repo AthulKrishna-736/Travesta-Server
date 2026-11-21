@@ -21,6 +21,13 @@ export type TCreateRating = Omit<IRating, '_id' | 'createdAt' | 'updatedAt'>
 export type TUpdateRating = Partial<Omit<IRating, '_id'>>;
 export type TResponseRating = IRating;
 
+export type TAverageRating = {
+    avgHospitality: number;
+    avgCleanliness: number;
+    avgFacilities: number;
+    avgRoom: number;
+    avgValue: number;
+};
 
 export interface ICreateRatingUseCase {
     createRating(bookingId: string, create: TCreateRatingDTO, files?: Express.Multer.File[]): Promise<{ rating: TResponseRatingDTO, message: string }>;

@@ -3,6 +3,7 @@ import { IHotel } from "./hotel.interface";
 import { IRoom } from "./room.interface";
 import { TCreateBookingDTO, TResponseBookingDTO } from "../../../interfaceAdapters/dtos/booking.dto";
 import { ICoupon } from "./coupon.interface";
+import { TAverageRating } from "./rating.interface";
 
 export type TStatus = 'confirmed' | 'cancelled' | 'pending';
 export type TPaymentStatus = 'pending' | 'success' | 'failed' | 'refunded';
@@ -31,6 +32,21 @@ export interface IBooking {
 export type TCreateBookingData = Omit<IBooking, '_id' | 'createdAt' | 'updatedAt' | 'status' | 'payment' | 'platFormSettled'>;
 export type TUpdateBookingData = Partial<Omit<IBooking, '_id' | 'userId' | 'hotelId' | 'roomId' | 'createdAt' | 'updatedAt' | 'platFormSettled'>>;
 export type TResponseBookingData = Omit<IBooking, 'checkIn' | 'checkOut' | 'platFormSettled'> & { checkIn: string, checkOut: string };
+
+export type TAdminAnalytics = {
+    counts: {
+        totalHotels: number;
+        totalRooms: number;
+        totalBookings: number;
+    };
+    totalRevenue: number;
+    totalBookings: number;
+    bookingsChart: any[];
+    topHotels: any[];
+    topVendors: any[];
+    topRevenueDays: any[];
+    averageRating: TAverageRating;
+};
 
 export type TBookingPopulated = IBooking & {
     hotel: Pick<IHotel, "_id" | "name" | "state" | "city" | "images" | 'geoLocation'>;
@@ -74,5 +90,5 @@ export interface IGetVendorHotelAnalyticsUseCase {
 }
 
 export interface IGetAdminAnalyticsUseCase {
-    getAnalytics(startDate?: string, endDate?: string): Promise<{ data: any, message: string }>
+    getAnalytics(startDate?: string, endDate?: string): Promise<{ data: TAdminAnalytics, message: string }>
 }
