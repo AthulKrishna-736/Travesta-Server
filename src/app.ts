@@ -17,42 +17,45 @@ import { TOKENS } from './constants/token';
 import { WalletController } from './interfaceAdapters/controllers/walletController';
 
 export class App {
-  public app: Application;
-  public server: http.Server;
-  public io: SocketIOServer;
+  private _app: Application;
+  private _server: http.Server;
+  private _io: SocketIOServer;
 
   constructor() {
-    this.app = express()
-    this.server = http.createServer(this.app);
+    this._app = express()
+    this._server = http.createServer(this._app);
     this.setSecurityMiddlewares();
     this.setWebhookRoute();
     this.setGlobalMiddlewares();
     this.setRoutes();
     this.setErrorHandling();
 
-    this.io = new SocketIOServer(this.server, {
+    this._io = new SocketIOServer(this._server, {
       cors: {
         origin: env.CLIENT_URL,
         credentials: true,
       },
       path: '/api/chat',
-      transports: ['polling', 'websocket']
+      transports: ['websocket']
     });
 
-    container.registerInstance(SocketIOServer, this.io)
+    container.registerInstance(SocketIOServer, this._io)
     container.resolve(TOKENS.SocketService);
   }
 
   private setSecurityMiddlewares(): void {
-    this.app.use(cookieparser())
-    this.app.use(helmet())
-    this.app.use(cors({
+    this._app.use(helmet())
+
+    this._app.use(cors({
       origin: env.CLIENT_URL,
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
       allowedHeaders: ['Content-Type', 'Authorization']
     }));
-    this.app.use(hpp())
+
+    this._app.use(hpp())
+
+    this._app.use(cookieparser())
 
     const limiter = rateLimit({
       windowMs: 15 * 60 * 1000,
@@ -60,16 +63,16 @@ export class App {
       message: 'Too many requests from this IP, please try again later.',
     })
 
-    this.app.use('/api', limiter)
+    this._app.use('/api', limiter)
   }
 
   private setWebhookRoute(): void {
-    this.app.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res, next) => container.resolve(WalletController).webhookHandler(req, res, next));
+    this._app.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res, next) => container.resolve(WalletController).webhookHandler(req, res, next));
   }
 
   private setGlobalMiddlewares(): void {
-    this.app.use(express.json())
-    this.app.use(express.urlencoded({ extended: true }))
+    this._app.use(express.json())
+    this._app.use(express.urlencoded({ extended: true }))
 
     if (env.NODE_ENV === 'development') {
       logger.info(`Running in ${env.NODE_ENV} mode`)
@@ -77,22 +80,18 @@ export class App {
   }
 
   private setRoutes(): void {
-    this.app.use('/api/users', container.resolve(userRoutes).getRouter())
-    this.app.use('/api/vendor', container.resolve(vendorRoutes).getRouter())
-    this.app.use('/api/admin', container.resolve(adminRoutes).getRouter())
+    this._app.use('/api/users', container.resolve(userRoutes).getRouter())
+    this._app.use('/api/vendor', container.resolve(vendorRoutes).getRouter())
+    this._app.use('/api/admin', container.resolve(adminRoutes).getRouter())
   }
 
   private setErrorHandling(): void {
-    this.app.use(errorHandler)
+    this._app.use(errorHandler)
   }
 
   public listen(port: number): void {
-    this.server.listen(port, () => {
+    this._server.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`)
     })
-  }
-
-  public getServer(): Application {
-    return this.app
   }
 }
