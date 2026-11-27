@@ -6,7 +6,6 @@ import { SendMessageUseCase } from "../../../application/use-cases/chat/sendMsg.
 import { GetChattedUsersUseCase } from "../../../application/use-cases/chat/getChatUsers.UseCase";
 import { MarkMsgAsReadUseCase } from "../../../application/use-cases/chat/markMsgRead.UseCase";
 import { GetVendorsChatWithUserUseCase } from "../../../application/use-cases/chat/getVendorsChattedWithUser.UseCase";
-import { GetVendorsChatWithAdmiinUseCase } from "../../../application/use-cases/chat/getVendorsChattedWithAdmin.UseCase";
 import { GetUserUnreadMsgUseCase } from "../../../application/use-cases/chat/getUserUnreadMsg.UseCase";
 import { GetChatAccessUseCase } from "../../../application/use-cases/chat/getChatAccess.UseCase";
 
@@ -15,11 +14,12 @@ import {
     IGetChatMessagesUseCase,
     IGetChattedUsersUseCase,
     IGetUserUnreadMsgUseCase,
-    IGetVendorsChatWithAdminUseCase,
+    IGetChatVendorsUseCase,
     IGetVendorsChatWithUserUseCase,
     IMarkMsgAsReadUseCase,
     ISendMessageUseCase
 } from "../../../domain/interfaces/model/chat.interface";
+import { GetChatVendorsUseCase } from "../../../application/use-cases/chat/getChatVendors.UseCase";
 
 
 container.register<IGetChatMessagesUseCase>(TOKENS.GetChatMessagesUseCase, {
@@ -42,8 +42,8 @@ container.register<IGetVendorsChatWithUserUseCase>(TOKENS.GetVendorsChatWithUser
     useClass: GetVendorsChatWithUserUseCase,
 })
 
-container.register<IGetVendorsChatWithAdminUseCase>(TOKENS.GetVendorsChatWithAdminUseCase, {
-    useClass: GetVendorsChatWithAdmiinUseCase,
+container.register<IGetChatVendorsUseCase>(TOKENS.GetVendorsChatWithAdminUseCase, {
+    useClass: GetChatVendorsUseCase,
 })
 
 container.register<IGetUserUnreadMsgUseCase>(TOKENS.GetUserUnreadMsgUseCase, {

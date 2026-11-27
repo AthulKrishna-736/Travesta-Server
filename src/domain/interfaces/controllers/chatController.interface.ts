@@ -6,7 +6,7 @@ export interface IChatController {
     sendMessage(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getChattedUsers(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getVendorsChatWithUser(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
-    getVendorsChatWithAdmin(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
+    getChatVendors(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getUnreadMsg(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     getchatAccess(req: CustomRequest, res: Response, next: NextFunction): Promise<void>
     readMessage(req: CustomRequest, res: Response, next: NextFunction): Promise<void>

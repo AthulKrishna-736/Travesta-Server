@@ -1,4 +1,5 @@
 import { TRole } from "../../../shared/types/common.types";
+import { IUser } from "./user.interface";
 
 //chat model
 export interface IChatMessage {
@@ -15,6 +16,7 @@ export interface IChatMessage {
 export type TCreateChatMessage = Omit<IChatMessage, 'timestamp' | 'isRead'>;
 export type TUpdateChatMessage = Partial<Pick<IChatMessage, 'isRead'>>;
 export type TResponseChatMessage = IChatMessage;
+export type TResponseChatUsers = IChatMessage & Pick<IUser, 'firstName'>;
 
 //chat use cases
 export interface IGetChatMessagesUseCase {
@@ -33,8 +35,8 @@ export interface IGetVendorsChatWithUserUseCase {
   getVendorsChatWithUser(userId: string, search?: string): Promise<{ vendors: { id: string; firstName: string, role: string }[]; message: string; }>;
 }
 
-export interface IGetVendorsChatWithAdminUseCase {
-  getVendorsChatWithAdmin(adminId: string, search?: string): Promise<{ vendors: { id: string; firstName: string, role: string }[]; message: string; }>;
+export interface IGetChatVendorsUseCase {
+  getChatVendors(search?: string): Promise<{ vendors: TResponseChatMessage[]; message: string; }>;
 }
 
 export interface IMarkMsgAsReadUseCase {

@@ -1,4 +1,4 @@
-import { IChatMessage, TCreateChatMessage } from "../model/chat.interface";
+import { IChatMessage, TCreateChatMessage, TResponseChatUsers } from "../model/chat.interface";
 
 export interface IChatRepository {
     findMsgById(messageId: string): Promise<IChatMessage | null>
@@ -6,7 +6,7 @@ export interface IChatRepository {
     getMessagesBetweenUsers(fromId: string, toId: string): Promise<IChatMessage[]>;
     markConversationAsRead(senderId: string, receiverId: string): Promise<void>
     getUsersWhoChattedWithVendor(vendorId: string, search?: string): Promise<{ id: string; firstName: string; role: string; lastMessage?: string; lastMessageTime?: Date; }[]>
-    getVendorsWhoChattedWithAdmin(adminId: string, search?: string): Promise<{ id: string, firstName: string, role: string }[]>
+    getChatVendors(search?: string): Promise<TResponseChatUsers[]>
     getVendorsWhoChattedWithUser(userId: string, search?: string): Promise<{ id: string; firstName: string; role: string; lastMessage?: string; lastMessageTime?: Date }[]>
     getUnreadMessages(userId: string): Promise<{ id: string; count: number }[]>
 }

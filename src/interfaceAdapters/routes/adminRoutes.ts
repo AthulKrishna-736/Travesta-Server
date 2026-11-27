@@ -65,7 +65,7 @@ export class adminRoutes extends BaseRouter {
 
         //chat
         this.router
-            .get('/chat/vendors', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getVendorsChatWithAdmin(req, res, next))
+            .get('/chat/vendors', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getChatVendors(req, res, next))
             .get('/chat/unreads', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getUnreadMsg(req, res, next))
             .get('/chat/:userId/messages', authMiddleware, authorizeRoles('admin'), (req: CustomRequest, res, next) => this._chatController.getChatMessages(req, res, next));
 

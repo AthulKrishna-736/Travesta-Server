@@ -4,7 +4,7 @@ import { NextFunction, Response } from "express";
 import { CustomRequest } from "../../utils/customRequest";
 import { ResponseHandler } from "../../middlewares/responseHandler";
 import { HttpStatusCode } from "../../constants/HttpStatusCodes";
-import { IGetChatAccessUseCase, IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetVendorsChatWithAdminUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
+import { IGetChatAccessUseCase, IGetChatMessagesUseCase, IGetChattedUsersUseCase, IGetUserUnreadMsgUseCase, IGetChatVendorsUseCase, IGetVendorsChatWithUserUseCase, IMarkMsgAsReadUseCase, ISendMessageUseCase } from "../../domain/interfaces/model/chat.interface";
 import { AppError } from "../../utils/appError";
 import { AUTH_ERROR_MESSAGES, CHAT_ERROR_MESSAGES } from "../../constants/errorMessages";
 import { IChatController } from "../../domain/interfaces/controllers/chatController.interface";
@@ -16,7 +16,7 @@ export class ChatController implements IChatController {
         @inject(TOKENS.SendMessageUseCase) private _sendMessageUseCase: ISendMessageUseCase,
         @inject(TOKENS.GetChattedUsersUseCase) private _getChattedUsersUseCase: IGetChattedUsersUseCase,
         @inject(TOKENS.GetVendorsChatWithUserUseCase) private _getVendorsChatUserUseCase: IGetVendorsChatWithUserUseCase,
-        @inject(TOKENS.GetVendorsChatWithAdminUseCase) private _getVendorsChatAdminUseCase: IGetVendorsChatWithAdminUseCase,
+        @inject(TOKENS.GetVendorsChatWithAdminUseCase) private _getChatVendorsUseCase: IGetChatVendorsUseCase,
         @inject(TOKENS.GetUserUnreadMsgUseCase) private _getUserUnreadMsgUseCase: IGetUserUnreadMsgUseCase,
         @inject(TOKENS.GetChatAccessUseCase) private _getChatAccessUseCase: IGetChatAccessUseCase,
         @inject(TOKENS.MarkMsgAsReadUseCase) private _markMessageRead: IMarkMsgAsReadUseCase,
@@ -92,12 +92,11 @@ export class ChatController implements IChatController {
         }
     }
 
-    async getVendorsChatWithAdmin(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
+    async getChatVendors(req: CustomRequest, res: Response, next: NextFunction): Promise<void> {
         try {
             const search = req.query.search as string;
-            const userId = req.user?.userId;
 
-            const { vendors, message } = await this._getVendorsChatAdminUseCase.getVendorsChatWithAdmin(userId as string, search);
+            const { vendors, message } = await this._getChatVendorsUseCase.getChatVendors(search);
             ResponseHandler.success(res, message, vendors, HttpStatusCode.OK);
         } catch (error) {
             next(error);
