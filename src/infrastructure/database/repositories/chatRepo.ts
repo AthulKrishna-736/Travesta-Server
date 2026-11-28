@@ -1,8 +1,9 @@
 import { injectable } from "tsyringe";
 import { BaseRepository } from "./baseRepo";
-import { IChatMessage, TCreateChatMessage } from "../../../domain/interfaces/model/chat.interface";
+import { IChatMessage, TCreateChatMessage, TResponseChatUsers } from "../../../domain/interfaces/model/chat.interface";
 import { chatMessageModel, TChatMessageDocument } from "../models/chatModel";
 import { IChatRepository } from "../../../domain/interfaces/repositories/chatRepo.interface";
+import { userModel } from "../models/userModels";
 
 @injectable()
 export class ChatRepository extends BaseRepository<TChatMessageDocument> implements IChatRepository {
@@ -124,13 +125,11 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                 }
             },
             { $unwind: '$user' },
-
             ...(searchRegex ? [{
                 $match: {
                     'user.firstName': searchRegex
                 }
             }] : []),
-
             {
                 $project: {
                     _id: 0,
@@ -141,7 +140,6 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
                     lastMessageTime: 1
                 }
             },
-
             {
                 $sort: { lastMessageTime: -1 }
             }
@@ -149,86 +147,97 @@ export class ChatRepository extends BaseRepository<TChatMessageDocument> impleme
     }
 
 
-    async getVendorsWhoChattedWithAdmin(adminId: string, search?: string): Promise<{ id: string; firstName: string; role: string; }[]> {
-        const searchMatch = search ? { firstName: new RegExp('^' + search, 'i') } : {};
-
-        const vendors = await this.model.aggregate([
+    async getChatVendors(search?: string): Promise<TResponseChatUsers[]> {
+        const result = await userModel.aggregate([
             {
                 $match: {
-                    $or: [{ fromId: adminId }, { toId: adminId }]
+                    role: "vendor"
                 }
             },
-
-            {
-                $project: {
-                    vendorId: {
-                        $cond: [
-                            { $eq: ['$fromId', adminId] },
-                            '$toId',
-                            '$fromId'
-                        ]
-                    }
-                }
-            },
-
-            {
-                $group: {
-                    _id: '$vendorId'
-                }
-            },
-
-            {
-                $addFields: {
-                    vendorObjectId: { $toObjectId: '$_id' }
-                }
-            },
-
             {
                 $lookup: {
-                    from: 'users',
-                    let: { vendorId: '$vendorObjectId' },
+                    from: "chatmessages",
+                    let: {
+                        userId: "$_id"
+                    },
                     pipeline: [
                         {
                             $match: {
                                 $expr: {
-                                    $and: [
-                                        { $eq: ['$_id', '$$vendorId'] },
-                                        { $eq: ['$role', 'vendor'] },
-                                        { $eq: ['$isVerified', true] }
+                                    $or: [
+                                        { $eq: ["$fromId", "$$userId"] },
+                                        { $eq: ["$toId", "$$userId"] }
                                     ]
                                 }
                             }
                         },
                         {
+                            $sort: {
+                                createdAt: -1
+                            }
+                        },
+                        {
+                            $group: {
+                                _id: null,
+                                lastMessage: { $first: "$message" },
+                                lastMessageTime: { $first: "$createdAt" },
+                                unreadCount: {
+                                    $sum: {
+                                        $cond: [
+                                            {
+                                                $and: [
+                                                    { $eq: ["$toId", "$$userId"] },
+                                                    { $eq: ["$isRead", false] }
+                                                ]
+                                            },
+                                            1,
+                                            0
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
                             $project: {
-                                _id: 1,
-                                firstName: 1,
-                                role: 1
+                                _id: 0,
+                                lastMessage: 1,
+                                lastMessageTime: { $toLong: "$lastMessageTime" },
+                                unreadCount: 1
                             }
                         }
                     ],
-                    as: 'userDetails'
+                    as: "chat"
                 }
             },
-
-            { $unwind: '$userDetails' },
-
-            {
-                $match: {
-                    ...(search ? { 'userDetails.firstName': searchMatch.firstName } : {})
-                }
-            },
-
             {
                 $project: {
-                    id: '$userDetails._id',
-                    firstName: '$userDetails.firstName',
-                    role: '$userDetails.role'
+                    _id: 0,
+                    id: { $toString: "$_id" },
+                    firstName: 1,
+                    role: 1,
+                    lastMessage: {
+                        $ifNull: [
+                            { $arrayElemAt: ["$chat.lastMessage", 0] },
+                            ""
+                        ]
+                    },
+                    lastMessageTime: {
+                        $ifNull: [
+                            { $arrayElemAt: ["$chat.lastMessageTime", 0] },
+                            0
+                        ]
+                    },
+                    unreadCount: {
+                        $ifNull: [
+                            { $arrayElemAt: ["$chat.unreadCount", 0] },
+                            0
+                        ]
+                    }
                 }
             }
-        ]);
+        ])
 
-        return vendors;
+        return result;
     }
 
     async getVendorsWhoChattedWithUser(userId: string, search?: string): Promise<{ id: string; firstName: string; role: string; lastMessage?: string; lastMessageTime?: Date; }[]> {
